@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ConfirmarDealInterbancario.script,v 1.9 2008/02/22 18:25:18 ccovian Exp $ -->
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+
+<script>
+    <input-symbol key="adv" class="java.lang.Boolean" required="yes" />
+    <input-symbol key="porcDesv" class="java.lang.String" required="yes" />
+    <input-symbol key="rec" class="java.lang.Boolean" required="yes" />
+    <input-symbol key="tv" class="java.lang.String" required="yes" />
+    <input-symbol key="cant" class="java.lang.Double" required="yes" />
+    <input-symbol key="tcm" class="java.lang.Double" required="yes" />
+    <input-symbol key="tcc" class="java.lang.Double" required="yes" />
+    <input-symbol key="claveFormaLiquidacion" class="java.lang.String" required="yes" />
+    <input-symbol key="idDiv" class="java.lang.String" required="yes" />
+    <input-symbol key="sdec" class="java.lang.Boolean" required="yes" />
+    <body>
+        <![CDATA[
+        respuesta = window.top.frames[2].document.getElementById('pizarraApplet').confOp(${rec}, '${tv}', ${cant}, ${tcm}, ${tcc}, '${claveFormaLiquidacion}', '${idDiv}', ${sdec}, ${adv}, '${porcDesv}');
+        document.location = '?service=external/CapturaDatosDealInterbancario&sp=' + respuesta;
+    ]]></body>
+</script>

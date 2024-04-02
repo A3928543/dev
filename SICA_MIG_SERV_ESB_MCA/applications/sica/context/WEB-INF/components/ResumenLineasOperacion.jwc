@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--$Id: ResumenLineasOperacion.jwc,v 1.9 2008/02/22 18:25:05 ccovian Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<component-specification allow-body="no">
+
+    <parameter name="lineaOperacion" type="com.ixe.ods.sica.model.LineaOperacion" direction="in" />
+
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd" />
+
+</component-specification>

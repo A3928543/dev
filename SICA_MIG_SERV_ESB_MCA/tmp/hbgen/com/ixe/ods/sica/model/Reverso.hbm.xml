@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.Reverso"
+        table="SC_REVERSO"
+        proxy="com.ixe.ods.sica.model.Reverso"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idReverso"
+            column="ID_REVERSO"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_REVERSO_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Reverso.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <version
+            name="version"
+            type="java.lang.Integer"
+            column="VERSION"
+            access="property"
+            unsaved-value="undefined"
+        />
+
+        <property
+            name="fecha"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fechaAutorizacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_AUTORIZACION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="observaciones"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="OBSERVACIONES"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="porCancelacion"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="POR_CANCELACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <many-to-one
+            name="porContratoSica"
+            class="com.ixe.ods.bup.model.ContratoSica"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="POR_NO_CUENTA"
+            unique="false"
+        />
+
+        <property
+            name="porFechaValor"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="POR_FECHA_VALOR"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="statusReverso"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATUS_REVERSO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="datosAdicionales"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="DATOS_ADICIONALES"
+            not-null="false"
+            unique="false"
+        />
+
+        <many-to-one
+            name="dealOriginal"
+            class="com.ixe.ods.sica.model.Deal"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DEAL_ORIGINAL"
+            unique="false"
+        />
+
+        <many-to-one
+            name="dealBalanceo"
+            class="com.ixe.ods.sica.model.Deal"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DEAL_BALANCEO"
+            unique="false"
+        />
+
+        <many-to-one
+            name="dealCorreccion"
+            class="com.ixe.ods.sica.model.Deal"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DEAL_CORRECCION"
+            unique="false"
+        />
+
+        <many-to-one
+            name="usuario"
+            class="com.ixe.ods.seguridad.model.Usuario"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_USUARIO"
+            unique="false"
+        />
+
+        <many-to-one
+            name="usuarioAutorizacion"
+            class="com.ixe.ods.seguridad.model.Usuario"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_USUARIO_AUTORIZACION"
+            unique="false"
+        />
+
+        <bag
+            name="detalles"
+            lazy="true"
+            inverse="true"
+            cascade="none"
+        >
+
+              <key
+                  column="ID_REVERSO"
+              >
+              </key>
+
+              <one-to-many
+                  class="com.ixe.ods.sica.model.ReversoDetalle"
+              />
+
+        </bag>
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Reverso.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findReversoByStatus"><![CDATA[
+            FROM Reverso AS rev WHERE rev.statusReverso = 'PE' OR rev.statusReverso = 'AL' ORDER BY rev.idReverso ASC
+        ]]></query>
+
+</hibernate-mapping>

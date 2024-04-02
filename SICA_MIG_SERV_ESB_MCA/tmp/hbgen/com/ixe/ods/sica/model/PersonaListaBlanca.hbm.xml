@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.PersonaListaBlanca"
+        table="SC_LB_PERSONA"
+        proxy="com.ixe.ods.sica.model.PersonaListaBlanca"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="noCuenta"
+            column="NO_CUENTA"
+            type="java.lang.String"
+            unsaved-value="null"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-PersonaListaBlanca.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="tipoExcepcion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_EXCEPCION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="limiteDiario"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="LIMITE_DIARIO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="limiteMensual"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="LIMITE_MENSUAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="observaciones"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="OBSERVACIONES"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fechaCreacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_CREACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fechaUltimaModificacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_ULTIMA_MOD"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="usuarioModificacion"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_USUARIO_MOD"
+            not-null="false"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-PersonaListaBlanca.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

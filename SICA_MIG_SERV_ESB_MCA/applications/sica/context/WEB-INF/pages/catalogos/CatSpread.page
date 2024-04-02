@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CatSpread.page,v 1.9 2008/02/22 18:25:17 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.catalogos.CatSpread">
+
+	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <bean name="doubleValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <component id="clavesFormasLiquidacionComboBox" type="PropertySelection">
+        <binding name="model" expression='new org.apache.tapestry.form.StringPropertySelectionModel(formasPagoLiqService.getClavesFormasLiquidacion(visit.ticket, true))' />
+        <binding name="value" expression="registro.claveFormaLiquidacion" />
+    </component>
+
+    <component id="ventaVFutTextField" type="ValidField">
+        <static-binding name="displayName" value="Venta VFut" />
+        <binding name="validator" expression="beans.doubleValidator" />
+        <binding name="value" expression="registro.cpaVta.ventaVFut" />
+    </component>
+
+    <component id="compraVFutTextField" type="ValidField">
+        <static-binding name="displayName" value="Compra VFut" />
+        <binding name="validator" expression="beans.doubleValidator" />
+        <binding name="value" expression="registro.cpaVta.compraVFut" />
+    </component>
+
+    <component id="venta72HrTextField" type="ValidField">
+        <static-binding name="displayName" value="Venta 72Hr" />
+        <binding name="validator" expression="beans.doubleValidator" />
+        <binding name="value" expression="registro.cpaVta.venta72Hr" />
+    </component>
+
+    <component id="compra72HrTextField" type="ValidField">
+        <static-binding name="displayName" value="Compra 72Hr" />
+        <binding name="validator" expression="beans.doubleValidator" />
+        <binding name="value" expression="registro.cpaVta.compra72Hr" />
+    </component>
+
+    <component id="ventaSpotTextField" type="ValidField">
+        <static-binding name="displayName" value="Venta Spot" />
+        <binding name="validator" expression="beans.doubleValidator" />
+        <binding name="value" expression="registro.cpaVta.ventaSpot" />
+    </component>
+
+    <component id="compraSpotTextField" type="ValidField">
+        <static-binding name="displayName" value="Compra Spot" />
+        <binding name="validator" expression="beans.doubleValidator" />
+        <binding name="value" expression="registro.cpaVta.compraSpot" />
+    </component>
+
+    <component id="ventaTomTextField" type="ValidField">
+        <static-binding name="displayName" value="Venta Tom" />
+        <binding name="validator" expression="beans.doubleValidator" />
+        <binding name="value" expression="registro.cpaVta.ventaTom" />
+    </component>
+
+    <component id="compraTomTextField" type="ValidField">
+        <static-binding name="displayName" value="Compra Tomt" />
+        <binding name="validator" expression="beans.doubleValidator" />
+        <binding name="value" expression="registro.cpaVta.compraTom" />
+    </component>
+
+    <component id="ventaCashTextField" type="ValidField">
+        <static-binding name="displayName" value="Venta Cash" />
+        <binding name="validator" expression="beans.doubleValidator" />
+        <binding name="value" expression="registro.cpaVta.ventaCash" />
+    </component>
+
+    <component id="compraCashTextField" type="ValidField">
+        <static-binding name="displayName" value="Compra Cash" />
+        <binding name="validator" expression="beans.doubleValidator" />
+        <binding name="value" expression="registro.cpaVta.compraCash" />
+    </component>
+
+    <property-specification name="registro" type="java.io.Serializable" persistent="yes" />
+    <property-specification name="modoUpdate" type="boolean" persistent="yes" />
+    <property-specification name="nombrePaginaConsulta" type="java.lang.String" initial-value='"CatSpreads"' />
+
+    <context-asset name="acceptButton" path="/images/save.gif" />
+    <context-asset name="cancelButton" path="/images/cancel.gif" />
+
+</page-specification>

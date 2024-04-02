@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.MensajeTce"
+        table="SC_MENSAJE"
+        dynamic-update="false"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+    >
+
+        <id
+            name="idMensaje"
+            column="ID_MENSAJE"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_MENSAJE_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-MensajeTce.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="prioridad"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="PRIORIDAD"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="mensaje"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="MENSAJE"
+            not-null="true"
+            unique="false"
+        />
+
+        <many-to-one
+            name="usuarioCreacion"
+            class="com.ixe.ods.bup.model.EmpleadoIxe"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="USUARIO_CREACION"
+            unique="false"
+        />
+
+        <property
+            name="fechaCreacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_CREACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <many-to-one
+            name="usuarioUltModif"
+            class="com.ixe.ods.bup.model.EmpleadoIxe"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="USUARIO_ULT_MODIF"
+            unique="false"
+        />
+
+        <property
+            name="fechaUltModif"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_ULT_MODIF"
+            not-null="false"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-MensajeTce.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findMensajesTceByFechaCreacion"><![CDATA[
+            select new MensajeTce(mtce.idMensaje, mtce.prioridad, mtce.mensaje, mtce.fechaCreacion, mtce.usuarioCreacion.claveUsuario) FROM MensajeTce mtce WHERE mtce.fechaCreacion BETWEEN ? AND ? ORDER BY mtce.fechaCreacion DESC
+        ]]></query>
+
+</hibernate-mapping>

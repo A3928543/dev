@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ArrancarSwaps.script,v 1.7 2008/02/22 18:25:19 ccovian Exp $ -->
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+
+<script>
+    <input-symbol key="idCanal" class="java.lang.String" required="yes" />
+    <input-symbol key="idUsuario" class="java.lang.Integer" required="yes" />
+    <input-symbol key="idMesaCambio" class="java.lang.Integer" required="yes" />
+    <input-symbol key="derivados" class="java.lang.Integer" required="yes" />
+    <input-symbol key="valFut" class="java.lang.String" required="yes" />
+    
+    <body>
+        <![CDATA[
+        var ventSwaps = window.open('/sica/sf/swaps/index.jsp?d=${derivados}&ic=${idCanal}&iu=${idUsuario}&imc=${idMesaCambio}&valFut=${valFut}',
+                            'swaps', 'width=950, height=480, scrollbars=yes, status=yes, resizable=yes');
+        document.location='?service=page/Empty';
+        ventSwaps.focus();
+        ]]>
+    </body>
+</script>

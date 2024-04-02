@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ConsultaPendientesDia.page,v 1.3.14.1 2010/08/10 19:27:02 galiciad Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+                           
+<page-specification class="com.ixe.ods.sica.pages.mesa.ConsultaPendientesDia">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <property-specification name="dealsPendientesPorLiquidar"  type="java.util.List" persistent="yes"
+                            initial-value="new java.util.ArrayList()" />
+    <property-specification name="dealsPendientesNoBalanceado" type="java.util.List" persistent="yes"
+                            initial-value="new java.util.ArrayList()" />
+    <property-specification name="dealsPendientesDatosLiquidacion" type="java.util.List" persistent="yes"
+                            initial-value="new java.util.ArrayList()" />
+    <property-specification name="dealsPendientesMonto" type="java.util.List" persistent="yes"
+                            initial-value="new java.util.ArrayList()" />
+    <property-specification name="dealsSwap" type="java.util.List" persistent="yes"
+                            initial-value="new java.util.ArrayList()" />
+    <property-specification name="dealsPendientesHorario" type="java.util.List" persistent="yes"
+                            initial-value="new java.util.ArrayList()" />
+    <property-specification name="dealsPendientesDesviacionTC" type="java.util.List" persistent="yes"
+                            initial-value="new java.util.ArrayList()" />
+    <property-specification name="dealsPendientesBanxico" type="java.util.List" persistent="yes"
+                            initial-value="new java.util.ArrayList()" />
+    <property-specification name="dealsPendientesDocumentacion" type="java.util.List" persistent="yes"
+                            initial-value="new java.util.ArrayList()" />
+    <property-specification name="dealsPendientesPlantilla" type="java.util.List" persistent="yes"
+                            initial-value="new java.util.ArrayList()" />
+    <property-specification name="dealsPendientesLinTomaEnFirme" type="java.util.List" persistent="yes"
+                            initial-value="new java.util.ArrayList()" />
+    <property-specification name="dealsPendientesCartaIntencion" type="java.util.List" persistent="yes"
+                            initial-value="new java.util.ArrayList()" />
+    <property-specification name="dealsPendientesContratoSica" type="java.util.List" persistent="yes"
+                            initial-value="new java.util.ArrayList()" />
+    <property-specification name="dealsPendientesRfc" type="java.util.List" persistent="yes"
+                            initial-value="new java.util.ArrayList()" />
+    <property-specification name="dealsPendientesEmail" type="java.util.List" persistent="yes"
+                            initial-value="new java.util.ArrayList()" />
+    <property-specification name="dealsPendientesCompletar" type="java.util.List" persistent="yes"
+                            initial-value="new java.util.ArrayList()" />
+    <property-specification name="dealsDetallesPendientes" type="java.util.List" persistent="yes"
+                            initial-value="new java.util.ArrayList()" />
+    <property-specification name="dealsPendientesModCan" type="java.util.List" persistent="yes"
+                            initial-value="new java.util.ArrayList()" />
+    <property-specification name="dealsPendientesSolicitudSobrePrecio" type="java.util.List" persistent="yes"
+                            initial-value="new java.util.ArrayList()" />
+    <property-specification name="dealsPendientesDiaAlta" type="java.util.List" persistent="yes"
+                            initial-value="new java.util.ArrayList()" />
+    <property-specification name="clientesPendienteDocumentacion" type="java.util.List" persistent="yes"
+    						initial-value="new java.util.ArrayList()"/>
+    <property-specification name="modoSubmit" type="int" />
+    <property-specification name="confirmar"  type="boolean" persistent="yes" />
+    <property-specification name="ocultaSwap"  type="boolean" persistent="yes" />
+    <property-specification name="guardaFacultad" type="java.lang.String" persistent="yes"/>     
+    <property-specification name="fechaUltimaActualizacion" type="java.util.Date" persistent="yes"
+                            initial-value="new java.util.Date()" />
+    <property-specification name="clientesMinimizados" type="boolean" persistent="yes" 
+    						initial-value="true"/>
+    <property-specification name="promotor" type="com.ixe.ods.bup.model.EmpleadoIxe" /> 
+        					
+    
+    <context-asset name="refreshButton" path="/images/refresh.gif" />
+	<context-asset name="confirmButton" path="/images/confirmar.gif" />
+    <context-asset name="automaticButton" path="/images/automatico.gif" />
+    <context-asset name="manualButton" path="/images/manual.gif" />
+    <context-asset name="saveButton" path="/images/save.gif" />
+    <context-asset name="cancelButton" path="/images/cancel.gif" />
+    <context-asset name="searchButton" path="/images/search.gif" />
+
+</page-specification>

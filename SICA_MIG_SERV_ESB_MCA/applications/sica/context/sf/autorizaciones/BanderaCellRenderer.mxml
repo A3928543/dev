@@ -1,0 +1,31 @@
+<mx:HBox xmlns:mx="http://www.macromedia.com/2003/mxml" minWidth="32" height="20"
+	    		marginTop="0" marginRight="0" marginLeft="0" marginBottom="0">
+<!-- $Id: BanderaCellRenderer.mxml,v 1.3 2008/02/22 18:25:27 ccovian Exp $ -->
+    <mx:Script>
+    <![CDATA[
+
+    var idDivisa : String;
+
+    function setValue(str:String, item:Object, sel:Boolean) : Void {
+        idDivisa = item.idDivisa;
+        if ('MXN' == idDivisa) {
+            image.source = 'resources/MXN.jpg';
+        }
+        else if ('USD' == idDivisa || 'CAD' == idDivisa || 'EUR' == idDivisa
+			|| 'GBP' == idDivisa || 'CHF' == idDivisa || 'JPY' == idDivisa) {
+            image.source = 'resources/' + idDivisa + '.jpg';
+        }
+		else if ('X' == idDivisa.charAt(0)) {
+            image.source = 'resources/metales_amonedados.jpg';
+		}
+        else  {
+            image.source = 'resources/world.jpg';
+        }
+    }
+        ]]>
+
+    </mx:Script>
+
+    <mx:Image id="image" width="32" height="20" toolTip="{idDivisa}" />
+
+</mx:HBox>

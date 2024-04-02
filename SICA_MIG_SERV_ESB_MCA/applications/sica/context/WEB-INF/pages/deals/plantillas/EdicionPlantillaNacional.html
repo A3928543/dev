@@ -1,0 +1,71 @@
+<!-- $Id: EdicionPlantillaNacional.html,v 1.11 2008/02/22 18:25:39 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Plantillas De Cheques</title>
+    <link rel="StyleSheet" href="../../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+<table width="100%">
+	<tr valign="top">
+		<td>
+			<form jwcid="@Form" listener="ognl: listeners.actualizar" delegate="ognl:beans.delegate">
+	           	<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+                <table jwcid="@Cliente" contratoSica="ognl: registro.contratoSica" nombreCliente="ognl: nombreCliente" idPersona="ognl: idPersona" width="100%" />
+	           	<br />
+		        <table jwcid="@ActionPortletBorder" title="Plantilla De Cheques" width="100%">
+		            <table jwcid="@TableBorder" title="ognl: null" columnCount="2" width="100%">
+		            	<span jwcid="@contrib:Choose">
+                   			<span jwcid="@contrib:When" condition='ognl: !modoUpdate'>
+				                <tr class="titlecell">
+				                    <td width="50%" align="right" class="title">Clave Plantilla:</td>
+									<td class="normalcell"><input class="uppercase" jwcid="@ixe:UppercaseTextField" maxLength="4" value="ognl: registro.clavePlantilla" /></td>
+				                </tr>
+				                <tr class="titlecell">
+				                    <td align="right" class="title">Nombre Beneficiario:</td>
+				                    <td class="normalcell">
+				                        <input jwcid="beneficiarioComboBox"/>
+				                    </td>
+				                </tr>
+                                <tr class="titlecell">
+				                    <td align="right" class="title">Mnem&oacute;nico:</td>
+				                    <td class="normalcell">
+				                    	<select jwcid="@PropertySelection" model="ognl: mnemonicosPlantNacModel" value="ognl: registro.mnemonico" />
+				                    </td>
+				                </tr>
+			            	</span>
+		                	<span jwcid="@contrib:Otherwise">
+				                <tr class="titlecell">
+				                    <td align="right" class="title">Status:</td>
+				                    <td class="normalcell">
+				                    	<span jwcid="@contrib:Choose">
+				                    		<span jwcid="@contrib:When" condition='ognl: registro.statusPlantilla.equals(@com.ixe.ods.sica.model.Plantilla@STATUS_PLANTILLA_ACTIVA)'>
+				                    			<select jwcid="@PropertySelection" model="ognl: statusPlantillasSinActivar" value="ognl: registro.statusPlantilla" />
+				                    		</span>
+				                    		<span jwcid="@contrib:Otherwise">
+				                    			<select jwcid="@PropertySelection" model="ognl: statusPlantillasActivar" value="ognl: registro.statusPlantilla" />
+				                    		</span>
+			                    		</span>
+				                    </td>
+				                </tr>
+			                </span>
+		                </span>
+		            </table>
+		            <br />
+		            <div align="center">
+		            	<span jwcid="@contrib:Choose">
+				        	<span jwcid="@contrib:When" condition='ognl: modoUpdate'>
+		                		<input jwcid="@ImageSubmit" image="ognl: assets.acceptButton" onclick="return fnDisableForm(this.form);" />
+	                		</span>
+	                		<span jwcid="@contrib:Otherwise">
+								<input jwcid="@ImageSubmit" image="ognl: assets.addButton" onclick="return fnDisableForm(this.form);" />
+	                		</span>
+                		</span>
+		                <a jwcid="@PageLink" page="ConsultaPlantillasNacionales" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.regresarButton"/></a>
+		            </div>
+		        </table>
+		    </form>
+		</td>
+    </tr>
+</table>
+</body>
+</html>

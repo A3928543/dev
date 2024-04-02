@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: AprobacionLineaCredito.page,v 1.15 2009/01/30 02:02:54 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.lineacredito.AprobacionLineaCredito">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+
+    <bean name="doubleValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="minimum" expression="0"/>
+    </bean>
+    
+    <component id="limiteInferior" type="ValidField">
+        <binding name="validator" expression="beans.doubleValidator"/>
+        <binding name="value" expression="limiteInferior"/>
+        <static-binding name="displayName" value="L&#237;mite Inferior"/>
+        <static-binding name="type" value="String"/>
+    </component>
+
+    <component id="limiteSuperior" type="ValidField">
+        <binding name="validator" expression="beans.doubleValidator"/>
+        <binding name="value" expression="limiteSuperior"/>
+        <static-binding name="displayName" value="L&#237;mite Superior"/>
+        <static-binding name="type" value="String"/>
+    </component>
+
+    <component id="promotorSolicitudComboBox" type="PropertySelection">
+        <binding name="model" expression="promotoresModel" />
+        <binding name="value" expression="promotor" />
+    </component>
+
+    <property-specification name="estatus" type="java.lang.String" persistent="yes" initial-value="" />
+    <property-specification name="lineasCredito" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+    <property-specification name="modo" type="java.lang.String" persistent="yes" />
+    <property-specification name="nombre" type="java.lang.String" initial-value="" />
+    <property-specification name="paterno" type="java.lang.String" initial-value="" />
+    <property-specification name="materno" type="java.lang.String" initial-value="" />
+    <property-specification name="razonSocial" type="java.lang.String" initial-value="" />
+    <property-specification name="noCuenta" type="java.lang.String" initial-value="" />
+    <property-specification name="promotor" type="java.util.HashMap" persistent="yes" />  
+  	<property-specification name="promotoresList" type="java.util.List" persistent="yes" />
+  	<property-specification name="idsPromotores" type="java.util.List" persistent="yes" />
+    <property-specification name="corporativoSeleccionado" type="com.ixe.ods.bup.model.Persona" />
+    <property-specification name="observaciones" type="java.lang.String" persistent="yes"/>
+    <property-specification name="limiteInferior" type="double" persistent="yes" initial-value="0"/>
+    <property-specification name="limiteSuperior" type="double" persistent="yes" initial-value="0"/>
+    <property-specification name="lineasPorRenovar" type="boolean" persistent="yes" initial-value="false"/>
+    <property-specification name="titleActionPortletBorder" type="java.lang.String" persistent="yes"/>
+   	<property-specification name="corporativos" type="java.util.List"/>
+    <property-specification name="minimizado"  type="boolean" persistent="yes" />
+    
+    <context-asset name="insertButton" path="/images/add.gif" />
+    <context-asset name="searchButton" path="/images/search.gif" />
+    
+</page-specification>

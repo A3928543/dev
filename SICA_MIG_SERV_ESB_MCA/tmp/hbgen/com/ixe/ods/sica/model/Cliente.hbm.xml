@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.Cliente"
+        table="SC_CLIENTE"
+        proxy="com.ixe.ods.sica.model.Cliente"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idCliente"
+            column="ID_CLIENTE"
+            type="java.lang.Integer"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_CLIENTE_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Cliente.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="idEmpresa"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_EMPRESA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="idPersona"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_PERSONA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="sic"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="SIC"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="cuentaCheques"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CUENTA_CHEQUES"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="sucursalOrigen"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="SUCURSAL_ORIGEN"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="sucursalOperacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="SUCURSAL_OPERACION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="nombreContacto"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NOMBRE_CONTACTO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="emailContacto"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="EMAIL_CONTACTO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="telefonoContacto"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TELEFONO_CONTACTO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="favorito"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="FAVORITO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="usuarioCreacion"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="USUARIO_CREACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fechaCreacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_CREACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="usuarioUltMod"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="USUARIO_ULT_MOD"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="fechaUltMod"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_ULT_MOD"
+            not-null="false"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Cliente.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findClienteByIdPersona"><![CDATA[
+            FROM Cliente as c where c.idPersona = ?
+        ]]></query>
+
+</hibernate-mapping>

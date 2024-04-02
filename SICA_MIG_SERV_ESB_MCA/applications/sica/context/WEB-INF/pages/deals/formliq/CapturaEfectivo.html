@@ -1,0 +1,39 @@
+<!-- $Id: CapturaEfectivo.html,v 1.9 2008/02/22 18:25:47 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Captura de Efectivo</title>
+    <link rel="StyleSheet" href="../../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="tb@Block"><span jwcid="@EventosDeal" deal="ognl: dealDetalle.deal" /></span>
+    <table jwcid="@ActionPortletBorder" title="Deal" titleBlock="ognl: components.tb">
+        <span jwcid="@EncabezadoDeal" deal="ognl: dealDetalle.deal" disabled="yes" />
+        <form jwcid="@Form" listener="ognl: listeners.submit" delegate="ognl: beans.delegate">
+            <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" width="100%"/>
+            <table jwcid="@DetailFieldset" dealDetalle="ognl: dealDetalle">
+                <tr class="normal" valign="top">
+                    <td class="title" align="right">Denominaci&oacute;n:</td>
+                    <td>
+                        <!--span jwcid="@contrib:Choose">
+                            <span jwcid="@contrib:When" condition="ognl: !modoCaptura"-->
+                                <input jwcid="denominacionTextField" />
+                            <!--/span>
+                            <span jwcid="@contrib:Otherwise">
+                                <span jwcid="@DisabledField" value="ognl: dealDetalle.denominacion" />
+                            </span>
+                        </span-->
+                    </td>
+                    <td colspan="8">&nbsp;</td>
+                </tr>
+            </table>
+            <br />
+            <div align="center">
+				<span jwcid="@contrib:FormConditional" condition="ognl: !modoCaptura">
+                	<input jwcid="@ImageSubmit" image="ognl: assets.bActualizar" onclick="return fnDisableForm(this.form);" />
+            	</span>
+                <input jwcid="@RegresarCapturaDeal" idDeal="ognl: dealDetalle.deal.idDeal" />
+            </div>
+        </form>
+    </table>
+</body>
+</html>

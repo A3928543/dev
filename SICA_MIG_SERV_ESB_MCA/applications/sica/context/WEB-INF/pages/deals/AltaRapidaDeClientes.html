@@ -1,0 +1,1015 @@
+<html jwcid="$content$">
+	<head jwcid="$remove$">
+		<!-- $Id: AltaRapidaDeClientes.html,v 1.12.28.7.4.6.2.2.4.6.4.6.2.1.30.1.8.5.2.3 2017/10/04 17:31:49 mejiar Exp $ -->
+		<title>Alta R&aacute;pida de Clientes</title>
+		<link rel="StyleSheet" href="../../../css/ixe.css">
+	</head>
+	<body jwcid="@PageBorder">
+		<table width="75%" align="center">
+			<tr>
+				<td width="100%">
+					<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate"
+						insertBreakAtTail="yes" level="ognl: level" />
+				</td>
+			</tr>
+			<span jwcid="@Conditional"
+				condition="ognl: personasBUP == null || personasBUP.empty">
+				<tr>
+					<td width="100%">
+						<table jwcid="@ActionPortletBorder"
+							title='ognl: (actualizarCr ? "Modificaci&oacute;n de clientes" : (!alta || modoSubmit == 0) ? "B&uacute;squeda de Clientes" : "Alta de clientes")'>
+							<span jwcid="@Conditional"
+								condition='ognl: !alta || modoSubmit == 0'>
+								<form jwcid="@Form"
+									listener="ognl: listeners.cambiarTipoPersona">
+									<table width="100%" align="center">
+										<tr>
+											<td class="title" width="200" align="right">
+												Tipo de Persona:
+											</td>
+											<td>
+												<select jwcid="@PropertySelection"
+													model="ognl: comboTiposPersona" value="ognl: fisicaMoral"
+													onChange="fnShowWaitImage(); this.form.submit();" />
+											</td>
+										</tr>
+									</table>
+								</form> </span>
+							<br />
+							<form jwcid="@Form" listener="ognl: listeners.agregar"
+								delegate="ognl:beans.delegate"
+								onSubmit="return fnShowWaitImage();">
+								<span jwcid="@contrib:FormConditional"
+									condition='ognl: !alta || modoSubmit == 0'>
+									<fieldset class="normal">
+										<legend class="legend">
+											CRITERIO DE B&Uacute;SQUEDA RECOMENDADO
+										</legend>
+										<table width="100%">
+											<tr>
+												<td align="right" width="200" class="title">
+													RFC:
+												</td>
+												<td align="left">
+													<input jwcid="@ixe:UppercaseTextField" maxLength="13"
+														size="14" class="uppercase" value="ognl: rfc" />
+													<span jwcid="@contrib:FormConditional"
+														condition='ognl: (modoSubmit == 1 || modoSubmit == 3) && (("FISICA".equals(fisicaMoral) && (rfc.trim().length() != 10 && rfc.trim().length() != 13))||("MORAL".equals(fisicaMoral) && (rfc.trim().length() != 9 && rfc.trim().length() != 12)))'>
+														<img src="images/error.gif" width="16" height="16" /> </span>
+												</td>
+											</tr>
+											<tr>
+												<td align="right" class="title">
+													No. Cuenta/Contrato Casa de Bolsa:
+												</td>
+												<td>
+													<input jwcid="@ixe:UppercaseTextField" maxLength="15"
+														size="80" class="uppercase" value="ognl: noCuenta" />
+													<span jwcid="@contrib:FormConditional"
+														condition='ognl: modoSubmit == 1 && noCuenta.trim().length() &lt; 3'>
+														<img src="images/error.gif" width="16" height="16" /> </span>
+												</td>
+											</tr>
+										</table>
+									</fieldset> </span>
+								<br />
+								<fieldset class="normal">
+									<legend class="legend">
+										<span jwcid="@contrib:Choose"> <span
+											jwcid="@contrib:When" condition="ognl: modoSubmit != 0">
+												INFORMACI&Oacute;N GENERAL DEL CLIENTE </span> <span
+											jwcid="@contrib:When" condition="ognl: modoSubmit == 0">
+												CRITERIOS DE B&Uacute;SQUEDA ADICIONALES </span> </span>
+									</legend>
+									<table width="100%">
+										<span jwcid="@contrib:FormConditional" 
+											condition='ognl: "FISICA".equals(fisicaMoral)'>
+											<tr>
+												<td align="right" width="200" class="title">
+													Apellido Paterno:
+												</td>
+												<td>
+													<input jwcid="@ixe:UppercaseTextField" maxLength="80" disabled="ognl: (actualizarCr && !flujoAsignarContrato ? 'disabled' : '')"
+														size="80" class="uppercase" value="ognl: paterno" />
+													<span jwcid="@contrib:FormConditional"
+														condition='ognl: (modoSubmit == 1 || modoSubmit == 3) && (paterno.trim().equals("") || paterno.trim().length() &lt; 2
+                                    			|| !paterno.trim().matches("[A-Za-z \u00E1\u00E9\u00ED\u00F3\u00FA\u00F1\u00C1\u00C9\u00CD\u00D3\u00DA\u00D1]*"))'>
+														<img src="images/error.gif" width="16" height="16" /> </span>
+												</td>
+											</tr>
+											<tr>
+												<td align="right" class="title">
+													Apellido Materno:
+												</td>
+												<td>
+													<input jwcid="@ixe:UppercaseTextField" maxLength="80" disabled="ognl: (actualizarCr && !flujoAsignarContrato ? 'disabled' : '')"
+														size="80" class="uppercase" value="ognl: materno" />
+													<span jwcid="@contrib:FormConditional"
+														condition='ognl: (modoSubmit == 1 || modoSubmit == 3) && ((materno.trim().length() &gt; 0 && materno.trim().length() &lt; 2)
+                                    						|| !materno.trim().matches("[A-Za-z \u00E1\u00E9\u00ED\u00F3\u00FA\u00F1\u00C1\u00C9\u00CD\u00D3\u00DA\u00D1]*"))'>
+														<img src="images/error.gif" width="16" height="16" /> 
+													</span>
+												</td>
+											</tr>
+											<tr>
+												<td align="right" class="title">
+													Nombre:
+												</td>
+												<td>
+													<input jwcid="@ixe:UppercaseTextField" maxLength="80" disabled="ognl: (actualizarCr && !flujoAsignarContrato ? 'disabled' : '')"
+														size="80" class="uppercase" value="ognl: nombre" />
+													<span jwcid="@contrib:FormConditional"
+														condition='ognl: (modoSubmit == 1 || modoSubmit == 3) && ((nombre.trim().equals("") || nombre.trim().length() &lt; 2)
+                                    									|| !nombre.trim().matches("[A-Za-z \u00E1\u00E9\u00ED\u00F3\u00FA\u00F1\u00C1\u00C9\u00CD\u00D3\u00DA\u00D1]*"))'>
+														<img src="images/error.gif" width="16" height="16" /> </span>
+												</td>
+											</tr> </span>
+										<span jwcid="@contrib:FormConditional"
+											condition='ognl: "MORAL".equals(fisicaMoral)'>
+											<tr>
+												<td align="right" width="200" class="title">
+													Raz&oacute;n Social:
+													<td>
+														<input jwcid="@ixe:UppercaseTextField" maxLength="120" disabled="ognl: (actualizarCr && !flujoAsignarContrato ? 'disabled' : '')"
+															size="80" class="uppercase" value="ognl: razonSocial" />
+														<span jwcid="@contrib:FormConditional"
+															condition='ognl: (modoSubmit == 1 || modoSubmit == 3) && (razonSocial.trim().equals("") || razonSocial.trim().length() &lt; 3
+                                    		||	!razonSocial.trim().matches("[A-Za-z0-9.,& \u00E1\u00E9\u00ED\u00F3\u00FA\u00F1\u00C1\u00C9\u00CD\u00D3\u00DA\u00D1]*"))'>
+															<img src="images/error.gif" width="16" height="16" /> </span>
+													</td>
+											</tr> </span>
+										<span jwcid="@contrib:FormConditional"
+											condition='ognl: modoSubmit &gt; 1 && modoSubmit &lt; 6'>
+											<tr>
+												<td align="right" class="title">
+													Sector Econ&oacute;mico:
+												</td>
+												<td>
+													<select jwcid="@PropertySelection" disabled="ognl: (actualizarCr && !flujoAsignarContrato ? 'disabled' : '')"
+														model="ognl: sectorBanxicoModel"
+														value="ognl: sectorBanxico" />
+														<span jwcid="@contrib:FormConditional"
+															condition='ognl: (modoSubmit == 3) && sectorBanxico.get("value").toString().equals("SELECCIONE")'>
+															<img src="images/error.gif" width="16" height="16" /> </span>
+												</td>
+											</tr>
+											<tr>
+												<td align="right" class="title">
+													Nacionalidad:
+												</td>
+												<td>
+													<select jwcid="@PropertySelection" disabled="ognl: (actualizarCr && !flujoAsignarContrato ? 'disabled' : '')"
+														model="ognl: catalogoNacionalidad"
+														value="ognl: nacionalidad" onChange="fnShowWaitImage(); document.Form0.submit();"/>
+														<span jwcid="@contrib:FormConditional"
+															condition='ognl: (modoSubmit == 3) && nacionalidad.id.equals("-100")'>
+															<img src="images/error.gif" width="16" height="16" /> 
+														</span>
+												</td>
+											</tr>
+											<span jwcid="@contrib:FormConditional" condition='ognl: "FISICA".equals(fisicaMoral)'>
+												<tr>
+													<td align="right" class="title">
+														Pa&iacute;s de Nacimiento:
+													</td>
+													<td>
+														<select jwcid="@PropertySelection" model="ognl: catalogoPaisNacimiento" value="ognl: paisNacimiento"/>
+														<span jwcid="@contrib:FormConditional" condition='ognl: (modoSubmit == 3) && paisNacimiento.get("value").equals("-100")'>
+															<img src="images/error.gif" width="16" height="16" />
+														</span>
+													</td>
+												</tr>
+											</span>	
+											<tr>
+												<td align="right" width="200" class="title">
+													RFC:
+												</td>
+												<td>
+													<input jwcid="@ixe:UppercaseTextField" maxLength="13" disabled="ognl: (actualizarCr && !flujoAsignarContrato ? 'disabled' : '')" id="rfc"
+														size="30" class="uppercase" value="ognl: rfc" />
+													<span jwcid="@contrib:FormConditional"
+														condition='ognl: (modoSubmit == 1 || modoSubmit == 3) && (nacionalidad.id.equals("48") && (("FISICA".equals(fisicaMoral) && (rfc.trim().length() != 10 && rfc.trim().length() != 13))||("MORAL".equals(fisicaMoral) && (rfc.trim().length() != 9 && rfc.trim().length() != 12)))
+	                                    	||	!rfc.trim().matches("[a-zA-Z0-9]*"))'>
+														<img src="images/error.gif" width="16" height="16" /> </span>
+												</td>
+											</tr>
+											<span jwcid="@contrib:FormConditional" condition='ognl: "FISICA".equals(fisicaMoral)'>
+												<tr>
+													<span jwcid="@contrib:FormConditional" 	condition='ognl: nacionalidadMexicana'>
+														<td align="right" class="title">
+															CURP:
+														</td>
+														<td align="left">
+															<input jwcid="@ixe:UppercaseTextField" maxLength="18" size="30" class="uppercase" value="ognl: curp" disabled="ognl: (actualizarCr && !flujoAsignarContrato ? 'disabled' : '')"/>
+															<span jwcid="@contrib:FormConditional" 
+																condition='ognl: (modoSubmit == 1 || modoSubmit == 3) && (curp.trim().equals("") || !curp.trim().matches("[a-zA-Z0-9]*"))'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</span>
+													<span jwcid="@contrib:FormConditional" 	condition='ognl: !nacionalidadMexicana'>
+														<td align="right" class="title">
+															Identificador de Extranjero:
+														</td>
+														<td align="left">
+															<input jwcid="@ixe:UppercaseTextField" maxLength="15" size="30" class="uppercase" value="ognl: idExtranjero" disabled="ognl: (actualizarCr && !flujoAsignarContrato ? 'disabled' : '')"/>
+															<span jwcid="@contrib:FormConditional" 
+																condition='ognl: (modoSubmit == 1 || modoSubmit == 3) && (idExtranjero.trim().equals("") || !idExtranjero.trim().matches("[a-zA-Z0-9]*"))'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</span>
+												</tr>
+											</span>
+											<span jwcid="@contrib:FormConditional" condition='ognl: "MORAL".equals(fisicaMoral) && !nacionalidadMexicana'>
+												<tr>
+													<td align="right" class="title">
+														Identificador de Extranjero:
+													</td> 
+													<td align="left">
+														<input jwcid="@ixe:UppercaseTextField" maxLength="14" size="30" class="uppercase" value="ognl: idExtranjero" disabled="ognl: (actualizarCr && !flujoAsignarContrato ? 'disabled' : '')"/>
+														<span jwcid="@contrib:FormConditional" 
+															condition='ognl: (modoSubmit == 1 || modoSubmit == 3) && (idExtranjero.trim().equals("") || !idExtranjero.trim().matches("[a-zA-Z0-9]*"))'>
+															<img src="images/error.gif" width="16" height="16" /> 
+														</span>
+													</td>
+												</tr>
+											</span>
+											<span jwcid="@contrib:FormConditional" 	condition="ognl: (pais != null && (!pais.descripcion.equals('MEXICO') && !pais.descripcion.equals('MÉXICO'))) || (actualizarCr && !flujoAsignarContrato) ">
+												<tr>
+													<td align="right" width="200" class="title">
+														NIT:
+													</td>
+													<td>
+														<input jwcid="@ixe:UppercaseTextField" maxLength="40"  id="nit" size="40" value="ognl: nit" disabled="ognl: (actualizarCr && !flujoAsignarContrato ? 'disabled' : '')" />
+														<span jwcid="@contrib:FormConditional"
+															condition='ognl: (modoSubmit == 3) && (pais != null && (pais.descripcion.equals("ESTADOS UNIDOS") || pais.descripcion.equals("CANADÁ"))) && (nit.trim().equals("") || nit.trim().length() != 9	||	!nit.trim().matches("[0-9]*"))'>
+															<img src="images/error.gif" width="16" height="16" /> </span>
+													</td>
+												</tr>
+											</span>
+											<tr>
+												<span jwcid="@contrib:FormConditional"
+													condition='ognl: "FISICA".equals(fisicaMoral)'>
+													<td align="right" class="title">
+														Fecha de Nacimiento:
+													</td> </span>
+												<span jwcid="@contrib:FormConditional"
+													condition='ognl: "MORAL".equals(fisicaMoral)'>
+													<td align="right" class="title">
+														Fecha de Constituci&oacute;n:
+													</td> </span>
+												<td class="title">
+													<span jwcid="@ls:DatePicker" value="ognl: fechaNacimiento" disabled="ognl: (actualizarCr && !flujoAsignarContrato ? 'disabled' : '')"
+														format="dd-MM-yyyy" size="10" /> <span
+														jwcid="@contrib:FormConditional"
+														condition='ognl: (modoSubmit == 3) && (fechaNacimiento == null)'>
+															<img src="images/error.gif" width="16" height="16" /> </span>
+															
+													<span jwcid="@contrib:FormConditional" condition='ognl: verCamposRegulatorios == false'>
+														<span jwcid="@ls:DatePickerColophon" /> 
+													</span>
+												</td>
+											</tr>
+											<span jwcid="@contrib:FormConditional" condition='ognl: "FISICA".equals(fisicaMoral)'>
+												<tr>
+													<td align="right" class="title">
+														Sexo:
+													</td>
+													<td class="title" align="left">
+														<span jwcid="@RadioGroup" selected="ognl: sexo">
+															<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.pages.ClientesAreaContratos@SEXO_MASCULINO"/>Masculino
+															<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.pages.ClientesAreaContratos@SEXO_FEMENINO"/>Femenino
+														</span>
+														<span jwcid="@contrib:FormConditional" 
+															condition='ognl: (modoSubmit == 1 || modoSubmit == 3) && sexo.equals("")'>
+															<img src="images/error.gif" width="16" height="16" /> 
+														</span>
+													</td>
+												</tr>
+												<tr>
+													<td align="right" class="title">
+														Tipo Identificaci&oacute;n:
+													</td>
+													<td>
+														<select jwcid="@PropertySelection" model="ognl: catalogoTipoComprobante" value="ognl: tipoComprobante"
+															disabled="ognl: (actualizarCr && !flujoAsignarContrato ? 'disabled' : '')"/>
+														<span jwcid="@contrib:FormConditional"
+															condition='ognl: (modoSubmit == 3) && tipoComprobante.get("value").equals("-100")'>
+															<img src="images/error.gif" width="16" height="16" /> 
+														</span>
+													</td>
+												</tr>
+												<tr>
+													<td align="right" width="200" class="title">
+														Numero de Identificaci&oacute;n:
+													</td>
+													<td align="left">
+														<input jwcid="@ixe:UppercaseTextField" maxLength="20" size="30" class="uppercase" value="ognl: numComprobante" 
+															disabled="ognl: (actualizarCr && !flujoAsignarContrato ? 'disabled' : '')"/>
+														<span jwcid="@contrib:FormConditional" 
+															condition='ognl: (modoSubmit == 1 || modoSubmit == 3) && numComprobante.trim().equals("")'>
+															<img src="images/error.gif" width="16" height="16" /> 
+														</span>
+													</td>
+												</tr>
+											</span>
+											<tr>
+												<td align="right" width="200" class="title">
+													Empresa:
+												</td>
+												<td>
+													<select jwcid="@PropertySelection" disabled="ognl: (actualizarCr ? 'disabled' : '')"
+														model="ognl: catalogoEmpresa" value="ognl: empresa"
+														onChange="fnShowWaitImage(); document.Form0.submit();"></select>
+
+													<!--  <select jwcid="@PropertySelection" model="ognl: catalogoPais" value="ognl: pais" onChange="fnShowWaitImage(); document.Form0.submit();"/> -->
+												</td> 
+											</tr>
+												<span jwcid="@contrib:FormConditional" condition='ognl: "MORAL".equals(fisicaMoral) && !flujoAsignarContrato'>
+		                                            <tr>
+		                                                <td></td>
+		                                                <td align="left" width="200" class="title"><br/>Apoderado Legal</td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td align="right" width="200" class="title">Nombre:&nbsp;</td>
+		                                                <td>
+		                                                	<input jwcid="@ixe:UppercaseTextField" maxLength="80" size="80" class="uppercase" value="ognl: apoderadoNombre" disabled="ognl: (actualizarCr ? 'disabled' : '')"/>
+															<span jwcid="@contrib:FormConditional"
+																condition='ognl: (modoSubmit == 1 || modoSubmit == 3) && (apoderadoNombre.trim().equals("") || 
+		                                    			                      !apoderadoNombre.trim().matches("[A-Za-z \u00E1\u00E9\u00ED\u00F3\u00FA\u00F1\u00C1\u00C9\u00CD\u00D3\u00DA\u00D1]*"))'>
+																<img src="images/error.gif" width="16" height="16" /> </span>    
+		                                                </td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td align="right" width="200" class="title">Apellido Paterno:&nbsp;</td>
+		                                                <td>
+		                                                	<input jwcid="@ixe:UppercaseTextField" maxLength="80" size="80" class="uppercase" value="ognl: apoderadoPaterno" disabled="ognl: (actualizarCr ? 'disabled' : '')"/>
+															<span jwcid="@contrib:FormConditional"
+																condition='ognl: (modoSubmit == 1 || modoSubmit == 3) && (apoderadoPaterno.trim().equals("") || 
+		                                    			                      !apoderadoPaterno.trim().matches("[A-Za-z \u00E1\u00E9\u00ED\u00F3\u00FA\u00F1\u00C1\u00C9\u00CD\u00D3\u00DA\u00D1]*"))'>
+																<img src="images/error.gif" width="16" height="16" /> </span>    
+		                                                </td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td align="right" width="200" class="title">Apellido Materno:&nbsp;</td>
+		                                                <td>
+		                                                	<input jwcid="@ixe:UppercaseTextField" maxLength="80" size="80" class="uppercase" value="ognl: apoderadoMaterno" disabled="ognl: (actualizarCr ? 'disabled' : '')"/>   
+		                                                </td>
+		                                            </tr>
+													<tr>
+														<td></td>
+														<td></td>
+													</tr>
+		                                            <tr>
+		                                                <td align="right" class="title">Datos regulatorios:&nbsp;</td>
+														<td class="title">
+															<input jwcid="@Checkbox" selected="ognl: verCamposRegulatorios" onclick="fnShowWaitImage(); document.Form0.submit();" disabled="ognl: (actualizarCr ? 'disabled' : '')"/>
+															Nota: Obligatorios si el cliente operar&aacute; un monto dolarizado
+														</td>
+		                                            </tr>
+		                                            <tr>
+														<td></td>
+		                                                <td align="left" class="title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mayor que o igual a un mill&oacute;n de d&oacute;lares americanos.</td>
+		                                            </tr>
+	                                            </span>
+                                            </span>
+									</table>
+								</fieldset>
+                                
+                                <span jwcid="@contrib:FormConditional" condition='ognl: verCamposRegulatorios == true && !flujoAsignarContrato'>
+                                    <br />
+                                    <fieldset class="normal">
+										<legend class="legend">
+											INFORMACI&Oacute;N REGULATORIA
+										</legend>
+										<table width="100%" align="center">
+                                            <tr>
+                                                <td align="right" width="300" class="title">
+													Clave Banxico:&nbsp;
+												</td>
+                                                <td align="left"><input jwcid="@ixe:UppercaseTextField" maxLength="6" disabled="ognl: (actualizarCr ? 'disabled' : '')"
+														size="12" class="uppercase" value="ognl: claveBanxico" />
+                                                	<!-- font color="#ff0000" size="2">*</font -->
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right" width="300" class="title">
+													Contraparte:&nbsp;
+												</td>
+                                                <td align="left">
+                                                	<input jwcid="@ixe:UppercaseTextField" maxLength="150" disabled="ognl: (actualizarCr ? 'disabled' : '')"
+														size="100" class="uppercase" value="ognl: contraparte" />
+													<span jwcid="@contrib:FormConditional"
+															condition='ognl: (modoSubmit == 3) && (contraparte == null || "".equals(contraparte.trim()) || signosNoValidos)'>
+															<img src="images/error.gif" width="16" height="16" /> 
+                                                    </span>
+												</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right" width="300" class="title">
+													Tipo de Sociedad Mercantil:&nbsp;
+												</td>
+                                                <td align="left">
+                                                	<select jwcid="@PropertySelection" disabled="ognl: (actualizarCr ? 'disabled' : '')"
+														model="ognl: catalogoSociedadMercantil"
+														value="ognl: tipoSociedadMercantil" />
+													<span jwcid="@contrib:FormConditional"
+															condition='ognl: (modoSubmit == 3) && (tipoSociedadMercantil == null || tipoSociedadMercantil.descripcionCorta.startsWith("SELECCIONE"))'>
+															<img src="images/error.gif" width="16" height="16" /> 
+                                                    </span>    
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right" width="300" class="title">
+													Tipo de identificador de la contraparte:&nbsp;
+												</td>
+                                                <td align="left">
+                                                    <select jwcid="@PropertySelection" disabled="ognl: (actualizarCr ? 'disabled' : '')"
+														model="ognl: catalogoTipoIdentificador" onchange="revisarSeleccion(this);"
+														value="ognl: tipoIdentificador" />
+													<span jwcid="@contrib:FormConditional"
+															condition='ognl: (modoSubmit == 3) && (tipoIdentificador == null || tipoIdentificador.descripcion.startsWith("SELECCIONE"))'>
+															<img src="images/error.gif" width="16" height="16" /> 
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right" width="300" class="title">
+													Clave de identificador de la contraparte:&nbsp;
+												</td>
+                                                <td align="left">
+                                                	<input id="claveIdentificador" jwcid="@ixe:UppercaseTextField" maxLength="13" disabled="ognl: (actualizarCr ? 'disabled' : '')"
+														size="13" class="uppercase" value="ognl: claveIdentificador" />
+													<span jwcid="@contrib:FormConditional"
+															condition='ognl: (modoSubmit == 3) && (claveIdentificador == null || "".equals(claveIdentificador.trim()))'>
+															<img src="images/error.gif" width="16" height="16" /> 
+                                                    </span>
+												</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right" width="300" class="title">
+													Tipo de contraparte:&nbsp;
+												</td>
+                                                <td align="left">
+                                                	<select jwcid="@PropertySelection" disabled="ognl: (actualizarCr ? 'disabled' : '')"
+														model="ognl: catalogoTipoContraparte"
+														value="ognl: tipoContraparte" />
+													<span jwcid="@contrib:FormConditional"
+															condition='ognl: (modoSubmit == 3) && (tipoContraparte == null || tipoContraparte.descripcion.startsWith("SELECCIONE"))'>
+															<img src="images/error.gif" width="16" height="16" /> 
+                                                    </span>    
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right" width="300" class="title">
+													Clave LEI(Legal Entity Identifier):&nbsp;
+												</td>
+                                                <td align="left">
+                                                	<input jwcid="@ixe:UppercaseTextField" maxLength="20" disabled="ognl: (actualizarCr ? 'disabled' : '')"
+														size="20" class="uppercase" value="ognl: claveLei" />
+													<span jwcid="@contrib:FormConditional"
+															condition='ognl: (modoSubmit == 3) && (claveLei == null || "".equals(claveLei.trim()))'>
+															<img src="images/error.gif" width="16" height="16" /> 
+                                                    </span>
+												</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right" width="300" class="title">
+													Sector Industrial(SCIAN):&nbsp;
+												</td>
+                                                <td align="left">
+                                                	<select jwcid="@PropertySelection" disabled="ognl: (actualizarCr ? 'disabled' : '')"
+														model="ognl: catalogoSectorIndustrial"
+														value="ognl: sectorIndustrial" />
+													<span jwcid="@contrib:FormConditional"
+															condition='ognl: (modoSubmit == 3) && (sectorIndustrial == null || sectorIndustrial.descripcion.startsWith("SELECCIONE"))'>
+															<img src="images/error.gif" width="16" height="16" /> 
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right" width="300" class="title">
+													Pa&iacute;s de residencia de quien<br/>
+                                                    tiene el control de la contraparte:&nbsp;
+												</td>
+                                                <td align="left">
+                                                	<select jwcid="@PropertySelection" disabled="ognl: (actualizarCr ? 'disabled' : '')"
+														model="ognl: catalogoPaisRegulatorio"
+														value="ognl: paisControlContraparte" />
+													<span jwcid="@contrib:FormConditional"
+															condition='ognl: (modoSubmit == 3) && paisControlContraparte.nombrePais.startsWith("SELECCIONE")'>
+															<img src="images/error.gif" width="16" height="16" /> 
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right" width="300" class="title">
+													Pa&iacute;s de residencia<br/>
+                                                    de la contraparte:&nbsp;
+												</td>
+                                                <td align="left">
+                                                	<select jwcid="@PropertySelection" disabled="ognl: (actualizarCr ? 'disabled' : '')"
+														model="ognl: catalogoPaisRegulatorio"
+														value="ognl: paisContraparte" />
+													<span jwcid="@contrib:FormConditional"
+															condition='ognl: (modoSubmit == 3) && paisContraparte.nombrePais.startsWith("SELECCIONE")'>
+															<img src="images/error.gif" width="16" height="16" /> 
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right" width="300" class="title">
+													Clave LEI de la matriz directa:&nbsp;
+												</td>
+                                                <td align="left">
+                                                	<input jwcid="@ixe:UppercaseTextField" maxLength="20" disabled="ognl: (actualizarCr ? 'disabled' : '')"
+														size="20" class="uppercase" value="ognl: claveLeiMatrizDirecta" />
+													<span jwcid="@contrib:FormConditional"
+															condition='ognl: (modoSubmit == 3) && (claveLeiMatrizDirecta == null || "".equals(claveLeiMatrizDirecta.trim()))'>
+															<img src="images/error.gif" width="16" height="16" /> 
+                                                    </span>
+												</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right" width="300" class="title">
+													Clave LEI de la matriz en &uacute;ltima<br/>
+                                                    instancia de la contraparte:&nbsp;
+												</td>
+                                                <td align="left">
+                                                	<input jwcid="@ixe:UppercaseTextField" maxLength="20" disabled="ognl: (actualizarCr ? 'disabled' : '')"
+														size="20" class="uppercase" value="ognl: claveLeiMatrizUltima" />
+													<span jwcid="@contrib:FormConditional"
+															condition='ognl: (modoSubmit == 3) && (claveLeiMatrizUltima == null || "".equals(claveLeiMatrizUltima.trim()))'>
+															<img src="images/error.gif" width="16" height="16" /> 
+                                                    </span>
+												</td>
+                                            </tr>
+                                            <tr>
+												<td align="right" width="300" class="title">
+													Fecha de alta o modificaci&oacute;n<br/>
+													de la contraparte:&nbsp;
+												</td>
+												<td class="title">
+													<span jwcid="@ls:DatePicker" value='ognl: fechaContraparte' disabled="ognl: (actualizarCr ? 'disabled' : '')"
+														format="dd-MM-yyyy" size="10" /> 
+													<span jwcid="@contrib:FormConditional"
+														condition='ognl: (modoSubmit == 3) && (fechaContraparte == null)'>
+															<img src="images/error.gif" width="16" height="16" /> 
+													</span> 
+												</td>
+											</tr>
+                                            <tr>
+                                                <td></td>
+                                                <td align="left" class="title">
+													Relaci&oacute;n con la Instituci&oacute;n
+												</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right" width="300" class="title">
+													Tipo de relaci&oacute;n:&nbsp;
+												</td>
+                                                 <td align="left">
+                                                	<select jwcid="@PropertySelection" disabled="ognl: (actualizarCr ? 'disabled' : '')"
+														model="ognl: catalogoTipoRelacion" onChange="fnShowWaitImage(); document.Form0.submit();"
+														value="ognl: tipoRelacion" id="cboTipoRelacion"/>
+													<span jwcid="@contrib:FormConditional"
+															condition='ognl: (modoSubmit == 3) && (tipoRelacion == null || tipoRelacion.descripcion.startsWith("SELECCIONE"))'>
+															<img src="images/error.gif" width="16" height="16" /> 
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <span jwcid="@contrib:FormConditional"
+												  condition='ognl: ((verCamposRegulatorios == true) && tipoRelacion != null && 
+												                    !tipoRelacion.descripcion.startsWith("SELECCIONE") &&
+												                    tipoRelacion.getId() != null && tipoRelacion.getId().intValue() != 10)'>
+										    	<tr>
+	                                                <td align="right" width="300" class="title">
+														¿Pertenece al Grupo Financiero?:&nbsp;
+													</td>
+													<td class="title" align="left">
+														<span jwcid="@contrib:Choose">
+															<span jwcid="@contrib:When" condition="ognl: actualizarCr ? false : true">
+																<span jwcid="@RadioGroup" selected="ognl: grupoFinanciero">
+																	<input type="radio" jwcid="@Radio" value="ognl: 1" id="grupoRadioFinanciero"/>S&iacute;
+																	<input type="radio" jwcid="@Radio" value="ognl: 2" id="grupoRadioFinanciero"/>No
+																</span>
+																<span jwcid="@contrib:FormConditional"
+																		condition='ognl: (modoSubmit == 3) && (grupoFinanciero == null || grupoFinanciero.intValue() == 3) &&
+																		                 (tipoRelacion != null && tipoRelacion.id.intValue() != 10)'>
+																		<img src="images/error.gif" width="16" height="16" /> 
+			                                                    </span>
+															</span>
+															<span jwcid="@contrib:Otherwise">
+																<span jwcid="@Insert" value='ognl: grupoFinanciero != null && grupoFinanciero.intValue() == 1 ? "S&iacute;" : "No"' raw="yes" />
+															</span>
+														</span>
+													</td>
+	                                            </tr>
+	                                            <tr>
+	                                                <td align="right" width="300" class="title">
+														Tipo de evento en la relaci&oacute;n:&nbsp;
+													</td>
+	                                                <td align="left">
+	                                                	<select jwcid="@PropertySelection" disabled="ognl: (actualizarCr ? 'disabled' : '')"
+															model="ognl: catalogoEventoRelacion" id="cboEventoRelacion"
+															value="ognl: tipoEventoRelacion" />
+														<span jwcid="@contrib:FormConditional"
+																condition='ognl: (modoSubmit == 3) && (tipoEventoRelacion == null || tipoEventoRelacion.descripcion.startsWith("SELECCIONE")) &&
+																                 (tipoRelacion != null && tipoRelacion.id.intValue() != 10)'>
+																<img src="images/error.gif" width="16" height="16" /> 
+	                                                    </span>
+	                                                </td>
+	                                            </tr>
+	                                            <tr>
+													<td align="right" width="300" class="title">
+														Fecha del evento de la relaci&oacute;n:&nbsp;
+													</td>
+													<td align="left" class="title" id="trFechaEvento">
+														<span jwcid="@ls:DatePicker" value="ognl: fechaEventoRelacion" disabled="ognl: (actualizarCr ? 'disabled' : '')"
+															format="dd-MM-yyyy" size="10"/> 
+														<span jwcid="@contrib:FormConditional" condition='ognl: (modoSubmit == 3) && (fechaEventoRelacion == null)  &&
+														                                                  (tipoRelacion != null && tipoRelacion.id.intValue() != 10)'>
+																<img src="images/error.gif" width="16" height="16" /> 
+														</span> 
+													</td>
+												</tr>
+											</span>
+                                            
+                                            <!--tr>
+                                                <td></td>
+                                                <td align="right"><font color="#ff0000" size="1">* Campo opcional</font></td>
+                                            </tr-->
+                                        </table>
+                                    </fieldset> 
+                                    <br />
+                                </span>
+                                <span jwcid="@contrib:FormConditional" condition='ognl: verCamposRegulatorios == true'>
+                                	<span jwcid="@Script" script="/WEB-INF/scripts/SeleccionarRFC.script" />
+									<span jwcid="@ls:DatePickerColophon" /> 
+								</span>
+                                
+								<span jwcid="@contrib:FormConditional"
+									condition='ognl: (nombreEmpresa.equals("BNTE") && modoSubmit != 0) || (actualizarCr && !flujoAsignarContrato)'>
+									<br />
+									<fieldset class="normal">
+										<legend class="legend">
+											CLIENTE BANORTE
+										</legend>
+										<table width="85%" align="center">
+											<tr>
+												<td align="right" class="title">
+													N&uacute;mero SIC:&nbsp;
+												</td>
+												<td class="title">
+													<input jwcid="@ixe:UppercaseTextField" maxLength="8"
+														size="12" class="uppercase" value="ognl: noSic" />
+													<span jwcid="@contrib:FormConditional"
+														condition='ognl: ((modoSubmit == 3) && (noSic.trim().equals("") || noSic.trim().length() &lt; 0
+                                    	|| !noSic.trim().matches("[0-9]*"))) || errorFaltaSic'>
+														<img src="images/error.gif" width="16" height="16" /> </span>
+													<td class="title">
+														Sucursal Origen:
+														<input jwcid="@ixe:UppercaseTextField" maxLength="4"
+															size="12" class="uppercase" value="ognl: sucursalOrigen" readonly="readonly" disabled="disabled"/>
+														<span jwcid="@contrib:FormConditional"
+															condition='ognl: (modoSubmit == 3) &&(sucursalOrigen.trim().equals("") || sucursalOrigen.trim().length() &lt; 0
+                                    		||	!sucursalOrigen.trim().matches("[0-9]*"))'>
+															<img src="images/error.gif" width="16" height="16" /> </span>
+													</td>
+											</tr>
+											<tr>
+												<td align="right" class="title">
+													Sucursal donde Opera:&nbsp;
+												</td>
+												<td class="title">
+													<input jwcid="@ixe:UppercaseTextField" maxLength="4"
+														size="12" class="uppercase" value="ognl: sucursalOpera" />
+													<span jwcid="@contrib:FormConditional"
+														condition='ognl: ((modoSubmit == 3) &&(sucursalOpera.trim().equals("") || sucursalOpera.trim().length() &lt; 0
+                                    		||	!sucursalOpera.trim().matches("[0-9]*"))) || errorFaltaSucOpera'>
+														<img src="images/error.gif" width="16" height="16" /> </span>
+												</td>
+												<td class="title">
+													N&uacute;mero de Cuenta:
+													<input jwcid="@ixe:UppercaseTextField" maxLength="11"
+														size="12" class="uppercase" value="ognl: cuentaCheques" />
+													<span jwcid="@contrib:FormConditional"
+														condition='ognl: ((modoSubmit == 3) &&(cuentaCheques.trim().equals("") || cuentaCheques.trim().length() &lt; 0
+                                    	|| !cuentaCheques.trim().matches("[0-9]*"))) || errorFaltaNumCuenta'>
+														<img src="images/error.gif" width="16" height="16" /> </span>
+														<input jwcid="@ImageSubmit" image="ognl: assets.buscarCodigoPostal" selected="ognl: modoSubmit" tag="6" />
+												</td>
+											</tr>
+										</table>
+									</fieldset> <br /> </span>
+									<div align="center">
+										<span jwcid="@contrib:FormConditional" condition='ognl: (actualizarCr && !flujoAsignarContrato)'>
+											<img jwcid="@ImageSubmit" image="ognl: assets.actualizarButton" listener="ognl:listeners.actualizarCR"/> 
+										</span>
+										<span jwcid="@contrib:FormConditional" condition='ognl: (actualizarCr && flujoAsignarContrato)'>
+											<img jwcid="@ImageSubmit" image="ognl: assets.actualizarButton" listener="ognl:listeners.actualizarDatosPersona"/>
+										</span>
+									</div>
+								<span jwcid="@contrib:FormConditional"
+									condition='ognl: modoSubmit &gt; 1 && modoSubmit &lt; 6 && !actualizarCr'>
+									<br />
+									<fieldset class="normal">
+										<legend class="legend">
+											DIRECCI&Oacute;N DEL CLIENTE
+										</legend>
+										<table width="100%" align="center">
+											<tr>
+												<td align="right" class="title">
+													Pa&iacute;s:&nbsp;
+												</td>
+												<td>
+													<select jwcid="@PropertySelection"
+														model="ognl: catalogoPais" value="ognl: pais"
+														onChange="fnShowWaitImage(); document.Form0.submit();" />
+												</td>
+											</tr>
+											<tr>
+												<td align="right" class="title" width="200">
+													Calle:&nbsp;
+													<td>
+														<input jwcid="@ixe:UppercaseTextField" maxLength="100"
+															size="80" class="uppercase" value="ognl: calle" />
+														<span jwcid="@contrib:FormConditional"
+															condition='ognl: (modoSubmit == 3) && (calle.trim().equals("") || calle.trim().length() &lt; 3
+                                    	||	!calle.trim().matches("[A-Za-z0-9., \u00E1\u00E9\u00ED\u00F3\u00FA\u00F1\u00C1\u00C9\u00CD\u00D3\u00DA\u00D1]*"))'>
+															<img src="images/error.gif" width="16" height="16" /> </span>
+													</td>
+											</tr>
+											<tr>
+												<td align="right" class="title">
+													No. Exterior:&nbsp;
+												</td>
+												<td class="title">
+													<input jwcid="@ixe:UppercaseTextField" maxLength="40"
+														size="10" class="uppercase" value="ognl: noExterior" />
+													<span jwcid="@contrib:FormConditional"
+														condition='ognl: (modoSubmit == 3) && (noExterior.trim().equals("") || noExterior.trim().length() &lt; 1
+                                    	|| !noExterior.trim().matches("[0-9]*"))'>
+														<img src="images/error.gif" width="16" height="16" /> </span>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No.
+													Interior:
+													<input jwcid="@ixe:UppercaseTextField" maxLength="40"
+														size="10" class="uppercase" value="ognl: noInterior" />
+													<span jwcid="@contrib:FormConditional"
+														condition='ognl: (modoSubmit == 3) && (!noInterior.trim().matches("[0-9a-zA-Z]*"))'>
+														<img src="images/error.gif" width="16" height="16" /> </span>
+												</td>
+											</tr>
+											<tr>
+												<td align="right" class="title">
+													Primaria:&nbsp;
+												</td>
+												<td>
+													<input jwcid="@Checkbox" selected="ognl: primaria" />
+												</td>
+											</tr>
+											<tr>
+												<td align="right" class="title">
+													C&oacute;digo Postal:&nbsp;
+												</td>
+												<td>
+													<input jwcid="@ixe:UppercaseTextField" maxLength="5"
+														size="5" class="uppercase" value="ognl: codigoPostal" />
+													<span jwcid="@contrib:FormConditional"
+														condition='ognl: (pais == null || pais != null && pais.descripcion.equals("MEXICO"))'>
+														<input jwcid="@ImageSubmit"
+															image="ognl: assets.buscarCodigoPostal"
+															selected="ognl: modoSubmit" tag="4" accesskey="C" /> </span>
+													<span jwcid="@contrib:FormConditional"
+														condition='ognl: (modoSubmit == 3) && (codigoPostal.trim().equals("") || codigoPostal.trim().length() != 5
+                                		||	!codigoPostal.trim().matches("[0-9]*"))'>
+														<img src="images/error.gif" width="16" height="16" /> </span>
+												</td>
+											</tr>
+											<tr>
+												<td align="right" class="title">
+													Colonia:&nbsp;
+												</td>
+												<td>
+													<span jwcid="@contrib:FormConditional"
+														condition='ognl: hashmapColonia == null'> <input
+															jwcid="@ixe:UppercaseTextField" maxLength="100" size="80"
+															class="uppercase" value="ognl: colonia" /> <span
+														jwcid="@contrib:FormConditional"
+														condition='ognl: (modoSubmit == 3) && (colonia.trim().equals("") || colonia.trim().length() &lt; 3
+                                    		||	!colonia.trim().matches("[A-Za-z0-9. \u00E1\u00E9\u00ED\u00F3\u00FA\u00F1\u00C1\u00C9\u00CD\u00D3\u00DA\u00D1]*"))'>
+															<img src="images/error.gif" width="16" height="16" /> </span> </span>
+													<span jwcid="@contrib:FormConditional"
+														condition='ognl: hashmapColonia != null'> <select
+															jwcid="@PropertySelection" model="ognl: catalogoColonias"
+															value="ognl: colonia" />
+															<span jwcid="@contrib:FormConditional"
+																condition='ognl: (modoSubmit == 3) && (colonia.equals("-- SELECCIONE COLONIA --"))'>
+																<img src="images/error.gif" width="16" height="16" /> </span>
+													</span>
+
+												</td>
+											</tr>
+											<tr>
+												<td align="right" class="title">
+													Ciudad:&nbsp;
+												</td>
+												<td>
+													<input jwcid="@ixe:UppercaseTextField" maxLength="20"
+														size="20" class="uppercase" value="ognl: ciudad" />
+													<span jwcid="@contrib:FormConditional"
+														condition='ognl: (modoSubmit == 3) && (ciudad.trim().equals("") || ciudad.trim().length() &lt; 3
+                                    	||	!ciudad.trim().matches("[A-Za-z. \u00E1\u00E9\u00ED\u00F3\u00FA\u00F1\u00C1\u00C9\u00CD\u00D3\u00DA\u00D1]*"))'>
+														<img src="images/error.gif" width="16" height="16" /> </span>
+												</td>
+											</tr>
+											<tr>
+												<td align="right" class="title">
+													Delegaci&oacute;n:&nbsp;
+												</td>
+												<td>
+													<span jwcid="@contrib:FormConditional"
+														condition='ognl: hashmapMunicipio == null'> <input
+															jwcid="@ixe:UppercaseTextField" maxLength="80" size="80"
+															class="uppercase" value="ognl: delegacion" /> <span
+														jwcid="@contrib:FormConditional"
+														condition='ognl: (modoSubmit == 3) && (delegacion.trim().equals("") || delegacion.trim().length() &lt; 3
+                                    		||	!delegacion.trim().matches("[A-Za-z. \u00E1\u00E9\u00ED\u00F3\u00FA\u00F1\u00C1\u00C9\u00CD\u00D3\u00DA\u00D1]*"))'>
+															<img src="images/error.gif" width="16" height="16" /> </span> </span>
+													<span jwcid="@contrib:FormConditional"
+														condition='ognl: hashmapMunicipio != null'> <select
+															jwcid="@PropertySelection"
+															model="ognl: catalogoMunicipios" value="ognl: delegacion" />
+															<span jwcid="@contrib:FormConditional"
+																condition='ognl: (modoSubmit == 3) && (delegacion.equals("-- SELECCIONE MUNICIPIO --"))'>
+																<img src="images/error.gif" width="16" height="16" /> </span>
+													</span>
+												</td>
+											</tr>
+											<tr>
+												<td align="right" class="title">
+													Estado:&nbsp;
+												</td>
+												<td>
+													<span jwcid="@contrib:FormConditional"
+														condition='ognl: hashmapEntidad == null'> <input
+															jwcid="@ixe:UppercaseTextField" maxLength="50" size="50"
+															class="uppercase" value="ognl: estado" /> <span
+														jwcid="@contrib:FormConditional"
+														condition='ognl: (modoSubmit == 3) && (estado.trim().equals("") || estado.trim().length() &lt; 3
+                                			||	!estado.trim().matches("[A-Za-z. \u00E1\u00E9\u00ED\u00F3\u00FA\u00F1\u00C1\u00C9\u00CD\u00D3\u00DA\u00D1]*"))'>
+															<img src="images/error.gif" width="16" height="16" /> </span> </span>
+													<span jwcid="@contrib:FormConditional"
+														condition='ognl: hashmapEntidad != null'> <select
+															jwcid="@PropertySelection"
+															model="ognl: catalogoEntidades" value="ognl: estado" />
+															<span jwcid="@contrib:FormConditional"
+																condition='ognl: (modoSubmit == 3) && (estado.equals("-- SELECCIONE ENTIDAD --"))'>
+																<img src="images/error.gif" width="16" height="16" /> </span>
+													</span>
+												</td>
+											</tr>
+
+										</table>
+									</fieldset> <br /> </span>
+								<div align="center">
+									<span jwcid="@contrib:FormConditional"
+										condition='ognl: modoSubmit &lt; 2'> <input
+											jwcid="@ImageSubmit" image="ognl: assets.buscarButton"
+											selected="ognl: modoSubmit" tag="1" accesskey="B" /> &nbsp;
+										<!-- <span jwcid="@contrib:FormConditional" condition='ognl: alta'>
+                            <input jwcid="@ImageSubmit" image="ognl: assets.agregarButton" selected="ognl: modoSubmit" tag="2" accesskey="A" />
+                            	<a href="#" jwcid="@DirectLink" listener="ognl:listeners.agregar" parameters='ognl: { 2 }' onClick="fnShowWaitImage();">Formulario de Alta de Cliente</a>
+                            </span> --> </span>
+									<span jwcid="@contrib:FormConditional"
+										condition='ognl: modoSubmit &gt; 1 && !actualizarCr'> <input
+											jwcid="@ImageSubmit" image="ognl: assets.guardarButton"
+											selected="ognl: modoSubmit" tag="3" accesskey="G" /> </span>
+								</div>
+								<br />
+								<div align="right">
+									<span jwcid="@contrib:FormConditional"
+										condition='ognl: alta && modoSubmit == 0'> <a href="#"
+										jwcid="@DirectLink" listener="ognl:listeners.agregar"
+										parameters='ognl: { 2 }' onClick="fnShowWaitImage();">Formulario
+											de Alta de Cliente</a> </span>
+								</div>
+							</form>
+						</table>
+					</td>
+				</tr> </span>
+			<tr>
+				<td>
+					<br />
+				</td>
+			</tr>
+			<span jwcid="@Conditional"
+				condition="ognl: personasBUP.size() &gt; 0">
+				<tr>
+					<td width="100%">
+						<table jwcid="@ActionPortletBorder"
+							title="Clientes Existentes en la BUP">
+							<table jwcid="@TableBorder" title="ognl: null"
+								subtitles="ognl: getNombresColumnasClientes()"
+								columnCount="ognl: noColumnasClientes" width="100%">
+								<tr jwcid="forClientes@Foreach" source="ognl: personasBUP"
+									element="tr" class="ognl: beans.evenOdd.next">
+									<td class="normal" align="left"
+										width="ognl: isIxeDirecto() ? '20%' : '30%'">
+										<span jwcid="@Insert"
+											value="ognl: components.forClientes.value.nombreCompleto"
+											raw="yes" />
+									</td>
+									<td class="normal" align="left"
+										width="ognl: isIxeDirecto() ? '15%' : '20%'" NOWRAP>
+										<span jwcid="@Insert"
+											value="ognl: components.forClientes.value.rfc" raw="yes" />
+									</td>
+									<td class="normal" align="left" width="20%">
+										<span jwcid="@Insert"
+											value="ognl: mostrarCuentasEjeByIdPersona(components.forClientes.value.idPersona)" />
+									</td>
+									<span jwcid="@contrib:Choose">	
+										<span jwcid="@contrib:When" condition="ognl: isIxeDirecto()">								
+											<td class="normal" align="left" width="20%">
+												<span jwcid="@Insert" value="ognl: components.forClientes.value.ejecutivo" raw="yes" />  
+											</td>
+										</span>
+									</span>
+									<td class="normal" align="left" width="30%">
+										<span jwcid="@contrib:Choose"> <span
+											jwcid="@contrib:When"
+											condition="ognl: @com.ixe.ods.sica.pages.AltaRapidaDeClientes@SIN_CONTRATO.equals(components.forClientes.value.statusContrato)">
+												<a href="#" jwcid="@DirectLink"
+												listener="ognl:listeners.asignarContratoSICA"
+												parameters='ognl: { components.forClientes.value.idPersona, components.forClientes.value.nombreCompleto, components.forClientes.value.rfc }'
+												onClick="fnShowWaitImage();">Asignar Contrato</a> </span> <span
+											jwcid="@contrib:When"
+											condition="ognl: @com.ixe.ods.sica.pages.AltaRapidaDeClientes@CON_CONTRATO.equals(components.forClientes.value.statusContrato)">
+												El Cliente ya tiene Contrato SICA </span> <span
+											jwcid="@contrib:Otherwise"> El Cliente ya tiene
+												Contrato SICA pero est&aacute; Asignado a otro Ejecutivo </span> </span>
+									</td>
+									<td class="normal" align="left" width="30%">
+										<span jwcid="@contrib:Choose"> <span
+											jwcid="@contrib:When" condition="ognl: isIxeDirecto()">
+										</span> </span>
+										<span jwcid="@contrib:Choose"> <span
+											jwcid="@contrib:When"
+											condition="ognl: @com.ixe.ods.sica.pages.AltaRapidaDeClientes@SIN_CONTRATO_CORTO.equals(components.forClientes.value.statusContratoCorto)">
+												<a href="#" jwcid="@DirectLink"
+												listener="ognl:listeners.asignarContratoCorto"
+												parameters='ognl: { components.forClientes.value.idPersona, components.forClientes.value.nombreCompleto }'
+												onClick="fnShowWaitImage();">Asignar Contrato Corto</a> </span> <span
+											jwcid="@contrib:When"
+											condition="ognl: @com.ixe.ods.sica.pages.AltaRapidaDeClientes@CON_CONTRATO_CORTO.equals(components.forClientes.value.statusContratoCorto)">
+												El Cliente ya tiene Contrato Corto </span> <span
+											jwcid="@contrib:When"
+											condition="ognl: @com.ixe.ods.sica.pages.AltaRapidaDeClientes@SIN_NINGUN_CONTRATO.equals(components.forClientes.value.statusContratoCorto)">
+												Se necesita generar el contrato SICA </span> <span
+											jwcid="@contrib:When"
+											condition="ognl: @com.ixe.ods.sica.pages.AltaRapidaDeClientes@CON_CONTRATO_OTRO_EJECUTIVO.equals(components.forClientes.value.statusContratoCorto)">
+												No se puede asignar un contrato corto debido a que el
+												contrato sica esta asignado a otro ejecutivo </span> </span>
+									</td>
+									<td class="normal" align="left" width="30%">
+										<span jwcid="@contrib:Choose">
+											<span
+												jwcid="@contrib:When"
+												condition="ognl: @com.ixe.ods.sica.pages.AltaRapidaDeClientes@SIN_CONTRATO.equals(components.forClientes.value.statusContrato) ||
+																 @com.ixe.ods.sica.pages.AltaRapidaDeClientes@SIN_CONTRATO_CORTO.equals(components.forClientes.value.statusContratoCorto) ||
+												                 @com.ixe.ods.sica.pages.AltaRapidaDeClientes@CON_CONTRATO_OTRO_EJECUTIVO.equals(components.forClientes.value.statusContrato)"> 
+										    </span>
+											<span
+												jwcid="@contrib:When"
+												condition="ognl: @com.ixe.ods.sica.pages.AltaRapidaDeClientes@CON_CONTRATO.equals(components.forClientes.value.statusContrato) &&
+																 @com.ixe.ods.sica.pages.AltaRapidaDeClientes@CON_CONTRATO_CORTO.equals(components.forClientes.value.statusContratoCorto)">
+													<a href="#" jwcid="@DirectLink"
+														listener="ognl:listeners.mostrarCamposCR"
+														parameters='ognl: { components.forClientes.value.idPersona, components.forClientes.value.nombreCompleto, components.forClientes.value.contratoCortoIdCliente }'
+														onClick="fnShowWaitImage();">Modificaci&oacute;n de datos del cliente
+													</a> 
+										    </span> 
+										</span>
+									</td>
+								</tr>
+							</table>
+							<br />
+							<div align="center">
+								<a jwcid="@DirectLink" listener="ognl:listeners.activate"
+									onClick="fnShowWaitImage();"><img jwcid="@Image"
+										image="ognl: assets.backButton" border="0" /> </a>
+							</div>
+							<div align="right">
+								<a href="#" jwcid="@DirectLink"
+									listener="ognl:listeners.agregar" parameters='ognl: { 2 }'
+									onClick="fnShowWaitImage();">Formulario de Alta de Cliente</a>
+							</div>
+						</table>
+					</td>
+				</tr> </span>
+		</table>
+	</body>
+</html>

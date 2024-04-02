@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CatGruposTrabajo.page,v 1.2 2010/04/30 15:31:05 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.catalogos.AbstractCatConsulta">
+
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+
+    <property-specification name="nombreClaseRegistro" type="java.lang.String" initial-value='"com.ixe.ods.sica.model.GrupoTrabajo"' />
+    <property-specification name="nombrePaginaEdicion" type="java.lang.String" initial-value='"CatGrupoTrabajo"' />
+
+    <context-asset name="insertButton" path="/images/add.gif" />
+
+</page-specification>

@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html jwcid="$content$">
+  <head jwcid="$remove$">
+    <title>BloqueaDesbloqueaContrato</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body jwcid="@PageBorder">
+  <table border="0" cellpadding="0" cellspacing="0" width="100">
+        <tr valign="top">
+            <td width="3500">
+                <form jwcid="@Form" listener="ognl: listeners.fetch" delegate="ognl: beans.delegate" onSubmit="return fnDisableForm(this);">
+                    <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level="ognl: level"/>
+                    <table jwcid="@ActionPortletBorder" title="ognl: tituloActionPB">
+                        <fieldset class="normal">
+                            <legend class="legend">Busqueda de Contrato</legend>
+                            <font class="normal"><u>I</u>ntroduzca el número de cuenta (sin omitir caracteres):</font><br />
+                            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" accesskey="I" value="ognl: noCuenta" size="40"/><br />
+                        </fieldset> <br />
+                        <div align="center">
+                            <input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+                        </div>
+                    </table>
+                </form>
+            </td>
+            <td width="3%">&nbsp;</td>
+            <td>
+                <span jwcid="@Conditional" condition="ognl: clientes.size() &gt; 0">
+                <table jwcid="@ActionPortletBorder" title="Clientes">
+                    <table jwcid="@TableBorder" title="ognl: null" columnCount= 7 width="100%">
+                        <tr class="titlecell">
+                            <th class="title" nowrap>No. Cta </th>
+                            <th class="title" nowrap>Contrato corto</th>
+                            <th class="title" nowrap>SIC</th>
+                            <th class="title" nowrap>Cliente</th>
+                            <th class="title" nowrap>Status</th>
+							<th class="title" nowrap>Estado Bloqueo</th>
+                            <th class="title" nowrap>Fecha Ult. Modif</th>
+                            <th class="title" nowrap>Usuario Ult. Modif</th>
+                        </tr>
+                        <tr jwcid="forClientes@Foreach" source="ognl: clientes" element="tr" class="ognl: beans.evenOdd.next">
+                            <td class="normal" align="center" nowrap><span jwcid="@Insert" value="ognl: components.forClientes.value.noCuenta" raw="yes" /></td>
+                            <td class="normal" align="center" nowrap><span jwcid="@Insert" value="ognl: components.forClientes.value.idContrato" raw="yes" /></td>
+                            <td class="normal" align="center" nowrap><span jwcid="@Insert" value="ognl: components.forClientes.value.sic" raw="yes" /></td>
+                            <td class="normal" align="center" nowrap><span jwcid="@Insert" value="ognl: components.forClientes.value.nombreCorto" raw="yes" /></td>
+                            <td class="normal" align="center" nowrap><span jwcid="@Insert" value="ognl: components.forClientes.value.idBloqueo" raw="yes" /></td>
+							<td class="normal" align="center" nowrap><span jwcid="@Insert" value="ognl: components.forClientes.value.descripcion" raw="yes" /></td>
+                            <td class="normal" align="center" nowrap><span jwcid="@Insert" value="ognl: components.forClientes.value.fechaUltMod" raw="yes" /></td>
+                            <td class="normal" align="center" nowrap><span jwcid="@Insert" value="ognl: components.forClientes.value.usuarioUltMod" raw="yes" /></td>
+                        </tr>
+                    </table>
+					
+					<tr>
+						<form jwcid="@Form" listener="ognl: listeners.bloquear" delegate="ognl: beans.delegate" onSubmit="return fnDisableForm(this);">
+							<!--td width="1%" class="title">Motivo de Bloqueo&nbsp;: <select jwcid="motivosBloqueoComboBox" /></td-->
+							<!--td align="left" ><select jwcid="motivosBloqueoComboBox" /></td--> 
+						
+							<tr jwcid="forClientes1@Foreach" source="ognl: clientes" element="tr" class="ognl: beans.evenOdd.next">
+								<span jwcid="@contrib:Choose">
+								<td align="center" colspan = "2">
+									<span jwcid="@contrib:When" condition="ognl: components.forClientes1.value.idBloqueo != 0">
+										&nbsp;&nbsp;&nbsp;
+									  <a href "#" jwcid="@DirectLink" listener="ognl: listeners.desbloquear"
+										 parameters='ognl: { components.forClientes1.value.noCuenta, components.forClientes1.value.idContrato}'
+										 onClick="fnShowWaitImage();">
+										 <img jwcid="@Image" image="ognl: assets.desbloquearButton" alt='ognl: "De click al Botón para desbloquear el contrato"' align="center"/>
+									  </a>
+									</span>
+								<!--/td-->
+									<span jwcid="@contrib:Otherwise">
+										<table jwcid="@Conditional" condition="ognl: level != -1">
+											 <!--td align="center" colspan = "2" width="1%" class="title">Motivo de Bloqueo&nbsp;: <select jwcid="motivosBloqueoComboBox" /> </td-->
+											 <div align="center">
+												  <input jwcid="@ImageSubmit" image="ognl: assets.bloquearButton" onclick="return fnDisableForm(this.form);" alt='ognl: "De click al Botón para bloquear el contrato"'/>
+											 </div>
+											 <b>Motivo de Bloqueo&nbsp;:</b> <select jwcid="motivosBloqueoComboBox" /> 
+										 </table>
+										  &nbsp;&nbsp;&nbsp;
+									</span>
+								</td>
+								</span>
+							</tr>
+						</form>
+					</tr>
+                </table>
+                </span>
+            </td>
+        </tr>
+    </table>
+  </body>
+</html>

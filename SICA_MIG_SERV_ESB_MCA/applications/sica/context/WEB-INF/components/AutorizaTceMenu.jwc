@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--$Id: AutorizaTceMenu.jwc,v 1.1.2.2 2012/09/01 22:00:16 mejiar Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<component-specification allow-body="yes">
+
+	<parameter name="esPromocion" type="boolean" direction="in" required="yes" />
+
+</component-specification>

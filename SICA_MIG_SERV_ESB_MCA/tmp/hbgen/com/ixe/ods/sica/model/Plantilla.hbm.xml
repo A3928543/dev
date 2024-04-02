@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.Plantilla"
+        table="SC_PLANTILLA"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idPlantilla"
+            column="ID_PLANTILLA"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_PLANTILLA_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Plantilla.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="clavePlantilla"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_PLANTILLA"
+            not-null="false"
+            unique="false"
+        />
+
+        <many-to-one
+            name="contratoSica"
+            class="com.ixe.ods.bup.model.ContratoSica"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="NO_CUENTA"
+            unique="false"
+        />
+
+        <property
+            name="internacional"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="INTERNACIONAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="mnemonico"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="MNEMONICO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ultimaModificacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="ULTIMA_MODIFICACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="statusPlantilla"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATUS_PLANTILLA"
+            not-null="true"
+            unique="false"
+        />
+
+        <many-to-one
+            name="beneficiario"
+            class="com.ixe.ods.bup.model.Persona"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_BENEFICIARIO"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Plantilla.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+        <joined-subclass
+            name="com.ixe.ods.sica.model.PlantillaTranNacional"
+            table="SC_PLANTILLA_TRAN_NACIONAL"
+            dynamic-update="false"
+            dynamic-insert="false"
+        >
+        <key
+            column="ID_PLANTILLA"
+        />
+
+        <property
+            name="clabe"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLABE"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="nombreBanco"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NOMBRE_BANCO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="idBanco"
+            type="java.lang.Long"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_BANCO"
+            not-null="false"
+            unique="false"
+        />
+
+        <many-to-one
+            name="divisa"
+            class="com.ixe.ods.sica.model.Divisa"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIVISA"
+            unique="false"
+        />
+
+        </joined-subclass>
+        <joined-subclass
+            name="com.ixe.ods.sica.model.PlantillaCuentaIxe"
+            table="SC_PLANTILLA_CUENTA_IXE"
+            dynamic-update="false"
+            dynamic-insert="false"
+        >
+        <key
+            column="ID_PLANTILLA"
+        />
+
+        <property
+            name="noCuentaIxe"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NO_CUENTA_IXE"
+            not-null="true"
+            unique="false"
+        />
+
+        </joined-subclass>
+        <joined-subclass
+            name="com.ixe.ods.sica.model.PlantillaIntl"
+            table="SC_PLANTILLA_INTL"
+            dynamic-update="false"
+            dynamic-insert="false"
+        >
+        <key
+            column="ID_PLANTILLA"
+        />
+
+        <many-to-one
+            name="divisa"
+            class="com.ixe.ods.sica.model.Divisa"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIVISA"
+            unique="false"
+        />
+
+        <property
+            name="tipoCuentaBanco"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CUENTA_BANCO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoCuentaBancoInterm"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CUENTA_BANCO_INTERM"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="claveBanco"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_BANCO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="claveBancoInterm"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_BANCO_INTERM"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="idPais"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_PAIS"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="idPaisInterm"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_PAIS_INTERM"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="noCuentaBeneficiario"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NO_CUENTA_BENEFICIARIO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="nombreBanco"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NOMBRE_BANCO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="cuentaBancoInterm"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CUENTA_BANCO_INTERM"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="nombreBancoInterm"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NOMBRE_BANCO_INTERM"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="instrBcoBeneficiario"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="INSTR_BCO_BENEFICIARIO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="instrBcoIntermediario"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="INSTR_BCO_INTERMEDIARIO"
+            not-null="false"
+            unique="false"
+        />
+
+        </joined-subclass>
+        <joined-subclass
+            name="com.ixe.ods.sica.model.PlantillaNacional"
+            table="SC_PLANTILLA_NACIONAL"
+            dynamic-update="false"
+            dynamic-insert="false"
+        >
+        <key
+            column="ID_PLANTILLA"
+        />
+
+        </joined-subclass>
+
+    </class>
+
+        <query name="findPlantillasNacionales"><![CDATA[
+            FROM PlantillaNacional as pn WHERE pn.contratoSica.noCuenta = ? Order By pn.idPlantilla
+        ]]></query>
+        <query name="findPlantillasTranNacionales"><![CDATA[
+            FROM PlantillaTranNacional as ptn WHERE ptn.contratoSica.noCuenta = ? Order By ptn.idPlantilla
+        ]]></query>
+        <query name="findPlantillasIntls"><![CDATA[
+            FROM PlantillaIntl as pi WHERE pi.contratoSica.noCuenta = ? Order By pi.idPlantilla
+        ]]></query>
+        <query name="findPlantillasCuentaIxe"><![CDATA[
+            FROM PlantillaCuentaIxe as pci WHERE pci.contratoSica.noCuenta = ? Order By pci.idPlantilla
+        ]]></query>
+        <query name="findPlantillasNacionalesMnemonico"><![CDATA[
+            FROM PlantillaNacional as pn WHERE pn.contratoSica.noCuenta = ? AND pn.mnemonico = ? Order By pn.idPlantilla
+        ]]></query>
+        <query name="findPlantillasTranNacionalesMnemonico"><![CDATA[
+            FROM PlantillaTranNacional as ptn WHERE ptn.contratoSica.noCuenta = ? AND ptn.mnemonico = ? Order By ptn.idPlantilla
+        ]]></query>
+        <query name="findPlantillasIntlsMnemonico"><![CDATA[
+            FROM PlantillaIntl as pi WHERE pi.contratoSica.noCuenta = ? AND pi.mnemonico = ? Order By pi.idPlantilla
+        ]]></query>
+        <query name="findPlantillasCuentaIxeMnemonico"><![CDATA[
+            FROM PlantillaCuentaIxe as pci WHERE pci.contratoSica.noCuenta = ? AND pci.mnemonico = ? Order By pci.idPlantilla
+        ]]></query>
+
+</hibernate-mapping>

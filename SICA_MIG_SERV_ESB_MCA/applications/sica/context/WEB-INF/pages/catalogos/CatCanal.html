@@ -1,0 +1,63 @@
+<!-- $Id: CatCanal.html,v 1.11.34.1 2010/10/08 01:01:48 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Edici&oacute;n de canales</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="@bup:ShowError" width="100%" delegate="ognl:beans.delegate"/>
+    <form jwcid="@Form" listener="ognl: listeners.actualizar" delegate="ognl:beans.delegate">
+        <table jwcid="@ActionPortletBorder" title="Edici&oacute;n de canales" width="100%">
+            <fieldset>
+                <legend class="legend">Datos:</legend>
+                <table width="100%">
+                    <tr>
+                        <td width="1%" align="right" class="title" nowrap>Clave:</td>
+                        <td class="title" colspan="3">
+                            <span jwcid="@contrib:Choose">
+                                <span jwcid="@contrib:When" condition="ognl: modoUpdate">
+                                    <span jwcid="@Insert" value="ognl: registro.idCanal" />
+                                </span>
+                                <span jwcid="@contrib:Otherwise">
+                                    <input jwcid="idTextField" />
+                                </span>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="1%" align="right" class="title" nowrap>Nombre:</td>
+                        <td colspan="3"><input jwcid="nombreTextField" /></td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="title">Sucursal:</td>
+                        <td colspan="3"><select jwcid="sucursalComboBox" /></td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="title" nowrap>Mesa de Cambio:</td>
+                        <td><select jwcid="mesasCambioComboBox"/></td>
+                        <td align="right" class="title">Facultad:</td>
+                        <td><select jwcid="facultadesComboBox"/></td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="title" nowrap>Tipo de I.V.A:</td>
+                        <td><select jwcid="tipoIvaComboBox"/></td>
+                        <td align="right" class="title" nowrap>E-mail:</td>
+                        <td><input jwcid="@TextField" value="ognl: registro.emailJefe" size="100" maxlength="255" /></td>
+                    </tr>
+                     <tr>
+                        <td align="right" class="title" nowrap>Tipo Pizarr&oacute;n:</td>
+                        <td><select jwcid="tiposPizarronComboBox"/></td>
+                        <td align="right" class="title" nowrap>C&oacute;digo postal:</td>
+                        <td><input jwcid="@TextField" value="ognl: registro.codigoPostal" size="5" maxlength="5" /></td>
+                    </tr>
+                </table>
+            </fieldset>
+            <br />
+            <div align="center">
+                <input jwcid="@ImageSubmit" image="ognl: assets.acceptButton" onclick="return fnDisableForm(this.form);" />
+                <a jwcid="@PageLink" page="CatCanales" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.cancelButton"/></a>
+            </div>
+        </table>
+    </form>
+</body>
+</html>

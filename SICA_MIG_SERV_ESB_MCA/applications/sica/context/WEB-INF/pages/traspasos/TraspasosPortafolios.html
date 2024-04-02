@@ -1,0 +1,74 @@
+<!-- $Id: TraspasosPortafolios.html,v 1.9 2008/02/22 18:25:14 ccovian Exp $ -->
+<html jwcid="$content$">	
+<head jwcid="$remove$">
+    <title>Consulta de Traspasos</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+	<script jwcid="@Script" script="/WEB-INF/scripts/FirstField.script" symbols="ognl: firstTextFieldMap" />
+	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    	<tr valign="top">
+    	 	<td width="200">
+            	<form jwcid="@Form" listener="ognl: listeners.fetch" delegate="ognl: beans.delegate">
+                	<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+                	<table jwcid="@ActionPortletBorder" title="ognl: titleActionPortletBorder">
+					    <fieldset class="normal">
+                            <font class="normal">Fecha Oper. <u>I</u>ni.:</font><br />
+                            <input jwcid="FechaOperIni@ls:DatePicker" value="ognl:fechaOperIni" format="dd/MM/yyyy" size="10"/><br />
+							<font class="normal">Fecha Oper. <u>F</u>in.:</font><br />
+                            <input jwcid="FechaOperFin@ls:DatePicker" value="ognl:fechaOperFin" format="dd/MM/yyyy" size="10"/><br />
+                        </fieldset>
+                        <br />
+                        <div align="center">
+                            <input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+                        </div>
+                    </table>
+                </form>
+            </td>
+            <td width="1%">&nbsp;</td>
+            
+            <td>
+            	<table width="80%" align="center">
+				    <tr>
+		    			<td width="100%">
+		    					<table jwcid="@ActionPortletBorder" title='ognl: titulo'>
+			           				<table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: {"FechaOperacion", "Valor", "De Portafolio", "A Portafolio", "Divisa", "Monto", "Tipo de cambio \"al Portafolio\" ", "Tipo de cambio \"del Portafolio\" " }' columnCount="5" width="100%">
+									 	<tr jwcid="forTraspasosPortafolios@Foreach" source="ognl: traspasosPortafolios" element="tr" class="ognl: beans.evenOdd.next">
+			       				     		<td class="normal" align="left">
+			               	    				<span jwcid="@Insert" value='ognl: components.forTraspasosPortafolios.value.fechaOperacion' raw="yes" />
+											</td>
+											<td class="normal" align="left">
+			       				     			<span jwcid="@Insert" value="ognl: getSicaServiceData().findTipoValorByIdDealPosicion(components.forTraspasosPortafolios.value.deIdDealPosicion.idDealPosicion)" raw="yes" />
+											</td>
+			       				     		<td class="normal" align="left">
+			               	    				<span jwcid="@Insert" value='ognl: components.forTraspasosPortafolios.value.DeMesaCambio.nombre' raw="yes" />
+											</td>
+			       				     		<td class="normal" align="left">
+			               	    				<span jwcid="@Insert" value='ognl: components.forTraspasosPortafolios.value.AMesaCambio.nombre' raw="yes" />
+											</td>
+			       				     		<td class="normal" align="left">
+			               	    				<span jwcid="@Insert" value='ognl: components.forTraspasosPortafolios.value.divisa.descripcion' raw="yes" />
+											</td>
+			       				     		<td class="normal" align="right">
+			               	    				<span jwcid="@Insert" value='ognl: components.forTraspasosPortafolios.value.aIdDealPosicion.monto' raw="yes" />
+											</td>
+											<td class="normal" align="right">
+			               	    				<span jwcid="@Insert" value='ognl: components.forTraspasosPortafolios.value.tipoCambio' raw="yes" />
+											</td>
+			       				     		<td class="normal" align="right">
+			               	    				<span jwcid="@Insert" value='ognl: components.forTraspasosPortafolios.value.tipoCambioDivisaReferencia' raw="yes" />
+											</td>
+			       				     		
+										</tr>
+					    	   	   </table>
+			       				</table>
+			       			</td>
+				     </tr>
+			     </table>
+   			</td>
+		</tr>
+   		  		
+    </table>
+    <span jwcid="@ls:DatePickerColophon" />
+ </body>
+</html>

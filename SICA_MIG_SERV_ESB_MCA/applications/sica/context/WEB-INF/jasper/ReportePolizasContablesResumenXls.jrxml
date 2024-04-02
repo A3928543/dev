@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="Unnamed" language="java" pageWidth="780" pageHeight="842" columnWidth="740" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30">
+	<property name="com.jasperassistant.designer.Rulers" value="true"/>
+	<property name="com.jasperassistant.designer.GridWidth" value="20"/>
+	<property name="com.jasperassistant.designer.GridHeight" value="20"/>
+	<property name="com.jasperassistant.designer.DataSource" value="ReportePolizasContables"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="true"/>
+	<property name="com.jasperassistant.designer.Margins" value="true"/>
+	<property name="com.jasperassistant.designer.Grid" value="true"/>
+	<property name="com.jasperassistant.designer.SnapToGuides" value="true"/>
+	<field name="abonos" class="java.lang.Double">
+	</field>
+	<field name="cargos" class="java.lang.Double">
+	</field>
+	<field name="class" class="java.lang.Class">
+	</field>
+	<field name="cuentaContable" class="java.lang.String">
+	</field>
+	<field name="divisa" class="java.lang.String">
+	</field>
+	<field name="entidad" class="java.lang.String">
+	</field>
+	<field name="fechaValor" class="java.util.Date">
+	</field>
+	<field name="image" class="java.io.InputStream">
+	</field>
+	<variable name="sumaCargos" class="java.lang.Double" resetType="Group" resetGroup="DATOS" calculation="Sum">
+		<variableExpression><![CDATA[$F{cargos}]]></variableExpression>
+	</variable>
+	<variable name="sumaAbonos" class="java.lang.Double" resetType="Group" resetGroup="DATOS" calculation="Sum">
+		<variableExpression><![CDATA[$F{abonos}]]></variableExpression>
+	</variable>
+	<variable name="totalCargos" class="java.lang.Double" resetType="Group" resetGroup="DIVISA" calculation="Sum">
+		<variableExpression><![CDATA[$F{cargos}]]></variableExpression>
+	</variable>
+	<variable name="totalAbonos" class="java.lang.Double" resetType="Group" resetGroup="DIVISA" calculation="Sum">
+		<variableExpression><![CDATA[$F{abonos}]]></variableExpression>
+	</variable>
+	<group name="DIVISA">
+		<groupExpression><![CDATA[$F{divisa}]]></groupExpression>
+		<groupHeader>
+		<band height="20">
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="120" height="20" forecolor="#ffffff" backcolor="#701222"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Moneda:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" mode="Opaque" x="120" y="0" width="300" height="20" forecolor="#ffffff" backcolor="#701222"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{divisa}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupHeader>
+		<groupFooter>
+		<band height="20">
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="300" y="0" width="120" height="20" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Moneda Nacional:      ]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" mode="Opaque" x="420" y="0" width="160" height="20" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{totalCargos}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" mode="Opaque" x="580" y="0" width="160" height="20" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{totalAbonos}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupFooter>
+	</group>
+	<group name="DATOS">
+		<groupExpression><![CDATA[$F{cuentaContable}+$F{entidad}]]></groupExpression>
+		<groupFooter>
+		<band height="20">
+			<textField>
+				<reportElement positionType="Float" x="0" y="0" width="120" height="20" isPrintInFirstWholeBand="true"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cuentaContable}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="120" y="0" width="300" height="20" isPrintInFirstWholeBand="true"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidad}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="420" y="0" width="160" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumaCargos}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="580" y="0" width="160" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumaAbonos}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="20">
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="121" height="20" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IXE BANCO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="120" y="0" width="301" height="20" backcolor="#c0c0c0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pólizas Contables Resumen Cambios Mayoreo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="420" y="0" width="160" height="20" backcolor="#c0c0c0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Valor:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement positionType="Float" mode="Opaque" x="580" y="0" width="160" height="20" backcolor="#c0c0c0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaValor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20">
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="120" height="20" forecolor="#ffffff" backcolor="#7022"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cuenta Contable]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="120" y="0" width="300" height="20" forecolor="#ffffff" backcolor="#7022"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Entidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="420" y="0" width="160" height="20" forecolor="#ffffff" backcolor="#7022"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cargos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="580" y="0" width="160" height="20" forecolor="#ffffff" backcolor="#7022"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Abonos]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+</jasperReport>

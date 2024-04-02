@@ -1,0 +1,17 @@
+/s10_pl_respaldo_por_fecha.sql/1.1.2.1/Tue Mar 29 00:03:13 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/s11_pl_respaldo_por_fecha_rev.sql/1.1.2.1/Tue Mar 29 00:03:13 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/s12_select_respld_control.sql/1.1.2.1/Tue Mar 29 00:03:13 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/s13_select_respld_control_log.sql/1.1.2.1/Tue Mar 29 00:03:13 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/s14_select_posicion.sql/1.1.2.1/Tue Mar 29 00:03:13 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/s15_select_posicion_det.sql/1.1.2.1/Tue Mar 29 00:03:13 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/s16_dml_tablas_historicas.sql/1.1.2.1/Tue Mar 29 00:03:13 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/s17_pl_grant_tablas_historicas.sql/1.1.2.1/Wed May  4 19:49:04 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/s1_ddl_tablas_control_respaldo.sql/1.1.2.1/Tue Mar 29 00:03:13 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/s2_dml_tablas_control_respaldo.sql/1.1.2.1/Tue Mar 29 00:03:13 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/s3_ddl_tablas_control_respaldo_rev.sql/1.1.2.1/Tue Mar 29 00:03:13 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/s4_pl_crea_tablas_historicas.sql/1.1.2.1/Tue Mar 29 00:03:13 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/s5_pl_crea_tablas_historicas_rev.sql/1.1.2.1/Tue Mar 29 00:03:13 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/s6_pl_respaldo_deal.sql/1.1.2.1/Tue Mar 29 00:03:13 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/s7_pl_respaldo_deal_rev.sql/1.1.2.1/Tue Mar 29 00:03:13 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/s8_pl_respaldo_swap.sql/1.1.2.1/Tue Mar 29 00:03:13 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/s9_pl_respaldo_swap_rev.sql/1.1.2.1/Tue Mar 29 00:03:13 2011/-kb/TSICA_MIG_SERV_ESB_MCA

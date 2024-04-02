@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.RegulatorioSociedadMercantil"
+        table="SC_REG_SOCMERCANTIL"
+        proxy="com.ixe.ods.sica.model.RegulatorioSociedadMercantil"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+    >
+
+        <id
+            name="id"
+            column="ID_SOCIEDAD"
+            type="java.lang.Integer"
+            unsaved-value="null"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-RegulatorioSociedadMercantil.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="descripcionCorta"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NOMBRE_CORTO"
+        />
+
+        <property
+            name="descrpcionLarga"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="DESCRIPCION"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-RegulatorioSociedadMercantil.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

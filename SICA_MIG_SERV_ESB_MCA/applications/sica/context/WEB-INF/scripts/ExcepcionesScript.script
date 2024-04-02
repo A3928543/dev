@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ExcepcionesScript.script,v 1.8 2008/02/22 18:25:19 ccovian Exp $ -->
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+
+<script>
+    <input-symbol key="descripciones" class="java.lang.String" required="yes" />
+    <body>
+        <![CDATA[
+        try {
+			window.top.frames[2].document.getElementById('pizarraApplet').log('${descripciones}');
+		}
+		catch (ex) {
+		}
+ ]]></body>
+</script>

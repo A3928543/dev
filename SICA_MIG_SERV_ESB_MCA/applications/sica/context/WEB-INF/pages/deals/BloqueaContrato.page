@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: BloqueaDesbloqueaContrato.page,v 1.10 2013/06/18 18:04:00 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.BloqueaContrato">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate"/>
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+    
+    <component id="motivosBloqueoComboBox" type="PropertySelection">
+        <binding name="model" expression="motivosBloqueoModel" />
+        <binding name="value" expression="tipoBloqueo" /> 
+    </component>
+
+    <property-specification name="noCuenta" type="java.lang.String" persistent="yes" />
+	<property-specification name="idContrato" type="int" initial-value="" />
+    <property-specification name="nombreCorto" type="java.lang.String" initial-value="" />
+    <property-specification name="idBloqueo" type="int" persistent="yes" />
+    <property-specification name="descripcion" type="java.lang.String" initial-value="" />
+    <property-specification name="fechaUltMod" type="java.lang.String" initial-value="" />
+    <property-specification name="usuarioUltMod" type="java.lang.String" initial-value="" />
+    <property-specification name="clientes" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+    <property-specification name="tituloActionPB" type="java.lang.String" persistent="yes" />
+    <property-specification name="level" type="int" />
+	<property-specification name="tipoBloqueo" type="com.ixe.ods.sica.model.TipoBloqueo" persistent="yes" />
+	<property-specification name="motivosBloqueoList" type="java.util.List" persistent="yes" />
+    
+    <context-asset name="searchButton" path="/images/search.gif" />
+    <context-asset name="bloquearButton" path="/images/aceptar.gif" />
+	<context-asset name="desbloquearButton" path="/images/aceptar.gif" />
+
+</page-specification>

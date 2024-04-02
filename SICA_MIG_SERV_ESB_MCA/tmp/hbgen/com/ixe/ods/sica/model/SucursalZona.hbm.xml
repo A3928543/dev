@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.SucursalZona"
+        table="SC_SUCURSAL_ZONA"
+        proxy="com.ixe.ods.sica.model.SucursalZona"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idSucursal"
+            column="ID_SUCURSAL"
+            type="java.lang.Integer"
+            unsaved-value="null"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-SucursalZona.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <one-to-one
+            name="sucursal"
+            class="com.ixe.ods.bup.model.Sucursal"
+            cascade="none"
+            outer-join="auto"
+            constrained="false"
+        />
+
+        <many-to-one
+            name="zona"
+            class="com.ixe.ods.sica.model.Zona"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_ZONA"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-SucursalZona.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findSucursalesByZona"><![CDATA[
+            FROM SucursalZona sz WHERE sz.zona.idZona = ? ORDER BY sz.sucursal.nombre
+        ]]></query>
+
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Cierre del d&iacute;a</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+	<body jwcid="@PageBorder" >
+		<form jwcid="@Form" listener="ognl:listeners.formSubmit">
+			<table jwcid="@ActionPortletBorder" title="Log Cierre del D&iacute;a">
+				<font class=title>
+				<pre>
+				<span jwcid="@Insert" value="ognl: log" raw="yes" />
+				</pre>
+				</font>
+				<br/>	 				
+				<div align="center"><input jwcid="@ImageSubmit" image="ognl: assets.backButton" onclick="return fnDisableForm(this.form);" />
+			</table>	
+		</form>
+	</body>
+</html>
+
+
+

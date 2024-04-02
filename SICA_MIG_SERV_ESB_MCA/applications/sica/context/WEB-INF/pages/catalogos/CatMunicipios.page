@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.catalogos.CatMunicipios">
+	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+	<bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+    
+    <!-- Propiedades para alta -->
+    <property-specification name="idMunicipio" type="java.lang.String"/>
+    <property-specification name="idEstado" type="java.lang.String"/>
+    <property-specification name="esZonaFronteriza" type="java.lang.Boolean"/>
+    <property-specification name="esZonaTuristica" type="java.lang.Boolean"/>
+    
+    <!-- Propiedades para consulta de cat&acute;logos -->
+    <property-specification name="municipiosListaBlanca" type="java.util.List" persistent="yes"/>
+    <property-specification name="level" type="int" />
+    
+    <!-- Propiedades para la carga masiva -->
+    <property-specification name="archivo" type="org.apache.tapestry.request.IUploadFile" />
+    <property-specification name="archivoRespuesta" type="byte[]" persistent="yes"/>
+    <property-specification name="esDescargable" type="java.lang.Boolean" persistent="yes"/>
+    
+    <context-asset name="insertButton" path="/images/add.gif" />
+    <context-asset name="bAceptar" path="/images/aceptar.gif" />
+    <!--context-asset name="bActualizar" path="/images/actualizar.gif" /-->
+</page-specification>

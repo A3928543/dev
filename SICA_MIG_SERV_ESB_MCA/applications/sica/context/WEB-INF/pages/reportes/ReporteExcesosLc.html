@@ -1,0 +1,71 @@
+<html jwcid="@Shell" stylesheet="ognl:assets.stylesheet"
+	title="Sistema de Cambios" delegate="ognl: page.visit">
+<head jwcid="$remove$">
+<title>Reporte de excesos de L&iacute;nea de Cr&eacute;dito</title>
+<link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+	<span jwcid="@menu:XmlMenu" name="SICA" menu="ognl: page.visit.menu"
+			          listener="ognl: page.visit.menuListener" />
+	<table width="980">
+		<tr>
+			<td>
+				<div id="mensaje">
+					<br /> <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate"
+						insertBreakAtTail="yes" width="100%" />
+				</div> 
+				<span jwcid="@LoadingImage" visible="ognl: true" breaksBeforeLoadingImage="ognl: 10" valign="center" />
+			</td>
+		</tr>
+		<tr>
+			<td width="300" valign="top">
+				<form jwcid="@Form" delegate="ognl: beans.delegate" listener="ognl: listeners.buscarExcesos"
+					  onSubmit="fnShowWaitImage(); ">
+					  <table jwcid="@ActionPortletBorder" title="Reporte de excesos" border="0" cellpadding="0" cellspacing="0" width="100%" align="center">
+						  	<tr>
+								<td align="right" class="title">Monto de exceso:</td> <td align="left"><input jwcid="montoTextField" size="20"/></td>
+							</tr>
+							<tr>
+								<td align="right" class="title">Trimestre:</td> <td align="left"><select jwcid="trimestreCombo"/></td>
+							</tr>
+							<tr>
+								<td align="right" class="title">Canal:</td> 
+								<td align="left">
+									<select jwcid="canalFacultadCombo"/>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" align="right">       
+									<input jwcid="@ImageSubmit" image="ognl: assets.searchButton" />
+								</td>    
+							</tr>	
+					  </table>
+				</form>
+			</td>
+			<td width="650">
+				<span jwcid="@Conditional" condition="ognl: registrosReporte != null && registrosReporte.size() > 0">
+					<table jwcid="@ActionPortletBorder" title="Historial de excesos de L&iacute;nea de Cr&eacute;dito" border="0" cellpadding="0" cellspacing="0" width="650" align="center">
+						<tr>
+							<td>
+								<table jwcid="table" border="0" cellpadding="2" cellspacing="1" width="100%" tableModel="ognl: model"
+								       columnsClass="columnsclass" valuesClass="valuesclass" class="tableborder">
+									
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a jwcid="@DirectLink" listener="ognl:listeners.generarReporteExcel" onClick="descargar();">
+									<img jwcid="@Image" image="ognl: assets.verXlsButton" />
+									<script jwcid="@Script" script="/WEB-INF/scripts/Descargar.script" />
+								</a>
+							</td>
+						</tr>
+					</table>
+				</span>
+			</td>
+		</tr>
+	</table>
+	
+</body>
+</html>

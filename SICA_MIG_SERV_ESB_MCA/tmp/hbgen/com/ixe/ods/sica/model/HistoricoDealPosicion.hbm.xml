@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.HistoricoDealPosicion"
+        table="SC_H_DEAL_POSICION"
+        proxy="com.ixe.ods.sica.model.HistoricoDealPosicion"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idDealPosicion"
+            column="ID_DEAL_POSICION"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-HistoricoDealPosicion.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="idUsuario"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_USUARIO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="monto"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="recibimos"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="RECIBIMOS"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="observaciones"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="OBSERVACIONES"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambio"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoDeal"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_DEAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="divisa"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIVISA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="mesaCambio"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_MESA_CAMBIO"
+            not-null="true"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-HistoricoDealPosicion.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

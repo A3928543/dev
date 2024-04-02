@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using an evaluation version of JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="Unnamed" language="java" pageWidth="1500" pageHeight="842" columnWidth="1500" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="com.jasperassistant.designer.GridHeight" value="10"/>
+	<property name="com.jasperassistant.designer.GridWidth" value="10"/>
+	<property name="com.jasperassistant.designer.Rulers" value="true"/>
+	<property name="com.jasperassistant.designer.DataSource" value="RiesgoDataSource"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="true"/>
+	<property name="com.jasperassistant.designer.Margins" value="true"/>
+	<property name="com.jasperassistant.designer.Grid" value="true"/>
+	<property name="com.jasperassistant.designer.SnapToGuides" value="true"/>
+	<field name="VFut" class="java.lang.Double">
+	</field>
+	<field name="cash" class="java.lang.String">
+	</field>
+	<field name="cashDouble" class="java.lang.Double">
+	</field>
+	<field name="consumo" class="java.lang.String">
+	</field>
+	<field name="consumoDouble" class="java.lang.Double">
+	</field>
+	<field name="divisa" class="java.lang.String">
+	</field>
+	<field name="edoSica" class="java.lang.String">
+	</field>
+	<field name="limReg" class="java.lang.String">
+	</field>
+	<field name="limRegDouble" class="java.lang.Double">
+	</field>
+	<field name="mesaCambio" class="java.lang.String">
+	</field>
+	<field name="nivel" class="java.lang.String">
+	</field>
+	<field name="nivelDouble" class="java.lang.Double">
+	</field>
+	<field name="posicionFinal" class="java.lang.String">
+	</field>
+	<field name="posicionFinalDouble" class="java.lang.Double">
+	</field>
+	<field name="posicionInicial" class="java.lang.String">
+	</field>
+	<field name="posicionInicialDouble" class="java.lang.Double">
+	</field>
+	<field name="spot" class="java.lang.String">
+	</field>
+	<field name="spotDouble" class="java.lang.Double">
+	</field>
+	<field name="spotMas" class="java.lang.Double">
+	</field>
+	<field name="tcPromedio" class="java.lang.String">
+	</field>
+	<field name="tcPromedioDouble" class="java.lang.Double">
+	</field>
+	<field name="tcValuacion" class="java.lang.String">
+	</field>
+	<field name="tcValuacionDouble" class="java.lang.Double">
+	</field>
+	<field name="tom" class="java.lang.String">
+	</field>
+	<field name="tomDouble" class="java.lang.Double">
+	</field>
+	<field name="utilidad" class="java.lang.String">
+	</field>
+	<field name="utilidadDouble" class="java.lang.Double">
+	</field>
+	<group name="Group_3">
+		<groupHeader>
+		<band height="20">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="120" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Divisa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="120" y="0" width="120" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Factor Divisa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="240" y="0" width="120" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Posición Inicial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="360" y="0" width="80" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CASH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="440" y="0" width="80" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="520" y="0" width="80" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SPOT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="760" y="0" width="120" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Posición Final]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="880" y="0" width="120" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Utilidad M.N.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="600" y="0" width="80" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[72 HR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="680" y="0" width="80" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[96 HR]]></text>
+			</staticText>
+		</band>
+		</groupHeader>
+	</group>
+	<group name="Group_2">
+		<groupExpression><![CDATA[$F{divisa}]]></groupExpression>
+		<groupHeader>
+		<band height="50">
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="0" width="120" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{divisa}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="240" y="0" width="120" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{posicionInicialDouble}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="120" y="0" width="120" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tcValuacionDouble}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="360" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{cashDouble}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="440" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tomDouble}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="520" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{spotDouble}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="760" y="0" width="120" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{posicionFinalDouble}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="880" y="0" width="120" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{utilidadDouble}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="600" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{spotMas}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="680" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{VFut}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupHeader>
+	</group>
+	<title>
+		<band height="20">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="300" height="20"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monitor del Riesgo de las Operaciones Cambiarias]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="40">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="120" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Límite regulatorio:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="120" y="0" width="120" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{limRegDouble}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="600" y="0" width="161" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{consumoDouble}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="480" y="0" width="120" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Consumo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="360" y="20" width="240" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{edoSica}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="360" y="0" width="120" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{nivelDouble}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="240" y="0" width="120" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nivel:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="240" y="20" width="120" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado del SICA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="120" y="20" width="120" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{mesaCambio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="20" width="120" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mesa de Cambio:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+</jasperReport>

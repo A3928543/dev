@@ -1,0 +1,303 @@
+2015-06-03 12:00:11 - **********************************************************************************************************
+2015-06-03 12:00:11 - ***************************          PROCESO DE CONTRAPARTES REGULATORIO         *************************
+2015-06-03 12:00:11 - **********************************************************************************************************
+2015-06-03 12:00:13 - Deal consultado: 515546
+2015-06-03 12:00:13 - getTemplate(): contrapartesTemplate.vm
+2015-06-03 12:00:13 - getFrom(): vicente.delasancha_praxis@banorte.com
+2015-06-03 12:00:13 - getTo(): vicente.delasancha_praxis@banorte.com,1.delasancha_praxis@banorte.com
+2015-06-03 12:00:13 - getSubject(): Consulta de deals con monto mayor a 1 millón de dólares americanos.
+2015-06-03 12:00:13 - model: {}
+2015-06-03 12:00:13 - vicente.delasancha_praxis@banorte.com
+2015-06-03 12:00:13 - 1.delasancha_praxis@banorte.com
+2015-06-03 12:00:13 - **********************************************************************************************************
+2015-06-03 12:00:13 - ******************************     FIN DE PROCESO CONTRAPARTES REGULATORIO     ***************************
+2015-06-03 12:00:13 - **********************************************************************************************************
+2015-06-03 12:00:13 - 
+
+
+
+2015-06-03 12:03:44 - **********************************************************************************************************
+2015-06-03 12:03:44 - ***************************          PROCESO DE CONTRAPARTES REGULATORIO         *************************
+2015-06-03 12:03:44 - **********************************************************************************************************
+2015-06-03 12:03:45 - Deal consultado: 515546
+2015-06-03 12:03:45 - getTemplate(): contrapartesTemplate.vm
+2015-06-03 12:03:45 - getFrom(): vicente.delasancha_praxis@banorte.com
+2015-06-03 12:03:45 - getTo(): vicente.delasancha_praxis@banorte.com,1.delasancha_praxis@banorte.com
+2015-06-03 12:03:45 - getSubject(): Consulta de deals con monto mayor a 1 millón de dólares americanos.
+2015-06-03 12:03:45 - model: {}
+2015-06-03 12:03:45 - vicente.delasancha_praxis@banorte.com
+2015-06-03 12:03:45 - 1.delasancha_praxis@banorte.com
+2015-06-03 12:03:46 - **********************************************************************************************************
+2015-06-03 12:03:46 - ******************************     FIN DE PROCESO CONTRAPARTES REGULATORIO     ***************************
+2015-06-03 12:03:46 - **********************************************************************************************************
+2015-06-03 12:03:46 - áéíóúàèìòù
+2015-06-03 12:03:46 - 
+
+
+
+2015-06-03 19:08:04 - **********************************************************************************************************
+2015-06-03 19:08:04 - ***************************          PROCESO DE CONTRAPARTES REGULATORIO         *************************
+2015-06-03 19:08:04 - **********************************************************************************************************
+2015-06-03 19:08:04 - Inicia consulta de operaciones con monto mayor que o igual a 1 MDD....
+2015-06-03 19:08:16 - Exception 
+org.springframework.jdbc.BadSqlGrammarException: PreparedStatementCallback; bad SQL grammar [select EE.nombre_corto as "Cliente", BB.no_cuenta as "Contrato SICA", EE.Tipo_Persona, EE.RFC, AA."Número de Deal",  "Monto en USD Deal", status_deal, DECODE(CC.id_deal_correccion,null,'NO','SI') AS "DEAL_CORRECCION ?", CC.id_deal_original,  "Fecha Creación",  "Fecha Valor", FF.nombre_corto as "Promotor", ID_CANAL, FOLIO_DETALLE,  "Entregamos o Recibimos", id_divisa,  "Monto en Divisa Original",  "Monto en USD Detalle" FROM ( SELECT "Número de Deal",ROUND((SUM("Monto en USD") / 2),4) AS "Monto en USD Deal" FROM ( select a.id_deal as "Número de Deal", a.no_cuenta,ID_CANAL,FOLIO_DETALLE, monto as "Monto en USD", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, DECODE(SIMPLE,'I','SI','NO') AS "INTERBANCARIO ?" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa = 'USD' and simple != 'I'  UNION select a.id_deal as "Número de Deal", a.no_cuenta, ID_CANAL,FOLIO_DETALLE, ROUND((monto * b.factor_divisa),4) as "Monto en USD", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, DECODE(SIMPLE,'I','SI','NO') AS "INTERBANCARIO ?" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa IN(SELECT ID_DIVISA FROM SC_DIVISA WHERE TIPO = 'F' AND ID_DIVISA != 'USD') and simple != 'I'  UNION select a.id_deal as "Número de Deal", a.no_cuenta,ID_CANAL,FOLIO_DETALLE, ROUND((MONTO * tipo_cambio) / (select mid_spot from sc_precio_referencia_actual),4) as "Monto en USD", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, DECODE(SIMPLE,'I','SI','NO') AS "INTERBANCARIO ?" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa IN(SELECT ID_DIVISA FROM SC_DIVISA WHERE TIPO in ('M','N') AND ID_DIVISA != 'MXN') and simple != 'I'  UNION select a.id_deal as "Número de Deal", a.no_cuenta, ID_CANAL,FOLIO_DETALLE, ROUND((MONTO / (select mid_spot from sc_precio_referencia_actual)),4) as "Monto en USD", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, DECODE(SIMPLE,'I','SI','NO') AS "INTERBANCARIO ?" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa = 'MXN' and simple != 'I' ) A GROUP BY "Número de Deal" HAVING SUM("Monto en USD") / 2 >= 1000000 ORDER BY "Número de Deal" ) AA, ( select a.id_deal as "Número de Deal", a.no_cuenta, ID_CANAL,FOLIO_DETALLE, id_promotor, monto as "Monto en USD Detalle", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, id_divisa, monto as "Monto en Divisa Original", DECODE(RECIBIMOS,'S','RECIBIMOS','ENTREGAMOS') AS "Entregamos o Recibimos" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa = 'USD' and simple != 'I'  UNION select a.id_deal as "Número de Deal", a.no_cuenta, ID_CANAL, FOLIO_DETALLE, id_promotor, ROUND((monto * b.factor_divisa),4) as "Monto en USD Detalle", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, id_divisa, monto as "Monto en Divisa Original", DECODE(RECIBIMOS,'S','RECIBIMOS','ENTREGAMOS') AS "Entregamos o Recibimos" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa IN(SELECT ID_DIVISA FROM SC_DIVISA WHERE TIPO = 'F' AND ID_DIVISA != 'USD') and simple != 'I'  UNION select a.id_deal as "Número de Deal", a.no_cuenta,ID_CANAL,FOLIO_DETALLE, id_promotor, ROUND((MONTO * tipo_cambio) / (select mid_spot from sc_precio_referencia_actual),4) as "Monto en USD Detalle", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, id_divisa, monto as "Monto en Divisa Original", DECODE(RECIBIMOS,'S','RECIBIMOS','ENTREGAMOS') AS "Entregamos o Recibimos" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa IN(SELECT ID_DIVISA FROM SC_DIVISA WHERE TIPO in ('M','N') AND ID_DIVISA != 'MXN') and simple != 'I'  UNION select a.id_deal as "Número de Deal", a.no_cuenta, ID_CANAL,FOLIO_DETALLE, id_promotor, ROUND((MONTO / (select mid_spot from sc_precio_referencia_actual)),4) as "Monto en USD Detalle", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, id_divisa, monto as "Monto en Divisa Original", DECODE(RECIBIMOS,'S','RECIBIMOS','ENTREGAMOS') AS "Entregamos o Recibimos" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa = 'MXN' and simple != 'I' )BB, sc_reverso CC,bup_persona_cuenta_rol DD,bup_persona EE,bup_persona FF WHERE AA."Número de Deal" = BB."Número de Deal" and AA."Número de Deal" = CC.id_deal_correccion(+) and BB.no_cuenta = DD.no_cuenta and DD.id_persona = EE.id_persona and BB.id_promotor = FF.id_persona and id_rol = 'TIT' AND not exists ( select * from sc_reverso rev where rev.id_deal_balanceo = AA."Número de Deal" )]; nested exception is java.sql.SQLException: Nombre de columna no válido
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:233)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:602)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:636)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:661)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:701)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:112)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:122)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:137)
+	at com.banorte.contrapartes.dao.impl.ConsultaDaoImpl.consultaDeals(ConsultaDaoImpl.java:27)
+	at com.banorte.contrapartes.services.impl.OperacionesDealImpl.consultaDeals(OperacionesDealImpl.java:20)
+	at com.banorte.contrapartes.ContrapartesRegulatorio.iniciar(ContrapartesRegulatorio.java:48)
+	at com.banorte.contrapartes.ContrapartesRegulatorio.main(ContrapartesRegulatorio.java:35)
+Caused by: java.sql.SQLException: Nombre de columna no válido
+	at oracle.jdbc.dbaccess.DBError.throwSqlException(DBError.java:134)
+	at oracle.jdbc.dbaccess.DBError.throwSqlException(DBError.java:179)
+	at oracle.jdbc.dbaccess.DBError.throwSqlException(DBError.java:269)
+	at oracle.jdbc.driver.OracleStatement.get_column_index(OracleStatement.java:6240)
+	at oracle.jdbc.driver.OracleResultSetImpl.findColumn(OracleResultSetImpl.java:1557)
+	at oracle.jdbc.driver.OracleResultSet.getString(OracleResultSet.java:1482)
+	at org.apache.commons.dbcp.DelegatingResultSet.getString(DelegatingResultSet.java:225)
+	at com.banorte.contrapartes.dao.impl.ConsultaDaoImpl$ConsultaDatosOperaciones.mapRow(ConsultaDaoImpl.java:52)
+	at com.banorte.contrapartes.dao.impl.ConsultaDaoImpl$ConsultaDatosOperaciones.mapRow(ConsultaDaoImpl.java:1)
+	at org.springframework.jdbc.object.MappingSqlQuery.mapRow(MappingSqlQuery.java:65)
+	at org.springframework.jdbc.object.MappingSqlQueryWithParameters$RowMapperImpl.mapRow(MappingSqlQueryWithParameters.java:115)
+	at org.springframework.jdbc.core.RowMapperResultSetExtractor.extractData(RowMapperResultSetExtractor.java:92)
+	at org.springframework.jdbc.core.RowMapperResultSetExtractor.extractData(RowMapperResultSetExtractor.java:1)
+	at org.springframework.jdbc.core.JdbcTemplate$1.doInPreparedStatement(JdbcTemplate.java:648)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:586)
+	... 10 more
+2015-06-03 19:15:52 - **********************************************************************************************************
+2015-06-03 19:15:52 - ***************************          PROCESO DE CONTRAPARTES REGULATORIO         *************************
+2015-06-03 19:15:52 - **********************************************************************************************************
+2015-06-03 19:15:52 - Inicia consulta de operaciones con monto mayor que o igual a 1 MDD....
+2015-06-03 19:16:03 - Exception 
+org.springframework.jdbc.BadSqlGrammarException: PreparedStatementCallback; bad SQL grammar [select EE.nombre_corto as "Cliente", BB.no_cuenta as "Contrato SICA", EE.Tipo_Persona, EE.RFC, AA."Número de Deal",  "Monto en USD Deal", status_deal, DECODE(CC.id_deal_correccion,null,'NO','SI') AS "DEAL_CORRECCION ?", CC.id_deal_original,  "Fecha Creación",  "Fecha Valor", FF.nombre_corto as "Promotor", ID_CANAL, FOLIO_DETALLE,  "Entregamos o Recibimos", id_divisa,  "Monto en Divisa Original",  "Monto en USD Detalle" FROM ( SELECT "Número de Deal",ROUND((SUM("Monto en USD") / 2),4) AS "Monto en USD Deal" FROM ( select a.id_deal as "Número de Deal", a.no_cuenta,ID_CANAL,FOLIO_DETALLE, monto as "Monto en USD", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, DECODE(SIMPLE,'I','SI','NO') AS "INTERBANCARIO ?" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa = 'USD' and simple != 'I'  UNION select a.id_deal as "Número de Deal", a.no_cuenta, ID_CANAL,FOLIO_DETALLE, ROUND((monto * b.factor_divisa),4) as "Monto en USD", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, DECODE(SIMPLE,'I','SI','NO') AS "INTERBANCARIO ?" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa IN(SELECT ID_DIVISA FROM SC_DIVISA WHERE TIPO = 'F' AND ID_DIVISA != 'USD') and simple != 'I'  UNION select a.id_deal as "Número de Deal", a.no_cuenta,ID_CANAL,FOLIO_DETALLE, ROUND((MONTO * tipo_cambio) / (select mid_spot from sc_precio_referencia_actual),4) as "Monto en USD", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, DECODE(SIMPLE,'I','SI','NO') AS "INTERBANCARIO ?" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa IN(SELECT ID_DIVISA FROM SC_DIVISA WHERE TIPO in ('M','N') AND ID_DIVISA != 'MXN') and simple != 'I'  UNION select a.id_deal as "Número de Deal", a.no_cuenta, ID_CANAL,FOLIO_DETALLE, ROUND((MONTO / (select mid_spot from sc_precio_referencia_actual)),4) as "Monto en USD", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, DECODE(SIMPLE,'I','SI','NO') AS "INTERBANCARIO ?" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa = 'MXN' and simple != 'I' ) A GROUP BY "Número de Deal" HAVING SUM("Monto en USD") / 2 >= 1000000 ORDER BY "Número de Deal" ) AA, ( select a.id_deal as "Número de Deal", a.no_cuenta, ID_CANAL,FOLIO_DETALLE, id_promotor, monto as "Monto en USD Detalle", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, id_divisa, monto as "Monto en Divisa Original", DECODE(RECIBIMOS,'S','RECIBIMOS','ENTREGAMOS') AS "Entregamos o Recibimos" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa = 'USD' and simple != 'I'  UNION select a.id_deal as "Número de Deal", a.no_cuenta, ID_CANAL, FOLIO_DETALLE, id_promotor, ROUND((monto * b.factor_divisa),4) as "Monto en USD Detalle", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, id_divisa, monto as "Monto en Divisa Original", DECODE(RECIBIMOS,'S','RECIBIMOS','ENTREGAMOS') AS "Entregamos o Recibimos" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa IN(SELECT ID_DIVISA FROM SC_DIVISA WHERE TIPO = 'F' AND ID_DIVISA != 'USD') and simple != 'I'  UNION select a.id_deal as "Número de Deal", a.no_cuenta,ID_CANAL,FOLIO_DETALLE, id_promotor, ROUND((MONTO * tipo_cambio) / (select mid_spot from sc_precio_referencia_actual),4) as "Monto en USD Detalle", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, id_divisa, monto as "Monto en Divisa Original", DECODE(RECIBIMOS,'S','RECIBIMOS','ENTREGAMOS') AS "Entregamos o Recibimos" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa IN(SELECT ID_DIVISA FROM SC_DIVISA WHERE TIPO in ('M','N') AND ID_DIVISA != 'MXN') and simple != 'I'  UNION select a.id_deal as "Número de Deal", a.no_cuenta, ID_CANAL,FOLIO_DETALLE, id_promotor, ROUND((MONTO / (select mid_spot from sc_precio_referencia_actual)),4) as "Monto en USD Detalle", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, id_divisa, monto as "Monto en Divisa Original", DECODE(RECIBIMOS,'S','RECIBIMOS','ENTREGAMOS') AS "Entregamos o Recibimos" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa = 'MXN' and simple != 'I' )BB, sc_reverso CC,bup_persona_cuenta_rol DD,bup_persona EE,bup_persona FF WHERE AA."Número de Deal" = BB."Número de Deal" and AA."Número de Deal" = CC.id_deal_correccion(+) and BB.no_cuenta = DD.no_cuenta and DD.id_persona = EE.id_persona and BB.id_promotor = FF.id_persona and id_rol = 'TIT' AND not exists ( select * from sc_reverso rev where rev.id_deal_balanceo = AA."Número de Deal" )]; nested exception is java.sql.SQLException: Nombre de columna no válido
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:233)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:602)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:636)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:661)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:701)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:112)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:122)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:137)
+	at com.banorte.contrapartes.dao.impl.ConsultaDaoImpl.consultaDeals(ConsultaDaoImpl.java:27)
+	at com.banorte.contrapartes.services.impl.OperacionesDealImpl.consultaDeals(OperacionesDealImpl.java:20)
+	at com.banorte.contrapartes.ContrapartesRegulatorio.iniciar(ContrapartesRegulatorio.java:48)
+	at com.banorte.contrapartes.ContrapartesRegulatorio.main(ContrapartesRegulatorio.java:35)
+Caused by: java.sql.SQLException: Nombre de columna no válido
+	at oracle.jdbc.dbaccess.DBError.throwSqlException(DBError.java:134)
+	at oracle.jdbc.dbaccess.DBError.throwSqlException(DBError.java:179)
+	at oracle.jdbc.dbaccess.DBError.throwSqlException(DBError.java:269)
+	at oracle.jdbc.driver.OracleStatement.get_column_index(OracleStatement.java:6240)
+	at oracle.jdbc.driver.OracleResultSetImpl.findColumn(OracleResultSetImpl.java:1557)
+	at oracle.jdbc.driver.OracleResultSet.getString(OracleResultSet.java:1482)
+	at org.apache.commons.dbcp.DelegatingResultSet.getString(DelegatingResultSet.java:225)
+	at com.banorte.contrapartes.dao.impl.ConsultaDaoImpl$ConsultaDatosOperaciones.mapRow(ConsultaDaoImpl.java:53)
+	at com.banorte.contrapartes.dao.impl.ConsultaDaoImpl$ConsultaDatosOperaciones.mapRow(ConsultaDaoImpl.java:1)
+	at org.springframework.jdbc.object.MappingSqlQuery.mapRow(MappingSqlQuery.java:65)
+	at org.springframework.jdbc.object.MappingSqlQueryWithParameters$RowMapperImpl.mapRow(MappingSqlQueryWithParameters.java:115)
+	at org.springframework.jdbc.core.RowMapperResultSetExtractor.extractData(RowMapperResultSetExtractor.java:92)
+	at org.springframework.jdbc.core.RowMapperResultSetExtractor.extractData(RowMapperResultSetExtractor.java:1)
+	at org.springframework.jdbc.core.JdbcTemplate$1.doInPreparedStatement(JdbcTemplate.java:648)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:586)
+	... 10 more
+2015-06-03 19:17:36 - **********************************************************************************************************
+2015-06-03 19:17:36 - ***************************          PROCESO DE CONTRAPARTES REGULATORIO         *************************
+2015-06-03 19:17:36 - **********************************************************************************************************
+2015-06-03 19:17:36 - Inicia consulta de operaciones con monto mayor que o igual a 1 MDD....
+2015-06-03 19:21:05 - Exception 
+org.springframework.jdbc.BadSqlGrammarException: PreparedStatementCallback; bad SQL grammar [select EE.nombre_corto as "Cliente", BB.no_cuenta as "Contrato SICA", EE.Tipo_Persona, EE.RFC, AA."Número de Deal",  "Monto en USD Deal", status_deal, DECODE(CC.id_deal_correccion,null,'NO','SI') AS "DEAL_CORRECCION ?", CC.id_deal_original,  "Fecha Creación",  "Fecha Valor", FF.nombre_corto as "Promotor", ID_CANAL, FOLIO_DETALLE,  "Entregamos o Recibimos", id_divisa,  "Monto en Divisa Original",  "Monto en USD Detalle" FROM ( SELECT "Número de Deal",ROUND((SUM("Monto en USD") / 2),4) AS "Monto en USD Deal" FROM ( select a.id_deal as "Número de Deal", a.no_cuenta,ID_CANAL,FOLIO_DETALLE, monto as "Monto en USD", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, DECODE(SIMPLE,'I','SI','NO') AS "INTERBANCARIO ?" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa = 'USD' and simple != 'I'  UNION select a.id_deal as "Número de Deal", a.no_cuenta, ID_CANAL,FOLIO_DETALLE, ROUND((monto * b.factor_divisa),4) as "Monto en USD", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, DECODE(SIMPLE,'I','SI','NO') AS "INTERBANCARIO ?" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa IN(SELECT ID_DIVISA FROM SC_DIVISA WHERE TIPO = 'F' AND ID_DIVISA != 'USD') and simple != 'I'  UNION select a.id_deal as "Número de Deal", a.no_cuenta,ID_CANAL,FOLIO_DETALLE, ROUND((MONTO * tipo_cambio) / (select mid_spot from sc_precio_referencia_actual),4) as "Monto en USD", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, DECODE(SIMPLE,'I','SI','NO') AS "INTERBANCARIO ?" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa IN(SELECT ID_DIVISA FROM SC_DIVISA WHERE TIPO in ('M','N') AND ID_DIVISA != 'MXN') and simple != 'I'  UNION select a.id_deal as "Número de Deal", a.no_cuenta, ID_CANAL,FOLIO_DETALLE, ROUND((MONTO / (select mid_spot from sc_precio_referencia_actual)),4) as "Monto en USD", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, DECODE(SIMPLE,'I','SI','NO') AS "INTERBANCARIO ?" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa = 'MXN' and simple != 'I' ) A GROUP BY "Número de Deal" HAVING SUM("Monto en USD") / 2 >= 1000000 ORDER BY "Número de Deal" ) AA, ( select a.id_deal as "Número de Deal", a.no_cuenta, ID_CANAL,FOLIO_DETALLE, id_promotor, monto as "Monto en USD Detalle", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, id_divisa, monto as "Monto en Divisa Original", DECODE(RECIBIMOS,'S','RECIBIMOS','ENTREGAMOS') AS "Entregamos o Recibimos" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa = 'USD' and simple != 'I'  UNION select a.id_deal as "Número de Deal", a.no_cuenta, ID_CANAL, FOLIO_DETALLE, id_promotor, ROUND((monto * b.factor_divisa),4) as "Monto en USD Detalle", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, id_divisa, monto as "Monto en Divisa Original", DECODE(RECIBIMOS,'S','RECIBIMOS','ENTREGAMOS') AS "Entregamos o Recibimos" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa IN(SELECT ID_DIVISA FROM SC_DIVISA WHERE TIPO = 'F' AND ID_DIVISA != 'USD') and simple != 'I'  UNION select a.id_deal as "Número de Deal", a.no_cuenta,ID_CANAL,FOLIO_DETALLE, id_promotor, ROUND((MONTO * tipo_cambio) / (select mid_spot from sc_precio_referencia_actual),4) as "Monto en USD Detalle", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, id_divisa, monto as "Monto en Divisa Original", DECODE(RECIBIMOS,'S','RECIBIMOS','ENTREGAMOS') AS "Entregamos o Recibimos" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa IN(SELECT ID_DIVISA FROM SC_DIVISA WHERE TIPO in ('M','N') AND ID_DIVISA != 'MXN') and simple != 'I'  UNION select a.id_deal as "Número de Deal", a.no_cuenta, ID_CANAL,FOLIO_DETALLE, id_promotor, ROUND((MONTO / (select mid_spot from sc_precio_referencia_actual)),4) as "Monto en USD Detalle", fecha_captura "Fecha Creación", tipo_valor as "Fecha Valor", status_deal, id_divisa, monto as "Monto en Divisa Original", DECODE(RECIBIMOS,'S','RECIBIMOS','ENTREGAMOS') AS "Entregamos o Recibimos" from sc_deal a, sc_deal_detalle b, sc_deal_posicion c where a.id_deal = b.id_deal and b.id_deal_posicion = c.id_deal_posicion and trunc(fecha_captura) = trunc(sysdate) and status_deal != 'CA' AND STATUS_DETALLE_DEAL != 'CA' and id_divisa = 'MXN' and simple != 'I' )BB, sc_reverso CC,bup_persona_cuenta_rol DD,bup_persona EE,bup_persona FF WHERE AA."Número de Deal" = BB."Número de Deal" and AA."Número de Deal" = CC.id_deal_correccion(+) and BB.no_cuenta = DD.no_cuenta and DD.id_persona = EE.id_persona and BB.id_promotor = FF.id_persona and id_rol = 'TIT' AND not exists ( select * from sc_reverso rev where rev.id_deal_balanceo = AA."Número de Deal" )]; nested exception is java.sql.SQLException: Nombre de columna no válido
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:233)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:602)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:636)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:661)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:701)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:112)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:122)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:137)
+	at com.banorte.contrapartes.dao.impl.ConsultaDaoImpl.consultaDeals(ConsultaDaoImpl.java:27)
+	at com.banorte.contrapartes.services.impl.OperacionesDealImpl.consultaDeals(OperacionesDealImpl.java:20)
+	at com.banorte.contrapartes.ContrapartesRegulatorio.iniciar(ContrapartesRegulatorio.java:48)
+	at com.banorte.contrapartes.ContrapartesRegulatorio.main(ContrapartesRegulatorio.java:35)
+Caused by: java.sql.SQLException: Nombre de columna no válido
+	at oracle.jdbc.dbaccess.DBError.throwSqlException(DBError.java:134)
+	at oracle.jdbc.dbaccess.DBError.throwSqlException(DBError.java:179)
+	at oracle.jdbc.dbaccess.DBError.throwSqlException(DBError.java:269)
+	at oracle.jdbc.driver.OracleStatement.get_column_index(OracleStatement.java:6240)
+	at oracle.jdbc.driver.OracleResultSetImpl.findColumn(OracleResultSetImpl.java:1557)
+	at oracle.jdbc.driver.OracleResultSet.getString(OracleResultSet.java:1482)
+	at org.apache.commons.dbcp.DelegatingResultSet.getString(DelegatingResultSet.java:225)
+	at com.banorte.contrapartes.dao.impl.ConsultaDaoImpl$ConsultaDatosOperaciones.mapRow(ConsultaDaoImpl.java:53)
+	at com.banorte.contrapartes.dao.impl.ConsultaDaoImpl$ConsultaDatosOperaciones.mapRow(ConsultaDaoImpl.java:1)
+	at org.springframework.jdbc.object.MappingSqlQuery.mapRow(MappingSqlQuery.java:65)
+	at org.springframework.jdbc.object.MappingSqlQueryWithParameters$RowMapperImpl.mapRow(MappingSqlQueryWithParameters.java:115)
+	at org.springframework.jdbc.core.RowMapperResultSetExtractor.extractData(RowMapperResultSetExtractor.java:92)
+	at org.springframework.jdbc.core.RowMapperResultSetExtractor.extractData(RowMapperResultSetExtractor.java:1)
+	at org.springframework.jdbc.core.JdbcTemplate$1.doInPreparedStatement(JdbcTemplate.java:648)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:586)
+	... 10 more
+2015-06-03 19:30:53 - **********************************************************************************************************
+2015-06-03 19:30:53 - ***************************          PROCESO DE CONTRAPARTES REGULATORIO         *************************
+2015-06-03 19:30:53 - **********************************************************************************************************
+2015-06-03 19:30:53 - Inicia consulta de operaciones con monto mayor que o igual a 1 MDD....
+2015-06-03 19:31:04 - Termina consulta de operaciones con monto mayor que o igual a 1 MDD.
+2015-06-03 19:31:04 - Total de registros encontrados: 11
+2015-06-03 19:31:04 - Exception 
+java.lang.NullPointerException
+	at com.banorte.contrapartes.services.impl.OperacionesDealImpl.consultaDeals(OperacionesDealImpl.java:23)
+	at com.banorte.contrapartes.ContrapartesRegulatorio.iniciar(ContrapartesRegulatorio.java:48)
+	at com.banorte.contrapartes.ContrapartesRegulatorio.main(ContrapartesRegulatorio.java:35)
+2015-06-03 19:33:46 - **********************************************************************************************************
+2015-06-03 19:33:46 - ***************************          PROCESO DE CONTRAPARTES REGULATORIO         *************************
+2015-06-03 19:33:46 - **********************************************************************************************************
+2015-06-03 19:33:46 - Inicia consulta de operaciones con monto mayor que o igual a 1 MDD....
+2015-06-03 19:33:55 - Termina consulta de operaciones con monto mayor que o igual a 1 MDD.
+2015-06-03 19:33:55 - Total de registros encontrados: 11
+2015-06-03 19:33:55 - Exception 
+java.lang.NullPointerException
+	at com.banorte.contrapartes.services.impl.OperacionesDealImpl.consultaDeals(OperacionesDealImpl.java:23)
+	at com.banorte.contrapartes.ContrapartesRegulatorio.iniciar(ContrapartesRegulatorio.java:48)
+	at com.banorte.contrapartes.ContrapartesRegulatorio.main(ContrapartesRegulatorio.java:35)
+2015-06-03 19:34:28 - **********************************************************************************************************
+2015-06-03 19:34:28 - ***************************          PROCESO DE CONTRAPARTES REGULATORIO         *************************
+2015-06-03 19:34:28 - **********************************************************************************************************
+2015-06-03 19:34:28 - Inicia consulta de operaciones con monto mayor que o igual a 1 MDD....
+2015-06-03 19:34:38 - Termina consulta de operaciones con monto mayor que o igual a 1 MDD.
+2015-06-03 19:34:38 - Total de registros encontrados: 11
+2015-06-03 19:34:38 - Exception 
+java.lang.NullPointerException
+	at com.banorte.contrapartes.services.impl.OperacionesDealImpl.consultaDeals(OperacionesDealImpl.java:23)
+	at com.banorte.contrapartes.ContrapartesRegulatorio.iniciar(ContrapartesRegulatorio.java:48)
+	at com.banorte.contrapartes.ContrapartesRegulatorio.main(ContrapartesRegulatorio.java:35)
+2015-06-03 19:37:34 - **********************************************************************************************************
+2015-06-03 19:37:34 - ***************************          PROCESO DE CONTRAPARTES REGULATORIO         *************************
+2015-06-03 19:37:34 - **********************************************************************************************************
+2015-06-03 19:37:34 - Inicia consulta de operaciones con monto mayor que o igual a 1 MDD....
+2015-06-03 19:37:45 - Termina consulta de operaciones con monto mayor que o igual a 1 MDD.
+2015-06-03 19:37:45 - Total de registros encontrados: 11
+2015-06-03 19:43:22 - **********************************************************************************************************
+2015-06-03 19:43:22 - ***************************          PROCESO DE CONTRAPARTES REGULATORIO         *************************
+2015-06-03 19:43:22 - **********************************************************************************************************
+2015-06-03 19:43:22 - Inicia consulta de operaciones con monto mayor que o igual a 1 MDD....
+2015-06-03 19:43:33 - Termina consulta de operaciones con monto mayor que o igual a 1 MDD.
+2015-06-03 19:43:33 - Total de registros encontrados: 11
+2015-06-03 19:44:32 - **********************************************************************************************************
+2015-06-03 19:44:32 - ***************************          PROCESO DE CONTRAPARTES REGULATORIO         *************************
+2015-06-03 19:44:32 - **********************************************************************************************************
+2015-06-03 19:44:32 - Inicia consulta de operaciones con monto mayor que o igual a 1 MDD....
+2015-06-03 19:44:42 - Termina consulta de operaciones con monto mayor que o igual a 1 MDD.
+2015-06-03 19:44:42 - Total de registros encontrados: 11
+2015-06-03 19:44:43 - Exception 
+java.lang.NullPointerException
+	at com.banorte.contrapartes.services.impl.ReporteOperacionesImpl.crearCelda(ReporteOperacionesImpl.java:141)
+	at com.banorte.contrapartes.services.impl.ReporteOperacionesImpl.crearReporteExcel(ReporteOperacionesImpl.java:93)
+	at com.banorte.contrapartes.services.impl.OperacionesDealImpl.consultaDeals(OperacionesDealImpl.java:23)
+	at com.banorte.contrapartes.ContrapartesRegulatorio.iniciar(ContrapartesRegulatorio.java:48)
+	at com.banorte.contrapartes.ContrapartesRegulatorio.main(ContrapartesRegulatorio.java:35)
+2015-06-03 19:45:27 - **********************************************************************************************************
+2015-06-03 19:45:27 - ***************************          PROCESO DE CONTRAPARTES REGULATORIO         *************************
+2015-06-03 19:45:27 - **********************************************************************************************************
+2015-06-03 19:45:27 - Inicia consulta de operaciones con monto mayor que o igual a 1 MDD....
+2015-06-03 19:45:37 - Termina consulta de operaciones con monto mayor que o igual a 1 MDD.
+2015-06-03 19:45:37 - Total de registros encontrados: 11
+2015-06-03 19:45:38 - getTemplate(): contrapartesTemplate.vm
+2015-06-03 19:45:38 - getFrom(): vicente.delasancha_praxis@banorte.com
+2015-06-03 19:45:38 - getTo(): vicente.delasancha_praxis@banorte.com,1.delasancha_praxis@banorte.com
+2015-06-03 19:45:38 - getSubject(): Consulta de deals con monto mayor a 1 millón de dólares americanos.
+2015-06-03 19:45:38 - model: {}
+2015-06-03 19:45:38 - vicente.delasancha_praxis@banorte.com
+2015-06-03 19:45:38 - 1.delasancha_praxis@banorte.com
+2015-06-03 19:45:38 - **********************************************************************************************************
+2015-06-03 19:45:38 - ******************************     FIN DE PROCESO CONTRAPARTES REGULATORIO     ***************************
+2015-06-03 19:45:38 - **********************************************************************************************************
+2015-06-03 19:45:38 - 
+
+
+
+2015-06-03 19:53:47 - **********************************************************************************************************
+2015-06-03 19:53:47 - ***************************          PROCESO DE CONTRAPARTES REGULATORIO         *************************
+2015-06-03 19:53:47 - **********************************************************************************************************
+2015-06-03 19:53:47 - Inicia consulta de operaciones con monto mayor que o igual a 1 MDD....
+2015-06-03 19:53:57 - Termina consulta de operaciones con monto mayor que o igual a 1 MDD.
+2015-06-03 19:53:57 - Total de registros encontrados: 11
+2015-06-03 19:53:58 - getTemplate(): contrapartesTemplate.vm
+2015-06-03 19:53:58 - getFrom(): vicente.delasancha_praxis@banorte.com
+2015-06-03 19:53:58 - getTo(): vicente.delasancha_praxis@banorte.com,1.delasancha_praxis@banorte.com
+2015-06-03 19:53:58 - getSubject(): Consulta de deals con monto mayor a 1 millón de dólares americanos.
+2015-06-03 19:53:58 - model: {}
+2015-06-03 19:53:58 - vicente.delasancha_praxis@banorte.com
+2015-06-03 19:53:58 - 1.delasancha_praxis@banorte.com
+2015-06-03 19:53:58 - **********************************************************************************************************
+2015-06-03 19:53:58 - ******************************     FIN DE PROCESO CONTRAPARTES REGULATORIO     ***************************
+2015-06-03 19:53:58 - **********************************************************************************************************
+2015-06-03 19:53:58 - 
+
+
+
+2015-06-03 19:57:12 - **********************************************************************************************************
+2015-06-03 19:57:12 - ***************************          PROCESO DE CONTRAPARTES REGULATORIO         *************************
+2015-06-03 19:57:12 - **********************************************************************************************************
+2015-06-03 19:57:12 - Inicia consulta de operaciones con monto mayor que o igual a 1 MDD....
+2015-06-03 19:57:22 - Termina consulta de operaciones con monto mayor que o igual a 1 MDD.
+2015-06-03 19:57:22 - Total de registros encontrados: 11
+2015-06-03 19:57:23 - getTemplate(): contrapartesTemplate.vm
+2015-06-03 19:57:23 - getFrom(): vicente.delasancha_praxis@banorte.com
+2015-06-03 19:57:23 - getTo(): vicente.delasancha_praxis@banorte.com,1.delasancha_praxis@banorte.com
+2015-06-03 19:57:23 - getSubject(): Consulta de deals con monto mayor a 1 millón de dólares americanos.
+2015-06-03 19:57:23 - model: {}
+2015-06-03 19:57:23 - vicente.delasancha_praxis@banorte.com
+2015-06-03 19:57:23 - 1.delasancha_praxis@banorte.com
+2015-06-03 19:57:23 - **********************************************************************************************************
+2015-06-03 19:57:23 - ******************************     FIN DE PROCESO CONTRAPARTES REGULATORIO     ***************************
+2015-06-03 19:57:23 - **********************************************************************************************************
+2015-06-03 19:57:23 - 
+
+
+
+2015-06-03 19:59:43 - **********************************************************************************************************
+2015-06-03 19:59:43 - ***************************          PROCESO DE CONTRAPARTES REGULATORIO         *************************
+2015-06-03 19:59:43 - **********************************************************************************************************
+2015-06-03 19:59:43 - Inicia consulta de operaciones con monto mayor que o igual a 1 MDD....
+2015-06-03 19:59:53 - Termina consulta de operaciones con monto mayor que o igual a 1 MDD.
+2015-06-03 19:59:53 - Total de registros encontrados: 11
+2015-06-03 19:59:54 - getTemplate(): contrapartesTemplate.vm
+2015-06-03 19:59:54 - getFrom(): vicente.delasancha_praxis@banorte.com
+2015-06-03 19:59:54 - getTo(): vicente.delasancha_praxis@banorte.com,1.delasancha_praxis@banorte.com
+2015-06-03 19:59:54 - getSubject(): Consulta de deals con monto mayor a 1 millón de dólares americanos.
+2015-06-03 19:59:54 - model: {}
+2015-06-03 19:59:54 - vicente.delasancha_praxis@banorte.com
+2015-06-03 19:59:54 - 1.delasancha_praxis@banorte.com
+2015-06-03 19:59:54 - **********************************************************************************************************
+2015-06-03 19:59:54 - ******************************     FIN DE PROCESO CONTRAPARTES REGULATORIO     ***************************
+2015-06-03 19:59:54 - **********************************************************************************************************
+2015-06-03 19:59:54 - 
+
+
+
+2015-06-03 20:02:41 - **********************************************************************************************************
+2015-06-03 20:02:41 - ***************************          PROCESO DE CONTRAPARTES REGULATORIO         *************************
+2015-06-03 20:02:41 - **********************************************************************************************************
+2015-06-03 20:02:41 - Inicia consulta de operaciones con monto mayor que o igual a 1 MDD....
+2015-06-03 20:02:53 - Termina consulta de operaciones con monto mayor que o igual a 1 MDD.
+2015-06-03 20:02:53 - Total de registros encontrados: 11
+2015-06-03 20:02:54 - getTemplate(): contrapartesTemplate.vm
+2015-06-03 20:02:54 - getFrom(): vicente.delasancha_praxis@banorte.com
+2015-06-03 20:02:54 - getTo(): vicente.delasancha_praxis@banorte.com,1.delasancha_praxis@banorte.com
+2015-06-03 20:02:54 - getSubject(): Consulta de deals con monto mayor a 1 millón de dólares americanos.
+2015-06-03 20:02:54 - model: {}
+2015-06-03 20:02:54 - vicente.delasancha_praxis@banorte.com
+2015-06-03 20:02:54 - 1.delasancha_praxis@banorte.com
+2015-06-03 20:02:54 - **********************************************************************************************************
+2015-06-03 20:02:54 - ******************************     FIN DE PROCESO CONTRAPARTES REGULATORIO     ***************************
+2015-06-03 20:02:54 - **********************************************************************************************************
+2015-06-03 20:02:54 - 
+
+
+

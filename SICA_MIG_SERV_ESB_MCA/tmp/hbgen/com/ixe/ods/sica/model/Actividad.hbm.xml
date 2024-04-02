@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.Actividad"
+        table="SC_ACTIVIDAD"
+        proxy="com.ixe.ods.sica.model.Actividad"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idActividad"
+            column="ID_ACTIVIDAD"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_ACTIVIDAD_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Actividad.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <version
+            name="version"
+            type="java.lang.Integer"
+            column="VERSION"
+            access="property"
+            unsaved-value="undefined"
+        />
+
+        <property
+            name="proceso"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="PROCESO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fechaCreacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_CREACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fechaTerminacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_TERMINACION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="nombreActividad"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NOMBRE_ACTIVIDAD"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="resultado"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="RESULTADO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="status"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATUS"
+            not-null="true"
+            unique="false"
+        />
+
+        <many-to-one
+            name="deal"
+            class="com.ixe.ods.sica.model.Deal"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DEAL"
+            unique="false"
+        />
+
+        <many-to-one
+            name="dealDetalle"
+            class="com.ixe.ods.sica.model.DealDetalle"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DEAL_POSICION"
+            unique="false"
+        />
+
+        <many-to-one
+            name="usuario"
+            class="com.ixe.ods.seguridad.model.Usuario"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_USUARIO"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Actividad.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

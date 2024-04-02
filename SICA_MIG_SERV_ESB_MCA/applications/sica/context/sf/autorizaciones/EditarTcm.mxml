@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: EditarTcm.mxml,v 1.6 2008/04/22 16:45:38 ccovian Exp $ -->
+<mx:TitleWindow xmlns:mx="http://www.macromedia.com/2003/mxml"
+                title="Edici&#243;n del Tipo de Cambio" closeButton="true"
+                click="this.deletePopUp();">
+	<mx:Script>
+        <![CDATA[
+
+		import mx.controls.Alert;
+        import mx.validators.*;
+
+		var mensajeErrorMontoSbPrcVisible : Boolean = false;
+		private var mensajeErrorMontoSbPrc : String = 'El tipo de cambio no es un valor num\u00e9rico.' ;
+        var dataGrid : Object;
+        var deal : Object;
+        var detalle : Object;
+        var idDivisa : String;
+
+        private function isValido() : Boolean
+        {
+            return Validator.isValid(this, 'detalleModel.tcm');
+        }
+
+        private function confirmarModificacion() : Void
+        {
+			var txt : String = String(tcmTextField.text);
+			if (txt.length == 0) {
+				mx.controls.Alert.show('Es necesario definir el monto del Tipo de Cambio.', 'Atenci\u00f3n:');
+			}
+			else {
+				if (isValido) {
+                	try {
+						var valorEntero : String = detalleModel.tcm;
+						var nuevoValor : String;
+						while ((valorEntero.length > 1) && (valorEntero.substring(0, 1) == '0'))	{
+							valorEntero  = valorEntero.substring(1, valorEntero.length)
+						}
+                		detalle.tipoCambioMesa = Number(valorEntero);
+                		dataGrid.dataProvider = dataGrid.dataProvider;
+		                mensajeErrorMontoSbPrcVisible = false;
+		                deal.calcularUtilidad();
+                		dataGrid.parent.infoReverso.configurarDatosAdicionales();
+		                deletePopUp();
+        	        }
+            	    catch (err : Error) {
+                		mensajeErrorMontoSbPrcVisible = true;
+	                }
+    	        }
+			}
+        }
+
+        ]]>
+    </mx:Script>
+
+    <mx:Model id="detalleModel">
+        <tcm>{tcmTextField.text}</tcm>
+    </mx:Model>
+
+    <mx:NumberFormatter id="formateadorMonto" thousandsSeparatorFrom="," thousandsSeparatorTo=","
+                        precision="2" />
+
+    <mx:NumberFormatter id="formateadorTc" thousandsSeparatorFrom="" thousandsSeparatorTo=""
+                        precision="8" />
+
+    <mx:NumberValidator field="Number(detalleModel.tcm)" requiredFieldError="El campo es requerido." required="true"
+                        listener="tcmTextField" minValue="0.000001" maxValue="999999999999.99" domain="real"
+                        precision="8" allowNegative="false"
+                        exceedsMaxError="El n&#250;mero excede el m&#225;ximo valor permitido."
+                        lowerThanMinError="El n&#250;mero es menor que el m&#237;nimo valor permitido."
+                        negativeError="El n&#250;mero no debe ser negativo."
+                        precisionError="Deben ser solo dos decimales."
+                        separationError="El separador de miles debe ser seguido por tres d&#237;gitos."
+                        decimalPointCountError="El separador decimal s&#243;lo puede ocurrir una vez."
+                        invalidCharError="El valor ingresado contiene caracteres inv&#225;lidos."
+                        invalidFormatCharsError="Unos de los par&#225;metros del formato es inv&#225;lido." />
+
+	<mx:Form fontWeight="bold">
+		<mx:FormItem label="Mnem&#243;nico:">
+			<mx:HBox>
+				<mx:Label id="productoTextField" text="{detalle.mnemonico}" />
+			</mx:HBox>
+		</mx:FormItem>
+		<mx:FormItem label="Divisa:">
+			<mx:Label text="{idDivisa}" />
+		</mx:FormItem>
+		<mx:FormItem label="Monto:">
+			<mx:Label text="{formateadorMonto.format(detalle.monto)}" />
+		</mx:FormItem>
+		<mx:FormItem label="T.C.C.:">
+			<mx:Label text="{formateadorTc.format(detalle.tipoCambio)}" />
+		</mx:FormItem>
+		<mx:FormItem label="T.C.M.:">
+			<mx:TextInput id="tcmTextField" text="{detalle.tipoCambioMesa}"
+                          restrict="0-9\." width="100"/>
+		</mx:FormItem>
+		<mx:Label id="labelErrorTcm" text="{mensajeErrorMontoSbPrc}" visible="{mensajeErrorMontoSbPrcVisible}"
+						color="#FF0000"/>
+	</mx:Form>
+	<mx:HBox width="100%" horizontalAlign="center">
+		<mx:Button label="Confirmar Modif." click="confirmarModificacion()"/>
+		<mx:Button label="T.C.M. Original"
+                   click="tcmTextField.text = formateadorTc.format(detalle.tipoCambioMesa)"/>
+	</mx:HBox>
+</mx:TitleWindow>

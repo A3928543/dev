@@ -1,0 +1,88 @@
+body { background-color:#ffffff; }
+select { font-size : 10px; font-family: Arial; color: #666666; }
+input { font-size : 10px; font-family: Arial; color: #666666; }
+textarea { font-size : 10px; font-family: Arial; color: #666666; }
+a { color:#7d000d; font-family: Verdana; font-size: 10px; }
+
+.selectfijo { width: 640px; }
+
+.uppercase { text-transform: uppercase; }
+
+.portlettitle { color: #f79c00; font-weight: bold; font-family: Verdana; font-size: 10px;}
+.portlettitlecell { background-color:#002f2c; }
+.portletbackground { background: #002f2c; }
+.portletcontent { background: #e7e7e7; }
+
+.tableheader { color: #002f2c; font-weight: bold; font-family: Verdana; font-size: 10px;}
+.tableheadercell { background:#cccc99; }
+.title { color: #002f2c; font-weight: bold; font-family: Verdana; font-size: 10px;}
+.titlecell { background:#cccc99; }
+.normal { color: #002f2c; font-family: Verdana; font-size: 10px;}
+.legend { color: #77000d; font-family: Verdana; font-size: 10px; font-weight: bold;}
+.big { color: #77000d; font-family: Verdana; font-size: 11px; font-weight: bold;}
+
+.disabledField { background: #bbbbbb; }
+
+.normalcell { background-color:#d5d5d5; color: #002f2c; font-family: Verdana; font-size: 10px; }
+.normallink:active { color:#7d000d; }
+.normallink:visited { color:#7d000d; }
+.normallink:link { color:#7d000d; }
+.tableborder { background:#7d000d; }
+.headercell { background-color:#000000; color: #ffffff; font-family: Verdana; font-size: 10px; }
+
+.pagesclass { color:#7d000d; font-weight: bold; font-family: Verdana; font-size: 10px;}
+.columnsclass { background:#cccc99; font-weight: bold; font-family: Verdana; font-size: 10px;}
+.valuesclass { background:#cccccc; color: #002f2c; font-family: Verdana; font-size: 10px; text-align: center}
+
+.even {background:#D5D5D5;}
+.odd {background:#E7E7E7;}
+
+.textocentrado { TEXT-ALIGN: center; }
+
+.textoderecha { TEXT-ALIGN: right; }
+
+.toolbar { background-color:#000000; }
+
+.AL { background-color:#eeeeee; color: #002f2c; font-family: Verdana; font-size: 10px; }
+
+.CC { background-color:#ddeeff; color: #002f2c; font-family: Verdana; font-size: 10px; }
+
+.CO { background-color:#ddeeff; color: #002f2c; font-family: Verdana; font-size: 10px; }
+
+.PL { background-color:#ffff99; color: #002f2c; font-family: Verdana; font-size: 10px; }
+
+.PT { background-color:#ffff99; color: #002f2c; font-family: Verdana; font-size: 10px; }
+
+.TP { background-color:#ffff99; color: #002f2c; font-family: Verdana; font-size: 10px; }
+
+.TL { background-color:#bbffaa; color: #002f2c; font-family: Verdana; font-size: 10px; }
+
+.TT { background-color:#bbffaa; color: #002f2c; font-family: Verdana; font-size: 10px; }
+
+.EC { background-color:#bbffaa; color: #002f2c; font-family: Verdana; font-size: 10px; }
+
+.CA { background-color:#ff5959; color: #002f2c; font-family: Verdana; font-size: 10px; }
+
+.PR { background-color:#cccccc; color: #ff0000; font-family: Verdana; font-size: 10px; }
+
+.RE { background-color:#000000; color: #ff8888; font-family: Verdana; font-size: 10px; }
+
+.calOuterTable {border: 1px solid silver;width: 170px;}
+.calCtrl {font: 14px Haettenschweiler, Arrial Narrow, Verdana, sans-serif;}
+.calWTitle {font: 12px Haettenschweiler, Arrial Narrow, Verdana, sans-serif;background: #83263b;text-align: center;color: #FFFFFF;height: 20px;width: 20px;}
+.calDayCurrent {background: #edbb31;width: 20px;}
+.calDayWeekend {background: #b66878;width: 20px;}
+.calDayHoliday {background: #FFDF84;width: 20px;}
+.calDayWorking {background: #FFFFFF;width: 20px;}
+.calThisMonth {font: 14px Haettenschweiler, Arrial Narrow, Verdana, sans-serif;color: #000000;text-decoration: none;}
+.calOtherMonth {font: 14px Haettenschweiler, Arrial Narrow, Verdana, sans-serif;color: #909090;text-decoration: none;}
+.calForbDate {font: 14px Haettenschweiler, Arrial Narrow, Verdana, sans-serif;color: red;}
+.calTimetable {font-family: Tahoma, Verdana, sans-serif;font-size: 12px;}
+
+
+.A td{ background-color:#ff5959; color: #000000; font-family: Verdana; font-size: 11px; white-space: normal !important; height:auto; vertical-align:text-top; padding-top:2px;}
+
+.M td { background-color:#FFFF00; color: #000000; font-family: Verdana; font-size: 11px; white-space: normal !important; height:auto; vertical-align:text-top; padding-top:2px;}
+
+.B td { background-color:#98FB98; color: #000000; font-family: Verdana; font-size: 11px; white-space: normal !important; height:auto; vertical-align:text-top; padding-top:2px;}
+

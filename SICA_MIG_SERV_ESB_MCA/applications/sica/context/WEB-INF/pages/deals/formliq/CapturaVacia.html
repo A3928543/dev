@@ -1,0 +1,20 @@
+<!-- $Id: CapturaVacia.html,v 1.9 2008/02/22 18:25:46 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Captura de Efectivo</title>
+    <link rel="StyleSheet" href="../../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="tb@Block"><span jwcid="@EventosDeal" deal="ognl: dealDetalle.deal" /></span>
+    <table jwcid="@ActionPortletBorder" title="Deal" titleBlock="ognl: components.tb">
+        <span jwcid="@EncabezadoDeal" deal="ognl: dealDetalle.deal" disabled="yes" />
+        <form jwcid="@Form" listener="ognl: listeners.submit">
+            <table jwcid="@DetailFieldset" dealDetalle="ognl: dealDetalle" />
+            <br />
+            <div align="center">
+                <input jwcid="@RegresarCapturaDeal" idDeal="ognl: dealDetalle.deal.idDeal" />
+            </div>
+        </form>
+    </table>
+</body>
+</html>

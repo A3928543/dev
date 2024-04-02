@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<view:TipoOperacion
+        xmlns:mx="http://www.macromedia.com/2003/mxml"
+        xmlns:view="com.ixe.ods.sica.posicion.views.*"
+        xmlns:sica="*">
+
+    <sica:TipoCambio dataProvider="{tipoCambioCliente}" label="Tipo de Cambio Cliente" marginLeft="10" marginRight="10"
+                     marginTop="5" marginBottom="5"/>
+
+    <sica:TipoCambio dataProvider="{tipoCambioPizarron}" label="Tipo de Cambio Mesa" marginLeft="10" marginRight="10"
+                     marginTop="5" marginBottom="5"/>
+
+</view:TipoOperacion>

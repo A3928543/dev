@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ReporteUtilidadesIxeDirecto.page,v 1.4 2008/08/11 20:07:59 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.reportes.ReporteUtilidadesIxeDirecto">
+
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate"/>
+
+    <component id="reportesPropertySelection" type="PropertySelection">
+        <binding name="model" expression="tiposReportesModel" />
+        <binding name="value" expression="tipoReporte" />
+    </component>
+    
+    <property-specification name="registerDateDe" type="java.util.Date" persistent="yes" />
+    <property-specification name="registerDateHasta" type="java.util.Date" persistent="yes" />
+    <property-specification name="tipoReporte" type="java.lang.String" initial-value="" persistent="yes" />
+    
+    <context-asset name="searchButton" path="/images/search.gif" />
+    <context-asset name="verPdfButton" path="/images/ver_pdf.gif" />
+    <context-asset name="verExcelButton" path="/images/ver_excel.gif" />
+
+    <context-asset name="stylesheet" path="/css/ixe.css"/>
+
+</page-specification>

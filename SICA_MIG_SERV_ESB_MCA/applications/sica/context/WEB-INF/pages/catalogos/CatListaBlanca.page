@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.catalogos.CatListaBlanca">
+	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+	<bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+    
+    <property-specification name="modo" type="java.lang.Integer" persistent="yes"/>
+    
+    <!-- Propiedades para b&uacute;squeda -->
+    <property-specification name="busquedaRazonSocial" type="java.lang.String" persistent="yes"/>
+    <property-specification name="busquedaCuenta" type="java.lang.String" persistent="yes"/>
+    
+    <!-- Propiedades para edici&oacute;n y alta -->
+    <property-specification name="altaNoCuenta" type="java.lang.String" persistent="yes"/>
+    <property-specification name="altaTipoExcepcion" type="java.lang.String" persistent="yes"/>
+    <property-specification name="altaLimiteDiario" type="double" persistent="yes"/>
+    <property-specification name="altaLimiteMensual" type="double" persistent="yes"/>
+    <property-specification name="altaObservaciones" type="java.lang.String" persistent="yes"/>
+    <property-specification name="personaOriginal" type="com.ixe.ods.sica.model.PersonaListaBlanca" persistent="yes"/>
+    
+    <!-- Propiedades para consulta de cat&acute;logos -->
+    <property-specification name="personas" type="java.util.List" persistent="yes"/>
+    <property-specification name="cuentas" type="java.util.List" persistent="yes"/>
+    <property-specification name="level" type="int" />
+    
+    <!-- Propiedades para la carga masiva -->
+    <property-specification name="archivo" type="org.apache.tapestry.request.IUploadFile" />
+    <property-specification name="archivoRespuesta" type="byte[]" persistent="yes"/>
+    <property-specification name="esDescargable" type="java.lang.Boolean" persistent="yes"/>
+    
+    <context-asset name="insertButton" path="/images/add.gif" />
+    <context-asset name="searchButton" path="/images/search.gif" />
+    <context-asset name="backButton" path="/images/back.gif" />
+    <context-asset name="bAceptar" path="/images/aceptar.gif" />
+</page-specification>

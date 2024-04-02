@@ -1,0 +1,22 @@
+<!-- $Id: SeleccionContrato.html,v 1.11 2008/02/22 18:25:08 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>SeleccionContrato</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <table jwcid="@ActionPortletBorder" title="Seleccione un contrato por favor:">
+        <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level="ognl: 0" width="100%" />
+        <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "No. Cta.", "Nombre", "N\u00fam. Referencia" }' columnCount="3" width="100%">
+        	<span jwcid="@Liguero" letras="ognl: letrasContratos"  leerLetraListener="ognl: listeners.leerLetra" letraSeleccionada="ognl: letraSeleccionada"/>
+            <tr jwcid="forContratos@Foreach" source="ognl: contratos" element="tr" class="ognl: beans.evenOdd.next">
+                <td class="normal"><span jwcid="@Insert" value="ognl: components.forContratos.value[0]" raw="yes" /></td>
+                <td class="normal"><a jwcid="@DirectLink" listener="ognl: listeners.seleccionarContrato" parameters="ognl: components.forContratos.value[0]" onClick="fnShowWaitImage();"><span jwcid="@Insert" value="ognl: components.forContratos.value[1]" raw="yes" /></a></td>
+                <td class="normal"><span jwcid="@DatosClaveReferencia" idPersona="ognl: components.forContratos.value[2]" prefijo ="ognl: components.forContratos.value[2]" /></td>
+            </tr>
+        </table>
+        <br />
+        <div align="center"><a jwcid="@PageLink" page="CapturaDeal"><img jwcid="@Image" image="ognl: assets.bRegresar" src="../../../images/back.gif" alt="Regresar a la captura del deal" border="0"/></a></div>
+    </table>
+</body>
+</html>

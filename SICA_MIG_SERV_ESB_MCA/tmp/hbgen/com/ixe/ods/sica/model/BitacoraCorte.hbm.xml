@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.BitacoraCorte"
+        table="SC_BITACORA_CORTE"
+        proxy="com.ixe.ods.sica.model.BitacoraCorte"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idBitacora"
+            column="ID_BITACORA"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_BITACORA_CORTE_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-BitacoraCorte.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="estatusCorte"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ESTATUS_CORTE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="idCorte"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_CORTE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fecha"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="usuario"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="USUARIO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="comentarios"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMENTARIOS"
+            not-null="true"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-BitacoraCorte.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findBitacoraCorteById"><![CDATA[
+            FROM BitacoraCorte as b where b.idBitacora = ?
+        ]]></query>
+        <query name="findBitacoraCorteByIdCorte"><![CDATA[
+            FROM BitacoraCorte as b where b.scCorte.idCorte = ?
+        ]]></query>
+        <query name="findMaxBitacoraCorteByIdCorte"><![CDATA[
+            FROM BitacoraCorte as b where b.idCorte = ? and b.idBitacora in (select max(b1.id_Bitacora) from BitacoraCorte as b1 where b1.idCorte = ?) order by b.idBitacora desc
+        ]]></query>
+
+</hibernate-mapping>

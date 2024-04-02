@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ClientesAreaContratos.page,v 1.1.2.3.2.3 2017/10/04 17:32:27 mejiar Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.ClientesAreaContratos">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+	<bean name="dateValidator" class="org.apache.tapestry.valid.DateValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+    
+    <component id="paternoTextField" type="ValidField">
+        <static-binding name="displayName" value="Apellido Paterno:" />
+        <binding name="validator" expression="beans.stringValidator" />
+        <binding name="value" expression="paterno" />
+    </component>
+
+    <component id="maternoTextField" type="ValidField">
+        <static-binding name="displayName" value="Apellido Materno:" />
+        <binding name="validator" expression="beans.stringValidator" />
+        <binding name="value" expression="materno" />
+    </component>
+
+    <component id="nombreTextField" type="ValidField">
+        <static-binding name="displayName" value="Nombre:" />
+        <binding name="validator" expression="beans.stringValidator" />
+        <binding name="value" expression="nombre" />
+    </component>
+
+    <component id="razonSocialTextField" type="ValidField">
+        <static-binding name="displayName" value="Raz&#243;n Social:" />
+        <binding name="validator" expression="beans.stringValidator" />
+        <binding name="value" expression="razonSocial" />
+    </component>
+    
+    <component id="noSicTextField" type="ValidField">
+        <static-binding name="displayName" value="Numero SIC:" />
+        <binding name="validator" expression="beans.stringValidator" />
+        <binding name="value" expression="noSic" />
+    </component>
+    
+    <component id="sucursalOrigenTextField" type="ValidField">
+        <static-binding name="displayName" value="Sucursal Origen:" />
+        <binding name="validator" expression="beans.stringValidator" />
+        <binding name="value" expression="sucursalOrigen" />
+    </component>
+    
+     <component id="sucursalOperaTextField" type="ValidField">
+        <static-binding name="displayName" value="Sucursal donde Opera:" />
+        <binding name="validator" expression="beans.stringValidator" />
+        <binding name="value" expression="sucursalOpera" />
+    </component>
+    
+    <component id="noCuentaTextField" type="ValidField">
+        <static-binding name="displayName" value="Numero de Cuenta:" />
+        <binding name="validator" expression="beans.stringValidator" />
+        <binding name="value" expression="cuentaCheques" />
+    </component>
+    
+    <component id="selectItem" type="PropertySelection">
+	    <binding name="model" expression="actividadEconomicaModel"/>
+	    <binding name="value" expression="actividadEconomica"/>
+	    <!-- binding name="submitOnChange" expression="true"/ -->
+	</component>
+
+
+    <property-specification name="modoSubmit" type="int" />
+    <property-specification name="fisicaMoral" type="java.lang.String" persistent="yes" />
+    <property-specification name="paterno" type="java.lang.String" persistent="yes" />
+    <property-specification name="materno" type="java.lang.String" persistent="yes" />
+    <property-specification name="nombre" type="java.lang.String" persistent="yes" />
+    <property-specification name="razonSocial" type="java.lang.String" persistent="yes" />
+    <property-specification name="rfc" type="java.lang.String" persistent="yes" />
+    <property-specification name="noCuenta" type="java.lang.String" persistent="yes" />
+    <property-specification name="sectorBanxico" type="java.util.Map" persistent="yes" />
+    <property-specification name="giroEconomico" type="java.util.Map" persistent="yes" />
+    <property-specification name="actividadEconomica" type="java.util.Map" persistent="yes" />
+    <property-specification name="estadoCivil" type="java.util.Map" persistent="yes" />
+    <property-specification name="lugarNacimiento" type="java.lang.String" persistent="yes" />
+	<property-specification name="nacionalidad" type="java.util.Map" persistent="yes" />
+    <property-specification name="sexo" type="java.lang.String" persistent="yes" />
+    <property-specification name="facturacionElectronica" type="boolean" persistent="yes" />
+    <property-specification name="fechaNacimiento" type="java.util.Date" persistent="yes" />
+    <property-specification name="fechaNacimientoString" type="java.lang.String" persistent="yes" />
+    <property-specification name="primaria" type="boolean" persistent="yes" />
+    <property-specification name="calle" type="java.lang.String" persistent="yes" />
+    <property-specification name="noExterior" type="java.lang.String" persistent="yes" />
+    <property-specification name="noInterior" type="java.lang.String" persistent="yes" />
+    <property-specification name="colonia" type="java.lang.String" persistent="yes" />
+    <property-specification name="ciudad" type="java.lang.String" persistent="yes" />
+    <property-specification name="codigoPostal" type="java.lang.String" persistent="yes" />
+    <property-specification name="delegacion" type="java.lang.String" persistent="yes" />
+    <property-specification name="estado" type="java.lang.String" persistent="yes" />
+    <property-specification name="pais" type="java.util.Map" persistent="yes" />
+    <property-specification name="paisNacimiento" type="java.util.Map" persistent="yes" />
+    <property-specification name="empresa" type="java.util.Map" persistent="yes" />
+    <property-specification name="noSic" type="java.lang.String" persistent="yes" />
+    <property-specification name="sucursalOrigen" type="java.lang.String" persistent="yes" />
+    <property-specification name="sucursalOpera" type="java.lang.String" persistent="yes" />
+    <property-specification name="cuentaCheques" type="java.lang.String" persistent="yes" /> 
+    <property-specification name="nombreEmpresa" type="java.lang.String" persistent="yes" />
+    <property-specification name="email" type="java.lang.String" persistent="yes" />
+    <property-specification name="clavesReferencia" type="java.util.Map" persistent="yes" />
+    
+    <!-- <property-specification name="actividadEconomicaModel" type="org.apache.tapestry.form.IPropertySelectionModel" persistent="yes"/> -->
+    <property-specification name="tipoComprobanteDireccion" type="java.util.Map" persistent="yes" />
+    <property-specification name="numeroComprobante" type="java.lang.String" persistent="yes" />
+    <property-specification name="fechaComprobante" type="java.util.Date" persistent="yes" />
+    <property-specification name="verLupaBuscarCodigoPostal" type="boolean" persistent="yes" />
+    
+    <!-- Campos de captura para el apoderado legal -->
+    <property-specification name="apoderadoPaterno" type="java.lang.String" persistent="yes" />
+    <property-specification name="apoderadoMaterno" type="java.lang.String" persistent="yes" />
+    <property-specification name="apoderadoNombre" type="java.lang.String" persistent="yes" />
+    <property-specification name="idPersonaApoderado" type="java.lang.Integer" persistent="yes" />
+    
+    <!-- Check para mostrar los campos de informacion regulatoria -->
+    <property-specification name="verCamposRegulatorios" type="boolean" persistent="yes" />
+    
+    <!-- Variable para navegar en las secciones de la pagina -->
+    <property-specification name="seccion" type="java.lang.String" persistent="yes" />
+    <property-specification name="subSeccion" type="java.lang.String" persistent="yes" />
+    <property-specification name="modoBusqueda" type="boolean" persistent="yes" />
+    <property-specification name="modoActualizar" type="boolean" persistent="yes" />
+    <property-specification name="modoDireccion" type="boolean" persistent="yes" />
+    
+    <!-- Campos de informacion regulatoria -->
+    <property-specification name="claveBanxico" type="java.lang.String" persistent="yes" />
+    <property-specification name="contraparte" type="java.lang.String" persistent="yes" />
+    <property-specification name="tipoSociedadMercantil" type="java.util.Map" persistent="yes" />
+    <property-specification name="tipoIdentificador" type="java.util.Map" persistent="yes" />
+    <property-specification name="claveIdentificador" type="java.lang.String" persistent="yes" />
+    <property-specification name="tipoContraparte" type="java.util.Map" persistent="yes" />
+    <property-specification name="claveLei" type="java.lang.String" persistent="yes" />
+    <property-specification name="sectorIndustrial" type="java.util.Map" persistent="yes" />
+    <property-specification name="paisControlContraparte" type="java.util.Map" persistent="yes" />
+    <property-specification name="paisContraparte" type="java.util.Map" persistent="yes" />
+    <property-specification name="claveLeiMatrizDirecta" type="java.lang.String" persistent="yes" />
+    <property-specification name="claveLeiMatrizUltima" type="java.lang.String" persistent="yes" />
+    <property-specification name="fechaContraparte" type="java.util.Date" persistent="yes" />
+    <property-specification name="tipoRelacion" type="java.util.Map" persistent="yes" />
+    <property-specification name="grupoFinanciero" type="java.lang.Integer" persistent="yes" />
+    <property-specification name="tipoEventoRelacion" type="java.util.Map" persistent="yes" />
+    <property-specification name="fechaEventoRelacion" type="java.util.Date" persistent="yes" />
+    <property-specification name="signosNoValidos" type="boolean" persistent="yes" />
+    
+    <!-- Campo utilizado para mantener el idPersonaCliente para actualizacion de cr -->
+    <property-specification name="idPersonaCr" type="java.lang.Integer" persistent="yes" />
+    <property-specification name="idClienteCr" type="java.lang.Integer" persistent="yes" />
+    <property-specification name="nombreClienteCr" type="java.lang.String" persistent="yes" />
+    <property-specification name="actualizarCr" type="boolean" persistent="yes" />
+    <property-specification name="errorFaltaSic" type="boolean" persistent="yes" />
+    <property-specification name="errorFaltaNumCuenta" type="boolean" persistent="yes" />
+    <property-specification name="errorFaltaSucOpera" type="boolean" persistent="yes" />
+    
+    <property-specification name="hashmapColonia" type="java.util.HashMap" persistent="yes"/>
+    <property-specification name="hashmapMunicipio" type="java.util.HashMap" persistent="yes"/>
+    <property-specification name="hashmapEntidad" type="java.util.HashMap" persistent="yes"/>
+    <property-specification name="vectorPais" type="java.util.Vector" persistent="yes" />
+    
+    <property-specification name="level" type="int" />
+    <property-specification name="noColumnasClientes" type="int" />
+    <property-specification name="noColumnasDirecciones" type="int" />
+    <property-specification name="noColumnasMediosContacto" type="int" />
+	<property-specification name="personasBUP" type="java.util.List" persistent="yes"/>
+    <property-specification name="direccionesCliente" type="java.util.List" persistent="yes"/>
+    <property-specification name="mediosContacto" type="java.util.List" persistent="yes"/>
+    <property-specification name="noCuentaContratoSica" type="java.lang.String" persistent="yes" />
+    <property-specification name="alta" type="boolean" persistent="yes" />
+    
+    <property-specification name="faltaNombre" type="boolean" persistent="yes" />
+    <property-specification name="faltaPaterno" type="boolean" persistent="yes" />
+    <property-specification name="faltaMaterno" type="boolean" persistent="yes" />
+    <property-specification name="faltaSector" type="boolean" persistent="yes" />
+    <property-specification name="faltaGiro" type="boolean" persistent="yes" />
+    <property-specification name="faltaActividad" type="boolean" persistent="yes" />
+    <property-specification name="faltaNacionalidad" type="boolean" persistent="yes" />
+    <property-specification name="faltaRfc" type="boolean" persistent="yes" />
+    <property-specification name="faltaFechaNacimiento" type="boolean" persistent="yes" />
+    
+    <property-specification name="faltaRazonSocial" type="boolean" persistent="yes" />
+    <property-specification name="faltaNombreApoderado" type="boolean" persistent="yes" />
+    <property-specification name="faltaPaternoApoderado" type="boolean" persistent="yes" />
+    <property-specification name="faltaMaternoApoderado" type="boolean" persistent="yes" />
+    
+    <property-specification name="faltaNombreContraparte" type="boolean" persistent="yes" />
+    <property-specification name="faltaSociedadMercantil" type="boolean" persistent="yes" />
+    <property-specification name="faltaIdentificadorContraparte" type="boolean" persistent="yes" />
+    <property-specification name="faltaClaveContraparte" type="boolean" persistent="yes" />
+    <property-specification name="faltaTipoContraparte" type="boolean" persistent="yes" />
+    <property-specification name="faltaClaveLei" type="boolean" persistent="yes" />
+    <property-specification name="faltaSectorIndustrial" type="boolean" persistent="yes" />
+    <property-specification name="faltaPaisControl" type="boolean" persistent="yes" />
+    <property-specification name="faltaPaisContraparte" type="boolean" persistent="yes" />
+    <property-specification name="faltaClaveLeiDirecta" type="boolean" persistent="yes" />
+    <property-specification name="faltaClaveLeiUltima" type="boolean" persistent="yes" />
+    <property-specification name="faltaFechaContraparte" type="boolean" persistent="yes" />
+    <property-specification name="faltaTipoRelacion" type="boolean" persistent="yes" />
+    
+    <property-specification name="faltaGrupoFinanciero" type="boolean" persistent="yes" />
+    <property-specification name="faltaEventoRelacion" type="boolean" persistent="yes" />
+    <property-specification name="faltaFechaRelacion" type="boolean" persistent="yes" />
+    
+    <property-specification name="faltaCalle" type="boolean" persistent="yes" />
+    <property-specification name="faltaNoExterior" type="boolean" persistent="yes" />
+    <property-specification name="faltaNoInterior" type="boolean" persistent="yes" />
+    <property-specification name="faltaCodigoPostal" type="boolean" persistent="yes" />
+    <property-specification name="faltaColonia" type="boolean" persistent="yes" />
+    <property-specification name="faltaCiudad" type="boolean" persistent="yes" />
+    <property-specification name="faltaDelegacion" type="boolean" persistent="yes" />
+    <property-specification name="faltaEstado" type="boolean" persistent="yes" />
+    <property-specification name="faltaTipoComprobante" type="boolean" persistent="yes" />
+    <property-specification name="faltaNoComprobante" type="boolean" persistent="yes" />
+    <property-specification name="faltaFechaExpedicion" type="boolean" persistent="yes" />
+    
+    <property-specification name="faltaEmail" type="boolean" persistent="yes" />
+    
+    <property-specification name="faltaCurp" type="boolean" persistent="yes" />
+    <property-specification name="faltaIdExtranjero" type="boolean" persistent="yes" />
+    <property-specification name="faltaTipoDocumento" type="boolean" persistent="yes" />
+    <property-specification name="faltaNumDocumento" type="boolean" persistent="yes" />
+    
+    <property-specification name="faltaNit" type="boolean" persistent="yes" />
+    
+	<!-- Datos del Ife y del Pasaporte
+	<property-specification name="showIfe" type="boolean" persistent="yes" />
+    <property-specification name="showPasaporte" type="boolean" persistent="yes" />
+    <property-specification name="pasaporte" type="java.lang.String" persistent="yes" />
+    <property-specification name="folioIfe" type="java.lang.String" persistent="yes" />
+    <property-specification name="anioRegistroIfe" type="java.lang.String" persistent="yes" />
+    <property-specification name="numeroEmisionIfe" type="java.lang.String" persistent="yes" />
+    <property-specification name="numeroOcrIfe" type="java.lang.String" persistent="yes" />
+    <property-specification name="showInsertDatComp" type="boolean" persistent="yes" />
+    <property-specification name="showCbNacionalidad" type="boolean" persistent="yes" />
+    -->
+    <property-specification name="nombreCompleto" type="java.lang.String" persistent="yes" />
+    <property-specification name="idPersona" type="java.lang.Integer" persistent="yes" />
+    <property-specification name="idDireccionCliente" type="java.lang.Integer" persistent="yes" />
+    <property-specification name="idMedioContacto" type="java.lang.Integer" persistent="yes" />
+    
+    <property-specification name="curp" type="java.lang.String" persistent="yes" />
+    <property-specification name="idExtranjero" type="java.lang.String" persistent="yes" />
+    <property-specification name="numDocumento" type="java.lang.String" persistent="yes" />
+    <property-specification name="tipoDocumento" type="java.util.Map" persistent="yes" />
+    <property-specification name="nacionalidadMexicana" type="boolean" persistent="yes" /> 
+      
+    <property-specification name="nit" type="java.lang.String" persistent="yes" />
+    <property-specification name="requiereNit" type="boolean" persistent="yes" />    
+    <property-specification name="direccionPaisExtranjero" type="boolean" persistent="yes" />
+    
+    <context-asset name="buscarButton" path="/images/search.gif" />
+    <context-asset name="agregarButton" path="/images/add.gif" />
+    <context-asset name="guardarButton" path="/images/save.gif" />
+    <context-asset name="backButton" path="/images/back.gif" />
+	<context-asset name="buscarCodigoPostal" path="/images/encontrar.gif" />
+    <context-asset name="actualizarButton" path="/images/actualizar.gif" />
+</page-specification>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.LineaCreditoReinicioExceso"
+        table="SC_LC_REINICIO_EXCESO"
+        proxy="com.ixe.ods.sica.model.LineaCreditoReinicioExceso"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idReinicioExceso"
+            column="ID_REINICIO_EXCESO"
+            type="java.lang.Integer"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_LC_REINICIO_EXCESO_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-LineaCreditoReinicioExceso.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="fechaEjecucion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_EJECUCION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="procesoEjecutado"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="PROCESO_EJECUTADO"
+            not-null="true"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-LineaCreditoReinicioExceso.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findReinicioTrimestre"><![CDATA[
+            FROM LineaCreditoReinicioExceso AS p WHERE p.procesoEjecutado = '0' ORDER BY p.fechaEjecucion desc
+        ]]></query>
+
+</hibernate-mapping>

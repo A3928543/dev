@@ -1,0 +1,96 @@
+<!-- $Id: LimiteRiesgo.html,v 1.10 2008/04/16 18:20:30 ccovian Exp $ -->
+<html jwcid="$content$">
+	<head jwcid="$remove$">
+	    <title>L&iacute;mite de Riesgo</title>
+	    <link rel="StyleSheet" href="css/ixe.css">
+	</head>
+	<body jwcid="@PageBorder">
+		<table jwcid="@ActionPortletBorder" title="L&iacute;mites Globales de Riesgo" minimizable="yes" minimized="ognl: limitesGlobalesMinimizados"> 
+		<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate2" insertBreakAtTail="yes" width="100%" />
+				<form jwcid="@Form" listener="ognl:listeners.actualizarLimites" delegate="ognl: beans.delegate2">
+					<table width="100%">
+					        <tr>
+					        	<td class="title" align="right">Capital Total:</td>
+					            <td class="normal"><input jwcid="capitalTotalTextField" maxlength="20" size="20" class="currencyfield" /></td>
+					            <td class="title" align="right" nowrap> X el % del Capital :</td>
+					            <td class="title" nowrap><input jwcid="porcCapitalTextField" type="text" size="4" maxlength="4" />&nbsp; =     l&iacute;mite de riesgo Regulatorio Global &nbsp;</td>
+					            <td class="normal"><span jwcid="@Insert" value="ognl: limiteRegulatorio" format = "ognl: moneyFormat" /></td>
+					            <td class="title" align="right">USD</td>
+					        </tr>
+					        <tr>
+					        	<td class="title" align="right" nowrap>Verificar L&iacute;mite cada:</td>
+					            <td class="title" ><input jwcid="minutosTextField" type="text" size="3" maxlength="3" />&nbsp; minutos</td>
+	   						    <td class="title">&nbsp;</td>
+					            <td class="title" align="center"> con % de aviso &nbsp; <input jwcid="porcAvisoTextField" type="text" size="3" maxlength="3" /> con % de alarma de &nbsp; </td>
+								<td class="title" ><input jwcid="porcAlarmaTextField" type="text" size="3" maxlength="3" /></td>
+							    
+					        </tr>
+					        <tr>
+					        	<td class="title" align="right" nowrap>A partir de:</td>
+					            <td class="normal"><input jwcid="montoMaximoDealTextField" type="text" size="20" maxlength="20" /></td>
+	  				            <td class="title" nowrap>USD, informar a banxico.</td>
+					            <td class="title" align="right"> Nivel de Confianza :</td>
+					            <td class="normal"> <input jwcid="nivelConfianzaTextField" type="text" size="4" maxlength="4" /></td>
+					        </tr>
+					        <tr>
+					            <td class="normal" nowrap>&nbsp;</td>
+					            <td class="normal" nowrap>&nbsp;</td>
+	   				            <td class="normal" nowrap>&nbsp;</td>
+					        	<td class="title" align="right"> Horizonte de Tiempo:</td>
+					            <td class="title" align="left" nowrap><span jwcid="@PropertySelection" model="ognl:@com.ixe.ods.sica.pages.control.LimiteRiesgo@HORIZONTE_DE_TIEMPO_MODEL" value="ognl:horizonteTiempo"/>d&iacute;as h&aacute;biles:</td>
+					        </tr>
+				 	</table>   
+					<div align="center">
+						<input jwcid="@ImageSubmit" image="ognl: assets.saveButton" onclick="return fnDisableForm(this.form);" />
+					</div>
+				</form>
+			</table>
+			<br />
+				<table jwcid="@ActionPortletBorder" title="L&iacute;mites Globales por mesa" minimizable="yes" minimized="ognl: limitesMesaMinimizados"> 	
+				<form jwcid="@Form" listener="ognl: listeners.findLimitesPorMesa" delegate="ognl: beans.delegate">
+	            	    <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" width="100%" />
+	            	    <table>
+					    	<tr>
+								<td class="title">Mesa de cambios: </td>
+	 							<td class="normal"><select jwcid="mesasCambioComboBox" /></td>
+							</tr>
+						</table>
+				</form>
+				<form jwcid="@Form" listener="ognl: listeners.limitesPorMesa" delegate="ognl: beans.delegate">
+					<span jwcid="@contrib:FormConditional" condition="ognl: limites">
+						<table jwcid="@TablaLimites"  limites="ognl: limites "/>
+						<br />
+					    <div align="center">
+							<input jwcid="@ImageSubmit" image="ognl: assets.saveButton" />
+						</div>
+		 			</span>
+		 		</form>
+				<form jwcid="@Form" listener="ognl: listeners.limitesPorDivisa" delegate="ognl: beans.delegate2">			            	
+					<span jwcid="@contrib:FormConditional" condition="ognl: limites">
+						<fieldset class="normal"> 
+			            	<legend class="legend">Limites de Riesgo por Divisa</legend> 
+		                	<table width="100%">
+						    	<tr >
+									<td class="title" align="left" nowrap>Mesa de cambios : <span jwcid="@Insert" value="ognl: mesaCambioSeleccionada.nombre" /></td>
+									<td class="title" align="center" width="100%">Divisas : <select jwcid="divisasComboBox" /></td>
+								</tr>
+							</table>
+						</fieldset>
+						<table width="100%">
+							<tr jwcid="@contrib:FormConditional" condition="ognl: limitesPorDivisa">
+								<span jwcid="@TablaLimites"  limites="ognl: limitesPorDivisa "/>
+								 <br />
+							    <div align="center">
+									<input jwcid="@ImageSubmit" image="ognl: assets.saveButton" selected="ognl: modo" tag="ognl:@com.ixe.ods.sica.pages.control.LimiteRiesgo@ACTUALIZAR" /> <input jwcid="@ImageSubmit" image="ognl: assets.removeButton" selected="ognl: modo" tag="ognl:@com.ixe.ods.sica.pages.control.LimiteRiesgo@BORRAR" onclick="javascript: return confirm('¿Se eliminan los L\u00edmites de la Divisa seleccionada?');" />
+								</div>
+							</tr>
+                            <br/>
+						    <div align="center">
+							 	<input jwcid="@ImageSubmit" image="ognl: assets.addButton" selected="ognl: modo" tag="ognl:@com.ixe.ods.sica.pages.control.LimiteRiesgo@AGREGAR" > </input>	
+							</div>
+					 	</table>
+		 			</span>
+		 		</form>
+			</table> 
+	</body>
+</html>

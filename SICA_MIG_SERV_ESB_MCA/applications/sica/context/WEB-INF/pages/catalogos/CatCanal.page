@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CatCanal.page,v 1.11 2008/10/27 23:20:07 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.catalogos.CatCanal">
+
+	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <bean name="stringValidator" class="org.apache.tapestry.valid.StringValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <bean name="doubleValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="minimum" expression="0"/>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <component id="idTextField" type="ValidField">
+        <static-binding name="displayName" value="Clave" />
+        <static-binding name="maxlength" value="3" />
+        <static-binding name="class" value="uppercase" />
+        <binding name="validator" expression="beans.stringValidator" />
+        <binding name="value" expression="registro.idCanal" />
+    </component>
+
+    <component id="nombreTextField" type="ValidField">
+        <static-binding name="displayName" value="Nombre" />
+        <static-binding name="maxlength" value="20" />
+        <static-binding name="size" value="20" />
+        <static-binding name="class" value="uppercase" />
+        <binding name="validator" expression="beans.stringValidator" />
+        <binding name="value" expression="registro.nombre" />
+    </component>
+
+    <component id="sucursalComboBox" type="PropertySelection">
+        <binding name="model" expression='new com.legosoft.tapestry.model.RecordSelectionModel(getSucursalesFiltradas(), "idSucursal", "nombre")' />
+        <binding name="value" expression="registro.sucursal" />
+    </component>
+        
+    <component id="facultadesComboBox" type="PropertySelection">
+        <binding name="model" expression='new com.legosoft.tapestry.model.RecordSelectionModel(sicaServiceData.findFacultadesCanales(), "nombre", "descripcion")' />
+        <binding name="value" expression="registro.facultad" />
+    </component>
+
+    <component id="mesasCambioComboBox" type="PropertySelection">
+        <binding name="model" expression='new com.legosoft.tapestry.model.RecordSelectionModel(sicaServiceData.findAll(@com.ixe.ods.sica.model.MesaCambio@class), "idMesaCambio", "nombre")' />
+        <binding name="value" expression="registro.mesaCambio" />
+    </component>
+    
+    <component id="tipoIvaComboBox" type="PropertySelection">
+        <binding name="model" expression="new com.ixe.ods.sica.components.TipoIvaSelectionModel(sicaServiceData.findAll(@com.ixe.ods.bup.model.TipoIva@class))" />
+        <binding name="value" expression="claveTipoIva" />
+    </component>
+
+    <component id="tiposPizarronComboBox" type="PropertySelection">
+        <binding name="model" expression="tiposPizarronModel" /> 
+        <binding name="value" expression="registro.tipoPizarron" />
+    </component>
+
+	<property-specification name="sucursal" type="com.ixe.ods.bup.model.Sucursal" persistent="yes" />
+    <property-specification name="registro" type="java.io.Serializable" persistent="yes" />
+    <property-specification name="modoUpdate" type="boolean" persistent="yes" />
+    <property-specification name="claveTipoIva" type="java.lang.String" persistent="yes" />
+    <property-specification name="nombrePaginaConsulta" type="java.lang.String" initial-value='"CatCanales"' />
+    <property-specification name="tipoPizarron" type="com.ixe.ods.sica.model.TipoPizarron" persistent="yes" />
+
+    <context-asset name="acceptButton" path="/images/save.gif" />
+    <context-asset name="cancelButton" path="/images/cancel.gif" />
+
+</page-specification>

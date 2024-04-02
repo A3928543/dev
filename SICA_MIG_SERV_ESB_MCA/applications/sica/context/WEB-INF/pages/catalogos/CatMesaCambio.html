@@ -1,0 +1,32 @@
+<!-- $Id: CatMesaCambio.html,v 1.9 2008/02/22 18:25:17 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Encabezado</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <form jwcid="@Form" listener="ognl: listeners.actualizar" delegate="ognl:beans.delegate">
+        <table jwcid="@ActionPortletBorder" title="Mesa de Cambio" width="100%">
+            <table jwcid="@TableBorder" title="ognl: null" columnCount="2" width="100%">
+                <tr class="titlecell">
+                    <td width="50%" align="right" class="title">Clave:</td>
+                    <td class="normalcell"><span jwcid="@Insert" value="ognl: registro.idMesaCambio" /></td>
+                </tr>
+                <tr class="titlecell">
+                    <td align="right" class="title">Descripci&oacute;n:</td>
+                    <td class="normalcell"><input jwcid="nombreTextField" size="15" maxlength="10"/></td>
+                </tr>
+                <tr class="titlecell">
+                    <td align="right" class="title">Divisa Referencia:</td>
+                    <td class="normalcell"><input jwcid="divisasComboBox"/></td>
+                </tr>
+            </table>
+            <br />
+            <div align="center">
+                <input jwcid="@ImageSubmit" image="ognl: assets.acceptButton" onclick="return fnDisableForm(this.form);" />
+                <a jwcid="@PageLink" page="CatMesasCambio" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.cancelButton"/></a>
+            </div>
+        </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<view:TipoCambio verticalGap="0" horizontalGap="0"
+    xmlns:mx="http://www.macromedia.com/2003/mxml"
+    xmlns:view="com.ixe.ods.sica.posicion.views.*"
+    xmlns:ls="com.legosoft.*"
+    xmlns:sica="*">
+
+    <mx:NumberFormatter id="numberFormatter" precision="2"/>
+
+    <mx:NumberFormatter id="exchangeFormatter" precision="6"/>
+
+    <mx:GridRow width="380">
+        <mx:GridItem horizontalAlign="right" colSpan="6">
+            <mx:Label text="{ 'Monto ' + parentApplication.idDivisaReferencia }" fontWeight="bold"/>
+        </mx:GridItem>
+    </mx:GridRow>
+
+    <sica:TipoCambioCompra dataProvider="{dataProvider}"/>
+
+    <sica:TipoCambioVenta dataProvider="{dataProvider}"/>
+
+</view:TipoCambio>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--$Id: CapturaTipoCambioMesa.mxml,v 1.2 2010/04/30 15:18:35 ccovian Exp $ -->        
+<mx:HBox xmlns:mx="http://www.macromedia.com/2003/mxml">
+
+	<mx:Metadata>
+		[Event("aplicado")]
+	</mx:Metadata>
+	
+	<mx:Script>
+	<![CDATA[
+		var indexTipoOper : Number;
+		var indexIdDivisa : Number;
+		var indexFormaLiq : Number;
+		var listaDetalles : Array;
+	]]>
+	</mx:Script>
+	
+	<mx:Model id="tcmModel">
+        <tcm>{Number(tipoCambioMesaModificado.text)}</tcm>
+    </mx:Model>
+    
+    <mx:NumberFormatter id="formateadorTc" thousandsSeparatorFrom="" thousandsSeparatorTo=""
+                        precision="8" />
+                        
+    <mx:NumberValidator field="tcmModel.tcm" requiredFieldError="El campo es requerido."
+                        listener="tipoCambioMesaModificado" minValue="0.00000001" maxValue="999999999999.99999999" domain="real"
+                        precision="8" allowNegative="false"
+                        exceedsMaxError="El n&#250;mero excede el m&#224;ximo valor permitido."
+                        lowerThanMinError="El n&#250;mero es menor que el m&#237;nimo valor permitido."
+                        negativeError="El n&#250;mero no debe ser negativo."
+                        precisionError="Deben ser solo dos decimales."
+                        separationError="El separador de miles debe ser seguido por tres d&#237;gitos."
+                        decimalPointCountError="El separador decimal s&#243;lo puede ocurrir una vez."
+                        invalidCharError="El valor ingresado contiene caracteres inv&#224;lidos."
+                        invalidFormatCharsError="Unos de los par&#224;metros del formato es inv&#224;lido." />
+                        
+	<mx:Label text="Tipo de Cambio Mesa:" />
+	<mx:TextInput id="tipoCambioMesaModificado" restrict="0-9\." width="100"/>
+	<mx:Button label="Aplicar" click="dispatchEvent({type: 'aplicado', _listaDetalles: listaDetalles,
+	 _nuevoTipoCambioMesa: tcmModel.tcm, _indexTipoOper: indexTipoOper, _indexIdDivisa: indexIdDivisa, _indexFormaLiq: indexFormaLiq})"/>
+
+</mx:HBox>

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CapturaAutorizaTce.page,v 1.1.2.8.2.4 2012/12/01 03:22:34 mejiar Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.autorizatce.CapturaAutorizaTce">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <bean name="tcValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="maximum" expression="999999.999999" />
+    </bean>
+    
+    <bean name="amountValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="maximum" expression="99999999999999.99" />
+    </bean>
+    
+    <!-- ################## Campos Generales ################## -->
+    
+    <component id="lblNoDeal" type="DisabledField">
+        <binding name="value" expression="operacionTce.dealNumber" />
+    </component>
+    
+    <component id="lblFechaOperacion" type="DisabledField">
+        <binding name="value" expression='operacionTce.fechaOperacion == null ? "" : dateFormat.format(operacionTce.fechaOperacion)' />
+    </component>
+    
+    <component id="cmbSistema" type="PropertySelection">
+        <binding name="model" expression="sistemaModel" />
+        <binding name="value" expression="operacionTce.sistema" />
+    </component>
+
+    <component id="txtContratoCorto" type="TextField">      
+        <binding name="value" expression="operacionTce.contratoCorto" />
+    </component>
+    
+    <component id="lblNombreClienteContratoCorto" type="DisabledField">
+    	<binding name="value" expression="operacionTce.nombreClienteContratoCorto" />
+    </component>
+
+    <component id="txtUsuarioPromotor" type="TextField">      
+        <binding name="value" expression="operacionTce.usuarioPromotor" />
+        <binding name="disabled" expression="isPromocion()" />
+    </component>
+    
+    <component id="lblNombreUsuarioPromotor" type="DisabledField">
+    	<binding name="value" expression="operacionTce.nombreUsuarioPromotor" />
+    </component>
+    
+    <component id="hiddenModoSubmit" type="Hidden">
+        <binding name="value" expression="modoSubmit" />
+    </component>
+    
+     <component id="tcTimeOut" type="CurrencyTextField">
+        <binding name="value" expression="tcTimeOut"  />
+    </component>
+    
+    <!-- ################## Campos de la Operacion ################## -->
+    
+    <component id="radioGrpOperacion" type="RadioGroup">
+        <binding name="selected" expression="operacionTce.tipoOperacion" />
+    </component>
+    
+    <component id="radioCompra" type="Radio">
+    	<binding name="value" expression="@com.ixe.ods.sica.dto.OperacionTceDto@OPERACION_COMPRA" />
+    </component>
+    
+    <component id="radioVenta" type="Radio">
+    	<binding name="value" expression="@com.ixe.ods.sica.dto.OperacionTceDto@OPERACION_VENTA" />
+    </component>
+    
+    <component id="cmbFechaValor" type="PropertySelection">
+        <binding name="model" expression='fechaValorModel' />
+        <binding name="value" expression="operacionTce.fechaValor" />
+    </component>
+    
+    <component id="lblFechaLiquidacion" type="DisabledField">
+    	<binding name="value" expression='operacionTce.fechaLiquidacion == null ? "" : dateFormat.format(operacionTce.fechaLiquidacion)' />
+    </component>
+
+    <component id="cmbDivisa" type="PropertySelection">
+        <binding name="model" expression="divisaModel" />
+        <binding name="value" expression="operacionTce.detalleOperacion.divisa" />
+    </component>
+    
+    <component id="cmbProducto" type="PropertySelection">
+        <binding name="model" expression="productoModel" />
+        <binding name="value" expression="operacionTce.detalleOperacion.producto" />
+    </component>
+    
+<!--     <component id="txtMonto" type="ValidField"> -->
+<!--         <binding name="value" expression="operacionTce.detalleOperacion.monto" /> -->
+<!--         <binding name="validator" expression="beans.amountValidator" /> -->
+<!--         <static-binding name="displayName" value="Monto:" /> -->
+<!--         <static-binding name="size" value="15" />                                                               -->
+<!--         <static-binding name="class" value="textoderecha" /> -->
+<!--     </component> -->
+    
+    <component id="txtMonto" type="CurrencyTextField">
+        <binding name="value" expression="operacionTce.detalleOperacion.monto" />
+<!--         <binding name="validator" expression="beans.amountValidator" /> -->
+<!--         <static-binding name="displayName" value="Monto:" /> -->
+        <static-binding name="size" value="15" />                                                              
+        <static-binding name="class" value="textoderecha" />
+    </component>
+    
+    <component id="txtTcCliente" type="ValidField">
+        <binding name="validator" expression="beans.tcValidator" />
+        <binding name="value" expression="operacionTce.detalleOperacion.tcCliente" />
+        <static-binding name="displayName" value="Tipo de cambio cliente:" />
+        <static-binding name="size" value="10" />
+        <static-binding name="class" value="textoderecha" />
+    </component>
+    
+    <component id="txtTcMesa" type="ValidField">
+    	<binding name="validator" expression="beans.tcValidator" />
+        <binding name="value" expression="operacionTce.detalleOperacion.tcMesa" />
+        <binding name="disabled" expression="isPromocion()" />
+        <static-binding name="displayName" value="Tipo de cambio mesa " />
+        <static-binding name="size" value="10" />
+        <static-binding name="class" value="textoderecha" />
+    </component>
+    
+    <component id="txtContraimporte" type="CurrencyTextField">
+        <binding name="value" expression="operacionTce.detalleOperacion.contraimporte" />
+<!--         <binding name="validator" expression="beans.amountValidator" /> -->
+<!--         <static-binding name="displayName" value="Contra importe:" /> -->
+        <static-binding name="size" value="15" />                                                              
+        <static-binding name="class" value="textoderecha" />
+    </component>
+    
+    <!-- ################## Campos de la Operacion - Seccion Arbitraje ################## -->
+    
+    <component id="chkArbitraje" type="Checkbox">
+        <binding name="selected" expression="operacionTce.arbitraje" />
+    </component>
+
+    <component id="cmbDivisaLiq" type="PropertySelection">
+        <binding name="model" expression="divisaLiqModel" />
+        <binding name="value" expression="operacionTce.detalleOperacionArbitraje.divisa" />
+        <binding name="disabled" expression="!operacionTce.arbitraje" />
+    </component>
+    
+    <component id="cmbProductoLiq" type="PropertySelection">
+        <binding name="model" expression="productoLiqModel" />
+        <binding name="value" expression="operacionTce.detalleOperacionArbitraje.producto" />
+        <binding name="disabled" expression="!operacionTce.arbitraje" />
+    </component>
+    
+    <component id="txtMontoLiq" type="CurrencyTextField">
+        <binding name="value" expression="operacionTce.detalleOperacionArbitraje.monto" />
+<!--         <binding name="validator" expression="beans.amountValidator" /> -->
+        <binding name="disabled" expression="!operacionTce.arbitraje" />
+<!--         <static-binding name="displayName" value="Monto:" /> -->
+        <static-binding name="size" value="15" />                                                              
+        <static-binding name="class" value="textoderecha" />
+    </component>
+    
+    <component id="txtTcClienteLiq" type="ValidField">
+        <binding name="validator" expression="beans.tcValidator" />
+        <binding name="value" expression="operacionTce.detalleOperacionArbitraje.tcCliente" />
+        <binding name="disabled" expression="!operacionTce.arbitraje" />
+        <static-binding name="displayName" value="Tipo de cambio liquidacion cliente: " />
+        <static-binding name="size" value="10" />
+        <static-binding name="class" value="textoderecha" />
+    </component>
+    
+    <component id="txtTcMesaLiq" type="ValidField">
+        <binding name="validator" expression="beans.tcValidator" />
+        <binding name="value" expression="operacionTce.detalleOperacionArbitraje.tcMesa" />
+        <binding name="disabled" expression="!operacionTce.arbitraje || isPromocion()" />
+        <static-binding name="displayName" value="Tipo de cambio liquidacion mesa: " />
+        <static-binding name="size" value="10" />
+        <static-binding name="class" value="textoderecha" />
+    </component>
+    
+    <component id="txtContraimporteLiq" type="CurrencyTextField">
+        <binding name="value" expression="operacionTce.detalleOperacionArbitraje.contraimporte" />
+<!--         <binding name="validator" expression="beans.amountValidator" /> -->
+        <binding name="disabled" expression="!operacionTce.arbitraje" />
+<!--         <static-binding name="displayName" value="Contra importe:" /> -->
+        <static-binding name="size" value="15" />                                                              
+        <static-binding name="class" value="textoderecha" />
+    </component>
+   
+    <!-- ################## Otros campos ################## -->
+    
+    <component id="txtObservaciones" type="TextArea">      
+        <binding name="value" expression="operacionTce.observaciones" />
+    </component>
+
+    <!-- ################## Botones Aceptar, Cancelar ################## -->
+    
+    <component id="btnSubmit" type="ImageSubmit">
+    	<binding name="image" expression="assets.bAceptar" />
+    	<binding name="selected" expression="modoSubmit" />
+    	<binding name="tag" expression="@com.ixe.ods.sica.pages.autorizatce.CapturaAutorizaTce@MODO_SUBMIT_SAVE" />
+    </component>
+    
+<!--     <component id="btnCancelar" type="DirectLink"> -->
+<!--         <binding name="listener" expression="listeners.cancelar" /> -->
+<!--     </component> -->
+    
+    <!-- ################## Especificacion de propiedades ################## -->
+    
+    <property-specification name="operacionTce" 				type="com.ixe.ods.sica.dto.OperacionTceDto" persistent="yes"
+    	initial-value="new com.ixe.ods.sica.dto.OperacionTceDto()" />
+	
+	<property-specification name="modoSubmit" 					type="int" persistent="yes" />
+	<property-specification name="modo" 						type="int" persistent="yes" />
+	<property-specification name="dealTimeout" 					type="int" persistent="yes" />
+    <property-specification name="tiempoRestante"				type="int" persistent="yes"/>
+	
+	<property-specification name="divisas" 						type="java.util.List" persistent="yes" />
+    <property-specification name="currentField" type="int" persistent="yes"/>
+    <property-specification name="currentDate" type="java.lang.String" persistent="yes"/>
+    <property-specification name="activoArbitraje" type="int" persistent="yes"/>
+	<property-specification name="sistemas" 					type="java.util.List" persistent="yes" />
+	<property-specification name="fechasValor" 					type="java.lang.String[]" persistent="yes" />
+	<property-specification name="productos" 					type="java.lang.String[]" persistent="yes" />
+	<property-specification name="productosLiq" 				type="java.lang.String[]" persistent="yes" />
+	
+	<!-- Lista de mensajes -->
+	<property-specification name="listaMensajes" 	type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+		
+	<property-specification name="modoSubmitUpdateByTipoOperChange" type="int" persistent="yes" 
+		initial-value="@com.ixe.ods.sica.pages.autorizatce.CapturaAutorizaTce@MODO_SUBMIT_UPDATE_BY_TIPO_OPER_CHANGE" />
+	<property-specification name="modoSubmitUpdateByFechaValorChange" type="int" persistent="yes" 
+		initial-value="@com.ixe.ods.sica.pages.autorizatce.CapturaAutorizaTce@MODO_SUBMIT_UPDATE_BY_FECHA_VALOR_CHANGE" />
+	<property-specification name="modoSubmitUpdateByDivisaChange" type="int" persistent="yes" 
+		initial-value="@com.ixe.ods.sica.pages.autorizatce.CapturaAutorizaTce@MODO_SUBMIT_UPDATE_BY_DIVISA_CHANGE" />
+	<property-specification name="modoSubmitUpdateByDivisaLiqChange" type="int" persistent="yes" 
+		initial-value="@com.ixe.ods.sica.pages.autorizatce.CapturaAutorizaTce@MODO_SUBMIT_UPDATE_BY_DIVISA_LIQ_CHANGE" />
+	<property-specification name="modoSubmitUpdateByProductoChange" type="int" persistent="yes" 
+		initial-value="@com.ixe.ods.sica.pages.autorizatce.CapturaAutorizaTce@MODO_SUBMIT_UPDATE_BY_PRODUCTO_CHANGE" />
+	<property-specification name="modoSubmitUpdateByProductoLiqChange" type="int" persistent="yes" 
+		initial-value="@com.ixe.ods.sica.pages.autorizatce.CapturaAutorizaTce@MODO_SUBMIT_UPDATE_BY_PRODUCTO_LIQ_CHANGE" />
+	
+	<property-specification name="modoSubmitUpdateByAmountChange" type="int" persistent="yes" 
+		initial-value="@com.ixe.ods.sica.pages.autorizatce.CapturaAutorizaTce@MODO_SUBMIT_UPDATE_BY_AMOUNT_CHANGE" />
+	<property-specification name="modoSubmitUpdateByAgainstAmountChange" type="int" persistent="yes" 
+		initial-value="@com.ixe.ods.sica.pages.autorizatce.CapturaAutorizaTce@MODO_SUBMIT_UPDATE_BY_AGAINST_AMOUNT_CHANGE" />
+	<property-specification name="modoSubmitUpdateByTccChange" type="int" persistent="yes" 
+		initial-value="@com.ixe.ods.sica.pages.autorizatce.CapturaAutorizaTce@MODO_SUBMIT_UPDATE_BY_TCC_CHANGE" />
+	<property-specification name="modoSubmitUpdateByTcmChange" type="int" persistent="yes" 
+		initial-value="@com.ixe.ods.sica.pages.autorizatce.CapturaAutorizaTce@MODO_SUBMIT_UPDATE_BY_TCM_CHANGE" />
+		
+	<property-specification name="modoSubmitUpdateByAmountLiqChange" type="int" persistent="yes" 
+		initial-value="@com.ixe.ods.sica.pages.autorizatce.CapturaAutorizaTce@MODO_SUBMIT_UPDATE_BY_AMOUNT_LIQ_CHANGE" />
+	<property-specification name="modoSubmitUpdateByAgainstAmountLiqChange" type="int" persistent="yes" 
+		initial-value="@com.ixe.ods.sica.pages.autorizatce.CapturaAutorizaTce@MODO_SUBMIT_UPDATE_BY_AGAINST_AMOUNT_LIQ_CHANGE" />
+	<property-specification name="modoSubmitUpdateByTccLiqChange" type="int" persistent="yes" 
+		initial-value="@com.ixe.ods.sica.pages.autorizatce.CapturaAutorizaTce@MODO_SUBMIT_UPDATE_BY_TCC_LIQ_CHANGE" />
+	<property-specification name="modoSubmitUpdateByTcmLiqChange" type="int" persistent="yes" 
+		initial-value="@com.ixe.ods.sica.pages.autorizatce.CapturaAutorizaTce@MODO_SUBMIT_UPDATE_BY_TCM_LIQ_CHANGE" />
+		
+	<property-specification name="modoSubmitUpdateByArbitrajeChange" type="int" persistent="yes" 
+		initial-value="@com.ixe.ods.sica.pages.autorizatce.CapturaAutorizaTce@MODO_SUBMIT_UPDATE_BY_ARBITRAJE_CHANGE" />
+		
+	<property-specification name="modoSubmitBuscaNombrePromotor" type="int" persistent="yes" 
+		initial-value="@com.ixe.ods.sica.pages.autorizatce.CapturaAutorizaTce@MODO_SUBMIT_BUSCA_NOMBRE_PROMOTOR" />
+	<property-specification name="modoSubmitBuscaContratoCorto" type="int" persistent="yes" 
+		initial-value="@com.ixe.ods.sica.pages.autorizatce.CapturaAutorizaTce@MODO_SUBMIT_BUSCA_CONTRATO_CORTO" />
+		
+	<property-specification name="modoSubmitCancelar" type="int" persistent="yes" 
+		initial-value="@com.ixe.ods.sica.pages.autorizatce.CapturaAutorizaTce@MODO_SUBMIT_CANCELAR" />
+		
+	<property-specification name="desvTcDetected" type="int" persistent="yes" 
+		initial-value="@com.ixe.ods.sica.dto.DetalleOperacionTceDto@DESV_TC_DETECTED" />
+		
+	<property-specification name="desvTcConfirmed" type="int" persistent="yes" 
+		initial-value="@com.ixe.ods.sica.dto.DetalleOperacionTceDto@DESV_TC_CONFIRMED" />
+		
+	<property-specification name="mensajeConfirmDesvTc" type="java.lang.String" persistent="no" />
+	
+	<!-- ################## Especificacion de propiedades - AbstractCapturaDeal ################## -->
+	
+	<property-specification name="level" type="int" persistent="no" />
+<!-- 	<property-specification name="deal" type="com.ixe.ods.sica.model.Deal" persistent="yes" /> -->
+<!-- 	<property-specification name="limitesRestriccionOperacion" type="com.ixe.ods.sica.model.LimitesRestriccionOperacion" persistent="yes" /> -->
+<!-- 	<property-specification name="modifMap" type="java.util.Map" /> -->
+<!--     <property-specification name="splitMap" type="java.util.Map" /> -->
+<!--     <property-specification name="modoInsercion" type="boolean" /> -->
+	
+	<!-- ################## Assets ################## -->
+
+    <context-asset name="bAceptar" path="/images/aceptar.gif" />
+    <context-asset name="bCancelar" path="/images/cancel.gif" />
+    <context-asset name="bFind" path="/images/encontrar.gif" />
+    
+</page-specification>

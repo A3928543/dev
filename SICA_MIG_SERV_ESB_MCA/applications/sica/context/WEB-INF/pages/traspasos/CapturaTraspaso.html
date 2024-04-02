@@ -1,0 +1,83 @@
+<!-- $Id: CapturaTraspaso.html,v 1.9 2008/02/22 18:25:14 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Captura de Traspasos dentro de la misma Mesa de Cambios</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <form jwcid="@Form" listener="ognl: listeners.crearTraspaso" delegate="ognl:beans.delegate">
+		<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level="ognl: operacionExitosa ? 1 : 0"/>
+		<table width="60%" align="center">
+		    <tr>
+		    	<td width="100%">
+			        <table jwcid="@ActionPortletBorder" title="Captura de Traspasos dentro de la misma Mesa de Cambios" width="50%">
+			            <table jwcid="@TableBorder" title="ognl: null" columnCount="2" width="100%">
+			                <tr class="titlecell">
+			                    <td colspan="1" align="right" class="title">Portafolio:</td>
+			                    <td colspan="3" class="normalcell">
+			                    	<select jwcid="@PropertySelection" model="ognl: mesasCambioModel" value="ognl: selectedMesaCambio"/>
+			                    </td>
+			                </tr>
+			                <tr class="titlecell">
+			                    <td colspan="1" align="right" class="title">Mnem&oacute;nico:</td>
+			                    <td colspan="3" class="normalcell">
+			                    	<select jwcid="@PropertySelection" model="ognl: tiposTraspasoProductoModel" value="ognl: selectedTipoTraspasoProducto" onChange="fnShowWaitImage();this.form.submit();" />
+			                    	- <input jwcid="@Insert" value="ognl: selectedTipoTraspasoProducto.descripcion" size="20"/>
+			                    </td>
+			                </tr>
+			                <tr class="titlecell">
+			                    <td align="right" class="title">De Producto:</td>
+			                    <td class="normalcell">
+			                        <input jwcid="@Insert" value='ognl: selectedTipoTraspasoProducto.de + " - " + formasPagoLiqService.getNombreFormaLiquidacion(visit.ticket, selectedTipoTraspasoProducto.de)' size="20"/>
+			                    </td>
+			                    <td align="right" class="title">A Producto:</td>
+			                    <td class="normalcell">
+			                        <input jwcid="@Insert" value='ognl: selectedTipoTraspasoProducto.a + " - " + formasPagoLiqService.getNombreFormaLiquidacion(visit.ticket, selectedTipoTraspasoProducto.a)' size="20"/>
+			                    </td>
+			                </tr>
+			                <tr class="titlecell">
+			                	<td colspan="1" align="right" class="title">Canal:</td>
+			                    <td colspan="3" class="normalcell">
+			                    	<select jwcid="@PropertySelection" model="ognl: canalesModel" value="ognl: selectedCanal" onChange="fnShowWaitImage();this.form.submit();" />
+			                    </td>
+			                </tr>
+			                <tr class="titlecell">
+			                    <td colspan="1" align="right" class="title">Divisa:</td>
+			                    <td colspan="3" class="normalcell">
+			                    	<span jwcid="@contrib:FormConditional" condition="ognl: divisaUSD">
+			                            <input jwcid="@Insert" value="ognl: selectedDivisa.descripcion" size="20"/>
+			                    	</span>
+			                    	<span jwcid="@contrib:FormConditional" condition="ognl: !divisaUSD">
+				                    	<select jwcid="@PropertySelection" model="ognl: divisasModel" value="ognl: selectedDivisa"/>
+			                        </span>
+			                    </td>
+			                </tr>
+						    <tr class="titlecell">
+			                    <td colspan="1" align="right" class="title">Monto:</td>
+			                    <td colspan="3" class="normalcell">
+				                    <span jwcid="@contrib:FormConditional" condition="ognl: !todosLosCanales">
+			    						<input jwcid="montoTextField" />
+			                        </span>
+			                    </td>
+			                </tr>
+						    <tr class="titlecell">
+			                    <td colspan="1" align="right" class="title">Observaciones:</td>
+			                    <td colspan="3" align="left" class="normalcell">
+									<textarea jwcid="@TextArea" value="ognl: observaciones" cols="90" rows="4"></textarea>
+			                    </td>
+			                </tr>
+			            </table>
+			            <br />
+			            <div align="center">
+			                <input type="image" jwcid="@ImageSubmit" image="ognl: assets.aceptarButton" selected="ognl: modoSubmit" tag="1"/>
+				            <a jwcid="@DirectLink" listener="ognl:listeners.cancelarOperacion" onClick="fnShowWaitImage();">
+				            	<img jwcid="@Image" image="ognl: assets.cancelButton" src="../../../images/cancel.gif" alt="Cancelar" />
+			            	</a>
+			            </div>
+			    	</table>
+		    	</td>
+	        </tr>
+        </table>
+    </form>
+</body>
+</html>

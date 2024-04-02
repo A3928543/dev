@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.GrupoTrabajoPromotor"
+        table="SC_GRUPO_TRABAJO_PROMOTOR"
+        proxy="com.ixe.ods.sica.model.GrupoTrabajoPromotor"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <composite-id
+            name="id"
+            class="com.ixe.ods.sica.model.GrupoTrabajoPromotorPK"
+        >
+
+                    <key-many-to-one
+                        name="promotor"
+                        class="com.ixe.ods.bup.model.EmpleadoIxe"
+                        column="ID_PROMOTOR"
+                    />
+
+                    <key-many-to-one
+                        name="grupoTrabajo"
+                        class="com.ixe.ods.sica.model.GrupoTrabajo"
+                        column="ID_GRUPO_TRABAJO"
+                    />
+
+        </composite-id>
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-GrupoTrabajoPromotor.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

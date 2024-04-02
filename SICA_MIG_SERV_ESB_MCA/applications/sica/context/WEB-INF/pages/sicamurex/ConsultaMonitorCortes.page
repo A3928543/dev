@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ConsultaMonitorCortes.page,v 1.1.4.2 2014/11/05 17:57:47 mejiar Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.monitor.ConsultaMonitorCortes">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate"/>
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+    
+    <component id="divisasList" type="PropertySelection">
+        <binding name="model" expression="divisasModel" />
+        <binding name="value" expression="divisaSeleccionada" />
+    </component>
+    
+    <property-specification name="divisaSeleccionada" type="com.ixe.ods.sica.model.Divisa" persistent="yes" />
+    <property-specification name="estadoTransferencia" type="java.lang.String" persistent="yes" />
+    <property-specification name="tituloActionMC" type="java.lang.String" persistent="yes" />
+    <property-specification name="corteDetalleList" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+    <property-specification name="divisaList" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+    <property-specification name="fechaSeleccionada" type="java.util.Date" persistent="yes" />
+    
+    <context-asset name="bExcel" path="/images/ver_excel.gif" />
+    <context-asset name="searchButton" path="/images/search.gif" />
+
+</page-specification>

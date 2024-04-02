@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CatMesaCambio.page,v 1.9 2008/02/22 18:25:17 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.catalogos.AbstractCatEdicion">
+
+	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+	<bean name="intValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"int"</set-property>
+        <set-property name="minimum" expression="0"/>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+	<bean name="stringValidator" class="org.apache.tapestry.valid.StringValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+    
+    <component id="divisasComboBox" type="PropertySelection">
+        <binding name="model" expression='new com.legosoft.tapestry.model.RecordSelectionModel(sicaServiceData.findDivisasFrecuentesMasPesos(), "idDivisa", "descripcion")'/>
+        <binding name="value" expression="registro.divisaReferencia" />
+    </component>
+
+    <component id="nombreTextField" type="ValidField">
+        <static-binding name="displayName" value="Nombre Mesa Cambio" />
+        <binding name="validator" expression="beans.stringValidator" />
+        <binding name="value" expression="registro.nombre" />
+    </component>
+
+    <property-specification name="registro" type="java.io.Serializable" persistent="yes" />
+    <property-specification name="modoUpdate" type="boolean" persistent="yes" />
+    <property-specification name="nombrePaginaConsulta" type="java.lang.String" initial-value='"CatMesasCambio"' />
+
+    <context-asset name="acceptButton" path="/images/save.gif" />
+    <context-asset name="cancelButton" path="/images/cancel.gif" />
+
+</page-specification>

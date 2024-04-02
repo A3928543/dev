@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.reportes.ReportesRegulatoriosBanxico">
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate"/>
+    
+    <property-specification name="fecha" type="java.util.Date" persistent="yes" />
+    <property-specification name="reporte" type="java.lang.String" persistent="yes" />
+    <property-specification name="formato" type="java.lang.String" persistent="yes" />
+    <property-specification name="errorComboReporte" type="boolean" persistent="yes" />
+    <property-specification name="errorComboFormato" type="boolean" persistent="yes" />
+    <property-specification name="errorFecha" type="boolean" persistent="yes" />
+    
+    <context-asset name="searchButton" path="/images/search.gif" />
+
+</page-specification>

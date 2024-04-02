@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>IXE</title>
+    <link rel="stylesheet" type="text/css" href="http://www.ixe.com.mx/portalimages/styles01001.css"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <style type="text/css">
+      <!--
+	    @import url("http://www.ixe.com.mx/portalimages/styles01001.css");
+	    body {
+	    }
+      -->
+    </style>
+  </head>
+  <body> 
+    <table width="788" border="0" align="center" cellpadding="0" cellspacing="0">
+	  <tr>
+		<td bgcolor="#FFFFFF" class="tblNL-003" colspan="2">
+		  <table width="788" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+			  <td>
+				<img src="http://www.banorte-ixe.com.mx/img/header.jpg" width="788" height="60">
+			  </td>
+			</tr>
+		  </table>
+		</td>
+	  </tr>
+	  <tr>
+	  	<td valign="middle" class="txtNL-006" colspan="2" align="left" width="788" height="90">
+	      <strong>
+		    Se informa que se proces&oacute; un deal con informaci&oacute;n regulatoria incompleta y/o err&oacute;nea:
+    	  </strong>
+		</td>
+	  </tr>
+	  <tr>
+	    <td valign="middle" class="txtNL-006" align="left" width="200" height="30">
+	      <strong>
+		    Deal:
+		  </strong>
+	    </td>
+		<td valign="middle" class="txtNL-006" align="left" width="588" height="30">
+	      $deal.idDeal
+		</td>
+	  </tr>
+      <tr>
+	    <td valign="middle" class="txtNL-006" align="left" width="200" height="30">
+		  <strong>
+		    Cliente:
+		  </strong>
+		</td>
+		<td valign="middle" class="txtNL-006" align="left" width="588" height="30">
+		  $deal.cliente.nombreCorto
+		</td>
+	  </tr>
+	  <tr>
+	    <td valign="middle" class="txtNL-006" align="left" width="200" height="30">
+	      <strong>
+		    Promotor:
+		  </strong> 
+		</td>
+	    <td valign="middle" class="txtNL-006" align="left" width="588" height="30">
+		  $deal.promotor.nombreCompleto
+	    </td>
+	  </tr>
+	  <tr>
+	    <td valign="middle" class="txtNL-006" align="left" width="200" height="30">
+	      <strong>
+		    Fecha de Captura:
+	      </strong>
+	    </td>
+	    <td valign="middle" class="txtNL-006" align="left" width="588" height="30">
+		   $deal.fechaCaptura
+	    </td>
+	  </tr>
+	  <tr>
+	    <td valign="middle" class="txtNL-006" colspan="2" width="788" height="30">
+		  <strong>
+		    $datosFaltantes
+		  </strong>
+	    </td>
+	  </tr>			 
+	</table>
+  </body>
+</html>

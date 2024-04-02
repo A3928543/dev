@@ -1,0 +1,13 @@
+D/PorProcesar////
+D/Procesados////
+/applicationContext.xml/1.1.4.2.2.3.6.1/Tue Dec  1 04:53:00 2020//TSICA_MIG_SERV_ESB_MCA
+D/cfdi////
+/config.properties/1.1.4.2.2.1.6.1/Tue Dec  1 04:53:00 2020//TSICA_MIG_SERV_ESB_MCA
+/connection.properties/1.1.4.2.8.1/Tue Dec  1 04:53:00 2020//TSICA_MIG_SERV_ESB_MCA
+/db-connection.xml/1.1.4.2.8.1/Tue Dec  1 04:53:00 2020//TSICA_MIG_SERV_ESB_MCA
+D/detalle////
+/detallePolizasTemplate.vm/1.1.4.2/Tue Dec  1 23:01:23 2015/-kb/TSICA_MIG_SERV_ESB_MCA
+/errorTemplate.vm/1.1.4.2/Tue Dec  1 23:01:23 2015/-kb/TSICA_MIG_SERV_ESB_MCA
+D/indices////
+/messages.properties/1.1.4.2.2.2/Mon Mar 12 22:04:44 2018//TSICA_MIG_SERV_ESB_MCA
+/persistence.xml/1.1.4.2.8.1/Tue Dec  1 04:53:00 2020//TSICA_MIG_SERV_ESB_MCA

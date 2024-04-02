@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.Contrato"
+        table="SC_CONTRATO"
+        proxy="com.ixe.ods.sica.model.Contrato"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idContrato"
+            column="ID_CONTRATO"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_CONTRATO_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Contrato.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="idCliente"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_CLIENTE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="noCuenta"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NO_CUENTA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="usuarioCreacion"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="USUARIO_CREACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fechaCreacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_CREACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="usuarioUltMod"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="USUARIO_ULT_MOD"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="fechaUltMod"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_ULT_MOD"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="idBloqueo"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_BLOQUEO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="emailsComprobantes"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="EMAILS_COMPROBANTES"
+            not-null="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Contrato.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findContratosByCuenta"><![CDATA[
+            FROM Contrato AS c WHERE c.noCuenta=?
+        ]]></query>
+        <query name="findContratosByCorto"><![CDATA[
+            FROM Contrato AS c WHERE c.idContrato=?
+        ]]></query>
+
+</hibernate-mapping>

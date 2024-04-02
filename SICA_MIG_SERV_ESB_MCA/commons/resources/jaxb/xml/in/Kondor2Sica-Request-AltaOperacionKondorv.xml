@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Transaction xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/in/Kondor2Sica-Request-AltaOperacionKondor.xsd">
+  <Input>
+    <Header>
+      <NombreAplic>NombreAplic</NombreAplic>
+      <Usuario>Usuario</Usuario>
+      <CorrelId>CorrelId</CorrelId>
+      <Ticket>Ticket</Ticket>
+      <Formato>Formato</Formato>
+    </Header>
+    <Requests>
+      <Request>
+        <ValidateFac>ValidateFac</ValidateFac>
+        <AltaOperacionKondor>
+          <Registro>
+            <idConf>K+FXS-484-12</idConf>
+            <divisa>USD</divisa>
+            <folio>0</folio>
+            <claveContraparte>000750</claveContraparte>
+            <nombre>ROBERTO SOSA CARRERA</nombre>
+            <rfc>SOCR600707</rfc>
+            <tipoContraparte>MOPM</tipoContraparte>
+            <plazo>2</plazo>
+            <tipoOper>0</tipoOper>
+            <monto>1000000</monto>
+            <tipo>0</tipo>
+            <fechaConcertacion>2010-04-09</fechaConcertacion>
+            <fechaLiquidacion>2010-04-09</fechaLiquidacion>
+            <swap>1</swap>
+            <!--  <folioBanxico>folioBanxico</folioBanxico> -->
+            <montoDivisa>1000000</montoDivisa>
+            <tipoCambio>13.71</tipoCambio>
+            <tipoCambioInverso>0</tipoCambioInverso>
+            <folderk>MD344</folderk>
+            <comentarios>los comentarios</comentarios>
+            <contraDivisa>MXN</contraDivisa>
+            <clasifOperacion>D</clasifOperacion>
+          </Registro>
+        </AltaOperacionKondor>
+      </Request>
+    </Requests>
+  </Input>
+</Transaction>

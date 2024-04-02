@@ -1,0 +1,13 @@
+<!-- $Id: LogContabilidad.html,v 1.1 2008/11/12 05:53:12 ccovian Exp $ -->
+<table border="0" cellspacing="1" cellpadding="2" bgcolor="#000000" width="100%">
+    <tr>
+        <td>
+            <table width="100%" bgcolor="#ffffff">
+                <tr jwcid="forMsgs@Foreach" source="ognl: global.applicationContext.getBean('logExplosionContable').logContabilidad" element="tr" valign="top">
+                    <td class="normal" nowrap><span jwcid="@Insert" value="ognl: components.forMsgs.value.fechaHora" /></td>
+                    <td class="normal"><span jwcid="@Insert" value="ognl: components.forMsgs.value.mensaje" /></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>

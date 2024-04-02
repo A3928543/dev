@@ -1,0 +1,150 @@
+<!-- $Id: ConsultaClientes.html,v 1.18.44.1.26.2 2017/07/29 03:18:47 mejiar Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Consulta de Clientes</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="@Conditional" condition="ognl: visit.mostrarPizarron">
+        <script type="text/javascript">
+        <!--
+            function setTipoDeal(td) {
+                try {
+                    window.top.frames[2].document.getElementById('pizarraApplet').setTipoDeal(td);
+                }
+                catch (ex) {
+                }
+            }
+        //-->
+        </script>
+    </span>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr valign="top">
+            <td width="200">
+                <form jwcid="@Form" listener="ognl: listeners.fetch" delegate="ognl: beans.delegate" onSubmit="return fnDisableForm(this);">
+                    <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level="ognl: level"/>
+                    <table jwcid="@ActionPortletBorder" title="ognl: tituloActionPB">
+                        <fieldset class="normal">
+                            <legend class="legend">Empresas</legend>
+                            <font class="normal"><u>R</u>az&oacute;n Social:</font><br />
+                            <input class="uppercase" type="text" jwcid="empresasTextField@ixe:UppercaseTextField" accesskey="R" value="ognl: razonSocial" size="40"/><br />
+                        </fieldset>
+                        <fieldset class="normal">
+                            <legend class="legend">Personas F&iacute;sicas</legend>
+                            <font class="normal">Apellido <u>P</u>aterno:</font><br />
+                            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" accesskey="P" value="ognl: paterno" size="40" /><br />
+                            <font class="normal">Apellido <u>M</u>aterno:</font><br />
+                            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" accesskey="M" value="ognl: materno" size="40" /><br />
+                            <font class="normal"><u>N</u>ombre:</font><br />
+                            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" value="ognl: nombre" accesskey="N" size="40" /><br />
+                        </fieldset>
+                        <fieldset class="normal">
+                            <legend class="legend">Ambas</legend>
+                            <font class="normal">Cuen<u>t</u>a / Contrato: <br>(sin omitir caracteres)</font><br />
+                            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" accesskey="T" value="ognl: noCuenta" size="40" /><br />
+                            <span jwcid="@Conditional" condition="ognl: !@com.ixe.ods.sica.FacultySystem@MODO_MESA_CONTROL.equals(modo)">
+                        		<input type="checkbox" jwcid="@Checkbox" selected="ognl: cuentasSubordinados" accesskey="B" /> <u>B</u>uscar en todas las cuentas de mi jerarqu&iacute;a
+                            </span>
+                        </fieldset>
+                        <br />
+                        <div align="center">
+                            <input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+                        </div>
+                    </table>
+                </form>
+            </td>
+            <td width="1%">&nbsp;</td>
+            <td>
+                <span jwcid="@Conditional" condition="ognl: clientes.size() &gt; 0">
+                <table jwcid="@ActionPortletBorder" title="Clientes">
+                    <table jwcid="@TableBorder" title="ognl: null" columnCount="ognl: @com.ixe.ods.sica.FacultySystem@MODO_DEAL.equals(modo) ? 6 : (@com.ixe.ods.sica.FacultySystem@MODO_PLANTILLAS.equals(modo) ? 8 : @com.ixe.ods.sica.FacultySystem@MODO_MESA_CONTROL.equals(modo) ? 6 : 5)" width="100%">
+                        <tr class="titlecell">
+                            <th class="title" nowrap>No. Cta</th>
+                            <th class="title">Nombre</th>
+                            <th class="title">Corporativo</th>
+                            <th class="title" nowrap>N&uacute;m. Referencia</th>
+                            <span jwcid="@contrib:Choose">
+                                <span jwcid="@contrib:When" condition="ognl: @com.ixe.ods.sica.FacultySystem@MODO_DEAL.equals(modo)">
+                                    <th class="title" colspan="2">&nbsp;</th>
+                                </span>
+                                <span jwcid="@contrib:When" condition="ognl: @com.ixe.ods.sica.FacultySystem@MODO_MESA_CONTROL.equals(modo)">
+                                    <th class="title">Promotor</th>
+                                    <th class="title">&nbsp;</th>
+                                    <th class="title">&nbsp;</th>
+                                </span>
+                                <span jwcid="@contrib:When" condition="ognl: @com.ixe.ods.sica.FacultySystem@MODO_PLANTILLAS.equals(modo)">
+                                    <th class="title" colspan="4">Plantillas</th>
+                                </span>
+                                <span jwcid="@contrib:Otherwise">
+                                    <th class="title">&nbsp;</th>
+                                </span>
+                            </span>
+                        </tr>
+                        <tr jwcid="forClientes@Foreach" source="ognl: clientes" element="tr" class="ognl: beans.evenOdd.next">
+                            <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forClientes.value.noCuenta" raw="yes" /></td>
+                            <td class="normal"><span jwcid="@Insert" value="ognl: components.forClientes.value.nombreCorto" raw="yes" /></td>
+                            <td class="normal" align="center"><span jwcid="@Insert" value='ognl: "PM".equals(components.forClientes.value.tipoPersona) ? (components.forClientes.value.esGrupo ? "S&iacute;" : "No") : " "' raw="yes" /></td>
+                            <td class="normal"><span jwcid="@DatosClaveReferencia" idPersona="ognl: components.forClientes.value.idPersona" prefijo ="ognl: components.forClientes.value.noCuenta" /></td>
+                            <span jwcid="@contrib:Choose">
+                                <span jwcid="@contrib:When" condition="ognl: @com.ixe.ods.sica.FacultySystem@MODO_DEAL.equals(modo)">
+                                	<span jwcid="@contrib:Choose">
+                                		<span jwcid="@contrib:When" condition="ognl: components.forClientes.value.idBloqueo != 0 && components.forClientes.value.idBloqueo != null">
+		                                		<!--td class="normal" align="center" colspan="2" alt="El contrato esta Bloqueado por:">El Cliente esta Bloqueado.</td-->
+												<td class="normal" align="center" colspan="2"><acronym jwcid="@Any" title= "ognl:obtenerDescripcionBloqueo(components.forClientes.value.idBloqueo)" lang="es">El Cliente esta Bloqueado.</acronym></td>
+		                                </span>
+		                                <span jwcid="@contrib:When" condition="ognl: components.forClientes.value.idSector != 0">
+        		                            	<td class="normal" align="center"><a href="#" jwcid="@ExternalLink" page="CapturaDeal" parameters='ognl: { 0, components.forClientes.value.noCuenta, @com.ixe.ods.sica.model.Deal@TIPO_SIMPLE, components.forClientes.value.nombreCorto, components.forClientes.value.idPersona }' onclick='setTipoDeal(1); fnShowWaitImage();'>Deal Simple</a></td>
+	                		                    <td class="normal" align="center"><a href="#" jwcid="@ExternalLink" page="CapturaDeal" parameters='ognl: { 0, components.forClientes.value.noCuenta, @com.ixe.ods.sica.model.Deal@TIPO_COMPLEJO, components.forClientes.value.nombreCorto, components.forClientes.value.idPersona }' onclick='setTipoDeal(2); fnShowWaitImage();'>Deal Complejo</a></td>
+            		                    </span>
+		                                <span jwcid="@contrib:Otherwise">
+		                                	<td class="normal" align="center" colspan="2">El Cliente no Tiene Sector Econ&oacute;mico.</td>
+		                                </span>
+
+
+	                             	</span>
+	                             </span>  
+								<span jwcid="@contrib:When" condition="ognl: @com.ixe.ods.sica.FacultySystem@MODO_PLANTILLAS.equals(modo)">
+                                    <td nowrap class="normal" align="center"><a href="#" jwcid="@DirectLink" listener="ognl: listeners.plantillasCuentaIxe" parameters='ognl: { "CuentaIxe", components.forClientes.value.noCuenta, components.forClientes.value.nombreCorto, "ConsultaClientes", components.forClientes.value.idPersona }' onClick="fnShowWaitImage();">Cuenta Ixe</a></td>
+                                    <td nowrap class="normal" align="center"><a href="#" jwcid="@DirectLink" listener="ognl: listeners.plantillasNacionales" parameters='ognl: { "Nacionales", components.forClientes.value.noCuenta, components.forClientes.value.nombreCorto, "ConsultaClientes", components.forClientes.value.idPersona }' onClick="fnShowWaitImage();">De Cheques</a></td>
+                                    <td nowrap class="normal" align="center"><a jwcid="@DirectLink" listener="ognl:listeners.plantillasTranNal" parameters='ognl: { "TranNacionales", components.forClientes.value.noCuenta, components.forClientes.value.nombreCorto, "ConsultaClientes", components.forClientes.value.idPersona }' onClick="fnShowWaitImage();">Transf. Nacionales</a></td>
+                                    <td nowrap class="normal" align="center"><a jwcid="@DirectLink" listener="ognl:listeners.plantillasIntl" parameters='ognl: { "Intls", components.forClientes.value.noCuenta, components.forClientes.value.nombreCorto, "ConsultaClientes", components.forClientes.value.idPersona }' onClick="fnShowWaitImage();">Internacionales</a></td>
+                                </span>
+                                <span jwcid="@contrib:When" condition="ognl: @com.ixe.ods.sica.FacultySystem@MODO_MESA_CONTROL.equals(modo)">
+                                    <td nowrap class="normal" align="center"><span jwcid="@Insert" value='ognl: obtenerPromotorCuenta(components.forClientes.value.noCuenta)' /></td>
+                               		<td nowrap class="normal" align="center">
+                                    	<a jwcid="@DirectLink" listener="ognl:listeners.asignarCuenta"
+                                           parameters='ognl: { components.forClientes.value.noCuenta, components.forClientes.value.nombreCorto, components.forClientes.value.idPersona }'
+                                           disabled="ognl: !visit.hasPermission(@com.ixe.ods.sica.FacultySystem@SICA_ASIGN_CTAS_AS)"
+                                           onClick="fnShowWaitImage();">Asignar</a>
+                    				</td>
+                                    <td nowrap class="normal" align="center">
+										<a jwcid="@DirectLink" listener="ognl:listeners.desasignarCuenta" parameters='ognl: { components.forClientes.value.noCuenta }'
+                                           disabled="ognl: !visit.hasPermission(@com.ixe.ods.sica.FacultySystem@SICA_ASIGN_CTAS_DS)"											
+                                           onClick="return confirm('La cuenta ser\u00e1 desasignada al ejecutivo. \u00bfDesea realizar la operaci\u00f3n?');">Desasignar</a>
+                                    </td>
+                                </span>
+                                <span jwcid="@contrib:When" condition="ognl: @com.ixe.ods.sica.FacultySystem@MODO_MEDIOS_CONTACTO.equals(modo)">
+                                    <td nowrap class="normal" align="center"><a jwcid="@DirectLink" listener="ognl:listeners.altaCorreos" parameters='ognl: components.forClientes.value.noCuenta' onClick="fnShowWaitImage();">Alta de Correos para Facturaci&#243;n Electr&#243;nica</a></td>
+                                </span>
+                                <span jwcid="@contrib:Otherwise">
+                                    <td nowrap class="normal" align="center"><a href="#" jwcid="@DirectLink" listener="ognl: listeners.agregaBeneficiario" parameters='ognl: { components.forClientes.value.noCuenta, components.forClientes.value.idPersona, components.forClientes.value.nombreCorto}' onClick="fnShowWaitImage();">Captura Beneficiarios</a></td>
+                                </span>
+                            </span>
+                        </tr>
+                    </table>
+                </table>
+                </span>
+                <span jwcid="@Conditional" condition="ognl: altaRapidaDeClientesYContratos">
+                	<table jwcid="@ActionPortletBorder" title="Alta R&aacute;pida de Clientes y Contratos SICA">
+                    	<tr>
+                    		<td nowrap class="normal" align="center">
+                    			<a href="#" jwcid="@DirectLink" listener="ognl: listeners.altaRapidaDeClientes" parameters='ognl: { "ConsultaClientes" }' onClick="fnShowWaitImage();">Agregar</a>
+							</td>
+						</tr>
+					</table>
+	            </span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

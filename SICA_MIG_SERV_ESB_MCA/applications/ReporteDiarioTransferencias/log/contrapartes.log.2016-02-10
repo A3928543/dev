@@ -1,0 +1,312 @@
+2016-02-10 12:35:51 - **********************************************************************************************************
+2016-02-10 12:35:51 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-10 12:35:51 - **********************************************************************************************************
+2016-02-10 12:35:52 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-10 12:35:57 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-10 12:35:57 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-10 12:35:57 - --> Total de registros encontrados: 16
+
+2016-02-10 12:35:57 - --> Termina consulta de transferencias.
+
+
+2016-02-10 12:35:58 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-10 12:35:58 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-10 12:35:58 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-10 12:35:58 - getTo(): vicente.delasancha_praxis@banorte.com
+2016-02-10 12:35:58 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-10 12:35:58 - vicente.delasancha_praxis@banorte.com
+2016-02-10 12:35:58 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-10 12:35:59 - **********************************************************************************************************
+2016-02-10 12:35:59 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-10 12:35:59 - **********************************************************************************************************
+2016-02-10 12:35:59 - 
+
+
+
+2016-02-10 13:31:54 - **********************************************************************************************************
+2016-02-10 13:31:54 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-10 13:31:54 - **********************************************************************************************************
+2016-02-10 13:31:55 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-10 13:31:58 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-10 13:31:58 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-10 13:31:58 - --> Total de registros encontrados: 18
+
+2016-02-10 13:31:58 - --> Termina consulta de transferencias.
+
+
+2016-02-10 13:31:59 - Registros encontrados: 18
+2016-02-10 13:31:59 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-10 13:31:59 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-10 13:31:59 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-10 13:31:59 - getTo(): vicente.delasancha_praxis@banorte.com
+2016-02-10 13:31:59 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-10 13:31:59 - vicente.delasancha_praxis@banorte.com
+2016-02-10 13:31:59 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-10 13:31:59 - **********************************************************************************************************
+2016-02-10 13:31:59 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-10 13:31:59 - **********************************************************************************************************
+2016-02-10 13:31:59 - 
+
+
+
+2016-02-10 13:34:41 - **********************************************************************************************************
+2016-02-10 13:34:41 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-10 13:34:41 - **********************************************************************************************************
+2016-02-10 13:34:41 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-10 13:34:45 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-10 13:34:45 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-10 13:34:45 - --> Total de registros encontrados: 20
+
+2016-02-10 13:34:45 - --> Termina consulta de transferencias.
+
+
+2016-02-10 13:34:45 - Registros encontrados: 20
+2016-02-10 13:34:45 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-10 13:34:45 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-10 13:34:45 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-10 13:34:45 - getTo(): vicente.delasancha_praxis@banorte.com
+2016-02-10 13:34:45 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-10 13:34:45 - vicente.delasancha_praxis@banorte.com
+2016-02-10 13:34:45 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-10 13:34:45 - **********************************************************************************************************
+2016-02-10 13:34:45 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-10 13:34:45 - **********************************************************************************************************
+2016-02-10 13:34:45 - 
+
+
+
+2016-02-10 13:39:31 - **********************************************************************************************************
+2016-02-10 13:39:31 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-10 13:39:31 - **********************************************************************************************************
+2016-02-10 13:39:32 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-10 13:39:32 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-10 13:39:32 - getTo(): vicente.delasancha_praxis@banorte.com
+2016-02-10 13:39:32 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-10 13:39:32 - vicente.delasancha_praxis@banorte.com
+2016-02-10 13:39:32 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha iniciado el proceso 'Reporte Diario de Transferencias'.
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-10 13:39:32 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-10 13:39:36 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-10 13:39:36 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-10 13:39:36 - --> Total de registros encontrados: 22
+
+2016-02-10 13:39:36 - --> Termina consulta de transferencias.
+
+
+2016-02-10 13:39:36 - Registros encontrados: 22
+2016-02-10 13:39:36 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-10 13:39:36 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-10 13:39:36 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-10 13:39:36 - getTo(): vicente.delasancha_praxis@banorte.com
+2016-02-10 13:39:36 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-10 13:39:36 - vicente.delasancha_praxis@banorte.com
+2016-02-10 13:39:36 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-10 13:39:36 - **********************************************************************************************************
+2016-02-10 13:39:36 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-10 13:39:36 - **********************************************************************************************************
+2016-02-10 13:39:36 - 
+
+
+
+2016-02-10 13:47:37 - **********************************************************************************************************
+2016-02-10 13:47:37 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-10 13:47:37 - **********************************************************************************************************
+2016-02-10 13:47:38 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-10 13:47:38 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-10 13:47:38 - getTo(): vicente.delasancha_praxis@banorte.com
+2016-02-10 13:47:38 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-10 13:47:38 - vicente.delasancha_praxis@banorte.com
+2016-02-10 13:47:38 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha iniciado el proceso 'Reporte Diario de Transferencias'.
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-10 13:47:38 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-10 13:47:42 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-10 13:47:42 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-10 13:47:42 - --> Total de registros encontrados: 24
+
+2016-02-10 13:47:42 - --> Termina consulta de transferencias.
+
+
+2016-02-10 13:47:42 - Registros encontrados: 24
+2016-02-10 13:47:42 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-10 13:47:42 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-10 13:47:42 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-10 13:47:42 - getTo(): vicente.delasancha_praxis@banorte.com
+2016-02-10 13:47:42 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-10 13:47:42 - vicente.delasancha_praxis@banorte.com
+2016-02-10 13:47:42 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-10 13:47:42 - **********************************************************************************************************
+2016-02-10 13:47:42 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-10 13:47:42 - **********************************************************************************************************
+2016-02-10 13:47:42 - 
+
+
+

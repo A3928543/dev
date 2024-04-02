@@ -1,0 +1,24 @@
+<!-- $Id: StaleSessionPage.html,v 1.9 2008/02/22 18:25:53 ccovian Exp $ -->
+<html jwcid="@Shell" stylesheet="ognl:assets.stylesheet" title='ognl: "Sistema de Cambios"'>
+<head jwcid="$remove$">
+    <title>Sistema de Cambios</title>
+    <link rel="stylesheet" type="text/css" href="css/ixe.css"/>
+</head>
+<body jwcid="@Body" background="images/seal.gif" bgproperties="fixed" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr><td width="10%"><img src="images/header_left2.gif" width="195" height="28" alt=""></td><td width="1%" background="images/header_center2.gif">&nbsp;&nbsp;&nbsp;</td><td width="80%" background="images/header_center2.gif">&nbsp;</td></tr>
+        <tr><td colspan="3"><img src="images/header_bottom2.gif" width="100%" height="6" alt=""></td></tr>
+    </table>
+    <br />
+    <table jwcid="@ActionPortletBorder" title="Su sesi&#243;n ha terminado">
+        <br />
+        <p class="normal">Las aplicaciones web almacenan informaci&oacute;n sobre las actividades que usted realiza en
+            el servidor. Esta informaci&oacute;n se llama sesi&oacute;n:</p>
+        <p class="normal">Los servidores de web deben mantener muchas sesiones. Si su sesi&oacute;n ha estado inactiva
+            durante varios minutos, su informaci&oacute;n es descartada para poder atender a los usuarios activos.
+        </p>
+        <p class="normal">Haga click <a href="#" onclick="window.top.location = '?service=restart'; window.top.location = '/sica/app?service=login';">aqu&iacute;</a> para para obtener una nueva sesi&oacute;n.</p>
+        <br />
+    </table>
+</body>
+</html>

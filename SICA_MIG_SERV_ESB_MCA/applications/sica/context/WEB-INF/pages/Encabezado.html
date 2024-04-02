@@ -1,0 +1,32 @@
+<!-- $Id: Encabezado.html,v 1.11 2010/02/25 17:32:53 ccovian Exp $ -->
+<html jwcid="@Shell" stylesheet="ognl:assets.stylesheet" title="Sistema de Cambios" delegate="ognl: visit" refresh="60">
+<head jwcid="$remove$">
+    <title>Sistema de Cambios</title>
+    <link rel="stylesheet" type="text/css" href="../../css/ixe.css"/>
+    <script type="text/javascript" src="../../scripts/sothink/stm31.js"></script>
+</head>
+<body jwcid="@Body" background="images/seal.gif" bgproperties="fixed" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr><td width="10%"><a jwcid="@PageLink" page="Empty" target="superior"><img src="images/header_left2.gif" width="195" height="28" alt="" border="0"></a></td><td width="1%" background="images/header_center2.gif">&nbsp;&nbsp;&nbsp;</td><td width="80%" background="images/header_center2.gif">&nbsp;</td></tr>
+    <tr><td colspan="3"><img src="images/header_bottom2.gif" width="100%" height="6" alt=""></td></tr>
+    <tr>
+    	<td bgcolor="black" class="headercell">&nbsp;&nbsp;<b>Usuario:</b>
+            <span jwcid="@contrib:Choose">
+                <span jwcid="@contrib:When" condition="ognl: visit.user != null">
+                    <span jwcid="@Insert" value='ognl: visit.isGuardia() ? visit.user.clave + "(Guardia)" : visit.user.clave' />
+                </span>
+                <span jwcid="@contrib:Otherwise">
+                    <script type="text/javascript">
+                        <!--
+                        window.top.location = '/sica/app?service=login';
+                        //-->
+                    </script>
+                </span>
+            </span>
+        </td>
+        <td bgcolor="black" class="headercell" align="center" nowrap><b>Canal:</b><span jwcid="@Insert" value="ognl: visit.idCanal" />&nbsp;&nbsp;&nbsp;<b>Mesa:</b><span jwcid="@Insert" value="ognl: visit.idMesaCambio" /></td>
+        <td bgcolor="black" class="headercell" align="right" nowrap><span jwcid="@Insert" value="ognl: estadoActual ? ('&lt;b&gt;Estado&lt;/b&gt;: ' + estadoActual.nombreEstado) : ''" raw="ognl: true" />&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+</table>
+</body>
+</html>

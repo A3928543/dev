@@ -1,0 +1,28 @@
+/AbstractCapturaDeal.java/1.30.2.2.6.6.14.1.14.1.14.2.10.2.6.1/Tue Dec  1 04:53:01 2020//TSICA_MIG_SERV_ESB_MCA
+/AbstractCapturaDirecciones.java/1.2/Mon Aug  3 21:53:42 2009//TSICA_MIG_SERV_ESB_MCA
+/AbstractComprobanteDeal.java/1.1.2.2/Thu Jan  2 19:56:11 2014//TSICA_MIG_SERV_ESB_MCA
+/AbstractConsultaDeals.java/1.22.2.2.10.2.26.1.30.1/Tue Dec  1 04:53:01 2020//TSICA_MIG_SERV_ESB_MCA
+/AbstractSeleccionFormaLiquidacion.java/1.10/Fri Feb 22 18:25:43 2008//TSICA_MIG_SERV_ESB_MCA
+/CapturaBanco.java/1.10/Fri Feb 22 18:25:42 2008//TSICA_MIG_SERV_ESB_MCA
+/CapturaComision.java/1.13.40.2/Mon May  2 17:09:48 2011//TSICA_MIG_SERV_ESB_MCA
+/CapturaDatosComprobante.java/1.1.2.2.30.1/Tue Dec  1 04:53:01 2020//TSICA_MIG_SERV_ESB_MCA
+/CapturaDatosEnvio.java/1.19/Mon Aug  3 22:02:36 2009//TSICA_MIG_SERV_ESB_MCA
+/CapturaDatosFacturacion.java/1.16.48.3.2.2.28.1/Tue Dec  1 04:53:01 2020//TSICA_MIG_SERV_ESB_MCA
+/CapturaDeal.java/1.48.2.6.4.1.2.2.2.1.4.1.4.2.18.1.14.1.8.1.2.10.6.1/Tue Dec  1 04:53:01 2020//TSICA_MIG_SERV_ESB_MCA
+/CapturaMetodoPagoDeal.java/1.1.2.7.36.1.2.2/Mon Aug 21 16:08:34 2017//TSICA_MIG_SERV_ESB_MCA
+/CapturaObservacionesDeal.java/1.4/Thu Jun  5 01:15:13 2008//TSICA_MIG_SERV_ESB_MCA
+/CapturaReverso.java/1.4/Thu Jun  5 01:15:13 2008//TSICA_MIG_SERV_ESB_MCA
+/CapturarFormaLiquidacion.java/1.13/Fri Feb 22 18:25:43 2008//TSICA_MIG_SERV_ESB_MCA
+/ConsultaDeal.java/1.31.2.2.2.1.16.1.14.1/Sat Dec 21 03:08:40 2013//TSICA_MIG_SERV_ESB_MCA
+/DatosDeal.java/1.13.86.1.6.1/Tue Dec  1 04:53:01 2020//TSICA_MIG_SERV_ESB_MCA
+/HistorialDeal.java/1.11/Fri Feb 22 18:25:42 2008//TSICA_MIG_SERV_ESB_MCA
+/HistorialDetalle.java/1.11/Fri Feb 22 18:25:42 2008//TSICA_MIG_SERV_ESB_MCA
+/ModRepDealsBanxico.java/1.14/Mon Aug  3 22:04:18 2009//TSICA_MIG_SERV_ESB_MCA
+/ModificaMontoProductoDetalleDeal.java/1.3.2.4.6.1.58.1/Tue Dec  1 04:53:01 2020//TSICA_MIG_SERV_ESB_MCA
+/MuestraDeal.java/1.11/Mon Oct 27 23:20:10 2008//TSICA_MIG_SERV_ESB_MCA
+/SeleccionContrato.java/1.17.30.1.14.1.24.1.2.1/Wed Jul 13 21:45:26 2016//TSICA_MIG_SERV_ESB_MCA
+/SeleccionFormaLiquidacion.java/1.14.28.2.14.1.6.3.22.2.2.1.6.2.10.6.6.1/Thu Nov  5 07:45:25 2020//TSICA_MIG_SERV_ESB_MCA
+/VerRepDealsBanxico.java/1.13/Fri Dec 26 23:17:34 2008//TSICA_MIG_SERV_ESB_MCA
+D/formliq////
+D/interbancario////
+D/plantillas////

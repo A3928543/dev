@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<view:TipoCambio borderStyle="solid" marginLeft="10" marginRight="10" marginTop="10" marginBottom="10" horizontalGap="0"
+                 verticalGap="0"
+    xmlns:mx="http://www.macromedia.com/2003/mxml"
+    xmlns:view="com.ixe.ods.sica.posicion.views.*">
+
+    <mx:NumberFormatter id="numberFormatter" precision="2"/>
+
+    <mx:NumberFormatter id="exchangeFormatter" precision="6"/>
+    
+    <mx:GridRow>
+        <mx:GridItem></mx:GridItem>
+        <mx:GridItem horizontalAlign="center">
+            <mx:Label text="Cash" fontWeight="bold"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="center">
+            <mx:Label text="TOM" fontWeight="bold"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="center">
+            <mx:Label text="Spot" fontWeight="bold"/>
+        </mx:GridItem>
+		<mx:GridItem id="gridItem72Hr" horizontalAlign="center">
+            <mx:Label text="72HR" fontWeight="bold"/>
+        </mx:GridItem>
+		<mx:GridItem width="{parentApplication.vFut ? gridItem72Hr.width : 0}" horizontalAlign="center" visible="{parentApplication.vFut}" >
+            <mx:Label text="96HR" fontWeight="bold"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="center">
+            <mx:Label text="Total del dia" fontWeight="bold"/>
+        </mx:GridItem>
+    </mx:GridRow>
+
+    <mx:GridRow>
+        <mx:GridItem horizontalAlign="left">
+            <mx:Label text="Posici&#243;n Inicial" fontWeight="bold"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{numberFormatter.format(dataProvider.posicionInicialCash)}"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{numberFormatter.format(dataProvider.posicionInicialTom)}"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{numberFormatter.format(dataProvider.posicionInicialSpot)}"/>
+        </mx:GridItem>
+		<mx:GridItem horizontalAlign="right">
+            <mx:Label text="{numberFormatter.format(dataProvider.posicionInicial72Hr)}"/>
+        </mx:GridItem>
+		<mx:GridItem width="{parentApplication.vFut ? gridItem72Hr.width : 0}" horizontalAlign="right" visible="{parentApplication.vFut}">
+            <mx:Label text="{numberFormatter.format(dataProvider.posicionInicialVFut)}"/>
+        </mx:GridItem>
+    </mx:GridRow>
+
+    <mx:GridRow>
+        <mx:GridItem horizontalAlign="left">
+            <mx:Label text="Compras" fontWeight="bold"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{numberFormatter.format(dataProvider.compraCash)}"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{numberFormatter.format(dataProvider.compraTom)}"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{numberFormatter.format(dataProvider.compraSpot)}"/>
+        </mx:GridItem>
+		<mx:GridItem horizontalAlign="right">
+            <mx:Label text="{numberFormatter.format(dataProvider.compra72Hr)}"/>
+        </mx:GridItem>
+		<mx:GridItem width="{parentApplication.vFut ? gridItem72Hr.width : 0}" horizontalAlign="right" visible="{parentApplication.vFut}">
+            <mx:Label text="{numberFormatter.format(dataProvider.compraVFut)}"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{numberFormatter.format(dataProvider.compra)}"/>
+        </mx:GridItem>
+    </mx:GridRow>
+
+    <mx:GridRow>
+        <mx:GridItem horizontalAlign="left">
+            <mx:Label text="T.C. Promedio" fontWeight="bold"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioCompraCash)}"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioCompraTom)}"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioCompraSpot)}"/>
+        </mx:GridItem>
+		<mx:GridItem horizontalAlign="right">
+            <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioCompra72Hr)}"/>
+        </mx:GridItem>
+		<mx:GridItem width="{parentApplication.vFut ? gridItem72Hr.width : 0}" horizontalAlign="right" visible="{parentApplication.vFut}">
+            <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioCompraVFut)}"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioCompra)}"/>
+        </mx:GridItem>
+    </mx:GridRow>
+
+    <view:TipoCambioSeparator/>
+
+    <mx:GridRow>
+        <mx:GridItem horizontalAlign="left">
+            <mx:Label text="Ventas" fontWeight="bold"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{numberFormatter.format(dataProvider.ventaCash)}"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{numberFormatter.format(dataProvider.ventaTom)}"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{numberFormatter.format(dataProvider.ventaSpot)}"/>
+        </mx:GridItem>
+		 <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{numberFormatter.format(dataProvider.venta72Hr)}"/>
+        </mx:GridItem>
+		 <mx:GridItem width="{parentApplication.vFut ? gridItem72Hr.width : 0}" horizontalAlign="right" visible="{parentApplication.vFut}">
+            <mx:Label text="{numberFormatter.format(dataProvider.ventaVFut)}"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{numberFormatter.format(dataProvider.venta)}"/>
+        </mx:GridItem>
+    </mx:GridRow>
+
+    <mx:GridRow>
+        <mx:GridItem horizontalAlign="left">
+            <mx:Label text="T.C. Promedio" fontWeight="bold"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioVentaCash)}"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioVentaTom)}"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioVentaSpot)}"/>
+        </mx:GridItem>
+		 <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioVenta72Hr)}"/>
+        </mx:GridItem>
+		 <mx:GridItem width="{parentApplication.vFut ? gridItem72Hr.width : 0}" horizontalAlign="right" visible="{parentApplication.vFut}">
+            <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioVentaVFut)}"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioVenta)}"/>
+        </mx:GridItem>
+    </mx:GridRow>
+
+	<view:TipoCambioSeparator/>
+	
+	<mx:GridRow>
+        <mx:GridItem horizontalAlign="left">
+            <mx:Label text="Posici&#243;n Final" fontWeight="bold"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{numberFormatter.format(dataProvider.posicionInicialCash + dataProvider.posicionFinalCash)}"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{numberFormatter.format(dataProvider.posicionInicialTom + dataProvider.posicionFinalTom)}"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{numberFormatter.format(dataProvider.posicionInicialSpot + dataProvider.posicionFinalSpot)}"/>
+        </mx:GridItem>
+        <mx:GridItem horizontalAlign="right">
+            <mx:Label text="{numberFormatter.format(dataProvider.posicionInicial72Hr + dataProvider.posicionFinal72Hr)}"/>
+        </mx:GridItem>
+		<mx:GridItem width="{parentApplication.vFut ? gridItem72Hr.width : 0}" horizontalAlign="right" visible="{parentApplication.vFut}">
+            <mx:Label text="{numberFormatter.format(dataProvider.posicionInicialVFut + dataProvider.posicionFinalVFut)}"/>
+        </mx:GridItem>
+		
+
+    </mx:GridRow>
+	    
+</view:TipoCambio>

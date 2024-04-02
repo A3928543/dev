@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.reportes.ReporteExcesosLc">
+    
+    <component id="trimestreCombo" type="PropertySelection">
+        <binding name="model" expression='trimestresModel' />
+        <binding name="value" expression='trimestreSeleccionado' /> 
+    </component>
+        
+    <component id="canalFacultadCombo" type="PropertySelection">
+        <binding name="model" expression='canalesModel' />
+        <binding name="value" expression='canalFacultadSeleccionado' />
+        <binding name="disabled" expression='modoPromotor' /> 
+    </component>
+    
+    <component id="montoTextField" type="MontoTextField">
+        <static-binding name="displayName" value="Monto de exceso:" />
+        <binding name="value" expression="monto" />
+    </component>
+    
+    <component id="table" type="contrib:Table">
+    	<binding name="tableSessionStateManager"  
+                 expression="new org.apache.tapestry.contrib.table.model.common.NullTableSessionStateManager()" /> 
+    </component>
+    
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate"/>
+    
+    <property-specification name="model" type="org.apache.tapestry.contrib.table.model.ITableModel" persistent="yes" />
+    <property-specification name="monto" type="double" persistent="yes" />
+    <property-specification name="canalFacultadSeleccionado" type="java.util.HashMap" persistent="yes" />
+    <property-specification name="trimestreSeleccionado" type="java.util.HashMap" persistent="yes" />
+    <property-specification name="modoPromotor" type="boolean" persistent="yes" />
+    <property-specification name="registrosReporte" type="java.util.List" persistent="yes" />
+
+    <context-asset name="searchButton" path="/images/search.gif" />
+    <context-asset name="cleanButton" path="/images/clean.gif" />
+	<context-asset name="verXlsButton" path="/images/ver_excel.gif" />
+	<context-asset name="verSsvButton" path="/images/ver_ssv.gif" />
+</page-specification>

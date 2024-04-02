@@ -1,0 +1,58 @@
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <!-- $Id: CapturaDealInterbancario.html,v 1.19.10.1.60.3 2017/08/29 19:27:20 mejiar Exp $ -->
+    <title>Captura de Deal Interbancario</title>
+    <link rel="StyleSheet" href="../../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="@Conditional" condition="ognl: splitMap">
+        <script jwcid="@Script" script="/WEB-INF/scripts/SplitDealDetalle.script" symbols="ognl: splitMap" type="text/javascript" />
+    </span>
+    <form jwcid="@Form" listener="ognl: listeners.submit" delegate="ognl: beans.delegate" onSubmit="return fnShowWaitImage();">
+        <input jwcid="hiddenModoSubmit@Hidden" value="ognl: modoSubmit" type="hidden" />
+        <span jwcid="tb@Block"><span jwcid="@EventosDealInterbancario" deal="ognl: deal" /></span>
+        <table jwcid="@bup:ShowError" level="ognl: level" width="100%" delegate="ognl:beans.delegate" />
+        <table jwcid="@ActionPortletBorder" title="Captura de Deal Interbancario" titleBlock="ognl: components.tb">
+            <span jwcid="@MotivosNoProcesar" deal="ognl: deal" service="ognl: personaService"/>
+            <table jwcid="@EncabezadoDealInterbancario" deal="ognl: deal" 
+            disabled="ognl: @com.ixe.ods.sica.model.Deal@STATUS_DEAL_CANCELADO.equals(deal.statusDeal) || @com.ixe.ods.sica.model.Deal@STATUS_DEAL_TOTALMENTE_LIQUIDADO.equals(deal.statusDeal)"
+            disabledPAyTF="ognl: @com.ixe.ods.sica.services.LineaCreditoConstantes@STATUS_ACTIVADA.equals(estadoLineaCredito)" />
+            <br />
+            <div align="center">
+                <span jwcid="@Conditional" condition="ognl: !(@com.ixe.ods.sica.model.Deal@STATUS_DEAL_CANCELADO.equals(deal.statusDeal) || @com.ixe.ods.sica.model.Deal@STATUS_DEAL_TOTALMENTE_LIQUIDADO.equals(deal.statusDeal))">
+                    <a jwcid="@DirectLink" listener="ognl: listeners.capturarObservaciones" onClick="return fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bObservaciones" border="0" /></a>
+                </span>
+                <span jwcid="@Conditional" condition="ognl: !(@com.ixe.ods.sica.model.Deal@STATUS_DEAL_CANCELADO.equals(deal.statusDeal) || @com.ixe.ods.sica.model.Deal@STATUS_DEAL_TOTALMENTE_LIQUIDADO.equals(deal.statusDeal)) && deal.mensajeria">
+                    <a jwcid="@DirectLink" listener="ognl: listeners.capturarDatosEnvio" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bDatosEnvio" src="../../../../images/datos_envio.gif" border="0" alt="Capturar Datos de Env&iacute;o"/></a>
+                </span>
+                <span jwcid="@Conditional" condition="ognl: @com.ixe.ods.sica.model.Deal@STATUS_DEAL_PROCESO_CAPTURA.equals(deal.statusDeal) && deal.isProcesable(formasTiposLiq)">
+                    <a jwcid="@DirectLink" listener="ognl: listeners.procesar" onClick="return fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bProcesar" border="0" /></a>
+                </span>
+                <span jwcid="@Conditional" condition="ognl: cancelable">
+                    <a jwcid="@DirectLink" listener="ognl: listeners.solicitarCancelacion" onClick=" if (confirm('\u00bfDesea solicitar la cancelaci\u00f3n del deal?')) { fnShowWaitImage(); return true; } else { return false; }"><img jwcid="@Image" image="ognl: assets.bCancelar" border="0" /></a>
+                </span>
+                <span jwcid="@Conditional" condition="ognl: @com.ixe.ods.sica.model.Deal@STATUS_DEAL_PROCESO_CAPTURA.equals(deal.statusDeal) && !deal.contratoSica">
+                    <a jwcid="@DirectLink" listener="ognl: listeners.definirContraparte" onClick="return fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bDefinirContraparte" border="0" /></a>
+                </span>
+                <span jwcid="@Conditional" condition="ognl: @com.ixe.ods.sica.model.Deal@STATUS_DEAL_PROCESO_CAPTURA.equals(deal.statusDeal)">
+                    <a jwcid="@DirectLink" listener="ognl: listeners.guardar" onClick="return fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bGuardar" border="0" /></a>
+                </span>
+                <span jwcid="@Conditional" condition="ognl: @com.ixe.ods.sica.model.Deal@STATUS_DEAL_PROCESO_CAPTURA.equals(deal.statusDeal) && !deal.idLiquidacion">
+                    <a jwcid="@DirectLink" listener="ognl: listeners.balancearPesos" onClick="return fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bBalancear" border="0" /></a>
+                </span>
+                <span jwcid="@Conditional" condition="ognl: ! modoInsercion  && !paginaRetorno"><a href="#" jwcid="@PageLink" page="ConsultaDealsInterbancarios" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bRegresar" border="0" /></a></span>
+                <span jwcid="@Conditional" condition="ognl: ! modoInsercion  &&  paginaRetorno"><a href="#" jwcid="@PageLink" page="ConsultaPendientesDia"       onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bRegresar" border="0" /></a></span>
+            </div>
+        </table>
+        <br />
+        <span jwcid="@Conditional" condition="ognl: deal.broker">
+        <table jwcid="@ResumenLineasOperacion" lineaOperacion="ognl: sicaServiceData.findLineaOperacionByBroker(deal.broker.id.personaMoral.idPersona)" />
+        <br />
+        </span>
+        
+    </form>
+    <span jwcid="@Conditional" condition="ognl: deal.contratoSica">
+        <table jwcid="@ResumenLineasCredito" idCliente="ognl: deal.cliente.idPersona" />
+        </span>
+</body>
+</html>

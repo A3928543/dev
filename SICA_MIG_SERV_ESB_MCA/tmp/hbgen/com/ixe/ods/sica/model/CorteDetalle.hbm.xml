@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.CorteDetalle"
+        table="SC_CORTE_DETALLE"
+        proxy="com.ixe.ods.sica.model.CorteDetalle"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idCorteDetalle"
+            column="ID_CORTE_DETALLE"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_CORTE_DETALLE_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-CorteDetalle.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="idCorte"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_CORTE"
+        />
+
+        <property
+            name="type1"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TYPE_1"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="action"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ACTION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="sourceModule"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="SOURCE_MODULE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tradeDate"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="TRADE_DATE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ourName"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="OUR_NAME"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="theirName"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="THEIR_NAME"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ourPortfolio"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="OUR_PORTFOLIO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="theirPortfolio"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="THEIR_PORTFOLIO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="user1"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="USER_1"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="group1"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="GROUP_1"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="buySell"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="BUY_SELL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="contract"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CONTRACT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="deliveryDateLabel"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="DELIVERY_DATE_LABEL"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="deliveryDate"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="DELIVERY_DATE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="amount"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="AMOUNT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="price"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="PRICE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fundingCost"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="FUNDING_COST"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ccy"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CCY"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="acountingSectionSource"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ACOUNTING_SECTION_SOURCE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="backToBackPortfolioName"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="BACK_TO_BACK_PORTFOLIO_NAME"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="sourceComments"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="SOURCE_COMMENTS"
+            not-null="true"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-CorteDetalle.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findCorteDetalleById"><![CDATA[
+            FROM CorteDetalle as c where c.idCorteDetalle = ?
+        ]]></query>
+        <query name="findDetallesCortebyIdCorte"><![CDATA[
+            FROM CorteDetalle as d where d.idCorte = ?
+        ]]></query>
+        <query name="findDetallesCortebyfechaAndDivisa"><![CDATA[
+            FROM CorteDetalle as d where to_char(trade_date, 'dd/MM/yyyy') = ? and d.ccy = ?
+        ]]></query>
+        <query name="findDetallesCortebyfecha"><![CDATA[
+            FROM CorteDetalle as d where to_char(trade_date, 'dd/MM/yyyy') = ? 
+        ]]></query>
+
+</hibernate-mapping>

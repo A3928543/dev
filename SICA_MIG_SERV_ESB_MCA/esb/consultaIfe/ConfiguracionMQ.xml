@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConfiguracionMQ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:noNamespaceSchemaLocation="ConfiguracionMQ.xsd">
+  <ConfiguracionPool>
+  	<PoolActivo>false</PoolActivo>
+  	<MaxConexiones>400</MaxConexiones>
+  	<MaxConxNoUsadas>400</MaxConxNoUsadas>
+  	<TimeoutConxNoUsadas>5000</TimeoutConxNoUsadas>
+  </ConfiguracionPool>
+	<ParametrosConexionMQ idConexion="CONSULTAIFE_WMB213">
+		<TipoConexion>CLIENTE</TipoConexion>
+		<NombreQm>QMBANCO</NombreQm>
+		<Host>ixe.esbserver</Host>
+		<Puerto>1421</Puerto>
+		<Canal>CHL.SICA</Canal>
+		<RequestQ>QA.L.VIFEIN</RequestQ>
+		<ResponseQ>QA.L.VIFESICAOUT</ResponseQ>
+		<Timeout>360000</Timeout>
+		<Expiry>120000</Expiry>
+	</ParametrosConexionMQ>
+</ConfiguracionMQ>

@@ -1,0 +1,41 @@
+<!-- $Id: CargaSap.html,v 1.2 2009/12/22 17:15:52 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Carga manual de Asientos Contables</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" level="ognl: nivel"
+          insertBreakAtTail="yes" width="100%">No se pudo subir el archivo.</span>
+    <table width="100%">
+        <tr valign="top">
+            <td>
+                <table jwcid="@ActionPortletBorder" title="Importar Archivo">
+                    <form jwcid="@Form" listener="ognl: listeners.submit" delegate="ognl:beans.delegate">
+                        <input jwcid="@Upload" file="ognl: archivo" />
+                        <br />
+                        <div align="center">
+                            <input jwcid="@ImageSubmit" image="ognl: assets.bAceptar"
+                                   onclick="return fnDisableForm(this.form);" />
+                        </div>
+                    </form>
+                </table>
+            </td>
+            <td width="1%">&nbsp;</td>
+            <td width="230">
+                <table jwcid="@ActionPortletBorder" title="Recuperaci&oacute;n de Archivos" width="100%">
+                    <form jwcid="@Form" listener="ognl: listeners.obtenerArchivo" delegate="ognl:beans.delegate">
+                        <span class="normal">Fecha:</span><br/>
+                        <span jwcid="@ls:DatePicker" value="ognl: fechaArchivo" format="dd/MM/yyyy"/><br />
+                        <br/>
+                        <div align="center">
+                            <input jwcid="@ImageSubmit" image="ognl: assets.bAceptar" />
+                      </div>
+                      <span jwcid="@ls:DatePickerColophon" />
+                    </form>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

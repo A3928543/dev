@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="RepUtilXls" language="java" pageWidth="1700" pageHeight="918" orientation="Landscape" columnWidth="1700" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="com.jasperassistant.designer.HGuides" value="99"/>
+	<property name="com.jasperassistant.designer.GridHeight" value="12"/>
+	<property name="com.jasperassistant.designer.GridWidth" value="10"/>
+	<property name="com.jasperassistant.designer.Rulers" value="true"/>
+	<property name="com.jasperassistant.designer.DataSource" value="Reporte Utilidades Data Source"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="true"/>
+	<property name="com.jasperassistant.designer.Margins" value="true"/>
+	<property name="com.jasperassistant.designer.Grid" value="true"/>
+	<property name="com.jasperassistant.designer.SnapToGuides" value="true"/>
+	<field name="canal" class="java.lang.String">
+	</field>
+	<field name="class" class="java.lang.Object">
+	</field>
+	<field name="cliente" class="java.lang.String">
+	</field>
+	<field name="costoCobrado" class="java.lang.Double">
+	</field>
+	<field name="costoNoCobrado" class="java.lang.Double">
+	</field>
+	<field name="de" class="java.util.Date">
+	</field>
+	<field name="divisa" class="java.lang.String">
+	</field>
+	<field name="fechaCaptura" class="java.util.Date">
+	</field>
+	<field name="folioDetalle" class="java.lang.Integer">
+	</field>
+	<field name="granTotal" class="java.lang.Double">
+	</field>
+	<field name="granTotalCompras" class="java.lang.Double">
+	</field>
+	<field name="granTotalNumeroDeals" class="java.lang.Integer">
+	</field>
+	<field name="granTotalVentas" class="java.lang.Double">
+	</field>
+	<field name="hasta" class="java.util.Date">
+	</field>
+	<field name="idDeal" class="java.lang.Integer">
+	</field>
+	<field name="idPromotor" class="java.lang.String">
+	</field>
+	<field name="monto" class="java.lang.Double">
+	</field>
+	<field name="montoCompras" class="java.lang.Double">
+	</field>
+	<field name="montoVentas" class="java.lang.Double">
+	</field>
+	<field name="numeroCompras" class="java.lang.Integer">
+	</field>
+	<field name="numeroTotalC" class="java.lang.Integer">
+	</field>
+	<field name="numeroTotalV" class="java.lang.Integer">
+	</field>
+	<field name="numeroVentas" class="java.lang.Integer">
+	</field>
+	<field name="producto" class="java.lang.String">
+	</field>
+	<field name="promotor" class="java.lang.String">
+	</field>
+	<field name="sobrePrecio" class="java.lang.Double">
+	</field>
+	<field name="tipoCambio" class="java.lang.Double">
+	</field>
+	<field name="tipoOperacion" class="java.lang.String">
+	</field>
+	<field name="utilidad" class="java.lang.Double">
+	</field>
+	<field name="utilidadCompras" class="java.lang.Double">
+	</field>
+	<field name="utilidadTotalDivisa" class="java.lang.Double">
+	</field>
+	<field name="utilidadVentas" class="java.lang.Double">
+	</field>
+	<title>
+		<band height="13">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="100" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IXE BANCO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="360" height="13"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE UTILIDADES POR OPERACIONES DE CAMBIO, DEL    ]]></text>
+			</staticText>
+			<textField pattern="d/MM/yyyy">
+				<reportElement positionType="Float" x="500" y="0" width="60" height="13"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{hasta}]]></textFieldExpression>
+			</textField>
+			<textField pattern="d/MM/yyyy">
+				<reportElement positionType="Float" x="360" y="0" width="60" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{de}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="420" y="0" width="80" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1360" y="0" width="270" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[(Costos en USD)]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="13">
+			<staticText>
+				<reportElement positionType="Float" x="460" y="0" width="60" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Deal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="520" y="0" width="80" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Captura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="600" y="0" width="60" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[C ó V]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="660" y="0" width="170" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="830" y="0" width="220" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1050" y="0" width="60" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1110" y="0" width="120" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo Cambio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1230" y="0" width="70" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sobreprecio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1300" y="0" width="60" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Utilidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1360" y="0" width="130" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Costos Cobrados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1490" y="0" width="140" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Costos No Cobrados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="100" y="0" width="200" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Promotor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="100" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Área Comercial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="300" y="0" width="160" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Divisa]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="14">
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="1360" y="0" width="130" height="13"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{costoCobrado}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="1490" y="0" width="140" height="13"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{costoNoCobrado}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="1300" y="0" width="60" height="13"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{utilidad}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="1050" y="0" width="60" height="13"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{monto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.000000">
+				<reportElement positionType="Float" x="1110" y="0" width="120" height="13"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tipoCambio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.000000">
+				<reportElement positionType="Float" x="1230" y="0" width="70" height="13"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{sobrePrecio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="830" y="0" width="220" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cliente}]]></textFieldExpression>
+			</textField>
+			<textField pattern="d/MM/yyyy">
+				<reportElement positionType="Float" x="520" y="0" width="80" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaCaptura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="600" y="0" width="60" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipoOperacion}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="660" y="0" width="170" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{producto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="300" y="0" width="160" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{divisa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="0" width="100" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{canal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="100" y="0" width="200" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{promotor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="460" y="0" width="60" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{idDeal}.toString() + "-" + $F{folioDetalle}.toString()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

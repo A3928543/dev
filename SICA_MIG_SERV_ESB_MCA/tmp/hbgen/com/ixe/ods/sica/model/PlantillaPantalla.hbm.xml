@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.PlantillaPantalla"
+        table="SC_PLANTILLA_PANTALLA"
+        proxy="com.ixe.ods.sica.model.PlantillaPantalla"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="mnemonico"
+            column="MNEMONICO"
+            type="java.lang.String"
+            unsaved-value="null"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-PlantillaPantalla.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="metodoReporte"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="METODO_REPORTE"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="nombrePantalla"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NOMBRE_PANTALLA"
+            not-null="true"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-PlantillaPantalla.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findPlantillaPantallaByMnemonico"><![CDATA[
+            FROM PlantillaPantalla AS pp WHERE pp.mnemonico like ?
+        ]]></query>
+        <query name="findMnemonicosByPlantillaPantalla"><![CDATA[
+            FROM PlantillaPantalla AS pp WHERE pp.nombrePantalla like ?
+        ]]></query>
+
+</hibernate-mapping>

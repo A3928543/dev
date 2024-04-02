@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CapturaNacional.page,v 1.10 2008/02/22 18:25:46 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.deals.formliq.CapturaNacional">
+
+	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <component id="beneficiarioComboBox" type="PropertySelection">
+        <binding name="model" expression="beneficiariosModel" /> 
+        <binding name="value" expression="dealDetalle.plantilla.beneficiario" />
+    </component>
+
+    <property-specification name="modo" type="int" persistent="yes" />
+    <property-specification name="dealDetalle" type="com.ixe.ods.sica.model.DealDetalle" persistent="yes" />
+    <property-specification name="tienePlantilla" type="boolean" persistent="yes" />
+
+    <context-asset name="bActualizar" path="/images/save.gif" />
+    <context-asset name="bNuevoBeneficiario" path="/images/nvo_beneficiario.gif" />
+
+</page-specification>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.CuentaAltamira"
+        table="SC_CUENTA_ALTAMIRA"
+        proxy="com.ixe.ods.sica.model.CuentaAltamira"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="cuentaAltamira"
+            column="CUENTA_ALTAMIRA"
+            type="java.lang.String"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-CuentaAltamira.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="idPersona"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_PERSONA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="sic"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="SIC"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="cr"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CR"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="usuario"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="USUARIO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fechaAlta"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_ALTA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fechaUltMod"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_ULT_MOD"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-CuentaAltamira.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findCuentaAltamiraByNoCuenta"><![CDATA[
+            FROM CuentaAltamira AS c WHERE c.cuentaAltamira = ?
+        ]]></query>
+
+</hibernate-mapping>

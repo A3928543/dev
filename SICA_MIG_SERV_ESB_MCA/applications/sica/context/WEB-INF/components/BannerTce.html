@@ -1,0 +1,53 @@
+<span jwcid="@Conditional" condition="ognl: ListaMensajes.size() &gt; 0">
+	<table jwcid="@ActionPortletBorder"
+		title="Mensajes del d&iacute;a de hoy:" width="100%">
+		<div align="right">
+			<a jwcid="@DirectLink" listener="ognl: refreshListener"> <img
+				src="../../images/refresh.gif" jwcid="@Image"
+				image="ognl: assets.bRefresh" border="0" alt="Refrescar" /> </a>
+		</div>
+		<table border="0" cellspacing="1" cellpadding="3" width="100%"
+			jwcid="table@bup:Table" source="ognl: listaMensajes" pageSize="25"
+			columns='ognl: "fechaCreacion:Fecha/Hora:fechaCreacion, usuarioCreacion:Usuario:usuarioCreacion, mensaje:Mensaje:mensaje, prioridad:Prioridad:prioridad"'
+			class="tableborder" />
+		<span jwcid="usuarioCreacionColumnValue@Block">
+			<table jwcid="@Any" width="100%"
+				class="ognl: components.table.tableRow.prioridad">
+				<tr>
+					<td align="center"><span jwcid="@Insert"
+						value="ognl: components.table.tableRow.usuarioCreacion.claveUsuario"></span>
+					</td>
+				</tr>
+			</table> </span>
+
+		<span jwcid="fechaCreacionColumnValue@Block">
+			<table jwcid="@Any" width="100%"
+				class="ognl: components.table.tableRow.prioridad">
+				<tr>
+					<td align="center"><span jwcid="@Insert"
+						value="ognl: components.table.tableRow.fechaCreacion"
+						format="ognl: dateFormat" /></td>
+				</tr>
+			</table>
+
+		</span>
+
+		<span jwcid="mensajeColumnValue@Block">
+			<table jwcid="@Any" width="100%"
+				class="ognl: components.table.tableRow.prioridad">
+				<tr>
+					<td align="center"><span jwcid="@Insert"
+						value="ognl: components.table.tableRow.mensaje"></span></td>
+				</tr>
+			</table> </span>
+
+		<span jwcid="prioridadColumnValue@Block">
+			<table jwcid="@Any" width="100%"
+				class="ognl: components.table.tableRow.prioridad">
+				<tr>
+					<td align="center"><span jwcid="@Insert"
+						value="ognl: components.table.tableRow.prioridad"></span></td>
+				</tr>
+			</table> </span>
+
+	</table> </span>

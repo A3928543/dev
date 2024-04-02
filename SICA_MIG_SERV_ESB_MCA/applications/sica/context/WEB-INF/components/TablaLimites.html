@@ -1,0 +1,10 @@
+    <!-- $Id: TablaLimites.html,v 1.9 2008/02/22 18:25:05 ccovian Exp $ -->
+    <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "Concepto", "Alarmar al fin del d&iacute;a", "Limites", "% m&aacute;ximo para aviso", "% m&aacute;ximo para alarma"}' columnCount="4" width="100%">
+        <tr jwcid="forLimites@Foreach" source="ognl: limites" element="tr" class="ognl: beans.evenOdd.next">
+            <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forLimites.value.tipoLimite.nombre" raw="yes" /></td>
+            <td class="normal" align="center"><input jwcid="checkBoxFinDeDia" /></td>
+            <td class="normal" align="center"><input jwcid="limiteTextField" type="text" size="15" maxlenght="15" /></td>
+            <td class="normal" align="center"><input jwcid="porcAvisoTextField" type="text" size="3" maxlenght="3" /></td>
+            <td class="normal" align="center"><input jwcid="porcAlarmaTextField" type="text" size="3" maxlenght="3" /></td>
+        </tr>
+    </table>

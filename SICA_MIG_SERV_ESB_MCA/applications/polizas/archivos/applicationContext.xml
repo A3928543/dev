@@ -1,0 +1,1917 @@
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/tx  
+    http://www.springframework.org/schema/tx/spring-tx.xsd">
+    
+	<context:property-placeholder location="archivos/config.properties"/>
+	
+	<context:component-scan base-package="com.ixe.ods.sica.batch.dao, com.ixe.ods.sica.batch.poliza" />
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="file:archivos/persistence.xml" /> 
+		<property name="persistenceUnitName" value="sicaPersistenceUnit" /> 
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+		<property name="jpaDialect" ref="jpaDialect" />
+	</bean>
+
+	<bean id="jpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="database" value="HSQL" />
+		<property name="databasePlatform" value="org.hibernate.dialect.OracleDialect" />
+	</bean>
+
+	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaDialect" ref="jpaDialect" />
+	</bean>
+
+	<bean name="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"
+		scope="singleton">
+		<property name="jndiName" value="ODSSicaDataSource" />
+		<property name="jndiEnvironment">
+			<props>
+				<prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
+				<prop key="java.naming.provider.url">${db.sica.t3}</prop>
+			</props>
+		</property>
+		<property name="proxyInterface" value="javax.sql.DataSource" />
+		<property name="lookupOnStartup" value="false" />
+		<property name="cache" value="true" />
+	</bean>
+	
+	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+  		<property name="host" value="${mail.host}"/>
+  		<!-- <property name="port">
+  			<bean class="java.lang.Integer">
+  				<constructor-arg type="java.lang.String" value="${mail.port}"/>
+  			</bean>
+  		</property>  -->
+  		<property name="javaMailProperties">
+			<props>
+		        <prop key="mail.smtp.starttls.enable">true</prop>
+	        </props>
+        </property>
+	</bean>
+	
+	<bean id="mailSender" class="com.ixe.ods.sica.batch.mail.impl.MailSenderImpl">
+		<property name="velocityEngine" ref="velocityEngine" />
+		<property name="mailSender" ref="javaMailSender" />
+		<property name="env">
+			<map>
+				<entry key="template" value="${mail.template}" />
+				<entry key="from" value="${mail.from}" />
+				<entry key="to" value="${mail.to}" />
+				<entry key="cc" value="${mail.cc}" />
+				<entry key="subject" value="${mail.subject}" />
+				<entry key="encoding" value="${mail.encoding}" />
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="resourceLoaderPath">
+            <value>archivos/</value>
+        </property>
+    </bean>
+	
+	<bean id="app" class="com.ixe.ods.sica.batch.poliza.util.ConfiguracionApp">
+		<property name="dirSalida" value="${dir.procesa}"/>
+		<property name="dirDepuracion" value="${dir.depura}" />
+		<property name="diasHistorico">
+			<bean class="java.lang.Short">
+				<constructor-arg type="java.lang.String" value="${dias.historico}" />
+			</bean>
+		</property>
+		<property name="preArchDepurar" value="${prefijo.interfaz}"/>
+		<property name="nombreArchivo">
+			<map>
+				<entry key="Nominterf">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="34"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<array>
+								<value>${prefijo.interfaz}</value>
+								<value>yyMMdd</value>
+								<value>${prefijo.interfaz.rep}</value>
+							</array>
+						</entry>
+					</map>
+				</entry>
+			</map>
+		</property>
+		<property name="fillers">
+			<map>
+				<entry key="X">
+					<map>
+						<entry key="filler" value=" "/>
+						<entry key="method" value="right"/> 
+					</map>
+				</entry> 
+				<entry key="N">
+					<map>
+						<entry key="filler" value="0"/>
+						<entry key="method" value="left"/> 
+					</map>
+				</entry>
+				<entry key="A">
+					<map>
+						<entry key="filler" value=" "/>
+						<entry key="method" value="right"/> 
+					</map>
+				</entry>
+				<entry key="E">
+					<map>
+						<entry key="filler" value="0"/>
+						<entry key="method" value="right"/> 
+					</map>
+				</entry>
+			</map>
+		</property>
+		<property name="header">
+			<map>
+				<entry key="Tiporeg">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${header.tiporeg}"/>
+					</map>
+				</entry>
+				<entry key="Empresa">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="4"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${header.empresa}"/>
+					</map>
+				</entry>
+				<entry key="Aplicat">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="3"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${header.aplicat}"/>
+					</map>
+				</entry>
+				<entry key="Interfaz">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="6"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${header.interfaz}"/>
+					</map>
+				</entry>
+				<entry key="Fechproc">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="8"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<array>
+								<value>${date.pattern}</value>
+							</array>
+						</entry>
+					</map>
+				</entry>
+				<entry key="Secinterf">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="14"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<array>
+								<value>${date.pattern}${time.pattern}</value>
+							</array>
+						</entry>
+					</map>
+				</entry>
+				<entry key="Nominterf">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="50"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<array>
+								<value>${prefijo.interfaz}</value>
+								<value>yyMMdd</value>
+								<value>${prefijo.interfaz.rep}</value>
+							</array>
+						</entry>
+					</map>
+				</entry>
+				<entry key="Filler">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="712"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+			</map>
+		</property>
+		<property name="body">
+			<map>
+				<entry key="Empresa">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="4"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${body.empresa}"/>
+					</map>
+				</entry>
+				<entry key="Clvint">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="3"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${body.clvint}"/>
+					</map>
+				</entry>
+				<entry key="Fecon">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="8"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						
+					</map>
+				</entry>
+				<entry key="Fecop">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="8"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params" value="${date.pattern}"/>
+					</map>
+				</entry>
+				<entry key="Hacclpro">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${body.hacclpro}"/>
+					</map>
+				</entry>
+				<entry key="Hacsbpro">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="4"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Hacgaran">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="3"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Hatplac">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="1"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Hanplac">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="3"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Hacsbsec">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="1"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+					</map>
+				</entry>
+				<entry key="Haccnsub">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+					</map>
+				</entry>
+				<entry key="Hacnae">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="4"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Hacemtut">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="4"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Hacambit">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${body.hacambit}"/>
+					</map>
+				</entry>
+				<entry key="Hattrmor">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="1"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Hatinver">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="1"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Hacoper">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="3"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Haccompt">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="5"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Hacdvisa">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="3"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params" value="${divisa.mex}"/>
+					</map>
+				</entry>
+				<entry key="Hatdvisa">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="1"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Filler">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="10"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Varios">
+					<map>
+						<entry key="type" value="E"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="12"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+					</map>
+				</entry>
+				<entry key="Clvaut">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="6"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Ceope">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="4"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<!-- Falta definicion de Ceorigen y Cedestin -->
+				<entry key="Ceorigen">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="4"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Cedestin">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="4"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Numod">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="7"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<bean class="java.lang.Short">
+			    				<constructor-arg type="java.lang.String" value="${clave.cargo}"/>
+			    			</bean>
+						</entry>
+					</map>
+				</entry>
+				<entry key="Numoh">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="7"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<bean class="java.lang.Short">
+			    				<constructor-arg type="java.lang.String" value="${clave.abono}"/>
+			    			</bean>
+						</entry>
+					</map>
+				</entry>
+				<entry key="Impd">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="15"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<array>
+								<bean class="java.lang.Short">
+			    					<constructor-arg type="java.lang.String" value="${clave.cargo}"/>
+			    				</bean>
+			    				<value>${divisa.mex}</value>
+			    				<value>incrementaImpdmxp</value>
+							</array>
+						</entry>
+					</map>
+				</entry>
+				<entry key="Imph">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="15"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<array>
+								<bean class="java.lang.Short">
+			    					<constructor-arg type="java.lang.String" value="${clave.abono}"/>
+			    				</bean>
+			    				<value>${divisa.mex}</value>
+			    				<value>incrementaImphmxp</value>
+							</array>
+						</entry>
+					</map>
+				</entry>
+				<entry key="Impddiv">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="15"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<array>
+								<bean class="java.lang.Short">
+			    					<constructor-arg type="java.lang.String" value="${clave.cargo}"/>
+			    				</bean>
+								<value>${divisa.mex}</value>
+								<value>incrementaImpddiv</value>
+							</array>
+						</entry>
+					</map>
+				</entry>
+				<entry key="Imphdiv">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="15"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<array>
+								<bean class="java.lang.Short">
+			    					<constructor-arg type="java.lang.String" value="${clave.abono}"/>
+			    				</bean>
+								<value>${divisa.mex}</value>
+								<value>incrementaImphdiv</value>
+							</array>
+						</entry>
+					</map>
+				</entry>
+				<entry key="Correccio">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="1"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.correccio}"/> -->
+					</map>
+				</entry>
+				<entry key="Numdo">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="12"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+					</map>
+				</entry>
+				<entry key="Clacon">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="3"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Descon">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="14"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+					</map>
+				</entry>
+				<entry key="Tipocon">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="1"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Observ">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="30"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<map>
+								<entry key="startCostos" value="${centro.costos.start}"/>
+								<entry key="startBenef" value="${centro.benef.start}"/>
+								<entry key="leyenda" value="${textopos.leyenda.adic}"/>
+								<entry key="tamNormal">
+			    					<bean class="java.lang.Short">
+			    						<constructor-arg type="java.lang.String" value="${textopos.tam.normal}"/>
+			    					</bean>
+								</entry>
+								<entry key="tamFormat">
+			    					<bean class="java.lang.Short">
+			    						<constructor-arg type="java.lang.String" value="${textopos.tam.format}"/>
+			    					</bean>
+								</entry>
+							</map>
+						</entry>
+					</map>
+				</entry>
+				<entry key="Observ1">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="30"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<map>
+								<entry key="startCostos" value="${centro.costos.start}"/>
+								<entry key="startBenef" value="${centro.benef.start}"/>
+								<entry key="leyenda" value="${textopos.leyenda.adic}"/>
+								<entry key="tamNormal">
+			    					<bean class="java.lang.Short">
+			    						<constructor-arg type="java.lang.String" value="${textopos.tam.normal}"/>
+			    					</bean>
+								</entry>
+								<entry key="tamFormat">
+			    					<bean class="java.lang.Short">
+			    						<constructor-arg type="java.lang.String" value="${textopos.tam.format}"/>
+			    					</bean>
+								</entry>
+							</map>
+						</entry>
+					</map>
+				</entry>
+				<entry key="Cdivisa">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="3"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+					</map>
+				</entry>
+				<entry key="Tdivisa">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="1"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Hactrgen">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="4"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Haycocai">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="1"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Hayctord">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="1"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${body.hayctord}"/>
+					</map>
+				</entry>
+				<entry key="Satinter">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="5"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Sacclvop">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="3"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Sacceges">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="4"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Sacaplcp">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Saccdtgt">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Sayutili">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="1"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Filler0">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="5"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Timestamp">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="26"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params" value="${date.pattern}${time.pattern}"/>
+					</map>
+				</entry>
+				<entry key="Numter">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="4"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Numtask">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="4"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Numcta">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="14"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+					</map>
+				</entry>
+				<entry key="Desope">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="60"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<map>
+								<entry key="startCostos" value="${centro.costos.start}"/>
+								<entry key="startBenef" value="${centro.benef.start}"/>
+								<entry key="leyenda" value="${textopos.leyenda.adic}"/>
+								<entry key="tamNormal">
+			    					<bean class="java.lang.Short">
+			    						<constructor-arg type="java.lang.String" value="${textopos.tam.normal}"/>
+			    					</bean>
+								</entry>
+								<entry key="tamFormat">
+			    					<bean class="java.lang.Short">
+			    						<constructor-arg type="java.lang.String" value="${textopos.tam.format}"/>
+			    					</bean>
+								</entry>
+							</map>
+						</entry>
+					</map>
+				</entry>
+				<entry key="Codtran">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="30"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+					</map>
+				</entry>
+				<entry key="Aplicacion">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="3"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${body.aplicacion}"/>
+					</map>
+				</entry>
+				<entry key="Cliente">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="8"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+					</map>
+				</entry>
+				<entry key="Segclien">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="3"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Contrato2">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="20"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+					</map>
+				</entry>
+				<entry key="Contrato3">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="20"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Emprsoc">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="4"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${body.emprsoc}"/>
+					</map>
+				</entry>
+				<entry key="Canal">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="4"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Reproc">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="1"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Tipoimp">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="30"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+				<entry key="Divlocal">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="3"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+					</map>
+				</entry>
+				<entry key="Refcruce">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="30"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params" value="${date.pattern}"/>
+					</map>
+				</entry>
+				<entry key="Usuario">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="19"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+					</map>
+				</entry>
+				<!-- Falta definir -->
+				<entry key="Cecosto">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="10"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+					</map>
+				</entry>
+				<entry key="Fechaval">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="8"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params" value="${date.pattern}"/>
+					</map>
+				</entry>
+				<entry key="Tipocamb">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="15"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params" value="${divisa.mex}"/>
+					</map>
+				</entry>
+				<entry key="Tipocredito">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.tipocredito}"/> -->
+					</map>
+				</entry>
+				<entry key="Tipocreditonv2">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.tipocreditonv2}"/> -->
+					</map>
+				</entry>
+				<entry key="Tipocreditonv3">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.tipocreditonv3}"/> -->
+					</map>
+				</entry>
+				<entry key="Empresa0">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="3"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.empresa0}"/> -->
+					</map>
+				</entry>
+				<entry key="Cvefifo">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="1"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.cvefifo}"/> -->
+					</map>
+				</entry>
+				<entry key="Sujetoiva">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="1"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.sujetoiva}"/> -->
+					</map>
+				</entry>
+				<entry key="Numcredit">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="9"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.numcredit}"/> -->
+					</map>
+				</entry>
+				<entry key="Fondo">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.fondo}"/> -->
+					</map>
+				</entry>
+				<entry key="Fideicomiso">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="3"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.fideicomiso}"/> -->
+					</map>
+				</entry>
+				<entry key="Referencia">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="18"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.referencia}"/> -->
+					</map>
+				</entry>
+				<entry key="Numreferencia">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="23"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.numreferencia}"/> -->
+					</map>
+				</entry>
+				<entry key="Postingflag">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.postingflag}"/> -->
+					</map>
+				</entry>
+				<entry key="Codtipotran">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.codtipotran}"/> -->
+					</map>
+				</entry>
+				<entry key="Codtipoctaorigen">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.codtipoctaorigen}"/> -->
+					</map>
+				</entry>
+				<entry key="Codtipoctadestino">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.codtipoctadestino}"/> -->
+					</map>
+				</entry>
+				<entry key="Inddonativo">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="1"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.inddonativo}"/> -->
+					</map>
+				</entry>
+				<entry key="Idrespuesta">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="1"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.idrespuesta}"/> -->
+					</map>
+				</entry><entry key="Codrespuesta">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.codrespuesta}"/> -->
+					</map>
+				</entry>
+				<entry key="Fiidcajero">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="4"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.fiidcajero}"/> -->
+					</map>
+				</entry>
+				<entry key="Entcajero">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="4"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.entcajero}"/> -->
+					</map>
+				</entry>
+				<entry key="Idcajero">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="16"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.idcajero}"/> -->
+					</map>
+				</entry>
+				<entry key="Fiidtarjeta">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="4"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.fiidtarjeta}"/> -->
+					</map>
+				</entry>
+				<entry key="Bintarjeta">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="6"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.bintarjeta}"/> -->
+					</map>
+				</entry>
+				<entry key="Saccrorigen">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="10"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<map>
+								<entry key="lastPart" value="${centro.costos.postfijo}"/>
+								<entry key="cuentaContable">
+									<bean class="java.lang.Long">
+			    						<constructor-arg type="java.lang.String" value="${cuenta.contable.cc}"/>
+			    					</bean>
+			    				</entry>
+								<entry key="uno" value="${centro.costos.uno}"/>
+								<entry key="dos" value="${centro.costos.dos}"/>
+								<entry key="fill" value="0"/>
+								<entry key="long">
+			    					<bean class="java.lang.Short">
+			    						<constructor-arg type="java.lang.String" value="10"/>
+			    					</bean>
+								</entry>
+							</map>
+						</entry>
+					</map>
+				</entry>
+				<entry key="Saccrafrecta">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="10"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<map>
+								<entry key="lastPart" value="${centro.benef.postfijo}"/>
+								<entry key="cuentaContable">
+									<bean class="java.lang.Long">
+			    						<constructor-arg type="java.lang.String" value="${cuenta.contable.cb}"/>
+			    					</bean>
+			    				</entry>
+								<entry key="uno" value="${centro.benef.uno}"/>
+								<entry key="dos" value="${centro.benef.dos}"/>
+								<entry key="fill" value="0"/>
+								<entry key="long">
+			    					<bean class="java.lang.Short">
+			    						<constructor-arg type="java.lang.String" value="10"/>
+			    					</bean>
+								</entry>
+							</map>
+						</entry>
+					</map>
+				</entry>
+				<entry key="Sacsector">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.sacsector}"/> -->
+					</map>
+				</entry>
+				<entry key="Sacsubsector">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.sacsubsector}"/> -->
+					</map>
+				</entry>
+				<entry key="Sactipocre">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.sactipocre}"/> -->
+					</map>
+				</entry>
+				<entry key="Sacesqcre">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="3"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.sacesqcre}"/> -->
+					</map>
+				</entry>
+				<entry key="Sacfondo">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.sacfondo}"/> -->
+					</map>
+				</entry>
+				<entry key="Sactipoeq">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.sactipoeq}"/> -->
+					</map>
+				</entry>
+				<entry key="Sactipoint">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.sactipoint}"/> -->
+					</map>
+				</entry>
+				<entry key="Saccvecart">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.saccvecart}"/> -->
+					</map>
+				</entry>
+				<entry key="Sacreferencia">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="18"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.sacreferencia}"/> -->
+					</map>
+				</entry>
+				<entry key="Sacproveedor">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="12"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.sacproveedor}"/> -->
+					</map>
+				</entry>
+				<entry key="Sacauxsc">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.sacauxsc}"/> -->
+					</map>
+				</entry>
+				<entry key="Sacauxcpto">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<!-- <entry key="value" value="${body.sacauxcpto}"/> -->
+					</map>
+				</entry>
+			</map>
+		</property>
+		<property name="trailer">
+			<map>
+				<entry key="Tiporeg">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="2"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${trailer.tiporeg}"/>
+					</map>
+				</entry>
+				<entry key="Totregs">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="8"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+					</map>
+				</entry>
+				<entry key="Numtd">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="8"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+					</map>
+				</entry>
+				<entry key="Numth">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="8"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+					</map>
+				</entry>
+				<entry key="Impdmxp">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="15"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<bean class="java.math.BigDecimal">
+			    				<constructor-arg type="java.lang.String" value="100"/>
+			    			</bean>
+						</entry>
+					</map>
+				</entry>
+				<entry key="Imphmxp">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="15"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<bean class="java.math.BigDecimal">
+			    				<constructor-arg type="java.lang.String" value="100"/>
+			    			</bean>
+						</entry>
+					</map>
+				</entry>
+				<entry key="Impddiv">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="15"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<bean class="java.math.BigDecimal">
+			    				<constructor-arg type="java.lang.String" value="100"/>
+			    			</bean>
+						</entry>
+					</map>
+				</entry>
+				<entry key="Imphdiv">
+					<map>
+						<entry key="type" value="N"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="15"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<bean class="java.math.BigDecimal">
+			    				<constructor-arg type="java.lang.String" value="100"/>
+			    			</bean>
+						</entry>
+					</map>
+				</entry>
+				<entry key="Filler">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="713"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+					</map>
+				</entry>
+			</map>
+		</property>
+		<property name="personalidades">
+			<map>
+				<entry key="PM">
+					<map>
+						<entry key="sector" value="${pers.pm.sector}"/>
+						<entry key="subsector" value="${pers.pm.subsector}"/>
+					</map>
+				</entry>
+				<entry key="PF">
+					<map>
+						<entry key="sector" value="${pers.pf.sector}"/>
+						<entry key="subsector" value="${pers.pf.subsector}"/>
+					</map>
+				</entry>
+				<entry key="AE">
+					<map>
+						<entry key="sector" value="${pers.ae.sector}"/>
+						<entry key="subsector" value="${pers.ae.subsector}"/>
+					</map>
+				</entry>
+			</map>
+		</property>
+		<property name="metales">
+			<map>
+				<entry key="XAZ" value="XAU"/>
+				<entry key="XCE" value="OAM"/>
+				<entry key="XCH" value="XAU"/>
+				<entry key="XHI" value="XAU"/>
+				<entry key="XMH" value="XAU"/>
+				<entry key="XOT" value="XAG"/>
+				<entry key="XPL" value="OLP"/>
+				<entry key="XQH" value="XAU"/>
+			</map>
+		</property>
+		<property name="excepciones">
+			<map>
+				<entry key="ORO" value="ORO"/>
+				<entry key="OZP" value="OZP"/>
+			</map>
+		</property>
+		<property name="parametros">
+			<map>
+				<entry key="tipoProc" value="${param.tipo.proc}"/>
+				<entry key="loteIni"  value="${param.lote.ini}"/>
+				<entry key="loteFin" value="${param.lote.fin}"/>
+				<entry key="rango" value="${param.tipo.proc.rango}"/>
+				<entry key="diario" value="${param.tipo.proc.diario}"/>
+			</map>
+		</property>
+		<property name="nombreArchivoBandera">
+			<map>
+				<entry key="PreNombreArchivoBandera">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="28"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${prefijo.file.bandera}"/>
+					</map>
+				</entry>
+				<entry key="FechaArchivoBandera">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="17"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<map>
+								<entry key="timeSystem" value="${time.system}" />
+								<entry key="dateFilePattern" value="${date.pattern.file}" />
+								<entry key="timeFilePattern" value="${time.pattern}" />
+								<entry key="separator" value="${separator.date.file}" />
+							</map>
+						</entry>
+					</map>
+				</entry>
+				<entry key="ExtArchivoBandera">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="4"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${ext.archivo.bandera}"/>
+					</map>
+				</entry>
+			</map>
+		</property>
+		<property name="dirArchivoBandera" value="${dir.archivo.bandera}"/>
+		<property name="headerArchivoBandera">
+			<map>
+				<entry key="LeyendaHeader">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="28"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${leyenda.header.bandera}"/>
+					</map>
+				</entry>
+				<entry key="FechaArchivoBandera">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="47"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<map>
+								<entry key="idParam" value="${param.date.system}" />
+								<entry key="dateSystemPattern" value="${date.pattern.system}" />
+								<entry key="timeSystem" value="${time.system}" />
+								<entry key="dateFilePattern" value="${date.pattern.file}" />
+								<entry key="timeFilePattern" value="${time.pattern}" />
+								<entry key="separator" value="${separator.date.file}" />
+							</map>
+						</entry>
+					</map>
+				</entry>
+			</map>
+		</property>
+	</bean>
+  	
+	<bean id="messages" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename">
+			<value>file:archivos/messages</value>
+		</property>
+		<property name="fallbackToSystemLocale" value="false"/>
+	</bean>
+  	
+</beans>

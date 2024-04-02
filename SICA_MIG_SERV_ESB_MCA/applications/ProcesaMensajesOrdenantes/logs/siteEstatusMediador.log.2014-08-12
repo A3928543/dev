@@ -1,0 +1,40 @@
+--->>>>>> Inicia procesamiento de mensajes recibidos desde el Mediador....
+Tue Aug 12 11:27:47 CDT 2014
+Se realizó la lectura de las propiedades de configuración.
+config:{[ConfiguracionVO{queueManagerHost:15.156.2.105, queueManagerPort:1414, queueManagerChannel:CH.2, queueManager:QM_Odin_PC, queueIn:SITE.QL.IN, dataSourceName:SITEDataSource, initialContextFactory:weblogic.jndi.WLInitialContextFactory, providerURL:t3://wlsdev.unix.banorte.com:7025}]
+Se consiguió la referencia al dataSource de conexión a base de datos.
+Connection Factory creado.
+Connection creada.
+Session creada.
+Queue Session creada: SITE.QL.IN
+Consumidor creado.
+Conexión hacia la QUEUE establecida, esperando mensajes.................
+--->>>>>> Inicia procesamiento de mensajes recibidos desde el Mediador....
+Tue Aug 12 11:28:30 CDT 2014
+Se realizó la lectura de las propiedades de configuración.
+config:{[ConfiguracionVO{queueManagerHost:15.156.2.105, queueManagerPort:1414, queueManagerChannel:CH.2, queueManager:QM_Odin_PC, queueIn:SITE.QL.IN, dataSourceName:SITEDataSource, initialContextFactory:weblogic.jndi.WLInitialContextFactory, providerURL:t3://wlsdev.unix.banorte.com:7025}]
+Se consiguió la referencia al dataSource de conexión a base de datos.
+Connection Factory creado.
+Connection creada.
+Session creada.
+Queue Session creada: SITE.QL.IN
+Consumidor creado.
+Conexión hacia la QUEUE establecida, esperando mensajes.................
+--->>>>>> Inicia procesamiento de mensajes recibidos desde el Mediador....
+Tue Aug 12 12:10:16 CDT 2014
+Se realizó la lectura de las propiedades de configuración.
+config:{[ConfiguracionVO{queueManagerHost:15.156.2.105, queueManagerPort:1414, queueManagerChannel:CH.2, queueManager:QM_Odin_PC, queueIn:SITE.QL.OUT, dataSourceName:SITEDataSource, initialContextFactory:weblogic.jndi.WLInitialContextFactory, providerURL:t3://wlsdev.unix.banorte.com:7025}]
+Se consiguió la referencia al dataSource de conexión a base de datos.
+Connection Factory creado.
+Connection creada.
+Session creada.
+Queue Session creada: SITE.QL.OUT
+Consumidor creado.
+Conexión hacia la QUEUE establecida, esperando mensajes.................
+xml recibido: <?xml version="1.0" encoding="UTF-8"?>    <siteConfirmacionMatch>        <operacionID>1220997</operacionID>        <folioMediador>1111</folioMediador>        <estatus>CANCELADO</estatus>    </siteConfirmacionMatch>
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?>    <siteConfirmacionMatch>        <operacionID>1220997</operacionID>        <folioMediador>1111</folioMediador>        <estatus>CANCELADO</estatus>    </siteConfirmacionMatch>
+El mensaje recibido es del tipo: EstatusOperacionMediadorVO.
+El objeto mensaje es null: false
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_DETALLE_LIQUIDACION SET ESTATUS_MEDIADOR = 'CANCELADO'  WHERE ID_DETALLE_LIQUIDACION = 1220997
+Se va a ejecutar la instrucción: INSERT INTO SITE_ADMIN.TES_BITACORA_MEDIADOR (ID_BITACORA,CODIGO_MEDIADOR,FOLIO_MEDIADOR,MENSAJE_MEDIADOR,ESTATUS_MEDIADOR,ID_DEAL,ID_DETALLE_LIQ,FED,MSG_MT,FECHA,ID_PERSONA_ENVIA) VALUES(SITE_ADMIN.tes_bit_mediador_seq.nextval,NULL, 1111,  NULL,'CANCELADO',  514556,  1220997,  NULL,  NULL,  SYSDATE,0)
+Se procesaron 2 instrucciones SQL

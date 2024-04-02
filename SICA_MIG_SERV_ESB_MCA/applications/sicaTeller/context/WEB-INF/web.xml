@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+    <display-name>sicaTellerIntegration</display-name>
+
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>/WEB-INF/log4j.properties</param-value>
+    </context-param>
+
+    <servlet>
+        <servlet-name>CrearDealParaTellerService</servlet-name>
+        <servlet-class>com.ixe.ods.sica.teller.servlet.CrearDealPararTellerServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>CrearPlantillaCuentaIxeService</servlet-name>
+        <servlet-class>com.ixe.ods.sica.teller.servlet.CrearPlantillaCuentaIxeServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>CrearPlantillaInternacionalService</servlet-name>
+        <servlet-class>com.ixe.ods.sica.teller.servlet.CrearPlantillaInternacionalServlet</servlet-class>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>CrearPlantillaNacionalService</servlet-name>
+        <servlet-class>com.ixe.ods.sica.teller.servlet.CrearPlantillaNacionalServlet</servlet-class>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>GetBancoInternacionalByClaveService</servlet-name>
+        <servlet-class>com.ixe.ods.sica.teller.servlet.GetBancoInternacionalByClaveServlet</servlet-class>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>GetBancosInternacionalesByNombrePaisService</servlet-name>
+        <servlet-class>com.ixe.ods.sica.teller.servlet.GetBancosInternacionalesByNombrePaisServlet</servlet-class>
+        <load-on-startup>4</load-on-startup>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>GetContratoSicaService</servlet-name>
+        <servlet-class>com.ixe.ods.sica.teller.servlet.GetContratoSicaServlet</servlet-class>
+        <load-on-startup>5</load-on-startup>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>GetDivisasService</servlet-name>
+        <servlet-class>com.ixe.ods.sica.teller.servlet.GetDivisasServlet</servlet-class>
+        <load-on-startup>6</load-on-startup>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>GetFormasPagoLiqService</servlet-name>
+        <servlet-class>com.ixe.ods.sica.teller.servlet.GetFormasPagoLiqServlet</servlet-class>
+        <load-on-startup>7</load-on-startup>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>GetPaisesService</servlet-name>
+        <servlet-class>com.ixe.ods.sica.teller.servlet.GetPaisesServlet</servlet-class>
+        <load-on-startup>8</load-on-startup>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>MarcarDealCanceladoService</servlet-name>
+        <servlet-class>com.ixe.ods.sica.teller.servlet.MarcarDealCanceladoServlet</servlet-class>
+        <load-on-startup>9</load-on-startup>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>ObtenerTipoDeCambioPorDivisaService</servlet-name>
+        <servlet-class>com.ixe.ods.sica.teller.servlet.ObtenerTipoDeCambioPorDivisaServlet</servlet-class>
+        <load-on-startup>10</load-on-startup>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>RegistrarBeneficiarioContratoService</servlet-name>
+        <servlet-class>com.ixe.ods.sica.teller.servlet.RegistrarBeneficiarioContratoServlet</servlet-class>
+        <load-on-startup>11</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RegistrarBeneficiarioContratoService</servlet-name>
+        <url-pattern>/services/RegistrarBeneficiarioContratoService</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ObtenerTipoDeCambioPorDivisaService</servlet-name>
+        <url-pattern>/services/ObtenerTipoDeCambioPorDivisaService</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>MarcarDealCanceladoService</servlet-name>
+        <url-pattern>/services/MarcarDealCanceladoService</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>GetPaisesService</servlet-name>
+        <url-pattern>/services/GetPaisesService</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>GetFormasPagoLiqService</servlet-name>
+        <url-pattern>/services/GetFormasPagoLiqService</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>GetDivisasService</servlet-name>
+        <url-pattern>/services/GetDivisasService</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>GetContratoSicaService</servlet-name>
+        <url-pattern>/services/GetContratoSicaService</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>GetBancosInternacionalesByNombrePaisService</servlet-name>
+        <url-pattern>/services/GetBancosInternacionalesByNombrePaisService</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>GetBancoInternacionalByClaveService</servlet-name>
+        <url-pattern>/services/GetBancoInternacionalByClaveService</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CrearPlantillaNacionalService</servlet-name>
+        <url-pattern>/services/CrearPlantillaNacionalService</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CrearPlantillaInternacionalService</servlet-name>
+        <url-pattern>/services/CrearPlantillaInternacionalService</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CrearPlantillaCuentaIxeService</servlet-name>
+        <url-pattern>/services/CrearPlantillaCuentaIxeService</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CrearDealParaTellerService</servlet-name>
+        <url-pattern>/services/CrearDealParaTellerService</url-pattern>
+    </servlet-mapping>
+
+    <session-config>
+        <session-timeout>40</session-timeout>
+    </session-config>
+
+    <login-config>
+        <auth-method>BASIC</auth-method>
+    </login-config>
+    
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+</web-app>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.MunicipioListaBlanca"
+        table="SC_LB_MUNICIPIO_001"
+        proxy="com.ixe.ods.sica.model.MunicipioListaBlanca"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <composite-id
+            name="id"
+            class="com.ixe.ods.sica.model.MunicipioListaBlancaPK"
+        >
+                     <key-property
+                        name="idMunicipio"
+                        type="java.lang.Integer"
+                        column="ID_MUNICIPIO"
+                />
+
+                     <key-property
+                        name="idEstado"
+                        type="java.lang.Integer"
+                        column="ID_ENTIDAD_FEDERATIVA"
+                />
+
+        </composite-id>
+
+        <property
+            name="fechaCreacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_CREACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fechaUltimaModificacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_ULTIMA_MOD"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="usuarioModificacion"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_USUARIO_MOD"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="zonaFronteriza"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="ES_RF"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="zonaTuristica"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="ES_ZT"
+            not-null="false"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-MunicipioListaBlanca.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

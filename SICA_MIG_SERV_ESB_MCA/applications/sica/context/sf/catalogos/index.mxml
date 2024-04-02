@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: index.mxml,v 1.8 2008/02/22 18:25:53 ccovian Exp $ -->
+<mx:Application xmlns:mx="http://www.macromedia.com/2003/mxml" xmlns:cat="*" xmlns:ls="com.legosoft.flex.*"
+                xmlns:comp="com.legosoft.flex.components.*"
+                creationComplete="inicializar()" width="100%">
+
+    <ls:GuiController id="ctrl" dataGrid="{dataGrid}"/>
+
+    <mx:Model id="modeloCliente">
+        <clave>{dataGrid.selectedItem.clave}</clave>
+        <nombre>{dataGrid.selectedItem.nombre}</nombre>
+        <paterno>{dataGrid.selectedItem.paterno}</paterno>
+        <materno>{dataGrid.selectedItem.materno}</materno>
+    </mx:Model>
+
+    <mx:Script>
+	<![CDATA[
+	    import com.legosoft.flex.*;
+	    import com.ixe.vo.*;
+
+	    var ctes : Array;
+
+	    public function inicializar() : Void
+	    {
+	        ctrl.inicializar();
+	        listar();
+	    }
+
+		public function listar() : Void
+		{
+		    //ctrl.fetch();
+		    ctes = new Array();
+		    ctes[0] = ClienteVO.crear('0001', 'Ricardo', 'Legorreta', 'Hern\u00e1ndez');
+		    ctes[1] = ClienteVO.crear('0002', 'Jean Carlo', 'Favila', 'Humara');
+		    dataGrid.dataProvider = ctes;
+		}
+
+		public function insertar() : Void
+		{
+		    //ctrl.insert();
+		    // Lo siguiente es crear un nuevo registro:
+		    ctes[ctes.length] = ClienteVO.crear('', '', '', '');
+		    dataGrid.dataProvider = ctes;
+		    dataGrid.selectedIndex = ctes.length;
+		}
+
+		public function eliminar() : Void
+		{
+		    //ctrl.erase();
+		    ctes.splice(dataGrid.selectedIndex, 1);
+		    dataGrid.dataProvider = ctes;
+		}
+
+		public function actualizar() : Void
+		{
+		    //ctrl.save();
+		    // Lo siguiente es actualizar la informacion en la DB.
+		}
+
+		public function deshacer() : Void
+		{
+		    //ctrl.revert();
+		    // Descarta los cambios:
+		    listar();
+		}
+
+	]]>
+	</mx:Script>
+
+    <mx:Panel title="Cat&#225;logos" width="100%" height="100%" marginTop="10" marginBottom="10" marginLeft="10"  marginRight="10">
+		<mx:DataGrid id="dataGrid" width="100%" height="100%">
+            <mx:columns>
+                <mx:Array>
+                    <mx:DataGridColumn columnName="clave" headerText="Clave" />
+                    <mx:DataGridColumn columnName="nombre" headerText="Nombre" />
+                    <mx:DataGridColumn columnName="paterno" headerText="Paterno" />
+                    <mx:DataGridColumn columnName="materno" headerText="Materno" />
+                </mx:Array>
+            </mx:columns>
+        </mx:DataGrid>
+        <mx:Form>
+            <comp:ElemForma label="Clave:" tag="{GuiController.INSERT_FIELD}" ctrl="{ctrl}">
+				<comp:CampoTexto text="{modeloCliente.clave}" tag="{GuiController.INSERT_FIELD}" ctrl="{ctrl}" />
+			</comp:ElemForma>
+			<comp:ElemForma label="Nombre:" tag="{GuiController.EDIT_FIELD}" ctrl="{ctrl}">
+                <mx:HBox>
+                    <comp:CampoTexto text="{modeloCliente.nombre}" tag="{GuiController.EDIT_FIELD}" ctrl="{ctrl}"/>
+                    <comp:Etiqueta text="Paterno:" tag="{GuiController.EDIT_FIELD}" ctrl="{ctrl}"/>
+                    <comp:CampoTexto text="{modeloCliente.paterno}" tag="{GuiController.EDIT_FIELD}" ctrl="{ctrl}"/>
+                    <comp:Etiqueta text="Materno:" tag="{GuiController.EDIT_FIELD}" ctrl="{ctrl}"/>
+                    <comp:CampoTexto text="{modeloCliente.materno}" tag="{GuiController.EDIT_FIELD}" ctrl="{ctrl}"/>
+                </mx:HBox>
+            </comp:ElemForma>
+            <mx:FormItem>
+				<mx:HBox>
+					<comp:Boton label="Listar" click="listar()" tag="{GuiController.LISTAR}" ctrl="{ctrl}" />
+					<comp:Boton label="Insertar" click="insertar()" tag="{GuiController.INSERTAR}" ctrl="{ctrl}" />
+					<comp:Boton label="Eliminar" click="eliminar()" tag="{GuiController.ELIMINAR}" ctrl="{ctrl}" />
+					<comp:Boton label="Actualizar" click="actualizar()" tag="{GuiController.ACTUALIZAR}" ctrl="{ctrl}" />
+					<comp:Boton label="Deshacer" click="deshacer()" tag="{GuiController.DESHACER}" ctrl="{ctrl}" />
+				</mx:HBox>
+			</mx:FormItem>
+		</mx:Form>
+    </mx:Panel>
+</mx:Application>

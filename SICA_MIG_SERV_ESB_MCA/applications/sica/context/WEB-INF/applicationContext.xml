@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: applicationContext.xml,v 1.26.2.1.8.2.2.2.4.6.2.7.2.4.14.3.24.1.2.1.2.2 2016/07/13 23:58:47 mejiar Exp $ -->
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!-- Properties para obtener informacion del componente FTP -->
+	<bean id="ftpProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true"/>
+    	<property name="locations" >
+	    	<list>
+	    		<value>classpath:archivos/sica/sica-ftp.properties</value>
+	    		<value>classpath:archivos/sica/mail.properties</value>
+	    	</list>	
+    	</property>
+    	<property name="fileEncoding" value="UTF-8"/>
+	</bean>
+	
+    <bean id="pizarraQueueSender" class="com.ixe.ods.sica.jms.impl.PizarraQueueSenderImpl" lazy-init="true">
+        <property name="connectionFactory">
+            <ref parent="sicaConnectionFactory"/>
+        </property>
+        <property name="queueJndiName">
+            <value>jms/sicaPizarraQueue</value>
+        </property>
+    </bean>
+
+	<bean id="sicaService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName">
+            <value>ejb/sica/SicaHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaService</value>
+        </property>
+    </bean>
+
+	<!-- bean id="sicaTellerService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" >
+        <property name="jndiName">
+            <value>ejb/sica/SicaTellerHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaTellerService</value>
+        </property>
+    </bean-->
+
+    <bean id="posicionServiceData" class="com.ixe.ods.sica.sdo.impl.HibernatePosicionServiceData">
+        <property name="sessionFactory">
+            <ref parent="sessionFactory"/>
+        </property>
+        <property name="clienteServiceData">
+			<bean id="clienteTellerHTTP" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+				<property name="serviceUrl" value="http://nuevo45.ixecorp.ixe.com.mx:7003/teller/tellercons/TellerServicio"/>
+				<property name="serviceInterface" value="com.ixe.teller.middleware.ITeller"/>
+			</bean>
+        </property>
+    </bean>
+
+    <bean id="adminPizarronServiceData" class="com.ixe.ods.sica.sdo.impl.HibernateAdminPizarronServiceData">
+        <property name="sessionFactory">
+            <ref parent="sessionFactory"/>
+        </property>
+    </bean>
+
+	
+    <bean id="contextHolder" class="com.ixe.ods.springframework.web.context.ServletContextHolder"/>
+
+    <bean id="plantillaPantallaCache" class="com.ixe.ods.sica.PlantillaPantallaCache" singleton="true">
+    	<property name="sicaServiceData">
+    		<ref parent="sicaServiceData" />
+    	</property>
+    </bean>
+
+    <!---TIMER DE HORARIOS-->
+    <bean id="horarioTimer" class="com.ixe.ods.sica.pages.mesa.HorarioTimer">
+    	<property name="sicaServiceData">
+    		<ref parent="sicaServiceData" />
+    	</property>
+    </bean>
+
+    <!---TIMER DE ALARMAS-->
+    <!--bean id="alertasTimer" class="com.ixe.ods.sica.pages.mesa.AlertasTimer">
+    	<constructor-arg>
+            <list>
+                <ref parent="sicaServiceData" />
+                <ref parent="sicaAlertasService" />
+            </list>
+    	 </constructor-arg>
+    </bean-->
+
+    <!---TIMER DE RIESGO Y STOPLOSS-->
+    <bean id="riesgosTimer" class="com.ixe.ods.sica.pages.mesa.RiesgosTimer">
+    	<property name="cierreServiceData">
+    		<ref parent="cierreServiceData" />
+    	</property>
+    </bean>
+
+    <bean id="currencyFormat" class="java.text.DecimalFormat">
+        <constructor-arg>
+            <value>#,##0.000000</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="currencyFormatSix" class="java.text.DecimalFormat">
+        <constructor-arg>
+            <value>#,##0.000000</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="moneyFormat" class="java.text.DecimalFormat">
+        <constructor-arg>
+            <value>#,##0.00</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="hmsFormat" class="java.text.SimpleDateFormat">
+        <constructor-arg>
+            <value>HH:mm:ss</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="dateFormat" class="java.text.SimpleDateFormat">
+        <constructor-arg>
+            <value>dd/MM/yyyy</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="fullDateFormat" class="java.text.SimpleDateFormat">
+        <constructor-arg>
+            <value>dd/MM/yyyy HH:mm</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="smallPopupLinkRenderer" class="org.apache.tapestry.contrib.link.PopupLinkRenderer">
+        <property name="windowName">
+            <value>sica</value>
+        </property>
+        <property name="features">
+            <value>width=700,height=400,scrollbars=yes,status=yes</value>
+        </property>
+    </bean>
+
+    <bean id="mediumPopupLinkRenderer" class="org.apache.tapestry.contrib.link.PopupLinkRenderer">
+        <property name="windowName">
+            <value>sica</value>
+        </property>
+        <property name="features">
+            <value>width=980,height=680,scrollbars=yes,status=yes</value>
+        </property>
+    </bean>
+
+    <bean id="popupLinkRenderer" class="org.apache.tapestry.contrib.link.PopupLinkRenderer">
+        <property name="windowName">
+            <value>sica</value>
+        </property>
+        <property name="features">
+            <value>width=800,height=600,scrollbars=yes,status=yes</value>
+        </property>
+    </bean>
+
+    <bean id="bigPopupLinkRenderer" class="org.apache.tapestry.contrib.link.PopupLinkRenderer">
+        <property name="windowName">
+            <value>sica</value>
+        </property>
+        <property name="features">
+            <value>width=1000,height=600,scrollbars=yes,status=yes</value>
+        </property>
+    </bean>
+    
+    
+    <bean id="bigPopupLinkRendererTCE" class="org.apache.tapestry.contrib.link.PopupLinkRenderer">
+        <property name="windowName">
+            <value>sica_tce</value>
+        </property>
+        <property name="features">
+            <value>width=1000,height=600,scrollbars=yes,status=yes</value>
+        </property>
+    </bean>
+
+    <bean id="metodoActualizacionModel" class="org.apache.tapestry.form.StringPropertySelectionModel">
+    	<constructor-arg>
+    		<list>
+	    		<value>M</value>
+    			<value>A</value>
+    		</list>
+    	</constructor-arg>
+    </bean>
+
+    <!-- Beans de los Servicios de Contratacion -->
+
+    <bean id="sicaRegistroPersonaService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" >
+        <property name="jndiName">
+            <value>ejb.RegistroPersonaSessionRemoteHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaRegistroPersonaService</value>
+        </property>
+    </bean>
+
+    <bean id="sicaConsultaCatalogosService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" >
+        <property name="jndiName">
+            <value>ejb.ConsultaCatalogosSessionRemoteHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaConsultaCatalogosService</value>
+        </property>
+    </bean>
+
+    <bean id="sicaRegistroDireccionPersonaService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" >
+        <property name="jndiName">
+            <value>ejb.RegistroDireccionPersonaSessionRemoteHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaRegistroDireccionPersonaService</value>
+        </property>
+    </bean>
+
+    <bean id="sicaConsultaMediosContactoPersonaService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" >
+        <property name="jndiName">
+            <value>ejb.ConsultaMediosContactoPersonaSessionRemoteHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaConsultaMediosContactoPersonaService</value>
+        </property>
+    </bean>
+    
+    <bean id="sicaRegistroRelacionContratacionService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" >
+        <property name="jndiName">
+            <value>ejb.RegistroRelacionPersonaSessionRemoteHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaRegistroRelacionContratacionService</value>
+        </property>
+    </bean>
+    
+    <bean id="sicaConsultaRelacionesPersonaContratacionService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" >
+        <property name="jndiName">
+            <value>ejb.ConsultaRelacionesPersonaSessionRemoteHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaConsultaRelacionContratacionService</value>
+        </property>
+    </bean>
+    
+    <bean id="sicaRegistroMedioContactoContratacionService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" >
+        <property name="jndiName">
+            <value>ejb.RegistroMedioContactoPersonaSessionHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaRegistroMedioContactoContratacionService</value>
+        </property>
+    </bean>
+    
+    <!-- Terminan los Servicios de Contratacion -->
+
+	
+	<!-- Servicio de envio de corte via FTP  -->
+	
+   <bean id="ftpService" class="com.ixe.ods.sica.sicamurex.service.FTPServiceImpl">
+    	<property name="corteMurexServiceData">
+    		<ref parent="corteMurexServiceData"/>
+    	</property>
+    	<property name="sicaServiceData">
+    		<ref parent="sicaServiceData"/>
+    	</property>
+    	<property name="usuario" value="${ftp_usr}" />
+		<property name="contrasena" value="${ftp_pwd}" />
+	    <property name="timeOut" value="${ftp_timeout}" />
+	</bean>
+	
+	<bean id="layoutServices" class="com.ixe.ods.sica.sicareportesLayout.service.LayoutServiceImpl" singleton="false">
+    	<property name="sicaServiceData">
+    		<ref parent="sicaServiceData" />
+    	</property>
+    	<property name="reportesServiceData">
+    		<ref parent="reportesServiceData" />
+    	</property>
+    	<property name="generalMailSender">
+    		<ref parent="generalMailSender" />
+    	</property>
+    </bean>
+
+	<bean id="lineaCreditoMailMessage" class="org.springframework.mail.SimpleMailMessage" singleton="false">
+		<property name="from" value="${mail.lc.from}" />
+		<property name="subject" value="${mail.lc.subject}" />
+		<property name="text" value="${mail.lc.body}" />
+	</bean>
+
+	<bean id="sicaMailService" class="com.ixe.ods.sica.services.impl.SicaSimpleMailImpl" singleton="false">
+		<property name="mailMessage" ref="lineaCreditoMailMessage"/>
+		<property name="mailSender">
+		 	<ref parent="mailSender"/>
+		</property>
+	</bean>
+
+<bean id="mensajesLineaCredito" class="com.ixe.ods.sica.lineacredito.service.dto.MensajeMailLineaCreditoDto">
+		<property name="from" value="${mail.lc.from}" />
+		<property name="excesoAutorizacionSubject" value="${mail.lc.exceso.autorizacion.subject}" />
+		<property name="excesoAutorizacionBody" value="${mail.lc.exceso.autorizacion.body}" />
+		<property name="excesoPosteriorSubject" value="${mail.lc.exceso.posterior.subject}" />
+		<property name="excesoPosteriorBody" value="${mail.lc.exceso.posterior.body}" />
+		<property name="excesoCuarto" value="${mail.lc.exceso.cuarto}" />
+		<property name="excesoSexto" value="${mail.lc.exceso.sexto}" />
+	</bean>
+
+<!-- Servicio de consulta de posicion  -->
+	<bean id="sicaMurexService" class="com.ixe.ods.sica.sicamurex.service.SicaMurexServiceImpl" singleton="false">
+		<property name="posicionDelegate" ref="posicionDelegate" />
+	</bean>
+	
+    <bean id="posicionDelegate" class="com.ixe.ods.sica.PosicionDelegate">
+        <property name="serviceData">
+            <ref local="posicionServiceData" />
+        </property>
+        <property name="pizarronServiceData">
+            <ref parent="pizarronServiceData" />
+        </property>
+    	<property name="sicaServiceData">
+        	<ref parent="sicaServiceData" />
+        </property>
+        <property name="corteMurexServiceData">
+        	<ref parent="corteMurexServiceData" />
+        </property>
+        
+    </bean>
+
+    <bean id="autorizacionesDelegate" class="com.ixe.ods.sica.AutorizacionesDelegate">
+        <property name="sicaWorkFlowService">
+            <ref parent="sicaWorkFlowService" />
+        </property>
+        <property name="sicaServiceData">
+    		<ref parent="sicaServiceData" />
+    	</property>
+    </bean>
+
+    <bean id="jerarquiasDelegate" class="com.ixe.ods.sica.JerarquiasDelegate">
+        <property name="sicaSeguridadService">
+            <ref parent="sicaSeguridadService" />
+        </property>
+        <property name="sicaServiceData">
+            <ref parent="sicaServiceData" />
+        </property>
+    </bean>
+    
+    <bean id="informacionNegociacionDelegate" class="com.ixe.ods.sica.InformacionNegociacionDelegate">
+        <property name="informacionNegociacionDao">
+            <ref parent="informacionNegociacionDao" />
+        </property>
+    </bean>
+
+    <bean id="swapsDelegate" class="com.ixe.ods.sica.SwapsDelegate">
+        <property name="adminPizarronServiceData">
+            <ref local="adminPizarronServiceData" />
+        </property>
+        <property name="brokerDao">
+            <ref local="brokerDao" />
+        </property>
+        <property name="pizarronServiceData">
+            <ref parent="pizarronServiceData" />
+        </property>
+        <property name="sicaServiceData">
+            <ref parent="sicaServiceData" />
+        </property>
+        <property name="swapsServiceData">
+            <ref parent="swapsServiceData" />
+        </property>
+    </bean>
+
+    <!-- TIMER DE Captura Rapida -->
+    <bean class="com.ixe.ods.sica.util.CapturaRapidaTimer">
+        <property name="task">
+            <bean class="com.ixe.ods.sica.util.CapturaRapidaTask">
+                <property name="dealServiceData">
+                    <ref parent="dealServiceData" />
+                </property>
+                <property name="sicaServiceData">
+                    <ref parent="sicaServiceData" />
+                </property>
+                <property name="mailSender">
+                    <ref parent="capturaRapidaMailSender" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="reversosDelegate" class="com.ixe.ods.sica.ReversosDelegate">
+        <property name="serviceData">
+            <ref parent="reversosServiceData" />
+        </property>
+        <property name="brokerDao">
+            <ref local="brokerDao" />
+        </property>
+        <property name="formasPagoLiqService">
+            <ref parent="formasPagoLiqService" />
+        </property>
+        <property name="busquedaClientesService">
+            <ref local="busquedaClientesService" />
+        </property>
+        <property name="pizarronServiceData">
+            <ref parent="pizarronServiceData" />
+        </property>
+        <property name="plantillaPantallaCache">
+            <ref local="plantillaPantallaCache" />
+        </property>
+        <property name="seguridadServiceData">
+            <ref parent="securityDao" />
+        </property>
+    </bean>
+    
+    <!-- Lineas de Credito -->
+    
+    <bean id="lineaCreditoService" class="com.ixe.ods.sica.lineacredito.service.LineaCreditoServiceImpl">
+	    <property name="sicaServiceData">
+            <ref parent="lineasCambioServiceData" />
+        </property>
+    </bean>
+    
+    <bean id="bupSessionFactory" class="org.springframework.orm.hibernate.LocalSessionFactoryBean">
+        <description>Session Factory para Hibernate (solo una instancia por JVM)</description>
+        <property name="dataSource">
+            <ref parent="dataSource"/>
+        </property>
+        <property name="mappingResources">
+            <list>
+                <value>com/ixe/ods/bup/model/ActividadEconomica.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/Banco.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/ContratoPagoServicio.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/ContratoMercadoDinero.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/CuentaAbono.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/CuentaContrato.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/CuentaEjecutivo.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/DetalleServicio.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/Direccion.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/EstadoCivil.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/InstanciaAtributoRelacion.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/InstanciaRelacion.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/MedioContacto.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/Pais.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/Persona.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/PersonaCuentaRol.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/PersonaRim.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/SectorEconomico.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/Sucursal.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/Telefono.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/TipoCuentaContrato.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/TipoDireccion.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/TipoEjecutivo.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/TipoEnvioEdocta.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/TipoMedioContacto.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/TipoRelacion.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/TipoRol.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/TipoServicio.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/TipoTarjeta.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/TipoTelefono.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/UsuarioIxenetEmpresarial.hbm.xml</value>
+                 <value>com/ixe/ods/bup/model/RegServicioAdicional.hbm.xml</value>
+                 <value>com/ixe/ods/sica/model/EmpresaCambios.hbm.xml</value>
+                 <value>com/ixe/ods/sica/model/Contrato.hbm.xml</value>
+                 <value>com/ixe/ods/sica/model/Cliente.hbm.xml</value>
+
+                <value>com/ixe/ods/seguridad/model/Jerarquia.hbm.xml</value>
+                <value>com/ixe/ods/seguridad/model/NodoJerarquia.hbm.xml</value>
+                <!-- para que suba en QA y mi ambiente local se debe comentar este mapeo por el paquete 14, para q suba en Desarrollo se debe descomentar 
+                <value>com/ixe/ods/bup/model/RegServicioAdicional.hbm.xml</value>-->
+                <!-->value>com/ixe/ods/bup/model/RegServicioAdicional.hbm.xml</value-->
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">net.sf.hibernate.dialect.OracleDialect</prop>
+                <prop key="hibernate.show_sql">false</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="busquedaClientesService" class="com.ixe.ods.sica.services.impl.BusquedaClientesServiceImpl">
+        <property name="clienteDao">
+            <ref parent="clienteDao" />
+        </property>
+        <property name="seguridadServiceData">
+            <ref parent="securityDao" />
+        </property>
+        <property name="jerarquiaDao">
+            <ref parent="jerarquiaDao" />
+        </property>
+    </bean>
+
+    <bean id="brokerDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref parent="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.impl.JdbcBrokerDao">
+                <property name="dataSource">
+                    <ref parent="dataSource" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="securityService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" >
+        <property name="jndiName">
+            <value>ejb/seguridad/SecurityHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SecurityService</value>
+        </property>
+    </bean>
+
+    <bean id="sicaKondorSessionBean" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" >
+        <property name="jndiName">
+            <value>ejb/sica/SicaKondorHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.kondor.bean.ISicaKondorSessionBean</value>
+        </property>
+    </bean>
+
+    <bean id="sicaKondorService" class="com.ixe.ods.sica.kondor.service.impl.SicaKondorService">
+        <property name="sicaKondorSessionBean">
+            <ref bean="sicaKondorSessionBean"/>
+        </property>
+    </bean>
+
+</beans>

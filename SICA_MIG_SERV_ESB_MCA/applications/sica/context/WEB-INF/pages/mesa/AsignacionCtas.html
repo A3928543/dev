@@ -1,0 +1,36 @@
+<!-- $Id: AsignacionCtas.html,v 1.13 2008/02/22 18:25:29 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Encabezado</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <div align="center">
+    	<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level="ognl: level" width="100%" />
+	</div>
+    <span jwcid="@Script" script="/WEB-INF/scripts/DeseleccionarListBox.script" />    
+    <form jwcid="@Form"  listener="ognl: listeners.submit">
+      <table jwcid="@ActionPortletBorder" title='ognl:  modoMesaCambio ? "Asignaci&oacute;n de cuentas del promotor : " + visit.user.clave : "Asignaci&oacute;n de cuentas Mesa de Control "' width="100%">
+        <div align="center">   
+          	<span jwcid="@contrib:FormConditional" condition="ognl: modoMesaCambio">
+	          <select jwcid="superior@PropertySelection" model="ognl: cuentasModel" value="ognl: cuentaSeleccionada" size="6"  class="selectfijo" onchange="quitarSeleccion(this.form.inferior); return false;" />                     
+          	<br /><br />
+          	</span>
+          <font class="normal">Al promotor: <select jwcid="promotoresComboBox" /></font>   
+          <span jwcid="@contrib:Choose">
+          	<span jwcid="@contrib:When" condition="ognl: modoMesaCambio">
+          		<input jwcid="@ImageSubmit" image="ognl: assets.asignButton" selected="ognl: modoSubmit" tag="ognl: @com.ixe.ods.sica.pages.mesa.AsignacionCtas@SUBMIT_ASIGNAR" alt="Asignar una cuenta" onclick="return revisarSeleccionModoMesa(this.form.promotoresComboBox, this.form.superior, 1, 0); " />
+          	</span>
+          	<span jwcid="@contrib:Otherwise">
+		          <a jwcid="@DirectLink" listener="ognl: listeners.abrirConsultaCuentas" renderer='ognl: global.applicationContext.getBean("mediumPopupLinkRenderer")' onclick="return revisarSeleccion(document.forms[0].promotoresComboBox, 'un promotor', 1);"><img jwcid="@Image" image="ognl: assets.consButton" /></a>
+		          <input jwcid="@ImageSubmit" image="ognl: assets.noButton"  selected="ognl: modoSubmit" tag="ognl: @com.ixe.ods.sica.pages.mesa.AsignacionCtas@SUBMIT_DESASIGNAR" alt="Desasignar una cuenta" onclick="return selectAndConfirm(this.form.inferior, 'una cuenta', 0);" />
+          	</span>
+      	  </span>
+          <br /><br />
+          <select jwcid="inferior@PropertySelection" model="ognl: cuentasAsignadasModel" value="ognl: cuentaAsignada"  size="6" class="selectfijo" onchange="quitarSeleccion(this.form.superior); return false;"/>      
+        </div>     
+        </table>
+    </form>
+</body>
+</html>
+

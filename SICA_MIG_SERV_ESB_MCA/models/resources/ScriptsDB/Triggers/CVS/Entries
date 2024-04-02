@@ -1,0 +1,11 @@
+/CreateTriggers.sql/1.11/Fri Feb 22 18:25:46 2008//TSICA_MIG_SERV_ESB_MCA
+/TRIGGER_ActPrecioReferenciaActual.sql/1.1.1.1/Fri Apr 20 19:30:30 2007//TSICA_MIG_SERV_ESB_MCA
+/TRIGGER_ActualizaDealLog.sql/1.1.1.1/Fri Apr 20 19:30:30 2007//TSICA_MIG_SERV_ESB_MCA
+/TRIGGER_ActualizaDealLogByDealDetalle.sql/1.1.1.1/Fri Apr 20 19:30:30 2007//TSICA_MIG_SERV_ESB_MCA
+/TRIGGER_ActualizaDealLogByDealPosicion.sql/1.1.1.1/Fri Apr 20 19:30:30 2007//TSICA_MIG_SERV_ESB_MCA
+/TRIGGER_ActualizaDealStatusLog.sql/1.1.1.1/Fri Apr 20 19:30:30 2007//TSICA_MIG_SERV_ESB_MCA
+/TRIGGER_ActualizaExpedientePlantilla.sql/1.1/Fri Jul 20 03:21:45 2007//TSICA_MIG_SERV_ESB_MCA
+/TRIGGER_ActualizaPrecioRef.sql/1.13/Fri Feb 22 18:25:46 2008//TSICA_MIG_SERV_ESB_MCA
+/TRIGGER_Actualizaposicion.sql/1.11/Fri Feb 22 18:25:45 2008//TSICA_MIG_SERV_ESB_MCA
+/TRIGGER_TraspasoProducto.sql/1.11/Fri Feb 22 18:25:46 2008//TSICA_MIG_SERV_ESB_MCA
+/Trigger_ActFactorDivisaActual.sql/1.1.1.1/Fri Apr 20 19:30:30 2007//TSICA_MIG_SERV_ESB_MCA

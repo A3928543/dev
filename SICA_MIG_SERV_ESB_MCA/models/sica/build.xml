@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!--$Id: build.xml,v 1.11.16.1 2010/10/08 01:28:14 ccovian Exp $ -->
+<project name="Sica Module (Models and DAOs)" default="build-all" basedir=".">
+
+    <property name="root.dir" value="${basedir}/../.."/>
+
+    <property file="${root.dir}/config/common.properties"/>
+
+    <path id="ods-model.classpath">
+        <pathelement location="${ods.lib.dir}/${seguridad.jar}"/>
+        <pathelement location="${ods.lib.dir}/${bup.jar}"/>
+    </path>
+
+    <path id="project.classpath">
+        <fileset dir="${root.lib.dir}">
+            <exclude name="xdoclet/*.jar"/>
+            <include name="**/*.jar"/>
+        </fileset>
+        <path refid="ods-model.classpath"/>
+    </path>
+
+    <path id="xdoclet.classpath">
+        <fileset dir="${root.lib.dir}/xdoclet">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${root.lib.dir}/jakarta">
+            <include name="commons*.jar"/>
+            <include name="log*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${classes.dir}"/>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Clean everything                                                    -->
+    <!-- =================================================================== -->
+    <target name="clean">
+        <delete dir="${classes.dir}"/>
+    </target>
+
+    <target name="build-hbgen" depends="init" description="Generates Hibernate class descriptor files.">
+        <ant antfile="${root.dir}/common.xml" target="hbgen" inheritRefs="true">
+            <property name="hbgen.src.dir" value="${src.dir}"/>
+        </ant>
+    	<copy todir="${hbgen.dir}">
+            <fileset dir="${src.dir}">
+                <include name="**/*.hbm.xml"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Compile business logic                                              -->
+    <!-- =================================================================== -->
+    <target name="compile" depends="init" description="Compile Business Domain Model">
+        <javac destdir="${classes.dir}" debug="on" target="1.1">
+            <src path="${src.dir}"/>
+            <classpath refid="project.classpath"/>
+        </javac>
+    </target>
+
+    <target name="javadoc">
+        <mkdir dir="${javadoc.dir}/${models.dir}"/>
+        <javadoc author="true" destdir="${javadoc.dir}/${models.dir}" packagenames="com.ixe.ods.*" sourcepath="${src.dir}" use="true" version="true" windowtitle="Documentation" private="true">
+            <classpath refid="project.classpath"/>
+        </javadoc>
+    </target>
+
+    <target name="build-models" depends="compile">
+        <jar jarfile="${dist.dir}/${sica.jar}" basedir="${classes.dir}">
+            <include name="**/sica/**" />
+            <include name="**/bup/**" />
+            <fileset dir="${hbgen.dir}">
+                <include name="**/bup/**/*.hbm.xml" />
+                <include name="**/sica/**/*.hbm.xml" />
+            </fileset>
+            <!--fileset dir="${resources.dir}/hibernate">
+                <include name="**/sica/**/*.hbm.xml"/>
+            </fileset-->
+        </jar>
+        <jar jarfile="${dist.dir}/${sica-wmb.jar}" basedir="${classes.dir}">
+            <include name="**/model/BitacoraEnviadas*.class" />
+            <include name="**/**/Sica*Exception.class" />
+            <include name="**/**/RespAltaKondor.class" />
+            <exclude name="**/model/BitacoraEnviadasHelper.class" />
+        </jar>
+    </target>
+
+    <target name="build-all" depends="build-hbgen, build-models">
+    </target>
+
+</project>

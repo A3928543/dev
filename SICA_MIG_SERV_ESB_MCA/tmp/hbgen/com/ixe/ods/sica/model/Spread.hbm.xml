@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.Spread"
+        table="SC_SPREAD"
+        proxy="com.ixe.ods.sica.model.Spread"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idSpread"
+            column="ID_SPREAD"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_SPREAD_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Spread.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="claveFormaLiquidacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_FORMA_LIQUIDACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <component
+            name="cpaVta"
+            class="com.ixe.ods.sica.model.CpaVta"
+        >
+        <property
+            name="compraCash"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_CASH"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaCash"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_CASH"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraTom"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_TOM"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaTom"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_TOM"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraSpot"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_SPOT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaSpot"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_SPOT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compra72Hr"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_72HR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="venta72Hr"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_72HR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraVFut"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_VFUT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaVFut"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_VFUT"
+            not-null="true"
+            unique="false"
+        />
+
+        </component>
+
+        <property
+            name="ultimaModificacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="ULTIMA_MODIFICACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <many-to-one
+            name="divisa"
+            class="com.ixe.ods.sica.model.Divisa"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIVISA"
+            unique="false"
+        />
+
+        <many-to-one
+            name="tipoPizarron"
+            class="com.ixe.ods.sica.model.TipoPizarron"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_TIPO_PIZARRON"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Spread.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findSpreadsActualesByMesaSucursalDivisaFormaLiquidacion"><![CDATA[
+            FROM Spread AS s WHERE s.idSpread in (SELECT sa.idSpread FROM SpreadActual AS sa WHERE sa.id.mesaCambio.idMesaCambio = ? AND sa.id.canal.sucursal is not null AND sa.id.divisa.idDivisa = ? AND sa.id.claveFormaLiquidacion = ?)
+        ]]></query>
+        <query name="findSpreadsActualesByMesaCanalDivisa"><![CDATA[
+            FROM Spread AS s WHERE s.idSpread in (SELECT sa.idSpread FROM SpreadActual AS sa WHERE sa.id.mesaCambio.idMesaCambio = ? AND sa.id.canal.idCanal = ? AND sa.id.divisa.idDivisa = ?)
+        ]]></query>
+        <query name="findSpreadsActualesByCanal"><![CDATA[
+            FROM Spread AS s WHERE s.idSpread in (SELECT sa.idSpread FROM SpreadActual AS sa WHERE sa.id.canal.idCanal = ?)
+        ]]></query>
+        <query name="findSpreadsActualesByMesaTipoPizarron"><![CDATA[
+            FROM Spread AS s INNER JOIN FETCH s.divisa WHERE s.idSpread in (SELECT sa.idSpread FROM SpreadActual AS sa WHERE sa.id.tipoPizarron.idTipoPizarron = ?)
+        ]]></query>
+        <query name="findSpreadsActualesByMesaCanalFormaLiquidacionDivisa"><![CDATA[
+            FROM Spread AS s WHERE s.idSpread in (SELECT sa.idSpread FROM SpreadActual AS sa WHERE sa.id.mesaCambio.idMesaCambio = ? AND sa.id.canal.idCanal = ? AND sa.id.claveFormaLiquidacion = ? AND sa.id.divisa.idDivisa = ?)
+        ]]></query>
+        <query name="findSpreadsActualesByTipoPizarronFormaLiquidacionDivisa"><![CDATA[
+            FROM Spread AS s WHERE s.idSpread in (SELECT sa.idSpread FROM SpreadActual AS sa WHERE sa.id.tipoPizarron.idTipoPizarron = ? AND sa.id.claveFormaLiquidacion = ? AND sa.id.divisa.idDivisa = ?)
+        ]]></query>
+        <query name="findSpreadsActualesByTipoPizarronDivisa"><![CDATA[
+            FROM Spread AS s WHERE s.idSpread in (SELECT sa.idSpread FROM SpreadActual AS sa WHERE sa.id.tipoPizarron.idTipoPizarron = ? AND sa.id.divisa.idDivisa = ?)
+        ]]></query>
+        <query name="findSpreadsActualesByTipoPizarron"><![CDATA[
+            FROM Spread AS s WHERE s.idSpread in (SELECT sa.idSpread FROM SpreadActual AS sa WHERE sa.id.tipoPizarron.idTipoPizarron = ?)
+        ]]></query>
+
+</hibernate-mapping>

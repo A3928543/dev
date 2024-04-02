@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<view:Utilidad
+        xmlns:mx="http://www.macromedia.com/2003/mxml"
+        xmlns:ls="com.legosoft.*"
+        xmlns:view="com.ixe.ods.sica.posicion.views.*"
+        xmlns:sica="*">
+
+    <mx:NumberFormatter id="numberFormatter" precision="0"/>
+
+    <mx:NumberFormatter id="exchangeFormatter" precision="6"/>
+
+    <mx:Effect>
+        <mx:WipeLeft name="wipeLeft"/>
+        <mx:WipeRight name="wipeRight"/>
+        <mx:WipeDown name="wipeDown" show="true" duration="300"/>
+        <mx:WipeUp name="wipeUp" show="false" duration="300"/>
+    </mx:Effect>
+
+    <mx:HBox width="100%" horizontalGap="5">
+        <mx:VBox>
+            <mx:HBox horizontalGap="5">
+                <mx:Label text="P&#38;L Global:" fontWeight="bold"/>
+                <mx:Label text='{numberFormatter.format(dataProvider.utilidadRealizadaGlobal)  + " " + parentApplication.idDivisaReferencia }' />
+                <ls:TickImage tick="{dataProvider.tickUtilidadRealizadaGlobal}"/>
+            </mx:HBox>
+
+            <mx:HBox>
+                <mx:HBox id="inputBox" visible="false" showEffect="wipeRight" hideEffect="wipeLeft">
+                    <mx:Label text="Tipo de Cambio Valuar:" fontWeight="bold"/>
+                    <mx:TextInput id="tcInput" width="75"/>
+                </mx:HBox>
+                <mx:Link id="reutersLink" visible="{visibleReutersLink}" icon="@Embed('resources/reuters.gif')"/>
+            </mx:HBox>
+        </mx:VBox>
+
+        <mx:VBox>
+            <mx:HBox horizontalGap="5">
+                <mx:Label text="P&#38;L de la mesa:" fontWeight="bold"/>
+                <mx:Label text='{numberFormatter.format(dataProvider.utilidadRealizadaMesa)  + " " + parentApplication.idDivisaReferencia}' />
+                <ls:TickImage tick="{dataProvider.tickUtilidadRealizadaMesa}"/>
+            </mx:HBox>
+
+            <mx:HBox horizontalGap="5">
+                <mx:Label text="P&#38;L por Valuaci&#243;n:" fontWeight="bold"/>
+                <mx:Label text='{numberFormatter.format(tipoCambio.getUtilidad(tipoCambioMercado)) + " " + parentApplication.idDivisaReferencia }'/>
+                <ls:TickImage tick="{tipoCambio.tickUtilidad}"/>
+            </mx:HBox>
+
+        </mx:VBox>
+
+        <mx:Spacer width="100%"/>
+
+        <mx:Link id="formulaLink" icon="@Embed('resources/zoom.gif')" toggle="true" visible="{false}"/>
+    </mx:HBox>
+
+    <view:UtilidadDetalle id="formulaDetail" dataProvider="{dataProvider}" tipoCambio="{tipoCambio}"
+                          tipoCambioMercado="{tipoCambioMercado}" marginLeft="5" marginRight="5" marginTop="5"
+                          marginBottom="5" verticalGap="10" visible="false" backgroundColor="#EEF5EE"
+                          borderStyle="solid" showEffect="wipeDown" hideEffect="wipeUp"/>
+
+</view:Utilidad>

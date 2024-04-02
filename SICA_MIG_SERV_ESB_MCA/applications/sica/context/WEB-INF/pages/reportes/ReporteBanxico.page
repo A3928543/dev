@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ReporteBanxico.page,v 1.10 2008/04/16 18:20:29 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.reportes.ReporteBanxico">
+    
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate"/>
+    
+    <property-specification name="registerDate" type="java.util.Date" persistent="yes" />
+    <property-specification name="sector" type="java.util.List" initial-value="new java.util.ArrayList()" persistent="no" />
+	<property-specification name="nombreArchivo" type="java.lang.String" persistent="yes" />
+    <property-specification name="dataSource" type="java.util.List" initial-value="new java.util.ArrayList()" persistent="yes" />	
+    <property-specification name="titulos" type="java.util.List" initial-value="new java.util.ArrayList()"  persistent="yes" />
+    <property-specification name="expresiones" type="java.util.List" initial-value="new java.util.ArrayList()"  persistent="yes" />    
+	<property-specification name="conceptosAclmeX" type="java.util.LinkedHashMap" initial-value="new java.util.LinkedHashMap()"  persistent="yes" />
+   
+    <context-asset name="searchButton" path="/images/search.gif" />
+    
+</page-specification>

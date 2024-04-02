@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: DeseleccionarListBox.script,v 1.12 2008/07/29 04:34:06 ccovian Exp $ -->
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+
+<script>
+    <body><![CDATA[
+    		function quitarSeleccion(listBox) {
+    			try {
+	    			listBox.selectedIndex = -1;    			
+    			}
+    			catch (e) {
+    			}
+    		}
+    		
+    		function revisarSeleccion(listBox, mensaje, indiceMinimo) {
+				if (listBox.selectedIndex < indiceMinimo) {
+					alert('Favor de seleccionar ' + mensaje);
+					return false;
+				}
+				else {
+					return true;
+				}
+    		}
+    		
+    		function fnShowWaitImageB() {
+               document.getElementById('layerLoading').style.visibility = "visible";
+        	}
+    		
+    		function revisarSeleccionModoMesa(listBoxPromotor, listBoxCuentas, indiceMinimoPromotor, indiceMinimoCuenta) {
+    			if (listBoxPromotor.selectedIndex < indiceMinimoPromotor) {
+					alert('Favor de seleccionar un promotor');
+					return false;
+				}
+	    		if (listBoxCuentas.selectedIndex < indiceMinimoCuenta) {
+					alert('Favor de seleccionar una cuenta');
+					return false;
+				}
+				else {
+					fnShowWaitImageB();
+					return true;
+				}
+    		}
+    		
+    		function revisarSeleccionMasivaModoMesa(listBoxPromotor,listBoxPromotorDest, listBoxCuentasSelec) {
+    			if (listBoxPromotor.selectedIndex < 1) {
+					alert('Favor de seleccionar un promotor origen');
+					return false;
+				}
+    			if (listBoxPromotorDest.selectedIndex < 1) {
+					alert('Favor de seleccionar un promotor destino');
+					return false;
+				}				
+	    		if (listBoxCuentasSelec.selectedIndex < 1) {
+					alert('Favor de seleccionar una cuenta');
+					return false;
+				}				
+				else {
+					fnShowWaitImageB();
+					return true;
+				}
+    		}
+    		
+    		function selectAndConfirm(listBox, mensaje, indiceMinimo) {
+    			if (listBox.selectedIndex < indiceMinimo) {
+	    			alert('Favor de seleccionar una cuenta');
+					return false;
+   				} 			
+    			else {
+    				if (confirm('\u00bfDesea desasignar la cuenta seleccionada?')){
+    					fnShowWaitImageB();
+						return true;
+					}
+    			}	
+    		}	
+	    	
+    ]]></body>
+</script>

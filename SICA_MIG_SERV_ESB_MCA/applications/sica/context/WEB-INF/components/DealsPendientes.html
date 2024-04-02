@@ -1,0 +1,13 @@
+<!-- $Id: DealsPendientes.html,v 1.11 2008/10/27 23:20:08 ccovian Exp $ -->
+<table jwcid="@ActionPortletBorder" title='ognl: "Deals Pendientes " + titulo + " (" + numero +  ")"'  minimizable="yes" minimized="ognl: dealsMinimizados">
+<table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: dealsCancelables ? {"No. Deal", "Status", "Cliente", "Fecha de Captura", ""} : {"No. Deal", "Status", "Cliente", "Fecha de Captura"}' columnCount="4" width="100%">
+<tr jwcid="forRegs1@Foreach" source="ognl: dealsPendientes" element="tr" class="normalcell">
+<td class="normal" align="center"><a jwcid="@ExternalLink" page='ognl: components.forRegs1.value.interbancario ? "DatosDealInterbancario" : "DatosDeal"' parameters="ognl: components.forRegs1.value.idDeal" renderer='ognl: page.global.applicationContext.getBean("bigPopupLinkRenderer")' ><span jwcid= "@Insert" value="ognl: components.forRegs1.value.idDeal" /></a></td>
+<td class="normal" align="center"><span jwcid="@StatusField" status="ognl: @com.ixe.ods.sica.components.StatusField@getStatusDeal(components.forRegs1.value)" descripcion="ognl: components.forRegs1.value.descripcionStatus" /></td>
+<td class="normal" align="center"><span jwcid="@Insert" value='ognl: components.forRegs1.value.contratoSica ? components.forRegs1.value.cliente.nombreCompleto : ""' /></td>
+<td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forRegs1.value.fechaCaptura" format="ognl: page.fullDateFormat" /></td>
+<td jwcid="@Conditional" condition="ognl: dealsCancelables" class="normal" align="center" element="td"><a jwcid="@DirectLink" listener="ognl: cancelListener" parameters="ognl: components.forRegs1.value.idDeal" disabled="ognl: !components.forRegs1.value.cancelable || !'AL'.equals(components.forRegs1.value.statusDeal) || components.forRegs1.value.deSucursal || components.forRegs1.value.seleccionado" onclick="ognl: 'if (confirm(\'\\u00bfDesea cancelar el deal ' + components.forRegs1.value.idDeal + '?\')) { fnShowWaitImage(); return true; } else { return false;}'">Cancelar</a></td>
+</tr>
+</table>
+<br/>
+</table>

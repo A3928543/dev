@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ConsultaSwaps.page,v 1.9 2008/02/22 18:25:34 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.deals.interbancario.ConsultaSwaps">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <bean name="intValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"int"</set-property>
+        <set-property name="minimum" expression="0" />
+        <set-property name="maximum" expression="999999999" />
+    </bean>
+
+    <component id="idSwapTextField" type="ValidField">
+        <static-binding name="displayName" value="N&#250;mero de Swap:" />
+        <static-binding name="size" value="30" />
+        <static-binding name="class" value="textoderecha" />
+        <binding name="validator" expression="beans.intValidator" />
+        <binding name="value" expression="idSwap" />
+        <static-binding name="accesskey" value="N" />
+    </component>
+
+    <component id="idDealTextField" type="ValidField">
+        <static-binding name="displayName" value="Contiene deal:" />
+        <static-binding name="size" value="30" />
+        <static-binding name="class" value="textoderecha" />
+        <binding name="validator" expression="beans.intValidator" />
+        <binding name="value" expression="idDeal" />
+        <static-binding name="accesskey" value="d" />
+    </component>
+
+    <property-specification name="idSwap" type="int" persistent="yes" />
+    <property-specification name="idDeal" type="int" persistent="yes" />
+    <property-specification name="fecha" type="java.util.Date" persistent="yes" />
+    <property-specification name="status" type="java.lang.String" persistent="yes" />
+    <property-specification name="swaps" type="java.util.List" persistent="yes" />
+
+    <context-asset name="bAceptar" path="/images/aceptar.gif" />
+    <context-asset name="bCancelar" path="/images/cancel.gif" />
+
+</page-specification>

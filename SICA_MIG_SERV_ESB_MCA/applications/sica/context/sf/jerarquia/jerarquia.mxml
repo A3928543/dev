@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:JerarquiaApplication xmlns:mx="http://www.macromedia.com/2003/mxml" 
+	xmlns:views="com.ixe.ods.sica.jerarquia.views.*" xmlns:ixe="*" width="100%" height="100%" 
+	creationComplete="inicializar()" marginTop="5" marginBottom="10" marginLeft="10" marginRight="10" >
+
+	<mx:Style source="resources/ixe.css"/>
+	<mx:RemoteObject id="jerarquiasService" source="spring://jerarquiasDelegate" concurrency="last" showBusyCursor="true">        
+        <mx:method name="getJerarquias" result="onJerarquiasGot(event.result)" fault="falla(event.fault)"/>  
+        <mx:method name="getRootNodes" result="onRootNodesGot(event.result)" fault="falla(event.fault)" />
+        <mx:method name="getChildren" result="onChildrenGot(event.result)" fault="falla(event.fault)" />       
+        <mx:method name="findPersonByName" result="onPersonGot(event.result)" fault="falla(event.fault)" />
+        <mx:method name="findPersonByCveUsr" result="onPersonGot(event.result)" fault="falla(event.fault)" />
+        <mx:method name="findPersonByNoNomina" result="onPersonGot(event.result)" fault="falla(event.fault)" />
+        <mx:method name="findPersonByRFC" result="onPersonGot(event.result)" fault="falla(event.fault)" />
+        <mx:method name="addNode" result="onNodeAdded(event.result)" fault="falla(event.fault)"  /> 
+        <mx:method name="deleteNode" result="updateTree()" fault="falla(event.fault)"/>
+        <mx:method name="definirAlterno" result="updateTree()" fault="falla(event.fault)"/>
+        <mx:method name="moveNode" result="onNodeMove()" fault="falla(event.fault)"/>
+    </mx:RemoteObject>    
+    
+     <mx:Script>
+        <![CDATA[
+        
+        private function inicializar() : Void
+        {
+            jerarquiasService.getJerarquias();
+        }
+        
+        ]]>
+    </mx:Script>
+	
+	<mx:Canvas width="100%" height="100%" >
+	
+		<mx:VBox width="100%">	
+			<mx:HBox width="100%">			
+				<mx:Label text="Jerarquia"></mx:Label>
+				<mx:ComboBox id="jerarquiasCombo" width="234" change="cargarJerarquia()">
+				</mx:ComboBox>
+			</mx:HBox>
+			
+			<mx:VBox width="100%">
+			
+				<mx:HDividedBox width="100%" height="400">
+				
+					<!--<mx:Tree id="arbolJerarquias" change="treeClick()" width="250" height="100%" 
+					  	hScrollPolicy="auto" maxHPosition="220" dragEnabled="true" 
+					  	dragEnter="doDragEnter(event)"  dragExit="doDragExit(event);" 
+					  	dragOver="doDragOver(event);" dragDrop="doDragDrop(event)">		  	
+					  </mx:Tree>-->	
+						
+					  <mx:Tree id="arbolJerarquias" change="treeClick()" width="250" height="100%" 
+					  	hScrollPolicy="auto" dragEnabled="true" dragEnter="doDragEnter(event)"  
+					  	dragExit="doDragExit(event);" dragOver="doDragOver(event);" dragDrop="doDragDrop(event)">		  	
+					  </mx:Tree>
+					
+					 <mx:VBox height="100%">
+						<mx:DataGrid id="personasJerarquia" width="100%" height="100%" change="operacionViewStack.selectedIndex=0;" >
+							<mx:columns>
+								<mx:Array>
+									<mx:DataGridColumn headerText="ID Persona" columnName="idPersona" width="82" />
+									<mx:DataGridColumn headerText="Nombre del Promotor" columnName="nombre" width="190" />
+									<mx:DataGridColumn headerText="RFC" columnName="rfc" width="105" />
+									<mx:DataGridColumn headerText="Clave Usuario" columnName="claveUsuario" width="90"/>
+									<mx:DataGridColumn headerText="Nomina" columnName="nomina" width="80"/>
+									<mx:DataGridColumn headerText="ID Alterno" columnName="idAlterno" width="80"/>
+									<mx:DataGridColumn headerText="Nombre de alterno" columnName="nombreAlterno" width="190"/>
+									<mx:DataGridColumn headerText="Inicio" columnName="fechaInicio" width="80"/>
+									<mx:DataGridColumn headerText="Final" columnName="fechaFinal" width="80"/>
+								</mx:Array>
+							</mx:columns>
+				        </mx:DataGrid>
+						
+					</mx:VBox>
+					
+				</mx:HDividedBox>
+				
+				<mx:HBox>
+					<mx:VBox width="250"></mx:VBox>
+					<mx:HBox>
+						<mx:HBox width="100%" visible="{jerarquiasCombo.selectedItem != null}" >
+							<mx:Button id="btnAsignarNuevo" label="Asignar nuevo" click="asignarNuevoNodo()" />
+						</mx:HBox>
+						<mx:HBox width="100%" visible="{personasJerarquia.selectedItem != null}" >
+							<mx:Button id="btnDesasignar" click="deleteClick()" label="Deasignar" />
+							<mx:Button id="btnAlterno" click="asignarNodoAlterno()" label="Definir Alterno" />
+						</mx:HBox>
+					</mx:HBox>
+				</mx:HBox>
+				
+				<mx:HBox>
+					<mx:VBox width="100"></mx:VBox>
+					<mx:ViewStack id="operacionViewStack" creationPolicy="all" selectedIndex="0" resizeToContent="true" >
+						<mx:HBox></mx:HBox>
+						<ixe:BusquedaPersona id="buscaPersonaNuevo" title="Asignar Nuevo" alterno="false" />
+						<ixe:BusquedaPersona id="buscaPersonaAlterno" title="Asignar Alterno" alterno="true" />
+					</mx:ViewStack>
+				</mx:HBox>
+				  
+			</mx:VBox>
+			
+		</mx:VBox>
+	
+	</mx:Canvas>
+	
+</views:JerarquiaApplication>

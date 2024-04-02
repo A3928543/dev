@@ -1,0 +1,137 @@
+<!-- $Id: ModRepDealsBanxico.html,v 1.9 2008/02/22 18:25:09 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Edici&oacute;n de Reportes de Operaciones a Banxico para su Reenv&iacute;o</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <form jwcid="@Form" listener="ognl: listeners.reenviar" delegate="ognl:beans.delegate">
+		<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+		<table width="50%" align="center">
+		    <tr>
+		    	<td width="100%">
+			        <table jwcid="@ActionPortletBorder" title="Edici&oacute;n de Reportes de Operaciones a Banxico para su Reenv&iacute;o" width="100%">
+			            <table jwcid="@TableBorder" title="ognl: null" columnCount="2" width="100%">
+			                <tr class="titlecell">
+			                    <td width="50%" align="right" class="title">Id Conf.:</td>
+			                    <td class="normalcell">
+			                    	<span jwcid="@Insert" value='ognl: registro.id.idConf' /><br/>
+			                    </td>
+			                </tr>
+			                <tr class="titlecell">
+			                    <td width="50%" align="right" class="title">Divisa:</td>
+			                    <td class="normalcell">
+			                    	<span jwcid="@Insert" value='ognl: registro.id.divisa' /><br/>
+			                    </td>
+			                </tr>
+			                <tr class="titlecell">
+			                    <td width="50%" align="right" class="title">Folio:</td>
+			                    <td class="normalcell">
+			                    	<span jwcid="@contrib:Choose">
+			        					<span jwcid="@contrib:When" condition="ognl: error == -105 || error == -108">
+					                    	<input jwcid="folioTextField" />
+					                    </span>
+					                    <span jwcid="@contrib:Otherwise">
+					                    	<span jwcid="@Insert" value='ognl: registro.folio' />
+					                    </span>
+				                    </span>
+				                    <br/>
+			                    </td>
+			                </tr>
+			                <tr class="titlecell">
+			                    <td width="50%" align="right" class="title">Clave Contraparte:</td>
+			                    <td class="normalcell">
+			                    	<span jwcid="@contrib:Choose">
+			        					<span jwcid="@contrib:When" condition="ognl: error == -104">
+					                    	<input type="text" jwcid="claveContraparteTextField" />
+					                    </span>
+					                    <span jwcid="@contrib:Otherwise">
+					                    	<span jwcid="@Insert" value='ognl: registro.claveContraparte' />
+					                    </span>
+				                    </span>
+				                    <br/>
+			                    </td>
+			                </tr>
+			                <tr class="titlecell">
+			                    <td width="50%" align="right" class="title">Plazo:</td>
+			                    <td class="normalcell">
+			                    	<span jwcid="@contrib:Choose">
+			        					<span jwcid="@contrib:When" condition="ognl: error == -102">
+					                    	<input jwcid="plazoComboBox" />
+					                    </span>
+					                    <span jwcid="@contrib:Otherwise">
+					                    	<span jwcid="@Insert" value='ognl: registro.plazoSICA' />
+					                    </span>
+				                    </span>
+				                    <br/>
+			                    </td>
+			                </tr>
+			                <tr class="titlecell">
+			                    <td width="50%" align="right" class="title">Tipo Oper.:</td>
+			                    <td class="normalcell">
+			                    	<span jwcid="@contrib:Choose">
+			        					<span jwcid="@contrib:When" condition="ognl: error == -102 || error == -111">
+					                    	<input jwcid="tipoOperComboBox" />
+					                    </span>
+					                    <span jwcid="@contrib:Otherwise">
+					                    	<span jwcid="@Insert" value='ognl: registro.tipoOperSICA' />
+					                    </span>
+				                    </span>
+				                    <br/>
+			                    </td>
+			                </tr>
+			                <tr class="titlecell">
+			                    <td width="50%" align="right" class="title">Monto:</td>
+			                    <td class="normalcell">
+			                    	<span jwcid="@contrib:Choose">
+			        					<span jwcid="@contrib:When" condition="ognl: error == -110">
+					                    	<input jwcid="montoTextField" />
+					                    </span>
+					                    <span jwcid="@contrib:Otherwise">
+					                    	<span jwcid="@Insert" value='ognl: registro.monto' format='ognl: moneyFormat'/>
+					                    </span>
+				                    </span>
+				                    <br/>
+			                    </td>
+			                </tr>
+			                <tr class="titlecell">
+			                    <td width="50%" align="right" class="title">Tipo:</td>
+			                    <td class="normalcell">
+			                    	<span jwcid="@contrib:Choose">
+			        					<span jwcid="@contrib:When" condition="ognl: error == -102">
+					                    	<input jwcid="tipoComboBox" />
+					                    </span>
+					                    <span jwcid="@contrib:Otherwise">
+					                    	<span jwcid="@Insert" value='ognl: registro.tipoSICA' />
+					                    </span>
+				                    </span>
+				                    <br/>
+			                    </td>
+			                </tr>
+			                <tr class="titlecell">
+			                    <td width="50%" align="right" class="title">Swap:</td>
+			                    <td class="normalcell">
+			                    	<span jwcid="@Insert" value='ognl: registro.swap != null ? (registro.swap.equals("1") ? "SI" : "NO") : null' />
+			                    </td>
+			                </tr>
+			                <tr class="titlecell">
+			                    <td width="50%" align="right" class="title">Error:</td>
+			                    <td class="normalcell">
+			                    	<span jwcid="@Insert" value='ognl: registro.error' />
+			                    </td>
+			                </tr>
+			            </table>
+			            <br />
+			            <div align="center">
+				            <input type="image" jwcid="@ImageSubmit" image="ognl: assets.aceptarButton" selected="ognl: modoSubmit" tag="1" onclick="fnShowWaitImage();" />
+				            <a jwcid="@DirectLink" listener="ognl:listeners.cancelarOperacion" onClick="fnShowWaitImage();">
+				            	<img jwcid="@Image" image="ognl: assets.cancelarButton" accesskey="C"/>
+			            	</a>
+			            </div>
+			        </table>
+		        </td>
+	        </tr>
+        </table>
+    </form>
+</body>
+</html>

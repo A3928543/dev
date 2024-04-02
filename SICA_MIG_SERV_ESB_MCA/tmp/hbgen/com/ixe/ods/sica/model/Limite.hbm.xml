@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.Limite"
+        table="SC_LIMITE"
+        proxy="com.ixe.ods.sica.model.Limite"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idLimite"
+            column="ID_LIMITE"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_LIMITE_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Limite.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="limite"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="LIMITE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="porcentajeAviso"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="PORCENTAJE_AVISO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="porcentajeAlarma"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="PORCENTAJE_ALARMA"
+            not-null="true"
+            unique="false"
+        />
+
+        <many-to-one
+            name="divisa"
+            class="com.ixe.ods.sica.model.Divisa"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIVISA"
+            unique="false"
+        />
+
+        <many-to-one
+            name="mesaCambio"
+            class="com.ixe.ods.sica.model.MesaCambio"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_MESA_CAMBIO"
+            unique="false"
+        />
+
+        <many-to-one
+            name="tipoLimite"
+            class="com.ixe.ods.sica.model.TipoLimite"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_TIPO_LIMITE"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Limite.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findLimiteDeRiesgoByMesa"><![CDATA[
+            FROM Limite as l WHERE l.mesaCambio.idMesaCambio = ? AND l.divisa.idDivisa is null ORDER BY l.tipoLimite.idTipoLimite
+        ]]></query>
+        <query name="findLimiteByMesaAndDivisa"><![CDATA[
+            FROM Limite as l WHERE l.mesaCambio.idMesaCambio = ? AND l.divisa.idDivisa = ? ORDER BY l.tipoLimite.idTipoLimite
+        ]]></query>
+
+</hibernate-mapping>

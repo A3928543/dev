@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.catalogos.CatLimitesEfectivo">
+	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+	<bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+    
+    <!-- Propiedades para alta -->
+    <property-specification name="listaDivisas" type="java.util.List" persistent="yes"/>
+    <property-specification name="divisaSeleccionada" type="java.util.Map"/>
+    <property-specification name="listaTipoOperaciones" type="java.util.List" persistent="yes"/>
+    <property-specification name="compraSeleccionada" type="java.lang.Boolean"/>
+    <property-specification name="listaTipoPersonas" type="java.util.List" persistent="yes"/>
+    <property-specification name="tipoPersonaSeleccionada" type="java.lang.String"/>
+    <property-specification name="listaTipoClientes" type="java.util.List" persistent="yes"/>
+    <property-specification name="clienteSeleccionado" type="java.lang.Boolean"/>
+    <property-specification name="listaTipoZonas" type="java.util.List" persistent="yes"/>
+    <property-specification name="tipoZonaSeleccionada" type="java.lang.String"/>
+    <property-specification name="listaEsMexicano" type="java.util.List" persistent="yes"/>
+    <property-specification name="esMexicano" type="java.lang.Boolean"/>
+    <property-specification name="limiteDiario" type="double" />
+    <property-specification name="limiteMensual" type="double" />
+    <property-specification name="observaciones" type="java.lang.String"/>
+    
+    <!-- Propiedades para consulta de cat&acute;logos -->
+    <property-specification name="limites" type="java.util.List" persistent="yes"/>
+    <property-specification name="level" type="int" />
+    
+    <context-asset name="insertButton" path="/images/add.gif" />
+</page-specification>

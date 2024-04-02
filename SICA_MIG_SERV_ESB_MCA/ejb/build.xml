@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--$Id: build.xml,v 1.11 2008/02/22 18:25:53 ccovian Exp $ -->
+<project name="Sica EJBs" default="build-all" basedir=".">
+
+    <property name="root.dir" value="${basedir}/.."/>
+
+    <property file="${root.dir}/config/common.properties"/>
+
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${tmp.dir}"/>
+    </target>
+
+    <target name="clean" description="Clean everything">
+        <ant antfile="build.xml" target="clean" dir="sica"/>
+    </target>
+
+    <target name="javadoc">
+        <ant antfile="build.xml" target="javadoc" dir="sica"/>
+    </target>
+
+    <target name="build-ejbgen">
+        <ant antfile="build.xml" target="build-ejbgen" dir="sica"/>
+    </target>
+
+    <target name="compile" depends="init" description="Compile everything">
+        <ant antfile="build.xml" target="compile" dir="sica"/>
+    </target>
+
+    <target name="build-ejbs" depends="init" description="Build Security EJBs.">
+        <ant antfile="build.xml" target="build-ejbs" dir="sica"/>
+    </target>
+
+    <target name="build-interfaces" depends="build-ejbgen, build-ejbs">
+        <ant antfile="build.xml" target="build-interfaces" dir="sica"/>
+    </target>
+
+    <target name="build-all" depends="build-ejbgen, build-ejbs"/>
+
+</project>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--$Id: EventosDeal.jwc,v 1.9 2008/02/22 18:25:07 ccovian Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<component-specification>
+
+    <parameter name="deal" type="com.ixe.ods.sica.model.Deal" direction="in" required="yes" />
+
+    <context-asset name="bHistorial" path="/images/historial.gif" />
+
+</component-specification>
+
+

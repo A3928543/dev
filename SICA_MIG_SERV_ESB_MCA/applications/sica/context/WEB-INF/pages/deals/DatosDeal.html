@@ -1,0 +1,24 @@
+<!-- $Id: DatosDeal.html,v 1.12 2008/12/26 23:17:30 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Encabezado</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder" menuDisabled="yes">
+    <span jwcid="tb@Block"><span jwcid="@EventosDeal" deal="ognl: deal" /></span>
+    <table jwcid="@ActionPortletBorder" title="Deal" titleBlock="ognl: components.tb">
+        <span jwcid="@EncabezadoDeal" deal="ognl: deal" disabled="yes" />
+        <table jwcid="@DealDetailTable" recibimos="yes" deal="ognl: deal" detalles="ognl: deal.recibimos" total="ognl: deal.totalRecibimos" disabled="yes"/>
+        <table border="0" cellpadding="0" cellspacing="2" align="center">
+            <tr>
+                <td class="title" align="right">Balance:</td>
+                <td class="title"><span jwcid="@Insert" value="ognl: deal.balance" format="ognl: moneyFormat" /></td>
+            </tr>
+        </table>
+        <table jwcid="@DealDetailTable" recibimos="ognl: false" deal="ognl: deal" detalles="ognl: deal.entregamos" total="ognl: deal.totalEntregamos" disabled="yes" />
+    </table>
+    <span jwcid="@Conditional" condition="ognl: deal.contratoSica">
+        <table jwcid="@ResumenLineasCredito" idCliente="ognl: deal.cliente.idPersona" />
+    </span>
+</body>
+</html>

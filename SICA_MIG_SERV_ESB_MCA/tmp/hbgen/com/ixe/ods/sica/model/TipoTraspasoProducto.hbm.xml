@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.TipoTraspasoProducto"
+        table="SC_TIPO_TRASPASO_PRODUCTO"
+        proxy="com.ixe.ods.sica.model.TipoTraspasoProducto"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="mnemonicoTraspaso"
+            column="MNEMONICO_TRASPASO"
+            type="java.lang.String"
+            unsaved-value="null"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-TipoTraspasoProducto.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="descripcion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="DESCRIPCION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="neteo"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NETEO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="de"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="DE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="deOper"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="DE_OPER"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="deSigno"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="DE_SIGNO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="a"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="A"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="AOper"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="A_OPER"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ASigno"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="A_SIGNO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="valMonto"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="VAL_MONTO"
+            not-null="false"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-TipoTraspasoProducto.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findAllTiposTraspasoProducto"><![CDATA[
+            FROM TipoTraspasoProducto AS ttp
+        ]]></query>
+
+</hibernate-mapping>

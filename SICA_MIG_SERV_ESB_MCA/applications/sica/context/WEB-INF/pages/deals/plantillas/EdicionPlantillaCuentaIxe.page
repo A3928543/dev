@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: EdicionPlantillaCuentaIxe.page,v 1.11 2008/02/22 18:25:38 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.deals.plantillas.EdicionPlantillaCuentaIxe">
+
+	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+	
+	<bean name="stringValidator" class="org.apache.tapestry.valid.StringValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+    </bean>
+
+    <bean name="noCuentaIxeValidator" class="org.apache.tapestry.valid.PatternValidator" lifecycle="render">
+        <set-property name="required" expression="true" />
+        <set-property name="patternString">"\\d{7}-\\d|\\d{10}-\\d"</set-property>
+        <set-property name="patternNotMatchedMessage">"El n&#249;mero de cuenta debe tener 7 &#243; 10 d&#237;gitos num&#233;ricos, seguidos de un gui&#243;n y al finalizar un d&#237;gito num&#233;rico."</set-property>
+    </bean>
+    
+	<component id="noCuentaIxeTextField" type="ValidField">
+        <static-binding name="displayName" value="No.Cuenta Ixe:" />
+        <static-binding name="maxlength" value="33" />
+        <static-binding name="class" value="uppercase" />
+        <binding name="validator" expression="beans.noCuentaIxeValidator" />
+        <binding name="value" expression="plantilla.noCuentaIxe" />
+    </component>
+
+	<component id="beneficiarioComboBox" type="PropertySelection">
+        <binding name="model" expression="beneficiariosModel" /> 
+        <binding name="value" expression="plantilla.beneficiario" />
+    </component>
+
+    <property-specification name="formasPagoLiq" type="java.util.List" persistent="yes" />
+    <property-specification name="plantilla" type="com.ixe.ods.sica.model.IPlantillaCuentaIxe" persistent="yes"/>
+    <property-specification name="modoUpdate" type="boolean" persistent="yes"/>
+    <property-specification name="modoSubmit" type="java.lang.String" />
+    <property-specification name="paginaAnterior" type="java.lang.String" persistent="yes" />
+    <property-specification name="clabeOCuenta" type="java.lang.String" persistent="yes"/>
+    <property-specification name="idPersona" type="java.lang.Integer" persistent="yes"/>
+    <property-specification name="nombreCliente" type="java.lang.String" persistent="yes"/>
+    <property-specification name="selectedCuentaEje" type="java.lang.String"/>
+    <property-specification name="x" type="int" />
+    <property-specification name="y" type="int" />
+    <property-specification name="mapaEdicionPlantilla" type="java.util.HashMap" persistent="yes" />
+
+    <context-asset name="acceptButton" path="/images/aceptar.gif" />
+    <context-asset name="addButton" path="/images/add.gif" />
+    <context-asset name="cancelButton" path="/images/cancel.gif" />
+    <context-asset name="regresarButton" path="/images/back.gif" />
+    <context-asset name="searchButton" path="/images/encontrar.gif" />
+
+</page-specification>

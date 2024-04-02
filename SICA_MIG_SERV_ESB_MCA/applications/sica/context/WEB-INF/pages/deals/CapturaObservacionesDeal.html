@@ -1,0 +1,26 @@
+<!-- $Id: CapturaObservacionesDeal.html,v 1.2 2008/02/22 18:25:09 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Captura de observaciones del deal</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css" />
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" width="100%" />
+    <table jwcid="@ActionPortletBorder" title="Captura de Deal">
+        <form jwcid="@Form" listener="ognl: listeners.actualizar">
+            <span jwcid="@EncabezadoDeal" deal="ognl: deal" area="ognl: true" disabled="ognl: true" />
+            <fieldset>
+                <legend class="legend">Observaciones:</legend>
+                <div align="center">
+                    <textarea jwcid="@TextArea" value="ognl: deal.observaciones" rows="4" cols="220" />
+                </div>
+            </fieldset>
+            <br />
+            <div align="center">
+                <input jwcid="@ImageSubmit" image="ognl: assets.bAceptar" onclick="fnShowWaitImage();" />
+                <a jwcid="@DirectLink" listener="ognl: listeners.regresar" onclick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bRegresar" border="0" /></a>
+            </div>
+        </form>
+    </table>
+</body>
+</html>

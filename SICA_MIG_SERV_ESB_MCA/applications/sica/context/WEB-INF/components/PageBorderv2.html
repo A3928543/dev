@@ -1,0 +1,70 @@
+<!-- $Id: PageBorderv2.html,v 1.2 2010/04/30 15:26:41 ccovian Exp $ -->
+<html jwcid="@Shell" stylesheet="ognl:assets.stylesheet" title="Sistema de Cambios" delegate="ognl: page.visit">
+<head jwcid="$remove$">
+    <title>Sistema de Cambios</title>
+    <link rel="stylesheet" type="text/css" href="../../css/ixe.css"/>
+    <script type="text/javascript" src="../../scripts/sothink/stm31.js"></script>
+</head>
+<body jwcid="@Body" background="images/seal.gif" bgproperties="fixed" leftmargin="10px" onbeforeunload="ognl: onbeforeunloadFn != null ? onbeforeunloadFn : 'return true;'">
+	<script jwcid="@Script" script="/WEB-INF/scripts/LayerLoading.script" type="text/javascript" />
+	<div id="layerLoading" style="position:absolute; visibility:hidden; z-index:0;">
+   		<table border='0' width="100%" height="100%">
+      		<tr align="center" valign="middle">
+         		<td>
+         			<img jwcid="@Image" image='ognl: assets.loadingImage' border="0"/>
+         		</td>
+      		</tr>
+   		</table>
+	</div>
+	<span jwcid="@Conditional" condition="ognl: !menuDisabled">
+        <span jwcid="@menu:XmlMenu" name="SICA" menu="ognl: page.visit.menu" listener="ognl: page.visit.menuListener"/>
+        <br />
+    </span>
+    <br />
+    <script type="text/javascript">
+        <!--
+                // Deshabilitamos el boton regresar:
+                window.history.forward(1);
+        //-->
+    </script>
+    <span jwcid="@Conditional" condition="ognl: page.visit.idCanal == null || page.visit.idMesaCambio == 0">
+        <script type="text/javascript">
+            <!--
+                window.top.location = '?service=page/ErrorMesaCanal';
+            //-->
+        </script>
+    </span>
+    <table witdth="100%" align="center">
+    	<tr aling="center">
+    		<td>
+    			<span jwcid="@RenderBody"/>
+    		</td>
+    	</tr>
+    </table>
+    <table>
+    	<tr>
+    		<td valign="bottom">
+    			<span jwcid="@contrib:InspectorButton" disabled="ognl: !page.engine.showInspector"/>
+    		</td>
+    	</tr>
+    </table>
+    <script type="text/javascript">
+        <!--
+        function mouseDown(e) {
+         if (parseInt(navigator.appVersion) > 3 && navigator.appName == 'Microsoft Internet Explorer') {
+             var clickType = 1;
+             clickType = event.button;
+             if (clickType != 1) {
+                 alert('No se permite utilizar el bot\u00f3n derecho del mouse.');
+                 return false;
+             }
+         }
+         return true;
+        }
+        if (parseInt(navigator.appVersion) > 3) {
+            document.onmousedown = mouseDown;
+        }
+        //-->
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ConsultaPlantillasTranNacionales.page,v 1.10 2008/02/22 18:25:39 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.deals.plantillas.ConsultaPlantillasTranNacionales">
+
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+
+	<property-specification name="tipoPlantilla" type="java.lang.String" persistent="yes"/>
+	<property-specification name="contratoSica" type="com.ixe.ods.bup.model.ContratoSica" persistent="yes"/>
+    <property-specification name="nombreClaseRegistro" type="java.lang.String" initial-value='"com.ixe.ods.sica.model.PlantillaTranNacional"' />
+    <property-specification name="nombrePaginaEdicion" type="java.lang.String" initial-value='"EdicionPlantillaTranNacional"' />
+    <property-specification name="paginaAnterior" type="java.lang.String" persistent="yes"/>
+    <property-specification name="idPersona" type="java.lang.Integer" persistent="yes"/>
+    <property-specification name="nombreCliente" type="java.lang.String" persistent="yes"/>
+
+    <context-asset name="insertButton" path="/images/add.gif" />
+    <context-asset name="cancelButton" path="/images/cancel.gif" />
+    <context-asset name="regresarButton" path="/images/back.gif" />
+
+</page-specification>

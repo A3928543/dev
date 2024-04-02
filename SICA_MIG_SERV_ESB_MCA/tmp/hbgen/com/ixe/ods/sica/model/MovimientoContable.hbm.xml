@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.MovimientoContable"
+        table="SC_MOVIMIENTO_CONTABLE"
+        proxy="com.ixe.ods.sica.model.MovimientoContable"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idMovimientoContable"
+            column="ID_MOVIMIENTO_CONTABLE"
+            type="java.lang.String"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-MovimientoContable.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <bag
+            name="movimientoContableDetalles"
+            lazy="true"
+            inverse="true"
+            cascade="none"
+        >
+
+              <key
+                  column="ID_MOVIMIENTO_CONTABLE"
+              >
+              </key>
+
+              <one-to-many
+                  class="com.ixe.ods.sica.model.MovimientoContableDetalle"
+              />
+
+        </bag>
+
+        <property
+            name="idDeal"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DEAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="idDealPosicion"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DEAL_POSICION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="folioDetalle"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="FOLIO_DETALLE"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="cliente"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLIENTE"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="fechaValor"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_VALOR"
+            not-null="true"
+            unique="false"
+        />
+
+        <many-to-one
+            name="divisa"
+            class="com.ixe.ods.sica.model.Divisa"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIVISA"
+            unique="false"
+        />
+
+        <property
+            name="faseContable"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="FASE_CONTABLE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoFechaValor"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_FECHA_VALOR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="mnemonico"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="MNEMONICO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="tipoDeal"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_DEAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoOperacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_OPERACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="usuario"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_USUARIO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="sucursalOrigen"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="SUCURSAL_ORIGEN"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="statusActual"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATUS_ACTUAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="statusAnterior"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATUS_ANTERIOR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambio"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="statusProceso"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATUS_PROCESO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fechaCreacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_CREACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fechaProcesamiento"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_PROCESAMIENTO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="liquidacionEspecial"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="LIQUIDACION_ESPECIAL"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="claveReferencia"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_REFERENCIA"
+            not-null="false"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-MovimientoContable.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findMovimientoPorFaseYFecha"><![CDATA[
+            FROM MovimientoContable AS mc INNER JOIN FETCH mc.movimientoContableDetalles det INNER JOIN FETCH mc.divisa INNER JOIN FETCH det.divisa WHERE mc.statusProceso = '0' AND mc.faseContable = ? AND mc.fechaCreacion BETWEEN ? AND ?
+        ]]></query>
+        <query name="findMovimientoPorFaseIdDeal"><![CDATA[
+            FROM MovimientoContable AS mc WHERE mc.statusProceso = '0' AND mc.faseContable = ? AND mc.idDeal = ? AND mc.fechaCreacion < ? 
+        ]]></query>
+
+</hibernate-mapping>

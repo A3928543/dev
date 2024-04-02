@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="commons/java-storedProcedures/src"/>
+	<classpathentry kind="src" path="applications/DetallesDealsH2H/src"/>
+	<classpathentry kind="src" path="applications/polizas/src"/>
+	<classpathentry kind="src" path="applications/ommConsumer/src"/>
+	<classpathentry kind="src" path="applications/cierre/src"/>
+	<classpathentry kind="src" path="models/sica/src"/>
+	<classpathentry kind="src" path="commons/ods-sica/src"/>
+	<classpathentry kind="src" path="applications/sicaTeller/src"/>
+	<classpathentry kind="src" path="applications/sica/src"/>
+	<classpathentry kind="src" path="commons/banorte/src"/>
+	<classpathentry kind="src" path="ejb/sica/src"/>
+	<classpathentry kind="src" path="applications/clientes/src"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/sica_libs"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="lib" path="lib/alarmas/AlrmSICA.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/alarmas/AlrmSICA-interfaces.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/ommConsumer/resources/project_specific_libs/jakarta/commons-dbcp-1.2.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/ommConsumer/resources/project_specific_libs/jakarta/commons-logging-1.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/ommConsumer/resources/project_specific_libs/jakarta/commons-pool-1.5.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/ommConsumer/resources/project_specific_libs/spring/aopalliance.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/ommConsumer/resources/project_specific_libs/spring/org.springframework.aop-3.0.5.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/ommConsumer/resources/project_specific_libs/spring/org.springframework.asm-3.0.5.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/ommConsumer/resources/project_specific_libs/spring/org.springframework.beans-3.0.5.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/ommConsumer/resources/project_specific_libs/spring/org.springframework.context.support-3.0.5.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/ommConsumer/resources/project_specific_libs/spring/org.springframework.context-3.0.5.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/ommConsumer/resources/project_specific_libs/spring/org.springframework.core-3.0.5.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/ommConsumer/resources/project_specific_libs/spring/org.springframework.expression-3.0.5.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/ommConsumer/resources/project_specific_libs/spring/org.springframework.jdbc-3.0.5.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/ommConsumer/resources/project_specific_libs/spring/org.springframework.transaction-3.0.5.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/applet/reloj.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/applet/sicaapplet.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/applet/wlclient.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/ahdump.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/axis.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/batik-awt-util.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/batik-bridge.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/batik-css.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/batik-dom.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/batik-ext.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/batik-gvt.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/batik-parser.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/batik-script.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/batik-svg-dom.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/batik-svggen.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/batik-transcoder.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/batik-util.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/batik-xml.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/commons-discovery.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/commons-httpclient.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/commons-logging.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/concurrent.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/fdb.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/flex.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/flex-tags.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/jakarta-oro-2.0.7.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/jaxrpc.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/jcert.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/jnet.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/jsse.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/licensetool.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/mxmlc.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/oscache.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/saaj.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/swddump.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/swfdump.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/swfopt.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/swfxc.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/transcoder.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/wsdl4j.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/xercesImpl.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/xercesPatch.jar"/>
+	<classpathentry exported="true" kind="lib" path="applications/sica/context/WEB-INF/flex/jars/xmlParserAPIs.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/bea/ejbgen-2.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/bea/wlclient.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/bea/wljmsclient.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/esb/castor-1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/esb/com.ibm.mq.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/esb/comunes_wmb.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/esb/configuracion_mq-1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/esb/connector.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/esb/consulta-ife-wmb213.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/esb/framework_conectividad_esb.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/esb/jakarta-oro-2.0.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/esb/jta.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/esb/xerces-2.0.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/esb/xml-apis.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/flex/commons-beanutils.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/flex/commons-collections.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/flex/flashgateway.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/flex/flex-bootstrap.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/hibernate/cglib-full-2.0.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/hibernate/dom4j-1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/hibernate/hibernate2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/hibernate/odmg-3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/isis/com.ixe.ods.pdf-util.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/isis/connector-tc-interfaces.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/isis/middleware-tc-interfaces.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/isis/ods-bootloader.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/j2ee/j2ee-1.3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/j2ee/javax.servlet.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jakarta/commons-collections-2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jakarta/commons-httpclient-2.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jakarta/commons-lang-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jakarta/commons-logging-1.0.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jakarta/log4j-1.2.7.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jasper/jasperreports-1.0.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jasper/poi-2[1][1].5.1-final-20040804.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jasper/poi-contrib-2[1][1].5.1-final-20040804.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jasper/poi-scratchpad-2[1][1].5.1-final-20040804.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/javamail/mail.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jaxb/dom.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jaxb/jaxb-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jaxb/jaxb-libs.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jaxb/jaxb-ri.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jaxb/jaxb-xjc.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jaxb/jax-qname.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jaxb/namespace.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jaxb/sax.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jaxb/xalan.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jaxb/xercesImpl.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/junit/junit.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/legosoft/com.legosoft-core.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/legosoft/com.legosoft-security.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/legosoft/com.legosoft-tapestry.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/misc/itext-1.02b.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/misc/xstream-0.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/alerta.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/Beans.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/BeansMinds.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/bh-interfaces.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/bh-mw.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/Bitacora_dto.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/BitacoraEJB.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/Bitacora-interfaces.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/bup.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/codec-2.0-20030407.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/com.ixe.isis-tapestry.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/com.ixe.ods-bup.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/com.ixe.ods-foundation.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/com.ixe.ods-recurrencias.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/com.ixe.ods-seguridad.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/ConectorMindsEJB.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/ConectorMinds-interfaces.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/ConectorPhxCons_dto.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/ConectorPhxConsEJB.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/ConectorPhxCons-interfaces.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/ContratacionEJB.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/contratacion-interfaces.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/csc_dto.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/digital-interfaces.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/digital-mw.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/ehcache-0.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/ibatis-db.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/ixerp-interfaces.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/jt400.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/menu.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/middleware-core.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/mw-dto.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/phoenix-atm-connector.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/phoenix-atm-interfaces.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/phoenix-banco-connector.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/phoenix-banco-interfaces.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/phoenix-credinet-connector.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/phoenix-credinet-interfaces.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/phoenix-md-interfaces.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/recurrencias.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/SaldosEJB-interfaces.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/security-server-interfaces.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/seguridad.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/seguridad-ejb.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/site-app.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/site-ejb.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/site-interfaces.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/site-model.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/site-tprz.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/speiClassesPx.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/speiDemonioPx.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/speiEjbs.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/SpeiEjbSeguridad-interfaces.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/speiEjbsPx-interfaces.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/TASMercadoDineroEJB_interfaces.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/ticket-helper-publico.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ods/utileriasIxe.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/quartz/quartz.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/rfa/rfa.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/runtime/cglib-full-2.0.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/runtime/commons-beanutils-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/runtime/commons-digester-1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/runtime/dom4j-1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/runtime/ehcache-0.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/runtime/odmg-3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/runtime/ojdbc14_g.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/spring/spring.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/spring/springadapter-0.7.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/tapestry/ognl-2.6.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/tapestry/tapestry-3.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/tapestry/tapestry-contrib-3.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/BancosInternacionalesByClave.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/bancosInternacionalesByNomPais.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/castor-1.2-xml-schema.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/CL3Export.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/CL3Nonexport.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/commons-validator.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/CrearDealParaTeller.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/dhbcore.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/fscontext.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/GetContratoSica.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/GetPaises.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/MarcarDealCancelado.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/netui-pageflow.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/netui-scoping.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/netui-tags-databinding.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/netui-tags-html.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/netui-tags-template.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/netui-util.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/netui-wl.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/obtenerDivisas.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/obtenerTipoCambioDivisas.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/pagoLiquido.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/PlantillaCuentaIxe.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/PlantillaInternacional.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/PlantillaNacional.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/providerutil.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/RegistrarBeneficiario.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/rmm.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/integracion/struts.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/teller/teller_servicio.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/velocity/velocity-1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/xdoclet/xdoclet-1.2.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/xdoclet/xdoclet-hibernate-module-1.2.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/xdoclet/xdoclet-xdoclet-module-1.2.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/xdoclet/xjavadoc-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/apache/commons-net-2.0-jdk14.jar"/>
+	<classpathentry kind="lib" path="dist/com.ixe.ods-sica.jar"/>
+	<classpathentry kind="lib" path="dist/sica.jar"/>
+	<classpathentry kind="lib" path="dist/pizarra.jar"/>
+	<classpathentry kind="lib" path="dist/sica-ejb.jar"/>
+	<classpathentry kind="lib" path="dist/sica-interfaces.jar"/>
+	<classpathentry kind="lib" path="dist/sica-teller-interfaces.jar"/>
+	<classpathentry kind="lib" path="dist/sica-wmb-interfaces.jar"/>
+	<classpathentry kind="lib" path="dist/sica-wmb.jar"/>
+	<classpathentry kind="lib" path="dist/sicaapplet.jar"/>
+	<classpathentry kind="lib" path="dist/sica.war"/>
+	<classpathentry kind="lib" path="dist/esb-altamira.jar"/>
+	<classpathentry kind="lib" path="lib/axis/axis.jar"/>
+	<classpathentry kind="lib" path="lib/axis/javax.activation_1.1.0.v201005080500.jar"/>
+	<classpathentry kind="lib" path="lib/axis/jaxrpc.jar"/>
+	<classpathentry kind="lib" path="lib/axis/saaj.jar"/>
+	<classpathentry kind="lib" path="lib/axis/wsdl4j-1.5.1.jar"/>
+	<classpathentry kind="lib" path="lib/javamail/activation.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

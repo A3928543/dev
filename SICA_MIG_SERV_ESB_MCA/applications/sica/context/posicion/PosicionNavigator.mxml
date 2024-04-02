@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<view:PosicionNavigator
+    xmlns:view="com.ixe.ods.sica.posicion.views.*"
+    xmlns:mx="http://www.macromedia.com/2003/mxml" xmlns:sica="*">
+	
+	<mx:Script>
+	<![CDATA[
+		function formatoDivisa(item: Object){
+			return item.idDivisa + " - " + item.descripcion;
+		}
+	]]>
+	</mx:Script>
+
+    <mx:DateFormatter id="dateFormatter" formatString="D/M/Y J"/>
+
+    <mx:Effect>
+        <mx:WipeDown name="wipeDown" show="true" duration="300"/>
+        <mx:WipeUp name="wipeUp" show="false" duration="300"/>
+    </mx:Effect>
+
+    <mx:HBox width="100%">
+        <mx:Spacer width="100%"/>
+        <mx:Label text="{status}" styleName="synchStatus"/>
+    </mx:HBox>
+
+    <mx:HBox y="20" width="100%">
+        <mx:Spacer width="100%"/>
+        <mx:Link id="timeoutLink" label="{timeoutLabel}" toggle="true" color="#83263A" fontWeight="bold"
+                 textDecoration="underline"/>
+        <mx:Link id="synchLink" icon="@Embed('resources/sync.gif')" toolTip="Sincronizar informaci&#243;n"/>
+    </mx:HBox>
+
+    <mx:VBox y="45" verticalGap="5" marginBottom="5" width="100%" height="100%">
+        <mx:HBox id="divisaBox" visible="false">
+            <mx:Image width="32" height="20" source="{divisaComboBox.selectedItem.icono}"/>
+            <mx:ComboBox width="200" id="divisaComboBox" labelFunction="formatoDivisa" />
+        </mx:HBox>
+
+        <mx:Tree id="tree" height="100%" width="100%" dragEnabled="true"/>
+
+    </mx:VBox>
+
+    <mx:VBox id="timeoutBox" y="45" x="45" horizontalAlign="center" marginLeft="10" marginRight="10" marginTop="5"
+             marginBottom="5" visible="false" backgroundColor="#EEF5EE" borderStyle="solid" showEffect="wipeDown"
+             hideEffect="wipeUp">
+        <mx:HBox>
+            <mx:NumericStepper id="timeoutStepper" maximum="900" minimum="5"
+                               creationComplete="event.target.inputField.restrict='0-9'"/>
+            <mx:Label text="segundos"/>	
+        </mx:HBox>
+      <mx:HBox>
+            <mx:Button id="okButton" label="Aceptar"/>
+            <mx:Button id="cancelButton" label="Cancelar"/>
+        </mx:HBox>
+    </mx:VBox>
+
+</view:PosicionNavigator>

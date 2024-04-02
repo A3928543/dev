@@ -1,0 +1,37 @@
+<span jwcid="@RadioGroup" selected="ognl: idDireccion">
+<table>
+    <tr jwcid="forDirecciones@Foreach" source="ognl: direcciones" element="tr">
+        <td colspan="7" class="normal">
+            <input type="radio" jwcid="@Radio" value="ognl: components.forDirecciones.value.idDireccion" /><span jwcid="@Insert" value="ognl: components.forDirecciones.value" />
+        </td>
+    </tr>
+    <tr valign="top">
+        <td class="title" colspan="7" nowrap><input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.pages.deals.CapturaDatosEnvio@ID_DIRECCION_OTRO" />Otra:</td>
+    </tr>
+    <tr valign="top">
+        <td rowspan="4" width="40">&nbsp;</td>
+        <td align="right" class="normal" nowrap>* Calle:</td>
+        <td><input jwcid="calle"/></td>
+        <td class="normal" align="right" nowrap>*N&uacute;mero Exterior:</td>
+        <td width="1%"><input jwcid="noExterno" /></td>
+        <td align="right" class="normal" nowrap>N&uacute;mero Interior:</td>
+        <td width="1%"><input jwcid="noInterno" /></td>
+    </tr>
+    <tr valign="top">
+        <td class="normal" align="right" nowrap>* Colonia:</td>
+        <td colspan="5"><input jwcid="colonia"/></td>
+    </tr>
+    <tr valign="top">
+        <td class="normal" align="right" nowrap>* C.P.:</td>
+        <td><input jwcid="codigoPostal"/></td>
+        <td class="normal" nowrap align="right">Delegaci&oacute;n:</td>
+        <td width="1%" colspan="3"><input jwcid="delegacion"/></td>
+    </tr>
+    <tr valign="top">
+        <td class="normal" align="right" nowrap>* Ciudad:</td>
+        <td><input jwcid="ciudad"/></td>
+        <td class="normal" align="right" nowrap>* Estado:</td>
+        <td colspan="3"><input jwcid="estado"/></td>
+    </tr>
+</table>
+</span>

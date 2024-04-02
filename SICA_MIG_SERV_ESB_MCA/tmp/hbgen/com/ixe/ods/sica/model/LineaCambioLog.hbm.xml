@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.LineaCambioLog"
+        table="SC_LINEA_CAMBIO_LOG"
+        proxy="com.ixe.ods.sica.model.LineaCambioLog"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idLineaCambioLog"
+            column="ID_LINEA_CAMBIO_LOG"
+            type="java.lang.Integer"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_LINEA_Cambio_LOG_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-LineaCambioLog.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <many-to-one
+            name="lineaCambio"
+            class="com.ixe.ods.sica.model.LineaCambio"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_LINEA_CAMBIO"
+            unique="false"
+        />
+
+        <property
+            name="tipoOper"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_OPER"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="importe"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="IMPORTE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fechaOperacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_OPERACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <many-to-one
+            name="divisa"
+            class="com.ixe.ods.sica.model.Divisa"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIVISA"
+            unique="false"
+        />
+
+        <property
+            name="factorDivisa"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="FACTOR_DIVISA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="observaciones"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="OBSERVACIONES"
+            not-null="false"
+            unique="false"
+        />
+
+        <many-to-one
+            name="usuario"
+            class="com.ixe.ods.seguridad.model.Usuario"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_USUARIO"
+            unique="false"
+        />
+
+        <many-to-one
+            name="dealDetalle"
+            class="com.ixe.ods.sica.model.DealDetalle"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DEAL_DETALLE"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-LineaCambioLog.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

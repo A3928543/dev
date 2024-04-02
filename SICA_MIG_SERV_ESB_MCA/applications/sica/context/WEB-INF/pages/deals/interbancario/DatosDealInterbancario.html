@@ -1,0 +1,18 @@
+<!-- $Id: DatosDealInterbancario.html,v 1.13 2008/12/26 23:17:33 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Deal Interbancario</title>
+    <link rel="StyleSheet" href="../../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder" menuDisabled="yes">
+    <span jwcid="tb@Block"><span jwcid="@EventosDealInterbancario" deal="ognl: deal" /></span>
+    <form jwcid="@Form">
+        <table jwcid="@ActionPortletBorder" title="Deal Interbancario" titleBlock="ognl: components.tb">
+            <span jwcid="@EncabezadoDealInterbancario" deal="ognl: deal" disabled="ognl: true" />
+        </table>
+    </form>
+    <span jwcid="@Conditional" condition="ognl: deal.contratoSica">
+        <table jwcid="@ResumenLineasCredito" idCliente="ognl: deal.cliente.idPersona" />
+    </span>
+</body>
+</html>

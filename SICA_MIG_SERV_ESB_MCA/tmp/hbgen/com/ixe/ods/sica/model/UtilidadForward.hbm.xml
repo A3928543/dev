@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.UtilidadForward"
+        table="SC_UTILIDAD_FORWARD"
+        proxy="com.ixe.ods.sica.model.UtilidadForward"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idUtilidadForward"
+            column="ID_UTILIDAD_FORWARD"
+            type="java.lang.String"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-UtilidadForward.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="fecha"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fechaValor"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_VALOR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="idDeal"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DEAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="idDivisa"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIVISA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="inicioSwap"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="INICIO_SWAP"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="monto"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="montoEquivalente"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO_EQUIVALENTE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="recibimos"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="RECIBIMOS"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambioCliente"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO_CLIENTE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="utilidad"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="UTILIDAD"
+            not-null="true"
+            unique="false"
+        />
+
+        <many-to-one
+            name="mesaCambio"
+            class="com.ixe.ods.sica.model.MesaCambio"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_MESA_CAMBIO"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-UtilidadForward.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findUtilidadForwardByFecha"><![CDATA[
+            FROM UtilidadForward AS uf LEFT JOIN FETCH uf.mesaCambio WHERE uf.fecha BETWEEN ? AND ? ORDER BY uf.mesaCambio.idMesaCambio, uf.idDivisa
+        ]]></query>
+        <query name="findUtilidadForwardByFechaMesaDivisa"><![CDATA[
+            FROM UtilidadForward AS uf WHERE uf.fecha BETWEEN ? AND ? AND uf.mesaCambio.idMesaCambio = ? AND uf.idDivisa = ?
+        ]]></query>
+
+</hibernate-mapping>

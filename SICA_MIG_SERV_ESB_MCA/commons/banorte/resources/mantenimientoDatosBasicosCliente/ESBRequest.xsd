@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:Q1="http://www.banorte.com/ws/MantenimientoDatosBasicosClienteRequest"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.banorte.com/ws/ESBRequest"
+  xmlns:tns="http://www.banorte.com/ws/ESBRequest" elementFormDefault="qualified">
+  <xsd:import schemaLocation="MantenimientoDatosBasicosClienteRequest.xsd"
+    namespace="http://www.banorte.com/ws/MantenimientoDatosBasicosClienteRequest"></xsd:import>
+  <xsd:complexType name="HeaderReq">
+    <xsd:sequence>
+      <xsd:element name="Ticket" type="xsd:string" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="CR" type="xsd:string" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="UsrOper" type="xsd:string" minOccurs="0" maxOccurs="1" />
+    </xsd:sequence>
+    <xsd:attribute name="verHeaderReq" use="optional">
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="1.0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:attribute>
+  </xsd:complexType>
+  <xsd:complexType name="Request">
+    <xsd:sequence>
+      <xsd:element ref="Q1:MantenimientoDatosBasicosClienteRequest"/>
+    </xsd:sequence>
+    <xsd:attribute name="asincrono">
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="S" />
+          <xsd:enumeration value="N" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:attribute>
+    <xsd:attribute name="idServicio" type="xsd:string" use="optional" />
+    <xsd:attribute name="verServicio" type="xsd:string" use="optional" />
+  </xsd:complexType>
+  <xsd:complexType name="ESB">
+    <xsd:sequence>
+      <xsd:element name="Header" type="tns:HeaderReq" />
+      <xsd:element name="Request" type="tns:Request" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ESBRequestType">
+    <xsd:sequence>
+      <xsd:element name="Header" type="tns:HeaderReq" />
+      <xsd:element name="Request" type="tns:Request" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ESBRequest" type="tns:ESBRequestType" />
+</xsd:schema>

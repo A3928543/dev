@@ -1,0 +1,125 @@
+<!-- $Id: ResumenLineasCredito.html,v 1.15.70.1 2016/07/13 21:46:04 mejiar Exp $ -->
+<span jwcid="@Conditional" condition="ognl: linea">
+<table jwcid="@ActionPortletBorder" title='ognl: "Resumen de la L&iacute;nea de Cr&eacute;dito " + (nombreCorto == null ? "" : ("de " + nombreCorto))'>
+		<table border="0">
+			<tr class="title">
+				<td>Status:</td>
+				<td><span jwcid="@DisabledField"
+					value="ognl: linea.descripcionStatus" /></td>
+				<td nowrap>&nbsp;&nbsp;Excepciones en el mes:</td>
+				<td><span jwcid="@DisabledField"
+					value="ognl: linea.numeroExcepcionesMes" /></td>
+				<td nowrap>&nbsp;&nbsp;Excepci&oacute;n en adeudos:</td>
+				<td><span jwcid="@DisabledField"
+					value="ognl: linea.casoExcepcion ? 'S\u00ed' : 'No'" /></td>
+				<td nowrap>&nbsp;&nbsp;Rango de excesos:</td>
+				<td><span jwcid="@DisabledField"
+					value="ognl: numeroTotalExcesos" /></td>
+				<td nowrap>&nbsp;&nbsp;Excesos PAyTF:</td>
+				<td><span jwcid="@DisabledField"
+					value="ognl: linea.excesoPAyTF" /></td>
+				<td nowrap>&nbsp;&nbsp;Excesos FV:</td>
+				<td><span jwcid="@DisabledField" value="ognl: linea.excesoFV" /></td>
+				<td nowrap>&nbsp;&nbsp;Vencimiento:</td>
+				<td><span jwcid="@DisabledField" value="ognl: page.dateFormat.format(linea.vencimiento)" /></td>
+			</tr>
+			<tr class="title">
+				<td colspan="4">
+					<table>
+						<tr class="title">
+							<td> Tipo de Autorizaci&oacute;n: &nbsp;</td>
+							<span  jwcid="@Conditional" condition="ognl: linea.tipoAutorizacion == null" >
+								<td> &nbsp; </td>
+							</span>
+						
+							<span jwcid="@Conditional" condition="ognl: linea.tipoAutorizacion != null">
+								<td>
+									<span jwcid="@DisabledField" value="ognl: page.getDefaultString(linea.tipoAutorizacion.descripcion)" />
+								</td>
+							</span>
+							
+					</table> 
+				</td>
+				
+				<td colspan="4" >
+					<table>
+						<tr class="title">
+							<td>
+								Formalizaci&oacute;n: &nbsp;
+							</td>
+							<span jwcid="@Conditional" condition="ognl: linea.formalizacion == null" >
+								<td> &nbsp; </td>
+							</span>
+							<span jwcid="@Conditional" condition="ognl: linea.formalizacion != null">
+								<td>
+									<span jwcid="@DisabledField" value="ognl: page.getDefaultString(linea.formalizacion.descripcion)" />
+								</td>
+							</span>
+							
+						</tr>
+					</table> 
+				</td>
+				<td colspan="6" >
+					<table>
+						<tr class="title">
+							<td>Instancia Autoriz&oacute;: &nbsp; </td>
+							
+							<span jwcid="@Conditional" condition="ognl: linea.instanciaFacultada == null">
+								<td> &nbsp; </td>
+							</span>
+							<span jwcid="@Conditional" condition="ognl: linea.instanciaFacultada != null">
+								<td>
+									<span jwcid="@DisabledField" value="ognl: page.getDefaultString(linea.instanciaFacultada.descripcion)" />
+								</td>
+							</span>
+							
+							
+					 		
+					 	</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<table jwcid="@TableBorder" title="ognl: null" columnCount="ognl: 11" width="100%">
+			<tr class="titlecell">
+				<th class="title">&nbsp;</th>
+				<th class="title">&nbsp;</th>
+				<th class="title">CASH</th>
+				<th class="title">TOM</th>
+				<th class="title">SPOT</th>
+				<th class="title">72HR</th>
+				<th class="title">96HR</th>
+			</tr>
+			<tr class="titlecell">
+				<th class="title">&nbsp;</th>
+				<th class="title">Total de l&iacute;nea Autorizada</th>
+				<th class="title">Pago Anticipado y Toma en Firme</th>
+				<th class="title">Fecha Valor</th>
+				<th class="title">Fecha Valor</th>
+				<th class="title">Fecha Valor</th>
+				<th class="title">Fecha Valor</th>
+			</tr>
+			<tr jwcid="@Any" element="tr" class="ognl: beans.evenOdd.next">
+				<td class="title" align="right">Importe:</td>
+				<td class="normal" align="right"><span jwcid="@Insert" value="ognl: linea.importePAyTF==null || linea.importeFV==null ? new java.math.BigDecimal(0) :linea.totalLineaAutorizada" format="ognl: page.moneyFormat" /></td>
+				<td class="normal" align="right"><span jwcid="@Insert" value="ognl: linea.importePAyTF==null ? new java.math.BigDecimal(0): linea.importePAyTF " format="ognl: page.moneyFormat" /></td>
+				<td class="normal" align="center" colspan="4"><span jwcid="@Insert" value="ognl: linea.importeFV" format="ognl: page.moneyFormat" /></td>
+			</tr>
+			<tr jwcid="@Any" element="tr" class="ognl: beans.evenOdd.next">
+				<td class="title" align="right">Uso:</td>
+				<td align="right" class="normal" nowrap><span jwcid="@Insert" value="ognl: linea.usoTotal" format="ognl: page.moneyFormat"/></td>
+				<td align="right" class="normal" nowrap><span jwcid="@Insert" value="ognl: linea.usoCash" format="ognl: page.moneyFormat"/></td>
+				<td align="right" class="normal" nowrap><span jwcid="@Insert" value="ognl: linea.usoTom" format="ognl: page.moneyFormat"/></td>
+				<td align="right" class="normal" nowrap><span jwcid="@Insert" value="ognl: linea.usoSpot" format="ognl: page.moneyFormat"/></td>
+				<td align="right" class="normal" nowrap><span jwcid="@Insert" value="ognl: linea.uso72Hr" format="ognl: page.moneyFormat"/></td>
+				<td align="right" class="normal" nowrap><span jwcid="@Insert" value="ognl: linea.uso96Hr" format="ognl: page.moneyFormat"/></td>
+			</tr>
+			<tr jwcid="@Any" element="tr" class="ognl: beans.evenOdd.next">
+				<td class="title" align="right">Saldo:</td>
+				<td align="right" class="title" nowrap><span jwcid="@Insert" value="ognl: linea.importePAyTF==null || linea.importeFV==null ? new java.math.BigDecimal(0) : linea.saldoLineaAutorizada" format="ognl: page.moneyFormat" /></td>
+				<td align="right" class="title" nowrap><span jwcid="@Insert" value="ognl: linea.importePAyTF==null || linea.importeFV==null ? new java.math.BigDecimal(0) : linea.saldoPAyTF" format="ognl: page.moneyFormat" /></td>
+				<td align="center" class="title" colspan="4"><span jwcid="@Insert" value="ognl: linea.importePAyTF==null || linea.importeFV==null ? new java.math.BigDecimal(0) : linea.saldoFV " format="ognl: page.moneyFormat" /></td>
+			</tr>
+		</table>
+</table>
+</span>

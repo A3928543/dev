@@ -1,0 +1,978 @@
+2016-05-25 12:48:00 - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@253498: startup date [Wed May 25 12:48:00 CDT 2016]; root of context hierarchy
+2016-05-25 12:48:01 - Loading XML bean definitions from file [C:\Users\a3928543\workspace\ReporteMensualUIF\config\applicationContext.xml]
+2016-05-25 12:48:01 - Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2016-05-25 12:48:01 - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd]
+2016-05-25 12:48:01 - Loading schema mappings from [META-INF/spring.schemas]
+2016-05-25 12:48:01 - Loaded schema mappings: {http://www.springframework.org/schema/lang/spring-lang.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.5.xsd=org/springframework/scripting/config/spring-lang-2.5.xsd, http://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd, http://www.springframework.org/schema/context/spring-context.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/util/spring-util-3.0.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.0.xsd=org/springframework/beans/factory/xml/spring-util-2.0.xsd, http://www.springframework.org/schema/task/spring-task-3.0.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.5.xsd=org/springframework/beans/factory/xml/spring-util-2.5.xsd, http://www.springframework.org/schema/tool/spring-tool-3.0.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.0.xsd=org/springframework/transaction/config/spring-tx-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.0.xsd=org/springframework/beans/factory/xml/spring-tool-2.0.xsd, http://www.springframework.org/schema/task/spring-task.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/context/spring-context-3.0.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.5.xsd=org/springframework/transaction/config/spring-tx-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-2.0.xsd=org/springframework/beans/factory/xml/spring-beans-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.5.xsd=org/springframework/beans/factory/xml/spring-tool-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/beans/spring-beans-2.5.xsd=org/springframework/beans/factory/xml/spring-beans-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/tool/spring-tool.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.0.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop-3.0.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.0.xsd=org/springframework/ejb/config/spring-jee-2.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.0.xsd=org/springframework/aop/config/spring-aop-2.0.xsd, http://www.springframework.org/schema/tx/spring-tx-3.0.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.5.xsd=org/springframework/ejb/config/spring-jee-2.5.xsd, http://www.springframework.org/schema/aop/spring-aop-2.5.xsd=org/springframework/aop/config/spring-aop-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-3.0.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-3.0.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.0.xsd=org/springframework/scripting/config/spring-lang-2.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/util/spring-util.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd}
+2016-05-25 12:48:01 - Found XML schema [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-3.0.xsd
+2016-05-25 12:48:01 - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/context/spring-context-3.0.xsd]
+2016-05-25 12:48:01 - Found XML schema [http://www.springframework.org/schema/context/spring-context-3.0.xsd] in classpath: org/springframework/context/config/spring-context-3.0.xsd
+2016-05-25 12:48:01 - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd]
+2016-05-25 12:48:01 - Found XML schema [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-tool-3.0.xsd
+2016-05-25 12:48:01 - Loading bean definitions
+2016-05-25 12:48:01 - Loaded NamespaceHandler mappings: {http://www.springframework.org/schema/p=org.springframework.beans.factory.xml.SimplePropertyNamespaceHandler, http://www.springframework.org/schema/util=org.springframework.beans.factory.xml.UtilNamespaceHandler, http://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandler, http://www.springframework.org/schema/aop=org.springframework.aop.config.AopNamespaceHandler, http://www.springframework.org/schema/jdbc=org.springframework.jdbc.config.JdbcNamespaceHandler, http://www.springframework.org/schema/tx=org.springframework.transaction.config.TxNamespaceHandler, http://www.springframework.org/schema/task=org.springframework.scheduling.config.TaskNamespaceHandler, http://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandler, http://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler}
+2016-05-25 12:48:01 - Loaded 10 bean definitions from location pattern [config/applicationContext.xml]
+2016-05-25 12:48:01 - Bean factory for org.springframework.context.support.FileSystemXmlApplicationContext@253498: org.springframework.beans.factory.support.DefaultListableBeanFactory@1bfc93a: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailSender,generalMailSender,dataSource,mensajesVo,consultaDao,reporteService,transferenciasService]; root of factory hierarchy
+2016-05-25 12:48:01 - Creating shared instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-05-25 12:48:01 - Creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-05-25 12:48:01 - Eagerly caching bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0' to allow for resolving potential circular references
+2016-05-25 12:48:01 - Getting BeanInfo for class [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]
+2016-05-25 12:48:01 - Caching PropertyDescriptors for class [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]
+2016-05-25 12:48:01 - Found bean property 'beanFactory' of type [org.springframework.beans.factory.BeanFactory]
+2016-05-25 12:48:01 - Found bean property 'beanName' of type [java.lang.String]
+2016-05-25 12:48:01 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 12:48:01 - Found bean property 'fileEncoding' of type [java.lang.String]
+2016-05-25 12:48:01 - Found bean property 'ignoreResourceNotFound' of type [boolean]
+2016-05-25 12:48:01 - Found bean property 'ignoreUnresolvablePlaceholders' of type [boolean]
+2016-05-25 12:48:01 - Found bean property 'localOverride' of type [boolean]
+2016-05-25 12:48:01 - Found bean property 'location' of type [org.springframework.core.io.Resource]
+2016-05-25 12:48:01 - Found bean property 'locations' of type [[Lorg.springframework.core.io.Resource;]
+2016-05-25 12:48:01 - Found bean property 'nullValue' of type [java.lang.String]
+2016-05-25 12:48:01 - Found bean property 'order' of type [int]
+2016-05-25 12:48:01 - Found bean property 'placeholderPrefix' of type [java.lang.String]
+2016-05-25 12:48:01 - Found bean property 'placeholderSuffix' of type [java.lang.String]
+2016-05-25 12:48:01 - Found bean property 'properties' of type [java.util.Properties]
+2016-05-25 12:48:01 - Found bean property 'propertiesArray' of type [[Ljava.util.Properties;]
+2016-05-25 12:48:01 - Found bean property 'propertiesPersister' of type [org.springframework.util.PropertiesPersister]
+2016-05-25 12:48:01 - Found bean property 'searchSystemEnvironment' of type [boolean]
+2016-05-25 12:48:01 - Found bean property 'systemPropertiesMode' of type [int]
+2016-05-25 12:48:01 - Found bean property 'systemPropertiesModeName' of type [java.lang.String]
+2016-05-25 12:48:01 - Found bean property 'valueSeparator' of type [java.lang.String]
+2016-05-25 12:48:01 - Finished creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-05-25 12:48:01 - Loading properties file from file [C:\Users\a3928543\workspace\ReporteMensualUIF\config\config.properties]
+2016-05-25 12:48:01 - Resolved placeholder 'mail.host'
+2016-05-25 12:48:01 - Resolved placeholder 'mail.template.path'
+2016-05-25 12:48:01 - Resolved placeholder 'mail.template'
+2016-05-25 12:48:01 - Resolved placeholder 'mail.from'
+2016-05-25 12:48:01 - Resolved placeholder 'mail.subject'
+2016-05-25 12:48:01 - Resolved placeholder 'mail.ordenante.from'
+2016-05-25 12:48:01 - Resolved placeholder 'mail.ordenante.to'
+2016-05-25 12:48:01 - Resolved placeholder 'mail.ordenante.subject'
+2016-05-25 12:48:01 - Resolved placeholder 'db.driver'
+2016-05-25 12:48:01 - Resolved placeholder 'db.username'
+2016-05-25 12:48:01 - Resolved placeholder 'db.password'
+2016-05-25 12:48:01 - Resolved placeholder 'db.url'
+2016-05-25 12:48:01 - Resolved placeholder 'msj.error.path'
+2016-05-25 12:48:01 - Resolved placeholder 'msj.error.emails'
+2016-05-25 12:48:01 - Resolved placeholder 'msj.error.email'
+2016-05-25 12:48:01 - Resolved placeholder 'msj.error.stored'
+2016-05-25 12:48:01 - Resolved placeholder 'msj.error.consulta.transferencias'
+2016-05-25 12:48:01 - Resolved placeholder 'msj.inicio.proceso'
+2016-05-25 12:48:01 - Resolved placeholder 'msj.fin.proceso'
+2016-05-25 12:48:01 - Resolved placeholder 'db.nombreStored'
+2016-05-25 12:48:01 - Resolved placeholder 'parametro.path.reporte'
+2016-05-25 12:48:01 - Resolved placeholder 'parametro.emails.to'
+2016-05-25 12:48:01 - Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@10382a9]
+2016-05-25 12:48:01 - Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@30d082]
+2016-05-25 12:48:01 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1bfc93a: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailSender,generalMailSender,dataSource,mensajesVo,consultaDao,reporteService,transferenciasService]; root of factory hierarchy
+2016-05-25 12:48:01 - Returning cached instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-05-25 12:48:01 - Creating shared instance of singleton bean 'javaMailSender'
+2016-05-25 12:48:01 - Creating instance of bean 'javaMailSender'
+2016-05-25 12:48:02 - Eagerly caching bean 'javaMailSender' to allow for resolving potential circular references
+2016-05-25 12:48:02 - Getting BeanInfo for class [org.springframework.mail.javamail.JavaMailSenderImpl]
+2016-05-25 12:48:02 - Caching PropertyDescriptors for class [org.springframework.mail.javamail.JavaMailSenderImpl]
+2016-05-25 12:48:02 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 12:48:02 - Found bean property 'defaultEncoding' of type [java.lang.String]
+2016-05-25 12:48:02 - Found bean property 'defaultFileTypeMap' of type [javax.activation.FileTypeMap]
+2016-05-25 12:48:02 - Found bean property 'host' of type [java.lang.String]
+2016-05-25 12:48:02 - Found bean property 'javaMailProperties' of type [java.util.Properties]
+2016-05-25 12:48:02 - Found bean property 'password' of type [java.lang.String]
+2016-05-25 12:48:02 - Found bean property 'port' of type [int]
+2016-05-25 12:48:02 - Found bean property 'protocol' of type [java.lang.String]
+2016-05-25 12:48:02 - Found bean property 'session' of type [javax.mail.Session]
+2016-05-25 12:48:02 - Found bean property 'username' of type [java.lang.String]
+2016-05-25 12:48:02 - Finished creating instance of bean 'javaMailSender'
+2016-05-25 12:48:02 - Creating shared instance of singleton bean 'velocityEngine'
+2016-05-25 12:48:02 - Creating instance of bean 'velocityEngine'
+2016-05-25 12:48:02 - Eagerly caching bean 'velocityEngine' to allow for resolving potential circular references
+2016-05-25 12:48:02 - Getting BeanInfo for class [org.springframework.ui.velocity.VelocityEngineFactoryBean]
+2016-05-25 12:48:02 - Caching PropertyDescriptors for class [org.springframework.ui.velocity.VelocityEngineFactoryBean]
+2016-05-25 12:48:02 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 12:48:02 - Found bean property 'configLocation' of type [org.springframework.core.io.Resource]
+2016-05-25 12:48:02 - Found bean property 'object' of type [java.lang.Object]
+2016-05-25 12:48:02 - Found bean property 'objectType' of type [java.lang.Class]
+2016-05-25 12:48:02 - Found bean property 'overrideLogging' of type [boolean]
+2016-05-25 12:48:02 - Found bean property 'preferFileSystemAccess' of type [boolean]
+2016-05-25 12:48:02 - Found bean property 'resourceLoader' of type [org.springframework.core.io.ResourceLoader]
+2016-05-25 12:48:02 - Found bean property 'resourceLoaderPath' of type [java.lang.String]
+2016-05-25 12:48:02 - Found bean property 'singleton' of type [boolean]
+2016-05-25 12:48:02 - Found bean property 'velocityProperties' of type [java.util.Properties]
+2016-05-25 12:48:02 - Found bean property 'velocityPropertiesMap' of type [java.util.Map]
+2016-05-25 12:48:02 - Invoking afterPropertiesSet() on bean with name 'velocityEngine'
+2016-05-25 12:48:02 - Resource loader path [config/] resolved to file [C:\Users\a3928543\workspace\ReporteMensualUIF\config]
+2016-05-25 12:48:02 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2016-05-25 12:48:02 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2016-05-25 12:48:02 - LogSystem has been deprecated. Please use a LogChute implementation.
+2016-05-25 12:48:02 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2016-05-25 12:48:02 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2016-05-25 12:48:02 - Do unicode file recognition:  false
+2016-05-25 12:48:02 - FileResourceLoader : adding path 'C:\Users\a3928543\workspace\ReporteMensualUIF\config'
+2016-05-25 12:48:02 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2016-05-25 12:48:02 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2016-05-25 12:48:02 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2016-05-25 12:48:02 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2016-05-25 12:48:02 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2016-05-25 12:48:02 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2016-05-25 12:48:02 - Created '20' parsers.
+2016-05-25 12:48:02 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2016-05-25 12:48:02 - Velocimacro : Default library not found.
+2016-05-25 12:48:02 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2016-05-25 12:48:02 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2016-05-25 12:48:02 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2016-05-25 12:48:02 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2016-05-25 12:48:02 - Finished creating instance of bean 'velocityEngine'
+2016-05-25 12:48:02 - Creating shared instance of singleton bean 'mailSender'
+2016-05-25 12:48:02 - Creating instance of bean 'mailSender'
+2016-05-25 12:48:02 - Eagerly caching bean 'mailSender' to allow for resolving potential circular references
+2016-05-25 12:48:02 - Returning cached instance of singleton bean 'velocityEngine'
+2016-05-25 12:48:02 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.MailSenderImpl]
+2016-05-25 12:48:02 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.MailSenderImpl]
+2016-05-25 12:48:02 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 12:48:02 - Found bean property 'from' of type [java.lang.String]
+2016-05-25 12:48:02 - Found bean property 'javaMailSender' of type [org.springframework.mail.javamail.JavaMailSender]
+2016-05-25 12:48:02 - Found bean property 'subject' of type [java.lang.String]
+2016-05-25 12:48:02 - Found bean property 'template' of type [java.lang.String]
+2016-05-25 12:48:02 - Found bean property 'to' of type [java.lang.String]
+2016-05-25 12:48:02 - Found bean property 'velocityEngine' of type [org.apache.velocity.app.VelocityEngine]
+2016-05-25 12:48:02 - Returning cached instance of singleton bean 'javaMailSender'
+2016-05-25 12:48:02 - Finished creating instance of bean 'mailSender'
+2016-05-25 12:48:02 - Creating shared instance of singleton bean 'generalMailSender'
+2016-05-25 12:48:02 - Creating instance of bean 'generalMailSender'
+2016-05-25 12:48:02 - Eagerly caching bean 'generalMailSender' to allow for resolving potential circular references
+2016-05-25 12:48:02 - Returning cached instance of singleton bean 'javaMailSender'
+2016-05-25 12:48:02 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.GeneralMailSenderImpl]
+2016-05-25 12:48:02 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.GeneralMailSenderImpl]
+2016-05-25 12:48:02 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 12:48:02 - Found bean property 'from' of type [java.lang.String]
+2016-05-25 12:48:02 - Found bean property 'mailSender' of type [org.springframework.mail.MailSender]
+2016-05-25 12:48:02 - Found bean property 'subject' of type [java.lang.String]
+2016-05-25 12:48:02 - Found bean property 'to' of type [java.lang.String]
+2016-05-25 12:48:02 - Finished creating instance of bean 'generalMailSender'
+2016-05-25 12:48:02 - Creating shared instance of singleton bean 'dataSource'
+2016-05-25 12:48:02 - Creating instance of bean 'dataSource'
+2016-05-25 12:48:02 - Eagerly caching bean 'dataSource' to allow for resolving potential circular references
+2016-05-25 12:48:02 - Getting BeanInfo for class [org.springframework.jdbc.datasource.DriverManagerDataSource]
+2016-05-25 12:48:02 - Caching PropertyDescriptors for class [org.springframework.jdbc.datasource.DriverManagerDataSource]
+2016-05-25 12:48:02 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 12:48:02 - Found bean property 'connection' of type [java.sql.Connection]
+2016-05-25 12:48:02 - Found bean property 'connectionProperties' of type [java.util.Properties]
+2016-05-25 12:48:02 - Found bean property 'driverClassName' of type [java.lang.String]
+2016-05-25 12:48:02 - Found bean property 'logWriter' of type [java.io.PrintWriter]
+2016-05-25 12:48:02 - Found bean property 'loginTimeout' of type [int]
+2016-05-25 12:48:02 - Found bean property 'password' of type [java.lang.String]
+2016-05-25 12:48:02 - Found bean property 'url' of type [java.lang.String]
+2016-05-25 12:48:02 - Found bean property 'username' of type [java.lang.String]
+2016-05-25 12:48:02 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2016-05-25 12:48:02 - Finished creating instance of bean 'dataSource'
+2016-05-25 12:48:02 - Creating shared instance of singleton bean 'mensajesVo'
+2016-05-25 12:48:02 - Creating instance of bean 'mensajesVo'
+2016-05-25 12:48:02 - Eagerly caching bean 'mensajesVo' to allow for resolving potential circular references
+2016-05-25 12:48:02 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.dto.MensajesVo]
+2016-05-25 12:48:02 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.dto.MensajesVo]
+2016-05-25 12:48:02 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 12:48:02 - Found bean property 'mensajeErrorEmailsTo' of type [java.lang.String]
+2016-05-25 12:48:02 - Found bean property 'mensajeErrorPath' of type [java.lang.String]
+2016-05-25 12:48:02 - Found bean property 'mensajeErrorPathEmail' of type [java.lang.String]
+2016-05-25 12:48:02 - Found bean property 'mensajeErrorStoredProcedure' of type [java.lang.String]
+2016-05-25 12:48:02 - Found bean property 'mensajeErrorTransferencias' of type [java.lang.String]
+2016-05-25 12:48:02 - Found bean property 'mensajeFinProceso' of type [java.lang.String]
+2016-05-25 12:48:02 - Found bean property 'mensajeInicioproceso' of type [java.lang.String]
+2016-05-25 12:48:02 - Finished creating instance of bean 'mensajesVo'
+2016-05-25 12:48:02 - Creating shared instance of singleton bean 'consultaDao'
+2016-05-25 12:48:02 - Creating instance of bean 'consultaDao'
+2016-05-25 12:48:02 - Eagerly caching bean 'consultaDao' to allow for resolving potential circular references
+2016-05-25 12:48:02 - Returning cached instance of singleton bean 'dataSource'
+2016-05-25 12:48:02 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.dao.impl.ConsultaDaoImpl]
+2016-05-25 12:48:02 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.dao.impl.ConsultaDaoImpl]
+2016-05-25 12:48:02 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 12:48:02 - Found bean property 'dataSource' of type [javax.sql.DataSource]
+2016-05-25 12:48:02 - Found bean property 'jdbcTemplate' of type [org.springframework.jdbc.core.JdbcTemplate]
+2016-05-25 12:48:02 - Found bean property 'nombreStored' of type [java.lang.String]
+2016-05-25 12:48:02 - Found bean property 'parametroEmailsTo' of type [java.lang.String]
+2016-05-25 12:48:02 - Found bean property 'parametroPathReporte' of type [java.lang.String]
+2016-05-25 12:48:02 - Invoking afterPropertiesSet() on bean with name 'consultaDao'
+2016-05-25 12:48:02 - Finished creating instance of bean 'consultaDao'
+2016-05-25 12:48:02 - Creating shared instance of singleton bean 'reporteService'
+2016-05-25 12:48:02 - Creating instance of bean 'reporteService'
+2016-05-25 12:48:02 - Eagerly caching bean 'reporteService' to allow for resolving potential circular references
+2016-05-25 12:48:02 - Finished creating instance of bean 'reporteService'
+2016-05-25 12:48:02 - Creating shared instance of singleton bean 'transferenciasService'
+2016-05-25 12:48:02 - Creating instance of bean 'transferenciasService'
+2016-05-25 12:48:02 - Eagerly caching bean 'transferenciasService' to allow for resolving potential circular references
+2016-05-25 12:48:02 - Returning cached instance of singleton bean 'consultaDao'
+2016-05-25 12:48:02 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.services.impl.TransferenciasServiceImpl]
+2016-05-25 12:48:02 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.services.impl.TransferenciasServiceImpl]
+2016-05-25 12:48:02 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 12:48:02 - Found bean property 'consultaDao' of type [com.banorte.reporte.UIF.transferencias.dao.IConsultaDao]
+2016-05-25 12:48:02 - Found bean property 'generalMailSender' of type [com.banorte.reporte.UIF.transferencias.services.mail.GeneralMailSender]
+2016-05-25 12:48:02 - Found bean property 'mailSender' of type [com.banorte.reporte.UIF.transferencias.services.mail.MailSender]
+2016-05-25 12:48:02 - Found bean property 'mensajesVo' of type [com.banorte.reporte.UIF.transferencias.dto.MensajesVo]
+2016-05-25 12:48:02 - Found bean property 'reporteService' of type [com.banorte.reporte.UIF.transferencias.services.IReporteService]
+2016-05-25 12:48:02 - Returning cached instance of singleton bean 'mailSender'
+2016-05-25 12:48:02 - Returning cached instance of singleton bean 'generalMailSender'
+2016-05-25 12:48:02 - Returning cached instance of singleton bean 'mensajesVo'
+2016-05-25 12:48:02 - Returning cached instance of singleton bean 'reporteService'
+2016-05-25 12:48:02 - Finished creating instance of bean 'transferenciasService'
+2016-05-25 12:48:02 - Unable to locate LifecycleProcessor with name 'lifecycleProcessor': using default [org.springframework.context.support.DefaultLifecycleProcessor@785d65]
+2016-05-25 12:48:02 - Returning cached instance of singleton bean 'lifecycleProcessor'
+2016-05-25 12:48:02 - Publishing event in org.springframework.context.support.FileSystemXmlApplicationContext@253498: org.springframework.context.event.ContextRefreshedEvent[source=org.springframework.context.support.FileSystemXmlApplicationContext@253498: startup date [Wed May 25 12:48:00 CDT 2016]; root of context hierarchy]
+2016-05-25 12:48:02 - **********************************************************************************************************
+2016-05-25 12:48:02 - *****************************          PROCESO MENSUAL DE TRANSFERENCIAS        **************************
+2016-05-25 12:48:02 - **********************************************************************************************************
+2016-05-25 12:48:02 - Returning cached instance of singleton bean 'transferenciasService'
+2016-05-25 12:48:02 - Executing prepared SQL query
+2016-05-25 12:48:02 - Executing prepared SQL statement [select VALOR from SC_PARAMETRO where ID_PARAMETRO = ?]
+2016-05-25 12:48:02 - Fetching JDBC Connection from DataSource
+2016-05-25 12:48:02 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 12:48:03 - Setting SQL statement parameter value: column index 1, parameter value [PATH_REPORTE_DIARIO], value class [java.lang.String], SQL type unknown
+2016-05-25 12:48:03 - Returning JDBC Connection to DataSource
+2016-05-25 12:48:03 - Executing prepared SQL query
+2016-05-25 12:48:03 - Executing prepared SQL statement [select VALOR from SC_PARAMETRO where ID_PARAMETRO = ?]
+2016-05-25 12:48:03 - Fetching JDBC Connection from DataSource
+2016-05-25 12:48:03 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 12:48:03 - Setting SQL statement parameter value: column index 1, parameter value [EMAILS_REPORTE_DIARIO], value class [java.lang.String], SQL type unknown
+2016-05-25 12:48:03 - Returning JDBC Connection to DataSource
+2016-05-25 12:48:03 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-05-25 12:48:03 - getFrom(): IxeCambios@ixe.com.mx
+2016-05-25 12:48:03 - getTo(): jesus.cortes@banorte.com
+2016-05-25 12:48:03 - getSubject(): Notificación del proceso de reporte mensual de transferencias que se envía a la UIF.
+2016-05-25 12:48:03 - jesus.cortes@banorte.com
+2016-05-25 12:48:03 - ResourceManager : found reporteDiarioTransferenciasTemplate.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2016-05-25 12:48:04 - --> Inicia la ejecución del proceso mensual de transferencias para la UIF...
+2016-05-25 12:48:04 - Compiled stored procedure. Call string is [{call SICA_ADMIN.SP_INSERTA_OP_ENVIADAS_UIF(?)}]
+2016-05-25 12:48:04 - RdbmsOperation with SQL [SICA_ADMIN.SP_INSERTA_OP_ENVIADAS_UIF] compiled
+2016-05-25 12:48:04 - Calling stored procedure [{call SICA_ADMIN.SP_INSERTA_OP_ENVIADAS_UIF(?)}]
+2016-05-25 12:48:04 - Fetching JDBC Connection from DataSource
+2016-05-25 12:48:04 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 12:48:31 - CallableStatement.execute() returned 'false'
+2016-05-25 12:48:31 - CallableStatement.getUpdateCount() returned -1
+2016-05-25 12:48:31 - Returning JDBC Connection to DataSource
+2016-05-25 12:48:31 - DBMSOUTPUT: null
+2016-05-25 12:48:31 - --> Finaliza la ejecución del proceso mensual de transferencias para la UIF.
+
+
+2016-05-25 12:48:31 - --> Inicia consulta de transferencias para el reporte mensual para la UIF....
+2016-05-25 12:48:31 - SQL operation not compiled before execution - invoking compile
+2016-05-25 12:48:31 - RdbmsOperation with SQL [select TO_CHAR(FECHA,'YYYYMMDD') || '|',referencia || '|' , deal || '|' , folio_detalle || '|', trim(nombre_corresponsal) || '|', trim(nombre_entidad_destino) || '|', trim(bic_aba) || '|', trim(datos_destinatario) || '|', trim(operacion_origen) || '|', trim(operacion_destino) || '|', trim(lpad(instrumento_monetario_origen,2,'0')) || '|', trim(moneda_origen) || '|', trim(monto_instrumento_origen) || '|', trim(mensaje) || '|', trim(tipo_persona) || '|', trim(nombre) || '|', trim(apellido_paterno) || '|', trim(apellido_materno) || '|', trim(to_char(fecha_nacimiento,'yyyymmdd')) || '|', trim(curp) || '|', trim(rfc) || '|', trim(pais_nacimiento) || '|', trim(pais_nacionalidad) || '|', trim(actividad_economica) || '|', trim(razon_social) || '|', trim(fecha_constitucion) || '|', trim(rfc_PM) || '|', trim(pais_nacionalidad_PM) || '|', trim(giro_mercantil) || '|', trim(apoderado_legal) || '|', trim(domicilio_unificado) || '|', trim(ciudad_poblacion) || '|', trim(codigo_postal) || '|', trim(entidad_federativa) || '|', trim(telefono) || '|', trim(numero_telefono) || '|', trim(clave_pais) || '|', trim(extension) || '|', trim(correo_electronico) || '|', trim(fiel) || '|' from SC_OP_ENV_UIF where REPORTADA_UIF = '0' ] compiled
+2016-05-25 12:48:31 - Executing prepared SQL query
+2016-05-25 12:48:31 - Executing prepared SQL statement [select TO_CHAR(FECHA,'YYYYMMDD') || '|',referencia || '|' , deal || '|' , folio_detalle || '|', trim(nombre_corresponsal) || '|', trim(nombre_entidad_destino) || '|', trim(bic_aba) || '|', trim(datos_destinatario) || '|', trim(operacion_origen) || '|', trim(operacion_destino) || '|', trim(lpad(instrumento_monetario_origen,2,'0')) || '|', trim(moneda_origen) || '|', trim(monto_instrumento_origen) || '|', trim(mensaje) || '|', trim(tipo_persona) || '|', trim(nombre) || '|', trim(apellido_paterno) || '|', trim(apellido_materno) || '|', trim(to_char(fecha_nacimiento,'yyyymmdd')) || '|', trim(curp) || '|', trim(rfc) || '|', trim(pais_nacimiento) || '|', trim(pais_nacionalidad) || '|', trim(actividad_economica) || '|', trim(razon_social) || '|', trim(fecha_constitucion) || '|', trim(rfc_PM) || '|', trim(pais_nacionalidad_PM) || '|', trim(giro_mercantil) || '|', trim(apoderado_legal) || '|', trim(domicilio_unificado) || '|', trim(ciudad_poblacion) || '|', trim(codigo_postal) || '|', trim(entidad_federativa) || '|', trim(telefono) || '|', trim(numero_telefono) || '|', trim(clave_pais) || '|', trim(extension) || '|', trim(correo_electronico) || '|', trim(fiel) || '|' from SC_OP_ENV_UIF where REPORTADA_UIF = '0' ]
+2016-05-25 12:48:31 - Fetching JDBC Connection from DataSource
+2016-05-25 12:48:31 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 12:48:32 - Returning JDBC Connection to DataSource
+2016-05-25 12:48:32 - --> Total de registros encontrados: 4
+
+2016-05-25 12:48:32 - --> Termina consulta de transferencias.
+
+
+2016-05-25 12:48:32 - --> Inicia consulta de transferencias Recibidas para el reporte mensual para la UIF....
+2016-05-25 12:48:32 - SQL operation not compiled before execution - invoking compile
+2016-05-25 12:48:32 - RdbmsOperation with SQL [select TO_CHAR(FECHA,'YYYYMMDD') || '|',referencia || '|' , deal || '|' , folio_detalle || '|', trim(nombre_corresponsal) || '|', trim(nombre_entidad_origen) || '|', trim(bic_aba) || '|', trim(datos_ordenante) || '|', trim(operacion_origen) || '|', trim(nombre_entidad_destino) || '|', trim(datos_destinatario) || '|', trim(operacion_destino) || '|', trim(lpad(instrumento_monetario_destino,2,'0')) || '|', trim(moneda_destino) || '|', trim(monto_instrumento_destino) || '|', trim(mensaje) || '|', trim(tipo_persona) || '|', trim(nombre) || '|', trim(apellido_paterno) || '|', trim(apellido_materno) || '|', trim(to_char(fecha_nacimiento,'yyyymmdd')) || '|', trim(curp) || '|', trim(rfc) || '|', trim(pais_nacimiento) || '|', trim(pais_nacionalidad) || '|', trim(actividad_economica) || '|', trim(razon_social) || '|', trim(fecha_constitucion) || '|', trim(giro_mercantil) || '|', trim(apoderado_legal) || '|', trim(domicilio_unificado) || '|', trim(ciudad_poblacion) || '|', trim(codigo_postal) || '|', trim(telefono) || '|', trim(numero_telefono) || '|', trim(clave_pais) || '|', trim(extension) || '|', trim(correo_electronico) || '|', trim(fiel) || '|' from SC_OP_REC_UIF where REPORTADA_UIF = '0' ] compiled
+2016-05-25 12:48:32 - Executing prepared SQL query
+2016-05-25 12:48:32 - Executing prepared SQL statement [select TO_CHAR(FECHA,'YYYYMMDD') || '|',referencia || '|' , deal || '|' , folio_detalle || '|', trim(nombre_corresponsal) || '|', trim(nombre_entidad_origen) || '|', trim(bic_aba) || '|', trim(datos_ordenante) || '|', trim(operacion_origen) || '|', trim(nombre_entidad_destino) || '|', trim(datos_destinatario) || '|', trim(operacion_destino) || '|', trim(lpad(instrumento_monetario_destino,2,'0')) || '|', trim(moneda_destino) || '|', trim(monto_instrumento_destino) || '|', trim(mensaje) || '|', trim(tipo_persona) || '|', trim(nombre) || '|', trim(apellido_paterno) || '|', trim(apellido_materno) || '|', trim(to_char(fecha_nacimiento,'yyyymmdd')) || '|', trim(curp) || '|', trim(rfc) || '|', trim(pais_nacimiento) || '|', trim(pais_nacionalidad) || '|', trim(actividad_economica) || '|', trim(razon_social) || '|', trim(fecha_constitucion) || '|', trim(giro_mercantil) || '|', trim(apoderado_legal) || '|', trim(domicilio_unificado) || '|', trim(ciudad_poblacion) || '|', trim(codigo_postal) || '|', trim(telefono) || '|', trim(numero_telefono) || '|', trim(clave_pais) || '|', trim(extension) || '|', trim(correo_electronico) || '|', trim(fiel) || '|' from SC_OP_REC_UIF where REPORTADA_UIF = '0' ]
+2016-05-25 12:48:32 - Fetching JDBC Connection from DataSource
+2016-05-25 12:48:32 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 12:48:33 - Returning JDBC Connection to DataSource
+2016-05-25 12:48:33 - --> Total de registros encontrados: 14
+
+2016-05-25 12:48:33 - --> Termina consulta de transferencias Recibidas.
+
+
+2016-05-25 12:48:33 - --> Inicia consulta de ordenantes no reportados ....
+2016-05-25 12:48:33 - SQL operation not compiled before execution - invoking compile
+2016-05-25 12:48:33 - RdbmsOperation with SQL [select  TO_CHAR(FECHA,'YYYYMMDD') ,referencia , deal , folio_detalle , trim(nombre_corresponsal) , trim(nombre_entidad_origen) , trim(bic_aba) , trim(datos_ordenante) , trim(operacion_origen) , trim(nombre_entidad_destino) , trim(datos_destinatario) , trim(operacion_destino) , trim(lpad(instrumento_monetario_destino,2,'0')) , trim(moneda_destino) , trim(monto_instrumento_destino) , trim(mensaje) , trim(tipo_persona) , trim(nombre) , trim(apellido_paterno) , trim(apellido_materno) , trim(fecha_nacimiento) , trim(curp) , trim(rfc) , trim(pais_nacimiento) , trim(pais_nacionalidad) , trim(actividad_economica) , trim(razon_social) , trim(fecha_constitucion) , trim(giro_mercantil) , trim(apoderado_legal) , trim(domicilio_unificado) , trim(ciudad_poblacion) , trim(codigo_postal) , trim(telefono) , trim(numero_telefono) , trim(clave_pais) , trim(extension) , trim(correo_electronico) , trim(fiel) from sc_op_rec_uif where datos_ordenante in ('MAS DE UN ORDENANTE REPORTADO','ORDENANTE NO REPORTADO') and trunc(fecha) >= (select to_date('01/'||to_char(ADD_MONTHS(sysdate,-1),'mm/yyyy'),'dd/mm/yyyy') from dual)] compiled
+2016-05-25 12:48:33 - Executing prepared SQL query
+2016-05-25 12:48:33 - Executing prepared SQL statement [select  TO_CHAR(FECHA,'YYYYMMDD') ,referencia , deal , folio_detalle , trim(nombre_corresponsal) , trim(nombre_entidad_origen) , trim(bic_aba) , trim(datos_ordenante) , trim(operacion_origen) , trim(nombre_entidad_destino) , trim(datos_destinatario) , trim(operacion_destino) , trim(lpad(instrumento_monetario_destino,2,'0')) , trim(moneda_destino) , trim(monto_instrumento_destino) , trim(mensaje) , trim(tipo_persona) , trim(nombre) , trim(apellido_paterno) , trim(apellido_materno) , trim(fecha_nacimiento) , trim(curp) , trim(rfc) , trim(pais_nacimiento) , trim(pais_nacionalidad) , trim(actividad_economica) , trim(razon_social) , trim(fecha_constitucion) , trim(giro_mercantil) , trim(apoderado_legal) , trim(domicilio_unificado) , trim(ciudad_poblacion) , trim(codigo_postal) , trim(telefono) , trim(numero_telefono) , trim(clave_pais) , trim(extension) , trim(correo_electronico) , trim(fiel) from sc_op_rec_uif where datos_ordenante in ('MAS DE UN ORDENANTE REPORTADO','ORDENANTE NO REPORTADO') and trunc(fecha) >= (select to_date('01/'||to_char(ADD_MONTHS(sysdate,-1),'mm/yyyy'),'dd/mm/yyyy') from dual)]
+2016-05-25 12:48:33 - Fetching JDBC Connection from DataSource
+2016-05-25 12:48:33 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 12:48:34 - Returning JDBC Connection to DataSource
+2016-05-25 12:48:34 - --> Total de registros encontrados: 210
+
+2016-05-25 12:48:34 - --> Termina consulta de ordenantes no reportados.
+
+
+2016-05-25 12:48:34 - Registros encontrados: 4
+2016-05-25 12:48:34 - Registros encontrados: 14
+2016-05-25 12:48:34 - Se encontraron ordenantes no reportados se creará archivo para reportarlos 
+2016-05-25 12:48:34 - Registros encontrados: 14
+2016-05-25 12:48:34 - Enviando Email con la lista de ordenantes NO reportados -->
+2016-05-25 12:48:34 - --> Inicia actualizacion de bandera que pone a bandera de enviada a la UIF en 1 ....
+2016-05-25 12:48:34 - RdbmsOperation with SQL [UPDATE SICA_ADMIN.SC_OP_ENV_UIF SET REPORTADA_UIF = 1 WHERE REPORTADA_UIF = 0] compiled
+2016-05-25 12:48:34 - Executing prepared SQL update
+2016-05-25 12:48:34 - Executing prepared SQL statement [UPDATE SICA_ADMIN.SC_OP_ENV_UIF SET REPORTADA_UIF = 1 WHERE REPORTADA_UIF = 0]
+2016-05-25 12:48:34 - Fetching JDBC Connection from DataSource
+2016-05-25 12:48:34 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 12:48:35 - SQL update affected 4 rows
+2016-05-25 12:48:35 - Returning JDBC Connection to DataSource
+2016-05-25 12:48:35 - --> Inicia actualizacion de bandera que pone a bandera de enviada a la UIF en 1 de OP. Recibidas....
+2016-05-25 12:48:35 - RdbmsOperation with SQL [UPDATE SICA_ADMIN.SC_OP_REC_UIF SET REPORTADA_UIF = 1 WHERE REPORTADA_UIF = 0] compiled
+2016-05-25 12:48:35 - Executing prepared SQL update
+2016-05-25 12:48:35 - Executing prepared SQL statement [UPDATE SICA_ADMIN.SC_OP_REC_UIF SET REPORTADA_UIF = 1 WHERE REPORTADA_UIF = 0]
+2016-05-25 12:48:35 - Fetching JDBC Connection from DataSource
+2016-05-25 12:48:35 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 12:48:36 - SQL update affected 14 rows
+2016-05-25 12:48:36 - Returning JDBC Connection to DataSource
+2016-05-25 12:48:36 - -->Ha finalizado el proceso 'Reporte Mensual de Transferencias para reportar a la UIF'. 
+2016-05-25 12:48:36 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-05-25 12:48:36 - getFrom(): IxeCambios@ixe.com.mx
+2016-05-25 12:48:36 - getTo(): jesus.cortes@banorte.com
+2016-05-25 12:48:36 - getSubject(): Notificación del proceso de reporte mensual de transferencias que se envía a la UIF.
+2016-05-25 12:48:36 - jesus.cortes@banorte.com
+2016-05-25 12:48:36 - **********************************************************************************************************
+2016-05-25 12:48:36 - ******************************     FIN DE PROCESO MENSUAL DE TRANSFERENCIAS     **************************
+2016-05-25 12:48:36 - **********************************************************************************************************
+2016-05-25 12:48:36 - 
+
+
+
+2016-05-25 12:51:04 - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@1050169: startup date [Wed May 25 12:51:04 CDT 2016]; root of context hierarchy
+2016-05-25 12:51:04 - Loading XML bean definitions from file [C:\Users\a3928543\workspace\ReporteMensualUIF\config\applicationContext.xml]
+2016-05-25 12:51:04 - Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2016-05-25 12:51:04 - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd]
+2016-05-25 12:51:04 - Loading schema mappings from [META-INF/spring.schemas]
+2016-05-25 12:51:04 - Loaded schema mappings: {http://www.springframework.org/schema/lang/spring-lang.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.5.xsd=org/springframework/scripting/config/spring-lang-2.5.xsd, http://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd, http://www.springframework.org/schema/context/spring-context.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/util/spring-util-3.0.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.0.xsd=org/springframework/beans/factory/xml/spring-util-2.0.xsd, http://www.springframework.org/schema/task/spring-task-3.0.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.5.xsd=org/springframework/beans/factory/xml/spring-util-2.5.xsd, http://www.springframework.org/schema/tool/spring-tool-3.0.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.0.xsd=org/springframework/transaction/config/spring-tx-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.0.xsd=org/springframework/beans/factory/xml/spring-tool-2.0.xsd, http://www.springframework.org/schema/task/spring-task.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/context/spring-context-3.0.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.5.xsd=org/springframework/transaction/config/spring-tx-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-2.0.xsd=org/springframework/beans/factory/xml/spring-beans-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.5.xsd=org/springframework/beans/factory/xml/spring-tool-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/beans/spring-beans-2.5.xsd=org/springframework/beans/factory/xml/spring-beans-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/tool/spring-tool.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.0.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop-3.0.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.0.xsd=org/springframework/ejb/config/spring-jee-2.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.0.xsd=org/springframework/aop/config/spring-aop-2.0.xsd, http://www.springframework.org/schema/tx/spring-tx-3.0.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.5.xsd=org/springframework/ejb/config/spring-jee-2.5.xsd, http://www.springframework.org/schema/aop/spring-aop-2.5.xsd=org/springframework/aop/config/spring-aop-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-3.0.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-3.0.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.0.xsd=org/springframework/scripting/config/spring-lang-2.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/util/spring-util.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd}
+2016-05-25 12:51:04 - Found XML schema [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-3.0.xsd
+2016-05-25 12:51:04 - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/context/spring-context-3.0.xsd]
+2016-05-25 12:51:04 - Found XML schema [http://www.springframework.org/schema/context/spring-context-3.0.xsd] in classpath: org/springframework/context/config/spring-context-3.0.xsd
+2016-05-25 12:51:04 - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd]
+2016-05-25 12:51:04 - Found XML schema [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-tool-3.0.xsd
+2016-05-25 12:51:04 - Loading bean definitions
+2016-05-25 12:51:04 - Loaded NamespaceHandler mappings: {http://www.springframework.org/schema/p=org.springframework.beans.factory.xml.SimplePropertyNamespaceHandler, http://www.springframework.org/schema/util=org.springframework.beans.factory.xml.UtilNamespaceHandler, http://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandler, http://www.springframework.org/schema/aop=org.springframework.aop.config.AopNamespaceHandler, http://www.springframework.org/schema/jdbc=org.springframework.jdbc.config.JdbcNamespaceHandler, http://www.springframework.org/schema/tx=org.springframework.transaction.config.TxNamespaceHandler, http://www.springframework.org/schema/task=org.springframework.scheduling.config.TaskNamespaceHandler, http://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandler, http://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler}
+2016-05-25 12:51:04 - Loaded 10 bean definitions from location pattern [config/applicationContext.xml]
+2016-05-25 12:51:04 - Bean factory for org.springframework.context.support.FileSystemXmlApplicationContext@1050169: org.springframework.beans.factory.support.DefaultListableBeanFactory@ce5b1c: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailSender,generalMailSender,dataSource,mensajesVo,consultaDao,reporteService,transferenciasService]; root of factory hierarchy
+2016-05-25 12:51:04 - Creating shared instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-05-25 12:51:04 - Creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-05-25 12:51:04 - Eagerly caching bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0' to allow for resolving potential circular references
+2016-05-25 12:51:04 - Getting BeanInfo for class [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]
+2016-05-25 12:51:04 - Caching PropertyDescriptors for class [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]
+2016-05-25 12:51:04 - Found bean property 'beanFactory' of type [org.springframework.beans.factory.BeanFactory]
+2016-05-25 12:51:04 - Found bean property 'beanName' of type [java.lang.String]
+2016-05-25 12:51:04 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 12:51:04 - Found bean property 'fileEncoding' of type [java.lang.String]
+2016-05-25 12:51:04 - Found bean property 'ignoreResourceNotFound' of type [boolean]
+2016-05-25 12:51:04 - Found bean property 'ignoreUnresolvablePlaceholders' of type [boolean]
+2016-05-25 12:51:04 - Found bean property 'localOverride' of type [boolean]
+2016-05-25 12:51:04 - Found bean property 'location' of type [org.springframework.core.io.Resource]
+2016-05-25 12:51:04 - Found bean property 'locations' of type [[Lorg.springframework.core.io.Resource;]
+2016-05-25 12:51:04 - Found bean property 'nullValue' of type [java.lang.String]
+2016-05-25 12:51:04 - Found bean property 'order' of type [int]
+2016-05-25 12:51:04 - Found bean property 'placeholderPrefix' of type [java.lang.String]
+2016-05-25 12:51:04 - Found bean property 'placeholderSuffix' of type [java.lang.String]
+2016-05-25 12:51:04 - Found bean property 'properties' of type [java.util.Properties]
+2016-05-25 12:51:04 - Found bean property 'propertiesArray' of type [[Ljava.util.Properties;]
+2016-05-25 12:51:04 - Found bean property 'propertiesPersister' of type [org.springframework.util.PropertiesPersister]
+2016-05-25 12:51:04 - Found bean property 'searchSystemEnvironment' of type [boolean]
+2016-05-25 12:51:04 - Found bean property 'systemPropertiesMode' of type [int]
+2016-05-25 12:51:04 - Found bean property 'systemPropertiesModeName' of type [java.lang.String]
+2016-05-25 12:51:04 - Found bean property 'valueSeparator' of type [java.lang.String]
+2016-05-25 12:51:05 - Finished creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-05-25 12:51:05 - Loading properties file from file [C:\Users\a3928543\workspace\ReporteMensualUIF\config\config.properties]
+2016-05-25 12:51:05 - Resolved placeholder 'mail.host'
+2016-05-25 12:51:05 - Resolved placeholder 'mail.template.path'
+2016-05-25 12:51:05 - Resolved placeholder 'mail.template'
+2016-05-25 12:51:05 - Resolved placeholder 'mail.from'
+2016-05-25 12:51:05 - Resolved placeholder 'mail.subject'
+2016-05-25 12:51:05 - Resolved placeholder 'mail.ordenante.from'
+2016-05-25 12:51:05 - Resolved placeholder 'mail.ordenante.to'
+2016-05-25 12:51:05 - Resolved placeholder 'mail.ordenante.subject'
+2016-05-25 12:51:05 - Resolved placeholder 'db.driver'
+2016-05-25 12:51:05 - Resolved placeholder 'db.username'
+2016-05-25 12:51:05 - Resolved placeholder 'db.password'
+2016-05-25 12:51:05 - Resolved placeholder 'db.url'
+2016-05-25 12:51:05 - Resolved placeholder 'msj.error.path'
+2016-05-25 12:51:05 - Resolved placeholder 'msj.error.emails'
+2016-05-25 12:51:05 - Resolved placeholder 'msj.error.email'
+2016-05-25 12:51:05 - Resolved placeholder 'msj.error.stored'
+2016-05-25 12:51:05 - Resolved placeholder 'msj.error.consulta.transferencias'
+2016-05-25 12:51:05 - Resolved placeholder 'msj.inicio.proceso'
+2016-05-25 12:51:05 - Resolved placeholder 'msj.fin.proceso'
+2016-05-25 12:51:05 - Resolved placeholder 'db.nombreStored'
+2016-05-25 12:51:05 - Resolved placeholder 'parametro.path.reporte'
+2016-05-25 12:51:05 - Resolved placeholder 'parametro.emails.to'
+2016-05-25 12:51:05 - Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@1551d7f]
+2016-05-25 12:51:05 - Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@1126b07]
+2016-05-25 12:51:05 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@ce5b1c: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailSender,generalMailSender,dataSource,mensajesVo,consultaDao,reporteService,transferenciasService]; root of factory hierarchy
+2016-05-25 12:51:05 - Returning cached instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-05-25 12:51:05 - Creating shared instance of singleton bean 'javaMailSender'
+2016-05-25 12:51:05 - Creating instance of bean 'javaMailSender'
+2016-05-25 12:51:05 - Eagerly caching bean 'javaMailSender' to allow for resolving potential circular references
+2016-05-25 12:51:05 - Getting BeanInfo for class [org.springframework.mail.javamail.JavaMailSenderImpl]
+2016-05-25 12:51:05 - Caching PropertyDescriptors for class [org.springframework.mail.javamail.JavaMailSenderImpl]
+2016-05-25 12:51:05 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 12:51:05 - Found bean property 'defaultEncoding' of type [java.lang.String]
+2016-05-25 12:51:05 - Found bean property 'defaultFileTypeMap' of type [javax.activation.FileTypeMap]
+2016-05-25 12:51:05 - Found bean property 'host' of type [java.lang.String]
+2016-05-25 12:51:05 - Found bean property 'javaMailProperties' of type [java.util.Properties]
+2016-05-25 12:51:05 - Found bean property 'password' of type [java.lang.String]
+2016-05-25 12:51:05 - Found bean property 'port' of type [int]
+2016-05-25 12:51:05 - Found bean property 'protocol' of type [java.lang.String]
+2016-05-25 12:51:05 - Found bean property 'session' of type [javax.mail.Session]
+2016-05-25 12:51:05 - Found bean property 'username' of type [java.lang.String]
+2016-05-25 12:51:05 - Finished creating instance of bean 'javaMailSender'
+2016-05-25 12:51:05 - Creating shared instance of singleton bean 'velocityEngine'
+2016-05-25 12:51:05 - Creating instance of bean 'velocityEngine'
+2016-05-25 12:51:05 - Eagerly caching bean 'velocityEngine' to allow for resolving potential circular references
+2016-05-25 12:51:05 - Getting BeanInfo for class [org.springframework.ui.velocity.VelocityEngineFactoryBean]
+2016-05-25 12:51:05 - Caching PropertyDescriptors for class [org.springframework.ui.velocity.VelocityEngineFactoryBean]
+2016-05-25 12:51:05 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 12:51:05 - Found bean property 'configLocation' of type [org.springframework.core.io.Resource]
+2016-05-25 12:51:05 - Found bean property 'object' of type [java.lang.Object]
+2016-05-25 12:51:05 - Found bean property 'objectType' of type [java.lang.Class]
+2016-05-25 12:51:05 - Found bean property 'overrideLogging' of type [boolean]
+2016-05-25 12:51:05 - Found bean property 'preferFileSystemAccess' of type [boolean]
+2016-05-25 12:51:05 - Found bean property 'resourceLoader' of type [org.springframework.core.io.ResourceLoader]
+2016-05-25 12:51:05 - Found bean property 'resourceLoaderPath' of type [java.lang.String]
+2016-05-25 12:51:05 - Found bean property 'singleton' of type [boolean]
+2016-05-25 12:51:05 - Found bean property 'velocityProperties' of type [java.util.Properties]
+2016-05-25 12:51:05 - Found bean property 'velocityPropertiesMap' of type [java.util.Map]
+2016-05-25 12:51:05 - Invoking afterPropertiesSet() on bean with name 'velocityEngine'
+2016-05-25 12:51:05 - Resource loader path [config/] resolved to file [C:\Users\a3928543\workspace\ReporteMensualUIF\config]
+2016-05-25 12:51:05 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2016-05-25 12:51:05 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2016-05-25 12:51:05 - LogSystem has been deprecated. Please use a LogChute implementation.
+2016-05-25 12:51:05 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2016-05-25 12:51:05 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2016-05-25 12:51:05 - Do unicode file recognition:  false
+2016-05-25 12:51:05 - FileResourceLoader : adding path 'C:\Users\a3928543\workspace\ReporteMensualUIF\config'
+2016-05-25 12:51:05 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2016-05-25 12:51:05 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2016-05-25 12:51:05 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2016-05-25 12:51:05 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2016-05-25 12:51:05 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2016-05-25 12:51:05 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2016-05-25 12:51:05 - Created '20' parsers.
+2016-05-25 12:51:05 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2016-05-25 12:51:05 - Velocimacro : Default library not found.
+2016-05-25 12:51:05 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2016-05-25 12:51:05 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2016-05-25 12:51:05 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2016-05-25 12:51:05 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2016-05-25 12:51:05 - Finished creating instance of bean 'velocityEngine'
+2016-05-25 12:51:05 - Creating shared instance of singleton bean 'mailSender'
+2016-05-25 12:51:05 - Creating instance of bean 'mailSender'
+2016-05-25 12:51:05 - Eagerly caching bean 'mailSender' to allow for resolving potential circular references
+2016-05-25 12:51:05 - Returning cached instance of singleton bean 'velocityEngine'
+2016-05-25 12:51:05 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.MailSenderImpl]
+2016-05-25 12:51:05 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.MailSenderImpl]
+2016-05-25 12:51:05 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 12:51:05 - Found bean property 'from' of type [java.lang.String]
+2016-05-25 12:51:05 - Found bean property 'javaMailSender' of type [org.springframework.mail.javamail.JavaMailSender]
+2016-05-25 12:51:05 - Found bean property 'subject' of type [java.lang.String]
+2016-05-25 12:51:05 - Found bean property 'template' of type [java.lang.String]
+2016-05-25 12:51:05 - Found bean property 'to' of type [java.lang.String]
+2016-05-25 12:51:05 - Found bean property 'velocityEngine' of type [org.apache.velocity.app.VelocityEngine]
+2016-05-25 12:51:05 - Returning cached instance of singleton bean 'javaMailSender'
+2016-05-25 12:51:05 - Finished creating instance of bean 'mailSender'
+2016-05-25 12:51:05 - Creating shared instance of singleton bean 'generalMailSender'
+2016-05-25 12:51:05 - Creating instance of bean 'generalMailSender'
+2016-05-25 12:51:05 - Eagerly caching bean 'generalMailSender' to allow for resolving potential circular references
+2016-05-25 12:51:05 - Returning cached instance of singleton bean 'javaMailSender'
+2016-05-25 12:51:05 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.GeneralMailSenderImpl]
+2016-05-25 12:51:05 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.GeneralMailSenderImpl]
+2016-05-25 12:51:05 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 12:51:05 - Found bean property 'from' of type [java.lang.String]
+2016-05-25 12:51:05 - Found bean property 'mailSender' of type [org.springframework.mail.MailSender]
+2016-05-25 12:51:05 - Found bean property 'subject' of type [java.lang.String]
+2016-05-25 12:51:05 - Found bean property 'to' of type [java.lang.String]
+2016-05-25 12:51:05 - Finished creating instance of bean 'generalMailSender'
+2016-05-25 12:51:05 - Creating shared instance of singleton bean 'dataSource'
+2016-05-25 12:51:05 - Creating instance of bean 'dataSource'
+2016-05-25 12:51:05 - Eagerly caching bean 'dataSource' to allow for resolving potential circular references
+2016-05-25 12:51:05 - Getting BeanInfo for class [org.springframework.jdbc.datasource.DriverManagerDataSource]
+2016-05-25 12:51:05 - Caching PropertyDescriptors for class [org.springframework.jdbc.datasource.DriverManagerDataSource]
+2016-05-25 12:51:05 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 12:51:05 - Found bean property 'connection' of type [java.sql.Connection]
+2016-05-25 12:51:05 - Found bean property 'connectionProperties' of type [java.util.Properties]
+2016-05-25 12:51:05 - Found bean property 'driverClassName' of type [java.lang.String]
+2016-05-25 12:51:05 - Found bean property 'logWriter' of type [java.io.PrintWriter]
+2016-05-25 12:51:05 - Found bean property 'loginTimeout' of type [int]
+2016-05-25 12:51:05 - Found bean property 'password' of type [java.lang.String]
+2016-05-25 12:51:05 - Found bean property 'url' of type [java.lang.String]
+2016-05-25 12:51:05 - Found bean property 'username' of type [java.lang.String]
+2016-05-25 12:51:05 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2016-05-25 12:51:05 - Finished creating instance of bean 'dataSource'
+2016-05-25 12:51:05 - Creating shared instance of singleton bean 'mensajesVo'
+2016-05-25 12:51:05 - Creating instance of bean 'mensajesVo'
+2016-05-25 12:51:05 - Eagerly caching bean 'mensajesVo' to allow for resolving potential circular references
+2016-05-25 12:51:05 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.dto.MensajesVo]
+2016-05-25 12:51:05 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.dto.MensajesVo]
+2016-05-25 12:51:05 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 12:51:05 - Found bean property 'mensajeErrorEmailsTo' of type [java.lang.String]
+2016-05-25 12:51:05 - Found bean property 'mensajeErrorPath' of type [java.lang.String]
+2016-05-25 12:51:05 - Found bean property 'mensajeErrorPathEmail' of type [java.lang.String]
+2016-05-25 12:51:05 - Found bean property 'mensajeErrorStoredProcedure' of type [java.lang.String]
+2016-05-25 12:51:05 - Found bean property 'mensajeErrorTransferencias' of type [java.lang.String]
+2016-05-25 12:51:05 - Found bean property 'mensajeFinProceso' of type [java.lang.String]
+2016-05-25 12:51:05 - Found bean property 'mensajeInicioproceso' of type [java.lang.String]
+2016-05-25 12:51:05 - Finished creating instance of bean 'mensajesVo'
+2016-05-25 12:51:05 - Creating shared instance of singleton bean 'consultaDao'
+2016-05-25 12:51:05 - Creating instance of bean 'consultaDao'
+2016-05-25 12:51:05 - Eagerly caching bean 'consultaDao' to allow for resolving potential circular references
+2016-05-25 12:51:05 - Returning cached instance of singleton bean 'dataSource'
+2016-05-25 12:51:05 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.dao.impl.ConsultaDaoImpl]
+2016-05-25 12:51:05 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.dao.impl.ConsultaDaoImpl]
+2016-05-25 12:51:05 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 12:51:05 - Found bean property 'dataSource' of type [javax.sql.DataSource]
+2016-05-25 12:51:05 - Found bean property 'jdbcTemplate' of type [org.springframework.jdbc.core.JdbcTemplate]
+2016-05-25 12:51:05 - Found bean property 'nombreStored' of type [java.lang.String]
+2016-05-25 12:51:05 - Found bean property 'parametroEmailsTo' of type [java.lang.String]
+2016-05-25 12:51:05 - Found bean property 'parametroPathReporte' of type [java.lang.String]
+2016-05-25 12:51:05 - Invoking afterPropertiesSet() on bean with name 'consultaDao'
+2016-05-25 12:51:05 - Finished creating instance of bean 'consultaDao'
+2016-05-25 12:51:05 - Creating shared instance of singleton bean 'reporteService'
+2016-05-25 12:51:05 - Creating instance of bean 'reporteService'
+2016-05-25 12:51:05 - Eagerly caching bean 'reporteService' to allow for resolving potential circular references
+2016-05-25 12:51:05 - Finished creating instance of bean 'reporteService'
+2016-05-25 12:51:05 - Creating shared instance of singleton bean 'transferenciasService'
+2016-05-25 12:51:05 - Creating instance of bean 'transferenciasService'
+2016-05-25 12:51:05 - Eagerly caching bean 'transferenciasService' to allow for resolving potential circular references
+2016-05-25 12:51:05 - Returning cached instance of singleton bean 'consultaDao'
+2016-05-25 12:51:05 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.services.impl.TransferenciasServiceImpl]
+2016-05-25 12:51:05 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.services.impl.TransferenciasServiceImpl]
+2016-05-25 12:51:05 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 12:51:05 - Found bean property 'consultaDao' of type [com.banorte.reporte.UIF.transferencias.dao.IConsultaDao]
+2016-05-25 12:51:05 - Found bean property 'generalMailSender' of type [com.banorte.reporte.UIF.transferencias.services.mail.GeneralMailSender]
+2016-05-25 12:51:05 - Found bean property 'mailSender' of type [com.banorte.reporte.UIF.transferencias.services.mail.MailSender]
+2016-05-25 12:51:05 - Found bean property 'mensajesVo' of type [com.banorte.reporte.UIF.transferencias.dto.MensajesVo]
+2016-05-25 12:51:05 - Found bean property 'reporteService' of type [com.banorte.reporte.UIF.transferencias.services.IReporteService]
+2016-05-25 12:51:05 - Returning cached instance of singleton bean 'mailSender'
+2016-05-25 12:51:05 - Returning cached instance of singleton bean 'generalMailSender'
+2016-05-25 12:51:05 - Returning cached instance of singleton bean 'mensajesVo'
+2016-05-25 12:51:05 - Returning cached instance of singleton bean 'reporteService'
+2016-05-25 12:51:05 - Finished creating instance of bean 'transferenciasService'
+2016-05-25 12:51:05 - Unable to locate LifecycleProcessor with name 'lifecycleProcessor': using default [org.springframework.context.support.DefaultLifecycleProcessor@811c88]
+2016-05-25 12:51:05 - Returning cached instance of singleton bean 'lifecycleProcessor'
+2016-05-25 12:51:05 - Publishing event in org.springframework.context.support.FileSystemXmlApplicationContext@1050169: org.springframework.context.event.ContextRefreshedEvent[source=org.springframework.context.support.FileSystemXmlApplicationContext@1050169: startup date [Wed May 25 12:51:04 CDT 2016]; root of context hierarchy]
+2016-05-25 12:51:05 - **********************************************************************************************************
+2016-05-25 12:51:05 - *****************************          PROCESO MENSUAL DE TRANSFERENCIAS        **************************
+2016-05-25 12:51:05 - **********************************************************************************************************
+2016-05-25 12:51:05 - Returning cached instance of singleton bean 'transferenciasService'
+2016-05-25 12:51:05 - Executing prepared SQL query
+2016-05-25 12:51:05 - Executing prepared SQL statement [select VALOR from SC_PARAMETRO where ID_PARAMETRO = ?]
+2016-05-25 12:51:05 - Fetching JDBC Connection from DataSource
+2016-05-25 12:51:05 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 12:51:06 - Setting SQL statement parameter value: column index 1, parameter value [PATH_REPORTE_DIARIO], value class [java.lang.String], SQL type unknown
+2016-05-25 12:51:06 - Returning JDBC Connection to DataSource
+2016-05-25 12:51:06 - Executing prepared SQL query
+2016-05-25 12:51:06 - Executing prepared SQL statement [select VALOR from SC_PARAMETRO where ID_PARAMETRO = ?]
+2016-05-25 12:51:06 - Fetching JDBC Connection from DataSource
+2016-05-25 12:51:06 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 12:51:06 - Setting SQL statement parameter value: column index 1, parameter value [EMAILS_REPORTE_DIARIO], value class [java.lang.String], SQL type unknown
+2016-05-25 12:51:06 - Returning JDBC Connection to DataSource
+2016-05-25 12:51:06 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-05-25 12:51:06 - getFrom(): IxeCambios@ixe.com.mx
+2016-05-25 12:51:06 - getTo(): jesus.cortes@banorte.com
+2016-05-25 12:51:06 - getSubject(): Notificación del proceso de reporte mensual de transferencias que se envía a la UIF.
+2016-05-25 12:51:06 - jesus.cortes@banorte.com
+2016-05-25 12:51:06 - ResourceManager : found reporteDiarioTransferenciasTemplate.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2016-05-25 12:51:06 - --> Inicia la ejecución del proceso mensual de transferencias para la UIF...
+2016-05-25 12:51:06 - Compiled stored procedure. Call string is [{call SICA_ADMIN.SP_INSERTA_OP_ENVIADAS_UIF(?)}]
+2016-05-25 12:51:06 - RdbmsOperation with SQL [SICA_ADMIN.SP_INSERTA_OP_ENVIADAS_UIF] compiled
+2016-05-25 12:51:06 - Calling stored procedure [{call SICA_ADMIN.SP_INSERTA_OP_ENVIADAS_UIF(?)}]
+2016-05-25 12:51:06 - Fetching JDBC Connection from DataSource
+2016-05-25 12:51:06 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 12:51:18 - CallableStatement.execute() returned 'false'
+2016-05-25 12:51:18 - CallableStatement.getUpdateCount() returned -1
+2016-05-25 12:51:18 - Returning JDBC Connection to DataSource
+2016-05-25 12:51:18 - DBMSOUTPUT: null
+2016-05-25 12:51:18 - --> Finaliza la ejecución del proceso mensual de transferencias para la UIF.
+
+
+2016-05-25 12:51:18 - --> Inicia consulta de transferencias para el reporte mensual para la UIF....
+2016-05-25 12:51:18 - SQL operation not compiled before execution - invoking compile
+2016-05-25 12:51:18 - RdbmsOperation with SQL [select TO_CHAR(FECHA,'YYYYMMDD') || '|',referencia || '|' , deal || '|' , folio_detalle || '|', trim(nombre_corresponsal) || '|', trim(nombre_entidad_destino) || '|', trim(bic_aba) || '|', trim(datos_destinatario) || '|', trim(operacion_origen) || '|', trim(operacion_destino) || '|', trim(lpad(instrumento_monetario_origen,2,'0')) || '|', trim(moneda_origen) || '|', trim(monto_instrumento_origen) || '|', trim(mensaje) || '|', trim(tipo_persona) || '|', trim(nombre) || '|', trim(apellido_paterno) || '|', trim(apellido_materno) || '|', trim(to_char(fecha_nacimiento,'yyyymmdd')) || '|', trim(curp) || '|', trim(rfc) || '|', trim(pais_nacimiento) || '|', trim(pais_nacionalidad) || '|', trim(actividad_economica) || '|', trim(razon_social) || '|', trim(fecha_constitucion) || '|', trim(rfc_PM) || '|', trim(pais_nacionalidad_PM) || '|', trim(giro_mercantil) || '|', trim(apoderado_legal) || '|', trim(domicilio_unificado) || '|', trim(ciudad_poblacion) || '|', trim(codigo_postal) || '|', trim(entidad_federativa) || '|', trim(telefono) || '|', trim(numero_telefono) || '|', trim(clave_pais) || '|', trim(extension) || '|', trim(correo_electronico) || '|', trim(fiel) || '|' from SC_OP_ENV_UIF where REPORTADA_UIF = '0' ] compiled
+2016-05-25 12:51:18 - Executing prepared SQL query
+2016-05-25 12:51:18 - Executing prepared SQL statement [select TO_CHAR(FECHA,'YYYYMMDD') || '|',referencia || '|' , deal || '|' , folio_detalle || '|', trim(nombre_corresponsal) || '|', trim(nombre_entidad_destino) || '|', trim(bic_aba) || '|', trim(datos_destinatario) || '|', trim(operacion_origen) || '|', trim(operacion_destino) || '|', trim(lpad(instrumento_monetario_origen,2,'0')) || '|', trim(moneda_origen) || '|', trim(monto_instrumento_origen) || '|', trim(mensaje) || '|', trim(tipo_persona) || '|', trim(nombre) || '|', trim(apellido_paterno) || '|', trim(apellido_materno) || '|', trim(to_char(fecha_nacimiento,'yyyymmdd')) || '|', trim(curp) || '|', trim(rfc) || '|', trim(pais_nacimiento) || '|', trim(pais_nacionalidad) || '|', trim(actividad_economica) || '|', trim(razon_social) || '|', trim(fecha_constitucion) || '|', trim(rfc_PM) || '|', trim(pais_nacionalidad_PM) || '|', trim(giro_mercantil) || '|', trim(apoderado_legal) || '|', trim(domicilio_unificado) || '|', trim(ciudad_poblacion) || '|', trim(codigo_postal) || '|', trim(entidad_federativa) || '|', trim(telefono) || '|', trim(numero_telefono) || '|', trim(clave_pais) || '|', trim(extension) || '|', trim(correo_electronico) || '|', trim(fiel) || '|' from SC_OP_ENV_UIF where REPORTADA_UIF = '0' ]
+2016-05-25 12:51:18 - Fetching JDBC Connection from DataSource
+2016-05-25 12:51:18 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 12:51:18 - Returning JDBC Connection to DataSource
+2016-05-25 12:51:18 - --> Total de registros encontrados: 4
+
+2016-05-25 12:51:18 - --> Termina consulta de transferencias.
+
+
+2016-05-25 12:51:18 - --> Inicia consulta de transferencias Recibidas para el reporte mensual para la UIF....
+2016-05-25 12:51:18 - SQL operation not compiled before execution - invoking compile
+2016-05-25 12:51:18 - RdbmsOperation with SQL [select TO_CHAR(FECHA,'YYYYMMDD') || '|',referencia || '|' , deal || '|' , folio_detalle || '|', trim(nombre_corresponsal) || '|', trim(nombre_entidad_origen) || '|', trim(bic_aba) || '|', trim(datos_ordenante) || '|', trim(operacion_origen) || '|', trim(nombre_entidad_destino) || '|', trim(datos_destinatario) || '|', trim(operacion_destino) || '|', trim(lpad(instrumento_monetario_destino,2,'0')) || '|', trim(moneda_destino) || '|', trim(monto_instrumento_destino) || '|', trim(mensaje) || '|', trim(tipo_persona) || '|', trim(nombre) || '|', trim(apellido_paterno) || '|', trim(apellido_materno) || '|', trim(to_char(fecha_nacimiento,'yyyymmdd')) || '|', trim(curp) || '|', trim(rfc) || '|', trim(pais_nacimiento) || '|', trim(pais_nacionalidad) || '|', trim(actividad_economica) || '|', trim(razon_social) || '|', trim(fecha_constitucion) || '|', trim(giro_mercantil) || '|', trim(apoderado_legal) || '|', trim(domicilio_unificado) || '|', trim(ciudad_poblacion) || '|', trim(codigo_postal) || '|', trim(telefono) || '|', trim(numero_telefono) || '|', trim(clave_pais) || '|', trim(extension) || '|', trim(correo_electronico) || '|', trim(fiel) || '|' from SC_OP_REC_UIF where REPORTADA_UIF = '0' ] compiled
+2016-05-25 12:51:18 - Executing prepared SQL query
+2016-05-25 12:51:18 - Executing prepared SQL statement [select TO_CHAR(FECHA,'YYYYMMDD') || '|',referencia || '|' , deal || '|' , folio_detalle || '|', trim(nombre_corresponsal) || '|', trim(nombre_entidad_origen) || '|', trim(bic_aba) || '|', trim(datos_ordenante) || '|', trim(operacion_origen) || '|', trim(nombre_entidad_destino) || '|', trim(datos_destinatario) || '|', trim(operacion_destino) || '|', trim(lpad(instrumento_monetario_destino,2,'0')) || '|', trim(moneda_destino) || '|', trim(monto_instrumento_destino) || '|', trim(mensaje) || '|', trim(tipo_persona) || '|', trim(nombre) || '|', trim(apellido_paterno) || '|', trim(apellido_materno) || '|', trim(to_char(fecha_nacimiento,'yyyymmdd')) || '|', trim(curp) || '|', trim(rfc) || '|', trim(pais_nacimiento) || '|', trim(pais_nacionalidad) || '|', trim(actividad_economica) || '|', trim(razon_social) || '|', trim(fecha_constitucion) || '|', trim(giro_mercantil) || '|', trim(apoderado_legal) || '|', trim(domicilio_unificado) || '|', trim(ciudad_poblacion) || '|', trim(codigo_postal) || '|', trim(telefono) || '|', trim(numero_telefono) || '|', trim(clave_pais) || '|', trim(extension) || '|', trim(correo_electronico) || '|', trim(fiel) || '|' from SC_OP_REC_UIF where REPORTADA_UIF = '0' ]
+2016-05-25 12:51:18 - Fetching JDBC Connection from DataSource
+2016-05-25 12:51:18 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 12:51:19 - Returning JDBC Connection to DataSource
+2016-05-25 12:51:19 - --> Total de registros encontrados: 14
+
+2016-05-25 12:51:19 - --> Termina consulta de transferencias Recibidas.
+
+
+2016-05-25 12:51:19 - --> Inicia consulta de ordenantes no reportados ....
+2016-05-25 12:51:19 - SQL operation not compiled before execution - invoking compile
+2016-05-25 12:51:19 - RdbmsOperation with SQL [select  TO_CHAR(FECHA,'YYYYMMDD') ,referencia , deal , folio_detalle , trim(nombre_corresponsal) , trim(nombre_entidad_origen) , trim(bic_aba) , trim(datos_ordenante) , trim(operacion_origen) , trim(nombre_entidad_destino) , trim(datos_destinatario) , trim(operacion_destino) , trim(lpad(instrumento_monetario_destino,2,'0')) , trim(moneda_destino) , trim(monto_instrumento_destino) , trim(mensaje) , trim(tipo_persona) , trim(nombre) , trim(apellido_paterno) , trim(apellido_materno) , trim(fecha_nacimiento) , trim(curp) , trim(rfc) , trim(pais_nacimiento) , trim(pais_nacionalidad) , trim(actividad_economica) , trim(razon_social) , trim(fecha_constitucion) , trim(giro_mercantil) , trim(apoderado_legal) , trim(domicilio_unificado) , trim(ciudad_poblacion) , trim(codigo_postal) , trim(telefono) , trim(numero_telefono) , trim(clave_pais) , trim(extension) , trim(correo_electronico) , trim(fiel) from sc_op_rec_uif where datos_ordenante in ('MAS DE UN ORDENANTE REPORTADO','ORDENANTE NO REPORTADO') and trunc(fecha) >= (select to_date('01/'||to_char(ADD_MONTHS(sysdate,-1),'mm/yyyy'),'dd/mm/yyyy') from dual)] compiled
+2016-05-25 12:51:19 - Executing prepared SQL query
+2016-05-25 12:51:19 - Executing prepared SQL statement [select  TO_CHAR(FECHA,'YYYYMMDD') ,referencia , deal , folio_detalle , trim(nombre_corresponsal) , trim(nombre_entidad_origen) , trim(bic_aba) , trim(datos_ordenante) , trim(operacion_origen) , trim(nombre_entidad_destino) , trim(datos_destinatario) , trim(operacion_destino) , trim(lpad(instrumento_monetario_destino,2,'0')) , trim(moneda_destino) , trim(monto_instrumento_destino) , trim(mensaje) , trim(tipo_persona) , trim(nombre) , trim(apellido_paterno) , trim(apellido_materno) , trim(fecha_nacimiento) , trim(curp) , trim(rfc) , trim(pais_nacimiento) , trim(pais_nacionalidad) , trim(actividad_economica) , trim(razon_social) , trim(fecha_constitucion) , trim(giro_mercantil) , trim(apoderado_legal) , trim(domicilio_unificado) , trim(ciudad_poblacion) , trim(codigo_postal) , trim(telefono) , trim(numero_telefono) , trim(clave_pais) , trim(extension) , trim(correo_electronico) , trim(fiel) from sc_op_rec_uif where datos_ordenante in ('MAS DE UN ORDENANTE REPORTADO','ORDENANTE NO REPORTADO') and trunc(fecha) >= (select to_date('01/'||to_char(ADD_MONTHS(sysdate,-1),'mm/yyyy'),'dd/mm/yyyy') from dual)]
+2016-05-25 12:51:19 - Fetching JDBC Connection from DataSource
+2016-05-25 12:51:19 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 12:51:19 - Returning JDBC Connection to DataSource
+2016-05-25 12:51:19 - --> Total de registros encontrados: 224
+
+2016-05-25 12:51:19 - --> Termina consulta de ordenantes no reportados.
+
+
+2016-05-25 12:51:19 - Registros encontrados: 4
+2016-05-25 12:51:19 - Registros encontrados: 14
+2016-05-25 12:51:20 - Se encontraron ordenantes no reportados se creará archivo para reportarlos 
+2016-05-25 12:51:20 - Registros encontrados: 14
+2016-05-25 12:51:20 - Enviando Email con la lista de ordenantes NO reportados -->
+2016-05-25 12:51:20 - --> Inicia actualizacion de bandera que pone a bandera de enviada a la UIF en 1 ....
+2016-05-25 12:51:20 - RdbmsOperation with SQL [UPDATE SICA_ADMIN.SC_OP_ENV_UIF SET REPORTADA_UIF = 1 WHERE REPORTADA_UIF = 0] compiled
+2016-05-25 12:51:20 - Executing prepared SQL update
+2016-05-25 12:51:20 - Executing prepared SQL statement [UPDATE SICA_ADMIN.SC_OP_ENV_UIF SET REPORTADA_UIF = 1 WHERE REPORTADA_UIF = 0]
+2016-05-25 12:51:20 - Fetching JDBC Connection from DataSource
+2016-05-25 12:51:20 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 12:51:21 - SQL update affected 4 rows
+2016-05-25 12:51:21 - Returning JDBC Connection to DataSource
+2016-05-25 12:51:21 - --> Inicia actualizacion de bandera que pone a bandera de enviada a la UIF en 1 de OP. Recibidas....
+2016-05-25 12:51:21 - RdbmsOperation with SQL [UPDATE SICA_ADMIN.SC_OP_REC_UIF SET REPORTADA_UIF = 1 WHERE REPORTADA_UIF = 0] compiled
+2016-05-25 12:51:21 - Executing prepared SQL update
+2016-05-25 12:51:21 - Executing prepared SQL statement [UPDATE SICA_ADMIN.SC_OP_REC_UIF SET REPORTADA_UIF = 1 WHERE REPORTADA_UIF = 0]
+2016-05-25 12:51:21 - Fetching JDBC Connection from DataSource
+2016-05-25 12:51:21 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 12:51:21 - SQL update affected 14 rows
+2016-05-25 12:51:21 - Returning JDBC Connection to DataSource
+2016-05-25 12:51:21 - -->Ha finalizado el proceso 'Reporte Mensual de Transferencias para reportar a la UIF'. 
+2016-05-25 12:51:21 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-05-25 12:51:21 - getFrom(): IxeCambios@ixe.com.mx
+2016-05-25 12:51:21 - getTo(): jesus.cortes@banorte.com
+2016-05-25 12:51:21 - getSubject(): Notificación del proceso de reporte mensual de transferencias que se envía a la UIF.
+2016-05-25 12:51:21 - jesus.cortes@banorte.com
+2016-05-25 12:51:21 - **********************************************************************************************************
+2016-05-25 12:51:21 - ******************************     FIN DE PROCESO MENSUAL DE TRANSFERENCIAS     **************************
+2016-05-25 12:51:21 - **********************************************************************************************************
+2016-05-25 12:51:21 - 
+
+
+
+2016-05-25 13:00:39 - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@253498: startup date [Wed May 25 13:00:39 CDT 2016]; root of context hierarchy
+2016-05-25 13:00:39 - Loading XML bean definitions from file [C:\Users\a3928543\workspace\ReporteMensualUIF\config\applicationContext.xml]
+2016-05-25 13:00:39 - Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2016-05-25 13:00:39 - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd]
+2016-05-25 13:00:39 - Loading schema mappings from [META-INF/spring.schemas]
+2016-05-25 13:00:39 - Loaded schema mappings: {http://www.springframework.org/schema/lang/spring-lang.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.5.xsd=org/springframework/scripting/config/spring-lang-2.5.xsd, http://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd, http://www.springframework.org/schema/context/spring-context.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/util/spring-util-3.0.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.0.xsd=org/springframework/beans/factory/xml/spring-util-2.0.xsd, http://www.springframework.org/schema/task/spring-task-3.0.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.5.xsd=org/springframework/beans/factory/xml/spring-util-2.5.xsd, http://www.springframework.org/schema/tool/spring-tool-3.0.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.0.xsd=org/springframework/transaction/config/spring-tx-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.0.xsd=org/springframework/beans/factory/xml/spring-tool-2.0.xsd, http://www.springframework.org/schema/task/spring-task.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/context/spring-context-3.0.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.5.xsd=org/springframework/transaction/config/spring-tx-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-2.0.xsd=org/springframework/beans/factory/xml/spring-beans-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.5.xsd=org/springframework/beans/factory/xml/spring-tool-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/beans/spring-beans-2.5.xsd=org/springframework/beans/factory/xml/spring-beans-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/tool/spring-tool.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.0.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop-3.0.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.0.xsd=org/springframework/ejb/config/spring-jee-2.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.0.xsd=org/springframework/aop/config/spring-aop-2.0.xsd, http://www.springframework.org/schema/tx/spring-tx-3.0.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.5.xsd=org/springframework/ejb/config/spring-jee-2.5.xsd, http://www.springframework.org/schema/aop/spring-aop-2.5.xsd=org/springframework/aop/config/spring-aop-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-3.0.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-3.0.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.0.xsd=org/springframework/scripting/config/spring-lang-2.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/util/spring-util.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd}
+2016-05-25 13:00:39 - Found XML schema [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-3.0.xsd
+2016-05-25 13:00:39 - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/context/spring-context-3.0.xsd]
+2016-05-25 13:00:39 - Found XML schema [http://www.springframework.org/schema/context/spring-context-3.0.xsd] in classpath: org/springframework/context/config/spring-context-3.0.xsd
+2016-05-25 13:00:39 - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd]
+2016-05-25 13:00:39 - Found XML schema [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-tool-3.0.xsd
+2016-05-25 13:00:39 - Loading bean definitions
+2016-05-25 13:00:39 - Loaded NamespaceHandler mappings: {http://www.springframework.org/schema/p=org.springframework.beans.factory.xml.SimplePropertyNamespaceHandler, http://www.springframework.org/schema/util=org.springframework.beans.factory.xml.UtilNamespaceHandler, http://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandler, http://www.springframework.org/schema/aop=org.springframework.aop.config.AopNamespaceHandler, http://www.springframework.org/schema/jdbc=org.springframework.jdbc.config.JdbcNamespaceHandler, http://www.springframework.org/schema/tx=org.springframework.transaction.config.TxNamespaceHandler, http://www.springframework.org/schema/task=org.springframework.scheduling.config.TaskNamespaceHandler, http://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandler, http://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler}
+2016-05-25 13:00:39 - Loaded 10 bean definitions from location pattern [config/applicationContext.xml]
+2016-05-25 13:00:39 - Bean factory for org.springframework.context.support.FileSystemXmlApplicationContext@253498: org.springframework.beans.factory.support.DefaultListableBeanFactory@1bfc93a: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailSender,generalMailSender,dataSource,mensajesVo,consultaDao,reporteService,transferenciasService]; root of factory hierarchy
+2016-05-25 13:00:39 - Creating shared instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-05-25 13:00:39 - Creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-05-25 13:00:39 - Eagerly caching bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0' to allow for resolving potential circular references
+2016-05-25 13:00:39 - Getting BeanInfo for class [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]
+2016-05-25 13:00:39 - Caching PropertyDescriptors for class [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]
+2016-05-25 13:00:39 - Found bean property 'beanFactory' of type [org.springframework.beans.factory.BeanFactory]
+2016-05-25 13:00:39 - Found bean property 'beanName' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 13:00:39 - Found bean property 'fileEncoding' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'ignoreResourceNotFound' of type [boolean]
+2016-05-25 13:00:39 - Found bean property 'ignoreUnresolvablePlaceholders' of type [boolean]
+2016-05-25 13:00:39 - Found bean property 'localOverride' of type [boolean]
+2016-05-25 13:00:39 - Found bean property 'location' of type [org.springframework.core.io.Resource]
+2016-05-25 13:00:39 - Found bean property 'locations' of type [[Lorg.springframework.core.io.Resource;]
+2016-05-25 13:00:39 - Found bean property 'nullValue' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'order' of type [int]
+2016-05-25 13:00:39 - Found bean property 'placeholderPrefix' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'placeholderSuffix' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'properties' of type [java.util.Properties]
+2016-05-25 13:00:39 - Found bean property 'propertiesArray' of type [[Ljava.util.Properties;]
+2016-05-25 13:00:39 - Found bean property 'propertiesPersister' of type [org.springframework.util.PropertiesPersister]
+2016-05-25 13:00:39 - Found bean property 'searchSystemEnvironment' of type [boolean]
+2016-05-25 13:00:39 - Found bean property 'systemPropertiesMode' of type [int]
+2016-05-25 13:00:39 - Found bean property 'systemPropertiesModeName' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'valueSeparator' of type [java.lang.String]
+2016-05-25 13:00:39 - Finished creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-05-25 13:00:39 - Loading properties file from file [C:\Users\a3928543\workspace\ReporteMensualUIF\config\config.properties]
+2016-05-25 13:00:39 - Resolved placeholder 'mail.host'
+2016-05-25 13:00:39 - Resolved placeholder 'mail.template.path'
+2016-05-25 13:00:39 - Resolved placeholder 'mail.template'
+2016-05-25 13:00:39 - Resolved placeholder 'mail.from'
+2016-05-25 13:00:39 - Resolved placeholder 'mail.subject'
+2016-05-25 13:00:39 - Resolved placeholder 'mail.ordenante.from'
+2016-05-25 13:00:39 - Resolved placeholder 'mail.ordenante.to'
+2016-05-25 13:00:39 - Resolved placeholder 'mail.ordenante.subject'
+2016-05-25 13:00:39 - Resolved placeholder 'db.driver'
+2016-05-25 13:00:39 - Resolved placeholder 'db.username'
+2016-05-25 13:00:39 - Resolved placeholder 'db.password'
+2016-05-25 13:00:39 - Resolved placeholder 'db.url'
+2016-05-25 13:00:39 - Resolved placeholder 'msj.error.path'
+2016-05-25 13:00:39 - Resolved placeholder 'msj.error.emails'
+2016-05-25 13:00:39 - Resolved placeholder 'msj.error.email'
+2016-05-25 13:00:39 - Resolved placeholder 'msj.error.stored'
+2016-05-25 13:00:39 - Resolved placeholder 'msj.error.consulta.transferencias'
+2016-05-25 13:00:39 - Resolved placeholder 'msj.inicio.proceso'
+2016-05-25 13:00:39 - Resolved placeholder 'msj.fin.proceso'
+2016-05-25 13:00:39 - Resolved placeholder 'db.nombreStored'
+2016-05-25 13:00:39 - Resolved placeholder 'parametro.path.reporte'
+2016-05-25 13:00:39 - Resolved placeholder 'parametro.emails.to'
+2016-05-25 13:00:39 - Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@10382a9]
+2016-05-25 13:00:39 - Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@30d082]
+2016-05-25 13:00:39 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1bfc93a: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailSender,generalMailSender,dataSource,mensajesVo,consultaDao,reporteService,transferenciasService]; root of factory hierarchy
+2016-05-25 13:00:39 - Returning cached instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-05-25 13:00:39 - Creating shared instance of singleton bean 'javaMailSender'
+2016-05-25 13:00:39 - Creating instance of bean 'javaMailSender'
+2016-05-25 13:00:39 - Eagerly caching bean 'javaMailSender' to allow for resolving potential circular references
+2016-05-25 13:00:39 - Getting BeanInfo for class [org.springframework.mail.javamail.JavaMailSenderImpl]
+2016-05-25 13:00:39 - Caching PropertyDescriptors for class [org.springframework.mail.javamail.JavaMailSenderImpl]
+2016-05-25 13:00:39 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 13:00:39 - Found bean property 'defaultEncoding' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'defaultFileTypeMap' of type [javax.activation.FileTypeMap]
+2016-05-25 13:00:39 - Found bean property 'host' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'javaMailProperties' of type [java.util.Properties]
+2016-05-25 13:00:39 - Found bean property 'password' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'port' of type [int]
+2016-05-25 13:00:39 - Found bean property 'protocol' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'session' of type [javax.mail.Session]
+2016-05-25 13:00:39 - Found bean property 'username' of type [java.lang.String]
+2016-05-25 13:00:39 - Finished creating instance of bean 'javaMailSender'
+2016-05-25 13:00:39 - Creating shared instance of singleton bean 'velocityEngine'
+2016-05-25 13:00:39 - Creating instance of bean 'velocityEngine'
+2016-05-25 13:00:39 - Eagerly caching bean 'velocityEngine' to allow for resolving potential circular references
+2016-05-25 13:00:39 - Getting BeanInfo for class [org.springframework.ui.velocity.VelocityEngineFactoryBean]
+2016-05-25 13:00:39 - Caching PropertyDescriptors for class [org.springframework.ui.velocity.VelocityEngineFactoryBean]
+2016-05-25 13:00:39 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 13:00:39 - Found bean property 'configLocation' of type [org.springframework.core.io.Resource]
+2016-05-25 13:00:39 - Found bean property 'object' of type [java.lang.Object]
+2016-05-25 13:00:39 - Found bean property 'objectType' of type [java.lang.Class]
+2016-05-25 13:00:39 - Found bean property 'overrideLogging' of type [boolean]
+2016-05-25 13:00:39 - Found bean property 'preferFileSystemAccess' of type [boolean]
+2016-05-25 13:00:39 - Found bean property 'resourceLoader' of type [org.springframework.core.io.ResourceLoader]
+2016-05-25 13:00:39 - Found bean property 'resourceLoaderPath' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'singleton' of type [boolean]
+2016-05-25 13:00:39 - Found bean property 'velocityProperties' of type [java.util.Properties]
+2016-05-25 13:00:39 - Found bean property 'velocityPropertiesMap' of type [java.util.Map]
+2016-05-25 13:00:39 - Invoking afterPropertiesSet() on bean with name 'velocityEngine'
+2016-05-25 13:00:39 - Resource loader path [config/] resolved to file [C:\Users\a3928543\workspace\ReporteMensualUIF\config]
+2016-05-25 13:00:39 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2016-05-25 13:00:39 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2016-05-25 13:00:39 - LogSystem has been deprecated. Please use a LogChute implementation.
+2016-05-25 13:00:39 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2016-05-25 13:00:39 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2016-05-25 13:00:39 - Do unicode file recognition:  false
+2016-05-25 13:00:39 - FileResourceLoader : adding path 'C:\Users\a3928543\workspace\ReporteMensualUIF\config'
+2016-05-25 13:00:39 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2016-05-25 13:00:39 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2016-05-25 13:00:39 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2016-05-25 13:00:39 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2016-05-25 13:00:39 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2016-05-25 13:00:39 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2016-05-25 13:00:39 - Created '20' parsers.
+2016-05-25 13:00:39 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2016-05-25 13:00:39 - Velocimacro : Default library not found.
+2016-05-25 13:00:39 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2016-05-25 13:00:39 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2016-05-25 13:00:39 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2016-05-25 13:00:39 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2016-05-25 13:00:39 - Finished creating instance of bean 'velocityEngine'
+2016-05-25 13:00:39 - Creating shared instance of singleton bean 'mailSender'
+2016-05-25 13:00:39 - Creating instance of bean 'mailSender'
+2016-05-25 13:00:39 - Eagerly caching bean 'mailSender' to allow for resolving potential circular references
+2016-05-25 13:00:39 - Returning cached instance of singleton bean 'velocityEngine'
+2016-05-25 13:00:39 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.MailSenderImpl]
+2016-05-25 13:00:39 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.MailSenderImpl]
+2016-05-25 13:00:39 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 13:00:39 - Found bean property 'from' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'javaMailSender' of type [org.springframework.mail.javamail.JavaMailSender]
+2016-05-25 13:00:39 - Found bean property 'subject' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'template' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'to' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'velocityEngine' of type [org.apache.velocity.app.VelocityEngine]
+2016-05-25 13:00:39 - Returning cached instance of singleton bean 'javaMailSender'
+2016-05-25 13:00:39 - Finished creating instance of bean 'mailSender'
+2016-05-25 13:00:39 - Creating shared instance of singleton bean 'generalMailSender'
+2016-05-25 13:00:39 - Creating instance of bean 'generalMailSender'
+2016-05-25 13:00:39 - Eagerly caching bean 'generalMailSender' to allow for resolving potential circular references
+2016-05-25 13:00:39 - Returning cached instance of singleton bean 'javaMailSender'
+2016-05-25 13:00:39 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.GeneralMailSenderImpl]
+2016-05-25 13:00:39 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.GeneralMailSenderImpl]
+2016-05-25 13:00:39 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 13:00:39 - Found bean property 'from' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'mailSender' of type [org.springframework.mail.MailSender]
+2016-05-25 13:00:39 - Found bean property 'subject' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'to' of type [java.lang.String]
+2016-05-25 13:00:39 - Finished creating instance of bean 'generalMailSender'
+2016-05-25 13:00:39 - Creating shared instance of singleton bean 'dataSource'
+2016-05-25 13:00:39 - Creating instance of bean 'dataSource'
+2016-05-25 13:00:39 - Eagerly caching bean 'dataSource' to allow for resolving potential circular references
+2016-05-25 13:00:39 - Getting BeanInfo for class [org.springframework.jdbc.datasource.DriverManagerDataSource]
+2016-05-25 13:00:39 - Caching PropertyDescriptors for class [org.springframework.jdbc.datasource.DriverManagerDataSource]
+2016-05-25 13:00:39 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 13:00:39 - Found bean property 'connection' of type [java.sql.Connection]
+2016-05-25 13:00:39 - Found bean property 'connectionProperties' of type [java.util.Properties]
+2016-05-25 13:00:39 - Found bean property 'driverClassName' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'logWriter' of type [java.io.PrintWriter]
+2016-05-25 13:00:39 - Found bean property 'loginTimeout' of type [int]
+2016-05-25 13:00:39 - Found bean property 'password' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'url' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'username' of type [java.lang.String]
+2016-05-25 13:00:39 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2016-05-25 13:00:39 - Finished creating instance of bean 'dataSource'
+2016-05-25 13:00:39 - Creating shared instance of singleton bean 'mensajesVo'
+2016-05-25 13:00:39 - Creating instance of bean 'mensajesVo'
+2016-05-25 13:00:39 - Eagerly caching bean 'mensajesVo' to allow for resolving potential circular references
+2016-05-25 13:00:39 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.dto.MensajesVo]
+2016-05-25 13:00:39 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.dto.MensajesVo]
+2016-05-25 13:00:39 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 13:00:39 - Found bean property 'mensajeErrorEmailsTo' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'mensajeErrorPath' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'mensajeErrorPathEmail' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'mensajeErrorStoredProcedure' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'mensajeErrorTransferencias' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'mensajeFinProceso' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'mensajeInicioproceso' of type [java.lang.String]
+2016-05-25 13:00:39 - Finished creating instance of bean 'mensajesVo'
+2016-05-25 13:00:39 - Creating shared instance of singleton bean 'consultaDao'
+2016-05-25 13:00:39 - Creating instance of bean 'consultaDao'
+2016-05-25 13:00:39 - Eagerly caching bean 'consultaDao' to allow for resolving potential circular references
+2016-05-25 13:00:39 - Returning cached instance of singleton bean 'dataSource'
+2016-05-25 13:00:39 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.dao.impl.ConsultaDaoImpl]
+2016-05-25 13:00:39 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.dao.impl.ConsultaDaoImpl]
+2016-05-25 13:00:39 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 13:00:39 - Found bean property 'dataSource' of type [javax.sql.DataSource]
+2016-05-25 13:00:39 - Found bean property 'jdbcTemplate' of type [org.springframework.jdbc.core.JdbcTemplate]
+2016-05-25 13:00:39 - Found bean property 'nombreStored' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'parametroEmailsTo' of type [java.lang.String]
+2016-05-25 13:00:39 - Found bean property 'parametroPathReporte' of type [java.lang.String]
+2016-05-25 13:00:39 - Invoking afterPropertiesSet() on bean with name 'consultaDao'
+2016-05-25 13:00:39 - Finished creating instance of bean 'consultaDao'
+2016-05-25 13:00:39 - Creating shared instance of singleton bean 'reporteService'
+2016-05-25 13:00:39 - Creating instance of bean 'reporteService'
+2016-05-25 13:00:39 - Eagerly caching bean 'reporteService' to allow for resolving potential circular references
+2016-05-25 13:00:39 - Finished creating instance of bean 'reporteService'
+2016-05-25 13:00:39 - Creating shared instance of singleton bean 'transferenciasService'
+2016-05-25 13:00:39 - Creating instance of bean 'transferenciasService'
+2016-05-25 13:00:39 - Eagerly caching bean 'transferenciasService' to allow for resolving potential circular references
+2016-05-25 13:00:39 - Returning cached instance of singleton bean 'consultaDao'
+2016-05-25 13:00:39 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.services.impl.TransferenciasServiceImpl]
+2016-05-25 13:00:39 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.services.impl.TransferenciasServiceImpl]
+2016-05-25 13:00:39 - Found bean property 'class' of type [java.lang.Class]
+2016-05-25 13:00:39 - Found bean property 'consultaDao' of type [com.banorte.reporte.UIF.transferencias.dao.IConsultaDao]
+2016-05-25 13:00:39 - Found bean property 'generalMailSender' of type [com.banorte.reporte.UIF.transferencias.services.mail.GeneralMailSender]
+2016-05-25 13:00:39 - Found bean property 'mailSender' of type [com.banorte.reporte.UIF.transferencias.services.mail.MailSender]
+2016-05-25 13:00:39 - Found bean property 'mensajesVo' of type [com.banorte.reporte.UIF.transferencias.dto.MensajesVo]
+2016-05-25 13:00:39 - Found bean property 'reporteService' of type [com.banorte.reporte.UIF.transferencias.services.IReporteService]
+2016-05-25 13:00:39 - Returning cached instance of singleton bean 'mailSender'
+2016-05-25 13:00:39 - Returning cached instance of singleton bean 'generalMailSender'
+2016-05-25 13:00:39 - Returning cached instance of singleton bean 'mensajesVo'
+2016-05-25 13:00:39 - Returning cached instance of singleton bean 'reporteService'
+2016-05-25 13:00:39 - Finished creating instance of bean 'transferenciasService'
+2016-05-25 13:00:39 - Unable to locate LifecycleProcessor with name 'lifecycleProcessor': using default [org.springframework.context.support.DefaultLifecycleProcessor@785d65]
+2016-05-25 13:00:39 - Returning cached instance of singleton bean 'lifecycleProcessor'
+2016-05-25 13:00:39 - Publishing event in org.springframework.context.support.FileSystemXmlApplicationContext@253498: org.springframework.context.event.ContextRefreshedEvent[source=org.springframework.context.support.FileSystemXmlApplicationContext@253498: startup date [Wed May 25 13:00:39 CDT 2016]; root of context hierarchy]
+2016-05-25 13:00:39 - **********************************************************************************************************
+2016-05-25 13:00:39 - *****************************          PROCESO MENSUAL DE TRANSFERENCIAS        **************************
+2016-05-25 13:00:39 - **********************************************************************************************************
+2016-05-25 13:00:39 - Returning cached instance of singleton bean 'transferenciasService'
+2016-05-25 13:00:39 - Executing prepared SQL query
+2016-05-25 13:00:39 - Executing prepared SQL statement [select VALOR from SC_PARAMETRO where ID_PARAMETRO = ?]
+2016-05-25 13:00:39 - Fetching JDBC Connection from DataSource
+2016-05-25 13:00:39 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 13:00:40 - Setting SQL statement parameter value: column index 1, parameter value [PATH_REPORTE_DIARIO], value class [java.lang.String], SQL type unknown
+2016-05-25 13:00:40 - Returning JDBC Connection to DataSource
+2016-05-25 13:00:40 - Executing prepared SQL query
+2016-05-25 13:00:40 - Executing prepared SQL statement [select VALOR from SC_PARAMETRO where ID_PARAMETRO = ?]
+2016-05-25 13:00:40 - Fetching JDBC Connection from DataSource
+2016-05-25 13:00:40 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 13:00:40 - Setting SQL statement parameter value: column index 1, parameter value [EMAILS_REPORTE_DIARIO], value class [java.lang.String], SQL type unknown
+2016-05-25 13:00:40 - Returning JDBC Connection to DataSource
+2016-05-25 13:00:40 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-05-25 13:00:40 - getFrom(): IxeCambios@ixe.com.mx
+2016-05-25 13:00:40 - getTo(): jesus.cortes@banorte.com
+2016-05-25 13:00:40 - getSubject(): Notificación del proceso de reporte mensual de transferencias que se envía a la UIF.
+2016-05-25 13:00:40 - jesus.cortes@banorte.com
+2016-05-25 13:00:41 - ResourceManager : found reporteDiarioTransferenciasTemplate.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2016-05-25 13:00:41 - --> Inicia la ejecución del proceso mensual de transferencias para la UIF...
+2016-05-25 13:00:41 - Compiled stored procedure. Call string is [{call SICA_ADMIN.SP_INSERTA_OP_ENVIADAS_UIF(?)}]
+2016-05-25 13:00:41 - RdbmsOperation with SQL [SICA_ADMIN.SP_INSERTA_OP_ENVIADAS_UIF] compiled
+2016-05-25 13:00:41 - Calling stored procedure [{call SICA_ADMIN.SP_INSERTA_OP_ENVIADAS_UIF(?)}]
+2016-05-25 13:00:41 - Fetching JDBC Connection from DataSource
+2016-05-25 13:00:41 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 13:00:54 - CallableStatement.execute() returned 'false'
+2016-05-25 13:00:54 - CallableStatement.getUpdateCount() returned -1
+2016-05-25 13:00:54 - Returning JDBC Connection to DataSource
+2016-05-25 13:00:54 - DBMSOUTPUT: null
+2016-05-25 13:00:54 - --> Finaliza la ejecución del proceso mensual de transferencias para la UIF.
+
+
+2016-05-25 13:00:54 - --> Inicia consulta de transferencias para el reporte mensual para la UIF....
+2016-05-25 13:00:54 - SQL operation not compiled before execution - invoking compile
+2016-05-25 13:00:54 - RdbmsOperation with SQL [select TO_CHAR(FECHA,'YYYYMMDD') || '|',referencia || '|' , deal || '|' , folio_detalle || '|', trim(nombre_corresponsal) || '|', trim(nombre_entidad_destino) || '|', trim(bic_aba) || '|', trim(datos_destinatario) || '|', trim(operacion_origen) || '|', trim(operacion_destino) || '|', trim(lpad(instrumento_monetario_origen,2,'0')) || '|', trim(moneda_origen) || '|', trim(monto_instrumento_origen) || '|', trim(mensaje) || '|', trim(tipo_persona) || '|', trim(nombre) || '|', trim(apellido_paterno) || '|', trim(apellido_materno) || '|', trim(to_char(fecha_nacimiento,'yyyymmdd')) || '|', trim(curp) || '|', trim(rfc) || '|', trim(pais_nacimiento) || '|', trim(pais_nacionalidad) || '|', trim(actividad_economica) || '|', trim(razon_social) || '|', trim(fecha_constitucion) || '|', trim(rfc_PM) || '|', trim(pais_nacionalidad_PM) || '|', trim(giro_mercantil) || '|', trim(apoderado_legal) || '|', trim(domicilio_unificado) || '|', trim(ciudad_poblacion) || '|', trim(codigo_postal) || '|', trim(entidad_federativa) || '|', trim(telefono) || '|', trim(numero_telefono) || '|', trim(clave_pais) || '|', trim(extension) || '|', trim(correo_electronico) || '|', trim(fiel) || '|' from SC_OP_ENV_UIF where REPORTADA_UIF = '0' ] compiled
+2016-05-25 13:00:54 - Executing prepared SQL query
+2016-05-25 13:00:54 - Executing prepared SQL statement [select TO_CHAR(FECHA,'YYYYMMDD') || '|',referencia || '|' , deal || '|' , folio_detalle || '|', trim(nombre_corresponsal) || '|', trim(nombre_entidad_destino) || '|', trim(bic_aba) || '|', trim(datos_destinatario) || '|', trim(operacion_origen) || '|', trim(operacion_destino) || '|', trim(lpad(instrumento_monetario_origen,2,'0')) || '|', trim(moneda_origen) || '|', trim(monto_instrumento_origen) || '|', trim(mensaje) || '|', trim(tipo_persona) || '|', trim(nombre) || '|', trim(apellido_paterno) || '|', trim(apellido_materno) || '|', trim(to_char(fecha_nacimiento,'yyyymmdd')) || '|', trim(curp) || '|', trim(rfc) || '|', trim(pais_nacimiento) || '|', trim(pais_nacionalidad) || '|', trim(actividad_economica) || '|', trim(razon_social) || '|', trim(fecha_constitucion) || '|', trim(rfc_PM) || '|', trim(pais_nacionalidad_PM) || '|', trim(giro_mercantil) || '|', trim(apoderado_legal) || '|', trim(domicilio_unificado) || '|', trim(ciudad_poblacion) || '|', trim(codigo_postal) || '|', trim(entidad_federativa) || '|', trim(telefono) || '|', trim(numero_telefono) || '|', trim(clave_pais) || '|', trim(extension) || '|', trim(correo_electronico) || '|', trim(fiel) || '|' from SC_OP_ENV_UIF where REPORTADA_UIF = '0' ]
+2016-05-25 13:00:54 - Fetching JDBC Connection from DataSource
+2016-05-25 13:00:54 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 13:00:55 - Returning JDBC Connection to DataSource
+2016-05-25 13:00:55 - --> Total de registros encontrados: 4
+
+2016-05-25 13:00:55 - --> Termina consulta de transferencias.
+
+
+2016-05-25 13:00:55 - --> Inicia consulta de transferencias Recibidas para el reporte mensual para la UIF....
+2016-05-25 13:00:55 - SQL operation not compiled before execution - invoking compile
+2016-05-25 13:00:55 - RdbmsOperation with SQL [select TO_CHAR(FECHA,'YYYYMMDD') || '|',referencia || '|' , deal || '|' , folio_detalle || '|', trim(nombre_corresponsal) || '|', trim(nombre_entidad_origen) || '|', trim(bic_aba) || '|', trim(datos_ordenante) || '|', trim(operacion_origen) || '|', trim(nombre_entidad_destino) || '|', trim(datos_destinatario) || '|', trim(operacion_destino) || '|', trim(lpad(instrumento_monetario_destino,2,'0')) || '|', trim(moneda_destino) || '|', trim(monto_instrumento_destino) || '|', trim(mensaje) || '|', trim(tipo_persona) || '|', trim(nombre) || '|', trim(apellido_paterno) || '|', trim(apellido_materno) || '|', trim(to_char(fecha_nacimiento,'yyyymmdd')) || '|', trim(curp) || '|', trim(rfc) || '|', trim(pais_nacimiento) || '|', trim(pais_nacionalidad) || '|', trim(actividad_economica) || '|', trim(razon_social) || '|', trim(fecha_constitucion) || '|', trim(giro_mercantil) || '|', trim(apoderado_legal) || '|', trim(domicilio_unificado) || '|', trim(ciudad_poblacion) || '|', trim(codigo_postal) || '|', trim(telefono) || '|', trim(numero_telefono) || '|', trim(clave_pais) || '|', trim(extension) || '|', trim(correo_electronico) || '|', trim(fiel) || '|' from SC_OP_REC_UIF where REPORTADA_UIF = '0' ] compiled
+2016-05-25 13:00:55 - Executing prepared SQL query
+2016-05-25 13:00:55 - Executing prepared SQL statement [select TO_CHAR(FECHA,'YYYYMMDD') || '|',referencia || '|' , deal || '|' , folio_detalle || '|', trim(nombre_corresponsal) || '|', trim(nombre_entidad_origen) || '|', trim(bic_aba) || '|', trim(datos_ordenante) || '|', trim(operacion_origen) || '|', trim(nombre_entidad_destino) || '|', trim(datos_destinatario) || '|', trim(operacion_destino) || '|', trim(lpad(instrumento_monetario_destino,2,'0')) || '|', trim(moneda_destino) || '|', trim(monto_instrumento_destino) || '|', trim(mensaje) || '|', trim(tipo_persona) || '|', trim(nombre) || '|', trim(apellido_paterno) || '|', trim(apellido_materno) || '|', trim(to_char(fecha_nacimiento,'yyyymmdd')) || '|', trim(curp) || '|', trim(rfc) || '|', trim(pais_nacimiento) || '|', trim(pais_nacionalidad) || '|', trim(actividad_economica) || '|', trim(razon_social) || '|', trim(fecha_constitucion) || '|', trim(giro_mercantil) || '|', trim(apoderado_legal) || '|', trim(domicilio_unificado) || '|', trim(ciudad_poblacion) || '|', trim(codigo_postal) || '|', trim(telefono) || '|', trim(numero_telefono) || '|', trim(clave_pais) || '|', trim(extension) || '|', trim(correo_electronico) || '|', trim(fiel) || '|' from SC_OP_REC_UIF where REPORTADA_UIF = '0' ]
+2016-05-25 13:00:55 - Fetching JDBC Connection from DataSource
+2016-05-25 13:00:55 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 13:00:56 - Returning JDBC Connection to DataSource
+2016-05-25 13:00:56 - --> Total de registros encontrados: 14
+
+2016-05-25 13:00:56 - --> Termina consulta de transferencias Recibidas.
+
+
+2016-05-25 13:00:56 - --> Inicia consulta de ordenantes no reportados ....
+2016-05-25 13:00:56 - SQL operation not compiled before execution - invoking compile
+2016-05-25 13:00:56 - RdbmsOperation with SQL [select  TO_CHAR(FECHA,'YYYYMMDD') ,referencia , deal , folio_detalle , trim(nombre_corresponsal) , trim(nombre_entidad_origen) , trim(bic_aba) , trim(datos_ordenante) , trim(operacion_origen) , trim(nombre_entidad_destino) , trim(datos_destinatario) , trim(operacion_destino) , trim(lpad(instrumento_monetario_destino,2,'0')) , trim(moneda_destino) , trim(monto_instrumento_destino) , trim(mensaje) , trim(tipo_persona) , trim(nombre) , trim(apellido_paterno) , trim(apellido_materno) , trim(fecha_nacimiento) , trim(curp) , trim(rfc) , trim(pais_nacimiento) , trim(pais_nacionalidad) , trim(actividad_economica) , trim(razon_social) , trim(fecha_constitucion) , trim(giro_mercantil) , trim(apoderado_legal) , trim(domicilio_unificado) , trim(ciudad_poblacion) , trim(codigo_postal) , trim(telefono) , trim(numero_telefono) , trim(clave_pais) , trim(extension) , trim(correo_electronico) , trim(fiel) from sc_op_rec_uif where datos_ordenante in ('MAS DE UN ORDENANTE REPORTADO','ORDENANTE NO REPORTADO') and trunc(fecha) >= (select to_date('01/'||to_char(ADD_MONTHS(sysdate,-1),'mm/yyyy'),'dd/mm/yyyy') from dual)] compiled
+2016-05-25 13:00:56 - Executing prepared SQL query
+2016-05-25 13:00:56 - Executing prepared SQL statement [select  TO_CHAR(FECHA,'YYYYMMDD') ,referencia , deal , folio_detalle , trim(nombre_corresponsal) , trim(nombre_entidad_origen) , trim(bic_aba) , trim(datos_ordenante) , trim(operacion_origen) , trim(nombre_entidad_destino) , trim(datos_destinatario) , trim(operacion_destino) , trim(lpad(instrumento_monetario_destino,2,'0')) , trim(moneda_destino) , trim(monto_instrumento_destino) , trim(mensaje) , trim(tipo_persona) , trim(nombre) , trim(apellido_paterno) , trim(apellido_materno) , trim(fecha_nacimiento) , trim(curp) , trim(rfc) , trim(pais_nacimiento) , trim(pais_nacionalidad) , trim(actividad_economica) , trim(razon_social) , trim(fecha_constitucion) , trim(giro_mercantil) , trim(apoderado_legal) , trim(domicilio_unificado) , trim(ciudad_poblacion) , trim(codigo_postal) , trim(telefono) , trim(numero_telefono) , trim(clave_pais) , trim(extension) , trim(correo_electronico) , trim(fiel) from sc_op_rec_uif where datos_ordenante in ('MAS DE UN ORDENANTE REPORTADO','ORDENANTE NO REPORTADO') and trunc(fecha) >= (select to_date('01/'||to_char(ADD_MONTHS(sysdate,-1),'mm/yyyy'),'dd/mm/yyyy') from dual)]
+2016-05-25 13:00:56 - Fetching JDBC Connection from DataSource
+2016-05-25 13:00:56 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 13:00:56 - Returning JDBC Connection to DataSource
+2016-05-25 13:00:56 - --> Total de registros encontrados: 231
+
+2016-05-25 13:00:56 - --> Termina consulta de ordenantes no reportados.
+
+
+2016-05-25 13:00:56 - Registros encontrados: 4
+2016-05-25 13:00:56 - Registros encontrados: 14
+2016-05-25 13:00:56 - Se encontraron ordenantes no reportados se creará archivo para reportarlos 
+2016-05-25 13:00:56 - Registros encontrados: 14
+2016-05-25 13:00:57 - Enviando Email con la lista de ordenantes NO reportados -->
+2016-05-25 13:00:57 - --> Inicia actualizacion de bandera que pone a bandera de enviada a la UIF en 1 ....
+2016-05-25 13:00:57 - RdbmsOperation with SQL [UPDATE SICA_ADMIN.SC_OP_ENV_UIF SET REPORTADA_UIF = 1 WHERE REPORTADA_UIF = 0] compiled
+2016-05-25 13:00:57 - Executing prepared SQL update
+2016-05-25 13:00:57 - Executing prepared SQL statement [UPDATE SICA_ADMIN.SC_OP_ENV_UIF SET REPORTADA_UIF = 1 WHERE REPORTADA_UIF = 0]
+2016-05-25 13:00:57 - Fetching JDBC Connection from DataSource
+2016-05-25 13:00:57 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 13:00:58 - SQL update affected 4 rows
+2016-05-25 13:00:58 - Returning JDBC Connection to DataSource
+2016-05-25 13:00:58 - --> Inicia actualizacion de bandera que pone a bandera de enviada a la UIF en 1 de OP. Recibidas....
+2016-05-25 13:00:58 - RdbmsOperation with SQL [UPDATE SICA_ADMIN.SC_OP_REC_UIF SET REPORTADA_UIF = 1 WHERE REPORTADA_UIF = 0] compiled
+2016-05-25 13:00:58 - Executing prepared SQL update
+2016-05-25 13:00:58 - Executing prepared SQL statement [UPDATE SICA_ADMIN.SC_OP_REC_UIF SET REPORTADA_UIF = 1 WHERE REPORTADA_UIF = 0]
+2016-05-25 13:00:58 - Fetching JDBC Connection from DataSource
+2016-05-25 13:00:58 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-05-25 13:00:58 - SQL update affected 14 rows
+2016-05-25 13:00:58 - Returning JDBC Connection to DataSource
+2016-05-25 13:00:58 - -->Ha finalizado el proceso 'Reporte Mensual de Transferencias para reportar a la UIF'. 
+2016-05-25 13:00:58 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-05-25 13:00:58 - getFrom(): IxeCambios@ixe.com.mx
+2016-05-25 13:00:58 - getTo(): jesus.cortes@banorte.com
+2016-05-25 13:00:58 - getSubject(): Notificación del proceso de reporte mensual de transferencias que se envía a la UIF.
+2016-05-25 13:00:58 - jesus.cortes@banorte.com
+2016-05-25 13:00:58 - **********************************************************************************************************
+2016-05-25 13:00:58 - ******************************     FIN DE PROCESO MENSUAL DE TRANSFERENCIAS     **************************
+2016-05-25 13:00:58 - **********************************************************************************************************
+2016-05-25 13:00:58 - 
+
+
+

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.RegulatorioInstitucion"
+        table="SC_REG_INSTITUCION"
+        proxy="com.ixe.ods.sica.model.RegulatorioInstitucion"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+    >
+
+        <id
+            name="id"
+            column="ID_REG_INST"
+            type="java.lang.Integer"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_REG_INSTITUCION_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-RegulatorioInstitucion.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="idPersona"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_PERSONA"
+        />
+
+        <property
+            name="contratoSica"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NO_CUENTA"
+        />
+
+        <many-to-one
+            name="tipoRelacion"
+            class="com.ixe.ods.sica.model.RegulatorioTipoRelacion"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_RELACION"
+            unique="false"
+        />
+
+        <property
+            name="perteneceGrupoFinanciero"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="EN_GPO_FINANCIERO"
+        />
+
+        <many-to-one
+            name="eventoRelacion"
+            class="com.ixe.ods.sica.model.RegulatorioEventoRelacion"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_EVENTO"
+            unique="false"
+        />
+
+        <property
+            name="fechaEvento"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_EVENTO"
+            unique="false"
+        />
+
+        <property
+            name="fechaSistema"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_ALTA"
+            unique="false"
+        />
+
+        <property
+            name="idPersonaUltimaMod"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="USUARIO_ALTA"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-RegulatorioInstitucion.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

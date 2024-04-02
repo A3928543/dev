@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: MensajeSinMenu.page,v 1.1.2.1 2012/08/25 23:51:28 mejiar Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.MensajeSinMenu">
+
+    <property-specification name="mensaje" type="java.lang.String" persistent="yes" />
+    <property-specification name="tipo" type="int" />
+
+</page-specification>

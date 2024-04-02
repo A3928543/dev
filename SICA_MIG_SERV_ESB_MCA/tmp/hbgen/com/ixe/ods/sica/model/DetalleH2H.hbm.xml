@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.DetalleH2H"
+        table="SC_DETALLES_H2H"
+        proxy="com.ixe.ods.sica.model.DetalleH2H"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idDealPosicion"
+            column="ID_DEAL_POSICION"
+            type="java.lang.Long"
+            unsaved-value="null"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-DetalleH2H.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="idDeal"
+            type="java.lang.Long"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DEAL"
+            not-null="true"
+        />
+
+        <property
+            name="fechaEnvio"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_ENVIO"
+            not-null="true"
+        />
+
+        <property
+            name="version"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="VERSION"
+        />
+
+        <property
+            name="tipoOperacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_OPERACION"
+            not-null="true"
+        />
+
+        <property
+            name="fechaCaptura"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_CAPTURA"
+            not-null="true"
+        />
+
+        <property
+            name="fechaEfectiva"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_EFECTIVA"
+            not-null="true"
+        />
+
+        <property
+            name="fechaLiquidacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_VENCIMIENTO"
+            not-null="true"
+        />
+
+        <property
+            name="importe"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="IMPORTE"
+            not-null="true"
+        />
+
+        <property
+            name="montoDolarizado"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO_DOLARIZADO"
+            not-null="true"
+        />
+
+        <property
+            name="factorDivisaUsd"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="FACTOR_DIV_USD"
+            not-null="true"
+        />
+
+        <property
+            name="tipoCambio"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO"
+            not-null="true"
+        />
+
+        <property
+            name="idDivisa"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIVISA"
+            not-null="true"
+        />
+
+        <property
+            name="plazo"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="PLAZO"
+            not-null="true"
+        />
+
+        <property
+            name="producto"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="PRODUCTO"
+            not-null="true"
+        />
+
+        <property
+            name="claveContraparte"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NUM_CTE"
+            not-null="false"
+        />
+
+        <property
+            name="nombreCliente"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NOMBRE_CLIENTE"
+            not-null="false"
+        />
+
+        <property
+            name="rfc"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="RFC"
+            not-null="false"
+        />
+
+        <property
+            name="tipoCliente"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CLIENTE"
+            not-null="false"
+        />
+
+        <property
+            name="statusH2H"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATUSH2H"
+            not-null="true"
+        />
+
+        <property
+            name="enviada"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ENVIADA"
+            not-null="true"
+        />
+
+        <property
+            name="folioBanxico"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="FOLIO_BANXICO"
+            not-null="false"
+        />
+
+        <property
+            name="codigoError"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="COD_ERROR"
+            not-null="false"
+        />
+
+        <property
+            name="descripcionError"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="DESC_ERROR"
+            not-null="false"
+        />
+
+        <property
+            name="idPersonaPromotor"
+            type="java.lang.Long"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_PROMOTOR"
+            not-null="true"
+        />
+
+        <property
+            name="cierreVespertino"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="CIERRE_VESPERTINO"
+            not-null="false"
+        />
+
+        <property
+            name="fechaCancelacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_CANC"
+            not-null="false"
+        />
+
+        <property
+            name="cancelarDetalle"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CANCELAR_DETALLE"
+            not-null="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-DetalleH2H.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

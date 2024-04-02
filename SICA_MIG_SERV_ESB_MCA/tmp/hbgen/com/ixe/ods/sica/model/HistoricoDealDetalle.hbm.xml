@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.HistoricoDealDetalle"
+        table="SC_H_DEAL_DETALLE"
+        proxy="com.ixe.ods.sica.model.HistoricoDealDetalle"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idDealPosicion"
+            column="ID_DEAL_POSICION"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-HistoricoDealDetalle.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="claveFormaLiquidacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_FORMA_LIQUIDACION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="comisionOficialUsd"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMISION_OFICIAL_USD"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="comisionCobradaUsd"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMISION_COBRADA_USD"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="comisionCobradaMxn"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMISION_COBRADA_MXN"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="costoFormaLiq"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="COSTO_FORMA_LIQ"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="denominacion"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="DENOMINACION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="eventosDetalleDeal"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="EVENTOS_DETALLE_DEAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="folioDetalle"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="FOLIO_DETALLE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="idLiquidacionDetalle"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_LIQUIDACION_DETALLE"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="idPrecioReferencia"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_PRECIO_REFERENCIA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="precioReferenciaMidSpot"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="PRE_REF_MID_SPOT"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="precioReferenciaSpot"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="PRE_REF_SPOT"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="idSpread"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_SPREAD"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="instruccionesBeneficiario"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="INSTRUCCIONES_BENEFICIARIO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="instruccionesIntermediario"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="INSTRUCCIONES_INTERMEDIARIO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="instruccionesPagador"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="INSTRUCCIONES_PAGADOR"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="mnemonico"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="MNEMONICO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="observaciones"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="OBSERVACIONES"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="statusDetalleDeal"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATUS_DETALLE_DEAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambioMesa"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO_MESA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="deal"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DEAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="idFactorDivisa"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_FACTOR_DIVISA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="factorDivisa"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="FACTOR_DIVISA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="plantilla"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_PLANTILLA"
+            not-null="false"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-HistoricoDealDetalle.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

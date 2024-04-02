@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.RenglonPizarron"
+        table="SC_RENGLON_PIZARRON"
+        proxy="com.ixe.ods.sica.model.RenglonPizarron"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idRenglonPizarron"
+            column="ID_RENGLON_PIZARRON"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_RENGLON_PIZARRON_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-RenglonPizarron.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="fecha"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="idDivisa"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIVISA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="idPrecioReferencia"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_PRECIO_REFERENCIA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="precioReferenciaMidSpot"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="PRE_REF_MID_SPOT"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="precioReferenciaSpot"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="PRE_REF_SPOT"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="idSpread"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_SPREAD"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="idFactorDivisa"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_FACTOR_DIVISA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="factorDivisa"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="FACTOR_DIVISA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="claveFormaLiquidacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_FORMA_LIQUIDACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="nombreFormaLiquidacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NOMBRE_FORMA_LIQUIDACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraCash"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_CASH"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaCash"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_CASH"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraTom"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_TOM"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="ventaTom"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_TOM"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="compraSpot"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_SPOT"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="ventaSpot"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_SPOT"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="compra72Hr"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_72HR"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="venta72Hr"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_72HR"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="compraVFut"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_VFUT"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="ventaVFut"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_VFUT"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="idTipoPizarron"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_TIPO_PIZARRON"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-RenglonPizarron.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findRenglonesPizarronTipoPizarron"><![CDATA[
+            FROM RenglonPizarron AS rp WHERE rp.idTipoPizarron = ?
+        ]]></query>
+        <query name="findRenglonPizarronByTipoPizarronDivisaProducto"><![CDATA[
+            FROM RenglonPizarron AS rp WHERE rp.idTipoPizarron = ? AND rp.idDivisa = ? AND rp.claveFormaLiquidacion = ?
+        ]]></query>
+
+</hibernate-mapping>

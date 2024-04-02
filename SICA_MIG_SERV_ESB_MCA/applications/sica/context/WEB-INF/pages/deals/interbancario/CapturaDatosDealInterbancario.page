@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CapturaDatosDealInterbancario.page,v 1.15.16.1.52.1 2016/07/13 21:46:43 mejiar Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.deals.interbancario.CapturaDatosDealInterbancario">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <bean name="tcValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="maximum" expression="999999.99" />
+    </bean>
+
+    <component id="divisasComboBox" type="PropertySelection">
+        <binding name="model" expression='new com.legosoft.tapestry.model.RecordSelectionModel(divisas, "idDivisa", "descripcion")' />
+        <binding name="value" expression="divisa" />
+        <static-binding name="accesskey" value="D" />
+        <static-binding name="onchange" value="fnShowWaitImage(); this.form.submit();" />
+    </component>
+
+    <component id="fechasValorComboBox" type="PropertySelection">
+        <binding name="model" expression='fechasValorModel' />
+        <binding name="value" expression="deal.tipoValor" />
+        <static-binding name="accesskey" value="F" />
+    </component>
+
+    <component id="montoTextField" type="MontoTextField">
+        <static-binding name="size" value="15" />                                                              
+        <static-binding name="class" value="textoderecha" />
+        <binding name="value" expression="monto" />
+        <static-binding name="accesskey" value="N" />
+    </component>
+
+    <component id="montoNeteoTextField" type="MontoTextField">
+        <static-binding name="size" value="15" />
+        <static-binding name="class" value="textoderecha" />
+        <binding name="value" expression="montoNeteo" />
+    </component>
+
+    <component id="tipoCambioTextField" type="ValidField">
+        <static-binding name="displayName" value="Tipo de cambio: " />
+        <static-binding name="size" value="10" />
+        <static-binding name="class" value="textoderecha" />
+        <binding name="validator" expression="beans.tcValidator" />
+        <binding name="value" expression="tipoCambio" />
+        <static-binding name="accesskey" value="T" />
+    </component>
+
+    <component id="tipoCambioCobTextField" type="ValidField">
+        <static-binding name="displayName" value="Tipo de cambio: " />
+        <static-binding name="size" value="10" />
+        <static-binding name="class" value="textoderecha" />
+        <binding name="validator" expression="beans.tcValidator" />
+        <binding name="value" expression="tipoCambioCob" />
+        <static-binding name="accesskey" value="C" />
+        <static-binding name="onblur" value="calcularCobertura();" />
+    </component>
+
+    <component id="tipoCambioNeteoTextField" type="ValidField">
+        <static-binding name="displayName" value="Tipo de cambio: " />
+        <static-binding name="size" value="10" />
+        <static-binding name="class" value="textoderecha" />
+        <binding name="validator" expression="beans.tcValidator" />
+        <binding name="value" expression="tipoCambioNeteo" />
+    </component>
+
+    <property-specification name="deal" type="com.ixe.ods.sica.model.Deal" persistent="yes" />
+    <property-specification name="claveFormaLiquidacion" type="java.lang.String" persistent="yes" />
+    <property-specification name="claveFormaLiquidacionNeteo" type="java.lang.String" persistent="yes" />
+    <property-specification name="divisa" type="com.ixe.ods.sica.model.Divisa" persistent="yes" />
+    <property-specification name="level" type="int" />
+    <property-specification name="modoCobertura" type="boolean" persistent="yes" />
+    <property-specification name="modoNeteo" type="boolean" persistent="yes" />
+    <property-specification name="modoMensaje" type="boolean" persistent="yes" />
+    <property-specification name="monto" type="double" persistent="yes" />
+    <property-specification name="montoNeteo" type="double" persistent="yes" />
+    <property-specification name="tipoCambio" type="double" persistent="yes" />
+    <property-specification name="tipoCambioCob" type="double" persistent="yes" />
+    <property-specification name="tipoCambioNeteo" type="double" persistent="yes" />
+    <property-specification name="tipoOperacion" type="java.lang.String" initial-value='""' persistent="yes" />
+    <property-specification name="productos" type="java.lang.String[]" persistent="yes" />
+    <property-specification name="liquidacionEspecial" type="java.lang.String" persistent="yes" />
+    <property-specification name="modoSubmit" type="int" />
+    <property-specification name="advertirDesviacion" type="boolean" persistent="yes" />
+    <property-specification name="porcentajeDesviacion" type="java.lang.String" persistent="yes" />
+    <property-specification name="modifMap" type="java.util.Map" />
+    <property-specification name="splitMap" type="java.util.Map" />    
+    <property-specification name="limitesRestriccionOperacion" type="com.ixe.ods.sica.model.LimitesRestriccionOperacion" persistent="yes" /> 
+	<property-specification name="estadoLineaCredito" type="java.lang.String" persistent="yes" />
+	
+    <context-asset name="bActualizar" path="/images/aceptar.gif" />
+    <context-asset name="bRegresar" path="/images/back.gif" />
+
+</page-specification>

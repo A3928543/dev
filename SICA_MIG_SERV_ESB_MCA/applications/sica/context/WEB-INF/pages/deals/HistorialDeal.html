@@ -1,0 +1,47 @@
+<html jwcid="$content$">
+	<head jwcid="$remove$">
+	    <title>Asigna Gruop</title>
+	    <link rel="StyleSheet" href="../../../css/ixe.css">
+	</head>
+		<body jwcid="@PageBorder" menuDisabled="yes">
+			<span jwcid="@Conditional" condition="ognl: cerrarVentana">
+				<script jwcid="@Script" type="text/javascript" script="/WEB-INF/scripts/CerrarVentanaAgregarGrupo.script" />
+			</span>
+			<span jwcid="tb@Block"><span jwcid="@EventosDeal" deal="ognl: deal" /></span>
+            <span jwcid="tbInt@Block"><span jwcid="@EventosDealInterbancario" deal="ognl: deal" /></span>
+		    <table jwcid="@ActionPortletBorder" title='ognl: "Captura de Deal (" + (deal.simple ? "Simple" : "Compleja") + ")"' titleBlock="ognl: deal.interbancario ? components.tbInt : components.tb">
+                <span jwcid="@Conditional" condition="ognl: deal.interbancario">
+                    <span jwcid="@EncabezadoDealInterbancario" deal="ognl: deal" disabled="yes" />
+                </span>
+                <span jwcid="@Conditional" condition="ognl: !deal.interbancario">
+                    <span jwcid="@EncabezadoDeal" deal="ognl: deal" disabled="yes" />
+                </span>
+            </table>
+			<table jwcid="@ActionPortletBorder" title='ognl: "Historial Status Deal "'>
+	 			<table jwcid="@TableBorder" border="0" cellspacing="1" cellpadding="3" width="100%" title="ognl: null" columnCount="12" class="tableborder"
+	        		subtitles='ognl: { "Status Anterior", "Status Nuevo", "Fecha" }'>
+	        		<tr jwcid="forWis@Foreach" source="ognl: getSicaServiceData().findStatusByDeal(deal.idDeal)" element="tr" class="ognl: beans.evenOdd.next">
+				    	<td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forWis.value.descripcionStatusViejo" /></td>
+				        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forWis.value.descripcionStatusNuevo" /></td>
+				        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forWis.value.cambStatus.fechaCambio" format="ognl: page.fullDateFormat" /></td>
+				  	</tr>
+ 				</table>
+ 			</table>
+ 			<table jwcid="@ActionPortletBorder" title='ognl: "Historial Deal "'>
+	 			<table jwcid="@TableBorder" border="0" cellspacing="1" cellpadding="3" width="100%" title="ognl: null" columnCount="12" class="tableborder"
+	        		subtitles='ognl: { "Nombre Del Campo", "Valor Previo", "Valor Nuevo", "Fecha" }'>
+	        		<tr jwcid="forLog@Foreach" source="ognl: getSicaServiceData().findLogByDeal(deal.idDeal)" element="tr" class="ognl: beans.evenOdd.next">
+				    	<td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forLog.value.nombreCampo" /></td>
+				        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forLog.value.valorPrevio" /></td>
+						<td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forLog.value.valorNuevo" /></td>
+				        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forLog.value.fechaCambio" format="ognl: page.fullDateFormat" /></td>
+				  	</tr>
+ 				</table>
+ 			</table>
+ 			<br />
+            <div class="textocentrado">
+                <a jwcid="@PageLink" page='ognl: deal.interbancario ? "DatosDealInterbancario" : "DatosDeal"' onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bRegresar" src="../../../images/back.gif" alt="Regresar" border="0"/></a>
+            </div>
+		</body>
+</html>	
+

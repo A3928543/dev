@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>IXE</title>
+    <link rel="stylesheet" type="text/css" href="http://www.ixe.com.mx/portalimages/styles01001.css"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <style type="text/css">
+      <!--
+	    @import url("http://www.ixe.com.mx/portalimages/styles01001.css");
+	    body {
+	    }
+      -->
+    </style>
+  </head>
+  <body> 
+    <table width="788" border="0" align="center" cellpadding="0" cellspacing="0">
+	  <tr>
+		<td bgcolor="#FFFFFF" class="tblNL-003">
+		  <table width="788" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+			<tr>
+			  <td>
+				<img src="http://www.banorte-ixe.com.mx/img/header.jpg" width="788" height="60">
+			  </td>
+			</tr>
+		  </table>
+		</td>
+	  </tr>
+	</table>
+	<table width="788" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr> 
+		<td bgcolor="#FFFFFF" class="tblNL-003">
+		  <table width="780" border="0" cellpadding="0" cellspacing="0">
+		    <tr> 
+			  <td width="610" valign="top">
+			    <table border="0" cellspacing="0" cellpadding="10">
+				  <tr>
+				    <td valign="top" class="txtNL-006"><br>
+					  <strong>
+						ACTUALIZACI&Oacute;N DE N&Uacute;MEROS DE CLIENTE ALTAMIRA EN SICA.
+					  </strong>
+					  <p>
+				        &nbsp;
+			          </p>
+					  #foreach( $archivo in $archivos )
+					    <table width="500" border="0" align="left" cellpadding="4" cellspacing="0">
+						  <tr>
+							<td bgcolor="#82B4AB" class="txtNL-009" width="250">
+							  <span class="txtNL-001">
+								<strong>
+								  Archivo
+								</strong>
+							  </span>
+							</td>
+							<td width="250" bgcolor="#C5DBD8" class="txtNL-009">
+							  $archivo.nombre
+							</td>
+						  </tr>
+						  <tr>
+							<td height="2" colspan="2">
+							</td>
+						  </tr>
+						  <tr>
+							<td bgcolor="#82B4AB" class="txtNL-009" width="250">
+							  <span class="txtNL-001">
+								<strong>
+									Registros correctos
+								</strong>
+							  </span>
+							</td>
+							<td width="250" bgcolor="#C5DBD8" class="txtNL-009">
+								$archivo.correctos
+							</td>
+						  </tr>
+						  <tr>
+							<td height="2" colspan="2">
+							</td>
+						  </tr>
+						  <tr>
+							<td bgcolor="#82B4AB" class="txtNL-009" width="250">
+							  <span class="txtNL-001">
+								<strong>
+									Registros err&oacute;neos
+								</strong>
+							  </span>
+							</td>
+							<td width="250" bgcolor="#C5DBD8" class="txtNL-009">
+								$archivo.erroneos
+							</td>
+						  </tr>
+						  <tr>
+							<td height="2" colspan="2">
+							</td>
+						  </tr>
+						  <tr>
+							<td bgcolor="#82B4AB" class="txtNL-009" width="250">
+							  <span class="txtNL-001">
+								<strong>
+									Total de registros procesados
+								</strong>
+							  </span>
+							</td>
+							<td width="250" bgcolor="#C5DBD8" class="txtNL-009">
+								$archivo.total
+							</td>
+						  </tr>
+						  <tr>
+							<td height="2" colspan="2">
+							</td>
+						  </tr>
+						</table>
+					  #end
+					</td>
+				  </tr>
+				</table>
+				#if($isErrores)
+				  <p class="txtNL-008">* Los registros err&oacute;neos se encuentran en el archivo adjunto a este correo.
+			    #end
+				<p>
+				  &nbsp;
+			    </p>
+			  </td>
+		    </tr>
+	      </table>
+		</td>
+	  </tr>
+	</table>
+    <br>
+    <p>
+	  &nbsp;
+    </p>
+  </body>
+</html>

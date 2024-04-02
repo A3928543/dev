@@ -1,0 +1,51 @@
+	<!-- $Id: AsignacionCtasCliente.html,v 1.3 2008/02/22 18:25:29 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Asignaci&oacute;n de Cuentas</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+	<table align= "center" border="0" cellpadding="0" cellspacing="0" width="80%">
+        <tr valign="top">
+            <td width="100%">
+             	<div align="center">
+	            	&nbsp;
+	            </div>     	   
+                 <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+			     <table jwcid="@ActionPortletBorder" title="Asignaci&oacute;n de Cuenta">
+				     <form jwcid="@Form" listener="ognl: listeners.submit" delegate="ognl: beans.delegate" >
+				       		    <fieldset class="normal">
+			           		        <legend class="legend">Selecci&oacute;n de Promotor</legend>
+				                		<table>
+                                            <tr>
+                                            	<td width="1%" class="title" nowrap>Cliente&nbsp;:</td>
+                                                <td align="left">
+                                                	<span jwcid="@DisabledField" value="ognl: nombreCliente" />
+                                                </td>    
+												<td width="1%" class="title" nowrap>No. Cta.&nbsp;:</td>
+                                                <td align="left">
+                                                	<span jwcid="@DisabledField" value="ognl: noCuenta" />
+                                                </td>
+                                                
+                                           	</tr>
+                                           <tr>
+												<td width="1%" class="title" nowrap>Promotor&nbsp;:</td>
+                                                <td align="left" ><select jwcid="promotoresComboBox" /></td>        
+                                            </tr>
+                                        </table>        
+                                </fieldset>
+                                <br />
+				                <div align="center">
+                                      <input jwcid="@ImageSubmit" image="ognl: assets.aceptarButton" onclick="return fnDisableForm(this.form);" />
+                                      &nbsp;&nbsp;&nbsp;
+                                      <a jwcid="@DirectLink" listener='ognl: listeners.cancelar' onClick="fnShowWaitImage();">
+                                         <img jwcid="@Image" image="ognl: assets.cancelarButton" />
+                                     </a>
+                        		<div/>
+			    		</form>
+				   </table>
+   			</td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: AsignaUtilPromocion.page,v 1.10 2008/02/22 18:25:14 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.control.AsignaUtilPromocion">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+    
+    <bean name="intValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="false" />
+        <set-property name="valueType">"int"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <bean name="stringValidator" class="org.apache.tapestry.valid.StringValidator" lifecycle="page">
+        <set-property name="required" expression="false" />
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+    
+    <bean name="doubleValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="minimum" expression="0"/>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+    
+    <bean name="tipoCambioValidatorR" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>        
+    </bean>
+    
+    <bean name="tipoCambioValidatorE" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>	    
+    </bean>        
+
+    <component id="idTextField" type="ValidField">
+        <static-binding name="displayName" value="No. Deal: " />
+        <binding name="validator" expression="beans.intValidator" />
+        <binding name="value" expression="idDeal" />
+    </component>
+    
+    <component id="tipoCambioRTextField" type="ValidField">
+        <static-binding name="displayName" value="tipoCambioMesaRecibimos" />
+        <binding name="validator" expression="beans.tipoCambioValidatorR" />
+        <binding name="value" expression="components.forDetR.value.tmpTcc" />
+    </component> 
+    
+    <component id="tipoCambioETextField" type="ValidField">
+        <static-binding name="displayName" value="tipoCambioMesaEntregamos" />
+        <binding name="validator" expression="beans.tipoCambioValidatorE" />
+        <binding name="value" expression="components.forDetE.value.tmpTcc" />
+    </component>        
+    
+    <component id="noDealTextField" type="ValidField">
+        <static-binding name="displayName" value="Contrato" />
+        <binding name="validator" expression="beans.stringValidator" />
+        <binding name="value" expression="noDeal" />
+    </component>
+    
+    <property-specification name="noDeal" type="java.lang.String" persistent="yes" />
+    <property-specification name="idDeal" type="int" persistent="yes" />
+    <property-specification name="detRecibimos" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+    <property-specification name="detEntregamos" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+    <property-specification name="detalles" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+    <property-specification name="deal" type="com.ixe.ods.sica.model.Deal" persistent="yes" />
+     
+    <context-asset name="searchButton" path="/images/search.gif" />
+    <context-asset name="updateButton" path="/images/actualizar.gif" />
+
+</page-specification>

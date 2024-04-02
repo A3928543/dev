@@ -1,0 +1,100 @@
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <!-- $Id: EdicionPlantillaIntl.html,v 1.12 2010/02/25 17:31:11 ccovian Exp $ -->
+    <title>Cat&aacute;logo de Plantillas Internacionales</title>
+    <link rel="StyleSheet" href="../../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+<table width="100%">
+	<tr>
+		<td valign="top">
+		    <form jwcid="@Form" listener="ognl: listeners.submit" delegate="ognl:beans.delegate">
+                <input jwcid="modoSubmitHidden@Hidden" value="ognl: modoSubmit" type="hidden" />
+                <table jwcid="@Cliente" contratoSica="ognl: plantilla.contratoSica" nombreCliente="ognl: nombreCliente" idPersona="ognl: idPersona" width="100%" />
+				<br />
+				<span jwcid="@contrib:FormConditional" condition='ognl: @com.ixe.ods.sica.pages.deals.plantillas.EdicionPlantillaIntl@PAGINA_MIGRACION_PLANTILLAS.equals(paginaAnterior)'>
+					<table jwcid="@ActionPortletBorder" title="Datos de la Plantilla" width="100%">
+            			<tr class="normal" valign="top">
+                			<td class="normal" align="left">
+		            			<b>Cuenta Cliente: </b><span jwcid="@Insert" value="ognl: mapaEdicionPlantilla.cuentaCliente" raw="yes" /><br>
+			           		</td>
+			      	 		<td class="normal" align="left">
+			       				<b>Banco: </b><span jwcid="@Insert" value="ognl: mapaEdicionPlantilla.banco" raw="yes" /><br>
+		    	       	 	</td>
+		        	   	</tr>
+	        	   			<tr class="normal" valign="top">
+    	 	    	       <td class="normal" align="left">
+	    		   				<b>Clave: </b><span jwcid="@Insert" value="ognl: mapaEdicionPlantilla.clave" raw="yes" /><br>
+           			 		</td>
+	           		 		<td class="normal" align="left">
+	           	 				<b>Pa&iacute;s: </b><span jwcid="@Insert" value="ognl: mapaEdicionPlantilla.pais" raw="yes" /><br>
+		               		</td>
+		            	</tr>
+        	      		<tr class="normal" valign="top">
+            	        	<td class="normal" align="left">
+	           					<b>Plaza: </b><span jwcid="@Insert" value="ognl: mapaEdicionPlantilla.plaza" raw="yes" /><br>
+	           	 			</td>
+	           	 			<td class="normal" align="left">
+	           					<b>Instrucciones Banco: </b><span jwcid="@Insert" value="ognl: mapaEdicionPlantilla.instBanco" raw="yes" /><br>
+		           	 		</td>
+			           	</tr>
+    		      	</table>
+					&nbsp;
+					</span>
+    		        <table jwcid="@ActionPortletBorder" title="Plantilla Internacional" width="100%">
+                    <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" width="100%"/>
+		            <table width="100%">
+                        <span jwcid="@TablaPlantillaInternacional" plantilla="ognl: plantilla" sinConIntermediario="ognl: sinConIntermediario"
+                                   modoCaptura="ognl: false" noCuenta="ognl: plantilla.contratoSica.noCuenta">
+                            <tr class="normal" valign="top">
+                                <td colspan="10">
+                                    <fieldset>
+                                        <legend class="legend">Mnem&oacute;nico:</legend>
+                                        <span jwcid="@RadioGroup" selected="ognl: plantilla.mnemonico">
+                                        <table>
+                                            <tr jwcid="@Foreach" source="ognl: matrizFpls" index="ognl: y" element="tr">
+                                                <span jwcid="@Foreach" source="ognl: matrizFpls[y]"  index="ognl: x">
+                                                    <td jwcid="@Conditional" condition="ognl: matrizFpls[y][x]" element="td" class="normal" nowrap>
+                                                        <input type="radio" jwcid="@Radio" value="ognl: matrizFpls[y][x].mnemonico" onclick="this.form.modoSubmitHidden.value='Smnemonico'; return fnDisableForm(this.form);"/>
+                                                        <span jwcid="@Insert" value="ognl: matrizFpls[y][x].descripcion + ' (' + matrizFpls[y][x].idDivisa + ').- ' + matrizFpls[y][x].mnemonico" />
+                                                    </td>
+                                                </span>
+                                            </tr>
+                                        </table>
+                                        </span>
+                                    </fieldset>
+                                </td>
+                            </tr>
+                        </span>
+		                <tr class="normal" valign="top">
+			            	<span jwcid="@contrib:FormConditional" condition='ognl: conIntermediario'>
+								<td class="title" align="right" nowrap>Instr. Intermediario:</td>
+			                    <td colspan="4">
+				                    <input jwcid="instruccionesIntermediarioTextField" />
+			                	</td>
+			            	</span>
+		                	<td class="title" align="right" nowrap>Instr. Bco. Benef.:</td>
+		                    <td colspan="4">
+			                    <input jwcid="instruccionesPagadorTextField" />
+		                	</td>
+		                </tr>
+                    </table>
+		            <br />
+		            <div align="center">
+                        <img jwcid="@BotonConsBancos" />
+                        <a href="#" jwcid="@DirectLink" listener="ognl: listeners.insertarBanco" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bNuevaInstitucion" src="../../../../images/nueva_institucion.gif" border="0" alt="Nueva Institucion" /></a>
+                        <input jwcid="@ImageSubmit" image="ognl: assets.acceptButton" onclick="this.form.modoSubmitHidden.value='Sactualizar'; return fnDisableForm(this.form);"/>
+                		<span jwcid="@contrib:FormConditional" condition='ognl: !@com.ixe.ods.sica.pages.deals.plantillas.EdicionPlantillaIntl@PAGINA_MIGRACION_PLANTILLAS.equals(paginaAnterior)'>
+							<a jwcid="@PageLink" page="ConsultaPlantillasIntl" onClick="fnShowWaitImage();"><img jwcid="@Image" src="../../../../images/back.gif" image="ognl: assets.regresarButton" alt="Regresar" /></a>
+		       			</span>
+		       			<span jwcid="@contrib:FormConditional" condition='ognl: @com.ixe.ods.sica.pages.deals.plantillas.EdicionPlantillaIntl@PAGINA_MIGRACION_PLANTILLAS.equals(paginaAnterior)'>
+							<a jwcid="@DirectLink" listener="ognl: listeners.cancelarEdicion" onClick="fnShowWaitImage();"><img jwcid="@Image" src="../../../../images/back.gif" image="ognl: assets.regresarButton" alt="Regresar" /></a>
+		       			</span>
+		           </div>
+		        </table>
+		    </form>
+		</td>
+    </tr>
+</table>
+</body>
+</html>

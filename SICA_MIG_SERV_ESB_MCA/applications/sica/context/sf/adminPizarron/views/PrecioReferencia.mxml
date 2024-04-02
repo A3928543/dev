@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.macromedia.com/2003/mxml">
+	<mx:ViewStack id="vsPrecioReferencia" width="100%">
+		  <mx:Form id="midSpot">
+			<mx:FormItem label="Slack para cambio:">
+				<mx:TextInput id="slackMidSpot" width="50"/>
+			</mx:FormItem>
+			<mx:FormItem label="Precio de Venta:">
+				<mx:Label id="precioVentaMidSpot" width="50" text="10.34"/>
+			</mx:FormItem>
+			<mx:FormItem label="Precio de Compra:">
+				<mx:Label id="precioCompraMidSpot" width="50" text="10.65"/>
+			</mx:FormItem>
+		  </mx:Form>
+		  <mx:Form id="manual">
+			<mx:FormItem label="Precio Spot:">
+				<mx:TextInput id="precioSpot" width="50"/>
+			</mx:FormItem>
+		  </mx:Form>		
+		  <mx:Form id="auto">
+			<mx:FormItem label="Slack para cambio:">
+				<mx:TextInput id="slackAuto" width="50"/>
+			</mx:FormItem>
+			<mx:FormItem label="Precio de Venta:">
+				<mx:Label id="precioVentaAuto" width="50" text="10.34"/>
+			</mx:FormItem>
+			<mx:FormItem label="Precio de Compra:">
+				<mx:Label id="precioCompraAuto" width="50" text="10.65"/>
+			</mx:FormItem>
+		</mx:Form>		
+	</mx:ViewStack>
+	<mx:ControlBar>
+		<mx:VBox>
+			<mx:HBox>
+				<mx:RadioButtonGroup id="rgMetodoActualizacion" />
+				<mx:RadioButton click="vsPrecioReferencia.selectedChild = midSpot" label="Mid-spot" groupName="rgMetodoActualizacion" />
+				<mx:RadioButton click="vsPrecioReferencia.selectedChild = auto" label="Autom&#225;tica" groupName="rgMetodoActualizacion" />
+				<mx:RadioButton click="vsPrecioReferencia.selectedChild = manual" label="Manual" groupName="rgMetodoActualizacion" />
+			</mx:HBox>
+			<mx:HBox>
+				<mx:Button label="Refrescar" />
+				<mx:Button label="Guardar" />
+				<mx:Button label="Limpiar" />
+			</mx:HBox>
+		</mx:VBox>
+	</mx:ControlBar>
+</mx:Panel>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ReportesDiariosFiltrados.page,v 1.1.2.2 2010/10/25 18:07:44 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.reportes.ReportesDiariosFiltrados">
+
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate"/>
+    
+    <bean name="doubleValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="minimum" expression="0" />
+    </bean>
+    
+    <property-specification name="canalesList" type="java.util.List" persistent="yes" />
+    <property-specification name="canalSeleccionado" type="com.ixe.ods.sica.model.Canal" />    
+    <property-specification name="seleccionaCanal" type="boolean[]" persistent="yes" />
+    <property-specification name="canalesSeleccionados" type="java.util.List" persistent="yes" />
+
+    <property-specification name="promotoresList" type="java.util.List" persistent="yes" />
+    <property-specification name="promotorSeleccionado" type="com.ixe.ods.bup.model.EmpleadoIxe" />    
+    <property-specification name="seleccionaPromotor" type="boolean[]" persistent="yes" />
+    <property-specification name="PromotoresSeleccionados" type="java.util.List" persistent="yes" />
+    
+    <property-specification name="divisasFrecuentesList" type="java.util.List" persistent="yes" />
+    <property-specification name="divisaSeleccionada" type="com.ixe.ods.sica.model.Divisa" />    
+    <property-specification name="seleccionaDivisa" type="boolean[]" persistent="yes" />
+    <property-specification name="divisasSeleccionadas" type="java.util.List" persistent="yes" />
+    
+    <property-specification name="tipoOperacionesList" type="java.util.List" persistent="yes" />
+    <property-specification name="operacionSeleccionada" type="java.io.Serializable" />    
+    <property-specification name="seleccionaOperacion" type="boolean[]" persistent="yes" />
+    <property-specification name="operacionesSeleccionadas" type="java.util.List" persistent="yes" />
+    
+    <property-specification name="excepcionesList" type="java.util.List" persistent="yes" />
+    <property-specification name="excepcionSeleccionada" type="java.io.Serializable" />    
+    <property-specification name="seleccionaExcepcion" type="boolean[]" persistent="yes" />
+    <property-specification name="excepcionesSeleccionadas" type="java.util.List" persistent="yes" />
+    
+    <property-specification name="zonasList" type="java.util.List" persistent="yes" />
+    <property-specification name="zonaSeleccionada" type="java.io.Serializable" />    
+    <property-specification name="seleccionaZona" type="boolean[]" persistent="yes" />
+    <property-specification name="zonasSeleccionadas" type="java.util.List" persistent="yes" />
+    
+    <property-specification name="currentIndex" type="int" />
+
+    <component id="montoTextFieldMinimo" type="ValidField">
+        <static-binding name="displayName" value="Monto Minimo" />
+        <static-binding name="size" value="20" />
+        <binding name="validator" expression="beans.doubleValidator" />
+        <binding name="value" expression="montoMinimo" />
+    </component>
+     
+    <component id="montoTextFieldMaximo" type="ValidField">
+        <static-binding name="displayName" value="Monto Maximo" />
+        <static-binding name="size" value="20" />
+        <binding name="validator" expression="beans.doubleValidator" />
+        <binding name="value" expression="montoMaximo" />
+    </component>
+     
+    <property-specification name="contratosSica" type="java.lang.String" persistent="yes"/>
+    <property-specification name="fechaInicial" type="java.util.Date" persistent="yes" />
+    <property-specification name="fechaFinal" type="java.util.Date" persistent="yes" />
+    <property-specification name="montoMinimo" type="double" persistent="yes" />
+    <property-specification name="montoMaximo" type="double" persistent="yes" />
+    
+    <property-specification name="filtrosMinimizados" type="boolean" persistent="yes"/>
+    
+    <property-specification name="detallesTable" type="java.util.List" persistent="yes" />
+    
+    <context-asset name="searchButton" path="/images/search.gif" />
+    <context-asset name="cleanButton" path="/images/clean.gif" />
+	<context-asset name="verXlsButton" path="/images/ver_excel.gif" />
+	<context-asset name="verSsvButton" path="/images/ver_ssv.gif" />
+</page-specification>

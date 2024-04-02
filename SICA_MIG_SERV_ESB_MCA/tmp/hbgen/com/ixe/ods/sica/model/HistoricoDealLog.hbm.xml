@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.HistoricoDealLog"
+        table="SC_H_DEAL_LOG"
+        proxy="com.ixe.ods.sica.model.HistoricoDealLog"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idDealLog"
+            column="ID_DEAL_LOG"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-HistoricoDealLog.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="fechaCambio"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_CAMBIO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="folioDetalle"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="FOLIO_DETALLE"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="idDealPosicion"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DEAL_POSICION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="nombreCampo"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NOMBRE_CAMPO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="valorPrevio"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="VALOR_PREVIO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="valorNuevo"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="VALOR_NUEVO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="deal"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DEAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-HistoricoDealLog.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

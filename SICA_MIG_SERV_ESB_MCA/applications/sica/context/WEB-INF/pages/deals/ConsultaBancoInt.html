@@ -1,0 +1,36 @@
+<!-- $Id: ConsultaBancoInt.html,v 1.9 2008/02/22 18:25:08 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Consulta de Bancos Internacionales</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder" menuDisabled="ognl: menuDisabled">
+    <form jwcid="@Form" listener="ognl: listeners.fetch" delegate="ognl: beans.delegate" onSubmit="return fnDisableForm(this);">
+        <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+        <table jwcid="@ActionPortletBorder" title="ognl: tituloActionPB">
+            <div align="center">
+            	<font class="normal"><b><u>P</u>a&iacute;s:</b></font><select jwcid="paisesComboBox" accesskey="P" />&nbsp;
+                <font class="normal"><b><u>N</u>ombre:</b></font> <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" accesskey="N" value="ognl: nombreBanco" size="60" /><br />
+                <br />
+                <input jwcid="@ImageSubmit" image="ognl: assets.searchButton" accesskey="B" onclick="return fnDisableForm(this.form);"/>
+            </div>
+        </table>
+    </form>
+    <span jwcid="@Conditional" condition="ognl: bancos.size() &gt; 0">
+        <table jwcid="@ActionPortletBorder" title="Bancos Internacionales">
+            <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "Nombre", "Clave Pa&iacute;s", "Ciudad", "Clave Ruteo Pa&iacute;s", "N&uacute;mero Ruteo Pa&iacute;s", "Clave Swift", "Clave Chips", "Status"}' columnCount="12" width="100%">
+                <tr jwcid="forDeals@Foreach" source="ognl: bancos" element="tr" class="ognl: beans.evenOdd.next">
+                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value[0]" /></td>
+                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value[1]" /></td>
+                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value[2]" /></td>
+                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value[3]" /></td>
+                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value[4]" /></td>
+                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value[5]" /></td>
+                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value[6]" /></td>
+                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value[7]" /></td>
+                </tr>
+            </table>
+        </table>
+    </span>
+</body>
+</html>

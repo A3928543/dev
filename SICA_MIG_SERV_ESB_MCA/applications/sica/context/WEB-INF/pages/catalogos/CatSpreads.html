@@ -1,0 +1,55 @@
+<!-- $Id: CatSpreads.html,v 1.9 2008/02/22 18:25:17 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Encabezado</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+ 	<span jwcid="@bup:ShowError" width="100%" delegate="ognl:beans.delegate"/>
+    <br />
+    <table jwcid="@ActionPortletBorder" title="Spreads">
+    	<form jwcid="@Form" listener="ognl: listeners.listarSpreads" delegate="ognl:beans.delegate">
+
+            <fieldset>
+                <legend class="legend">Criterios de consulta</legend>
+                <table width="100%">
+                	<tr class="title">
+						<td nowrap>Tipo Pizarr&oacute;n:</td>
+	                    <td><select jwcid="tiposPizarronComboBox" /></td>
+                        <td width="10%">Divisa:</td>
+                        <td><select jwcid="divisasComboBox" /></td>
+	                </tr>
+        		</table>
+	        </fieldset>
+        </form>
+        <span jwcid="@Conditional" condition="ognl: spreads.size() &gt; 0">
+	            <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "Producto", "Compra Cash", "Venta Cash", "Compra Tom", "Venta Tom", "Compra Spot", "Venta Spot", "Compra 72Hr", "Venta 72Hr", "Compra VFut", "Venta VFut", "&Uacute;ltima Modificaci&oacute;n", "&nbsp;" }' columnCount="12" width="100%">
+	                <tr jwcid="forDeals@Foreach" source="ognl: spreads" element="tr" class="ognl: beans.evenOdd.next">
+	                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value.claveFormaLiquidacion" /></td>
+	                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value.cpaVta.compraCash" format="ognl: currencyFormatSix" /></td>
+	                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value.cpaVta.ventaCash" format="ognl: currencyFormatSix" /></td>
+	                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value.cpaVta.compraTom" format="ognl: currencyFormatSix" /></td>
+	                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value.cpaVta.ventaTom" format="ognl: currencyFormatSix" /></td>
+	                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value.cpaVta.compraSpot" format="ognl: currencyFormatSix" /></td>
+	                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value.cpaVta.ventaSpot" format="ognl: currencyFormatSix" /></td>
+                        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value.cpaVta.compra72Hr" format="ognl: currencyFormatSix" /></td>
+                        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value.cpaVta.venta72Hr" format="ognl: currencyFormatSix" /></td>
+                        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value.cpaVta.compraVFut" format="ognl: currencyFormatSix" /></td>
+                        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value.cpaVta.ventaVFut" format="ognl: currencyFormatSix" /></td>
+	                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value.ultimaModificacion" format="ognl: dateFormat"/></td>
+	                	<td align="center"><a jwcid="@DirectLink" listener="ognl:listeners.eliminar" parameters="ognl:components.forDeals.value.idSpread" onClick="return confirm('\u00bfDesea eliminar el registro?');"> Eliminar </a></td>
+	                </tr>
+                </table>
+
+		</span>
+        <span jwcid="@Conditional" condition="ognl: tipoPizarron != null && divisaSeleccionada != null && tipoPizarron.idTipoPizarron.intValue() > 0" >
+			<form jwcid="@Form" listener="ognl: listeners.insertar">
+				<div align="center">
+	        		<input jwcid="@ImageSubmit" image="ognl: assets.insertButton" onclick="return fnDisableForm(this.form);"/>
+			    </div>
+			</form>
+		</span>
+    </table>
+</body>
+</html>

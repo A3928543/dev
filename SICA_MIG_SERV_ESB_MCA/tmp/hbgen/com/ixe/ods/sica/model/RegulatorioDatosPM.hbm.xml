@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.RegulatorioDatosPM"
+        table="SC_REG_PM"
+        proxy="com.ixe.ods.sica.model.RegulatorioDatosPM"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+    >
+
+        <id
+            name="id"
+            column="ID_REG_PM"
+            type="java.lang.Integer"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_REG_PM_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-RegulatorioDatosPM.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="idPersona"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_PERSONA"
+        />
+
+        <property
+            name="contratoSica"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NO_CUENTA"
+        />
+
+        <property
+            name="claveBanxico"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_BANXICO"
+        />
+
+        <property
+            name="nombreContraparte"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NOMBRE_CONTRAPARTE"
+        />
+
+        <many-to-one
+            name="sociedadMercantil"
+            class="com.ixe.ods.sica.model.RegulatorioSociedadMercantil"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_SOC_MERCANTIL"
+            unique="false"
+        />
+
+        <many-to-one
+            name="tipoIdentificador"
+            class="com.ixe.ods.sica.model.RegulatorioTipoIdentificador"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_IDENT_CONTRAPARTE"
+            unique="false"
+        />
+
+        <property
+            name="claveIdentificadorContraparte"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_IDENT_CONTRAPARTE"
+        />
+
+        <many-to-one
+            name="actividadEconomica"
+            class="com.ixe.ods.sica.model.RegulatorioActividadEconomica"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ACTIVIDAD_ECONOMICA"
+            unique="false"
+        />
+
+        <property
+            name="claveLei"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_LEI"
+        />
+
+        <many-to-one
+            name="sectorIndustrial"
+            class="com.ixe.ods.sica.model.RegulatorioSectorIndustrial"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="SECTOR_INDUSTRIAL"
+            unique="false"
+        />
+
+        <many-to-one
+            name="paisResidenciaContraparte"
+            class="com.ixe.ods.sica.model.RegulatorioPais"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="PAIS_CONTRAPARTE"
+            unique="false"
+        />
+
+        <many-to-one
+            name="paisControlContraparte"
+            class="com.ixe.ods.sica.model.RegulatorioPais"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="PAIS_CONTROL_CONTRAPARTE"
+            unique="false"
+        />
+
+        <property
+            name="claveLeiMatrizDirecta"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="LEI_MATRIZ_DIRECTA"
+        />
+
+        <property
+            name="claveLeiMatrizUltimaInstancia"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="LEI_ULT_MATRIZ"
+        />
+
+        <property
+            name="fechaContraparte"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_CONTRAPARTE"
+            unique="false"
+        />
+
+        <property
+            name="fechaSistema"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_ALTA"
+            unique="false"
+        />
+
+        <property
+            name="idPersonaUltimaMod"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="USUARIO_ALTA"
+        />
+
+        <property
+            name="perfilMdd"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="PERFIL_MDD"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-RegulatorioDatosPM.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

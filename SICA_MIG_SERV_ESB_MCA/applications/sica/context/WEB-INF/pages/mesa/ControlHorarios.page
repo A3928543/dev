@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ControlHorarios.page,v 1.9 2008/02/22 18:25:31 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+  <page-specification class="com.ixe.ods.sica.pages.mesa.ControlHorarios">
+	   <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+	   <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+    	<bean name="hourValidator" class="org.apache.tapestry.valid.PatternValidator" lifecycle="render">
+	        <set-property name="required" expression="true" />
+	        <set-property name="patternString">"(0[0-9]|1[0-9]|2[0123])\\:[0-5]\\d{1}"</set-property>
+    	</bean>
+
+	  <component id="horaTextField" type="ValidField">
+		<static-binding name="displayName" value="Hora Fin" />
+		<static-binding name="size" value="7" />
+		<binding name="validator" expression="beans.hourValidator" />
+		<binding name="value" expression="components.forEstado.value.horaFin" />
+	  </component>
+
+	  <property-specification name="estados" type="java.util.List" persistent="yes"/>
+      <property-specification name="cierre" type="boolean" persistent="yes"/>
+      <property-specification name="modoRefresh" type="int" />
+	  <context-asset name="saveButton" path="/images/save.gif" />
+      <context-asset name="refreshButton" path="/images/refresh.gif" />
+	  <context-asset name="manualButton" path="/images/manual.gif" />
+  </page-specification>
+
+

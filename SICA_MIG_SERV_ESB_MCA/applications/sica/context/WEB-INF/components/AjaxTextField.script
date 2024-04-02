@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: AjaxTextField.script,v 1.9 2008/02/22 18:25:07 ccovian Exp $ -->
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+
+<script>
+
+    <input-symbol key="ajaxTextField" class="com.ixe.ods.sica.components.AjaxTextField" required="yes" />
+
+    <set key="name" expression="ajaxTextField.name"/>
+
+    <let key="baseName">
+        document.${ajaxTextField.form.name}.${name}
+    </let>
+
+    <let key="field0">
+        ${baseName}$g0
+    </let>
+
+    <body>
+        <unique>
+        <![CDATA[
+
+            function createRequestObject() {
+                var ro;
+                var browser = navigator.appName;
+                if (browser == "Microsoft Internet Explorer") {
+                    ro = new ActiveXObject("Microsoft.XMLHTTP");
+                } else {
+                    ro = new XMLHttpRequest();
+                }
+                return ro;
+            }
+
+            var http = createRequestObject();
+
+            function ocultarSeccion(seccion) {
+                document.getElementById(seccion).style.visibility = 'hidden';
+                window.clearTimeout('ocSecTimeout');
+            }
+
+        ]]>
+        </unique>
+        <![CDATA[
+
+            function onkeyup_aj_field_${name}(field) {
+                sndReq_${name}(field.value);
+                document.getElementById('salida_${name}').style.visibility = 'visible';
+            }
+
+            function sndReq_${name}(action) {
+                http.open('get', '${baseUrl}' + action);
+                http.onreadystatechange = handleResponse_${name};
+                http.send(null);
+            }
+
+            function handleResponse_${name}() {
+                if(http.readyState == 4) {
+                    var response = http.responseText;
+                    var renglones = new Array();
+                    var texto = '';
+                    if (response.indexOf('@') >= 0) {
+                        renglones = response.split('@');
+                        for (i = 0; i < renglones.length; i++) {
+                            var datos = new Array();
+                            if (renglones[i].indexOf('|') >= 0) {
+                                datos = renglones[i].split('|');
+                                texto = texto.concat('<a href=\"#\" onclick=\"${field0}.value = \'').
+                                    concat(datos[0]).concat('\'; document.getElementById(\'salida_${name}\').style.visibility = \'hidden\'; return false;\">').
+                                    concat(datos[0]).concat('</a><br />');
+                            }
+                        }
+                    }
+                    document.getElementById('salida_${name}').innerHTML = texto;
+                }
+            }
+        ]]>
+    </body>
+
+    <initialization>
+        ${field0}.onkeyup = function() {
+            onkeyup_aj_field_${name}(${field0});
+        }
+
+        ${field0}.onblur = function() {
+            ocSecTimeout = window.setTimeout('ocultarSeccion(\'salida_${name}\')', 250);
+        }
+    </initialization>
+
+</script>

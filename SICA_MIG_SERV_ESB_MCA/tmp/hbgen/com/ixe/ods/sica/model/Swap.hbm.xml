@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.Swap"
+        table="SC_SWAP"
+        proxy="com.ixe.ods.sica.model.Swap"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idFolioSwap"
+            column="ID_FOLIO_SWAP"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Swap.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="compra"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fechaOperacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_OPERACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="folderk"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="FOLDERK"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="folioSwapInicio"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="FOLIO_SWAP_INICIO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="idConf"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_CONF"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="monto"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="montoAsignado"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO_ASIGNADO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="status"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATUS"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoSwap"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_SWAP"
+            not-null="true"
+            unique="false"
+        />
+
+        <many-to-one
+            name="contratoSica"
+            class="com.ixe.ods.bup.model.ContratoSica"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="NO_CUENTA"
+            unique="false"
+        />
+
+        <many-to-one
+            name="divisa"
+            class="com.ixe.ods.sica.model.Divisa"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIVISA"
+            unique="false"
+        />
+
+        <bag
+            name="deals"
+            lazy="true"
+            inverse="true"
+            cascade="none"
+            order-by="FECHA_CAPTURA"
+        >
+
+              <key
+                  column="ID_FOLIO_SWAP"
+              >
+              </key>
+
+              <one-to-many
+                  class="com.ixe.ods.sica.model.Deal"
+              />
+
+        </bag>
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Swap.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findSwapsCierreDelDia"><![CDATA[
+            FROM Swap AS sw WHERE sw.status != 'CO' AND sw.status != 'CA'
+        ]]></query>
+
+</hibernate-mapping>

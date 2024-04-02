@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: MigracionPlantillas.page,v 1.9 2008/02/22 18:25:29 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.mesa.MigracionPlantillas">
+
+	<bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate"/>
+   	<bean name="stringValidator" class="org.apache.tapestry.valid.StringValidator" lifecycle="page">
+        <set-property name="required" expression="false" />
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+    
+    <component id="formasPagoLiqComboBox" type="PropertySelection">
+        <binding name="model" expression="new com.ixe.ods.sica.components.FormasPagoLiqSelectionModel(formasPagoLiq)" />
+        <binding name="value" expression="mnemonico" />
+    </component>
+  
+  	<component id="formasPagoLiqCuentaIxeComboBox" type="PropertySelection">
+   	    <binding name="model" expression="new com.ixe.ods.sica.components.FormasPagoLiqSelectionModel(formasPagoLiqCuentaIxe)" />
+   	    <binding name="value" expression="formaPagoLiqCuentaIxe.mnemonico" />
+    </component>
+  
+  	<component id="formasPagoLiqLinBanComboBox" type="PropertySelection">
+   	    <binding name="model" expression="new com.ixe.ods.sica.components.FormasPagoLiqSelectionModel(formasPagoLiqLinBan)" />
+   	    <binding name="value" expression="formaPagoLiqLinBan.mnemonico" />
+    </component>
+
+    <component id="tiposCuentaBancoIntermComboBox" type="PropertySelection">
+	    <binding name="model" expression='new org.apache.tapestry.form.StringPropertySelectionModel(@com.ixe.ods.sica.model.PlantillaIntl@TIPOS_CUENTA_BANCO)' />
+	    <binding name="value" expression="tipoCuentaBancoInterm" />
+	</component>
+    
+   	<component id="divisaComboBox" type="PropertySelection">
+        <binding name="model" expression='divisa' />
+        <binding name="value" expression="divisaSeleccionada" />
+    </component>  
+   
+   <component id="noContratoTextField" type="ValidField">
+        <static-binding name="displayName" value="Contrato" />
+        <binding name="validator" expression="beans.stringValidator" />
+        <binding name="value" expression="noContrato" />
+    </component>
+   
+	<property-specification name="registros" type="java.util.List" persistent="yes" />
+    <property-specification name="datosPlantilla" type="java.util.List" persistent="yes" />
+    <property-specification name="listaPlantillas" type="java.util.List" persistent="yes" />
+    <property-specification name="formasPagoLiq" type="java.util.List" persistent="yes" />
+    <property-specification name="formasPagoLiqCuentaIxe" type="java.util.List" persistent="yes" />
+    <property-specification name="formasPagoLiqLinBan" type="java.util.List" persistent="yes" />
+    <property-specification name="dataMigracionPlantillas" type="java.sql.ResultSet" persistent="yes" />
+    <property-specification name="plantillaCuenta" type="java.sql.ResultSet" persistent="yes" />
+    <property-specification name="cuentaSeleccionada" type="java.lang.String" />
+    <property-specification name="divisaSeleccionada" type="java.lang.String" persistent="yes"/>
+	<property-specification name="nombreNuevoBeneficiario" type="java.lang.String" persistent="yes"/>
+	<property-specification name="fplCuentaIxeSeleccionada" type="java.lang.String" persistent="yes"/>
+    <property-specification name="noContrato" type="java.lang.String" persistent="yes" />
+    <property-specification name="mnemonico" type="java.lang.String" persistent="yes"/>
+    <property-specification name="tipoCuentaBancoInterm" type="java.lang.String" persistent="yes"/>
+   	<property-specification name="paginaAnterior" type="java.lang.String" initial-value = "new java.lang.String()" persistent="yes"/>
+	<property-specification name="mapaDatosCuentaSeleccioanda" type="java.util.HashMap" persistent="yes"/>
+	<property-specification name="mapaEdicionMnemonico" type="java.util.HashMap" persistent="yes" />
+	<property-specification name="edicionMnemonico" type="boolean" persistent="yes" />
+   	<property-specification name="busquedaMinimizado" type="boolean" persistent="yes" initial-value="false" />
+   	<property-specification name="mostrarBusquedaYResultados" type="boolean" persistent="yes" initial-value="true" />
+    <property-specification name="criterioSeleccionado" type="int" persistent="yes"/>
+    <property-specification name="indicePlantilla" type="int" />
+    <property-specification name="formaPagoLiqLinBan" type="com.ixe.treasury.dom.common.FormaPagoLiq" persistent="yes" />
+    <property-specification name="formaPagoLiqCuentaIxe" type="com.ixe.treasury.dom.common.FormaPagoLiq" persistent="yes" />
+	<property-specification name="nuevoBeneficiario" type="com.ixe.ods.bup.model.Persona" persistent="yes"/>
+    <property-specification name="idPersona" type="java.lang.Integer" persistent="yes"/>
+    <property-specification name="level" type="int" />
+
+    <context-asset name="acceptButton" path="/images/save.gif" />
+    <context-asset name="cancelButton" path="/images/cancel.gif" />
+    <context-asset name="searchButton" path="/images/search.gif" />
+	<context-asset name="searchBenefButton" path="/images/buscar_benef.gif" />
+	<context-asset name="assignButton" path="/images/assign.gif" />
+    
+</page-specification>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ReporteDealsPagoAnt.page,v 1.9 2008/02/22 18:25:41 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.reportes.ReporteDealsPagoAnt">
+
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+    
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate"/>    
+
+    <component id="printLink" type="ServiceLink">
+    	<static-binding name="service" value="jasper" />
+    	<binding name="parameters" expression='new java.lang.String[] { "WEB-INF/jasper/ReporteDealsPagoAnt.jasper", "ReporteDealsPagoAnt", "0" }' />
+    </component>
+    
+    <component id="ordenComboBox" type="PropertySelection">
+        <binding name="model" expression="ordenadoPor" />
+        <binding name="value" expression="ordenSeleccionado" />
+    </component>
+
+    <property-specification name="registerDate" type="java.util.Date" initial-value="null" persistent="yes" />
+    <property-specification name="gc" type="java.util.Date" persistent="yes"/>
+    <property-specification name="detalles" type="java.util.List" initial-value="new java.util.ArrayList()" persistent="yes" />
+    <property-specification name="detallesTable" type="java.util.List" initial-value="new java.util.ArrayList()" persistent="yes" />
+    <property-specification name="ordenSeleccionado" type="java.lang.String" persistent="yes" />
+
+    <context-asset name="searchButton" path="/images/search.gif" />
+    <context-asset name="verPdfButton" path="/images/ver_pdf.gif" />
+    <context-asset name="verXlsButton" path="/images/ver_excel.gif" />
+
+</page-specification>

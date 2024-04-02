@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--$Id: TablaPlantillaInternacional.jwc,v 1.17 2010/02/25 17:28:34 ccovian Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+        "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+        "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<component-specification class="com.ixe.ods.sica.components.TablaPlantillaInternacional"
+                         allow-body="yes">
+
+    <parameter name="plantilla" type="com.ixe.ods.sica.model.IPlantillaIntl" direction="in" required="yes"/>
+    <parameter name="modoCaptura" type="boolean" direction="auto" required="yes"/>
+    <parameter name="noCuenta" type="java.lang.String" direction="in" required="yes"/>
+    <parameter name="sinConIntermediario" type="java.lang.String" direction="auto" required="yes"/>
+
+    <bean name="stringValidator" class="org.apache.tapestry.valid.StringValidator" lifecycle="page">
+        <set-property name="required" expression="true"/>
+    </bean>
+
+    <component id="noCuentaBeneficiarioTextField" type="ValidField">
+        <static-binding name="displayName" value="Cta. Beneficiario"/>
+        <static-binding name="maxlength" value="34"/>
+        <static-binding name="size" value="34"/>
+        <static-binding name="class" value="uppercase"/>
+        <binding name="validator" expression="beans.stringValidator"/>
+        <binding name="value" expression="plantilla.noCuentaBeneficiario"/>
+    </component>
+
+    <component id="beneficiarioComboBox" type="PropertySelection">
+        <binding name="model" expression="beneficiarios" />
+        <binding name="value" expression="plantilla.beneficiario"/>
+    </component>
+
+    <component id="tiposCuentaBancoIntermComboBox" type="PropertySelection">
+        <binding name="model" expression="tiposCuentaBancoIntermComboBox"/>
+        <binding name="value" expression="plantilla.tipoCuentaBancoInterm"/>
+        <static-binding name="onChange"
+                        value="this.form.modoSubmitHidden.value='StipoCuentaBancoInterm'; return fnDisableForm(this.form);"/>
+    </component>
+
+    <component id="tiposCuentaBancoComboBox" type="PropertySelection">
+        <binding name="model" expression="conIntermediario ? tiposCuentaBancoIntermComboBoxConDD : tiposCuentaBancoIntermComboBox" />
+        <binding name="value" expression="plantilla.tipoCuentaBanco"/>
+        <binding name="onChange"
+                 expression="'this.form.modoSubmitHidden.value=\'StipoCuentaBanco\'; return fnDisableForm(this.form);'"/>
+    </component>
+
+    <component id="intermediarioComboBox" type="PropertySelection">
+        <binding name="model"
+                 expression="new org.apache.tapestry.form.StringPropertySelectionModel(new java.lang.String[] { @com.ixe.ods.sica.components.TablaPlantillaInternacional@SIN_INTERMEDIARIO, @com.ixe.ods.sica.components.TablaPlantillaInternacional@CON_INTERMEDIARIO })"/>
+        <binding name="value" expression="sinConIntermediario"/>
+        <static-binding name="onChange"
+                        value="if (this.form.tiposCuentaBancoComboBox.selectedIndex == 3) { this.form.tiposCuentaBancoComboBox.selectedIndex = 0; } this.form.modoSubmitHidden.value='SconSinIntermediario'; return fnDisableForm(this.form);"/>
+    </component>
+
+    <component id="claveBancoTextField" type="TextField">
+        <static-binding name="displayName" value="Cve. Bco. Beneficiario"/>
+        <static-binding name="maxlength" value="30"/>
+        <static-binding name="size" value="30"/>
+        <static-binding name="class" value="uppercase"/>
+        <binding name="validator" expression="beans.stringValidator"/>
+        <binding name="value" expression="plantilla.claveBanco"/>
+    </component>
+
+    <component id="claveBancoIntermTextField" type="TextField">
+        <static-binding name="displayName" value="Cve. Bco. Interm."/>
+        <static-binding name="maxlength" value="30"/>
+        <static-binding name="size" value="30"/>
+        <static-binding name="class" value="uppercase"/>
+        <binding name="validator" expression="beans.stringValidator"/>
+        <binding name="value" expression="plantilla.claveBancoInterm"/>
+    </component>
+
+    <context-asset name="bEncontrar" path="/images/encontrar.gif"/>
+
+</component-specification>

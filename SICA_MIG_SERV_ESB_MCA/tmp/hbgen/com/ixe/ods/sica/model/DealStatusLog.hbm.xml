@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.DealStatusLog"
+        table="SC_DEAL_STATUS_LOG"
+        proxy="com.ixe.ods.sica.model.DealStatusLog"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idDealStatusLog"
+            column="ID_DEAL_STATUS_LOG"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_DEAL_STATUS_LOG_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-DealStatusLog.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <component
+            name="cambStatus"
+            class="com.ixe.ods.sica.model.CambStatus"
+        >
+        <property
+            name="fechaCambio"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_CAMBIO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="statusAnterior"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATUS_ANTERIOR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="statusNuevo"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATUS_NUEVO"
+            not-null="true"
+            unique="false"
+        />
+
+        </component>
+
+        <many-to-one
+            name="deal"
+            class="com.ixe.ods.sica.model.Deal"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DEAL"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-DealStatusLog.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findStatusLogByDeal"><![CDATA[
+            FROM DealStatusLog AS d WHERE d.deal.idDeal = ? 
+        ]]></query>
+        <query name="findStatusCanceladoByFecha"><![CDATA[
+            FROM DealStatusLog AS ds INNER JOIN FETCH ds.deal d WHERE ds.cambStatus.statusNuevo = 'CA' AND ds.cambStatus.fechaCambio BETWEEN ? AND ? 
+        ]]></query>
+
+</hibernate-mapping>

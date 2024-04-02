@@ -1,0 +1,48 @@
+<!-- $Id: CapturaTransferenciaIntl.html,v 1.11.54.1.12.1 2017/10/16 17:43:13 mejiar Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Captura de Transferencia internacional</title>
+    <link rel="StyleSheet" href="../../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="tb@Block"><span jwcid="@EventosDeal" deal="ognl: dealDetalle.deal" /></span>
+    <span jwcid="tbInt@Block"><span jwcid="@EventosDealInterbancario" deal="ognl: dealDetalle.deal" /></span>
+    <table jwcid="@ActionPortletBorder" title="Deal" titleBlock="ognl: dealDetalle.deal.interbancario ? components.tbInt : components.tb">
+        <span jwcid="@EncabezadoDeal" deal="ognl: dealDetalle.deal" disabled="yes" />
+        <form jwcid="@Form" listener="ognl: listeners.submit" delegate="ognl: beans.delegate">
+            <input jwcid="modoSubmitHidden@Hidden" value="ognl: modoSubmit" type="hidden" />
+            <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" width="100%"/>
+            <table jwcid="@DetailFieldset" dealDetalle="ognl: dealDetalle">
+                <tr jwcid="@TablaPlantillaInternacional" plantilla="ognl: dealDetalle.plantilla" sinConIntermediario="ognl: sinConIntermediario"
+                        modoCaptura="ognl: modoCaptura" noCuenta="ognl: dealDetalle.deal.contratoSica.noCuenta" />
+                <tr class="normal" valign="top">
+	            	 <span jwcid="@RenderBlock" block="ognl: components.instrBenBlock" />
+                        <td colspan="5">&nbsp;</td>
+                </tr>
+            </table>
+            <br />
+            <div align="center">
+                <img jwcid="@BotonConsBancos" /> 
+                <a href="#" jwcid="@DirectLink" listener="ognl: listeners.insertarBanco" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bNuevaInstitucion" src="../../../../images/nueva_institucion.gif" border="0" alt="Nueva Institucion" /></a>
+                <span jwcid="@Conditional" condition="ognl: !modoCaptura">
+                    <a jwcid="@DirectLink" listener="ognl: listeners.agregaBeneficiario" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bNuevoBeneficiario" /></a>
+                </span>
+                <input type="image" src="../../../../images/save.gif" jwcid="@ImageSubmit" image="ognl: assets.bActualizar" onclick="this.form.modoSubmitHidden.value='Sactualizar'; return fnDisableForm(this.form);" />
+                <input type="image" src="../../../../images/back.gif" jwcid="@RegresarCapturaDeal" interbancario="ognl: dealDetalle.deal.interbancario"  idDeal="ognl: dealDetalle.deal.idDeal" />
+            </div>
+        </form>
+    </table>
+
+    <span jwcid="instrBenBlock@Block">
+        <td class="title" align="right" nowrap>Prop&oacute;sito de la Transferencia:</td>
+        <td colspan="4">
+            <input jwcid="instruccionesBeneficiarioTextField" id="instruccionesBeneficiario" maxLength="130" size="130"  />
+			<span jwcid="@contrib:FormConditional" 
+				condition='ognl: faltaPropositoTransferencia'>
+				<img src="images/error.gif" width="16" height="16" /> 
+			</span>
+            
+        </td>
+    </span>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+
+<project name="ProcesaMensajesOrdenantes" default="all" basedir=".">
+  <!-- Directorios fuente -->
+  <property name="src.dir" value="src"/>
+  <property name="conf.dir" value="config"/>
+  <property name="lib.dir" value="lib"/>
+  <property name="shells.dir" value="shells"/>
+  <property name="mappings.dir" value="mappings"/>
+
+  <!-- Directorios temporales -->
+  <property name="dist.dir" value="dist"/>
+  <property name="depuracion.dir" value="${dist.dir}/ProcesaMensajesOrdenantes"/>
+  <property name="depuracion.lib.dir" value="${depuracion.dir}/lib"/>	
+  <property name="depuracion.log.dir" value="${depuracion.dir}/logs"/>
+  <property name="depuracion.conf.dir" value="${depuracion.dir}/config"/>
+  <property name="depuracion.mappings.dir" value="${depuracion.dir}/mappings"/>
+  	
+  <property name="build.dir" value="build"/>
+  <property name="build.classes" value="${build.dir}/classes"/>
+  <property name="build.lib" value="${build.dir}/lib"/>
+	
+  <!-- Project classpath //-->
+  <path id="project.classpath">
+	<fileset dir="${lib.dir}">
+		<include name="**/*.jar"/>			
+	</fileset>
+  </path>
+  	
+  <!-- Crea las carpetas destino -->
+  <target name="prepare">
+    <mkdir dir="${build.dir}"/>
+    <mkdir dir="${build.classes}"/>
+    <mkdir dir="${build.lib}"/>
+  	<mkdir dir="${dist.dir}"/>
+  	<mkdir dir="${depuracion.dir}"/>
+  	<mkdir dir="${depuracion.lib.dir}"/>
+  	<mkdir dir="${depuracion.log.dir}"/>
+  	<mkdir dir="${depuracion.conf.dir}"/>
+  	<mkdir dir="${depuracion.mappings.dir}"/>
+  </target>
+
+  <target name="clean" description="Elimina todos los archivos generados.">
+    <delete dir="${build.dir}"/>
+  	<delete dir="${dist.dir}"/>
+  </target>
+
+  <target name="compile" depends="prepare" description="Compila los archivos fuente">
+    <javac srcdir="${src.dir}" destdir="${build.classes}" classpathref="project.classpath" encoding="iso-8859-1">
+    	<!--compilerarg value="-Xlint:unchecked"/-->
+    </javac>
+  </target>
+
+  <target name="jar" depends="compile" description="Genera el el archivo procesaMensajesOrdenantes.jar en el diretorio 'dist'.">
+    <jar jarfile="${depuracion.lib.dir}/procesaMensajesOrdenantes.jar" 
+         basedir="${build.classes}"/>
+  </target>
+	
+  <target name="copiaLibs" description="Copia los jars dependientes del proyecto">
+	<copy todir="${depuracion.lib.dir}">
+		<fileset dir="${lib.dir}"/>
+	</copy>
+	<tstamp/>
+	<echo message="${TSTAMP}"/>
+  </target>
+	
+	<target name="copiaShell" description="Copia los la carpeta del shell ejecucion">
+		<copy todir="${depuracion.dir}">
+			<fileset dir="${shells.dir}"/>
+		</copy>
+		<tstamp/>
+		<echo message="${TSTAMP}"/>
+	  </target>
+  
+	<target name="copiaConf" description="Copia los archivos de configuracion">
+		<copy todir="${depuracion.conf.dir}">
+			<fileset dir="${conf.dir}"/>
+		</copy>
+		<tstamp/>
+		<echo message="${TSTAMP}"/>
+	  </target>
+	
+	<target name="copiaMappings" description="Copia los archivos de mapeo de campos de la operacion">
+		<copy todir="${depuracion.mappings.dir}">
+			<fileset dir="${mappings.dir}"/>
+		</copy>
+		<tstamp/>
+		<echo message="${TSTAMP}"/>
+    </target>
+
+  <target name="all" depends="clean,jar,copiaLibs,copiaShell,copiaConf,copiaMappings" description="Limpia, compila y construye el archivo .jar"/>
+
+</project>

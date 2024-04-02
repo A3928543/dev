@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.macromedia.com/2003/mxml" creationComplete="inicializar()">
+    
+    <mx:RemoteObject id="spreadsService" source="com.ixe.ods.sica.PizarronDelegate" concurrency="multiple" showBusyCursor="true">
+        <mx:method name="findAllCanales" result="respFindAllCanales(event.result)" fault="falla(event.fault)"/>
+        <mx:method name="findAllDivisas" result="respFindAllDivisas(event.result)" fault="falla(event.fault)"/>
+        <mx:method name="findSpreadsActuales" result="respFindSpreadsActuales(event.result)" fault="falla(event.fault)"/>
+    </mx:RemoteObject>
+
+    <mx:NumberFormatter id="formateador" precision="6" />
+
+    <mx:Script>
+	<![CDATA[
+
+		var canales : Array;
+		var divisas : Array;
+		var spreads : Array;
+
+		function inicializar() : Void
+		{
+			spreadsService.findAllCanales();
+			spreadsService.findAllDivisas();
+		}
+
+		function respFindAllCanales(resultado : Array) : Void
+		{
+			canales = resultado;
+		}
+
+		function respFindAllDivisas(resultado : Array) : Void
+		{
+			divisas = resultado;
+		}
+
+		function findSpreadsActuales() : Void
+		{
+			spreadsService.findSpreadsActuales(canalesComboBox.selectedItem.idCanal, divisasComboBox.selectedItem.idDivisa);
+		}
+
+		function respFindSpreadsActuales(resultado : Array) : Void
+		{
+			spreads = resultado;
+		}
+
+		function cCash(item : Object) : String
+		{
+			return formateador.format(item.compraCash);
+		}
+
+		function vCash(item : Object) : String
+		{
+			return formateador.format(item.ventaCash);
+		}
+
+		function cTom(item : Object) : String
+		{
+			return formateador.format(item.compraTom);
+		}
+
+		function vTom(item : Object) : String
+		{
+			return formateador.format(item.ventaTom);
+		}
+
+		function cSpot(item : Object) : String
+		{
+			return formateador.format(item.compraSpot);
+		}
+
+		function vSpot(item : Object) : String
+		{
+			return formateador.format(item.ventaSpot);
+		}
+
+		function falla(falla) : Void
+		{
+
+		}
+	]]>
+	</mx:Script>
+	  <mx:Form>
+		<mx:FormItem label="Canal / Mesa:">
+			<mx:HBox>
+				<mx:ComboBox id="canalesComboBox" dataProvider="{canales}" labelField="nombre" />
+				<mx:Label text="Divisa:" />
+				<mx:ComboBox id="divisasComboBox" dataProvider="{divisas}" labelField="descripcion" />
+			</mx:HBox>
+		</mx:FormItem>
+	  </mx:Form>
+	<mx:DataGrid width="620" dataProvider="{spreads}">
+		<mx:columns>
+			<mx:Array>
+				<mx:DataGridColumn columnName="claveFormaLiquidacion" headerText="Productos" />
+				<mx:DataGridColumn columnName="compraCash" headerText="C (CASH)" textAlign="right" editable="true" labelFunction="cCash" />
+				<mx:DataGridColumn columnName="ventaCash" headerText="V (CASH)" textAlign="right" editable="true" labelFunction="vCash" />
+				<mx:DataGridColumn columnName="compraTom" headerText="C (TOM)" textAlign="right" editable="true" labelFunction="cTom" />
+				<mx:DataGridColumn columnName="ventaTom" headerText="V (TOM)" textAlign="right" editable="true" labelFunction="vTom" />
+				<mx:DataGridColumn columnName="compraSpot" headerText="C (SPOT)" textAlign="right" editable="true" labelFunction="cSpot" />
+				<mx:DataGridColumn columnName="ventaSpot" headerText="V (SPOT)" textAlign="right" editable="true" labelFunction="vSpot" />
+			</mx:Array>
+		</mx:columns>
+	</mx:DataGrid>
+	<mx:ControlBar>
+		<mx:HBox>
+			<mx:Button label="Listar" click="findSpreadsActuales()"/>
+			<mx:Button label="Guardar" />
+			<mx:Button label="Limpiar" />
+		</mx:HBox>
+	</mx:ControlBar>
+</mx:Panel>

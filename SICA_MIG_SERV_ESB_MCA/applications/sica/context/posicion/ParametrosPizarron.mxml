@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: ParametrosPizarron.mxml,v 1.9.30.1 2010/06/16 15:31:42 galiciad Exp $ -->
+<view:ParametrosPizarron
+    xmlns:mx="http://www.macromedia.com/2003/mxml"
+    xmlns:view="com.ixe.ods.sica.posicion.views.*"
+    xmlns:sica="*">
+
+    <mx:NumberFormatter id="exchangeFormatter" precision="6"/>
+
+    <mx:HBox width="100%">
+        <mx:Label text="Mid Spot" fontWeight="bold"/>
+        <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioSpot)}"/>
+        <mx:Label text="Spread Compra/Venta" fontWeight="bold"/>
+        <mx:Label text="{format(dataProvider.spreadCompraVenta)}"/>
+        <mx:Label text="Carry" fontWeight="bold"/>
+        <mx:Label text="{format(dataProvider.carry)}"/>
+    </mx:HBox>
+
+    <mx:HBox verticalAlign="bottom" width="100%">
+
+        <mx:Grid verticalGap="0" horizontalGap="0">
+            <mx:GridRow>
+                <mx:GridItem horizontalAlign="center" colSpan="2" borderStyle="solid">
+                    <mx:Label text="Cash" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="center" colSpan="2" borderStyle="solid">
+                    <mx:Label text="TOM" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="center" colSpan="2" borderStyle="solid">
+                    <mx:Label text="Spot" fontWeight="bold"/>
+                </mx:GridItem>
+				<mx:GridItem horizontalAlign="center" colSpan="2" borderStyle="solid">
+                    <mx:Label text="72HR" fontWeight="bold"/>
+                </mx:GridItem>
+				<mx:GridItem horizontalAlign="center" colSpan="2" borderStyle="solid" visible="{parentApplication.vFut}">
+                    <mx:Label text="96HR" fontWeight="bold"/>
+                </mx:GridItem>
+            </mx:GridRow>
+
+            <mx:GridRow>
+                <mx:GridItem horizontalAlign="center" borderStyle="solid">
+                    <mx:Label text="C" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="center" borderStyle="solid">
+                    <mx:Label text="V" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="center" borderStyle="solid">
+                    <mx:Label text="C" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="center" borderStyle="solid">
+                    <mx:Label text="V" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="center" borderStyle="solid">
+                    <mx:Label text="C" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="center" borderStyle="solid">
+                    <mx:Label text="V" fontWeight="bold"/>
+                </mx:GridItem>
+				<mx:GridItem horizontalAlign="center" borderStyle="solid">
+                    <mx:Label text="C" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="center" borderStyle="solid">
+                    <mx:Label text="V" fontWeight="bold"/>
+                </mx:GridItem>
+				<mx:GridItem horizontalAlign="center" borderStyle="solid" visible="{parentApplication.vFut}">
+                    <mx:Label text="C" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="center" borderStyle="solid" visible="{parentApplication.vFut}">
+                    <mx:Label text="V" fontWeight="bold"/>
+                </mx:GridItem>
+            </mx:GridRow>
+
+            <mx:GridRow id="row">
+                <mx:GridItem borderStyle="solid">
+                    <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioCompraCash)}" />
+                </mx:GridItem>
+                <mx:GridItem borderStyle="solid">
+                    <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioVentaCash)}"/>
+                </mx:GridItem>
+                <mx:GridItem borderStyle="solid">
+                    <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioCompraTom)}"/>
+                </mx:GridItem>
+                <mx:GridItem borderStyle="solid">
+                    <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioVentaTom)}"/>
+                </mx:GridItem>
+                <mx:GridItem borderStyle="solid">
+                    <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioCompraSpot)}"/>
+                </mx:GridItem>
+                <mx:GridItem borderStyle="solid">
+                    <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioVentaSpot)}"/>
+                </mx:GridItem>
+				<mx:GridItem borderStyle="solid">
+                    <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioCompra72Hr)}"/>
+                </mx:GridItem>
+                <mx:GridItem borderStyle="solid">
+                    <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioVenta72Hr)}"/>
+                </mx:GridItem>
+				<mx:GridItem borderStyle="solid" visible="{parentApplication.vFut}">
+                    <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioCompraVFut)}" />
+                </mx:GridItem>
+                <mx:GridItem borderStyle="solid" visible="{parentApplication.vFut}">
+                    <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioVentaVFut)}" />
+                </mx:GridItem>
+            </mx:GridRow>
+        </mx:Grid>
+
+        <mx:Spacer width="100%"/>
+
+        <mx:Link id="pizarronLink" icon="@Embed('resources/detail.gif')" visible="false"/>
+
+    </mx:HBox>
+
+</view:ParametrosPizarron>

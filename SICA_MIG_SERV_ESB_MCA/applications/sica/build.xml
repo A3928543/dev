@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<!--$Id: build.xml,v 1.15.22.1.12.1 2013/07/12 22:42:08 mejiar Exp $ -->
+<project name="Sica Application" default="build-all" basedir=".">
+
+    <property name="root.dir" value="${basedir}/../.."/>
+
+    <property file="${root.dir}/config/common.properties"/>
+
+    <path id="ods-model.classpath">
+        <pathelement location="${dist.dir}/${sica.jar}"/>
+    </path>
+
+    <path id="ods.classpath">
+        <pathelement location="${dist.dir}/${ods-sica.jar}"/>
+    </path>
+	
+	<path id = "esb-altamira.classpath">
+		<pathelement location="${dist.dir}/${esb-altamira.jar}"/>	
+	</path>
+
+    <path id="project.classpath">
+        <fileset dir="${root.lib.dir}">
+            <exclude name="xdoclet/*.jar"/>
+            <include name="**/*.jar"/>
+        </fileset>
+        <pathelement location="${dist.dir}/sica-interfaces.jar" />
+        <pathelement location="${dist.dir}/sica-teller-interfaces.jar" />
+        <path refid="ods.classpath"/>
+        <path refid="ods-model.classpath"/>
+    	<path refid="esb-altamira.classpath" />
+    </path>
+
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${classes.dir}"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${classes.dir}"/>
+    </target>
+
+    <target name="compile" depends="init, build-clasess-service" description="Compile all classes in the framework.">
+        <javac destdir="${classes.dir}" debug="on" target="1.1">
+            <src path="${src.dir}"/>
+            <classpath refid="project.classpath"/>
+        </javac>
+    </target>
+
+    <target name="javadoc">
+        <mkdir dir="${javadoc.dir}"/>
+        <javadoc author="true"
+            destdir="${javadoc.dir}"
+            packagenames="com.ixe.ods.sica.*"
+            sourcepath="${src.dir}"
+            use="true"
+            version="true"
+            windowtitle="Documentation"
+            private="true">
+            <classpath refid="project.classpath"/>
+        </javadoc>
+    </target>
+
+    <target name="build-war" depends="compile">
+
+        <copy todir="${classes.dir}/com/ixe/ods/sica/pizarron">
+            <fileset dir="${context.dir}/images/banderas">
+                <include name="*.*" />
+            </fileset>
+        </copy>
+
+        <jar jarfile="${dist.dir}/pizarra.jar" basedir="${classes.dir}">
+            <include name="**/pizarron/*.class" />
+            <include name="**/util/CantLet.class" />
+            <include name="**/*.jpg" />
+            <include name="**/*.gif" />
+        </jar>
+
+        <jar jarfile="${dist.dir}/sicaapplet.jar" basedir="${classes.dir}">
+            <include name="**/applet/*.class" />
+            <include name="**/pizarron/*.class" />
+            <include name="**/util/CantLet.class" />
+            <include name="**/*.jpg" />
+            <include name="**/*.gif" />
+        </jar>
+
+        <copy todir="${context.dir}/applet/">
+            <fileset dir="${dist.dir}">
+                <include name="pizarra.jar" />
+                <include name="sicaapplet.jar" />
+                <include name="sica-interfaces.jar" />
+            </fileset>
+        </copy>
+
+        <war warfile="${dist.dir}/${sica.war}" webxml="${context.dir}/WEB-INF/web.xml">
+
+            <manifest>
+                <attribute name="Class-Path" value="sica.jar com.ixe.ods-sica.jar" />
+            </manifest>
+
+            <webinf dir="${context.dir}/WEB-INF">
+                <include name="weblogic.xml"/>
+            </webinf>
+
+            <classes dir="${classes.dir}"/>
+
+            <classes dir="${src.dir}">
+                <exclude name="**/*.java"/>
+                <exclude name="**/applet/*.java" />
+                <exclude name="**/package.html"/>
+            </classes>
+
+            <lib dir="${root.lib.dir}/ods">
+                <include name="${menu.jar}"/>
+            </lib>
+
+            <lib dir="${root.lib.dir}/misc">
+                <include name="${xstream.jar}"/>
+                <include name="${xp33_min.jar}"/>
+            </lib>
+
+            <lib dir="${root.lib.dir}/flex">
+                <include name="*.jar"/>
+            </lib>
+
+            <lib dir="${root.lib.dir}/spring">
+                <include name="springadapter*.jar"/>
+            </lib>
+
+            <lib dir="${root.lib.dir}/jaxb">
+        		<include name="*.jar"/>
+        	</lib>
+        	<lib dir="${root.lib.dir}/apache">
+        	        		<include name="*.jar"/>
+        	</lib>
+            <fileset dir="${context.dir}">
+                <include name="*.jsp" />
+                <include name="*.gif" />
+                <include name="applet/**"/>
+                <include name="css/**"/>
+                <include name="images/**"/>
+                <include name="sf/**"/>            	
+                <include name="posicion/**"/>
+                <include name="scripts/**"/>
+                <include name="**/*.html"/>
+            	<include name="**/*.jasper"/>
+            	<include name="**/*.jrxml"/>
+                <include name="**/*.page"/>
+                <include name="**/*.jwc"/>
+                <include name="**/*.script"/>
+                <include name="**/*.application"/>
+                <include name="**/applicationContext.xml"/>
+                <include name="WEB-INF/log4j.properties" />
+                <include name="WEB-INF/flex/**" />
+            	<include name="WEB-INF/servletPages/**"/>
+            </fileset>
+        </war>
+    </target>
+
+	<path id="jaxb-classpath">
+		<fileset dir="${root.lib.dir}/jaxb" includes="*.jar"/>
+	</path>
+
+	<taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
+		<classpath refid="jaxb-classpath" />
+	</taskdef>
+
+    <target name="build-clasess-service" depends="clean-jaxb-classes">
+		<echo message="Generando clases para el servicio Sica-Kondor"/>
+		<xjc target="${src.dir}" package="com.ixe.ods.sica.kondor.ctx.in">
+			<schema dir="${root.dir}/commons/resources/jaxb/xsd/in" />
+		</xjc>
+    	<xjc target="${src.dir}" package="com.ixe.ods.sica.kondor.ctx.out">
+    		<schema dir="${root.dir}/commons/resources/jaxb/xsd/out" />
+    	</xjc>
+	</target>
+
+	<target name="clean-jaxb-classes">
+		<delete dir="${src.dir}/com/ixe/ods/sica/kondor/ctx/"/>
+	</target>
+
+    <target name="build-all" depends="build-war">
+    </target>
+
+</project>

@@ -1,0 +1,25 @@
+    <!-- $Id: Pizarra.html,v 1.10.30.1.6.1.8.1 2011/06/20 21:41:05 guzmanal Exp $ -->
+    <applet codebase="/sica/applet/" code="com.ixe.ods.sica.applet.PizarraApplet.class" id="pizarraApplet" width="100%" height="105" archive="sicaapplet.jar">
+        <span jwcid="forDivs@Foreach" source="ognl: page.sicaServiceData.findDivisasFrecuentes()" index="ognl: index">
+        <param jwcid="@Any" element="param" name='ognl: "div" + components.forDivs.index' value='ognl: components.forDivs.value.idDivisa' />
+        </span>
+        <span jwcid="forReglasNeteos@Foreach" source="ognl: page.sicaServiceData.findAll(@com.ixe.ods.sica.model.ReglaNeteo@class)" index="ognl: index">
+        <param jwcid="@Any" element="param" name='ognl: "regla" + components.forReglasNeteos.index' value='ognl: components.forReglasNeteos.value.idDivisa +"|"+ components.forReglasNeteos.value.claveFormaLiquidacionCompra + "|" + components.forReglasNeteos.value.claveFormaLiquidacionVenta + "|" + components.forReglasNeteos.value.baseRegla + "|" + components.forReglasNeteos.value.difAntesDelHorario + "|" + components.forReglasNeteos.value.difDespuesDelHorario + "|" + components.forReglasNeteos.value.montoAntesDelHorario + "|" + components.forReglasNeteos.value.montoDespuesDelHorario' />
+        </span>
+        <param jwcid="@Any" element="param" name="tout" value="ognl: tout" />
+        <param jwcid="@Any" element="param" name="toutDF" value="ognl: toutDF" />
+        <param jwcid="@Any" element="param" name="tp" value="ognl: idTipoPizarron" />
+        <span jwcid="@Conditional" condition="ognl: sincronizar"><param jwcid="@Any" element="param" name="sc" value="1" /></span>
+        <param jwcid="@Any" element="param" name="vFut" value="ognl: page.pizarronServiceData.isValorFuturoHabilitado()" />
+        <span jwcid="forFpls@Foreach" source="ognl: page.formasTiposLiq" index="ognl: index">
+            <param jwcid="@Any" element="param" name='ognl: "fpl" + components.forFpls.index' value='ognl: components.forFpls.value.claveFormaLiquidacion + "|" + components.forFpls.value.mnemonico + "|" + components.forFpls.value.idDivisa + "|" + (components.forFpls.value.montoMinimo ? components.forFpls.value.montoMinimo : "1.0") + "|" + (components.forFpls.value.multiplo ? components.forFpls.value.multiplo : "0.01") + "|" + components.forFpls.value.nombreFormaLiquidacion'  />
+        </span>
+        <param jwcid="@Any" element="param" name="DESV_MONTO_LIM" value="ognl: mapParsLimDesv.DESV_MONTO_LIM" />
+		<param jwcid="@Any" element="param" name="DESV_PORC_LIM" value="ognl: mapParsLimDesv.DESV_PORC_LIM" />
+		<param jwcid="@Any" element="param" name="DESV_FACT_1" value="ognl: mapParsLimDesv.DESV_FACT_1" />
+		<param jwcid="@Any" element="param" name="DESV_FACT_2" value="ognl: mapParsLimDesv.DESV_FACT_2" />
+		<param jwcid="@Any" element="param" name="DESV_PORC_MAX" value="ognl: mapParsLimDesv.DESV_PORC_MAX" />
+        <param jwcid="@Any" element="param" name="ticket" value="ognl: page.visit.ticket" />
+        <param jwcid="@Any" element="param" name="segsRefr" value="ognl: page.sicaServiceData.findParametro(@com.ixe.ods.sica.model.ParametroSica@SEGS_REFR_PIZARRA).valor" />
+        <param jwcid="@Any" element="param" name="psLimHr" value="ognl: page.sicaServiceData.findParametro(@com.ixe.ods.sica.model.ParametroSica@LIM_HORARIO_NETEOS_POR_IMPORTE).valor" />
+     </applet>

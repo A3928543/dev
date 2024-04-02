@@ -1,0 +1,25 @@
+<mx:HBox xmlns:mx="http://www.macromedia.com/2003/mxml" width="100%"
+	    		marginTop="0" marginRight="0" marginLeft="0" marginBottom="0">
+<!-- $Id: ModificacionMontoCellRenderer.mxml,v 1.2 2008/02/22 18:25:27 ccovian Exp $ -->
+    <mx:Script>
+    <![CDATA[
+
+    var texto : String;
+
+    function setValue(str:String, item:Object, sel:Boolean) : Void {
+		if (item != null) {
+			texto = formateadorMonto.format(item.monto);
+			if (item.montoModificado) {
+				etiqueta.setStyle('color', '#ff00000');
+			}
+		}
+	}
+    ]]>
+
+    </mx:Script>
+
+	<mx:NumberFormatter id="formateadorMonto" thousandsSeparatorFrom="," thousandsSeparatorTo="," precision="2" />
+
+    <mx:Label id="etiqueta" text="{texto}" textAlign="right" width="100%" />
+
+</mx:HBox>

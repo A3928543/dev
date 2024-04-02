@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.Estado"
+        table="SC_ESTADO"
+        proxy="com.ixe.ods.sica.model.Estado"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idEstado"
+            column="ID_ESTADO"
+            type="int"
+            unsaved-value="0"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Estado.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="actual"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="ACTUAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="nombreEstado"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ESTADO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="horaInicio"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="HORA_INICIO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="horaFin"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="HORA_FIN"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="nombreAplicacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NOMBRE_APLICACION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="urlAplicacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="URL_APLICACION"
+            not-null="false"
+            unique="false"
+        />
+
+        <many-to-one
+            name="siguienteEstado"
+            class="com.ixe.ods.sica.model.Estado"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="SIG_ESTADO"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Estado.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findEstadoActual"><![CDATA[
+            FROM Estado AS e WHERE e.actual = 'S'
+        ]]></query>
+        <query name="findAllEstadoOrdenado"><![CDATA[
+            FROM Estado AS e ORDER BY e.idEstado
+        ]]></query>
+
+</hibernate-mapping>

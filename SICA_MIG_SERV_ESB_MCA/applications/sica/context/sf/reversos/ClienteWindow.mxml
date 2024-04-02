@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: ClienteWindow.mxml,v 1.2 2008/02/22 18:25:49 ccovian Exp $ -->
+<mx:TitleWindow xmlns:mx="http://www.macromedia.com/2003/mxml" title="Reverso por equivocaci&#243;n en el Cliente."
+				creationComplete="inicializar()"
+                marginTop="10" marginRight="10" marginLeft="10" marginBottom="10">
+
+
+    <mx:Script>
+        <![CDATA[
+        	import mx.controls.Alert;
+
+        	var clientes : Array;
+
+            private function inicializar() : Void
+            {
+            	clientes = new Array();
+            }
+
+            private function findClientes() : Void
+            {
+            	var razonSocial : String = atributosAccordion.selectedIndex == 0
+                            ? razonSocialTextField.text : '';
+            	var paterno     : String = atributosAccordion.selectedIndex == 1
+                            ? paternoTextField.text : '';
+            	var materno     : String = atributosAccordion.selectedIndex == 1
+                            ? maternoTextField.text : '';
+            	var nombre      : String = atributosAccordion.selectedIndex == 1
+            	            ? nombreTextField.text : '';
+            	var noCuenta    : String = atributosAccordion.selectedIndex == 2
+                            ? noCuentaTextField.text : '';
+                reversosService.findClientes(razonSocial, paterno, materno, nombre, noCuenta,
+                    subordinadosCheckBox.selected, mx.core.Application.application.idPromotor,
+                    mx.core.Application.application.idUsuario);
+                panelPrincipal.enabled = false;
+            }
+
+            private function respFindClientes(ctes : Array) : Void
+            {
+		        panelPrincipal.enabled = true;
+            	clientes = ctes;
+            	if (clientes.length < 1) {
+            		Alert.show('No se encontraron clientes con los atributos especificados.', 'Atenci\u00f3n');
+            	}
+            }
+
+            private function limpiarCampos() : Void
+            {
+            	razonSocialTextField.text = '';
+            	paternoTextField.text = '';
+            	maternoTextField.text = '';
+            	nombreTextField.text = '';
+            	noCuentaTextField.text = '';
+            }
+
+            private function aceptar() : Void
+            {
+            	mx.core.Application.application.contratoNuevo = clientesDataGrid.selectedItem;
+            	this.deletePopUp();
+            }
+
+            private function cerrar() : Void
+            {
+            	mx.core.Application.application.contratoNuevo = null;
+            	mx.core.Application.application.clienteCheckBox.selected = false;
+	            this.deletePopUp();
+            }
+
+		    /**
+		     * Muestra un Alert panel con el mensaje de error.
+		     */
+			private function falla(causa : Object) : Void
+		    {
+		        Alert.show(causa.description, 'Atenci\u00f3n:');
+		        panelPrincipal.enabled = true;
+		    }
+
+        ]]>
+    </mx:Script>
+
+    <mx:RemoteObject id="reversosService" source="spring://reversosDelegate" concurrency="last" showBusyCursor="true">
+        <mx:method name="findClientes" result="respFindClientes(event.result)" fault="falla(event.fault)" />
+    </mx:RemoteObject>
+
+    <mx:Effect>
+        <mx:Fade name="fadeOut" alphaFrom="100" alphaTo="0" duration="1000" />
+        <mx:Fade name="fadeIn" alphaFrom="0" alphaTo="100" duration="1000" />
+    </mx:Effect>
+
+    <mx:HBox id="panelPrincipal" width="100%" height="340">
+    	<mx:VBox width="100%" height="100%">
+    		<mx:Label text="Atributos de b&#250;squeda:" fontWeight="bold" />
+    		<mx:Accordion id="atributosAccordion" width="100%" height="100%">
+    			<mx:VBox label="Personas Morales" width="100%" height="100%"
+	    			marginTop="10" marginRight="10" marginLeft="10" marginBottom="10">
+		    		<mx:Label text="Raz&#243;n Social:" fontWeight="bold" />
+	    			<mx:TextInput id="razonSocialTextField" width="100%" />
+	    		</mx:VBox>
+    			<mx:VBox label="Personas F&#237;sicas" width="100%" height="100%"
+    				marginTop="10" marginRight="10" marginLeft="10" marginBottom="10">
+		    		<mx:Label text="Apellido Paterno:" fontWeight="bold" />
+		    		<mx:TextInput id="paternoTextField" width="100%" />
+		    		<mx:Label text="Apellido Materno:" fontWeight="bold" />
+		    		<mx:TextInput id="maternoTextField" width="100%" />
+		    		<mx:Label text="Nombre:" fontWeight="bold" />
+		    		<mx:TextInput id="nombreTextField" width="100%" />
+	    		</mx:VBox>
+    			<mx:VBox label="Por Cuenta" width="100%" height="100%"
+	    			marginTop="10" marginRight="10" marginLeft="10" marginBottom="10">
+		    		<mx:Label text="No. Cta.:" fontWeight="bold" />
+		    		<mx:TextInput id="noCuentaTextField" width="100%" />
+	    		</mx:VBox>
+    		</mx:Accordion>
+    		<mx:CheckBox id="subordinadosCheckBox" label="Buscar en mi Jerarqu&#237;a" />
+    		<mx:HBox>
+				<mx:Button label="Buscar" click="findClientes()" />
+				<mx:Button label="Limpiar campos" click="limpiarCampos()"/>
+			</mx:HBox>
+		</mx:VBox>
+    	<mx:VBox id="panelClientes" width="640" height="100%"
+	    	showEffect="fadeIn" hideEffect="fadeOut">
+    		<mx:Label text="Clientes encontrados:" fontWeight="bold" />
+            <mx:DataGrid id="clientesDataGrid" width="100%" height="100%" dataProvider="{clientes}">
+                <mx:columns>
+                    <mx:Array>
+                        <mx:DataGridColumn columnName="noCuenta" headerText="Contrato SICA" width="100" textAlign="center" />
+                        <mx:DataGridColumn columnName="razonSocial" headerText="Raz&#243;n Social" />
+                        <mx:DataGridColumn columnName="corporativo" headerText="Corporativo" width="100" textAlign="center" />
+                    </mx:Array>
+                </mx:columns>
+            </mx:DataGrid>
+    		<mx:HBox width="100%">
+    			<mx:Spacer width="100%" />
+    			<mx:Button label="Aceptar" enabled="{clientesDataGrid.selectedItem != null}"
+    				click="aceptar()" />
+    			<mx:Button label="Cancelar" click="cerrar()" />
+    		</mx:HBox>
+        </mx:VBox>
+    </mx:HBox>
+
+</mx:TitleWindow>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mx:GridRow xmlns:mx="http://www.macromedia.com/2003/mxml">
+    <mx:GridItem horizontalAlign="right" colSpan="6">
+        <mx:Label text="{'Monto ' + parentApplication.idDivisaReferencia}" fontWeight="bold"/>
+    </mx:GridItem>
+</mx:GridRow>

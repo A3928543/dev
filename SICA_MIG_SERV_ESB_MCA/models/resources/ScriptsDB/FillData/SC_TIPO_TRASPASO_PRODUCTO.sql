@@ -1,0 +1,19 @@
+/*
+ * $Id: SC_TIPO_TRASPASO_PRODUCTO.sql,v 1.12 2008/02/22 18:25:29 ccovian Exp $
+ * Autor: Ricardo Legorreta H.
+ * Fecha: 14/02/2005
+ *
+ */
+
+insert into SICA_ADMIN.SC_TIPO_TRASPASO_PRODUCTO (MNEMONICO_TRASPASO, DESCRIPCION, NETEO, DE, DE_OPER, DE_SIGNO, A, A_OPER, A_SIGNO, VAL_MONTO) values ('ACREDCHVIAJ ', 'Acreditación de traveler-checks', '0', 'CHVIAJ', 'CO', -1, 'TRAEXT', 'CO', 1, 'compra');
+insert into SICA_ADMIN.SC_TIPO_TRASPASO_PRODUCTO (MNEMONICO_TRASPASO, DESCRIPCION, NETEO, DE, DE_OPER, DE_SIGNO, A, A_OPER, A_SIGNO, VAL_MONTO) values ('PAGO_CHVIAJ ', 'Pago de traveler checks', '0', 'CHVIAJ', 'VE', -1, 'TRAEXT', 'VE', 1, 'venta');
+insert into SICA_ADMIN.SC_TIPO_TRASPASO_PRODUCTO (MNEMONICO_TRASPASO, DESCRIPCION, NETEO, DE, DE_OPER, DE_SIGNO, A, A_OPER, A_SIGNO, VAL_MONTO) values ('ACREDDOCEXT ', 'Acreditación de remesas', '0', 'DOCEXT', 'CO', -1, 'TRAEXT', 'CO', 1, 'compra');
+insert into SICA_ADMIN.SC_TIPO_TRASPASO_PRODUCTO (MNEMONICO_TRASPASO, DESCRIPCION, NETEO, DE, DE_OPER, DE_SIGNO, A, A_OPER, A_SIGNO, VAL_MONTO) values ('COBRODOCEXT ', 'Cobro de Giros', '0', 'DOCEXT', 'VE', -1, 'TRAEXT', 'VE', 1, 'venta');
+insert into SICA_ADMIN.SC_TIPO_TRASPASO_PRODUCTO (MNEMONICO_TRASPASO, DESCRIPCION, NETEO, DE, DE_OPER, DE_SIGNO, A, A_OPER, A_SIGNO, VAL_MONTO) values ('TRADEMEXDOL ', 'Traspaso de Mex-dólares a Transferencias', '1', 'MEXDOL', 'CO', -1, 'TRAEXT', 'CO', 1, 'largo');
+insert into SICA_ADMIN.SC_TIPO_TRASPASO_PRODUCTO (MNEMONICO_TRASPASO, DESCRIPCION, NETEO, DE, DE_OPER, DE_SIGNO, A, A_OPER, A_SIGNO, VAL_MONTO) values ('TRAA_MEXDOL ', 'Traspaso de Transferencias a Mex-dólares', '1', 'MEXDOL', 'VE', -1, 'TRAEXT', 'VE', 1, 'corto');
+insert into SICA_ADMIN.SC_TIPO_TRASPASO_PRODUCTO (MNEMONICO_TRASPASO, DESCRIPCION, NETEO, DE, DE_OPER, DE_SIGNO, A, A_OPER, A_SIGNO, VAL_MONTO) values ('FONDEMEXDOL ', 'Fondeo de Mex-dólares', '0', 'TRAEXT', 'VE', 1, 'MEXDOL', 'CO', 1, null);
+insert into SICA_ADMIN.SC_TIPO_TRASPASO_PRODUCTO (MNEMONICO_TRASPASO, DESCRIPCION, NETEO, DE, DE_OPER, DE_SIGNO, A, A_OPER, A_SIGNO, VAL_MONTO) values ('LARGOEFECTI ', 'Depósito cuenta por largos de efectivo', '1', 'EFECTI', 'CO', -1, 'TRAEXT', 'CO', 1, 'largo');
+insert into SICA_ADMIN.SC_TIPO_TRASPASO_PRODUCTO (MNEMONICO_TRASPASO, DESCRIPCION, NETEO, DE, DE_OPER, DE_SIGNO, A, A_OPER, A_SIGNO, VAL_MONTO) values ('CORTOEFECTI ', 'Cubrir cortos de posición de efectivo', '1', 'EFECTI', 'VE', -1, 'TRAEXT', 'VE', 1, 'corto');
+
+COMMIT;
+/

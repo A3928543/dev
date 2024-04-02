@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.Canal"
+        table="SC_CANAL"
+        proxy="com.ixe.ods.sica.model.Canal"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idCanal"
+            column="ID_CANAL"
+            type="java.lang.String"
+            unsaved-value="null"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Canal.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="nombre"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NOMBRE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="emailJefe"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="EMAIL_JEFE"
+            not-null="false"
+            unique="false"
+        />
+
+        <many-to-one
+            name="facultad"
+            class="com.ixe.ods.seguridad.model.Facultad"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="FACULTAD"
+            unique="false"
+        />
+
+        <many-to-one
+            name="mesaCambio"
+            class="com.ixe.ods.sica.model.MesaCambio"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_MESA_CAMBIO"
+            unique="false"
+        />
+
+        <many-to-one
+            name="sucursal"
+            class="com.ixe.ods.bup.model.Sucursal"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_SUCURSAL"
+            unique="false"
+        />
+
+        <many-to-one
+            name="tipoIva"
+            class="com.ixe.ods.bup.model.TipoIva"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_TIPO_IVA"
+            unique="false"
+        />
+
+        <property
+            name="codigoPostal"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CODIGO_POSTAL"
+            not-null="false"
+            unique="false"
+        />
+
+        <many-to-one
+            name="tipoPizarron"
+            class="com.ixe.ods.sica.model.TipoPizarron"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_TIPO_PIZARRON"
+            unique="false"
+        />
+
+        <property
+            name="tipoCalculo"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CALCULO"
+            not-null="true"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Canal.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findCanalByFacultad"><![CDATA[
+            FROM Canal AS c WHERE c.facultad.nombre = ?
+        ]]></query>
+
+</hibernate-mapping>

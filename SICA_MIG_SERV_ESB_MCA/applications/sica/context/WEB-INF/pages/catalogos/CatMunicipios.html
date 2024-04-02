@@ -1,0 +1,151 @@
+<html jwcid="$content$">
+<head jwcid="$remove$">
+	<title>Municipios</title>
+	<link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder" menuDisabled="ognl: false">
+	<span jwcid="@bup:ShowError" width="100%" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level="ognl: level"/>
+	<br />
+	<table width="100%">
+	  <tr valign="top">
+	    <td width="250px">
+	  		<table width="100%">
+	  			<tr>
+	  				<td>
+	  					<table jwcid="@ActionPortletBorder" title="Alta de L&iacute;mites" width="100%">
+				  			<form jwcid="@Form" listener="ognl: listeners.insert" delegate="ognl: beans.delegate">
+				                <table width="100%">
+				                	<tr>
+				                		<td class="normal" valign="top">Id Estado:</td>
+				                		<td class="normal" valign="top">
+				                			<span jwcid="@TextField" value="ognl: idEstado" maxlength="5"/>
+				                		</td>
+				                	</tr>
+				                	<tr>
+				                		<td class="normal" valign="top">Id Municipio:</td>
+				                		<td class="normal" valign="top">
+				                			<span jwcid="@TextField" value="ognl: idMunicipio" maxlength="5"/>
+				                		</td>
+				                	</tr>
+				                	<tr>
+				                		<td class="normal" valign="top">Zona Fronteriza:</td>
+				                		<td class="normal" valign="top">
+				                			<input jwcid="@Checkbox" type="checkbox" selected="ognl: esZonaFronteriza" />
+				                		</td>
+				                	</tr>
+				                	<tr>
+				                		<td class="normal" valign="top">Zona Tur&iacute;stica:</td>
+				                		<td class="normal" valign="top">
+				                			<input jwcid="@Checkbox" type="checkbox" selected="ognl: esZonaTuristica" />
+				                		</td>
+				                	</tr>
+				                	<tr>
+				                		<td colspan="2" align="center">
+				                			<br/>
+				                			<input jwcid="@ImageSubmit" image="ognl: assets.insertButton" onclick="return fnDisableForm(this.form);"/> 
+				                		</td>
+				                	</tr>
+				                </table>
+							</form>
+				  		</table>
+				  		<br/>
+				  		<table jwcid="@ActionPortletBorder" title="Carga Masiva">
+				 			<tr>
+				 				<td align="center">
+				 					<a jwcid="@DirectLink" listener="ognl:listeners.descargarArchivoBase">Descargar Archivo Base</a>
+				 				</td>
+				 			</tr>
+				 			<tr>
+				 				<td>
+				 					<fieldset class="normal">
+			                			<legend class="legend">Subir Archivo</legend>
+			                			<table width="100%">
+			                				<form jwcid="formCargaMasiva@Form" listener="ognl: listeners.cargaMasiva" delegate="ognl:beans.delegate">
+			                				<input jwcid="hiddenArchivoCargado@Hidden" value="ognl: esDescargable" type="hidden" />
+						            			<tr>
+						            				<td align="center">
+						            					<input jwcid="@Upload" file="ognl: archivo" />
+						            				</td>
+						            			</tr>
+						                    	<tr>
+						                    		<td align="center">
+						                    			<br/>
+						                    			<input jwcid="@ImageSubmit" image="ognl: assets.bAceptar" onClick="return confirm('La operaci\u00f3n puede tardar varios minutos. Al finalizar se abrir\u00e1 un archivo con la retroalimentaci\u00f3n. \u00bfDesea continuar?');"/>
+						                    		</td>
+						                    	</tr>
+						                	</form>
+			                			</table>
+			                		</fieldset>
+				 				</td>
+				 			</tr>
+			           </table>
+			           <br/>
+				  		<!-- table jwcid="@ActionPortletBorder" title="Consistencia con Phoenix">
+				 			<tr>
+				 				<td align="center">
+					 				<form jwcid="@Form" listener="ognl: listeners.actualizarPhoenix" delegate="ognl:beans.delegate">
+					 					<input jwcid="@ImageSubmit" image="ognl: assets.bActualizar" onclick="return fnDisableForm(this.form);"/>
+				 					</form>
+				 				</td>
+				 			</tr>
+			           </table -->
+	  				</td>
+	  			</tr>
+	  		</table>
+	  	</td>
+	    <td width="1%">
+	  		&nbsp;
+	  	</td>
+	  	<td align="center">
+	  		<table jwcid="@ActionPortletBorder" title="Municipios">
+	  			<tr>
+	  				<td align="center">
+				        <table border="0" cellspacing="1" cellpadding="3" width="100%" jwcid="forCodigosPostales@bup:Table" source="ognl: municipiosListaBlanca" initialSortColumn="codigoPostal" pageSize="25"
+					                columns='ognl: "estado:Estado:id.idEstado, municipio:Municipio:id.idMunicipio, !zonaFronteriza:Zona Fronteriza:zonaFronteriza,
+					                !zonaTuristica:Zona Tur\u00edstica:zonaTuristica, !eliminar"'
+					                class="tableborder"/>
+					    <span jwcid="estadoColumnValue@Block">
+				           <span jwcid="@Insert" value="ognl: components.forCodigosPostales.tableRow.id.idEstado" />
+			            </span>
+					    <span jwcid="municipioColumnValue@Block">
+				           <span jwcid="@Insert" value="ognl: components.forCodigosPostales.tableRow.id.idMunicipio" />
+				        </span>
+				        <span jwcid="zonaFronterizaColumnValue@Block">
+				           <span jwcid="@Conditional" condition='ognl: components.forCodigosPostales.tableRow.zonaFronteriza == null || !components.forCodigosPostales.tableRow.zonaFronteriza.equals(@java.lang.Boolean@TRUE)'>
+               			       No
+               			   </span>
+               			   <span jwcid="@Conditional" condition='ognl: components.forCodigosPostales.tableRow.zonaFronteriza != null && components.forCodigosPostales.tableRow.zonaFronteriza.equals(@java.lang.Boolean@TRUE)'>
+               			       S&iacute;
+               			   </span>
+				        </span>
+				        <span jwcid="zonaTuristicaColumnValue@Block">
+				           <span jwcid="@Conditional" condition='ognl: components.forCodigosPostales.tableRow.zonaTuristica == null || !components.forCodigosPostales.tableRow.zonaTuristica.equals(@java.lang.Boolean@TRUE)'>
+               			       No
+               			   </span>
+               			   <span jwcid="@Conditional" condition='ognl: components.forCodigosPostales.tableRow.zonaTuristica != null && components.forCodigosPostales.tableRow.zonaTuristica.equals(@java.lang.Boolean@TRUE)'>
+               			       S&iacute;
+               			   </span>
+				        </span>
+				        <span jwcid="eliminarColumnHeader@Block">&nbsp;</span>
+				        <span jwcid="eliminarColumnValue@Block">
+				            <a jwcid="@DirectLink" listener="ognl:listeners.eliminar" parameters='ognl:{components.forCodigosPostales.tableRow.id.idMunicipio, components.forCodigosPostales.tableRow.id.idEstado}' onClick="return confirm('\u00bfDesea eliminar el registro?');"> Eliminar </a>
+				        </span>
+					</td>
+				</tr>
+	  		</table>
+  		</td>
+	 </tr>
+	</table>
+	<form jwcid="descargarArchivoResp@Form" listener="ognl: listeners.descargarArchivoRespuesta" delegate="ognl:beans.delegate" />
+	<script type="text/javascript">
+        <!--
+        		document.body.onload = function () {
+        			if (document.forms[1].hiddenArchivoCargado.value == 'T') {
+		           		document.forms[2].submit();
+            		}
+        		}
+            	
+        //-->
+    </script>
+</body>
+</html>

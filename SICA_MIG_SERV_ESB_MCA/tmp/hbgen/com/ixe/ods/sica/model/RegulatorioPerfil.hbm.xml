@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.RegulatorioPerfil"
+        table="SC_REG_PERFIL"
+        proxy="com.ixe.ods.sica.model.RegulatorioPerfil"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+    >
+
+        <id
+            name="idPersona"
+            column="ID_PERSONA"
+            type="java.lang.Integer"
+            unsaved-value="null"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-RegulatorioPerfil.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="contratoSica"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NO_CUENTA"
+        />
+
+        <property
+            name="datosRegulatoriosActualizados"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="REG_PM_ACTUALIZADO"
+        />
+
+        <property
+            name="regInstitucionActualizados"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="REG_INST_ACTUALIZADO"
+        />
+
+        <property
+            name="fechaUltimaModificacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_ULT_MOD"
+            unique="false"
+        />
+
+        <property
+            name="fechaAlta"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_ALTA"
+            unique="false"
+        />
+
+        <property
+            name="idPersonaUltimaMod"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="USUARIO_ULT_MOD"
+        />
+
+        <property
+            name="idPersonaAlta"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="USUARIO_ALTA"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-RegulatorioPerfil.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

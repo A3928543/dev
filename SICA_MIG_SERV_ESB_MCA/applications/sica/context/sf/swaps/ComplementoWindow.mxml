@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: ComplementoWindow.mxml,v 1.9 2008/02/22 18:25:50 ccovian Exp $ -->
+<mx:TitleWindow xmlns:mx="http://www.macromedia.com/2003/mxml" title="Nuevo Complemento" closeButton="true"
+                click="this.deletePopUp();" creationComplete="inicializar()">
+
+    <mx:Script>
+        <![CDATA[
+            import mx.validators.*;
+            import mx.formatters.*;
+            import views.CapSwap;
+
+            var capSwap : CapSwap;
+            var productos : Array;
+            var puntos : Boolean;
+            var numberBase : NumberBase;
+
+            private function inicializar() : Void
+            {
+                numberBase = new NumberBase('.', ',', '.', ',');
+            }
+
+            function mostrarToolTip(flag : Boolean) : Void
+            {
+                montoCompToolTip.visible = flag;
+                if (!flag) {
+                    montoCompTextField.text = formateadorMonto.format(Number(montoCompTextField.text));
+                }
+            }
+
+            private function isValido() : Boolean
+            {
+                if (! Validator.isValid(this, 'complementoModel.monto')) {
+                    return false;
+                }
+                if (!puntos && ! Validator.isValid(this, 'complementoModel.tipoCambio')) {
+                    return false;
+                }
+                return true;
+            }
+
+            private function crearComplemento() : Void
+            {
+                if (isValido()) {
+                    capSwap.insertarComplemento(String(fechaValorCompComboBox.selectedItem),
+                        complementoModel.claveFormaLiquidacion, complementoModel.monto, complementoModel.tipoCambio);
+                    this.deletePopUp();
+                }
+            }
+        ]]>
+    </mx:Script>
+
+    <mx:NumberFormatter id="formateadorMonto" thousandsSeparatorFrom="," thousandsSeparatorTo="," precision="2" />
+
+    <mx:Model id="complementoModel">
+        <claveFormaLiquidacion>{complementoModel.claveFormaLiquidacion}</claveFormaLiquidacion>
+        <monto>{Number(numberBase.parseNumberString(montoCompTextField.text))}</monto>
+        <tipoCambio>{Number(tipoCambioCompTextField.text)}</tipoCambio>
+    </mx:Model>
+
+    <mx:NumberValidator field="complementoModel.monto" minValue="0.01" maxValue="999999999999.99" domain="real"
+            decimalSeparator="." thousandsSeparator="," precision="2" exceedsMaxError="El valor es demasiado grande"
+            lowerThanMinError="El valor no puede ser menor a 0.01."
+            precisionError="El n&#250;amero de cifras decimales debe ser 2."
+            invalidCharError="El valor contiene caracteres no v&#225;lidos." />
+
+    <mx:NumberValidator field="complementoModel.tipoCambio" minValue="0.01" maxValue="999999999999.99" domain="real"
+            decimalSeparator="." thousandsSeparator="," precision="6" exceedsMaxError="El valor es demasiado grande"
+            lowerThanMinError="El valor no puede ser menor a 0.01."
+            precisionError="El n&#250;mero de cifras decimales debe ser 6."
+            invalidCharError="El valor contiene caracteres no v&#225;lidos." />
+
+    <mx:Form>
+		<mx:FormItem label="Fecha Valor:">
+            <mx:HBox>
+                <mx:ComboBox id="fechaValorCompComboBox">
+                    <mx:dataProvider>
+                        <mx:Array>
+                            <mx:String>TOM</mx:String>
+                            <mx:String>SPOT</mx:String>
+                        </mx:Array>
+                    </mx:dataProvider>
+                </mx:ComboBox>
+                <mx:Label text="Producto:" />
+                <mx:ComboBox id="productosCompComboBox" dataProvider="{productos}" />
+            </mx:HBox>
+        </mx:FormItem>
+		<mx:FormItem label="Monto:">
+            <mx:HBox>
+                <mx:TextInput id="montoCompTextField" text="0.0" restrict="0-9\." textAlign="right" width="120"
+                              focusIn="mostrarToolTip(true)" focusOut="mostrarToolTip(false)"/>
+                <mx:HBox visible="{!puntos}">
+                    <mx:Label text="Tipo de cambio:" />
+                    <mx:TextInput id="tipoCambioCompTextField" text="0.0" restrict="0-9\." width="80" textAlign="right" />
+                </mx:HBox>
+            </mx:HBox>
+        </mx:FormItem>
+		<mx:FormItem>
+            <mx:VBox id="montoCompToolTip" horizontalAlign="center" backgroundColor="#EEF5EE" borderStyle="solid"
+                     visible="false" width="100%">
+                <mx:Label text="{formateadorMonto.format(Number(numberBase.parseNumberString(montoCompTextField.text)))}" />
+            </mx:VBox>
+        </mx:FormItem>
+	</mx:Form>
+	<mx:HBox>
+		<mx:Button label="Aceptar" click="crearComplemento()" />
+	</mx:HBox>
+</mx:TitleWindow>

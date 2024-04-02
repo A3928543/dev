@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: AdminPizarron.page,v 1.10.40.2 2011/06/02 16:37:42 galiciad Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.mesa.AdminPizarron">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+
+    <bean name="doubleValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="render">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+        <set-property name="minimum" expression="0.0" />
+    </bean>
+
+    <bean name="precioSpotValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="render">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <bean name="factorDivisaValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <bean name="spreadReferenciaValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <bean name="spreadCompraValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <bean name="carryValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <bean name="slackFacDivValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <bean name="compraCashValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <bean name="ventaCashValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <bean name="compraTomValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <bean name="ventaTomValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <bean name="compraSpotValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <bean name="ventaSpotValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <bean name="compra72HrValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <bean name="venta72HrValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <bean name="compraVFutValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <bean name="ventaVFutValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <bean name="stringNotRequiredValidator" class="org.apache.tapestry.valid.StringValidator" lifecycle="page">
+        <set-property name="required" expression="false" />
+        <set-property name="clientScriptingEnabled" expression="false" />
+    </bean>
+
+    <component id="metodoActualizacionRadioGroup" type="RadioGroup">
+        <binding name="selected" expression="precioReferencia.preRef.metodoActualizacion" />
+    </component>
+    
+    <component id="origenVariacionRadioGroup" type="RadioGroup">
+        <binding name="selected" expression="origenVariacion" />
+    </component>
+
+    <component id="origVarExcelRadio" type="Radio">
+        <static-binding name="onclick" value='return fnDisableForm(this.form);' />
+        <binding name="value" expression="@com.ixe.ods.sica.model.Variacion@ORIG_VAR_EXCEL" />
+    </component>
+    
+    <component id="origVarRmdsRadio" type="Radio">
+        <static-binding name="onclick" value='return fnDisableForm(this.form);' />
+        <binding name="value" expression="@com.ixe.ods.sica.model.Variacion@ORIG_VAR_RMDS" />
+    </component>
+    
+    <component id="manualRadio" type="Radio">
+        <static-binding name="onclick" value='return fnDisableForm(this.form);' />
+        <binding name="value" expression="@com.ixe.ods.sica.model.PrecioReferenciaActual@METODO_MANUAL" />
+    </component>
+
+    <component id="automaticoRadio" type="Radio">
+        <static-binding name="onclick" value='return fnDisableForm(this.form);' />
+        <binding name="value" expression="@com.ixe.ods.sica.model.PrecioReferenciaActual@METODO_AUTOMATICO" />
+    </component>
+
+    <component id="midSpotRadio" type="Radio">
+        <static-binding name="onclick" value='return fnDisableForm(this.form);' />
+        <binding name="value" expression="@com.ixe.ods.sica.model.PrecioReferenciaActual@METODO_MID_SPOT" />
+    </component>
+
+    <component id="vespertinoRadio" type="Radio">
+        <static-binding name="onclick" value='return fnDisableForm(this.form);' />
+        <binding name="value" expression="@com.ixe.ods.sica.model.PrecioReferenciaActual@METODO_VESPERTINO" />
+    </component>
+
+    <component id="precioSpotTextField" type="FormatValidField">
+        <static-binding name="displayName" value="Precio Spot: " />
+        <static-binding name="size" value="7" />
+        <static-binding name="format" value="0.000000" />
+        <static-binding name="class" value="textoderecha" />
+        <binding name="validator" expression="beans.precioSpotValidator" />
+        <binding name="value" expression="precioReferencia.preRef.precioSpot" />
+    </component>
+
+    <component id="slackTextField" type="FormatValidField">
+        <static-binding name="displayName" value="Slack: " />
+        <static-binding name="size" value="7" />
+        <static-binding name="class" value="textoderecha" />
+        <static-binding name="format" value="0.000000" />
+        <binding name="validator" expression="beans.doubleValidator" />
+        <binding name="value" expression="slack" />
+    </component>
+
+    <component id="factorDivisaTextField" type="FormatValidField">
+        <static-binding name="displayName" value="Factor divisa: " />
+        <static-binding name="size" value="7" />
+        <static-binding name="class" value="textocentrado" />
+        <static-binding name="format" value="0.000000" />
+        <binding name="validator" expression="beans.factorDivisaValidator" />
+        <binding name="value" expression="components.forFDs.value.facDiv.factorTmp" />
+    </component>
+
+    <component id="spreadReferenciaTextField" type="FormatValidField">
+        <static-binding name="displayName" value="Sobreprecio IXE: " />
+        <static-binding name="size" value="7" />
+        <static-binding name="class" value="textoderecha" />
+        <static-binding name="format" value="0.000000" />
+        <binding name="validator" expression="beans.spreadReferenciaValidator" />
+        <binding name="value" expression="components.forFDs.value.facDiv.spreadReferencia" />
+    </component>
+
+    <component id="spreadCompraTextField" type="FormatValidField">
+        <static-binding name="displayName" value="Spread para Compra: " />
+        <static-binding name="size" value="7" />
+        <static-binding name="format" value="0.000000" />
+        <static-binding name="class" value="textoderecha" />
+        <binding name="validator" expression="beans.spreadCompraValidator" />
+        <binding name="value" expression="components.forFDs.value.facDiv.spreadCompra" />
+    </component>
+
+    <component id="carryTextField" type="FormatValidField">
+        <static-binding name="displayName" value="Carry: " />
+        <static-binding name="size" value="7" />
+        <static-binding name="class" value="textoderecha" />
+        <static-binding name="format" value="0.000000" />
+        <binding name="validator" expression="beans.carryValidator" />
+        <binding name="value" expression="components.forFDs.value.facDiv.carry" />
+    </component>
+
+    <component id="slackFacDivTextField" type="FormatValidField">
+        <static-binding name="displayName" value="Slack: " />
+        <static-binding name="size" value="7" />
+        <static-binding name="class" value="textoderecha" />
+        <static-binding name="format" value="0.000000" />
+        <binding name="validator" expression="beans.slackFacDivValidator" />
+        <binding name="value" expression="components.forFDs.value.facDiv.slack" />
+    </component>
+
+    <component id="canalesComboBox" type="PropertySelection">
+        <binding name="model" expression='new com.legosoft.tapestry.model.RecordSelectionModel(getSicaServiceData().findAllCanalesByPromocionMayoreo(), "idCanal", "nombre")' />
+        <binding name="value" expression="canalSeleccionado" />
+    </component>
+
+    <component id="divisasComboBox" type="PropertySelection">
+        <binding name="model" expression='new com.legosoft.tapestry.model.RecordSelectionModel(getSicaServiceData().findDivisasFrecuentes(), "idDivisa", "descripcion")' />
+        <binding name="value" expression="divisaSeleccionada" />
+    </component>
+
+    <component id="mesasCambioComboBoxMontoMax" type="PropertySelection">
+        <binding name="model" expression='new com.legosoft.tapestry.model.RecordSelectionModel(getSicaServiceData().findAll(@com.ixe.ods.sica.model.MesaCambio@class), "idMesaCambio", "nombre")' />
+        <binding name="value" expression="mesaCambioSeleccionadaMontosMaximos" />
+        <binding name="submitOnchange" expression="yes" />
+    </component>
+
+    <component id="cCashTextField" type="FormatValidField">
+        <static-binding name="displayName" value="C(CASH)" />
+        <static-binding name="size" value="7" />
+        <static-binding name="class" value="textocentrado" />
+        <static-binding name="format" value="0.000000" />
+        <binding name="validator" expression="beans.compraCashValidator" />
+        <binding name="value" expression="components.forSps.value.cpaVta.compraCash" />
+    </component>
+
+    <component id="vCashTextField" type="FormatValidField">
+        <static-binding name="displayName" value="V(CASH)" />
+        <static-binding name="size" value="7" />
+        <static-binding name="class" value="textocentrado" />
+        <static-binding name="format" value="0.000000" />
+        <binding name="validator" expression="beans.ventaCashValidator" />
+        <binding name="value" expression="components.forSps.value.cpaVta.ventaCash" />
+    </component>
+
+    <component id="cTomTextField" type="FormatValidField">
+        <static-binding name="displayName" value="C(TOM)" />
+        <static-binding name="size" value="7" />
+        <static-binding name="class" value="textocentrado" />
+        <static-binding name="format" value="0.000000" />
+        <binding name="validator" expression="beans.compraTomValidator" />
+        <binding name="value" expression="components.forSps.value.cpaVta.compraTom" />
+    </component>
+
+    <component id="vTomTextField" type="FormatValidField">
+        <static-binding name="displayName" value="V(TOM)" />
+        <static-binding name="size" value="7" />
+        <static-binding name="class" value="textocentrado" />
+        <static-binding name="format" value="0.000000" />
+        <binding name="validator" expression="beans.ventaTomValidator" />
+        <binding name="value" expression="components.forSps.value.cpaVta.ventaTom" />
+    </component>
+
+    <component id="cSpotTextField" type="FormatValidField">
+        <static-binding name="displayName" value="C(SPOT)" />
+        <static-binding name="size" value="7" />
+        <static-binding name="class" value="textocentrado" />
+        <static-binding name="format" value="0.000000" />
+        <binding name="validator" expression="beans.compraSpotValidator" />
+        <binding name="value" expression="components.forSps.value.cpaVta.compraSpot" />
+    </component>
+
+    <component id="vSpotTextField" type="FormatValidField">
+        <static-binding name="displayName" value="V(SPOT)" />
+        <static-binding name="size" value="7" />
+        <static-binding name="class" value="textocentrado" />
+        <static-binding name="format" value="0.000000" />
+        <binding name="validator" expression="beans.ventaSpotValidator" />
+        <binding name="value" expression="components.forSps.value.cpaVta.ventaSpot" />
+    </component>
+
+    <component id="c72HrTextField" type="FormatValidField">
+        <static-binding name="displayName" value="C(72HR)" />
+        <static-binding name="size" value="7" />
+        <static-binding name="class" value="textocentrado" />
+        <static-binding name="format" value="0.000000" />
+        <binding name="validator" expression="beans.compra72HrValidator" />
+        <binding name="value" expression="components.forSps.value.cpaVta.compra72Hr" />
+    </component>
+
+    <component id="v72HrTextField" type="FormatValidField">
+        <static-binding name="displayName" value="V(72HR)" />
+        <static-binding name="size" value="7" />
+        <static-binding name="class" value="textocentrado" />
+        <static-binding name="format" value="0.000000" />
+        <binding name="validator" expression="beans.venta72HrValidator" />
+        <binding name="value" expression="components.forSps.value.cpaVta.venta72Hr" />
+    </component>
+
+    <component id="cVFutTextField" type="FormatValidField">
+        <static-binding name="displayName" value="C(96HR)" />
+        <static-binding name="size" value="7" />
+        <static-binding name="class" value="textocentrado" />
+        <static-binding name="format" value="0.000000" />
+        <binding name="validator" expression="beans.compraVFutValidator" />
+        <binding name="value" expression="components.forSps.value.cpaVta.compraVFut" />
+    </component>
+
+    <component id="vVFutTextField" type="FormatValidField">
+        <static-binding name="displayName" value="V(96HR)" />
+        <static-binding name="size" value="7" />
+        <static-binding name="class" value="textocentrado" />
+        <static-binding name="format" value="0.000000" />
+        <binding name="validator" expression="beans.ventaVFutValidator" />
+        <binding name="value" expression="components.forSps.value.cpaVta.ventaVFut" />
+    </component>
+
+    <component id="montoMaximoTextField" type="MontoTextField">
+        <binding name="value" expression="components.forDs.value.montoMaximo" />
+    </component>
+
+    <component id="tiposPizarronComboBox" type="PropertySelection">
+        <binding name="model" expression='new com.legosoft.tapestry.model.RecordSelectionModel(getSicaServiceData().findAll(@com.ixe.ods.sica.model.TipoPizarron@class), "idTipoPizarron", "descripcion")' />
+        <binding name="value" expression="tipoPizarron" />
+    </component>
+
+    <property-specification name="fechasMinimizado" type="boolean" persistent="yes" />
+    <property-specification name="spreadsMinimizado" type="boolean" persistent="yes" />
+    <property-specification name="factoresDivisaMinimizado" type="boolean" persistent="yes" />
+    <property-specification name="montosMaximosMinimizado" type="boolean" persistent="yes" initial-value="true" />
+	<property-specification name="dealsPendientesMinimizado" type="boolean" persistent="yes" initial-value="false" />
+    <property-specification name="precioReferencia" type="com.ixe.ods.sica.model.PrecioReferenciaActual" persistent="yes" />
+    <property-specification name="factoresDivisa" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+    <property-specification name="factoresDivisaTemporal" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+    <property-specification name="spreads" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+	<property-specification name="spreadsTemporal" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+
+    <property-specification name="canalSeleccionado" type="com.ixe.ods.sica.model.Canal" persistent="yes" />
+    <property-specification name="divisaSeleccionada" type="com.ixe.ods.sica.model.Divisa" persistent="yes" />
+    <property-specification name="mesaCambioSeleccionadaMontosMaximos" type="com.ixe.ods.sica.model.MesaCambio" persistent="yes" />
+    <property-specification name="modoSubmit" type="int" />
+    <property-specification name="modo" type="int" />
+    <property-specification name="slack" type="java.lang.Double" persistent="yes" />
+    <property-specification name="confirmar"  type="boolean" persistent="yes" />
+	<property-specification name="factorAutomatico" type="boolean" persistent="yes" />
+    <property-specification name="registros" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()"/>
+	<property-specification name="dealsPendientes" type="java.util.List" persistent="yes"/>
+    <property-specification name="divisasDealsPendientes" type="java.lang.String[]" persistent="yes" />
+	<property-specification name="totalesOperaciones" type="java.util.List" persistent="yes" />
+    <property-specification name="tipoPizarron" type="com.ixe.ods.sica.model.TipoPizarron" persistent="yes" />
+    <property-specification name="level" type="int" />
+    <property-specification name="origenVariacion" type="java.lang.String" persistent="yes" />
+
+    <context-asset name="automaticButton" path="/images/automatico.gif" />
+    <context-asset name="manualButton" path="/images/manual.gif" />
+    <context-asset name="saveButton" path="/images/save.gif" />
+    <context-asset name="cancelButton" path="/images/cancel.gif" />
+    <context-asset name="searchButton" path="/images/search.gif" />
+    <context-asset name="confirmButton" path="/images/confirmar.gif" />
+    <context-asset name="refreshButton" path="/images/refresh.gif" />
+
+</page-specification>

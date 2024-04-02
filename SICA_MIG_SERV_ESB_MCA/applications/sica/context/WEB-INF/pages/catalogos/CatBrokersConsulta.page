@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CatBrokersConsulta.page,v 1.9 2008/02/22 18:25:16 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.catalogos.CatBrokersConsulta">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />  
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/> 	  
+
+    <property-specification name="razonSocial" type="java.lang.String" persistent="yes"/>     
+    <property-specification name="brokers" type="java.util.List" initial-value="new java.util.ArrayList()" persistent="yes"/>  
+    <property-specification name="personaMoral" type="com.ixe.ods.bup.model.PersonaMoral" persistent="yes"/> 
+    <property-specification name="paginaAnterior" type="java.lang.String" persistent="yes"/>   
+
+    <context-asset name="cancelButton" path="/images/cancel.gif" />
+    <context-asset name="searchButton" path="/images/search.gif" />
+    
+
+</page-specification>

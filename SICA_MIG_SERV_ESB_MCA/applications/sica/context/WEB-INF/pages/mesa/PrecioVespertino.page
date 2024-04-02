@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: PrecioVespertino.page,v 1.15.40.1 2011/05/02 17:09:31 galiciad Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.mesa.PrecioVespertino">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+     <bean name="precioSpotValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="render">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <component id="precioVespertinoTextField" type="FormatValidField">
+        <static-binding name="displayName" value="Precio Vespertino: " />
+        <static-binding name="size" value="7" />
+        <static-binding name="format" value="0.000000" />
+        <static-binding name="class" value="textoderecha" />
+        <binding name="validator" expression="beans.precioSpotValidator" />
+        <binding name="value" expression="precioReferencia.preRef.precioSpot" />
+    </component>
+
+	<component id="spreadVespertinoTextField" type="FormatValidField">
+        <static-binding name="displayName" value="Spread Vespertino: " />
+        <static-binding name="size" value="7" />
+        <static-binding name="format" value="0.000000" />
+        <static-binding name="class" value="textoderecha" />
+        <binding name="validator" expression="beans.precioSpotValidator" />
+        <binding name="value" expression="parametro.valor" />
+    </component>
+
+    <property-specification name="dealsPendientesPorLiquidar" type="java.util.List" persistent="yes" />
+    <property-specification name="dealsPendientesNoBalanceado" type="java.util.List" persistent="yes" />
+    <property-specification name="dealsPendientesDatosLiquidacion" type="java.util.List" persistent="yes" />
+    <property-specification name="dealsPendientesMonto" type="java.util.List" persistent="yes" />
+    <property-specification name="dealsSwap" type="java.util.List" persistent="yes" />
+    <property-specification name="dealsPendientesHorario" type="java.util.List" persistent="yes" />
+    <property-specification name="dealsPendientesDesviacionTC" type="java.util.List" persistent="yes" />
+    <property-specification name="dealsPendientesBanxico" type="java.util.List" persistent="yes" />
+    <property-specification name="dealsPendientesDocumentacion" type="java.util.List" persistent="yes" />
+    <property-specification name="dealsPendientesPlantilla" type="java.util.List" persistent="yes" />
+    <property-specification name="dealsPendientesLinTomaEnFirme" type="java.util.List" persistent="yes" />
+    <property-specification name="dealsPendientesCartaIntencion" type="java.util.List" persistent="yes" />
+    <property-specification name="dealsPendientesContratoSica" type="java.util.List" persistent="yes" />
+    <property-specification name="dealsPendientesCompletar" type="java.util.List" persistent="yes" />
+    <property-specification name="dealsDetallesPendientes" type="java.util.List" persistent="yes" />
+    <property-specification name="dealsPendientesModCan" type="java.util.List" persistent="yes" />
+    <property-specification name="dealsPendientesSolicitudSobrePrecio" type="java.util.List" persistent="yes" />
+    <property-specification name="reversosPendientes" type="java.util.List" persistent="yes" />
+    <property-specification name="dealsNoCancelados" type="java.util.List" persistent="yes" />
+	<property-specification name="dealsCancelados" type="java.util.List" persistent="yes" />
+    <property-specification name="modoRefresh" type="int" />
+    <property-specification name="confirmar"  type="boolean" persistent="yes" />
+    <property-specification name="precioReferencia" type="com.ixe.ods.sica.model.PrecioReferenciaActual" persistent="yes" />
+    <property-specification name="parametro" type="com.ixe.ods.sica.model.ParametroSica" persistent="yes" />
+    
+    <context-asset name="refreshButton" path="/images/refresh.gif" />
+	<context-asset name="confirmButton" path="/images/confirmar.gif" />
+    <context-asset name="automaticButton" path="/images/automatico.gif" />
+    <context-asset name="manualButton" path="/images/manual.gif" />
+    <context-asset name="saveButton" path="/images/save.gif" />
+    <context-asset name="cancelButton" path="/images/cancel.gif" />
+    <context-asset name="searchButton" path="/images/search.gif" />
+
+</page-specification>

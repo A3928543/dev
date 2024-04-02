@@ -1,0 +1,33 @@
+<!-- $Id: CatTipoPizarron.html,v 1.1 2008/02/22 18:25:17 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Encabezado</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <form jwcid="@Form" listener="ognl: listeners.actualizar" delegate="ognl:beans.delegate">
+    	<span jwcid="@bup:ShowError" width="100%" delegate="ognl:beans.delegate"/>
+        <br />
+        <table jwcid="@ActionPortletBorder" title="Nuevo Tipo de Pizarr&oacute;n" width="100%">
+            <fieldset>
+	            <legend class="legend">Datos del Pizarr&oacute;n:</legend>
+            	<table width="100%">
+	                <tr align="center">
+    	                <td align="left" class="title">
+                            Descripci&oacute;n:
+                        </td>
+        	            <td>
+            	            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" value="ognl: registro.descripcion" size="150" />
+                	    </td>
+	                </tr>
+                </table>
+			</fieldset>
+            <br />
+            <div align="center">
+                <input jwcid="@ImageSubmit" image="ognl: assets.acceptButton" onclick="return fnDisableForm(this.form);" />
+                <a jwcid="@PageLink" page="CatTiposPizarron" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.cancelButton"/></a>
+            </div>
+        </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<view:Utilidad
+    xmlns:mx="http://www.macromedia.com/2003/mxml"
+    xmlns:ls="com.legosoft.*"
+    xmlns:view="com.ixe.ods.sica.posicion.views.*"
+    xmlns:sica="*">
+
+    <mx:NumberFormatter id="numberFormatter" precision="0"/>
+
+    <mx:Effect>
+        <mx:WipeLeft name="wipeLeft"/>
+        <mx:WipeRight name="wipeRight"/>
+        <mx:WipeDown name="wipeDown" show="true" duration="300"/>
+        <mx:WipeUp name="wipeUp" show="false" duration="300"/>
+    </mx:Effect>
+
+    <mx:HBox width="100%" horizontalGap="5">
+
+        <mx:Label text="P&#38;L por Valuaci&#243;n:" width="{visibleReutersLink ? 105 : undefined}" fontWeight="bold"/>
+        <mx:Label text='{numberFormatter.format(tipoCambio.getUtilidad(tipoCambioMercado)) + " " + parentApplication.idDivisaReferencia}'/>
+
+        <mx:Spacer width="100%"/>
+
+        <mx:Link id="formulaLink" icon="@Embed('resources/zoom.gif')" toggle="true" visible="{false}"/>
+    </mx:HBox>
+
+    <view:FormulaDetail id="formulaDetail" tipoCambio="{tipoCambio}" tipoCambioMercado="{tipoCambioMercado}"
+                        marginLeft="5" marginRight="5" marginTop="5" marginBottom="5" verticalGap="10" visible="false"
+                        backgroundColor="#EEF5EE" borderStyle="solid" showEffect="wipeDown" hideEffect="wipeUp"/>
+
+</view:Utilidad>

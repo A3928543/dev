@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<!--$Id: build.xml,v 1.11.44.1 2010/10/26 16:37:43 ccovian Exp $ -->
+<project name="Sica" default="build-all" basedir=".">
+
+    <property name="root.dir" value="${basedir}"/>
+
+    <property file="${root.dir}/config/common.properties"/>
+
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${tmp.dir}"/>
+        <mkdir dir="${hbgen.dir}"/>
+    </target>
+
+    <target name="clean-all" description="Clean everything">
+        <delete dir="${dist.dir}"/>
+        <delete dir="${tmp.dir}"/>
+        <ant antfile="build.xml" target="clean" dir="${root.dir}/models"/>
+        <ant antfile="build.xml" target="clean" dir="${root.dir}/ejb"/>
+        <ant antfile="build.xml" target="clean" dir="${root.dir}/applications"/>
+        <ant antfile="build.xml" target="clean" dir="${root.dir}/commons"/>
+    </target>
+
+    <target name="javadoc">
+        <ant antfile="build.xml" target="javadoc" dir="${root.dir}/models"/>
+        <ant antfile="build.xml" target="javadoc" dir="${root.dir}/ejb"/>
+        <ant antfile="build.xml" target="javadoc" dir="${root.dir}/applications"/>
+    </target>
+
+    <target name="build-hbgen" depends="init" description="Generate Hibernate class descriptor files.">
+        <ant antfile="build.xml" target="build-hbgen" dir="${root.dir}/models"/>
+    </target>
+
+    <target name="build-ejbgen">
+        <ant antfile="build.xml" target="build-ejbgen" dir="${root.dir}/ejb"/>
+    </target>
+
+    <target name="compile" depends="init" description="Compile everything">
+        <ant antfile="build.xml" target="compile" dir="${root.dir}/models"/>
+        <ant antfile="build.xml" target="compile" dir="${root.dir}/ejb"/>
+        <ant antfile="build.xml" target="compile" dir="${root.dir}/applications"/>
+        <ant antfile="build.xml" target="compile" dir="${root.dir}/commons"/>
+    </target>
+
+    <target name="build-models" depends="init" description="Build ODS Business Objects">
+        <ant antfile="build.xml" target="build-models" dir="${root.dir}/models"/>
+    </target>
+
+    <target name="build-ejbs" depends="init" description="Build Security EJBs.">
+        <ant antfile="build.xml" target="build-ejbs" dir="${root.dir}/ejb"/>
+    </target>
+
+    <target name="build-iSica-app" description="Build iSica Application">
+        <ant antfile="build.xml" target="build-iSica" dir="${root.dir}/applications"/>
+    </target>
+	
+	<target name="build-sicaTeller-app" description="Build Sica Teller Application">
+		<ant antfile="build.xml" target="build-sicaTeller" dir="${root.dir}/applications"/>
+	</target>
+
+    <target name="build-sica-app" description="Build Sica Application">
+        <ant antfile="build.xml" target="build-apps" dir="${root.dir}/applications"/>
+    </target>
+
+    <target name="build-sica-core" description="Build Sica Core" depends="init, build-models">
+        <ant antfile="build.xml" target="build-sica-core" dir="${root.dir}/commons"/>
+    </target>
+
+    <target name="build-sica" description="Build Sica extensions" depends="init, build-sica-core">
+        <ant antfile="build.xml" target="build-sica" dir="${root.dir}/commons"/>
+    </target>
+	
+    <target name="build-apps" depends="init">
+        <ant antfile="build.xml" target="build-apps" dir="${root.dir}/applications"/>
+    </target>
+
+    <target name="build-interfaces" depends="build-ejbs">
+        <ant antfile="build.xml" target="build-interfaces" dir="${root.dir}/ejb"/>
+    </target>
+
+    <target name="build-core" depends="build-hbgen, build-sica-core, build-ejbgen"/>
+
+    <target name="build-all" depends="clean-all, build-core, build-interfaces, build-apps"/>
+
+    <target name="deploy-ext-frameworks">
+        <copy todir="${bea.domain.dir}/lib">
+            <fileset dir="${lib.dir}/legosoft">
+                <include name="*.jar"/>
+            </fileset>
+            <fileset dir="${lib.dir}/hibernate">
+                <include name="*.jar"/>
+            </fileset>
+            <fileset dir="${lib.dir}/tapestry">
+                <include name="*.jar"/>
+            </fileset>
+            <fileset dir="${lib.dir}/jakarta">
+                <include name="*.jar"/>
+            </fileset>
+            <fileset dir="${lib.dir}/spring">
+                <include name="*.jar"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="deploy-products" depends="build-all, just-deploy-products">
+    </target>
+
+    <target name="deploy-core" depends="build-core, just-deploy-core">
+    </target>
+
+    <target name="just-deploy-apps">
+        <unzip dest="${standalone.deployment.dir}/sica" src="${dist.dir}/${sica.war}" overwrite="yes" />
+    </target>
+	
+	<target name="deploy-sicaTeller-app" depends="build-sicaTeller-app, just-deploy-sicaTeller-app">
+	</target>
+
+    <target name="deploy-sica-as-war" depends="build-apps">
+        <copy todir="${standalone.deployment.dir}">
+            <fileset dir="${dist.dir}">
+                <include name="${sica.war}"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="just-deploy-iSica" depends="build-iSica-app">
+        <copy todir="${standalone.deployment.dir}">
+            <fileset dir="${dist.dir}">
+                <include name="${iSica.war}"/>
+            </fileset>
+        </copy>
+    </target>
+	
+	<target name="just-deploy-sicaTeller-app">
+		<copy todir="${standalone.deployment.dir}">
+            <fileset dir="${dist.dir}">
+                <include name="${sicaTeller.war}"/>
+            </fileset>
+        </copy>
+	</target>
+
+    <target name="just-deploy-products" depends="just-deploy-core, just-deploy-apps, just-deploy-ejbs">
+    </target>
+
+    <target name="just-deploy-ejbs">
+        <copy todir="${standalone.deployment.dir}">
+            <fileset dir="${dist.dir}">
+                <include name="${sica-ejb.jar}"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="just-deploy-core">
+        <copy todir="${bea.domain.dir}/lib">
+            <fileset dir="${dist.dir}">
+                <include name="${sica.jar}"/>
+                <include name="${ods-sica.jar}"/>
+            	<include name="${sica-interfaces.jar}"/>
+                <include name="${sica-teller-interfaces.jar}"/>
+            </fileset>
+        </copy>
+        <copy file="${models.dir}/${resources.dir}/hibernate/hibernate.cfg.xml" tofile="${bea.domain.dir}/hibernate.cfg.xml"/>
+        <copy file="${commons.dir}/${resources.dir}/spring/sicaApplicationContext.xml" todir="${bea.domain.dir}"/>
+        <copy file="${commons.dir}/${resources.dir}/spring/beanRefContext.xml" todir="${bea.domain.dir}"/>
+    </target>
+
+    <target name="build-and-deploy" depends="build-all, just-deploy-products" />
+        
+</project>

@@ -1,0 +1,48 @@
+<!-- $Id: CapturaLineaOperacion.html,v 1.9 2008/02/22 18:25:49 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Captura de Solicitudes de L&iacute;neas de Operaci&oacute;n</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+	<script jwcid="@Script" script="/WEB-INF/scripts/FirstField.script" symbols="ognl: firstTextFieldMap" />
+    <form jwcid="@Form" listener="ognl: listeners.solicitarLineaOperacion" delegate="ognl:beans.delegate">
+		<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level="ognl: level"/>
+        <table jwcid="@ActionPortletBorder" title="Captura de Solicitudes de L&iacute;neas de Operaci&oacute;n" width="100%">
+            <table jwcid="@TableBorder" title="ognl: null" columnCount="2" width="100%">
+                <tr class="titlecell">
+                    <td width="50%" align="right" class="title">Broker:</td>
+                    <td class="normalcell">
+                    	<span jwcid="@Insert" value="ognl: razonSocialBroker" />
+                    </td>
+                </tr>
+                <tr class="titlecell">
+                    <td align="right" class="title">&Uacute;ltima Modificaci&oacute;n:</td>
+                    <td class="normalcell">
+                        <input jwcid="@Insert" value="ognl: lineaOperacion.ultimaModificacion" format="ognl: dateFormat"/>
+                    </td>
+                </tr>
+                <tr class="titlecell">
+                    <td align="right" class="title">Estatus:</td>
+                    <td class="normalcell">
+                        <input jwcid="@Insert" value="ognl: lineaOperacion.statusLinea" size="20"/>
+                    </td>
+                </tr>
+			    <tr class="titlecell">
+                    <td align="right" class="title">L&iacute;mite de Operaci&oacute;n:</td>
+                    <td class="normalcell">
+                        <select jwcid="importe" format="ognl: moneyFormat"/> d&oacute;lares
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <div align="center">
+                <input type="image" jwcid="@ImageSubmit" image="ognl: assets.aceptarButton" onclick="return fnDisableForm(this.form);" />
+	            <a jwcid="@DirectLink" listener="ognl:listeners.cancelarOperacion" onClick="fnShowWaitImage();">
+	            	<img jwcid="@Image" image="ognl: assets.regresarButton" accesskey="C"/>
+            	</a>
+            </div>
+        </table>
+    </form>
+</body>
+</html>

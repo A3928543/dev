@@ -1,0 +1,14 @@
+<!-- $Id: ResumenLineasOperacion.html,v 1.9 2008/02/22 18:25:06 ccovian Exp $ -->
+<span jwcid="@Conditional" condition="ognl: lineaOperacion">
+    <table jwcid="@ActionPortletBorder" title="Resumen de la L&iacute;nea de Operaci&oacute;n">
+        <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "Status", "Excepciones", "Importe", "Uso", "Saldo" }' columnCount="ognl: 5" width="100%">
+            <tr class="normalcell">
+                <td align="center" class="normal"><span jwcid="@Insert" value="ognl: lineaOperacion.descripcionStatus">OK</span></td>
+                <td align="center" class="normal"><span jwcid="@Insert" value="ognl: lineaOperacion.numeroExcepciones">0</span></td>
+                <td align="right" class="normal"><span jwcid="@Insert" value="ognl: lineaOperacion.importe" format="ognl: page.moneyFormat">100,000.00</span></td>
+                <td align="right" class="normal"><span jwcid="@Insert" value="ognl: lineaOperacion.usoLinea" format="ognl: page.moneyFormat">0.00</span></td>
+                <td align="right" class="normal"><span jwcid="@Insert" value="ognl: lineaOperacion.saldo" format="ognl: page.moneyFormat">100,000.00</span></td>
+            </tr>
+        </table>
+    </table>
+</span>

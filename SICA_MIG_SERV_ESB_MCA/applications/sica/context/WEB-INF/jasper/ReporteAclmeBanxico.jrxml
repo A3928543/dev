@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="Unnamed" language="java" pageWidth="1500" pageHeight="595" orientation="Landscape" columnWidth="1500" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="com.jasperassistant.designer.Rulers" value="true"/>
+	<property name="com.jasperassistant.designer.GridWidth" value="60"/>
+	<property name="com.jasperassistant.designer.GridHeight" value="12"/>
+	<property name="com.jasperassistant.designer.DataSource" value="ReporteAclmeDataSouce"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="true"/>
+	<property name="com.jasperassistant.designer.Margins" value="true"/>
+	<property name="com.jasperassistant.designer.Grid" value="true"/>
+	<property name="com.jasperassistant.designer.SnapToGuides" value="true"/>
+	<field name="claveContraparte" class="java.lang.String">
+	</field>
+	<field name="claveGfIXE" class="java.lang.String">
+	</field>
+	<field name="cliente" class="java.lang.String">
+	</field>
+	<field name="compra_venta" class="java.lang.String">
+	</field>
+	<field name="divisa" class="java.lang.String">
+	</field>
+	<field name="estrategia" class="java.lang.String">
+	</field>
+	<field name="fechaLiquidacion" class="java.util.Date">
+	</field>
+	<field name="fechaPacto" class="java.util.Date">
+	</field>
+	<field name="folioEstrategia" class="java.lang.String">
+	</field>
+	<field name="folioInterno" class="java.lang.String">
+	</field>
+	<field name="monto" class="java.lang.Double">
+	</field>
+	<field name="status" class="java.lang.String">
+	</field>
+	<group name="Group_2">
+		<groupHeader>
+		<band height="13">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="120" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<text><![CDATA[CLAVE GF IXE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="120" y="0" width="120" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<text><![CDATA[COMPRA VENTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="240" y="0" width="120" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<text><![CDATA[FECHA PACTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="480" y="0" width="120" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<text><![CDATA[MONTO A REPORTAR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="600" y="0" width="60" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<text><![CDATA[DIVISA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="660" y="0" width="120" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<text><![CDATA[FOLIO INTERNO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="780" y="0" width="320" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<text><![CDATA[CLAVE CONTRAPARTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1200" y="0" width="161" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<text><![CDATA[FOLIO ESTRATEGIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1100" y="0" width="100" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<text><![CDATA[ESTRATEGIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="360" y="0" width="120" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<text><![CDATA[FECHA LIQUIDACION]]></text>
+			</staticText>
+		</band>
+		</groupHeader>
+	</group>
+	<group name="Group_1">
+		<groupExpression><![CDATA[$F{compra_venta}+$F{divisa}+$F{folioInterno}+$F{claveContraparte}]]></groupExpression>
+		<groupFooter>
+		<band height="13">
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="0" width="120" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{claveGfIXE}.length() > 6 ? new String("040032") : $F{claveGfIXE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="120" y="0" width="120" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{compra_venta}]]></textFieldExpression>
+			</textField>
+			<textField pattern="d/M/yy" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="240" y="0" width="120" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaPacto}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="600" y="0" width="60" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{divisa}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="660" y="0" width="120" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{folioInterno}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="780" y="0" width="320" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{claveContraparte}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="1200" y="0" width="161" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{folioEstrategia}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="1100" y="0" width="100" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{estrategia}]]></textFieldExpression>
+			</textField>
+			<textField pattern="d/M/yy" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="360" y="0" width="120" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaLiquidacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="480" y="0" width="120" height="13"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{monto}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupFooter>
+	</group>
+</jasperReport>

@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.PosicionDetalle"
+        table="SC_POSICION_DETALLE"
+        proxy="com.ixe.ods.sica.model.PosicionDetalle"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idPosicionDetalle"
+            column="ID_POSICION_DETALLE"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_POSICION_DETALLE_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-PosicionDetalle.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="claveFormaLiquidacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_FORMA_LIQUIDACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <component
+            name="cpaVta"
+            class="com.ixe.ods.sica.model.CpaVta"
+        >
+        <property
+            name="compraCash"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_CASH"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaCash"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_CASH"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraTom"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_TOM"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaTom"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_TOM"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraSpot"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_SPOT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaSpot"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_SPOT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compra72Hr"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_72HR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="venta72Hr"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_72HR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraVFut"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_VFUT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaVFut"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_VFUT"
+            not-null="true"
+            unique="false"
+        />
+
+        </component>
+
+        <component
+            name="cpaVtaIn"
+            class="com.ixe.ods.sica.model.CpaVtaIn"
+        >
+        <property
+            name="compraInCash"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_IN_CASH"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaInCash"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_IN_CASH"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraInTom"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_IN_TOM"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaInTom"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_IN_TOM"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraInSpot"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_IN_SPOT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaInSpot"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_IN_SPOT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraIn72Hr"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_IN_72HR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaIn72Hr"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_IN_72HR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraInVFut"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_IN_VFUT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaInVFut"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_IN_VFUT"
+            not-null="true"
+            unique="false"
+        />
+
+        </component>
+
+        <component
+            name="cpaVtaMn"
+            class="com.ixe.ods.sica.model.CpaVtaMn"
+        >
+        <property
+            name="compraMnClienteCash"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_MN_CLIENTE_CASH"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaMnClienteCash"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_MN_CLIENTE_CASH"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraMnClienteTom"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_MN_CLIENTE_TOM"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaMnClienteTom"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_MN_CLIENTE_TOM"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraMnClienteSpot"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_MN_CLIENTE_SPOT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaMnClienteSpot"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_MN_CLIENTE_SPOT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraMnCliente72Hr"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_MN_CLIENTE_72HR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaMnCliente72Hr"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_MN_CLIENTE_72HR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraMnClienteVFut"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_MN_CLIENTE_VFUT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaMnClienteVFut"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_MN_CLIENTE_VFUT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraMnPizarronCash"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_MN_PIZARRON_CASH"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaMnPizarronCash"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_MN_PIZARRON_CASH"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraMnPizarronTom"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_MN_PIZARRON_TOM"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaMnPizarronTom"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_MN_PIZARRON_TOM"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraMnPizarronSpot"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_MN_PIZARRON_SPOT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaMnPizarronSpot"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_MN_PIZARRON_SPOT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraMnPizarron72Hr"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_MN_PIZARRON_72HR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaMnPizarron72Hr"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_MN_PIZARRON_72HR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraMnPizarronVFut"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_MN_PIZARRON_VFUT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaMnPizarronVFut"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_MN_PIZARRON_VFUT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraMnMesaCash"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_MN_MESA_CASH"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaMnMesaCash"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_MN_MESA_CASH"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraMnMesaTom"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_MN_MESA_TOM"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaMnMesaTom"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_MN_MESA_TOM"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraMnMesaSpot"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_MN_MESA_SPOT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaMnMesaSpot"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_MN_MESA_SPOT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraMnMesa72Hr"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_MN_MESA_72HR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaMnMesa72Hr"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_MN_MESA_72HR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="compraMnMesaVFut"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA_MN_MESA_VFUT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ventaMnMesaVFut"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENTA_MN_MESA_VFUT"
+            not-null="true"
+            unique="false"
+        />
+
+        </component>
+
+        <component
+            name="posIni"
+            class="com.ixe.ods.sica.model.PosIni"
+        >
+
+        <property
+            name="posicionInicialCash"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="POSICION_INICIAL_CASH"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="posicionInicialTom"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="POSICION_INICIAL_TOM"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="posicionInicialSpot"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="POSICION_INICIAL_SPOT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="posicionInicial72Hr"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="POSICION_INICIAL_72HR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="posicionInicialVFut"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="POSICION_INICIAL_VFUT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="posicionInicialMnCash"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="POSICION_INICIAL_MN_CASH"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="posicionInicialMnTom"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="POSICION_INICIAL_MN_TOM"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="posicionInicialMnSpot"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="POSICION_INICIAL_MN_SPOT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="posicionInicialMn72Hr"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="POSICION_INICIAL_MN_72HR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="posicionInicialMnVFut"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="POSICION_INICIAL_MN_VFUT"
+            not-null="true"
+            unique="false"
+        />
+
+        </component>
+
+        <many-to-one
+            name="canal"
+            class="com.ixe.ods.sica.model.Canal"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_CANAL"
+            unique="false"
+        />
+
+        <many-to-one
+            name="divisa"
+            class="com.ixe.ods.sica.model.Divisa"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIVISA"
+            unique="false"
+        />
+
+        <many-to-one
+            name="mesaCambio"
+            class="com.ixe.ods.sica.model.MesaCambio"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_MESA_CAMBIO"
+            unique="false"
+        />
+
+        <many-to-one
+            name="posicion"
+            class="com.ixe.ods.sica.model.Posicion"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_POSICION"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-PosicionDetalle.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.reportes.ReportesDocumentacionFaltante">
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate"/>
+    <bean name="stringValidator" class="org.apache.tapestry.valid.StringValidator" lifecycle="page">
+        <set-property name="required" expression="false" />
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+    
+    <component id="nombreCortoTextField" type="ValidField">
+        <static-binding name="displayName" value="Nombre Corto:" />
+        <static-binding name="maxlength" value="200" />
+        <static-binding name="size" value="50" />
+        <static-binding name="class" value="uppercase" />
+        <binding name="validator" expression="beans.stringValidator" />
+        <binding name="value" expression="nombreCorto" />
+    </component>
+
+    <component id="noContratoTextField" type="ValidField">
+        <static-binding name="displayName" value="Numero de Contrato SICA:" />
+        <static-binding name="maxlength" value="200" />
+        <static-binding name="size" value="50" />
+        <static-binding name="class" value="uppercase" />
+        <binding name="validator" expression="beans.stringValidator" />
+        <binding name="value" expression="noContrato" />
+    </component>
+        
+    <property-specification name="gc" type="java.util.Date" persistent="yes" />
+    <property-specification name="detalles" type="java.util.List" initial-value="new java.util.ArrayList()" persistent="yes" />
+    <property-specification name="detallesTable" type="java.util.List" initial-value="new java.util.ArrayList()" persistent="yes" />
+    <property-specification name="modo" type="java.lang.String" initial-value="" persistent="yes" />
+<!--   	<property-specification name="registerDateHasta" type="java.util.Date" persistent="yes" />
+		<property-specification name="registerDate" type="java.util.Date" persistent="yes" />
+   		<property-specification name="nombreCorto" type="java.lang.String" initial-value="" persistent="yes" />
+-->
+   	<property-specification name="noContrato" type="java.lang.String" initial-value="" persistent="yes" />
+    
+    <context-asset name="searchButton" path="/images/search.gif" />
+	<context-asset name="verXlsButton" path="/images/ver_excel.gif" />
+
+</page-specification>

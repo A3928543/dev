@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: DetalleWindow.mxml,v 1.7 2008/02/22 18:25:49 ccovian Exp $ -->
+<mx:TitleWindow xmlns:mx="http://www.macromedia.com/2003/mxml" title="Reverso de detalle de deal" closeButton="true"
+                click="this.deletePopUp();" creationComplete="inicializar()">
+
+    <mx:Script>
+        <![CDATA[
+        	import com.ixe.ods.sica.reversos.vo.*;
+    		import mx.controls.Alert;
+            import mx.core.Application;
+            import mx.formatters.*;
+			import mx.managers.*;
+			import mx.validators.*;
+
+            var detalleDeal   : Object;
+            var idDivisa      : String;
+			var numberBase    : NumberBase;
+            var interbancario : Boolean;
+
+            private function inicializar() : Void
+            {
+				numberBase = new NumberBase('.', ',' , '.', ',');
+            	idDivisa = detalleDeal.divisa.idDivisa;
+            }
+
+			private function eliminarCerosIzq(monto: String) : String {
+				while ((monto.length > 1) && (monto.substring(0, 1) == '0'))	{
+					monto  = monto.substring(1, monto.length)
+				}
+				return monto;
+			}
+
+            private function aceptar() : Void
+            {
+            	var vo : DetalleReversoVO = new DetalleReversoVO();
+                vo.inicializar(detalleDeal.folioDetalle, detalleDeal.monto,
+                        montoTextField.text.length > 0 ? Number(numberBase.parseNumberString(montoTextField.text)) : detalleDeal.monto,
+						detalleDeal.tipoCambio,
+                        tipoCambioTextField.text.length > 0 ? eliminarCerosIzq(tipoCambioTextField.text) : detalleDeal.tipoCambio);
+	            mx.core.Application.application.agregarDetalleReversado(vo);
+	            this.deletePopUp();
+            }
+
+			private function modificarContenidoTextField()
+			{
+                if (montoCheckBox.selected == false) {
+                    montoTextField.text = "";
+                }
+                if (tccCheckBox.selected == false) {
+                    tipoCambioTextField.text = "";
+                }
+            }
+
+			private function validarMontos()
+    	    {
+                var valMontoDetDeal;
+                var valMontotipoCambio;
+                var montoOriginal = Number(numberBase.parseNumberString(montoTextField.text));
+                var nuevoMonto = detalleDeal.monto;
+                var tccOriginal = formateadorTc.format(detalleDeal.tipoCambio);
+                var tccNuevo = formateadorTc.format(eliminarCerosIzq(tipoCambioTextField.text));
+
+                valMontoDetDeal = mx.validators.Validator.isStructureValid(this,'detDealMontoModel');
+                valMontotipoCambio = mx.validators.Validator.isStructureValid(this,'tipoCambioModel');
+				try {
+                    if (montoCheckBox.selected == false && tccCheckBox.selected == false) {
+                        throw new Error("Para crear el reverso es necesario definir un motivo.");
+                    }
+                    else if ((montoCheckBox.selected == true && valMontoDetDeal == false) || (tccCheckBox.selected == true && valMontotipoCambio == false)) {
+                        throw new Error("El monto definido no es v\u00e1lido. Verifique los datos.");
+                    }
+                    else if (montoCheckBox.selected == true && montoOriginal == nuevoMonto) {
+                        throw new Error("Si el reverso es por monto, el nuevo monto debe ser distinto al original. Verfique los datos");
+                    }
+                    else if (tccCheckBox.selected == true && tccOriginal == tccNuevo) {
+                        throw new Error("Si el reverso es por Tipo de Cambio, el nuevo monto debe ser distinto al original. Verfique los datos");
+                    }
+                    else if (valMontoDetDeal == true || valMontotipoCambio == true) {
+                        var tcm = detalleDeal.tipoCambioMesa;
+                        var monto = montoTextField.text.length > 0
+                                ? Number(numberBase.parseNumberString(montoTextField.text))
+                                : detalleDeal.monto;
+                        var tcc = tipoCambioTextField.text.length > 0
+                                ? Number(tipoCambioTextField.text) : detalleDeal.tipoCambio;
+
+                        if (interbancario) {
+                            if (tcc < tcm * 0.95) {
+	                            throw new Error('El tipo cambio del cliente es menor al l\u00edmite de desviaci\u00f3n permitido.');
+                            }
+                            if (tcc > tcm * 1.05) {
+                	            throw new Error('El tipo cambio del cliente es mayor al l\u00edmite de desviaci\u00f3n permitido.');
+                            }
+                        }
+                        else {
+                            validarTCLimDesv(monto, tcc, tcm, Application.application.desvMontoLim,
+                                    Application.application.desvPorcLim,
+                                    Application.application.desvPorcMax,
+                                    Application.application.desvFact1,
+                                    Application.application.desvFact2);
+                        }
+                        aceptar();
+                    }
+                    else {
+                        Alert.show("El monto definido no es v\u00e1lido. Verifique los datos.", 'Atenci\u00f3n:', Alert.OK);
+                    }
+				}
+				catch (err : Error) {
+					Alert.show(String(err), 'Atenci\u00f3n:');
+				}
+            }
+
+			function mostrarToolTip(flag : Boolean) : Void
+			{
+        		montoToolTip.visible = flag;
+		        if (!flag) {
+					montoTextField.text = labelMonto.text;
+        	    }
+			}
+
+	    /**
+	     * Regresa true si el tipo de cambio al cliente capturado est&aacute; dentro del l&iacute;mite
+	     * de desviaci&oacute;n (+,-).
+	     *
+	     * @param mto El monto.
+	     * @param tcc El tipo de cambio al cliente.
+	     * @param tcm El tipo de cambio de la mesa.
+	     * @return boolean.
+	     */
+	    public function validarTCLimDesv(mto : Number, tcc : Number, tcm : Number,
+	                                     desvMontoLim : Number, desvPorcLim : Number,
+	                                     desvPorcMax : Number, desvFact1 : Number,
+	                                     desvFact2 : Number) : Void
+	    {
+	        var tcCliente : Number = redondear6Dec(tcc);
+	        var tcMesa : Number  = redondear6Dec(tcm);
+	        var limiteDesviacion : Number;
+	        if (mto >= desvMontoLim) {
+	            limiteDesviacion = desvPorcLim;
+	        }
+	        else {
+	            limiteDesviacion = desvPorcMax * Math.exp(desvFact1 * log(mto)) * desvFact2 / 100.0;
+	        }
+	        limiteDesviacion = redondear6Dec(limiteDesviacion);
+	        if (tcCliente < redondear6Dec(tcMesa * (1.0 - limiteDesviacion))) {
+	            throw new Error('El tipo cambio del cliente es menor al l\u00edmite de desviaci\u00f3n permitido.');
+	        }
+	        if (tcCliente > redondear6Dec(tcMesa * (1.0 + limiteDesviacion))) {
+	            throw new Error('El tipo cambio del cliente es mayor al l\u00edmite de desviaci\u00f3n permitido.');
+	        }
+	    }
+
+	    /**
+	     * Regresa el logaritmo base 10 de x.
+	     *
+	     * @param x El valor a calcular.
+	     * @return double.
+	     */
+	    private function log(x : Number) : Number{
+	        return Math.log(x) / Math.log(10.0);
+	    }
+
+	    public function redondear6Dec(valor : Number) : Number
+	    {
+	        return valor;
+	    }
+        ]]>
+    </mx:Script>
+
+	<mx:Model id="detDealMontoModel">
+		<monto>{montoTextField.text}</monto>
+	</mx:Model>
+
+	<mx:Model id="tipoCambioModel">
+		<monto>{tipoCambioTextField.text}</monto>
+	</mx:Model>
+
+    <mx:NumberFormatter id="formateadorMonto" thousandsSeparatorFrom="," thousandsSeparatorTo="," precision="2" />
+    <mx:NumberFormatter id="formateadorTc" thousandsSeparatorFrom="," thousandsSeparatorTo="," precision="8" />
+
+    <mx:NumberValidator field="detDealMontoModel.monto" requiredFieldError="El campo es requerido."
+						required="{montoCheckBox.selected}"
+        	            minValue="0" maxValue="9999999999.99" domain="real"
+                        precision="2" allowNegative="false"
+                        exceedsMaxError="El n&#250;mero excede el m&#225;ximo valor permitido."
+                        lowerThanMinError="El n&#250;mero es menor que el m&#237;nimo valor permitido."
+                        negativeError="El n&#250;mero no debe ser negativo."
+                        precisionError="Deben ser solo dos decimales."
+                        separationError="El separador de miles debe ser seguido por tres d&#237;gitos."
+                        decimalPointCountError="El separador decimal s&#243;lo puede ocurrir una vez."
+                        invalidCharError="El valor ingresado contiene caracteres inv&#225;lidos."
+                        invalidFormatCharsError="Unos de los par&#225;metros del formato es inv&#225;lido." />
+
+ <mx:NumberValidator field="tipoCambioModel.monto" required="{tccCheckBox.selected}" requiredFieldError="El campo es requerido." precision="8"
+                        minValue="0.00000001" maxValue="99999.99999999" domain="real"
+                        allowNegative="false" exceedsMaxError="El n&#250;mero excede el m&#225;ximo valor permitido."
+                        lowerThanMinError="El n&#250;mero es menor que el m&#237;nimo valor permitido."
+                        negativeError="El n&#250;mero no debe ser negativo."
+                        separationError="El separador de miles debe ser seguido por tres d&#237;gitos."
+                        decimalPointCountError="El separador decimal s&#243;lo puede ocurrir una vez."
+                        invalidCharError="El valor ingresado contiene caracteres inv&#225;lidos."
+                        invalidFormatCharsError="Unos de los par&#225;metros del formato es inv&#225;lido." />
+
+    <mx:Form fontWeight="bold">
+		<mx:FormItem label="Folio:"><mx:Label text="{detalleDeal.folioDetalle}" fontWeight="normal" /></mx:FormItem>
+        <mx:FormItem label="Mnem&#243;nico:"><mx:Label text="{detalleDeal.mnemonico}" fontWeight="normal" /></mx:FormItem>
+        <mx:FormItem label="Divisa:"><mx:Label text="{detalleDeal.idDivisa}" fontWeight="normal" /></mx:FormItem>
+        <mx:FormItem label="Monto:">
+			<mx:HBox>
+                <mx:Label text="{formateadorMonto.format(detalleDeal.monto)}" fontWeight="normal" width="100" textAlign="right" />
+                <mx:CheckBox id="montoCheckBox" label="a:" click="modificarContenidoTextField()" />
+                <mx:VBox>
+					<mx:TextInput id="montoTextField" enabled="{montoCheckBox.selected}" width="100" textAlign="right" restrict="0-9."
+						focusIn="mostrarToolTip(true)" focusOut="mostrarToolTip(false)" />
+            		<mx:VBox id="montoToolTip" horizontalAlign="center" backgroundColor="#EEF5EE" borderStyle="solid"
+                         	visible="false" width="100%">
+			            <mx:Label id="labelMonto" text="{formateadorMonto.format(eliminarCerosIzq(montoTextField.text))}" />
+                	</mx:VBox>
+				</mx:VBox>
+			</mx:HBox>
+        </mx:FormItem>
+        <mx:FormItem label="T.C.M.:"><mx:Label text="{formateadorTc.format(detalleDeal.tipoCambioMesa)}" fontWeight="normal" width="100" textAlign="right"/></mx:FormItem>
+        <mx:FormItem label="T.C.C.:">
+            <mx:HBox>
+                <mx:Label text="{formateadorTc.format(detalleDeal.tipoCambio)}" fontWeight="normal" width="100" textAlign="right" />
+                <mx:HBox visible="{'MXN' != idDivisa}">
+                    <mx:CheckBox id="tccCheckBox" label="a:" click="modificarContenidoTextField()"/>
+                    <mx:TextInput id="tipoCambioTextField" enabled="{tccCheckBox.selected}" width="100" textAlign="right" restrict="0-9."/>
+                </mx:HBox>
+            </mx:HBox>
+        </mx:FormItem>
+        <mx:FormItem label="Importe:"><mx:Label text="{formateadorMonto.format(detalleDeal.importe)}" fontWeight="normal" width="100" textAlign="right" /></mx:FormItem>
+        <mx:FormItem>
+            <mx:HBox>
+                <mx:Button label="Aceptar" click="validarMontos()" /><mx:Button label="Cancelar" click="deletePopUp()"/>
+            </mx:HBox>
+        </mx:FormItem>
+    </mx:Form>
+</mx:TitleWindow>

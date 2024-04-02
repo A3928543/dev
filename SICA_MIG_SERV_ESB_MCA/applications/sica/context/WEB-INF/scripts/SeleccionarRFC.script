@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: SeleccionarRFC.script,v 1.1.2.1 2015/10/14 23:11:41 mejiar Exp $ -->
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+	
+<script>
+    <body><![CDATA[
+    		function revisarSeleccion(comboTipoIdentificador) 
+    		{
+    			//alert('Veamos el valor: ' + document.getElementById("rfc").value + ', ' + comboTipoIdentificador.value);
+    		    // listBox.selectedIndex = -1;  
+				if (comboTipoIdentificador.value == 1) 
+				{
+					//document.getElementById("$UppercaseTextField$11").value = document.getElementById("$UppercaseTextField$5").value;
+					document.getElementById("claveIdentificador").value = document.getElementById("rfc").value;
+				}
+				else
+				{
+					//document.getElementById("$UppercaseTextField$11").value = '';
+					document.getElementById("claveIdentificador").value = '';
+				}
+    		}
+    		
+    		function verificarRelacionConInstitucion(comboTipoRelacion) 
+    		{ 
+    			//alert('nodeParent: ' + document.getElementById("calicon_2").parentElement.name)
+				if (comboTipoRelacion.value == 10)  // clave 10 : no hay relacion con la institucion
+				{
+					for (var i=0; i < document.all["grupoRadioFinanciero"].length; i++)
+					{
+						document.all['grupoRadioFinanciero'].item(i).disabled = true;
+					}
+					
+					document.getElementById("cboEventoRelacion").disabled = true;
+					document.getElementById("$DatePicker$1").disabled = 'disabled';
+					document.getElementById("$DatePicker$1").readonly = 'readonly';
+					document.getElementById("calicon_2").parentElement.href = 'javascript:;';
+				}
+				else
+				{
+					for (var i=0; i < document.all["grupoRadioFinanciero"].length; i++)
+					{
+						document.all['grupoRadioFinanciero'].item(i).disabled = false;
+					}
+					
+					document.getElementById("cboEventoRelacion").disabled = false;
+					document.getElementById("$DatePicker$1").disabled = '';
+					document.getElementById("$DatePicker$1").readonly = '';
+					document.getElementById("calicon_2").parentElement.href = 'javascript:A_CALENDARS[2].showcal();';
+				}
+    		}
+    ]]></body>
+</script>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.GuiaContableLiq"
+        table="SC_GUIA_CONTABLE_LIQ"
+        proxy="com.ixe.ods.sica.model.GuiaContableLiq"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idGuiaContableLiq"
+            column="ID_GUIA_CONTABLE_LIQ"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_GUIA_CONTABLE_LIQ_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-GuiaContableLiq.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="mnemonico"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="MNEMONICO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="cargoAbono"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CARGO_ABONO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="cuentaContable"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CUENTA_CONTABLE"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="entidad"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ENTIDAD"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="moneda"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONEDA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="claveTipoLiquidacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_TIPO_LIQUIDACION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="claveFormaLiquidacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_FORMA_LIQUIDACION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="descripcion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="DESCRIPCION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="liquidacionEspecial"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="LIQUIDACION_ESPECIAL"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="tipoSap"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_SAP"
+            not-null="false"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-GuiaContableLiq.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,879 @@
+<!-- $Id: sica-menu.xml,v 1.57.2.1.8.2.10.3.14.2.2.1.4.1.6.2.2.1.8.2.2.3.6.1 2020/12/01 04:53:01 mejiar Exp $ -->
+<menu>
+    <name>sica</name>
+    <menuitems>
+        <!-- Promocion -->
+        <menuitem>
+            <caption><![CDATA[Promoci&oacute;n]]></caption>
+            <permission>SICA_PROMOCION</permission>
+            <url>'#'</url>
+            <menuitems>
+                <menuitem>
+                    <caption>Captura Deal</caption>
+                    <permission>SICA_CAPT_DEAL</permission>
+                    <url>'#'</url>
+                    <menuitems>
+                        <menuitem>
+                            <caption>Normal</caption>
+                            <permission>SICA_CAPT_DEAL</permission>
+                            <data>ConsultaClientes</data>
+                        </menuitem>
+                        <menuitem>
+                            <caption>Captura r&#225;pida</caption>
+                            <permission>SICA_CAPT_DEAL</permission>
+                            <data>CapturaDeal</data>
+                        </menuitem>
+                    </menuitems>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[Consulta General / Modificaci&#243;n de Deals]]></caption>
+                    <permission>SICA_CONS_DEAL</permission>
+                    <data>ConsultaDeal</data>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[Consulta de la Guardia]]></caption>
+                    <permission>SICA_CONS_GUARDIA</permission>
+                    <data>ConsultaDeal</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Reversos</caption>
+                    <permission>SICA_REVERSOS</permission>
+                    <data>#</data>
+                    <menuitems>
+                        <menuitem>
+                            <caption>Capturar Reverso</caption>
+                            <permission>SICA_REVERSOS</permission>
+                            <data>CapturaReverso</data>
+                        </menuitem>
+                        <menuitem>
+                            <caption>Consultar Reversos</caption>
+                            <permission>SICA_CONS_REV_PM</permission>
+                            <data>ConsultaReversos</data>
+                        </menuitem>
+                    </menuitems>
+                </menuitem>
+                <menuitem>                
+                    <caption>Consulta Deals Pendientes D&#237;a</caption>
+                    <permission>SICA_CONS_DEAL_PEND</permission>                     
+                    <data>ConsultaPendientesDia</data>
+                </menuitem>                
+                <menuitem>
+                    <caption><![CDATA[Consulta de Bancos Internacionales]]></caption>
+                    <permission>SICA_CONS_BANCO</permission>
+                    <data>ConsultaBancoInt</data>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[Asignaci&oacute;n de Cuentas]]></caption>
+                    <permission>SICA_ASIGN_CTAS_MCM</permission>
+                    <data>AsignacionCtas</data>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[Solicitar/Consultar L&iacute;neas de Cr&eacute;dito]]></caption>
+                    <permission>SICA_SOL_LINCRED_PRO</permission>
+                    <data>SolicitudLineaCredito</data>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[Consultar / Aprobar L&iacute;neas de Cr&eacute;dito]]></caption>
+                    <permission>SICA_APROB_LINCRED_P</permission>
+                    <data>AprobacionLineaCredito</data>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[Deals cancelados Captura R&aacute;pida]]></caption>
+                    <permission>SICA_CDCCR_DP</permission>
+                    <data>DealsCancelados</data>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[Cat&aacute;logos]]></caption>
+                    <permission>SICA_CATALOGOS_PROM</permission>
+                    <url>'#'</url>
+                     <menuitems>
+						 <menuitem>
+		                    <caption>Plantillas</caption>
+		                    <permission>SICA_CATALOGOS_PROMP</permission>
+		                    <data>ConsultaClientes</data>
+		                 </menuitem>
+                         <menuitem>
+                             <caption>Beneficiarios</caption>
+                             <permission>SICA_CATALOGOS_PROMB</permission>
+                             <data>ConsultaClientes</data>
+                         </menuitem>
+                         <menuitem>
+                             <caption>Correos para Facturaci&#243;n Electr&#243;nica</caption>
+                             <permission>SICA_CATALOGOS_PROMM</permission>
+                             <data>ConsultaClientes</data>
+                         </menuitem>
+                     </menuitems>
+                 </menuitem>
+                 <!--  menuitem>
+                    <caption><![CDATA[Migraci&#243;n Plantillas]]></caption>
+                    <permission>SICA_MIG_PLANT</permission>
+                    <data>MigracionPlantillas</data>
+                 </menuitem-->
+	            <menuitem>
+                    <caption><![CDATA[B&uacute;squeda de Clientes y Alta de Contratos SICA]]></caption>
+                    <permission>SICA_PROMOCION</permission>
+                    <data>AltaRapidaDeClientes</data>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[Autorizaci&oacute;n de Tipo de Cambio Especial]]></caption>
+                    <permission>SICA_PROMOCION</permission>
+                    <data>AutorizaTceLauncher</data>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[Informaci&oacute;n de negociaci&oacute;n]]></caption>
+                    <permission>SICA_PROMOCION</permission>
+                    <data>InformacionNegociacion</data>
+                </menuitem>
+            </menuitems>
+        </menuitem>
+        <!-- Mesa de cambios -->
+        <menuitem>
+            <caption>Mesa de Cambios</caption>
+            <permission>SICA_MESACAMBIOS</permission>
+            <url>'#'</url>
+            <menuitems>
+                <menuitem>
+                    <caption><![CDATA[Administrar Pizarr&oacute;n]]></caption>
+                    <permission>SICA_ADMIN_PIZARRON</permission>
+                    <data>AdminPizarron</data>
+                </menuitem>
+                 <menuitem>
+                    <caption><![CDATA[Desviaci&oacute;n del tipo de cambio]]></caption>
+                    <permission>SICA_ADMIN_PIZARRON</permission>
+                    <data>DesviacionMesaCambio</data>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[Def. Precio Vespertino]]></caption>
+                    <permission>SICA_ADMIN_PIZARRON</permission>
+                    <data>PrecioVespertino</data>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[Consulta Descuadre Posici&oacute;n]]></caption>
+                    <permission>SICA_ADMIN_PIZARRON</permission>
+                    <data>ConsultaDescuadrePosicion</data>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[Consulta Posici&oacute;n]]></caption>
+                    <permission>SICA_CONS_POS</permission>
+                    <data>ConsPosicion</data>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[Consulta de Bancos Internacionales]]></caption>
+                    <permission>SICA_CONS_BANCO</permission>
+                    <data>ConsultaBancoInt</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Control de Horarios</caption>
+                    <permission>SICA_CTRL_HORARIOS</permission>
+                    <data>ControlHorarios</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Consulta General de Deals</caption>
+                    <permission>SICA_CONS_DEAL_MCA</permission>
+                    <data>ConsultaDeal</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Consulta de Deal Interbancario</caption>
+                    <permission>SICA_CONS_DEAL_INTER</permission>
+                    <data>ConsultaDealsInterbancarios</data>
+                </menuitem>
+                <menuitem>
+					<caption>Consulta de Swaps</caption>
+                    	<permission>SICA_MESACAMBIOS</permission>
+                        <data>ConsultaSwaps</data>
+         		</menuitem>
+                <menuitem>
+                    <caption>Captura de Deals Interbancarios</caption>
+                    <permission>SICA_MESACAMBIOS</permission>
+                    <data>#</data>
+                    <menuitems>
+                        <menuitem>
+                            <caption>Normales</caption>
+                            <permission>SICA_CAPT_DEAL_INTER</permission>
+                            <data>SeleccionBroker</data>
+                         </menuitem>
+                        <menuitem>
+                            <caption>Con Cobertura en otra Divisa</caption>
+                            <permission>SICA_DEAL_INTER_COB</permission>
+                            <data>SeleccionBroker</data>
+                         </menuitem>
+                        <menuitem>
+                            <caption>Con Neteo</caption>
+                            <permission>SICA_CAPT_DEAL_NETEO</permission>
+                            <data>SeleccionBroker</data>
+                         </menuitem>
+                        <menuitem>
+                           <caption>De SWAPS</caption>
+                           <permission>SICA_MESACAMBIOS</permission>
+                           <url>'#'</url>
+                            <menuitems>
+                                <menuitem>
+                                    <caption>Captura SWAP de Contado</caption>
+                                    <permission>SICA_CAP_SW_CONT</permission>
+                                    <data>CapturaSwaps</data>
+                                </menuitem>
+                            </menuitems>
+                        </menuitem>
+                    </menuitems>
+                </menuitem>
+                <menuitem>
+                    <caption>Reversos</caption>
+                    <permission>SICA_REVERSOS_MC</permission>
+                    <data>#</data>
+                    <menuitems>
+                        <menuitem>
+                            <caption>Capturar Reverso</caption>
+                            <permission>SICA_REVERSOS_MC</permission>
+                            <data>CapturaReverso</data>
+                        </menuitem>
+                        <menuitem>
+                            <caption>Consultar Reversos</caption>
+                            <permission>SICA_CONS_REV_MC</permission>
+                            <data>ConsultaReversos</data>
+                        </menuitem>
+                    </menuitems>
+                </menuitem>
+                <menuitem>
+                    <caption>Consulta Deals Pendientes D&#237;a</caption>
+                    <permission>SICA_CONS_DEAL_PENMC</permission>
+                    <data>ConsultaPendientesDia</data>
+                </menuitem>                    
+                <menuitem>
+                    <caption>Autorizaciones</caption>
+                    <permission>SICA_AUT_MESA_CAMB</permission>
+                    <data>AutMesaCambios</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Modificaciones Tipo Cambio Mesa</caption>
+                    <permission>SICA_MODIF_TCMESA</permission>
+                    <data>AsignaUtilPromocion</data>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[Solicitar/Consultar L&#237;neas de Cr&#233;dito]]></caption>
+                    <permission>SICA_SOL_LINCRED_MC</permission>
+                    <data>SolicitudLineaCredito</data>
+                </menuitem>
+            	<menuitem>
+                    <caption><![CDATA[Solicitar/Modificar/Reactivar L&#237;neas de Operaci&#243;n]]></caption>
+                    <permission>SICA_SOL_LINOPER</permission>
+                    <data>SolicitudLineaOperacion</data>
+                </menuitem>
+				<menuitem>
+					<caption><![CDATA[Consultar L&#237;neas de Operaci&#243;n]]></caption>
+                    <permission>SICA_APROB_LINOPER_M</permission>
+                    <data>AprobacionLineaOperacion</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Traspasos entre Portafolios</caption>
+                    <permission>SICA_TRASPASOS_PORTS</permission>
+                    <url>'#'</url>
+                    <menuitems>
+                        <menuitem>
+							<caption><![CDATA[Consultar Traspasos]]></caption>
+		                    <permission>SICA_TRASPASOS_PORTS</permission>
+		                    <data>TraspasosPortafolios</data>
+		                </menuitem>
+		                <menuitem>
+							<caption><![CDATA[Capturar Traspaso]]></caption>
+		                    <permission>SICA_TRASPASOS_PORTS</permission>
+		                	<data>CapturaTraspasoPortafolios</data>
+		            	</menuitem>
+		            	<menuitem>
+							<caption><![CDATA[Utilidades / P&#233;rdidas]]></caption>
+		                    <permission>SICA_TRASPASOS_PORTS</permission>
+		                	<data>ReconocimientoUtilidades</data>
+		            	</menuitem>
+                	</menuitems>
+                </menuitem>
+                <menuitem>
+					<caption><![CDATA[Renovar plazo de captura de Contrato]]></caption>
+                    <permission>SICA_MESACAMBIOS</permission>
+                    <data>RenovarFechaLimCaptCont</data>
+                </menuitem>
+                <menuitem>
+					<caption><![CDATA[Cambio de Mesa]]></caption>
+                    <permission>SICA_MESACAMBIOS</permission>
+                    <data>CambioMesa</data>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[Deals cancelados Captura R&aacute;pida]]></caption>
+                    <permission>SICA_CDCCR_MC</permission>
+                    <data>DealsCancelados</data>
+                </menuitem>
+               <menuitem>
+                    <caption>Cat&#225;logos</caption>
+                    <permission>SICA_CATALOGOS</permission>
+                    <url>'#'</url>
+                     <menuitems>
+                         <menuitem>
+                             <caption>Divisas</caption>
+                             <permission>SICA_CATALOGOS</permission>
+                             <data>CatDivisas</data>
+                         </menuitem>
+                         <menuitem>
+                             <caption>Mesa de Cambios</caption>
+                             <permission>SICA_CATALOGOS</permission>
+                             <data>CatMesasCambio</data>
+                         </menuitem>
+                         <menuitem>
+                             <caption>Canales</caption>
+                             <permission>SICA_CATALOGOS</permission>
+                             <data>CatCanales</data>
+                         </menuitem>
+                         <menuitem>
+                             <caption>Spreads</caption>
+                             <permission>SICA_CATALOGOS</permission>
+                             <data>CatSpreads</data>
+                         </menuitem>
+                         <menuitem>
+                             <caption>Factor Divisas</caption>
+                             <permission>SICA_CATALOGOS</permission>
+                             <data>CatFactoresDivisa</data>
+                         </menuitem>
+                         <menuitem>
+                             <caption>Contrapartes</caption>
+                             <permission>SICA_CATALOGOS</permission>
+                             <data>CatBrokers</data>
+                         </menuitem>
+						 <menuitem>
+                             <caption>Tipos de Pizarron</caption>
+                             <permission>SICA_CATALOGOS</permission>
+                             <data>CatTiposPizarron</data>
+                         </menuitem>
+                         <!-- Kondor utiliza su propio catalogo de combinaciones de divisa (Sybase)
+<menuitem>
+                             <caption>Combinaciones Divisas</caption>
+                             <permission>SICA_CATALOGOS</permission>
+                             <data>CatCombinacionDivisa</data>
+</menuitem>
+                         -->
+                         <menuitem>
+                             <caption>Fechas Inh&#225;biles EUA</caption>
+                             <permission>SICA_CATALOGOS</permission>
+                             <data>CatFechasInhabilesEua</data>
+                         </menuitem>
+                         <menuitem>
+                             <caption>Reglas Mec&#225;nica de Neteos</caption>
+                             <permission>SICA_CATALOGOS</permission>
+                             <data>CatMecanicaNeteos</data>
+                         </menuitem>
+                     </menuitems>
+                 </menuitem>
+                 <menuitem>
+                    <caption>Monitoreo del Riesgo en Cambios</caption>
+                    <permission>ADM_SICA_LIM</permission>
+                    <data>LimiteRiesgoMonitor</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Consulta de Utilidades Globales</caption>
+                    <permission>SICA_MESACAMBIOS</permission>
+                    <data>ConsUtilidadesGlobales</data>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[Autorizaci&oacute;n de Tipo de Cambio Especial]]></caption>
+                    <permission>SICA_MESACAMBIOS</permission>
+                    <data>AutorizaTceLauncher</data>
+                </menuitem>
+                 <menuitem>
+					<caption><![CDATA[Centralizar Posici&oacute;n ]]></caption>
+                    	<permission>SICA_MESACAMBIOS</permission>
+                        <data>ConsultaAcumuladosCV</data>
+         		</menuitem>
+         		<menuitem>
+					<caption><![CDATA[Consulta del monitor de Cortes ]]></caption>
+                    	<permission>SICA_CONS_MONIT</permission>
+                        <data>ConsultaMonitorCortes</data>
+         		</menuitem>
+         		<menuitem>
+					<caption><![CDATA[Consulta del monitor de D.I. ]]></caption>
+                    	<permission>SICA_CONS_MONIT</permission>
+                        <data>ConsultaMonitorDI</data>
+         		</menuitem>
+            </menuitems>
+        </menuitem>
+        <!-- Mesa de Control -->
+        <menuitem>
+            <caption>Mesa de Control</caption>
+            <permission>SICA_MESACONTROL</permission>
+            <url>'#'</url>
+            <menuitems>
+                <menuitem>
+                    <caption>Consulta General de Deals</caption>
+                    <permission>SICA_CONS_DEAL_MCO</permission>
+                    <data>ConsultaDeal</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Consulta de Deal Interbancario</caption>
+                    <permission>SICA_MESACONTROL</permission>
+                    <data>ConsultaDealsInterbancarios</data>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[Consulta Posici&oacute;n]]></caption>
+                    <permission>SICA_CONS_POS</permission>
+                    <data>ConsPosicion</data>
+                </menuitem>
+				<menuitem>
+                    <caption>Asignaci&#243;n de Cuentas</caption>
+                    <permission>SICA_ASIGN_CTAS_MCON</permission>
+                    <url>'#'</url>
+					<menuitems>
+						<menuitem>
+		                    <caption>Asignaci&#243;n de Cuentas Por Cliente</caption>
+        		            <permission>SICA_ASIGN_CTAS_MCON</permission>
+                		    <data>ConsultaClientes</data>
+		                </menuitem>
+						<menuitem>
+		                    <caption>Asignaci&#243;n de Cuentas Por Promotor</caption>
+        		            <permission>SICA_ASIGN_CTAS_MCON</permission>
+                		    <data>AsignacionCtas</data>
+		                </menuitem>
+		                <menuitem>
+		                    <caption>Asignaci&#243;n Masiva de Cuentas Por Promotor</caption>
+        		            <permission>SICA_ASIGN_MASIVA</permission>
+                		    <data>AsignacionMasivaCtas</data>
+		                </menuitem>
+					</menuitems>
+                </menuitem>
+                <menuitem>
+                    <caption>Asignaci&#243;n de Subsidiarios</caption>
+                    <permission>SICA_ASIGN_CTAS_MCON</permission>
+                    <data>AsignaSubsidiarios</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Autorizaciones</caption>
+                    <permission>SICA_AUT_MESA_CTRL</permission>
+                    <data>AutMesaCambios</data>
+                </menuitem>
+                <!-- menuitem>
+	                <caption>Migraci&#243;n Plantillas</caption>
+	                <permission>SICA_MIG_PLANT</permission>
+	                <data>MigracionPlantillas</data>
+	            </menuitem-->
+	            <menuitem>
+                    <caption>Cat&#225;logos</caption>
+                    <permission>SICA_MCON_CATALOGOS</permission>
+                    <url>'#'</url>
+                     <menuitems>
+                         <menuitem>
+                             <caption>Grupos de Trabajo</caption>
+                             <permission>SICA_MCON_CAT_GRUPOS</permission>
+                             <data>CatGruposTrabajo</data>
+                         </menuitem>
+                         <menuitem>
+                             <caption>Grupos de Trabajo - Promotor</caption>
+                             <permission>SICA_MCON_CAT_GR_PRO</permission>
+                             <data>CatGrupoTrabajoPromotor</data>
+                         </menuitem>
+                         <menuitem>
+                             <caption>L&#237;mites de Compra/Venta de Efectivo</caption>
+                             <permission>SICA_MCON_CATALOGOS</permission>
+                             <data>CatLimitesEfectivo</data>
+                         </menuitem>
+                         <menuitem>
+                             <caption>Lista Blanca de Contratos</caption>
+                             <permission>SICA_MCON_CATALOGOS</permission>
+                             <data>CatListaBlanca</data>
+                         </menuitem>
+                         <menuitem>
+                             <caption>Lista Blanca de Municipios</caption>
+                             <permission>SICA_MCON_CATALOGOS</permission>
+                             <data>CatMunicipios</data>
+                         </menuitem>
+                     </menuitems>   
+                </menuitem>
+                <menuitem>
+					<caption><![CDATA[Consulta del monitor de Cortes ]]></caption>
+                    	<permission>SICA_CONS_MONIT</permission>
+                        <data>ConsultaMonitorCortes</data>
+         		</menuitem>
+         		<menuitem>
+					<caption><![CDATA[Consulta del monitor de D.I. ]]></caption>
+                    	<permission>SICA_CONS_MONIT</permission>
+                        <data>ConsultaMonitorDI</data>
+         		</menuitem> 
+            </menuitems>
+        </menuitem>
+        <!-- Cr&#233;dito -->
+        <menuitem>
+            <caption>Cr&#233;dito</caption>
+            <permission>SICA_CASETACRED</permission>
+            <url>'#'</url>
+            <menuitems>
+            	<menuitem>
+                    <caption><![CDATA[Par&aacute;metros]]></caption>
+                    <permission>SICA_PARAMS_LINCRED</permission>
+                    <data>ParametrosLineaCredito</data>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[Consultar / Activar / Suspender L&#237;neas de Cr&eacute;dito]]></caption>
+                    <permission>SICA_APROB_LINCRED_C</permission>
+                    <data>AprobacionLineaCredito</data>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[Autorizaciones]]></caption>
+                    <permission>SICA_AUT_LINCRED_EXC</permission>
+                    <data>AutMesaCambios</data>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[Autorizar / Suspender L&#237;neas de Operaci&#243;n]]></caption>
+                    <permission>SICA_APROB_LINOPER_C</permission>
+                    <data>AprobacionLineaOperacion</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Consulta General de Deals</caption>
+                    <permission>SICA_CASETACRED</permission>
+                    <data>ConsultaDeal</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Consulta de Deal Interbancario</caption>
+                    <permission>SICA_CASETACRED</permission>
+                    <data>ConsultaDealsInterbancarios</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Asignaci&#243;n de Subsidiarios</caption>
+                    <permission>SICA_CASETACRED</permission>
+                    <data>AsignaSubsidiarios</data>
+                </menuitem>
+            </menuitems>
+        </menuitem>
+        <!-- Administraci&#243;n de Riesgos -->
+        <menuitem>
+            <caption>Riesgos</caption>
+            <permission>ADM_SICA_LIM</permission>
+            <url>'#'</url>
+            <menuitems>
+                <menuitem>
+                    <caption>Par&#225;metros de L&#237;mites de Riesgo</caption>
+                    <permission>SICA_PARS_LIM_RSG</permission>
+                    <data>LimiteRiesgo</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Monitoreo del Riesgo en Cambios</caption>
+                    <permission>ADM_SICA_LIM</permission>
+                    <data>LimiteRiesgoMonitor</data>
+                </menuitem>
+                <menuitem>
+                	<caption>Reportes por Sectores</caption>
+	                <permission>REPORTES_MCON</permission>
+	                <data>ReporteBanxico</data>
+	            </menuitem>
+	            <menuitem>
+                	<caption>Reporte SIAR</caption>
+	                <permission>REPORTES_MCON</permission>
+	                <data>ReporteSiar</data>
+	            </menuitem>
+	            <menuitem>
+                    <caption><![CDATA[Consulta Posici&oacute;n]]></caption>
+                    <permission>SICA_CONS_POS</permission>
+                    <data>ConsPosicion</data>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[Consulta General de Deals]]></caption>
+                    <permission>SICA_CONS_RIESGO</permission>
+                    <data>ConsultaDeal</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Consulta de Deal Interbancario</caption>
+                    <permission>SICA_CONS_RIESGO</permission>
+                    <data>ConsultaDealsInterbancarios</data>
+                </menuitem>
+                <menuitem>
+					<caption>Consulta de Swaps</caption>
+                    	<permission>SICA_CONS_SWAPS_RGO</permission>
+                        <data>ConsultaSwaps</data>
+         		</menuitem>
+            </menuitems>
+        </menuitem>
+        <!-- Documentaci&#243;n -->
+        <menuitem>
+            <caption>Documentaci&#243;n</caption>
+            <permission>SICA_AREADOC</permission>
+            <url>'#'</url>
+            <menuitems>
+                <menuitem>
+                    <caption>Autorizaciones</caption>
+                    <permission>SICA_AREADOC</permission>
+                    <data>AutMesaCambios</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Bloqueo/Desbloqueo de Contratos</caption>
+                    <permission>SICA_AREADOC</permission>
+                    <data>BloqueaContrato</data>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[B&uacute;squeda de Clientes]]></caption>
+                    <permission>SICA_AREADOC</permission>
+                    <data>ClientesAreaContratos</data>
+                </menuitem>
+            </menuitems>
+        </menuitem>
+        <!-- Tesorer&#237;a -->
+        <menuitem>
+            <caption>Tesorer&#237;a</caption>
+            <permission>SICA_TESORERIA</permission>
+            <url>'#'</url>
+            <menuitems>
+                <menuitem>
+                    <caption>Confirmaci&#243;n de Remesas</caption>
+                    <permission>SICA_TESORERIA</permission>
+                    <data>LiquidacionRemesas</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Fin Liquidaciones</caption>
+                    <permission>SICA_FIN_LIQ</permission>
+                    <data>FinLiquidaciones</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Consulta General de Deals</caption>
+                    <permission>SICA_TESORERIA</permission>
+                    <data>ConsultaDeal</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Consulta de Deal Interbancario</caption>
+                    <permission>SICA_TESORERIA</permission>
+                    <data>ConsultaDealsInterbancarios</data>
+                </menuitem>
+                <menuitem>
+                    <caption><![CDATA[Consulta Posici&oacute;n]]></caption>
+                    <permission>SICA_CONS_POS</permission>
+                    <data>ConsPosicion</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Asignaci&#243;n de Cuentas Por Cliente</caption>
+                    <permission>SICA_ASIGN_CTAS_MCON</permission>
+                    <data>ConsultaClientes</data>
+                </menuitem>                
+                <menuitem>
+                    <caption>Reportes</caption>
+                    <permission>REPORTES_MCON</permission>
+                      <url>'#'</url>
+	             <menuitems>
+	                <menuitem>
+	                    <caption>Diarios (Compras/Ventas)</caption>
+	                    <permission>REPORTES_MCON</permission>
+	                    <data>ReportesDiarios</data>
+	                </menuitem>
+	            </menuitems>
+	            </menuitem>
+	            <!--menuitem>
+                    <caption>Consulta Traspasos</caption>
+                    <permission>SICA_CONS_TRASPASOS</permission>
+                    <data>Traspasos</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Captura Traspaso</caption>
+                    <permission>SICA_CAPT_TRASPASO</permission>
+                    <data>CapturaTraspaso</data>
+                </menuitem-->
+            </menuitems>
+        </menuitem>
+        <!-- Banxico -->
+        <menuitem>
+            <caption>Banxico</caption>
+            <permission>SICA_RENV_REPBANXICO</permission>
+            <url>'#'</url>
+            <menuitems>
+                <menuitem>
+                    <caption>Reenv&#237;o de Reportes de Operaciones</caption>
+                    <permission>SICA_RENV_REPBANXICO</permission>
+                    <data>VerRepDealsBanxico</data>
+                </menuitem>
+                <menuitem>
+                	<caption>Reportes por Sectores</caption>
+	                <permission>REPORTES_MCON</permission>
+	                <data>ReporteBanxico</data>
+	            </menuitem>
+                <menuitem>
+                    <caption>Consultar Reversos</caption>
+                    <permission>SICA_CONS_REV_RG</permission>
+                    <data>ConsultaReversos</data>
+                </menuitem>                
+            </menuitems>
+        </menuitem>
+        <!-- Contabilidad -->
+        <menuitem>
+            <caption>Contabilidad</caption>
+            <permission>SICA_CONTABILIDAD</permission>
+            <url>'#'</url>
+            <menuitems>
+                <!--menuitem>
+                    <caption>Generaci&#243;n de Movimientos Contables</caption>
+                    <permission>SICA_EXPL_CONTA</permission>
+                    <data>GeneracionContable</data>
+                </menuitem-->
+                <menuitem>
+                    <caption>Carga manual de Asientos</caption>
+                    <permission>SICA_EXPL_CONTA</permission>
+                    <data>CargaSap</data>
+                </menuitem>
+                <!--menuitem>
+                    <caption>Reproceso de Movimientos Contables</caption>
+                    <permission>SICA_EXPL_CONTA</permission>
+                    <data>ReprocesoContableSap</data>
+                </menuitem-->
+                <!--menuitem>
+                    <caption>Control de Horarios</caption>
+                    <permission>SICA_CTRL_HORARIOS</permission>
+                    <data>ControlHorarios</data>
+                </menuitem-->
+                <menuitem>
+                    <caption>Generaci&#243;n Polizas Solomon</caption>
+                    <permission>SICA_EXPL_CONTA</permission>
+                    <data>GeneracionPolizaSolomon</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Consulta General de Deals</caption>
+                    <permission>SICA_CONTABILIDAD</permission>
+                    <data>ConsultaDeal</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Consulta de Deal Interbancario</caption>
+                    <permission>SICA_CONTABILIDAD</permission>
+                    <data>ConsultaDealsInterbancarios</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Consultar Reversos</caption>
+                    <permission>SICA_CONS_REV_CO</permission>
+                    <data>ConsultaReversos</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Reportes</caption>
+                    <permission>SICA_CONTABILIDAD</permission>
+                    <data>ReportesContabilidad</data>
+                </menuitem>
+            </menuitems>
+        </menuitem>
+        <menuitem>
+            <caption>Administraci&#243;n</caption>
+            <permission>SICA_ADMIN_CONFIGS</permission>
+            <url>'#'</url>
+            <menuitems>
+                <menuitem>
+                    <caption>Configuraciones</caption>
+                    <permission>SICA_ADMIN_CONFIGS</permission>
+                    <data>Configuraciones</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Jerarqu&#237;as</caption>
+                    <permission>SICA_ADMIN_JERARQUIA</permission>
+                    <data>Jerarquias</data>
+                </menuitem>
+                <!-- menuitem>
+                    <caption>Cuadre de L&#237;neas de Cambio</caption>
+                    <permission>SICA_ADMIN_CONFIGS</permission>
+                    <data>CuadreLineasCambio</data>
+                </menuitem-->
+            </menuitems>
+        </menuitem>
+        <!-- Reportes -->
+        <menuitem>
+            <caption>Reportes</caption>
+            <permission>SICA_CONS_REP</permission>
+            <url>'#'</url>
+            <menuitems>
+                <menuitem>
+                    <caption>Utilidades de Promoci&#243;n</caption>
+                    <permission>SICA_REP_PROMO</permission>
+                    <data>ReporteUtilidades</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Utilidades Ixe Directo</caption>
+                    <permission>SICA_REP_DIR</permission>
+                    <data>ReporteUtilidadesIxeDirecto</data>
+                </menuitem>
+	            <menuitem>
+	                <caption>Movimientos de L&#237;neas de Cr&#233;dito</caption>
+	                <permission>SICA_REP_MOV_LC</permission>
+	                <data>ReporteLinCredAutMC</data>
+	            </menuitem>
+                <menuitem>
+                    <caption>Diarios (Compras/Ventas)</caption>
+                    <permission>SICA_REP_DIARIO</permission>
+                    <data>ReportesDiarios</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Diarios de Deals Interbancarios</caption>
+                    <permission>SICA_REP_DINTER</permission>
+                    <data>ReporteDiarioDealsInterbancarios</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Diarios Pagos Anticipados</caption>
+                    <permission>SICA_REP_PAGOS_ANT</permission>
+                    <data>ReporteDealsPagoAnt</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Reportes Contabilidad</caption>
+                    <permission>SICA_REPS_CONTA</permission>
+                    <data>ReportesContabilidad</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Reportes Polizas Contables</caption>
+                    <permission>SICA_REP_POLIZAS</permission>
+                    <data>ReportePolizasContables</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Reporte Operaciones Compra/Venta</caption>
+                    <permission>SICA_REP_OPS_CV</permission>
+                    <data>ReportesOpsCompraVenta</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Reporte Operaciones Diarias</caption>
+                    <permission>SICA_REP_PROMO</permission>
+                    <data>ReportesOpsDiaria</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Reporte Operaciones IXEDIRECTO</caption>
+                    <permission>SICA_REP_PROMO</permission>
+                    <data>ReportesIxeDir</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Reporte Autorizaciones Mesa de Control</caption>
+                    <permission>SICA_REP_AUT_MCO</permission>
+                    <data>ReportesAutorizacionesMC</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Reporte Utilidad de Promotores (Resumen)</caption>
+                    <permission>SICA_REP_PROMO_RES</permission>
+                    <data>ReportesUtilidadesPromotor</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Reportes Documentaci&#243;n Faltante</caption>
+                    <permission>SICA_REP_DOC_FALTA</permission>
+                    <data>ReportesDocFaltante</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Compras/Ventas de Efectivo Diarios</caption>
+                    <permission>SICA_REP_EFECTI_D</permission>
+                    <data>ReportesDiariosFiltrados</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Clientes Banorte en SICA</caption>
+                    <permission>SICA_REP_PROMO</permission>
+                    <data>ReporteClientesBanorteSica</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Formularios Contrapartes</caption>
+                    <permission>ADM_SICA_LIM</permission>
+                    <data>ReportesRegulatoriosBanxico</data>
+                </menuitem>
+                <menuitem>
+                    <caption>Reporte Excesos Trimestrales</caption>
+                    <permission>ADM_SICA_LIM</permission>
+                    <data>ReporteExcesosLc</data>
+                </menuitem>
+                <!-- Para ser reemplazado por Layout definitivo y query resuelto con ticket
+<menuitem>
+                    <caption>Compras/Ventas de Efectivo Trimestrales</caption>
+                    <permission>SICA_REP_EFECTI_T</permission>
+                    <data>ReportesTrimestralesFiltrados</data>
+</menuitem>
+                -->
+            </menuitems>
+        </menuitem>
+        <!-- SALIR -->
+        <menuitem>
+            <caption>Salir</caption>
+            <data>Logout</data>
+        </menuitem>
+    </menuitems>
+</menu>

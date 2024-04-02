@@ -1,0 +1,2 @@
+java -cp ./classes;lib/sica-teller.jar;./lib/pizarra.jar;lib/wlclient.jar;lib/sica-teller-interfaces.jar;lib/seguridad.jar;lib/sica-interfaces.jar;lib/spring.jar;lib/commons-logging-1.0.2.jar com.ixe.ods.sica.teller.Teller
+PAUSE

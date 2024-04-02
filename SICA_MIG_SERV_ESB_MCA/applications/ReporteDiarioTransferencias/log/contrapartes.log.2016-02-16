@@ -1,0 +1,1424 @@
+2016-02-16 16:40:28 - **********************************************************************************************************
+2016-02-16 16:40:28 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-16 16:40:28 - **********************************************************************************************************
+2016-02-16 16:40:29 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 16:40:29 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 16:40:29 - getTo(): jesus.cortes@banorte.com
+2016-02-16 16:40:29 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 16:40:29 - jesus.cortes@banorte.com
+2016-02-16 16:40:29 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha iniciado el proceso 'Reporte Diario de Transferencias'.
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 16:40:29 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-16 16:40:29 - -->Ha ocurrido un error al solicitar la ejecución del stored procedure del reporte diario de transferencias. <br>Por este motivo, no se realizó la consulta para obtener la información del reporte en cuestión. <br><br>Descripción del error: <br>
+org.springframework.jdbc.BadSqlGrammarException: CallableStatementCallback; bad SQL grammar [{call SICA_ADMIN.SC_INSERTA_TRAEXT_ENV()}]; nested exception is java.sql.SQLException: ORA-06550: línea 1, columna 18:
+PLS-00905: object SICA_ADMIN.SC_INSERTA_TRAEXT_ENV is invalid
+ORA-06550: línea 1, columna 7:
+PL/SQL: Statement ignored
+
+	at org.springframework.jdbc.support.SQLStateSQLExceptionTranslator.doTranslate(SQLStateSQLExceptionTranslator.java:98)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:80)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:80)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:969)
+	at org.springframework.jdbc.core.JdbcTemplate.call(JdbcTemplate.java:1003)
+	at org.springframework.jdbc.object.StoredProcedure.execute(StoredProcedure.java:125)
+	at com.banorte.reporte.diario.transferencias.dao.impl.ConsultaDaoImpl$StoredProcesaTransferencias.execute(ConsultaDaoImpl.java:99)
+	at com.banorte.reporte.diario.transferencias.dao.impl.ConsultaDaoImpl.ejecutarStoredProcedure(ConsultaDaoImpl.java:65)
+	at com.banorte.reporte.diario.transferencias.services.impl.TransferenciasServiceImpl.consultarTransferenciasReporte(TransferenciasServiceImpl.java:65)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.iniciar(ReporteDiarioTransferencias.java:36)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.main(ReporteDiarioTransferencias.java:25)
+Caused by: java.sql.SQLException: ORA-06550: línea 1, columna 18:
+PLS-00905: object SICA_ADMIN.SC_INSERTA_TRAEXT_ENV is invalid
+ORA-06550: línea 1, columna 7:
+PL/SQL: Statement ignored
+
+	at oracle.jdbc.dbaccess.DBError.throwSqlException(DBError.java:134)
+	at oracle.jdbc.ttc7.TTIoer.processError(TTIoer.java:289)
+	at oracle.jdbc.ttc7.Oall7.receive(Oall7.java:582)
+	at oracle.jdbc.ttc7.TTC7Protocol.doOall7(TTC7Protocol.java:1983)
+	at oracle.jdbc.ttc7.TTC7Protocol.parseExecuteFetch(TTC7Protocol.java:1141)
+	at oracle.jdbc.driver.OracleStatement.executeNonQuery(OracleStatement.java:2149)
+	at oracle.jdbc.driver.OracleStatement.doExecuteOther(OracleStatement.java:2032)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:2894)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:608)
+	at oracle.jdbc.driver.OraclePreparedStatement.execute(OraclePreparedStatement.java:684)
+	at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:169)
+	at org.springframework.jdbc.core.JdbcTemplate$5.doInCallableStatement(JdbcTemplate.java:1005)
+	at org.springframework.jdbc.core.JdbcTemplate$5.doInCallableStatement(JdbcTemplate.java:1)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:953)
+	... 7 more
+2016-02-16 16:40:29 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 16:40:29 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 16:40:29 - getTo(): jesus.cortes@banorte.com
+2016-02-16 16:40:29 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 16:40:29 - jesus.cortes@banorte.com
+2016-02-16 16:40:29 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha ocurrido un error al solicitar la ejecución del stored procedure del reporte diario de transferencias. <br>Por este motivo, no se realizó la consulta para obtener la información del reporte en cuestión. <br><br>Descripción del error: <br>CallableStatementCallback; bad SQL grammar [{call SICA_ADMIN.SC_INSERTA_TRAEXT_ENV()}]; nested exception is java.sql.SQLException: ORA-06550: línea 1, columna 18:
+PLS-00905: object SICA_ADMIN.SC_INSERTA_TRAEXT_ENV is invalid
+ORA-06550: línea 1, columna 7:
+PL/SQL: Statement ignored
+
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 16:40:30 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-16 16:40:30 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 16:40:30 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 16:40:30 - getTo(): jesus.cortes@banorte.com
+2016-02-16 16:40:30 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 16:40:30 - jesus.cortes@banorte.com
+2016-02-16 16:40:30 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 16:40:30 - **********************************************************************************************************
+2016-02-16 16:40:30 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-16 16:40:30 - **********************************************************************************************************
+2016-02-16 16:40:30 - 
+
+
+
+2016-02-16 16:46:18 - **********************************************************************************************************
+2016-02-16 16:46:18 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-16 16:46:18 - **********************************************************************************************************
+2016-02-16 16:46:19 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 16:46:19 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 16:46:19 - getTo(): jesus.cortes@banorte.com
+2016-02-16 16:46:19 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 16:46:19 - jesus.cortes@banorte.com
+2016-02-16 16:46:19 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha iniciado el proceso 'Reporte Diario de Transferencias'.
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 16:46:19 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-16 16:46:22 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-16 16:46:22 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-16 16:46:22 - -->Ha ocurrido un error al consultar las transferencias del reporte diario.  <br><br>Descripción del error: <br>
+org.springframework.jdbc.BadSqlGrammarException: PreparedStatementCallback; bad SQL grammar [SELECT ID_SC_TRAEXT_ENV,FECHA_OPERACION,TIPO_OPERACION,TIPO_TRANSFERENCIA,ID_OPERACION,MEDIO,FOLIO,ID_INST_REPORTA,ID_BCO_CLI_ORIGINADOR,ID_CLI_ORIGINADOR,TIPO_CLI_ORIGINADOR, RAZON_SOCIAL_CLI, AP_PATERNO_CLI,AP_MATERNO_CLI,AP_NOMBRE_CLI, FECHA_NAC,TIPO_CUENTA_ORD,CUENTA_ORD,TIPO_ID_INST_RECEPT,ID_INST_RECEPT,TIPO_ID_INST_BENEF,ID_INST_BENEF,TIPO_BENEF,NOMBRE_RAZON_SOC_BENEF,CUENTA_BENEF,MONTO_OP,ID_DIVISA,OBSERVACIONES,FOLIO_TRANS_NACIONAL,TIPO_FONDEO_TRANS, FONDEO_TRANS, REPORTADA_BANXICO FROM SICA_ADMIN.SC_TRAEXT_ENV  WHERE REPORTADA_BANXICO = '0']; nested exception is java.sql.SQLException: ORA-00942: la tabla o vista no existe
+
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:233)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:602)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:636)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:661)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:701)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:112)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:122)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:137)
+	at com.banorte.reporte.diario.transferencias.dao.impl.ConsultaDaoImpl.consultarTransferenciasReporte(ConsultaDaoImpl.java:77)
+	at com.banorte.reporte.diario.transferencias.services.impl.TransferenciasServiceImpl.consultarTransferenciasReporte(TransferenciasServiceImpl.java:80)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.iniciar(ReporteDiarioTransferencias.java:36)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.main(ReporteDiarioTransferencias.java:25)
+Caused by: java.sql.SQLException: ORA-00942: la tabla o vista no existe
+
+	at oracle.jdbc.dbaccess.DBError.throwSqlException(DBError.java:134)
+	at oracle.jdbc.ttc7.TTIoer.processError(TTIoer.java:289)
+	at oracle.jdbc.ttc7.Oall7.receive(Oall7.java:582)
+	at oracle.jdbc.ttc7.TTC7Protocol.doOall7(TTC7Protocol.java:1983)
+	at oracle.jdbc.ttc7.TTC7Protocol.parseExecuteDescribe(TTC7Protocol.java:877)
+	at oracle.jdbc.driver.OracleStatement.doExecuteQuery(OracleStatement.java:2513)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:2857)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:608)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeQuery(OraclePreparedStatement.java:536)
+	at org.apache.commons.dbcp.DelegatingPreparedStatement.executeQuery(DelegatingPreparedStatement.java:93)
+	at org.springframework.jdbc.core.JdbcTemplate$1.doInPreparedStatement(JdbcTemplate.java:643)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:586)
+	... 10 more
+2016-02-16 16:46:22 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 16:46:22 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 16:46:22 - getTo(): jesus.cortes@banorte.com
+2016-02-16 16:46:22 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 16:46:22 - jesus.cortes@banorte.com
+2016-02-16 16:46:22 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha ocurrido un error al consultar las transferencias del reporte diario.  <br><br>Descripción del error: <br>PreparedStatementCallback; bad SQL grammar [SELECT ID_SC_TRAEXT_ENV,FECHA_OPERACION,TIPO_OPERACION,TIPO_TRANSFERENCIA,ID_OPERACION,MEDIO,FOLIO,ID_INST_REPORTA,ID_BCO_CLI_ORIGINADOR,ID_CLI_ORIGINADOR,TIPO_CLI_ORIGINADOR, RAZON_SOCIAL_CLI, AP_PATERNO_CLI,AP_MATERNO_CLI,AP_NOMBRE_CLI, FECHA_NAC,TIPO_CUENTA_ORD,CUENTA_ORD,TIPO_ID_INST_RECEPT,ID_INST_RECEPT,TIPO_ID_INST_BENEF,ID_INST_BENEF,TIPO_BENEF,NOMBRE_RAZON_SOC_BENEF,CUENTA_BENEF,MONTO_OP,ID_DIVISA,OBSERVACIONES,FOLIO_TRANS_NACIONAL,TIPO_FONDEO_TRANS, FONDEO_TRANS, REPORTADA_BANXICO FROM SICA_ADMIN.SC_TRAEXT_ENV  WHERE REPORTADA_BANXICO = '0']; nested exception is java.sql.SQLException: ORA-00942: la tabla o vista no existe
+
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 16:46:22 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-16 16:46:22 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 16:46:22 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 16:46:22 - getTo(): jesus.cortes@banorte.com
+2016-02-16 16:46:22 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 16:46:22 - jesus.cortes@banorte.com
+2016-02-16 16:46:22 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 16:46:23 - **********************************************************************************************************
+2016-02-16 16:46:23 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-16 16:46:23 - **********************************************************************************************************
+2016-02-16 16:46:23 - 
+
+
+
+2016-02-16 16:48:31 - **********************************************************************************************************
+2016-02-16 16:48:31 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-16 16:48:31 - **********************************************************************************************************
+2016-02-16 16:48:32 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 16:48:32 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 16:48:32 - getTo(): jesus.cortes@banorte.com
+2016-02-16 16:48:32 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 16:48:32 - jesus.cortes@banorte.com
+2016-02-16 16:48:32 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha iniciado el proceso 'Reporte Diario de Transferencias'.
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 16:48:32 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-16 16:48:35 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-16 16:48:35 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-16 16:48:36 - -->Ha ocurrido un error al consultar las transferencias del reporte diario.  <br><br>Descripción del error: <br>
+org.springframework.jdbc.BadSqlGrammarException: PreparedStatementCallback; bad SQL grammar [SELECT ID_SC_TRAEXT_ENV,FECHA_OPERACION,TIPO_OPERACION,TIPO_TRANSFERENCIA,ID_OPERACION,MEDIO,FOLIO,ID_INST_REPORTA,ID_BCO_CLI_ORIGINADOR,ID_CLI_ORIGINADOR,TIPO_CLI_ORIGINADOR, RAZON_SOCIAL_CLI, AP_PATERNO_CLI,AP_MATERNO_CLI,AP_NOMBRE_CLI, FECHA_NAC,TIPO_CUENTA_ORD,CUENTA_ORD,TIPO_ID_INST_RECEPT,ID_INST_RECEPT,TIPO_ID_INST_BENEF,ID_INST_BENEF,TIPO_BENEF,NOMBRE_RAZON_SOC_BENEF,CUENTA_BENEF,MONTO_OP,ID_DIVISA,OBSERVACIONES,FOLIO_TRANS_NACIONAL,TIPO_FONDEO_TRANS, FONDEO_TRANS, REPORTADA_BANXICO FROM SICA_ADMIN.SC_TRAEXT_ENV  WHERE REPORTADA_BANXICO = '0']; nested exception is java.sql.SQLException: ORA-00942: la tabla o vista no existe
+
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:233)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:602)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:636)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:661)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:701)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:112)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:122)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:137)
+	at com.banorte.reporte.diario.transferencias.dao.impl.ConsultaDaoImpl.consultarTransferenciasReporte(ConsultaDaoImpl.java:77)
+	at com.banorte.reporte.diario.transferencias.services.impl.TransferenciasServiceImpl.consultarTransferenciasReporte(TransferenciasServiceImpl.java:80)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.iniciar(ReporteDiarioTransferencias.java:36)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.main(ReporteDiarioTransferencias.java:25)
+Caused by: java.sql.SQLException: ORA-00942: la tabla o vista no existe
+
+	at oracle.jdbc.dbaccess.DBError.throwSqlException(DBError.java:134)
+	at oracle.jdbc.ttc7.TTIoer.processError(TTIoer.java:289)
+	at oracle.jdbc.ttc7.Oall7.receive(Oall7.java:582)
+	at oracle.jdbc.ttc7.TTC7Protocol.doOall7(TTC7Protocol.java:1983)
+	at oracle.jdbc.ttc7.TTC7Protocol.parseExecuteDescribe(TTC7Protocol.java:877)
+	at oracle.jdbc.driver.OracleStatement.doExecuteQuery(OracleStatement.java:2513)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:2857)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:608)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeQuery(OraclePreparedStatement.java:536)
+	at org.apache.commons.dbcp.DelegatingPreparedStatement.executeQuery(DelegatingPreparedStatement.java:93)
+	at org.springframework.jdbc.core.JdbcTemplate$1.doInPreparedStatement(JdbcTemplate.java:643)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:586)
+	... 10 more
+2016-02-16 16:48:36 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 16:48:36 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 16:48:36 - getTo(): jesus.cortes@banorte.com
+2016-02-16 16:48:36 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 16:48:36 - jesus.cortes@banorte.com
+2016-02-16 16:48:36 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha ocurrido un error al consultar las transferencias del reporte diario.  <br><br>Descripción del error: <br>PreparedStatementCallback; bad SQL grammar [SELECT ID_SC_TRAEXT_ENV,FECHA_OPERACION,TIPO_OPERACION,TIPO_TRANSFERENCIA,ID_OPERACION,MEDIO,FOLIO,ID_INST_REPORTA,ID_BCO_CLI_ORIGINADOR,ID_CLI_ORIGINADOR,TIPO_CLI_ORIGINADOR, RAZON_SOCIAL_CLI, AP_PATERNO_CLI,AP_MATERNO_CLI,AP_NOMBRE_CLI, FECHA_NAC,TIPO_CUENTA_ORD,CUENTA_ORD,TIPO_ID_INST_RECEPT,ID_INST_RECEPT,TIPO_ID_INST_BENEF,ID_INST_BENEF,TIPO_BENEF,NOMBRE_RAZON_SOC_BENEF,CUENTA_BENEF,MONTO_OP,ID_DIVISA,OBSERVACIONES,FOLIO_TRANS_NACIONAL,TIPO_FONDEO_TRANS, FONDEO_TRANS, REPORTADA_BANXICO FROM SICA_ADMIN.SC_TRAEXT_ENV  WHERE REPORTADA_BANXICO = '0']; nested exception is java.sql.SQLException: ORA-00942: la tabla o vista no existe
+
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 16:48:36 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-16 16:48:36 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 16:48:36 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 16:48:36 - getTo(): jesus.cortes@banorte.com
+2016-02-16 16:48:36 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 16:48:36 - jesus.cortes@banorte.com
+2016-02-16 16:48:36 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 16:48:36 - **********************************************************************************************************
+2016-02-16 16:48:36 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-16 16:48:36 - **********************************************************************************************************
+2016-02-16 16:48:36 - 
+
+
+
+2016-02-16 17:00:20 - **********************************************************************************************************
+2016-02-16 17:00:20 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-16 17:00:20 - **********************************************************************************************************
+2016-02-16 17:00:21 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 17:00:21 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 17:00:21 - getTo(): jesus.cortes@banorte.com
+2016-02-16 17:00:21 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 17:00:21 - jesus.cortes@banorte.com
+2016-02-16 17:00:21 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha iniciado el proceso 'Reporte Diario de Transferencias'.
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 17:00:21 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-16 17:00:25 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-16 17:00:25 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-16 17:00:25 - -->Ha ocurrido un error al consultar las transferencias del reporte diario.  <br><br>Descripción del error: <br>
+org.springframework.jdbc.BadSqlGrammarException: PreparedStatementCallback; bad SQL grammar [SELECT ID_SC_TRAEXT_ENV,FECHA_OPERACION,TIPO_OPERACION,TIPO_TRANSFERENCIA,ID_OPERACION,MEDIO,FOLIO,ID_INST_REPORTA,ID_BCO_CLI_ORIGINADOR,ID_CLI_ORIGINADOR,TIPO_CLI_ORIGINADOR, RAZON_SOCIAL_CLI, AP_PATERNO_CLI,AP_MATERNO_CLI,AP_NOMBRE_CLI, FECHA_NAC,TIPO_CUENTA_ORD,CUENTA_ORD,TIPO_ID_INST_RECEPT,ID_INST_RECEPT,TIPO_ID_INST_BENEF,ID_INST_BENEF,TIPO_BENEF,NOMBRE_RAZON_SOC_BENEF,CUENTA_BENEF,MONTO_OP,ID_DIVISA,OBSERVACIONES,FOLIO_TRANS_NACIONAL,TIPO_FONDEO_TRANS, FONDEO_TRANS, REPORTADA_BANXICO FROM SICA_ADMIN.SC_TRAEXT_ENV  WHERE REPORTADA_BANXICO = '0']; nested exception is java.sql.SQLException: ORA-00942: la tabla o vista no existe
+
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:233)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:602)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:636)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:661)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:701)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:112)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:122)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:137)
+	at com.banorte.reporte.diario.transferencias.dao.impl.ConsultaDaoImpl.consultarTransferenciasReporte(ConsultaDaoImpl.java:77)
+	at com.banorte.reporte.diario.transferencias.services.impl.TransferenciasServiceImpl.consultarTransferenciasReporte(TransferenciasServiceImpl.java:80)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.iniciar(ReporteDiarioTransferencias.java:36)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.main(ReporteDiarioTransferencias.java:25)
+Caused by: java.sql.SQLException: ORA-00942: la tabla o vista no existe
+
+	at oracle.jdbc.dbaccess.DBError.throwSqlException(DBError.java:134)
+	at oracle.jdbc.ttc7.TTIoer.processError(TTIoer.java:289)
+	at oracle.jdbc.ttc7.Oall7.receive(Oall7.java:582)
+	at oracle.jdbc.ttc7.TTC7Protocol.doOall7(TTC7Protocol.java:1983)
+	at oracle.jdbc.ttc7.TTC7Protocol.parseExecuteDescribe(TTC7Protocol.java:877)
+	at oracle.jdbc.driver.OracleStatement.doExecuteQuery(OracleStatement.java:2513)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:2857)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:608)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeQuery(OraclePreparedStatement.java:536)
+	at org.apache.commons.dbcp.DelegatingPreparedStatement.executeQuery(DelegatingPreparedStatement.java:93)
+	at org.springframework.jdbc.core.JdbcTemplate$1.doInPreparedStatement(JdbcTemplate.java:643)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:586)
+	... 10 more
+2016-02-16 17:00:25 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 17:00:25 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 17:00:25 - getTo(): jesus.cortes@banorte.com
+2016-02-16 17:00:25 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 17:00:25 - jesus.cortes@banorte.com
+2016-02-16 17:00:25 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha ocurrido un error al consultar las transferencias del reporte diario.  <br><br>Descripción del error: <br>PreparedStatementCallback; bad SQL grammar [SELECT ID_SC_TRAEXT_ENV,FECHA_OPERACION,TIPO_OPERACION,TIPO_TRANSFERENCIA,ID_OPERACION,MEDIO,FOLIO,ID_INST_REPORTA,ID_BCO_CLI_ORIGINADOR,ID_CLI_ORIGINADOR,TIPO_CLI_ORIGINADOR, RAZON_SOCIAL_CLI, AP_PATERNO_CLI,AP_MATERNO_CLI,AP_NOMBRE_CLI, FECHA_NAC,TIPO_CUENTA_ORD,CUENTA_ORD,TIPO_ID_INST_RECEPT,ID_INST_RECEPT,TIPO_ID_INST_BENEF,ID_INST_BENEF,TIPO_BENEF,NOMBRE_RAZON_SOC_BENEF,CUENTA_BENEF,MONTO_OP,ID_DIVISA,OBSERVACIONES,FOLIO_TRANS_NACIONAL,TIPO_FONDEO_TRANS, FONDEO_TRANS, REPORTADA_BANXICO FROM SICA_ADMIN.SC_TRAEXT_ENV  WHERE REPORTADA_BANXICO = '0']; nested exception is java.sql.SQLException: ORA-00942: la tabla o vista no existe
+
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 17:00:25 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-16 17:00:25 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 17:00:25 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 17:00:25 - getTo(): jesus.cortes@banorte.com
+2016-02-16 17:00:25 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 17:00:25 - jesus.cortes@banorte.com
+2016-02-16 17:00:25 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 17:00:25 - **********************************************************************************************************
+2016-02-16 17:00:25 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-16 17:00:25 - **********************************************************************************************************
+2016-02-16 17:00:25 - 
+
+
+
+2016-02-16 17:01:44 - **********************************************************************************************************
+2016-02-16 17:01:44 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-16 17:01:44 - **********************************************************************************************************
+2016-02-16 17:01:44 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 17:01:44 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 17:01:44 - getTo(): jesus.cortes@banorte.com
+2016-02-16 17:01:44 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 17:01:44 - jesus.cortes@banorte.com
+2016-02-16 17:01:44 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha iniciado el proceso 'Reporte Diario de Transferencias'.
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 17:01:45 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-16 17:01:48 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-16 17:01:48 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-16 17:01:48 - --> Total de registros encontrados: 4
+
+2016-02-16 17:01:48 - --> Termina consulta de transferencias.
+
+
+2016-02-16 17:01:49 - Registros encontrados: 4
+2016-02-16 17:01:49 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-16 17:01:49 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 17:01:49 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 17:01:49 - getTo(): jesus.cortes@banorte.com
+2016-02-16 17:01:49 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 17:01:49 - jesus.cortes@banorte.com
+2016-02-16 17:01:49 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 17:01:49 - **********************************************************************************************************
+2016-02-16 17:01:49 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-16 17:01:49 - **********************************************************************************************************
+2016-02-16 17:01:49 - 
+
+
+
+2016-02-16 17:05:51 - **********************************************************************************************************
+2016-02-16 17:05:51 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-16 17:05:51 - **********************************************************************************************************
+2016-02-16 17:05:52 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 17:05:52 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 17:05:52 - getTo(): jesus.cortes@banorte.com
+2016-02-16 17:05:52 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 17:05:52 - jesus.cortes@banorte.com
+2016-02-16 17:05:52 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha iniciado el proceso 'Reporte Diario de Transferencias'.
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 17:05:52 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-16 17:05:56 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-16 17:05:56 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-16 17:05:56 - --> Total de registros encontrados: 4
+
+2016-02-16 17:05:56 - --> Termina consulta de transferencias.
+
+
+2016-02-16 17:05:56 - Registros encontrados: 4
+2016-02-16 17:05:56 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-16 17:05:56 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 17:05:56 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 17:05:56 - getTo(): jesus.cortes@banorte.com
+2016-02-16 17:05:56 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 17:05:56 - jesus.cortes@banorte.com
+2016-02-16 17:05:56 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 17:05:56 - **********************************************************************************************************
+2016-02-16 17:05:56 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-16 17:05:56 - **********************************************************************************************************
+2016-02-16 17:05:56 - 
+
+
+
+2016-02-16 17:17:02 - **********************************************************************************************************
+2016-02-16 17:17:02 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-16 17:17:02 - **********************************************************************************************************
+2016-02-16 17:17:02 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 17:17:02 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 17:17:02 - getTo(): jesus.cortes@banorte.com
+2016-02-16 17:17:02 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 17:17:02 - jesus.cortes@banorte.com
+2016-02-16 17:17:02 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha iniciado el proceso 'Reporte Diario de Transferencias'.
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 17:17:02 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-16 17:17:06 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-16 17:17:06 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-16 17:17:06 - --> Total de registros encontrados: 4
+
+2016-02-16 17:17:06 - --> Termina consulta de transferencias.
+
+
+2016-02-16 17:17:06 - Registros encontrados: 4
+2016-02-16 17:17:06 - --> Inicia actualizacion de bandera que pone a bandera de enviada a Banxico en 1 ....
+2016-02-16 17:17:06 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-16 17:17:06 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 17:17:06 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 17:17:06 - getTo(): jesus.cortes@banorte.com
+2016-02-16 17:17:06 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 17:17:06 - jesus.cortes@banorte.com
+2016-02-16 17:17:06 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 17:17:06 - **********************************************************************************************************
+2016-02-16 17:17:06 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-16 17:17:06 - **********************************************************************************************************
+2016-02-16 17:17:06 - 
+
+
+
+2016-02-16 17:21:12 - **********************************************************************************************************
+2016-02-16 17:21:12 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-16 17:21:12 - **********************************************************************************************************
+2016-02-16 17:21:13 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 17:21:13 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 17:21:13 - getTo(): jesus.cortes@banorte.com
+2016-02-16 17:21:13 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 17:21:13 - jesus.cortes@banorte.com
+2016-02-16 17:21:13 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha iniciado el proceso 'Reporte Diario de Transferencias'.
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 17:21:13 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-16 17:21:16 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-16 17:21:16 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-16 17:21:16 - --> Total de registros encontrados: 0
+
+2016-02-16 17:21:16 - --> Termina consulta de transferencias.
+
+
+2016-02-16 17:21:16 - --> Inicia actualizacion de bandera que pone a bandera de enviada a Banxico en 1 ....
+2016-02-16 17:21:16 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-16 17:21:16 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 17:21:16 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 17:21:16 - getTo(): jesus.cortes@banorte.com
+2016-02-16 17:21:16 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 17:21:16 - jesus.cortes@banorte.com
+2016-02-16 17:21:16 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 17:21:16 - **********************************************************************************************************
+2016-02-16 17:21:16 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-16 17:21:16 - **********************************************************************************************************
+2016-02-16 17:21:16 - 
+
+
+
+2016-02-16 17:41:17 - **********************************************************************************************************
+2016-02-16 17:41:17 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-16 17:41:17 - **********************************************************************************************************
+2016-02-16 17:41:17 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 17:41:17 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 17:41:17 - getTo(): jesus.cortes@banorte.com
+2016-02-16 17:41:17 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 17:41:17 - jesus.cortes@banorte.com
+2016-02-16 17:41:17 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha iniciado el proceso 'Reporte Diario de Transferencias'.
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 17:41:18 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-16 17:41:21 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-16 17:41:21 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-16 17:41:21 - --> Total de registros encontrados: 2
+
+2016-02-16 17:41:21 - --> Termina consulta de transferencias.
+
+
+2016-02-16 17:41:21 - Registros encontrados: 2
+2016-02-16 17:41:21 - --> Inicia actualizacion de bandera que pone a bandera de enviada a Banxico en 1 ....
+2016-02-16 17:41:21 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-16 17:41:21 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 17:41:21 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 17:41:21 - getTo(): jesus.cortes@banorte.com
+2016-02-16 17:41:21 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 17:41:21 - jesus.cortes@banorte.com
+2016-02-16 17:41:21 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 17:41:21 - **********************************************************************************************************
+2016-02-16 17:41:21 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-16 17:41:21 - **********************************************************************************************************
+2016-02-16 17:41:21 - 
+
+
+
+2016-02-16 17:50:12 - **********************************************************************************************************
+2016-02-16 17:50:12 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-16 17:50:12 - **********************************************************************************************************
+2016-02-16 17:50:12 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 17:50:12 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 17:50:12 - getTo(): jesus.cortes@banorte.com
+2016-02-16 17:50:12 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 17:50:12 - jesus.cortes@banorte.com
+2016-02-16 17:50:12 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha iniciado el proceso 'Reporte Diario de Transferencias'.
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 17:50:13 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-16 17:50:16 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-16 17:50:16 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-16 17:50:16 - --> Total de registros encontrados: 2
+
+2016-02-16 17:50:16 - --> Termina consulta de transferencias.
+
+
+2016-02-16 17:50:16 - Registros encontrados: 2
+2016-02-16 17:50:16 - -->Ha ocurrido un error al consultar las transferencias del reporte diario.  <br><br>Descripción del error: <br>
+java.io.FileNotFoundException: D:\tmp\ReporteDiario_2016-02-16.xls (El proceso no tiene acceso al archivo porque está siendo utilizado por otro proceso)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:194)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:84)
+	at com.banorte.reporte.diario.transferencias.services.impl.TransferenciasServiceImpl.consultarTransferenciasReporte(TransferenciasServiceImpl.java:90)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.iniciar(ReporteDiarioTransferencias.java:36)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.main(ReporteDiarioTransferencias.java:25)
+2016-02-16 17:50:16 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 17:50:16 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 17:50:16 - getTo(): jesus.cortes@banorte.com
+2016-02-16 17:50:16 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 17:50:16 - jesus.cortes@banorte.com
+2016-02-16 17:50:16 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha ocurrido un error al consultar las transferencias del reporte diario.  <br><br>Descripción del error: <br>D:\tmp\ReporteDiario_2016-02-16.xls (El proceso no tiene acceso al archivo porque está siendo utilizado por otro proceso)
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 17:50:16 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-16 17:50:16 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 17:50:16 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 17:50:16 - getTo(): jesus.cortes@banorte.com
+2016-02-16 17:50:16 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 17:50:16 - jesus.cortes@banorte.com
+2016-02-16 17:50:16 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 17:50:16 - **********************************************************************************************************
+2016-02-16 17:50:16 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-16 17:50:16 - **********************************************************************************************************
+2016-02-16 17:50:16 - 
+
+
+
+2016-02-16 17:51:52 - **********************************************************************************************************
+2016-02-16 17:51:52 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-16 17:51:52 - **********************************************************************************************************
+2016-02-16 17:51:52 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 17:51:52 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 17:51:52 - getTo(): jesus.cortes@banorte.com
+2016-02-16 17:51:52 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 17:51:52 - jesus.cortes@banorte.com
+2016-02-16 17:51:52 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha iniciado el proceso 'Reporte Diario de Transferencias'.
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 17:51:52 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-16 17:51:56 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-16 17:51:56 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-16 17:51:57 - --> Total de registros encontrados: 4
+
+2016-02-16 17:51:57 - --> Termina consulta de transferencias.
+
+
+2016-02-16 17:51:57 - Registros encontrados: 4
+2016-02-16 17:51:57 - --> Inicia actualizacion de bandera que pone a bandera de enviada a Banxico en 1 ....
+2016-02-16 17:51:57 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-16 17:51:57 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 17:51:57 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 17:51:57 - getTo(): jesus.cortes@banorte.com
+2016-02-16 17:51:57 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 17:51:57 - jesus.cortes@banorte.com
+2016-02-16 17:51:57 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 17:51:57 - **********************************************************************************************************
+2016-02-16 17:51:57 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-16 17:51:57 - **********************************************************************************************************
+2016-02-16 17:51:57 - 
+
+
+
+2016-02-16 18:39:25 - **********************************************************************************************************
+2016-02-16 18:39:25 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-16 18:39:25 - **********************************************************************************************************
+2016-02-16 18:39:26 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 18:39:26 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 18:39:26 - getTo(): jesus.cortes@banorte.com
+2016-02-16 18:39:26 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 18:39:26 - jesus.cortes@banorte.com
+2016-02-16 18:39:26 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha iniciado el proceso 'Reporte Diario de Transferencias'.
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 18:39:26 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-16 18:39:30 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-16 18:39:30 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-16 18:39:30 - --> Total de registros encontrados: 6
+
+2016-02-16 18:39:30 - --> Termina consulta de transferencias.
+
+
+2016-02-16 18:39:30 - Registros encontrados: 6
+2016-02-16 18:39:30 - -->Ha ocurrido un error al consultar las transferencias del reporte diario.  <br><br>Descripción del error: <br>
+java.io.FileNotFoundException: D:\tmp\ReporteDiario_2016-02-16.xls (El proceso no tiene acceso al archivo porque está siendo utilizado por otro proceso)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:194)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:84)
+	at com.banorte.reporte.diario.transferencias.services.impl.TransferenciasServiceImpl.consultarTransferenciasReporte(TransferenciasServiceImpl.java:90)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.iniciar(ReporteDiarioTransferencias.java:36)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.main(ReporteDiarioTransferencias.java:25)
+2016-02-16 18:39:30 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 18:39:30 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 18:39:30 - getTo(): jesus.cortes@banorte.com
+2016-02-16 18:39:30 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 18:39:30 - jesus.cortes@banorte.com
+2016-02-16 18:39:30 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha ocurrido un error al consultar las transferencias del reporte diario.  <br><br>Descripción del error: <br>D:\tmp\ReporteDiario_2016-02-16.xls (El proceso no tiene acceso al archivo porque está siendo utilizado por otro proceso)
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 18:39:30 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-16 18:39:30 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 18:39:30 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 18:39:30 - getTo(): jesus.cortes@banorte.com
+2016-02-16 18:39:30 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 18:39:30 - jesus.cortes@banorte.com
+2016-02-16 18:39:30 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 18:39:30 - **********************************************************************************************************
+2016-02-16 18:39:30 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-16 18:39:30 - **********************************************************************************************************
+2016-02-16 18:39:30 - 
+
+
+
+2016-02-16 18:40:28 - **********************************************************************************************************
+2016-02-16 18:40:28 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-16 18:40:28 - **********************************************************************************************************
+2016-02-16 18:40:29 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 18:40:29 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 18:40:29 - getTo(): jesus.cortes@banorte.com
+2016-02-16 18:40:29 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 18:40:29 - jesus.cortes@banorte.com
+2016-02-16 18:40:29 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha iniciado el proceso 'Reporte Diario de Transferencias'.
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 18:40:29 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-16 18:40:32 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-16 18:40:32 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-16 18:40:32 - --> Total de registros encontrados: 8
+
+2016-02-16 18:40:32 - --> Termina consulta de transferencias.
+
+
+2016-02-16 18:40:32 - Registros encontrados: 8
+2016-02-16 18:40:32 - --> Inicia actualizacion de bandera que pone a bandera de enviada a Banxico en 1 ....
+2016-02-16 18:40:32 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-16 18:40:32 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 18:40:32 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 18:40:32 - getTo(): jesus.cortes@banorte.com
+2016-02-16 18:40:32 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 18:40:32 - jesus.cortes@banorte.com
+2016-02-16 18:40:32 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 18:40:33 - **********************************************************************************************************
+2016-02-16 18:40:33 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-16 18:40:33 - **********************************************************************************************************
+2016-02-16 18:40:33 - 
+
+
+
+2016-02-16 19:29:08 - **********************************************************************************************************
+2016-02-16 19:29:08 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-16 19:29:08 - **********************************************************************************************************
+2016-02-16 19:29:09 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 19:29:09 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 19:29:09 - getTo(): jesus.cortes@banorte.com
+2016-02-16 19:29:09 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 19:29:09 - jesus.cortes@banorte.com
+2016-02-16 19:29:09 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha iniciado el proceso 'Reporte Diario de Transferencias'.
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 19:29:09 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-16 19:29:13 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-16 19:29:13 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-16 19:29:13 - --> Total de registros encontrados: 0
+
+2016-02-16 19:29:13 - --> Termina consulta de transferencias.
+
+
+2016-02-16 19:29:13 - --> Inicia actualizacion de bandera que pone a bandera de enviada a Banxico en 1 ....
+2016-02-16 19:29:13 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-16 19:29:13 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-16 19:29:13 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-16 19:29:13 - getTo(): jesus.cortes@banorte.com
+2016-02-16 19:29:13 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-16 19:29:13 - jesus.cortes@banorte.com
+2016-02-16 19:29:13 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-16 19:29:13 - **********************************************************************************************************
+2016-02-16 19:29:13 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-16 19:29:13 - **********************************************************************************************************
+2016-02-16 19:29:13 - 
+
+
+

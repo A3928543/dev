@@ -1,0 +1,19 @@
+<!-- $Id: TableBorder.html,v 1.9 2008/02/22 18:25:08 ccovian Exp $ -->
+<table jwcid="table" border="0" cellspacing="1" cellpadding="2" align="center" class="tableborder">
+<tr jwcid="@Conditional" condition="ognl: title" element="tr">
+<td jwcid="@Any" colspan="ognl: columnCount" element="td" class="titlecell">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td width="1%"><img src="images/shield2.gif" border="0"></td>
+<td><font class="title">&nbsp;<span jwcid="@Insert" value="ognl: title" raw="ognl: true">T&iacute;tulo</span></font></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr jwcid="@Conditional" condition="ognl: subtitles != null" element="tr" class="titlecell">
+<th jwcid="forSt@Foreach" source="ognl: subtitles" element="th" class="title">
+<span jwcid="@Insert" value="ognl: components.forSt.value" raw="yes" />
+</th>
+</tr>
+<span jwcid="@RenderBody" />
+</table>

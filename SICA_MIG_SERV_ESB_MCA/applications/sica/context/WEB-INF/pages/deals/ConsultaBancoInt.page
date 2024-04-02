@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ConsultaBancoInt.page,v 1.9 2008/02/22 18:25:09 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.ConsultaBancoInt">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate"/>
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+
+	<component id="paisesComboBox" type="PropertySelection">
+        <binding name="model" expression="paisesModel" />
+        <binding name="value" expression="paisSeleccionado" />
+    </component>
+
+    <property-specification name="menuDisabled" persistent="yes" type="boolean" />
+    <property-specification name="nombreBanco" type="java.lang.String" initial-value="" />
+    <property-specification name="listaPaises" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+    <property-specification name="bancos" type="java.util.List" persistent="no" initial-value="new java.util.ArrayList()" />
+    <property-specification name="tituloActionPB" type="java.lang.String" persistent="yes" />
+    <property-specification name="paisSeleccionado" type="com.ixe.treasury.dom.common.Pais" persistent="yes" />
+
+    <context-asset name="searchButton" path="/images/search.gif" />
+
+</page-specification>

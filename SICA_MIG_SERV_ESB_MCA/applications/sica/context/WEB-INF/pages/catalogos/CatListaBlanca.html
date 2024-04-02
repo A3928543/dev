@@ -1,0 +1,245 @@
+<html jwcid="$content$">
+<head jwcid="$remove$">
+	<title>Lista Blanca de Personas</title>
+	<link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder" menuDisabled="ognl: false">
+	<span jwcid="@bup:ShowError" width="100%" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level="ognl: level"/>
+	<br />
+	<span jwcid="@Conditional" condition="ognl: modo == @com.ixe.ods.sica.pages.catalogos.CatListaBlanca@MODO_CONSULTA_PERSONAS">
+		<table jwcid="@ActionPortletBorder" title="Lista Blanca de Personas">
+		    <form jwcid="@Form" listener="ognl: listeners.agregar" delegate="ognl: beans.delegate">
+	  			<tr>
+	  				<td align="center">
+				        <table border="0" cellspacing="1" cellpadding="3" width="100%" jwcid="forPersonas@bup:Table" source="ognl: personas" initialSortColumn="noCuenta" pageSize="25"
+					                columns='ognl: "noCuenta:No. Cuenta:noCuenta, nombreCorto:Raz\u00f3n Social:nombreCorto,
+					                tipoExcepcion:Excepci\u00f3n:tipoExcepcion, limiteDiario:L\u00edmite Diario:limiteDiario,
+					                limiteMensual:L\u00edmite Mensual:limiteMensual, !observaciones:Observaciones:observaciones, !editar"' class="tableborder"/>
+				        <span jwcid="noCuentaColumnValue@Block">
+				            <span jwcid="@Insert" value="ognl: components.forPersonas.tableRow.noCuenta" />
+				        </span>
+				        <span jwcid="nombreCortoColumnValue@Block">
+				            <span jwcid="@Insert" value="ognl: components.forPersonas.tableRow.nombreCorto" />
+				        </span>
+				        <span jwcid="tipoExcepcionColumnValue@Block">
+				           <span jwcid="@Conditional" condition='ognl: components.forPersonas.tableRow.tipoExcepcion == null || components.forPersonas.tableRow.tipoExcepcion.equals(@com.ixe.ods.sica.model.PersonaListaBlanca@SIN_EXCEPCION)'>
+                               No
+                           </span>
+                           <span jwcid="@Conditional" condition='ognl: components.forPersonas.tableRow.tipoExcepcion != null && components.forPersonas.tableRow.tipoExcepcion.equals(@com.ixe.ods.sica.model.PersonaListaBlanca@EXCEPCION_SHCP)'>
+                               SHCP
+                           </span>
+                           <span jwcid="@Conditional" condition='ognl: components.forPersonas.tableRow.tipoExcepcion != null && components.forPersonas.tableRow.tipoExcepcion.equals(@com.ixe.ods.sica.model.PersonaListaBlanca@EXCEPCION_IXE)'>
+                               Ixe
+                           </span>
+				        </span>
+				        <span jwcid="limiteDiarioColumnValue@Block">
+				           <span jwcid="@Insert" value="ognl: page.moneyFormat.format(components.forPersonas.tableRow.limiteDiario)" />
+				        </span>
+				        <span jwcid="limiteMensualColumnValue@Block">
+				           <span jwcid="@Insert" value="ognl: page.moneyFormat.format(components.forPersonas.tableRow.limiteMensual)" />
+			            </span>
+			            <span jwcid="observacionesColumnValue@Block">
+				           <a jwcid="@tooltip:ToolTip" title="Observaciones" value="ognl: components.forPersonas.tableRow.observaciones" sticky="ognl: true" clickable="ognl: true" commands='WIDTH, "300", CLOSETEXT, "X", FGCOLOR, "#dddddd", BGCOLOR, "#002f2c", CAPCOLOR, "#f79c00", CLOSECOLOR, "#FFFFFF"' disabled="ognl: components.forPersonas.tableRow.observaciones == null || components.forPersonas.tableRow.observaciones.length() == 0">
+						      <span jwcid="@Insert" value="Ver"/>
+						  </a>
+			            </span>
+			            <span jwcid="editarColumnHeader@Block">&nbsp;</span>
+				        <span jwcid="editarColumnValue@Block">
+				            <a jwcid="@DirectLink" listener="ognl:listeners.editar" parameters="ognl:components.forPersonas.tableRow.noCuenta" onclick="fnShowWaitImage();"> Editar </a>
+				        </span>
+					</td>
+				</tr>
+				<tr>
+					<td align="center">
+						<input jwcid="@ImageSubmit" image="ognl: assets.insertButton" onclick="return fnDisableForm(this.form);"/> 
+					</td>
+				</tr>
+	        </form>
+  		</table>
+	</span>
+	<span jwcid="@Conditional" condition="ognl: modo == @com.ixe.ods.sica.pages.catalogos.CatListaBlanca@MODO_BUSQUEDA_CONTRATO || modo == @com.ixe.ods.sica.pages.catalogos.CatListaBlanca@MODO_RESULTADO_BUSQUEDA_CONTRATO">
+	<table width="100%">
+	  <tr valign="top">
+	    <td width="250px">
+	  		<table jwcid="@ActionPortletBorder" title="B&uacute;squeda de Contrato" width="100%">
+	  			<form jwcid="@Form" listener="ognl: listeners.buscar" delegate="ognl: beans.delegate">
+	                <table width="100%">
+	                	<tr>
+	                		<td class="normal" valign="top">Raz&oacute;n Social:</td>
+	                		<td class="normal" valign="top">
+	                			<span jwcid="@ixe:UppercaseTextField" class="uppercase" value="ognl: busquedaRazonSocial" maxlength="40"/>
+	                		</td>
+	                	</tr>
+	                	<tr>
+	                		<td class="normal" valign="top">Cuenta / Contrato:</td>
+	                		<td class="normal" valign="top">
+	                			<span jwcid="@ixe:UppercaseTextField" class="uppercase" value="ognl: busquedaCuenta" maxlength="40"/>
+	                		</td>
+	                	</tr>
+	                	<tr>
+	                		<td colspan="2" align="center">
+	                			<br/>
+	                			<input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);"/> 
+	                			<a jwcid="@DirectLink" listener="ognl:listeners.regresarPrincipal" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.backButton" border="0" /></a>
+	                		</td>
+	                	</tr>
+	                </table>
+				</form>
+	  		</table>
+	  	</td>
+	    <td width="1%">
+	  		&nbsp;
+	  	</td>
+	  	<td align="center">
+	  		<span jwcid="@Conditional" condition="ognl: modo == @com.ixe.ods.sica.pages.catalogos.CatListaBlanca@MODO_RESULTADO_BUSQUEDA_CONTRATO">
+	  		<table jwcid="@ActionPortletBorder" title="Contratos">
+	  			<tr>
+	  				<td align="center">
+		                <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "No. Cuenta", "Raz&oacute;n Social", "N&uacute;m. Referencia", "" }' columnCount="5" width="100%">
+		                	<span jwcid="@Conditional" condition="ognl: cuentas.empty">
+                                <tr jwcid="@Any" class="ognl: beans.evenOdd.next" element="tr">
+                                  <td class="normal" colspan="8" align="center">No se encontr&oacute; ning&uacute;n resultado.</td>
+                                </tr>
+                            </span>
+                            <span jwcid="@Conditional" condition="ognl: !cuentas.empty">
+                              <tr jwcid="forCuentas@Foreach" source="ognl: cuentas" element="tr" class="ognl: beans.evenOdd.next">
+                                <td class="normal" align="center">
+			                       <span jwcid="@Insert" value="ognl: components.forCuentas.value.noCuenta" />
+                    			</td>
+                    			<td class="normal" align="left">
+			                       <span jwcid="@Insert" value="ognl: components.forCuentas.value.nombreCorto" />
+                    			</td>
+                     			<td class="normal" align="left">
+                     				<span jwcid="@DatosClaveReferencia" idPersona="ognl: components.forCuentas.value.idPersona" prefijo ="ognl: components.forCuentas.value.noCuenta" />
+                     			</td>
+		                        <td class="normal" align="center">
+                        		   <a jwcid="@DirectLink" listener="ognl:listeners.editar" parameters="ognl:components.forCuentas.value.noCuenta" onclick="fnShowWaitImage();"> Editar </a>
+                        		</td>
+			                  </tr>
+                            </span>
+		                </table>
+					</td>
+				</tr>
+	  		</table>
+	  		</span>
+	  	</td>
+	 </tr>
+	 <tr>
+	 	<td width="250px">
+	 		<table jwcid="@ActionPortletBorder" title="Carga Masiva">
+	 			<tr>
+	 				<td align="center">
+	 					<a jwcid="@DirectLink" listener="ognl:listeners.descargarArchivoBase">Descargar Archivo Base</a>
+	 				</td>
+	 			</tr>
+	 			<tr>
+	 				<td>
+	 					<fieldset class="normal">
+                			<legend class="legend">Subir Archivo</legend>
+                			<table width="100%">
+                				<form jwcid="@Form" listener="ognl: listeners.cargaMasiva" delegate="ognl:beans.delegate">
+                				<input jwcid="hiddenArchivoCargado@Hidden" value="ognl: esDescargable" type="hidden" />
+			            			<tr>
+			            				<td align="center">
+			            					<input jwcid="@Upload" file="ognl: archivo" />
+			            				</td>
+			            			</tr>
+			                    	<tr>
+			                    		<td align="center">
+			                    			<br/>
+			                    			<input jwcid="@ImageSubmit" image="ognl: assets.bAceptar" onClick="return confirm('La operaci\u00f3n puede tardar varios minutos. Al finalizar se abrir\u00e1 un archivo con la retroalimentaci\u00f3n. \u00bfDesea continuar?');"/>
+			                    		</td>
+			                    	</tr>
+			                	</form>
+                			</table>
+                		</fieldset>
+	 				</td>
+	 			</tr>
+           </table>
+	 	</td>
+	 	<td width="1%">
+	  		&nbsp;
+	  	</td>
+	  	<td>
+	  		&nbsp;
+	  	</td>
+	 </tr>
+	</table>
+	</span>
+	<span jwcid="@Conditional" condition="ognl: modo == @com.ixe.ods.sica.pages.catalogos.CatListaBlanca@MODO_EDICION_PERSONA">
+	<table width="100%">
+	  <tr valign="top">
+	    <td width="300px">
+		<table jwcid="@ActionPortletBorder" title="Edici&oacute;n de datos complementarios">
+			<form jwcid="@Form" listener="ognl: listeners.insert" delegate="ognl: beans.delegate">
+			<tr>
+           		<td class="normal" valign="top">N&uacute;mero de cuenta:</td>
+           		<td class="normal" valign="top">
+          			<span jwcid="@Insert" value="ognl: altaNoCuenta" />
+          		</td>
+          	</tr>
+           	<tr>
+           		<td class="normal" valign="top">Tipo de excepci&oacute;n:</td>
+           		<td class="normal" valign="top">
+	           		<span jwcid="@RadioGroup" selected="ognl: altaTipoExcepcion">
+						<input type="radio" jwcid="@Radio"
+								value="ognl: @com.ixe.ods.sica.model.PersonaListaBlanca@SIN_EXCEPCION" />
+						Sin Excepci&oacute;n
+						<br/>
+						<input type="radio" jwcid="@Radio"
+								value="ognl: @com.ixe.ods.sica.model.PersonaListaBlanca@EXCEPCION_SHCP"/>
+						Gobierno (Ilimitada)
+						<br/>
+						<input type="radio" jwcid="@Radio"
+								value="ognl: @com.ixe.ods.sica.model.PersonaListaBlanca@EXCEPCION_IXE"/>
+						Ixe (Limitada)
+						<br/>
+					</span>
+	   				&nbsp;
+   				</td>
+          	</tr>
+           	<tr>
+           		<td class="normal" valign="top">L&iacute;mite diario:</td>
+           		<td class="normal" valign="top">
+          			<span jwcid="@MontoTextField" value="ognl: altaLimiteDiario" />
+          		</td>
+          	</tr>
+          	<tr>
+           		<td class="normal" valign="top">L&iacute;mite mensual:</td>
+           		<td class="normal" valign="top">
+          			<span jwcid="@MontoTextField" value="ognl: altaLimiteMensual" />
+          		</td>
+          	</tr>
+          	<tr>
+           		<td class="normal" valign="top">Observaciones: <br /> <div align="center">(max 255 caracteres)</div></td>
+           		<td class="normal" valign="top">
+          			<span jwcid="@TextArea" value="ognl: altaObservaciones" cols="30" rows="6"/>
+          		</td>
+          	</tr>
+            <tr>
+				<td colspan="2" align="center">
+					<input jwcid="@ImageSubmit" image="ognl: assets.insertButton" onclick="return fnDisableForm(this.form);"/> 
+					<a jwcid="@DirectLink" listener="ognl:listeners.regresar" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.backButton" border="0" /></a>
+				</td>
+			</tr>
+			</form>
+		</table>
+		</td>
+	  </tr>
+	</table>
+	</span>
+	<form jwcid="descargarArchivoResp@Form" listener="ognl: listeners.descargarArchivoRespuesta" delegate="ognl:beans.delegate" />
+	<span jwcid="@Conditional" condition="ognl: modo == @com.ixe.ods.sica.pages.catalogos.CatListaBlanca@MODO_BUSQUEDA_CONTRATO || modo == @com.ixe.ods.sica.pages.catalogos.CatListaBlanca@MODO_RESULTADO_BUSQUEDA_CONTRATO">
+	<script type="text/javascript">
+        <!--
+        		document.body.onload = function () {
+        			if (document.forms[1].hiddenArchivoCargado.value == 'T') {
+		           		document.forms[2].submit();
+            		}
+        		}
+            	
+        //-->
+    </script>
+    </span>
+</body>
+</html>

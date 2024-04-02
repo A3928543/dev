@@ -1,0 +1,47 @@
+
+@font-face {
+   font-family: labelFont;
+   src: local("Arial");
+}
+
+LineChart {
+   font-family: labelFont;
+}
+
+@font-face {
+  font-family: StatusBarFont;
+  src: local("Arial");
+}
+
+global {
+  font-family : Verdana;
+  font-size:10px;
+  color:#666666;
+}
+
+statusBar {
+  font-family : "StatusBarFont";
+  font-size:11px;
+}
+
+Application {
+	background-size:"100%";
+	background-image:"resources/background.swf";
+	theme-color:#398B7C;
+}
+
+appTitleInstitutional {
+	font-family: Georgia;
+	font-size:20px;
+}
+
+messageLabel {
+	font-weight: "bold";
+	font-size:11px;
+}
+
+dragLabel {
+	font-weight: "bold";
+	font-size:13px;
+	color:#398B7C;
+}

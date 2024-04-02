@@ -1,0 +1,23 @@
+<!--$Id: EventosDeal.html,v 1.19 2009/08/03 21:48:27 ccovian Exp $ -->
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+<tr class="portlettitle">
+<td width="83%">&nbsp;</td>
+<td width="1%">SP:</td>
+<td width="1%"><img jwcid="@Evento" valor="ognl: deal.decodificarEvento(@com.ixe.ods.sica.model.Deal@EV_IND_SOBREPRECIO)" descripcion="Sobreprecio" /></td>
+<td width="1%">LC:</td>
+<td width="1%"><img jwcid="@Evento" valor="ognl: deal.decodificarEvento(@com.ixe.ods.sica.model.Deal@EV_IND_GRAL_PAG_ANT)" descripcion='ognl: "L\u00ednea de Cambios"' /></td>
+<td width="1%">DC:</td>
+<td width="1%"><img jwcid="@Evento" valor="ognl: deal.decodificarEvento(@com.ixe.ods.sica.model.Deal@EV_IND_DOCUMENTACION)" descripcion='ognl: "Documentaci\u00f3n"' /></td>
+<td width="1%">RFC:</td>
+<td width="1%"><img jwcid="@Evento" valor="ognl: deal.cambioRfc" descripcion='ognl: "Cambio en R.F.C."' /></td>
+<td width="1%">CE:</td>
+<td width="1%"><img jwcid="@Evento" valor="ognl: deal.cambioEmail" descripcion='ognl: "Cambio en Correo Electr\u00f3nico"' /></td>
+<td width="1%">MD:</td>
+<td width="1%"><img jwcid="@Evento" valor="ognl: deal.decodificarEvento(@com.ixe.ods.sica.model.Deal@EV_IND_GRAL_MODIFICACION)" descripcion='ognl: "Modificaci\u00f3n"' /></td>
+<td width="1%">CN:</td>
+<td width="1%"><img jwcid="@Evento" valor="ognl: deal.decodificarEvento(@com.ixe.ods.sica.model.Deal@EV_IND_GRAL_CANCELACION)" descripcion='ognl: "Cancelaci\u00f3n"' /></td>
+<td width="1%" nowrap>T. outs:</td>
+<td width="1%"><font color="#ffffff"><span jwcid="@Insert" value="ognl: deal.getTimeout()" /></font></td>
+<td width="1%"><a href="#" jwcid = "@ExternalLink" page="HistorialDeal" renderer='ognl: page.global.applicationContext.getBean("mediumPopupLinkRenderer")' parameters='ognl: deal.idDeal'><img jwcid="@Image" image="ognl: assets.bHistorial" alt='ognl: "Historial de cambios"' /></a></td>
+</tr>
+</table>

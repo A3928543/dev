@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TransactionResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/out/Kondor2Sica-Response-AltaOperacionKondor.xsd">
+  <Output>
+    <Header/>
+    <Responses>
+      <Response>
+        <folio>folio</folio>
+        <idConfs/>
+      </Response>
+    </Responses>
+  </Output>
+</TransactionResponse>

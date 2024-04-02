@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.SistemaTce"
+        table="SC_SISTEMA"
+        dynamic-update="false"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+    >
+
+        <id
+            name="idSistema"
+            column="ID_SISTEMA"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-SistemaTce.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="description"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="DESCRIPCION"
+            not-null="true"
+        />
+
+        <property
+            name="usuarioCreacion"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="USUARIO_CREACION"
+            not-null="true"
+        />
+
+        <property
+            name="fechaCreacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_CREACION"
+            not-null="true"
+        />
+
+        <property
+            name="usuarioUltModif"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="USUARIO_ULT_MODIF"
+            not-null="false"
+        />
+
+        <property
+            name="fechaUltModif"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_ULT_MODIF"
+            not-null="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-SistemaTce.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findAllSistemas"><![CDATA[
+            FROM SistemaTce
+        ]]></query>
+
+</hibernate-mapping>

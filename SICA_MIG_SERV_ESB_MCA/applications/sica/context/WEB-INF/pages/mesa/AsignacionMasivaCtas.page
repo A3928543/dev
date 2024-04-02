@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.mesa.AsignacionMasivaCtas">
+    
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate"/>
+    
+    <component id="promotoresComboBox" type="PropertySelection">
+        <binding name="model" expression="promotoresModel" />
+        <binding name="value" expression="promotor" /> 
+        <static-binding name="onchange"> fnShowWaitImage();limpiar();this.form.submit();</static-binding>
+    </component>
+
+    <component id="promotoresComboBoxDest" type="PropertySelection">
+        <binding name="model" expression="promotoresModel" />
+        <binding name="value" expression="promotorDest" /> 
+    </component>
+
+
+	<property-specification name="promotor" type="com.ixe.ods.bup.model.EmpleadoIxe" persistent="yes" />
+	<property-specification name="promotorDest" type="com.ixe.ods.bup.model.EmpleadoIxe" persistent="yes" />	
+	<property-specification name="cuentaSeleccionada" type="com.ixe.ods.bup.model.CuentaEjecutivo" persistent="yes" />
+	<property-specification name="cuentaAsignada" type="com.ixe.ods.bup.model.CuentaEjecutivo" persistent="yes" />
+	<property-specification name="idPromotor" type="int" persistent="yes" />
+	<property-specification name="promotoresList" type="java.util.List" persistent="yes" /> 
+	<property-specification name="modo" type="java.lang.String" persistent="yes" />
+	<property-specification name="cuentasString" type="java.lang.String" persistent="yes" />
+	<property-specification name="modoSubmit" type="int" />
+	<property-specification name="level" type="int" />
+	<property-specification name="clientesString" type="java.lang.String" persistent="yes" />
+    
+	<context-asset name="asignButton" path="/images/down.gif" />
+	<context-asset name="consButton" path="/images/mas.gif" />
+	<context-asset name="noButton" path="/images/negar.gif" />
+	<context-asset name="searchButton" path="/images/search.gif" />
+	<context-asset name="confirmButton" path="/images/aceptar.gif" />
+	<context-asset name="addButton" path="/images/add.gif" />	
+	<context-asset name="cancelButton" path="/images/cancel.gif" />	
+	<context-asset name="cancelallButton" path="/images/cancelar_todo.gif" />	
+	<context-asset name="selecallButton" path="/images/seleccionar_todo.gif" />				
+	
+ 
+</page-specification>
+

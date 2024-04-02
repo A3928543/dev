@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!--$Id: build.xml,v 1.10 2007/06/28 00:11:21 fribarra Exp $ -->
+<project name="Sica Models" default="build-all" basedir=".">
+
+    <property name="root.dir" value="${basedir}/.."/>
+
+    <property file="${root.dir}/config/common.properties"/>
+
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${tmp.dir}"/>
+        <mkdir dir="${hbgen.dir}"/>
+    </target>
+
+    <target name="clean" description="Clean everything">
+        <ant antfile="build.xml" target="clean" dir="sica"/>
+    </target>
+
+    <target name="javadoc">
+        <ant antfile="build.xml" target="javadoc" dir="sica"/>
+    </target>
+
+    <target name="build-hbgen" depends="init" description="Generate Hibernate class descriptor files.">
+        <ant antfile="build.xml" target="build-hbgen" dir="sica"/>
+    </target>
+
+    <target name="compile" depends="init" description="Compile everything">
+        <ant antfile="build.xml" target="compile" dir="sica"/>
+    </target>
+
+    <target name="build-models" depends="init" description="Build Sica Business Objects">
+        <ant antfile="build.xml" target="build-models" dir="sica"/>
+    </target>
+
+    <target name="build-all" depends="build-hbgen, build-models"/>
+
+</project>

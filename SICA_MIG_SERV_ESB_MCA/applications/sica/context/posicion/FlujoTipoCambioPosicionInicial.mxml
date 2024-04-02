@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<view:ComponenteTipoCambio
+        xmlns:mx="http://www.macromedia.com/2003/mxml"
+        xmlns:view="com.ixe.ods.sica.posicion.views.*"
+        xmlns:ls="com.legosoft.*">
+
+    <mx:NumberFormatter id="numberFormatter" precision="2"/>
+
+    <mx:GridItem>
+        <mx:Label text="Posici&#243;n Inicial" fontWeight="bold"/>
+    </mx:GridItem>
+    <mx:GridItem colSpan="2"/>
+    <mx:GridItem horizontalAlign="right">
+        <mx:Label text="{numberFormatter.format(dataProvider.getPosicionInicial())}"/>
+    </mx:GridItem>
+    <mx:GridItem horizontalAlign="center">
+        <ls:TickImage tick="-1"/>
+    </mx:GridItem>
+
+</view:ComponenteTipoCambio>

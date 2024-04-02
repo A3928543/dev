@@ -1,0 +1,128 @@
+
+@font-face {
+   font-family: labelFont;
+   src: local("Arial");
+}
+
+@font-face {
+   fontFamily:vertVerdana;
+   src:local("Arial");
+}
+
+.haccordion {
+   fontFamily:vertVerdana;
+	font-size:12px;
+}
+
+LineChart {
+   font-family: labelFont;
+}
+
+global {
+	font-family:Verdana;
+	font-size:10px;
+	color:#002929;
+}
+
+Application {
+	background-size:"100%";
+	background-color:#FFFFFF;
+}
+
+appTitleInstitutional {
+	font-family:Georgia;
+	font-weight: "bold";
+	font-size:18px;
+	margin-left: 8;
+}
+
+zoomTipoCambio {
+	font-family:Verdana;
+	font-size:17px;
+}
+
+zoomPosicionFinal {
+	font-family:Verdana;
+	font-size:15px;
+	font-weight: "bold";
+	color:#00FF00;
+}
+
+synchStatus {
+	font-family:Verdana;
+	font-weight: "bold";
+	font-size:11px;
+}
+
+notAvailable {
+	font-family:Georgia;
+	font-weight: "bold";
+	font-size:52px;
+	margin-left: 8;
+	color:#002929;
+}
+
+messageLabel {
+	font-weight: "bold";
+	font-size:11px;
+}
+
+bcZoom {
+    background-color: #000000;
+}
+
+bcNormal {
+    background-color: #FFFFFF;
+}
+
+DataGrid {
+	theme-color:#657e68;
+}
+
+Button {
+	theme-color:#657e68;
+}
+
+CheckBox {
+	theme-color:#657e68;
+}
+
+TabNavigator {
+	theme-color:#83263A;
+}
+
+Accordion {
+	theme-color:#83263A;
+}
+
+ComboBox {
+	theme-color:#657e68;
+}
+
+HSlider {
+	theme-color:#657e68;
+}
+
+Label {
+	theme-color:#657e68;
+}
+
+Link {
+	theme-color:#657e68;
+}
+
+ScrollBar {
+	theme-color:#657e68;
+}
+
+TextInput {
+	theme-color:#657e68;
+}
+
+TextArea {
+	theme-color:#657e68;
+}
+
+Tree {
+	theme-color:#657e68;
+}

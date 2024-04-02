@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CapturaBanco.page,v 1.9 2008/02/22 18:25:10 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.deals.CapturaBanco">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+    <bean name="stringValidator" class="org.apache.tapestry.valid.StringValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+    <bean name="stringValidatorPlaza" class="org.apache.tapestry.valid.StringValidator" lifecycle="page">
+        <set-property name="required" expression="false" />
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <component id="nombreCortoTextField" type="ValidField">
+        <static-binding name="displayName" value="Nombre Corto:" />
+        <static-binding name="maxlength" value="200" />
+        <static-binding name="size" value="50" />
+        <static-binding name="class" value="uppercase" />
+        <binding name="validator" expression="beans.stringValidator" />
+        <binding name="value" expression="banco.nombreCorto" />
+    </component>
+
+    <component id="plazaTextField" type="ValidField">
+        <static-binding name="displayName" value="Plaza:" />
+        <static-binding name="maxlength" value="60" />
+        <static-binding name="size" value="50" />
+        <static-binding name="class" value="uppercase" />
+        <binding name="validator" expression="beans.stringValidatorPlaza" />
+        <binding name="value" expression="banco.plaza" />
+    </component>
+
+    <component id="paisesComboBox" type="PropertySelection">
+        <binding name="model" expression='new com.legosoft.tapestry.model.RecordSelectionModel(paises, "claveISO", "nombrePais")' />
+        <binding name="value" expression="pais" />
+        <static-binding name="onChange" value="fnShowWaitImage(); this.form.submit();" />
+    </component>
+
+    <property-specification name="banco" type="com.ixe.treasury.dom.common.Banco" persistent="yes" />
+    <property-specification name="guardando" type="boolean" />
+    <property-specification name="pais" type="com.ixe.treasury.dom.common.Pais" persistent="yes" />
+    <property-specification name="paises" type="java.util.List" persistent="yes" />
+    <property-specification name="paginaRetorno" type="java.lang.String" persistent="yes"/>
+    <property-specification name="plantilla" type="com.ixe.ods.sica.model.IPlantillaIntl" persistent="yes" />
+
+    <context-asset name="bActualizar" path="/images/aceptar.gif" />
+    <context-asset name="bRegresar" path="/images/back.gif" />
+
+</page-specification>

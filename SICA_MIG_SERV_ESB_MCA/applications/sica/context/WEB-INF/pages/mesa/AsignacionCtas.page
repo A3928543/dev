@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: AsignacionCtas.page,v 1.11 2008/02/22 18:25:30 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.mesa.AsignacionCtas">
+    
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate"/>
+    
+    <component id="promotoresComboBox" type="PropertySelection">
+        <binding name="model" expression="promotoresModel" />
+        <binding name="value" expression="promotor" /> 
+        <static-binding name="onchange">this.form.inferior.selectedIndex = -1; fnShowWaitImage(); this.form.submit();</static-binding>
+    </component>
+
+	<property-specification name="promotor" type="com.ixe.ods.bup.model.EmpleadoIxe" persistent="yes" />
+	<property-specification name="cuentaSeleccionada" type="com.ixe.ods.bup.model.CuentaEjecutivo" persistent="yes" />
+	<property-specification name="cuentaAsignada" type="com.ixe.ods.bup.model.CuentaEjecutivo" persistent="yes" />
+	<property-specification name="idPromotor" type="int" persistent="yes" />
+	<property-specification name="promotoresList" type="java.util.List" persistent="yes" /> 
+	<property-specification name="modo" type="java.lang.String" persistent="yes" />
+	<property-specification name="modoSubmit" type="int" />
+	<property-specification name="level" type="int" />
+    
+	<context-asset name="asignButton" path="/images/down.gif" />
+	<context-asset name="consButton" path="/images/mas.gif" />
+	<context-asset name="noButton" path="/images/negar.gif" />
+	<context-asset name="searchButton" path="/images/search.gif" />
+ 
+</page-specification>
+

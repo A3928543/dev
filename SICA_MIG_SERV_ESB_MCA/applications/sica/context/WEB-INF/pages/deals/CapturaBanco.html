@@ -1,0 +1,42 @@
+<!-- $Id: CapturaBanco.html,v 1.9 2008/02/22 18:25:09 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Alta de Nueva Institucion Financiera</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <table jwcid="@ActionPortletBorder" title="Alta de Nueva Institucion Financiera">
+        <form jwcid="@Form" listener="ognl: listeners.submit" delegate="ognl: beans.delegate">
+            <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" width="100%"/>
+            <fieldset>
+                <legend class="legend">Datos Generales:</legend>
+                    <table width="100%">
+                        <tr valign="top" class="title">
+                            <td align="right">Nombre Corto:</td>
+                            <td colspan="5"><input type="text" jwcid="nombreCortoTextField" /></td>
+                        </tr>
+                        <tr valign="top" class="title">
+                            <td align="right">Pa&iacute;s:</td>
+                            <td colspan="2"><select jwcid="paisesComboBox" /></td>
+                            <td align="right">Plaza:</td>
+                            <td colspan="2"><input type="text" jwcid="plazaTextField" /></td>
+                        </tr>
+                        <tr valign="top" class="title">
+                            <td align="right">Clave <span jwcid="@Insert" value="ognl: banco.claveRuteoPais">ABA</span>:</td>
+                            <td><input jwcid="@ixe:UppercaseTextField" value="ognl: banco.numeroRuteoPais" /></td>
+                            <td align="right">Clave SWIFT:</td>
+                            <td><input jwcid="@ixe:UppercaseTextField" value="ognl: banco.claveSWIFT" /></td>
+                            <td align="right">Clave CHIPS:</td>
+                            <td><input jwcid="@ixe:UppercaseTextField" value="ognl: banco.claveCHIPS" /></td>
+                        </tr>
+                    </table>
+            </fieldset>
+            <br />
+            <div class="textocentrado">
+                <input jwcid="@ImageSubmit" image="ognl: assets.bActualizar" listener="ognl: listeners.guardar"/>
+                <a jwcid="@PageLink" page="ognl: paginaRetorno" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bRegresar" src="../../../images/back.gif" alt="Regresar" border="0"/></a>
+            </div>
+        </form>
+    </table>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!-- $Id: CriteriosConsultaDeal.html,v 1.10.28.2 2010/06/24 17:07:44 galiciad Exp $ -->
+<fieldset class="normal">
+<legend class="legend">Datos Generales Deal</legend>
+<table width="100%">
+<tr class="title">
+<td >No. <u>D</u>eal:</td>
+<td><input jwcid="idTextField" size="30" /></td>
+<td >Status:</td>
+<td ><span jwcid="@PropertySelection" model='ognl: new com.ixe.ods.sica.components.StatusSelectionModel(!blockCriterios)' value="ognl: status"/></td>
+<td >Cuen<u>t</u>a:</td>
+<td ><input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" accesskey="T" value="ognl: noCuenta" size="30" /></td>
+</tr>
+
+<span jwcid="@contrib:FormConditional" condition="ognl: listaDivisas != null || listaFormasLiquidacion != null">
+		<tr class="title">
+			<span jwcid="@contrib:FormConditional" condition="ognl: listaDivisas != null">
+					<td  >Divisa:</td>
+					<td > <span jwcid="@PropertySelection" model='ognl: listaDivisas'  value="ognl: divisa"  /></td>
+			</span>
+			<span jwcid="@contrib:FormConditional" condition="listaFormasLiquidacion != null">
+					<td  >Producto:</td>
+					<td > <span jwcid="@PropertySelection" model='ognl: listaFormasLiquidacion'  value="ognl: claveFormaLiquidacion"  /></td>
+			</span>
+<span jwcid="@Conditional" condition="blockCriterios">
+<span jwcid="@RenderBlock" block="ognl: blockCriterios" />
+</span>
+</tr>
+</span>
+
+<tr class="title">
+	<td >Fecha de:</td>
+		<td><select jwcid="@PropertySelection" model="ognl: modeloFechaFiltroBusqueda" value="ognl: tipoFecha" /></td>
+	<td >Inicio: </td>
+		<!-- <td ><input type="text" readonly="readonly" jwcid="@DatePicker" value="ognl: fechaInicioBusqueda" format="dd/MM/yyyy" size="10"/></td>-->
+		<td><input jwcid="@ls:DatePicker" value="ognl: fechaInicioBusqueda" format="dd/MM/yyyy" size="10"/></td>
+	<td >Final:</td>
+		<!-- <td ><input type="text" readonly="readonly" jwcid="@DatePicker"  value="ognl: fechaFinalBusqueda" format="dd/MM/yyyy" size="10" /></td>-->
+		<td><input jwcid="@ls:DatePicker" value="ognl: fechaFinalBusqueda" format="dd/MM/yyyy" size="10"/></td>
+</tr>
+</table>
+</fieldset>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr class="title">
+<td>
+<fieldset class="normal">
+<legend class="legend">Empresas</legend>
+<table width="100%">
+<tr class="title">
+<td width="12%" align="right"><u>R</u>az&oacute;n Social:</td>
+<td colspan="7"><input class="uppercase" type="text" jwcid="empresasTextField@ixe:UppercaseTextField" accesskey="R" value="ognl: razonSocial" size="100" /></td>
+</tr>
+</table>
+</fieldset>
+</td>
+<span jwcid="@contrib:FormConditional" condition="ognl: mostrarOpcionesMensajeria">
+<td>&nbsp;</td>
+<td>
+<fieldset class="normal">
+<legend class="legend">Opciones Mensajer&iacute;a</legend>
+<table width="100%">
+<tr class="title">
+<td>
+<select jwcid="@PropertySelection" model="ognl: modeloOpcionesMensajeria" value="ognl: opcionMensajeria" /></td><tr/></table>
+</fieldset>
+</td>
+</span>
+</tr>
+</table>
+<fieldset class="normal">
+<legend class="legend">Personas F&iacute;sicas</legend>
+<table width="100%">
+<tr class="title">
+<td width="12%" align="right">Ap. <u>P</u>aterno:</td>
+<td width="12%"><input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" accesskey="P" value="ognl: paterno" size="30" /></td>
+<td width="12%" align="right">Ap. <u>M</u>aterno:</td>
+<td width="12%"><input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" accesskey="M" value="ognl: materno" size="30" /></td>
+<td width="12%" align="right"><u>N</u>ombre:</td>
+<td width="12%"><input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" value="ognl: nombre" accesskey="N" size="30"/></td>
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+</fieldset>

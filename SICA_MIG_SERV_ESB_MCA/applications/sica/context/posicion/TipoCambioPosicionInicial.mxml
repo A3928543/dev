@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: TipoCambioPosicionInicial.mxml,v 1.9 2008/02/22 18:25:36 ccovian Exp $ -->
+<view:ComponenteTipoCambio
+    xmlns:mx="http://www.macromedia.com/2003/mxml"
+    xmlns:view="com.ixe.ods.sica.posicion.views.*"
+    xmlns:ls="com.legosoft.*">
+
+    <mx:NumberFormatter id="numberFormatter" precision="2"/>
+
+    <mx:NumberFormatter id="exchangeFormatter" precision="6"/>
+
+    <mx:GridItem>
+        <mx:Label text="Posici&#243;n Inicial" fontWeight="bold"/>
+    </mx:GridItem>
+    <mx:GridItem horizontalAlign="right">
+        <mx:Label text="{numberFormatter.format(dataProvider.getPosicionInicial())}"
+			toolTip='{"CASH:" + numberFormatter.format(dataProvider.posicionInicialCash) + " TOM:" + numberFormatter.format(dataProvider.posicionInicialTom) + " SPOT:" + numberFormatter.format(dataProvider.posicionInicialSpot) + " 72HR:" + numberFormatter.format(dataProvider.posicionInicial72Hr) + (parentApplication.vFut ? " 96HR: " + numberFormatter.format(dataProvider.posicionInicialVFut) : " ")}'/>
+    </mx:GridItem>
+    <mx:GridItem horizontalAlign="center" verticalAlign="middle">
+        <ls:TickImage tick="-1"/>
+    </mx:GridItem>
+    <mx:GridItem horizontalAlign="right">
+        <mx:Label text="{exchangeFormatter.format(dataProvider.posicionFinal != 0 ? (dataProvider.getPosicionInicialMn() + dataProvider.compraMn - dataProvider.ventaMn) / dataProvider.posicionFinal : 0)}" visible="{false}" />
+    </mx:GridItem>
+    <mx:GridItem horizontalAlign="center" verticalAlign="middle">
+        <ls:TickImage tick="-1" visible="{false}" />
+    </mx:GridItem>
+    <mx:GridItem horizontalAlign="right">
+        <mx:Label text="{numberFormatter.format(-1 * dataProvider.getPosicionInicialMn())}"
+			toolTip='{"CASH:" + numberFormatter.format(-1 * dataProvider.posicionInicialMnCash) + " TOM:" + numberFormatter.format(-1 * dataProvider.posicionInicialMnTom) + " SPOT:" + numberFormatter.format(-1 * dataProvider.posicionInicialMnSpot) + " 72HR:" + numberFormatter.format(-1 * dataProvider.posicionInicialMn72Hr) + (parentApplication.vFut ? " 96HR:" + numberFormatter.format(-1 * dataProvider.posicionInicialMnVFut) : " ")}'/>
+
+    </mx:GridItem>
+    <mx:GridItem horizontalAlign="center" verticalAlign="middle">
+        <ls:TickImage tick="-1"/>
+    </mx:GridItem>
+
+</view:ComponenteTipoCambio>

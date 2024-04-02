@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--$Id: EdicionDireccion.jwc,v 1.2 2009/08/03 21:47:51 ccovian Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<component-specification class="com.ixe.ods.sica.components.EdicionDireccion">
+
+    <parameter name="direcciones" type="java.util.List" direction="auto" required="yes" />
+    <parameter name="idDireccion" type="java.lang.Integer" direction="auto" default-value="new java.lang.Integer(0)" />
+    <parameter name="nuevaDireccion" type="com.ixe.bean.bup.Direccion" direction="auto" required="yes" />
+
+    <bean name="stringNotRequiredValidator" class="org.apache.tapestry.valid.StringValidator" lifecycle="page">
+        <set-property name="required" expression="false" />
+    </bean>
+
+    <component id="calle" type="ValidField">
+        <static-binding name="displayName" value="Calle:" />
+        <binding name="validator" expression="beans.stringNotRequiredValidator" />
+        <binding name="value" expression="nuevaDireccion.calleYNumero" />
+        <static-binding name="size" value="60" />
+        <static-binding name="maxlength" value="90" />
+        <static-binding name="class" value="uppercase" />
+    </component>
+
+    <component id="noExterno" type="ValidField">
+        <static-binding name="displayName" value="N&#243;m. Ext.:" />
+        <binding name="validator" expression="beans.stringNotRequiredValidator" />
+        <binding name="value" expression="nuevaDireccion.numeroExterior" />
+        <static-binding name="size" value="10" />
+        <static-binding name="maxlength" value="40" />
+        <static-binding name="class" value="uppercase" />
+    </component>
+
+    <component id="noInterno" type="ValidField">
+        <static-binding name="displayName" value="N&#243;m. Int.:" />
+        <binding name="validator" expression="beans.stringNotRequiredValidator" />
+        <binding name="value" expression="nuevaDireccion.numeroInterior" />
+        <static-binding name="size" value="10" />
+        <static-binding name="maxlength" value="40" />
+        <static-binding name="class" value="uppercase" />
+    </component>
+
+    <component id="ciudad" type="ValidField">
+        <static-binding name="displayName" value="Ciudad:" />
+        <binding name="validator" expression="beans.stringNotRequiredValidator" />
+        <binding name="value" expression="nuevaDireccion.ciudad" />
+        <static-binding name="size" value="20" />
+        <static-binding name="maxlength" value="20" />
+        <static-binding name="class" value="uppercase" />
+    </component>
+
+    <component id="codigoPostal" type="ValidField">
+        <static-binding name="displayName" value="C.P.:" />
+        <binding name="validator" expression="beans.stringNotRequiredValidator" />
+        <binding name="value" expression="nuevaDireccion.codigoPostal" />
+        <static-binding name="size" value="5" />
+        <static-binding name="maxlength" value="5" />
+        <static-binding name="class" value="uppercase" />
+    </component>
+
+    <component id="colonia" type="ValidField">
+        <static-binding name="displayName" value="Colonia:" />
+        <binding name="validator" expression="beans.stringNotRequiredValidator" />
+        <binding name="value" expression="nuevaDireccion.colonia" />
+        <static-binding name="size" value="100" />
+        <static-binding name="maxlength" value="100" />
+        <static-binding name="class" value="uppercase" />
+    </component>
+
+    <component id="delegacion" type="ValidField">
+        <static-binding name="displayName" value="Delegaci&#243;n:" />
+        <binding name="validator" expression="beans.stringNotRequiredValidator" />
+        <binding name="value" expression="nuevaDireccion.delegacion" />
+        <static-binding name="size" value="50" />
+        <static-binding name="maxlength" value="50" />
+        <static-binding name="class" value="uppercase" />
+    </component>
+
+    <component id="estado" type="ValidField">
+        <static-binding name="displayName" value="Estado:" />
+        <binding name="validator" expression="beans.stringNotRequiredValidator" />
+        <binding name="value" expression="nuevaDireccion.entFederativa" />
+        <static-binding name="size" value="50" />
+        <static-binding name="maxlength" value="50" />
+        <static-binding name="class" value="uppercase" />
+    </component>
+
+</component-specification>

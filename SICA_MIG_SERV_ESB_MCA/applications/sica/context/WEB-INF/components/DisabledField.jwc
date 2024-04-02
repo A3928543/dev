@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--$Id: DisabledField.jwc,v 1.9 2008/02/22 18:25:07 ccovian Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<component-specification allow-body="no">
+
+    <parameter name="value" type="java.lang.Object" direction="in" required="yes" />
+
+</component-specification>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CapturaMetodoPagoDeal.page,v 1.1.2.1.36.1.2.2 2017/08/21 16:21:31 mejiar Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.deals.CapturaMetodoPagoDeal">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <property-specification name="deal" type="com.ixe.ods.sica.model.Deal" persistent="yes" />
+    <property-specification name="nombrePaginaAnterior" type="java.lang.String" persistent="yes" />
+
+    <property-specification name="formaPago" type="java.lang.String" persistent="yes" />
+
+    <property-specification name="metodoPagoEfectivo" type="boolean" persistent="yes" />
+    <property-specification name="metodoPagoCheque" type="boolean" persistent="yes" />
+    <property-specification name="metodoPagoTEF" type="boolean" persistent="yes" />
+    <property-specification name="metodoPagoTC" type="boolean" persistent="yes" />
+    <property-specification name="metodoPagoMonederoE" type="boolean" persistent="yes" />
+    <property-specification name="metodoPagoDineroE" type="boolean" persistent="yes" />
+    <property-specification name="metodoPagoValesDespensa" type="boolean" persistent="yes" />
+    <property-specification name="metodoPagoTDebito" type="boolean" persistent="yes" />
+    <property-specification name="metodoPagoTServicio" type="boolean" persistent="yes" />
+    <property-specification name="metodoPagoOtros" type="boolean" persistent="yes" />
+    <property-specification name="metodoPagoNA" type="boolean" persistent="yes" />
+
+    <context-asset name="bAceptar" path="/images/aceptar.gif" />
+    <context-asset name="bRegresar" path="/images/back.gif" />
+
+       
+   <component id="cuentaPag" type="TextField"> 
+       <binding name="value" expression="deal.cuentaPago"/>  
+    </component> 
+   
+
+</page-specification>

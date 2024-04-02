@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.LineaCambio"
+        table="SC_LINEA_CAMBIO"
+        proxy="com.ixe.ods.sica.model.LineaCambio"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idLineaCambio"
+            column="ID_LINEA_CAMBIO"
+            type="java.lang.Integer"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_LINEA_CAMBIO_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-LineaCambio.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="casoExcepcion"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="CASO_EXCEPCION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="importePAyTF"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="IMPORTE_PAYTF"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="importeFV"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="IMPORTE_FECHA_VALOR"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="excesoPAyTF"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="EXCESO_PAYTF"
+        />
+
+        <property
+            name="excesoFV"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="EXCESO_FV"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="usoCash"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="USO_CASH"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="usoTom"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="USO_TOM"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="usoSpot"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="USO_SPOT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="uso72Hr"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="USO_72HR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="uso96Hr"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="USO_96HR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="promedioLinea"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="PROMEDIO_LINEA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ultimaModificacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="ULTIMA_MODIFICACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="numeroExcepciones"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="NUMERO_EXCEPCIONES"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="numeroExcepcionesMes"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="NUMERO_EXCEPCIONES_MES"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="vencimiento"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="VENCIMIENTO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="statusLinea"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATUS_LINEA"
+            not-null="true"
+            unique="false"
+        />
+
+        <many-to-one
+            name="corporativo"
+            class="com.ixe.ods.bup.model.Persona"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_CORPORATIVO"
+            unique="false"
+        />
+
+        <many-to-one
+            name="tipoAutorizacion"
+            class="com.ixe.ods.sica.model.TipoAutorizacion"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_TIPO_AUTORIZACION"
+            unique="false"
+        />
+
+        <many-to-one
+            name="formalizacion"
+            class="com.ixe.ods.sica.model.Formalizacion"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_FORMALIZACION"
+            unique="false"
+        />
+
+        <many-to-one
+            name="instanciaFacultada"
+            class="com.ixe.ods.sica.model.InstanciaFacultada"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_INSTANCIA_FACULTADA"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-LineaCambio.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

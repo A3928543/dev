@@ -1,0 +1,21 @@
+                             GRUPO FINANCIERO BANORTE
+
+    DESCRIPCION .: $descripcion          	REPORTE.:  $reporte
+    CADENA      .: $cadena                   FECHA ..:  $fecha
+ ========================================================================================
+    APLICATIVO: $aplicativo
+                             		 		
+	                                MOVIMIENTOS                  	   
+
+    TOTAL FACTURAS ENVIADAS               $recibidosSAP                      
+
+
+	                             			
+      	                              
+    TOTAL FACTURAS REC POR PROVEEDOR      $recibidosIndices                     
+    (TIMBRADAS)                         ____________		   
+                                         
+	DIFERENCIA                            $diferencia                      
+
+
+ =========================================================================================

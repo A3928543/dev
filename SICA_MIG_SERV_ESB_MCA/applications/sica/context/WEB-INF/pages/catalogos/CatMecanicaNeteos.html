@@ -1,0 +1,166 @@
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <!-- $Id: CatMecanicaNeteos.html,v 1.1.2.2.6.1 2010/09/03 17:26:00 ccovian Exp $ -->    
+	<title>Mec&aacute;nica de Neteos</title>
+	<link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder" menuDisabled="ognl: false">
+	<span jwcid="@bup:ShowError" width="100%" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level="ognl: level"/>
+	<br />
+	<table width="100%">
+	  <tr valign="top">
+	    <td width="230px">
+	  		<table jwcid="@ActionPortletBorder" title="Alta de Reglas Mec&aacute;nica de Neteos" width="100%">
+	  			<form jwcid="@Form" listener="ognl: listeners.insert" delegate="ognl: beans.delegate">
+	  			<input jwcid="hiddenModoSubmit@Hidden" value="ognl: modoSubmit" type="hidden" />
+	                <table width="100%">
+	                	<tr>
+	                		<td class="normal">Divisa:</td>
+	                		<td>
+	                			<select jwcid="@PropertySelection"
+                        				model="ognl: divisaModel"
+                        				value="ognl: divisaSeleccionada"
+                        				onchange="this.form.hiddenModoSubmit.value='actualizarProductos';this.form.submit();" />
+	                		</td>
+	                	</tr>
+	                	<tr>
+	                		<td class="normal">Compra:</td>
+	                		<td>
+	                			<select jwcid="@PropertySelection"
+                        				model="ognl: formasLiquidacionModel"
+                        				value="ognl: claveFormaLiquidacionCompra" />
+	                		</td>
+	                	</tr>
+	                	<tr>
+	                		<td class="normal">Venta:</td>
+	                		<td>
+	                			<select jwcid="@PropertySelection"
+                        				model="ognl: formasLiquidacionModel"
+                        				value="ognl: claveFormaLiquidacionVenta" />
+	                		</td>
+	                	</tr>
+	                	<tr>
+	                		<td class="normal">Base:</td>
+	                		<td>
+	                			<select jwcid="@PropertySelection"
+                        				model="ognl: baseModel"
+                        				value="ognl: reglaBase"
+                        				onchange="this.form.hiddenModoSubmit.value='actualizarReglaBase';this.form.submit();"/>
+	                		</td>
+	                	</tr>
+	                	<span jwcid="@contrib:FormConditional" condition="ognl: reglaBase.value.equals('MTO')">
+	                	<tr>
+	                		<td class="normal">Monto antes del horario:</td>
+	                		<td>
+	                			<span jwcid="@MontoTextField" value="ognl: montoAntesDelHorario" />
+	                		</td>
+	                	</tr>
+	                	<tr>
+	                		<td class="normal">Monto despu&eacute;s del horario:</td>
+	                		<td>
+	                			<span jwcid="@MontoTextField" value="ognl: montoDespuesDelHorario" />
+	                		</td>
+	                	</tr>
+	                	</span>
+	                	<span jwcid="@contrib:FormConditional" condition="ognl: reglaBase.value.equals('TCM')">
+	                	<tr>
+	                		<td class="normal">Diferencial antes del horario:</td>
+	                		<td>
+	                			<span jwcid="difAntesDeHorario" format="ognl: page.currencyFormat"/>
+	                		</td>
+	                	</tr>
+	                	<tr>
+	                		<td class="normal">Diferencial despu&eacute;s del horario:</td>
+	                		<td>
+	                			<span jwcid="difDespuesDeHorario" format="ognl: page.currencyFormat"/>
+	                		</td>
+	                	</tr>
+	                	</span>
+	                	<tr>
+	                		<td colspan="2" align="center">
+	                			<br/>
+	                			<input jwcid="@ImageSubmit" image="ognl: assets.insertButton" onclick="return fnDisableForm(this.form);"/> 
+	                		</td>
+	                	</tr>
+	                </table>
+				</form>
+	  		</table>
+	  	</td>
+	    <td width="1%">
+	  		&nbsp;
+	  	</td>
+	  	<td align="center">
+	  		<table jwcid="@ActionPortletBorder" title="Eliminar Reglas Mec&aacute;nica de Neteos">
+	  			<tr>
+	  				<td align="center">
+		                <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "Divisa", "Compra", "Venta", "Tipo de Diferencial", "Diferencial antes del horario", "Diferencial despu&eacute;s del horario", "Monto antes del horario", "Monto despu&eacute;s del horario", "" }' columnCount="9" width="100%">
+		                	<span jwcid="@Conditional" condition="ognl: reglasNeteo.empty">
+                                <tr jwcid="@Any" class="ognl: beans.evenOdd.next" element="tr">
+                                  <td class="normal" colspan="9" align="center">No existe ninguna regla de neteo registrada.</td>
+                                </tr>
+                            </span>
+                            <span jwcid="@Conditional" condition="ognl: !reglasNeteo.empty">
+                              <tr jwcid="forReglasNeteo@Foreach" source="ognl: reglasNeteo" element="tr" class="ognl: beans.evenOdd.next">
+                                <td class="normal" align="center">
+			                    	<span jwcid="@Insert" value="ognl: components.forReglasNeteo.value.idDivisa" />
+                    			</td>
+			                    <td class="normal" align="center">
+			                    	<span jwcid="@Insert" value="ognl: components.forReglasNeteo.value.claveFormaLiquidacionCompra" />
+                    			</td>
+		                        <td class="normal" align="center">
+		                        	<span jwcid="@Insert" value="ognl: components.forReglasNeteo.value.claveFormaLiquidacionVenta" />
+                     			</td>
+                     			<td class="normal" align="center">
+                     			   <span jwcid="@Conditional" condition='ognl: "MTO".equals(components.forReglasNeteo.value.baseRegla)'>
+                     			       IMPORTE O MONTO
+                     			   </span>
+                     			   <span jwcid="@Conditional" condition='ognl: "TCM".equals(components.forReglasNeteo.value.baseRegla)'>
+                     			       TIPO DE CAMBIO
+                     			   </span>
+                     			</td>
+                     			<td class="normal" align="center">
+		                        	<span jwcid="@Conditional" condition='ognl: components.forReglasNeteo.value.difAntesDelHorario == null'>
+		                        	       N/A
+		                        	</span>
+		                        	<span jwcid="@Conditional" condition='ognl: components.forReglasNeteo.value.difAntesDelHorario != null'>
+		                        		<span jwcid="@Insert" value="ognl: components.forReglasNeteo.value.difAntesDelHorario" format="ognl: currencyFormat"/>
+		                        	</span>
+                     			</td>
+                     			<td class="normal" align="center">
+		                        	<span jwcid="@Conditional" condition='ognl: components.forReglasNeteo.value.difDespuesDelHorario == null'>
+		                        	       N/A
+		                        	</span>
+		                        	<span jwcid="@Conditional" condition='ognl: components.forReglasNeteo.value.difDespuesDelHorario != null'>
+		                        		<span jwcid="@Insert" value="ognl: components.forReglasNeteo.value.difDespuesDelHorario" format="ognl: currencyFormat"/>
+		                        	</span>
+                     			</td>
+                     			<td class="normal" align="center">
+                     				<span jwcid="@Conditional" condition='ognl: components.forReglasNeteo.value.montoAntesDelHorario == null'>
+		                        	       N/A
+		                        	</span>
+		                        	<span jwcid="@Conditional" condition='ognl: components.forReglasNeteo.value.montoAntesDelHorario != null'>
+		                        		<span jwcid="@Insert" value="ognl: components.forReglasNeteo.value.montoAntesDelHorario" format="ognl: page.moneyFormat"/>
+		                        	</span>
+                     			</td>
+                     			<td class="normal" align="center">
+                     				<span jwcid="@Conditional" condition='ognl: components.forReglasNeteo.value.montoDespuesDelHorario == null'>
+		                        	       N/A
+		                        	</span>
+		                        	<span jwcid="@Conditional" condition='ognl: components.forReglasNeteo.value.montoDespuesDelHorario != null'>
+		                        		<span jwcid="@Insert" value="ognl: components.forReglasNeteo.value.montoDespuesDelHorario" format="ognl: page.moneyFormat"/>
+		                        	</span>
+                     			</td>
+		                        <td class="normal" align="center">
+                        			<a jwcid="@DirectLink" listener="ognl:listeners.eliminar" parameters="ognl:components.forReglasNeteo.value.idReglaNeteo" onClick="return confirm('\u00bfDesea eliminar el registro?');"> Eliminar </a>
+                        		</td>
+			                  </tr>
+                            </span>
+		                </table>
+					</td>
+				</tr>
+	  		</table>
+	  	</td>
+	 </tr>
+	</table>
+</body>
+</html>

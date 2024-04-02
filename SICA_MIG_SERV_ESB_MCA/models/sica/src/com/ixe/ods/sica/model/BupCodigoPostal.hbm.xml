@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+    <class  name="com.ixe.ods.sica.model.BupCodigoPostal"
+            table="BUP_CODIGO_POSTAL"
+            proxy="com.ixe.ods.sica.model.BupCodigoPostal"
+            dynamic-update="true"
+            dynamic-insert="false"
+            select-before-update="false"
+            optimistic-lock="version"
+            mutable="true">
+        <composite-id name="id"
+                class="com.ixe.ods.sica.model.BupCodigoPostalPK">
+            <key-property
+                    name="codigoPostal"
+                    type="java.lang.String"
+                    column="CODIGO_POSTAL"/>
+            <key-property
+                    name="idColonia"
+                    type="java.lang.Integer"
+                    column="ID_COLONIA"/>
+            <key-many-to-one
+                    name="municipio"
+                    class="com.ixe.ods.sica.model.BupMunicipio">
+                <column name="ID_MUNICIPIO"/>
+                <column name="ID_ENTIDAD_FEDERATIVA"/>
+            </key-many-to-one>
+        </composite-id>
+
+        <property
+                name="colonia"
+                type="java.lang.String"
+                update="true"
+                insert="true"
+                access="property"
+                column="NOMBRE_COLONIA"
+                not-null="true"
+                unique="false"/>
+    </class>
+</hibernate-mapping>

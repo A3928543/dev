@@ -1,0 +1,23 @@
+<!-- $Id: AutorizaTceLauncher.html,v 1.1.2.3 2012/10/08 14:35:20 mejiar Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Autorizaci&oacute;n de Tipo de Cambio Especial</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+
+	<a jwcid="@ExternalLink" page="CapturaAutorizaTce" renderer='ognl: page.global.applicationContext.getBean("bigPopupLinkRendererTCE")' id="extLinkToTceInput" >
+	</a>
+
+    <script type="text/javascript">
+    <!--
+    	try {
+    		var linkToPage = document.getElementById("extLinkToTceInput");
+    		linkToPage.click();
+        } catch (e) {
+			alert("No ha sido posible cargar la ventana de Tipo de Cambio Especial, verifique que su navegador permita abrir popups");
+		}
+    //-->
+    </script>
+</body>
+</html>

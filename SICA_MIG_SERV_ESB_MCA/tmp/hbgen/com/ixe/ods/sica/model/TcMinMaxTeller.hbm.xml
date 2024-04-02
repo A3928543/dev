@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.TcMinMaxTeller"
+        table="SC_TC_MIN_MAX_TELLER"
+        proxy="com.ixe.ods.sica.model.TcMinMaxTeller"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idTcMinMax"
+            column="ID_TC_MIN_MAX"
+            type="java.lang.Integer"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_TC_MIN_MAX_TELLER_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-TcMinMaxTeller.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="tipoCambioMinCpa"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO_MINIMO_CPA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambioMaxCpa"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO_MAXIMO_CPA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambioMinVta"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO_MINIMO_VTA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambioMaxVta"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO_MAXIMO_VTA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="idCanal"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_CANAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fecha"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="cierre"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="CIERRE"
+            not-null="true"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-TcMinMaxTeller.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

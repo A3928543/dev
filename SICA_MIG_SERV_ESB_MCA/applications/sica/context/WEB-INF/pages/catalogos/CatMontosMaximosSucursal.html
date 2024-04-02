@@ -1,0 +1,34 @@
+<!-- $Id: CatMontosMaximosSucursal.html,v 1.1 2008/10/27 23:20:07 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Edici&oacute;n de montos m&aacute;ximos por sucursal</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="@bup:ShowError" width="100%" delegate="ognl:beans.delegate"/>
+    <table jwcid="@ActionPortletBorder" title="ognl: 'Montos M\u00e1ximos para el canal ' + canal.nombre" width="100%">
+        <form jwcid="@Form" listener="ognl: listeners.cambiarProducto" delegate="ognl: beans.delegate" onsubmit="return fnDisableForm(this);">
+            <span class="title">Producto:</span>
+            <span jwcid="@PropertySelection" model="ognl: productosModel" value="ognl: producto" submitOnChange="ognl: true" />
+        </form>
+        <span jwcid="@Conditional" condition="ognl: !montosMaximos.empty">
+            <form jwcid="@Form" listener="ognl: listeners.actualizar" delegate="ognl: beans.delegate" onsubmit="return fnDisableForm(this);">
+                <table jwcid="@TableBorder" title="ognl: null" subtitles="ognl: {'Divisa', 'Descripci\u00f3n', 'Producto', 'Monto M\u00e1ximo', 'Monto Operado'}" columnCount="3" width="100%">
+                    <tr jwcid="forMontos@Foreach" source="ognl: montosMaximos" element="tr" class="ognl: beans.evenOdd.next">
+                        <td class="normal" width="10%" align="center"><span jwcid="@Bandera" divisa="ognl: components.forMontos.value.divisa">USD</span></td>
+                        <td class="normal" width="50%"><span jwcid="@Insert" value="ognl: components.forMontos.value.divisa.descripcion">D&oacute;lar Americano</span></td>
+                        <td class="normal" width="20%"><span jwcid="@Insert" value="ognl: components.forMontos.value.claveFormaLiquidacion">TRAEXT</span></td>
+                        <td class="normal" width="10%" align="right"><span jwcid="montoMaximoTextField">3,000.00</span></td>
+                        <td class="normal" width="10%" align="right"><span jwcid="@Insert" value="ognl: components.forMontos.value.montoOperado" format="ognl: moneyFormat">$2,340.00</span></td>
+                    </tr>
+                </table>
+                <br />
+                <div align="center">
+                    <input jwcid="@ImageSubmit" image="ognl: assets.acceptButton" />
+                    <a jwcid="@PageLink" page="CatCanales" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.cancelButton"/></a>
+                </div>
+            </form>
+        </span>
+    </table>
+</body>
+</html>

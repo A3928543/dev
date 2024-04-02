@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.SicaNodoJerarquia"
+        table="SEGU_NODO_JERARQUIA"
+        proxy="com.ixe.ods.sica.model.SicaNodoJerarquia"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idNodoJerarquia"
+            column="ID_NODO_JERARQUIA"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SEGU_NODO_JERARQUIA_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-SicaNodoJerarquia.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <many-to-one
+            name="jefe"
+            class="com.ixe.ods.sica.model.SicaNodoJerarquia"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_JEFE"
+            unique="false"
+        />
+
+        <many-to-one
+            name="jerarquia"
+            class="com.ixe.ods.seguridad.model.Jerarquia"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_JERARQUIA"
+            unique="false"
+        />
+
+        <many-to-one
+            name="persona"
+            class="com.ixe.ods.bup.model.EmpleadoIxe"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_PERSONA"
+            unique="false"
+        />
+
+        <many-to-one
+            name="alterno"
+            class="com.ixe.ods.bup.model.EmpleadoIxe"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_ALTERNO"
+            unique="false"
+        />
+
+        <property
+            name="fechaInicioAlterno"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_INICIO_ALTERNO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="fechaFinAlterno"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_FIN_ALTERNO"
+            not-null="false"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-SicaNodoJerarquia.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

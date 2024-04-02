@@ -1,0 +1,47 @@
+<!-- $Id: CatBroker.html,v 1.9.34.2 2010/09/14 23:37:01 galiciad Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Edici&oacute;n de Contrapartes</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <form jwcid="@Form" listener="ognl: listeners.actualizar" delegate="ognl:beans.delegate">
+    	<span jwcid="@bup:ShowError" level="ognl: level" width="100%" delegate="ognl:beans.delegate"/>
+        <table jwcid="@ActionPortletBorder" title="Broker" width="100%">
+            <table jwcid="@TableBorder" title="ognl: null" columnCount="2" width="100%">
+                <tr class="titlecell">
+                    <td align="right" class="title">Raz&oacute;n Social:</td>
+                    <td class="normalcell"><span jwcid="@Insert" value="ognl: personaMoral.razonSocial" /></td>
+                </tr>
+                <tr class="titlecell">
+                    <td align="right" class="title">Tipo Contraparte:</td>
+                    <td class="normalcell"><select jwcid="tipoBrokerComboBox" /></td>
+                </tr>
+                <span jwcid="@contrib:FormConditional" condition='ognl: "Inst. Financiera".equals(tipoBrokerSeleccionado)'>
+	                <tr class="titlecell">
+	                    <td align="right" class="title">Pago Anticipago:</td>
+	                    <td class="normalcell"><select jwcid="pagoAnticipadoComboBox" /></td>
+	                </tr>
+                </span>
+                <tr class="titlecell">
+                    <td align="right" class="title">Clave Reuters:</td>
+                    <td class="normalcell"><input jwcid="claveReutersTextField" /></td>
+                </tr> 
+                <tr class="titlecell">
+                    <td align="right" class="title">Visible para Kondor:</td>
+                    <td class="normalcell"><input type="checkbox" jwcid="@Checkbox" selected="ognl: visibleKondor"/>
+                </tr>        
+                <tr class="titlecell">
+                    <td align="right" class="title">ID SAIF:</td>
+                    <td class="normalcell"><input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" value="ognl: idSaif" maxlength="6" size="6" />
+                </tr>                                    
+            </table>
+            <br />
+            <div align="center">
+                <input jwcid="@ImageSubmit" image="ognl: assets.acceptButton" selected="ognl: modoSubmit" tag="1" onclick="fnShowWaitImage();" />
+                <a jwcid="@PageLink" page="ognl: paginaAnterior" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.regresarButton"/></a>
+            </div>
+        </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: sicaApplicationContextVariacion.xml,v 1.1.2.1 2011/05/20 22:30:05 galiciad Exp $ -->
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+ 
+    <!-- Data source DESARROLLO -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+		<property name="url" value="jdbc:oracle:thin:@10.4.160.40:1521:isisdesar"></property>
+		<property name="username" value="sica_apps"></property>
+		<property name="password" value="as_u_wish"></property>
+	</bean>
+	
+	<!-- Data source LOCAL -->
+<!--	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+<!--		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>-->
+<!--		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"></property>-->
+<!--		<property name="username" value="sica_admin"></property>-->
+<!--		<property name="password" value="as_u_wish"></property>-->
+<!--	</bean>-->
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg ref="dataSource" />
+	</bean>
+	
+	<bean id="variacionDao" class="test.ods.sica.pizarron.VariacionDaoImpl">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+   
+</beans>

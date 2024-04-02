@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.Variacion"
+        table="SICA_VARIACION"
+        proxy="com.ixe.ods.sica.model.Variacion"
+        dynamic-update="false"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="false"
+    >
+
+        <id
+            name="idVariacion"
+            column="ID_VARIACION"
+            type="int"
+            unsaved-value="0"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Variacion.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="fecha"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="midSpot"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VARIACION_MID"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="usdCompra"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VARIACION_VTA_SPOT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="usdVenta"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="VARIACION_VTA_SPOT_ASK"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="factorCadCompra"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="CAD_VARIACION_VTA_SPOT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="factorCadVenta"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="CAD_VARIACION_VTA_SPOT_ASK"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="factorChfCompra"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="CHF_VARIACION_VTA_SPOT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="factorChfVenta"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="CHF_VARIACION_VTA_SPOT_ASK"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="factorEurCompra"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="EUR_VARIACION_VTA_SPOT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="factorEurVenta"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="EUR_VARIACION_VTA_SPOT_ASK"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="factorGbpCompra"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="GBP_VARIACION_VTA_SPOT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="factorGbpVenta"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="GBP_VARIACION_VTA_SPOT_ASK"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="factorJpyCompra"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="JPY_VARIACION_VTA_SPOT"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="factorJpyVenta"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="JPY_VARIACION_VTA_SPOT_ASK"
+            not-null="true"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Variacion.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

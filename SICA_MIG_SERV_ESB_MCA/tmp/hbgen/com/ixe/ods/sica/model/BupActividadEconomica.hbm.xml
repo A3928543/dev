@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.BupActividadEconomica"
+        table="BUP_ACTIVIDAD_ECONOMICA"
+        proxy="com.ixe.ods.sica.model.BupActividadEconomica"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+    >
+
+        <id
+            name="idActividad"
+            column="ID_ACTIVIDAD"
+            type="java.lang.String"
+            unsaved-value="null"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-BupActividadEconomica.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="descripcion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="DESCRIPCION"
+        />
+
+        <property
+            name="idOriginal"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_ORIGINAL"
+        />
+
+        <property
+            name="idGiroEconomico"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_GIRO_ECONOMICO"
+        />
+
+        <property
+            name="indicadorRiesgo"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="INDICADOR_RIESGO"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-BupActividadEconomica.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

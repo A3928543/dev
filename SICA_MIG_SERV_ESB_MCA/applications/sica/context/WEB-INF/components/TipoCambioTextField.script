@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: TipoCambioTextField.script,v 1.2 2010/04/30 15:27:23 ccovian Exp $ -->
+<!DOCTYPE script PUBLIC
+        "-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+        "http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+        
+<script>
+
+	<input-symbol key="tipoCambioTextField" class="com.ixe.ods.sica.components.TipoCambioTextField" required="yes" />
+	
+	<set key="name" expression="tipoCambioTextField.name"/>
+	
+	<let key="baseName">
+		document.${tipoCambioTextField.form.name}.${name}
+	</let>
+	
+	<body>
+		<unique>
+			<![CDATA[
+			function formatClean(num) {
+				var sVal = '';
+              	var nVal = num.length;
+              	var sChar = '';
+              	try {
+                	for(i = 0; i < nVal; i++) {
+                    	sChar = num.charAt(i);
+                      	nChar = sChar.charCodeAt(0);
+                      	if ( sChar == '.' || ((nChar >= 48) && (nChar <= 57))) {
+                        	sVal += num.charAt(i);
+                      	}
+                  	}
+              	}
+              	catch (exception) {
+                	alert(exception);
+              	}
+              	return sVal;
+          	}
+          	
+          	function formatCurrency(num) {
+                if (parseFloat(num) == 0)
+                    return "0.00";
+                if (num.length == 0)
+                    return "";
+
+                var sVal='';
+                var minus='';
+                var Decimal='.';
+                if (num.lastIndexOf("-") == 0) {
+                    minus='-';
+                }
+                if (num.lastIndexOf(".") >= 0) {
+                    var cents = formatCents(num);
+                    cents = new String(cents);
+                    sVal = minus + formatNumber(num.substring(0,num.lastIndexOf(Decimal))) +
+                        cents.substring(cents.lastIndexOf(Decimal),cents.length);
+                    // para detectar si trato de poner otro caracter DECIMAL
+                    if (!isCorrectDecimal(sVal))
+                        sVal = sVal.substring(0, sVal.length-1);
+                } else {
+                    sVal = minus + formatNumber(num);
+                }
+                return sVal;
+            }
+            
+             function formatNumber(num) {
+                var sVal='';
+                var minus='';
+                var CommaDelimiter=',';
+
+                try {
+                    if (num.lastIndexOf("-") == 0) {
+                        minus='-';
+                    }
+                    num = formatClean(num);
+                    var samount = new String(num);
+                    if (samount.length > 2) {
+                    	samount = samount.substring(0,2);
+                    }
+                }
+                catch (exception) {
+                    alert(exception);
+                }
+                return minus + samount;
+            }
+            
+            function formatCents(amount) {
+                try {
+                    Decimal = '.';
+                    var decimalPointPos = amount.lastIndexOf(Decimal);
+                    var cents = amount.substring(decimalPointPos,decimalPointPos+${numDecimals});
+
+                    /* Si quisieramos redondear a dos decimales y evitar que el 0.99 sume 1 mas (en su lugar pone un cero)
+                    utilizariamos el codigo siguiente.
+                    ----------------------------------
+                    var cents = amount.substring(amount.lastIndexOf(Decimal),amount.length);
+                    if (cents == Decimal) {
+                        return Decimal;
+                    }
+                    roundedCents = parseFloat(cents);
+                    var n = (Math.round(roundedCents * 100) / 100)
+                    return (n == 1) ? '.0' : n; */
+
+                    return cents;
+                }
+                catch (exception) {
+                    alert(exception);
+                }
+                return cents;
+            }
+            
+            function isCorrectDecimal(inputVal) {
+                inputStr = inputVal.toString();
+                puntos = 0;
+                for (var i = 0; i < inputStr.length; i++) {
+                    var oneChar = inputStr.charAt(i);
+                    if (oneChar == ".") {
+                        puntos++;
+                        if (puntos> 1)
+                            return false;
+                    }
+                    else
+                        if ((oneChar >= "0" && oneChar <= "9") || oneChar == "." || oneChar == ",") {
+                            continue;
+                        } else {
+                            return false;
+                        }
+                }
+                return true;
+            }
+            
+            function quitarComas(str) {
+                while (str.indexOf(',', 0) >= 0) {
+                    str = str.replace(/\,/, '');
+                }
+                return str;
+            }
+            
+            function ponerCeroAlFinal(str) {
+            	var posDot = str.lastIndexOf(".");
+                strTemp = str;
+                var cents= 0;
+                 if ((str.substring(posDot + 1, str.length).length) < ${numDecimals - 1}) {
+                    cents = ((str.substring(posDot + 1, str.length)) == '') ? '0': str.substring(posDot + 1, str.length) + '0';
+                    strTemp = str.substring(0,posDot) + '.' + cents;
+                }
+                if (posDot == -1) {
+                    strTemp = strTemp+'.00';
+                }
+                return strTemp;
+            }
+			]]>
+		</unique>
+		<![CDATA[
+			var seleccionarTimeout_${name};
+			
+			function seleccionar_field_${name}() {
+                ${baseName}.select();
+                window.clearTimeout('seleccionarTimeout_${name}');
+            }
+            
+            function onkeyup_field_${name}(field) {
+                field.value = formatCurrency(field.value);
+            }
+            
+            function onfocus_field_${name}(field) {
+                seleccionarTimeout_${name} = window.setTimeout('window.seleccionar_field_${name}()', 150);
+            }
+		]]>
+	</body>
+	
+	<initialization>
+	
+		${baseName}.onkeyup = function() {
+            onkeyup_field_${name}(${baseName});
+        }
+        
+        ${baseName}.onfocus = function() {
+            onfocus_field_${name}(${baseName});
+        }
+	
+	</initialization>
+	
+</script>

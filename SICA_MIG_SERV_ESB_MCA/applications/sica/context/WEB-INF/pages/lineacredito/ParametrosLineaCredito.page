@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ParametrosLineaCredito.page,v 1.10 2008/02/22 18:25:47 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.lineacredito.ParametrosLineaCredito">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate"/>
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+    
+    <bean name="intValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"int"</set-property>
+        <set-property name="minimum" expression="0"/>
+    </bean>
+
+    <bean name="doubleValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="minimum" expression="0"/>
+    </bean>
+    
+    <component id="lineaCreditoLlena" type="ValidField">
+        <binding name="validator" expression="beans.doubleValidator"/>
+        <binding name="value" expression="lineaCreditoLlena.valor"/>
+        <static-binding name="displayName" value="Porcentaje de la l&#237;nea para informar a Promoci&#243;n:"/>
+        <static-binding name="type" value="String"/>
+    </component>
+
+    <component id="diasVencimientoLinea" type="ValidField">
+        <binding name="validator" expression="beans.intValidator"/>
+        <binding name="value" expression="diasVencimientoLinea.valor"/>
+        <static-binding name="displayName" value="Se informar&#225; al Promotor cuando falten:"/>
+        <static-binding name="type" value="String"/>
+    </component>
+
+    <component id="maxExcedentes" type="ValidField">
+        <binding name="validator" expression="beans.intValidator"/>
+        <binding name="value" expression="maxExcedentes.valor"/>
+        <static-binding name="displayName" value="Maximo de excedentes de la l&#237;nea por mes:"/>
+        <static-binding name="type" value="String"/>
+    </component>
+    
+    <!--property-specification name="permission" type="java.lang.String" initial-value="@com.ixe.ods.subastas.admin.FacultySystem@SUB_PARAMETROS"/-->
+    <property-specification name="lineaCreditoLlena" type="com.ixe.ods.sica.model.ParametroSica" persistent="yes"/>
+    <property-specification name="diasVencimientoLinea" type="com.ixe.ods.sica.model.ParametroSica" persistent="yes"/>
+    <property-specification name="maxExcedentes" type="com.ixe.ods.sica.model.ParametroSica" persistent="yes"/>
+    <property-specification name="formasCobro" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+    
+
+    <context-asset name="addButton" path="/images/add.gif" />
+    <context-asset name="saveButton" path="/images/save.gif" />
+
+</page-specification>

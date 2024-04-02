@@ -1,0 +1,111 @@
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Reportes</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+	<script type="text/javascript" src="scripts/ajax.js"></script>
+	<script type="text/javascript">
+        <!--
+        
+        function aparecerMensaje(form1) {
+            
+            $('mensaje').innerHTML = '<br /><table border="0" cellspacing="1" width="100%" cellpadding="3" align="center" class="tableborder"> <tr valign="top">' +
+                        '<td bgcolor="#d0f9d1"><img src="/sica/images/ok.gif" border="0" width="41" height="36" align="left"/> <p class="title">El reporte se est&aacute; procesando. Espere por favor, la operaci&oacute;n puede llevar varios minutos.</p>' +                        
+                        '</td></tr></table>';
+                        //'Para realizar otra busqueda <a href="javascript:restart()">click aqui</a></p>'+
+            $('loading').style.display = 'block';                        
+            $('boton').style.display = 'none';    
+            //Start();
+            form1.submit();
+            return false;
+        }
+        
+        /*
+         function TimerEventHandler(){
+                this.fire=function(time){
+                    var num=parseInt(time.getSeconds());
+                    if(num%10 ==0){            //num=0;
+                        iajax.init();
+                        iajax.request("CheckDownload?resource="+$('resource').value, new AjaxBasicComponent());
+                   }
+            }
+        }
+
+        tHandler=new TimerEventHandler();
+        
+        function AjaxBasicComponent(){
+    		this.doOnLoading=function(){}
+    		this.doOnSuccess=function(xmlResponse){
+        		var res=xmlResponse.responseText;
+        		//$("resp").value=res;
+        		if(res == "0" || res==0)restart();
+    		}
+		}
+     
+        
+        function changeHandler(textField){
+        	if(textField.value == null || textField.value =="" || textField.value.length ==0){
+        		$('buscar').style.display='none'
+        		$('verXls').style.display='block'
+        	}else{
+        		$('verXls').style.display='none'
+        		$('buscar').style.display='block'
+        	}
+
+        }
+        function restart(){
+        	//$('mensaje').innerHTML ='<div id="mensaje"></div>';
+        	//$('boton').style.display = 'block';
+        	//$('loading').style.display = 'none';
+        	Stop();        
+        	//parent.frames["superior"].location.reload();	  
+        	parent.frames["superior"].location.href='/sica/app?service=direct/1/ReportePolizasContables/$PageBorder.$XmlMenu.directLink&sp=SSICA_REP_POLIZAS&sp=SReportePolizasContables'
+        	
+        }*/
+        
+        function $(id){
+        	return document.getElementById(id);
+        }
+        //-->
+    </script>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">    	
+    	<tr>
+    		<td colspan="3">		
+    			<div id="mensaje"></div>
+    			<br />
+    			<div id="loading" style="display:none"> <img src="/sica/images/loading.gif"/></div>
+    		</td>
+    	</tr>
+        <tr valign="top">
+            <td width="200">
+             	
+			    <table jwcid="@ActionPortletBorder" title="Reporte Polizas Contables">
+				     <form jwcid="@Form" listener="ognl: listeners.reportes" delegate="ognl: beans.delegate" >
+				           <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+			           		    <fieldset class="normal">
+			           		        <legend class="legend">Fechas de polizas</legend>
+
+				                        Del :<br />
+				                        <span jwcid="@ls:DatePicker" value="ognl: registerDate" format="dd/MM/yyyy"/><br />
+                                         Al :<br />
+				                        <span jwcid="@ls:DatePicker" value="ognl: registerDateHasta" format="dd/MM/yyyy"/><br />
+			                   </fieldset>
+
+			                <div align="center">
+			                    <input id="boton" jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return aparecerMensaje(this.form)" />			                    
+			                    <input id="resource" jwcid="@Hidden" value="ognl: resource" />
+			                </div>
+			    	</form>
+			   </table>
+   			</td>
+   			<td width="1%">&nbsp;</td>
+            <td>
+            	
+               &nbsp;
+           </td>
+        </tr>
+    </table>
+    <span jwcid="@ls:DatePickerColophon" />
+</body>
+</html>

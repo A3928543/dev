@@ -1,0 +1,26 @@
+<!-- $Id: ActionPortletBorder.html,v 1.9 2008/02/22 18:25:06 ccovian Exp $ -->
+<table border="0" cellspacing="1" cellpadding="0" width="100%" class="portletbackground">
+<tr>
+<td>
+<table border="0" cellpadding="1" cellspacing="0" width="100%">
+<tr>
+<td width="1%" class="portlettitlecell"><img src="images/shield.gif" border="0"></td>
+<td nowrap><font class="portlettitle"><span jwcid="@Insert" value="ognl: title" raw="ognl: true">T&iacute;tulo</span>&nbsp;</font></td>
+<td jwcid="@Conditional" condition="ognl: titleBlock" element="td" nowrap><span jwcid="@RenderBlock" block="ognl: titleBlock" /></td>
+<td jwcid="@Conditional" condition="ognl: minimizable" element="td" width="1%"><a jwcid="@DirectLink" listener="ognl: listeners.toggle" onClick="fnShowWaitImage();"><img jwcid="@Image" image='ognl: minimized ? assets.restoreButton : assets.minimizeButton' border="0" width="16" height="16" alt='ognl: minimized ? "Restaurar" : "Minimizar"'/></a></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr jwcid="@Conditional" condition="ognl: !minimized" element="tr">
+<td class="portletcontent">
+<table jwcid="table" border="0" cellspacing="0" cellpadding="7" width="100%">
+<tr>
+<td>
+<span jwcid="@RenderBody" />
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://castor.exolab.org/ mapping.xsd">
+
+   <class name="com.banorte.site.mensajes.listener.vo.RespuestaMediadorVO">
+   
+      <map-to xml="siteResponse"/>
+      
+      <field name="codigoMediador" type="string">
+         <bind-xml name="codigoMediador" />
+      </field>
+      
+      <field name="mensajeMediador" type="string">
+         <bind-xml name="mensajeMediador" />
+      </field>
+      
+      <field name="folioMediador" type="string">
+	  	<bind-xml name="folioMediador" />
+	  </field>
+	  
+	  <field name="ordenID" type="string">
+	  	<bind-xml name="ordenID" />
+	  </field>
+	  
+	  <field name="operacionID" type="string">
+	  	<bind-xml name="operacionID" />
+	  </field>
+      
+   </class>
+</mapping>

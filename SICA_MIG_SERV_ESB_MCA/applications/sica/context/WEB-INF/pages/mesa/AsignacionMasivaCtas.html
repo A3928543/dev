@@ -1,0 +1,82 @@
+
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Encabezado</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+   
+</head>
+ <script type="text/javascript">
+            function add_values()
+            {
+               var opt_selected = new Array();
+               var str=new String();
+               var nombres = new String();
+               str="|";
+               nombres = "|";
+               var objetoSelect=document.getElementById("items");
+               var index = 0;
+               for (var i=0;i < objetoSelect.options.length;i++)
+               {
+                  if (objetoSelect.options[i].selected)
+                  {
+                     opt_selected[index] = objetoSelect.options[i].value;
+                     str +=objetoSelect.options[i].value+"|";
+                     nombres +=objetoSelect.options[i].innerHTML+"|";
+                     index++;
+                  }
+               }
+               objetoSelect.value=opt_selected;
+               document.getElementById("selectedItems").value=str;
+               document.getElementById("clientesItems").value=nombres;
+               
+               return true;
+             } 
+             
+             function seleccionarTodas(){
+             	var objetoSelect=document.getElementById("items");
+             	for (var i=0;i < objetoSelect.options.length;i++){
+              	 	objetoSelect.options[i].selected=true;
+               	}
+             	return false;
+             }
+             
+             function limpiar(){
+             	var objetoSelect=document.getElementById("items");
+             	for (var i=0;i < objetoSelect.options.length;i++){
+              	 	objetoSelect.options[i].selected=false;
+               	}
+             	return false;
+             }
+        </script>    
+<body jwcid="@PageBorder">
+	
+    <div align="center">
+    	<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level="ognl: level" width="100%" />
+	</div>
+    <span jwcid="@Script" script="/WEB-INF/scripts/DeseleccionarListBox.script" />
+    <form jwcid="@Form"  listener="ognl: listeners.submit" >
+      <table jwcid="@ActionPortletBorder" title='ognl:  modoMesaCambio ? "Asignaci&oacute;n de cuentas del promotor : " + visit.user.clave : "Asignaci&oacute;n de cuentas Mesa de Control "' width="100%">
+        <div align="center">
+          <font class="normal">Del promotor: <select jwcid="promotoresComboBox" /></font>
+
+            <br /><br />
+              <select id="items" jwcid="inferior@PropertySelection" model="ognl: cuentasAsignadasModel" value="ognl: cuentaAsignada"  size="20" class="selectfijo"  multiple="ognl:true"/>
+              <input jwcid="@Hidden" id="selectedItems" value="ognl: cuentasString " encode="ognl: false" />
+              <input jwcid="@Hidden" id="clientesItems" value="ognl: clientesString " encode="ognl: false" />
+            
+          
+            <br /><br />
+              <input jwcid="@ImageSubmit" image="ognl: assets.selecallButton" onclick="return seleccionarTodas();" />
+            <br /><br />
+
+          <font class="normal">Al promotor: <select jwcid="promotoresComboBoxDest" /></font>
+          <span>
+          	<input jwcid="@ImageSubmit" image="ognl: assets.confirmButton" selected="ognl: modoSubmit" tag="ognl: @com.ixe.ods.sica.pages.mesa.AsignacionMasivaCtas@SUBMIT_TRANSFERIR" alt="Transferir cuentas seleccionadas" onclick="fnShowWaitImage();add_values();return revisarSeleccionModoMesa(this.form.promotoresComboBox, promotoresComboBoxDest, this.form.destino); " />
+          </span>
+
+        </div>
+        </table>
+    </form>
+</body>
+</html>
+

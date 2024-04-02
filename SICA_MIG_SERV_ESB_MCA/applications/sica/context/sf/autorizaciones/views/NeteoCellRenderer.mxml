@@ -1,0 +1,23 @@
+<mx:HBox xmlns:mx="http://www.macromedia.com/2003/mxml" minWidth="32" height="20"
+	    		marginTop="0" marginRight="0" marginLeft="2" marginBottom="0">
+<!-- $Id: NeteoCellRenderer.mxml,v 1.1.2.1 2010/06/30 23:08:44 ccovian Exp $ -->
+    <mx:Script>
+        <![CDATA[
+        var contieneNeteo : Boolean;
+
+        function setValue(str:String, item:Object, sel:Boolean) : Void {
+            contieneNeteo = item.contieneNeteo;
+            if (contieneNeteo == null || contieneNeteo == false) {
+        	    image.source = 'resources/neteo_no.jpg';
+            }
+            else {
+        	    image.source = 'resources/neteo_si.jpg';
+            }
+        }
+        ]]>
+
+    </mx:Script>
+
+    <mx:Image id="image" width="15" height="15" />
+
+</mx:HBox>

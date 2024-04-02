@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: TablaDetalleSobrePrecio.mxml,v 1.2 2010/04/30 15:19:39 ccovian Exp $ -->
+<mx:VBox xmlns:mx="http://www.macromedia.com/2003/mxml" width="100%" height="100%" marginTop="10" 
+   marginBottom="10" marginLeft="10" marginRight="10" label="{lblTitle}" creationComplete="inicializar()">
+	
+   <mx:RemoteObject id="autorizacionesService" source="spring://autorizacionesDelegate" concurrency="last" showBusyCursor="true">
+      <mx:method name="modTcmParaDetalles" result="responseModTcmDetalles(event.result)" fault="falla(event.fault)"/>
+   </mx:RemoteObject>
+   
+	<mx:Metadata>
+		[Event("aplicado")]
+	</mx:Metadata>
+	
+	<mx:Script>
+	<![CDATA[
+      	import mx.core.Application;
+		import mx.managers.CursorManager;
+		import mx.controls.*;
+      
+		var indexTipoOper : Number;
+		var indexIdDivisa : Number;
+		var indexFormaLiq : Number;
+      	var oldTcm : Number;
+		var listaDetalles : Array;
+		var lblTitle : String;
+		var imgSource : String;
+      
+      	/**
+	     * Fincion que inicializa las variables de instancia.
+	     */
+		function inicializar() : Void
+		{
+		   oldTcm = listaDetalles[0].tipoCambioMesa;
+		}
+		
+		/**
+	     * Funci&oacute;n que se utiliza para dar formato a n&uacute;meros.
+	     */
+		function formatNumber(item : Object, columnName : String) : String
+		{
+		  return item != undefined ? formateadorMoneda.format(item[columnName]) : "";
+		}
+
+		/**
+	     * Funci&oacute;n que se utiliza para dar formato a n&uacute;meros que sean tipos de cambio.
+	     */
+		function formatNumberTipoCambio(item : Object, columnName : String) : String
+		{
+		   return item != undefined ? formateadorTc.format(item[columnName]) : "";
+		}
+      	
+      	/**
+	     * Funcion que manda a llamar el servicio de java.
+	     */
+		function aplicaModificacionTcm() : Void
+		{
+		   this['autorizacionesService'].modTcmParaDetalles(listaDetalles, tcmModel.tcm);
+		}
+      
+      	/**
+      	* Funcion que se encarga de procesar la respuesta del servicio de Java.
+      	* 
+      	*/
+		private function responseModTcmDetalles(lista : Array) : Void
+		{
+		       tablaDetalles.dataProvider = lista;
+		       var key = (lista[0].recibimos ? "COMPRA" : "VENTA") + ' ' + lista[0].idDivisa + ' ' + lista[0].claveFormaLiquidacion;
+		       dispatchEvent({type: 'aplicado', returnKey: key, detallesMod: lista})
+		}
+      	
+      	/**
+		 * Funcion que sirve para indicar que hubo un error al llamar los servicios de java.
+		 * 
+		 * @param causa. La descripci&oacute;n de la falla.
+		 */
+		function falla(causa : Object) : Void
+		{
+		   	CursorManager.removeBusyCursor();
+		   	mx.controls.Alert.show(causa.description, 'Atenci\u00f3n:');
+		} 
+	]]>
+	</mx:Script>
+	
+	<mx:NumberFormatter id="formateadorMoneda" thousandsSeparatorFrom="," thousandsSeparatorTo=","
+                        precision="2" />
+
+    <mx:NumberFormatter id="formateadorTc" thousandsSeparatorFrom="" thousandsSeparatorTo=""
+                        precision="8" />
+                        
+	<mx:Model id="tcmModel">
+        <tcm>{Number(tipoCambioMesaModificado.text)}</tcm>
+    </mx:Model>
+    
+    <mx:NumberValidator field="tcmModel.tcm" requiredFieldError="El campo es requerido."
+                        listener="tipoCambioMesaModificado" minValue="0.00000001" maxValue="999999999999.99999999" domain="real"
+                        precision="8" allowNegative="false"
+                        exceedsMaxError="El n&#250;mero excede el m&#224;ximo valor permitido."
+                        lowerThanMinError="El n&#250;mero es menor que el m&#237;nimo valor permitido."
+                        negativeError="El n&#250;mero no debe ser negativo."
+                        precisionError="Deben ser solo ocho decimales."
+                        separationError="El separador de miles debe ser seguido por tres d&#237;gitos."
+                        decimalPointCountError="El separador decimal s&#243;lo puede ocurrir una vez."
+                        invalidCharError="El valor ingresado contiene caracteres inv&#224;lidos."
+                        invalidFormatCharsError="Unos de los par&#224;metros del formato es inv&#224;lido." />
+                        
+	<mx:DataGrid id="tablaDetalles" width="100%" height="100%" dataProvider="{listaDetalles}">
+		<mx:columns>
+			<mx:Array>
+				<mx:DataGridColumn columnName="monto" labelFunction="formatNumber" headerText="Monto" textAlign="right"/>
+				<mx:DataGridColumn columnName="tipoCambioMesa" labelFunction="formatNumberTipoCambio" headerText="T. C. M." textAlign="right"/>
+				<mx:DataGridColumn columnName="tipoCambio" labelFunction="formatNumberTipoCambio" headerText="T. C. C." textAlign="right"/>
+				<mx:DataGridColumn columnName="importe" labelFunction="formatNumber" headerText="Importe" textAlign="right"/>
+			</mx:Array>
+		</mx:columns>
+	</mx:DataGrid>
+	<mx:HBox width="100%">
+		<mx:Image source="{imgSource}"/>
+		<mx:Spacer width="100%"/>
+		<mx:HBox>
+			<mx:Label text="Tipo de Cambio Mesa:" />
+			<mx:TextInput id="tipoCambioMesaModificado" text="{formateadorTc.format(oldTcm)}" restrict="0-9\." width="100"/>
+			<mx:Button label="Aplicar" click="aplicaModificacionTcm()"/>
+		</mx:HBox>
+	</mx:HBox>
+</mx:VBox>

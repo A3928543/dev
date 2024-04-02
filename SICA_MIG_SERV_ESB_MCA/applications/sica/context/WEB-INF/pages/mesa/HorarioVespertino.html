@@ -1,0 +1,19 @@
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Definir Tipo de Cambio Vespertino</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+	<body jwcid="@PageBorder">
+		<form jwcid="@Form" listener="ognl:listeners.formSubmit">
+			<table jwcid="@ActionPortletBorder" title="Definir Tipo de Cambio Vespertino">
+				<table width="100%">
+					<tr>
+						<td class="title" align="left">Tipo de Cambio Vespertino:<span jwcid="@TextField" value="ognl:null" size="12"/></td>
+					</tr>
+				</table>					
+					<br />
+	                        <div align="center"><input jwcid="@ImageSubmit" image="ognl: assets.saveButton" onclick="return fnDisableForm(this.form);" />
+			</table>	
+		</form>
+	</body>
+</html>

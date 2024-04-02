@@ -1,0 +1,35 @@
+/*
+ * $Id: SC_SPREAD.sql,v 1.12 2008/02/22 18:25:13 ccovian Exp $
+ * Autor: Jean C. Favila.
+ * Fecha: 03/10/2005
+ *
+ */
+
+/* Cuando se modifique la estructura de esta tabla se debera
+   de considerar la modificacion de su tabla de su historico
+   correspondiente que se llama SC_H_SPREAD
+ */
+
+DROP TABLE SICA_ADMIN.SC_SPREAD;
+
+CREATE TABLE SICA_ADMIN.SC_SPREAD (
+        ID_SPREAD NUMBER NOT NULL PRIMARY KEY,
+        CLAVE_FORMA_LIQUIDACION CHAR(6) NOT NULL,
+        ID_MESA_CAMBIO NUMBER NOT NULL,
+        ID_CANAL CHAR(3) NOT NULL,
+        ID_DIVISA CHAR(3) NOT NULL,
+        COMPRA_SPOT NUMBER(12,6) NOT NULL,
+        VENTA_SPOT NUMBER(12,6) NOT NULL,
+        COMPRA_TOM NUMBER(12,6) NOT NULL,
+        VENTA_TOM NUMBER(12,6) NOT NULL,
+        COMPRA_CASH NUMBER(12,6) NOT NULL,
+        VENTA_CASH NUMBER(12,6) NOT NULL,
+        ULTIMA_MODIFICACION DATE NOT NULL,
+        COMPRA_72HR NUMBER(12,6) NULL,
+        VENTA_72HR NUMBER(12,6) NULL,
+        COMPRA_VFUT NUMBER(12,6) DEFAULT 0.0 NOT NULL,
+        VENTA_VFUT NUMBER(12,6) DEFAULT 0.0 NOT NULL
+);
+
+CREATE PUBLIC SYNONYM SC_SPREAD FOR SICA_ADMIN.SC_SPREAD;
+/

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.LimiteEfectivo"
+        table="SC_LIMITE_EFECTIVO"
+        proxy="com.ixe.ods.sica.model.LimiteEfectivo"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idLimiteEfectivo"
+            column="ID_LIMITE_EFECTIVO"
+            type="java.lang.String"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-LimiteEfectivo.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="compra"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="divisa"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="DIVISA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoPersona"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_PERSONA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="cliente"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLIENTE"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="tipoZona"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_ZONA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="mexicano"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="MEXICANO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="limiteDiario"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="LIMITE_DIARIO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="limiteMensual"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="LIMITE_MENSUAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="observaciones"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="OBSERVACIONES"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="fechaCreacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_CREACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fechaUltimaModificacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_ULTIMA_MOD"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="usuarioModificacion"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_USUARIO_MOD"
+            not-null="false"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-LimiteEfectivo.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

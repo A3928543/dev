@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CapturaTraspasoPortafolios.page,v 1.9.38.1 2010/12/23 00:48:08 galiciad Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.traspasos.CapturaTraspasoPortafolios">
+
+	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <bean name="doubleValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="minimum" expression="0"/>
+        <set-property name="clientScriptingEnabled" expression="false" />
+    </bean>
+
+    <component id="montoTextField" type="MontoTextField">
+        <binding name="value" expression="monto"/>
+    </component>
+
+    <component id="tipoCambioTextField" type="ValidField">
+        <binding name="validator" expression="beans.doubleValidator"/>
+        <binding name="value" expression="tipoCambio"/>
+        <static-binding name="displayName" value="Tipo de Cambio:"/>
+        <static-binding name="type" value="String"/>
+    </component>
+
+    <component id="tipoCambioATextField" type="ValidField">
+        <binding name="validator" expression="beans.doubleValidator"/>
+        <binding name="value" expression="tipoCambioA"/>
+        <static-binding name="displayName" value="Tipo de Cambio a:"/>
+        <static-binding name="type" value="String"/>
+    </component>
+
+    <property-specification name="modoSubmit" type="int" persistent="yes"/>
+    <property-specification name="operacionExitosa" type="boolean" persistent="yes"/>
+    <property-specification name="traspasoPortafolios" type="com.ixe.ods.sica.model.TraspasoMesa" persistent="yes"/>
+    <property-specification name="selectedDelPortafolio" type="com.ixe.ods.sica.model.MesaCambio" persistent="yes"/>
+    <property-specification name="selectedAlPortafolio" type="com.ixe.ods.sica.model.MesaCambio" persistent="yes"/>
+    <property-specification name="selectedDivisa" type="com.ixe.ods.sica.model.Divisa" persistent="yes"/>
+	<property-specification name="selectedValor" type="java.lang.String" persistent="yes"/>
+    <property-specification name="monto" type="double" persistent="yes"/>
+	<property-specification name="tipoCambio" type="double" persistent="yes"/>
+	<property-specification name="tipoCambioA" type="double" persistent="yes"/>
+    <property-specification name="modoMensaje" type="boolean" persistent="yes" />
+
+    <context-asset name="aceptarButton" path="/images/aceptar.gif" />
+    <context-asset name="confirmarButton" path="/images/confirmar.gif" />
+    <context-asset name="cancelarButton" path="/images/cancel.gif" />
+
+</page-specification>

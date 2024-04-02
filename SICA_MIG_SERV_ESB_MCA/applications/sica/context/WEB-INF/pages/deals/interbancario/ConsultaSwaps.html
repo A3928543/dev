@@ -1,0 +1,72 @@
+<!-- $Id: ConsultaSwaps.html,v 1.10 2010/04/13 16:44:27 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Cancelaci&oacute;n de swaps</title>
+    <link rel="StyleSheet" href="../../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <table width="100%">
+        <tr valign="top">
+            <td width="200">
+                <table jwcid="@ActionPortletBorder" title="Consulta de Swaps:">
+                    <span jwcid="@bup:ShowError" level="0" width="100%" delegate="ognl: beans.delegate" />
+                    <form jwcid="@Form" listener="ognl: listeners.buscarSwaps" delegate="ognl: beans.delegate" onsubmit="return fnDisableForm(this);">
+                        <fieldset>
+                            <legend class="legend">Criterios de consulta:</legend>
+                            <font class="normal"><u>N</u>&uacute;mero de swap:</font><br />
+                            <input jwcid="idSwapTextField" /><br />
+                            <font class="normal">Contiene <u>d</u>eal:</font><br />
+                            <input jwcid="idDealTextField" /><br />
+                            <font class="normal">Fecha de Operaci&#243;n:</font><br />
+                            <input jwcid="@ls:DatePicker" value="ognl: fecha" format="dd/MM/yyyy" />
+                        </fieldset>
+                        <fieldset>
+                            <legend class="legend">Status:</legend>
+                            <font class="normal">
+                            <span jwcid="@RadioGroup" selected="ognl: status">
+                                <span jwcid="@Radio" value="ognl: ''" />TODOS <br />
+                                <span jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.Swap@STATUS_INICIO" />Inicio<br />
+                                <span jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.Swap@STATUS_PARCIALMENTE_ASIGNADO" />Parc. asignado<br />
+                                <span jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.Swap@STATUS_COMPLETAMENTE_ASIGNADO" />Compl. asignado<br />
+                                <span jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.Swap@STATUS_PROCESO_CANCELACION" />Proc. cancelaci&#243;n<br />
+                                <span jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.Swap@STATUS_CANCELADO" />Cancelado<br />
+                            </span>
+                            </font>
+                        </fieldset>
+                        <br />
+                        <div align="center">
+                            <input jwcid="@ImageSubmit" image="ognl: assets.bAceptar" type="image" src="../../../../images/aceptar.gif" onclick="return fnDisableForm(this.form);" />
+                            <a jwcid="@DirectLink" listener="ognl: listeners.cancelar"><img jwcid="@Image" image="ognl: assets.bCancelar" src="../../../../images/cancel.gif"  border="0" alt="" /></a>
+                        </div>
+                    </form>
+                </table>
+            </td>
+            <td width="1%">&nbsp;</td>
+            <td>
+                <span jwcid="@Conditional" condition="ognl: !swaps.empty">
+                    <table jwcid="@ActionPortletBorder" title="Swaps encontrados:">
+                        <table border="0" cellspacing="1" cellpadding="3" width="100%" jwcid="table@bup:Table" source="ognl: swaps" initialSortColumn="idFolioSwap" pageSize="25"
+                                columns='ognl: "idFolioSwap:No.:idFolioSwap, fechaOperacion:Fecha Operaci\u00f3n:fechaOperacion, contratoSica.noCuenta:Contrato:contratoSica.noCuenta, cliente.nombreCompleto:Cliente:cliente.nombreCompleto, descripcionTipoSwap:Tipo:descripcionTipoSwap, descripcionStatus:Status:descripcionStatus, monto:Monto:monto, montoDivisa:Monto Divisa:montoDivisa, divisa:Divisa:divisa.idDivisa"' class="tableborder" />
+                        <span jwcid="idFolioSwapColumnValue@Block">
+                            <a jwcid="@DirectLink" listener="ognl: listeners.seleccionarSwap" parameters="ognl: components.table.tableRow.idFolioSwap" onClick="fnShowWaitImage();"><span jwcid="@Insert" value="ognl: components.table.tableRow.idFolioSwap" /></a>
+                        </span>
+                        <span jwcid="fechaOperacionColumnValue@Block">
+                            <span jwcid="@Insert" value="ognl: components.table.tableRow.fechaOperacion" format="ognl: dateFormat"/>
+                        </span>
+                        <span jwcid="montoColumnValue@Block">
+                            <div align="right"><span jwcid="@Insert" value="ognl: components.table.tableRow.monto" format="ognl: moneyFormat"/></div>
+                        </span>
+                        <span jwcid="montoDivisaColumnValue@Block">
+                            <div align="right"><span jwcid="@Insert" value="ognl: components.table.tableRow.montoDivisa" format="ognl: moneyFormat"/></div>
+                        </span>
+                        <span jwcid="divisaColumnValue@Block">
+                            <div align="center"><span jwcid="@Bandera" divisa="ognl: components.table.tableRow.divisa" /></div>
+                        </span>
+                    </table>
+                </span>
+            </td>
+        </tr>
+    </table>
+    <span jwcid="@ls:DatePickerColophon" />
+</body>
+</html>

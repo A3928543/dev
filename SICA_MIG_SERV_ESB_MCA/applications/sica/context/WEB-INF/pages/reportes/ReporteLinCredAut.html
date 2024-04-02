@@ -1,0 +1,89 @@
+<!-- $Id: ReporteLinCredAut.html,v 1.12 2008/12/26 23:17:31 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Encabezado</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr valign="top">
+            <td width="200">
+            	<form jwcid="@Form" listener="ognl: listeners.fetch" delegate="ognl: beans.delegate">
+                	<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+	                <table jwcid="@ActionPortletBorder" title="L&iacute;neas de Cr&eacute;dito">
+        	           <fieldset class="normal">
+        	           <legend class="legend">Impresi&oacute;n de Reportes</legend>
+        	           Raz&oacute;n Social:<br />                            
+                            <input class="uppercase" type="text" jwcid="razonSocialTextField@ixe:UppercaseTextField" accesskey="R" value="ognl: razonSocial" size=40/><br />                        
+                       Seleccione un Promotor:<br />                         	
+                        	<select jwcid="promotorSolicitudComboBox" /><br />                   
+                       Fecha Operaci&oacute;n:<br />
+                        	<select jwcid="fechaComboBox" /><br />                      	
+                        </fieldset>                                                                                                   
+	               		<div align="center">
+	               			<input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+               			</div>
+           			</table>     			
+       			</form>
+            	<form jwcid="@Form" listener="ognl: listeners.searchByDateStatus" delegate="ognl: beans.delegates">
+                	<span jwcid="@bup:ShowError" delegate="ognl:beans.delegates" insertBreakAtTail="yes" />
+	                <table jwcid="@ActionPortletBorder" title="Movimientos de L&iacute;neas de Cr&eacute;dito">
+       	                <fieldset class="normal">
+        	            <legend class="legend">Estatus:</legend>                        
+           				<span jwcid="@RadioGroup" selected="ognl: estadoLinea" >
+   		            			<input type="radio" jwcid="@Radio" value="ognl: diasVencimiento" /> Por Vencer <br />
+   		            			<input type="radio" jwcid="@Radio" value="ognl: porcentajeUso" /> 80% de Uso <br />
+            				</span>
+            			</fieldset>                                                                                                        
+	               		<div align="center">
+	               			<input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+               			</div>
+           			</table>           			
+       			</form>       			
+   			</td>
+   			<td width="1%">&nbsp;</td>
+            <td>
+            	<!--span jwcid="@Conditional" condition="ognl: lineasCredito.size() &gt; 0">
+					<table jwcid="@ActionPortletBorder" title="Movimientos de L&iacute;neas de Cr&eacute;dito">						
+							<table border="0" cellspacing="1" cellpadding="3" width="100%" jwcid="table@bup:Table" source="ognl: lineasCredito"
+							      columns='ognl: "importe:Importe:importe, uso:Uso:usoLinea, corporativo:Corporativo:corporativo.nombreCorto, tipoLineaCredito:Tipo de Linea:tipoLineaCredito.descripcion, !detalle"' class="tableborder"/>
+							<span jwcid="detalleColumnHeader@Block">&nbsp;</span>
+							<span jwcid="detalleColumnValue@Block">
+								<a jwcid="@DirectLink" listener="ognl:listeners.verDetalle" parameters= "ognl: components.table.tableRow.idLineaCredito"> Ver Detalle </a>
+							</span>												   
+					</table>
+				</span-->
+				<span jwcid="@Conditional" condition="ognl: lineasCredito.size() &gt; 0">
+            		<table jwcid="@ActionPortletBorder" title="Movimientos de L&iacute;neas de Cr&eacute;dito">						
+							<table border="0" cellspacing="1" cellpadding="3" width="100%" jwcid="table@bup:Table" source="ognl: lineasCredito"
+								  pageSize="ognl: 25"
+							      columns='ognl: "!importe, !uso, !corporativo, !detalle"' class="tableborder"/>
+							<span jwcid="importeColumnHeader@Block">Importe</span>
+							<span jwcid="importeColumnValue@Block">
+								<div align="right">
+	               					<span jwcid="@Insert" format="ognl:moneyFormat" value="ognl: components.table.tableRow.importe" />
+								<div>
+							</span>
+							<span jwcid="usoColumnHeader@Block">Uso</span>
+							<span jwcid="usoColumnValue@Block">
+								<div align="right">
+	               					<span jwcid="@Insert" format="ognl:moneyFormat" value="ognl: components.table.tableRow.usoLinea" />
+								<div>
+							</span>
+							<span jwcid="corporativoColumnHeader@Block">Corporativo</span>
+							<span jwcid="corporativoColumnValue@Block">
+								<div align="left">
+	               					<span jwcid="@Insert" value="ognl: components.table.tableRow.corporativo.nombreCompleto" />
+								<div>
+							</span>
+							<span jwcid="detalleColumnHeader@Block">&nbsp;</span>
+							<span jwcid="detalleColumnValue@Block">
+									<a jwcid="@DirectLink" listener="ognl:listeners.verDetalle" parameters= "ognl: components.table.tableRow.idLineaCredito"> Ver Detalle </a>
+							</span>												   
+					</table>
+               </span>
+           </td>
+       	</tr>
+   	</table>
+</body>
+</html>

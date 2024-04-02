@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ModRepDealsBanxico.page,v 1.9 2008/02/22 18:25:09 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.deals.ModRepDealsBanxico">
+
+  	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+  	<bean name="intValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"int"</set-property>
+        <set-property name="clientScriptingEnabled" expression="false" />
+        <set-property name="minimum" expression="0" />
+    </bean>
+  	<bean name="stringValidator" class="org.apache.tapestry.valid.StringValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="clientScriptingEnabled" expression="false" />
+    </bean>
+    <bean name="doubleValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="clientScriptingEnabled" expression="false" />
+        <set-property name="minimum" expression="0" />
+    </bean>
+    
+    
+    <component id="folioTextField" type="ValidField">
+        <static-binding name="displayName" value="Folio:" />
+        <static-binding name="maxlength" value="10" />
+        <static-binding name="size" value="20" />
+        <binding name="validator" expression="beans.intValidator" />
+        <binding name="value" expression="folio" />
+    </component>
+
+    <component id="claveContraparteTextField" type="ValidField">
+        <static-binding name="displayName" value="Clave Contraparte:" />
+        <static-binding name="maxlength" value="30" />
+        <static-binding name="size" value="20" />
+        <static-binding name="class" value="uppercase" />
+        <binding name="validator" expression="beans.stringValidator" />
+        <binding name="value" expression="registro.claveContraparte" />
+    </component>
+
+    <component id="plazoComboBox" type="PropertySelection">
+        <binding name="model" expression='getPlazoModel()' />
+        <binding name="value" expression="plazo" />
+        <static-binding name="onchange" value="fnShowWaitImage(); this.form.submit();" />
+    </component>
+    
+    <component id="tipoOperComboBox" type="PropertySelection">
+        <binding name="model" expression='getTipoOperModel()' />
+        <binding name="value" expression="tipoOper" />
+        <static-binding name="onchange" value="fnShowWaitImage(); this.form.submit();" />
+    </component>
+    
+    <component id="montoTextField" type="ValidField">
+        <static-binding name="displayName" value="Monto:" />
+        <static-binding name="size" value="20" />
+        <binding name="validator" expression="beans.doubleValidator" />
+        <binding name="value" expression="monto" />
+    </component>
+    
+    <component id="tipoComboBox" type="PropertySelection">
+        <binding name="model" expression='getTipoModel()' />
+        <binding name="value" expression="tipo" />
+        <static-binding name="onchange" value="fnShowWaitImage(); this.form.submit();" />
+    </component>
+    
+    
+    <property-specification name="idConf" type="java.lang.String" persistent="yes"/>
+    <property-specification name="divisa" type="java.lang.String" persistent="yes"/>
+    <property-specification name="error" type="int" persistent="yes" />
+    <property-specification name="registro" type="com.ixe.ods.sica.model.BitacoraEnviadas" persistent="yes" />
+    <property-specification name="folio" type="int" persistent="yes" />
+    <property-specification name="monto" type="double" persistent="yes" />
+    <property-specification name="plazo" type="java.lang.String" persistent="yes" />
+    <property-specification name="tipoOper" type="java.lang.String" persistent="yes" />
+    <property-specification name="tipo" type="java.lang.String" persistent="yes" />
+    <property-specification name="paginaAnterior" type="java.lang.String" persistent="yes"/>
+    <property-specification name="modoSubmit" type="int" />
+    
+    <context-asset name="aceptarButton" path="/images/aceptar.gif" />
+    <context-asset name="cancelarButton" path="/images/cancel.gif" />
+
+</page-specification>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<view:PosicionDivisaDetalle
+    xmlns:mx="http://www.macromedia.com/2003/mxml"
+    xmlns:view="com.ixe.ods.sica.posicion.views.*"
+    xmlns:sica="*">
+
+    <mx:DataGrid id="dataGrid" headerHeight="30" rowHeight="40" rowCount="10" hScrollPolicy="off" vScrollPolicy="auto"
+                 columns="{columns}" dataProvider="{dataProvider}"/>
+
+    <mx:ViewStack id="viewStack" height="170" width="100%">
+
+        <mx:VBox>
+            <mx:Label text="Para ver el detalle de una divisa favor de seleccionarla en la tabla de arriba."
+                      styleName="messageLabel"/>
+        </mx:VBox>
+
+        <sica:PosicionDivisaComprasVentas id="posicionDivisaComprasVentas"/>
+
+    </mx:ViewStack>
+
+</view:PosicionDivisaDetalle>

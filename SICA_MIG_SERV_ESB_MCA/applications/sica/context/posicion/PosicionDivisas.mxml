@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<view:PosicionDivisas
+    xmlns:mx="http://www.macromedia.com/2003/mxml"
+    xmlns:view="com.ixe.ods.sica.posicion.views.*"
+    xmlns:sica="*" marginTop="30">
+
+    <mx:Accordion id="accordion" change="sync()">
+
+        <sica:PosicionDivisaDetalle label="OPERACI&#211;N" marginLeft="10" marginRight="10" marginTop="10"
+                                    marginBottom="10" horizontalAlign="center" verticalGap="20"
+                                    dataProvider="{dataProvider}" tipoCambioId="tipoCambioCliente" idMesaCambio="{com.ixe.ods.sica.posicion.Posicion.OPERACION}">
+            <sica:columns>
+                <mx:Array>
+                    <mx:DataGridColumn headerText="Divisa" columnName="idDivisa" width="65"/>
+					<mx:DataGridColumn headerText="Posici&#243;n Inicial"
+                                       columnName="tipoCambioCliente.posicionInicial"
+                                       cellRenderer="com.ixe.ods.sica.posicion.util.PosicionDivisaCellRenderer"
+									   textAlign="right" width="100"/>
+                    <mx:DataGridColumn headerText="Compras" columnName="tipoCambioCliente.compra.tipoCambioCompra"
+                                       cellRenderer="com.ixe.ods.sica.posicion.util.PosicionDivisaCellRenderer"
+                                       textAlign="right" width="100"/>
+                    <mx:DataGridColumn headerText="Ventas" columnName="tipoCambioCliente.venta.tipoCambioVenta"
+                                       cellRenderer="com.ixe.ods.sica.posicion.util.PosicionDivisaCellRenderer"
+                                       textAlign="right" width="100"/>
+                    <mx:DataGridColumn headerText="Posici&#243;n Final"
+                                       columnName="tipoCambioCliente.posicionFinal.tipoCambioPosicionFinal"
+                                       cellRenderer="com.ixe.ods.sica.posicion.util.PosicionDivisaCellRenderer"
+                                       textAlign="right" width="100"/>
+                </mx:Array>
+            </sica:columns>
+        </sica:PosicionDivisaDetalle>
+        
+        <sica:PosicionDivisaDetalle label="TRADER USD" marginLeft="10" marginRight="10" marginTop="10"
+                                    marginBottom="10" horizontalAlign="center" verticalGap="20"
+                                    dataProvider="{dataProvider}" tipoCambioId="tipoCambioCliente" idMesaCambio="{com.ixe.ods.sica.posicion.Posicion.TRADER_USD}">
+            <sica:columns>
+                <mx:Array>
+                    <mx:DataGridColumn headerText="Divisa" columnName="idDivisa" width="65"/>
+					<mx:DataGridColumn headerText="Posici&#243;n Inicial"
+                                       columnName="tipoCambioCliente.posicionInicial"
+                                       cellRenderer="com.ixe.ods.sica.posicion.util.PosicionDivisaCellRenderer"
+									   textAlign="right" width="100"/>
+                    <mx:DataGridColumn headerText="Compras" columnName="tipoCambioCliente.compra.tipoCambioCompra"
+                                       cellRenderer="com.ixe.ods.sica.posicion.util.PosicionDivisaCellRenderer"
+                                       textAlign="right" width="100"/>
+                    <mx:DataGridColumn headerText="Ventas" columnName="tipoCambioCliente.venta.tipoCambioVenta"
+                                       cellRenderer="com.ixe.ods.sica.posicion.util.PosicionDivisaCellRenderer"
+                                       textAlign="right" width="100"/>
+                    <mx:DataGridColumn headerText="Posici&#243;n Final"
+                                       columnName="tipoCambioCliente.posicionFinal.tipoCambioPosicionFinal"
+                                       cellRenderer="com.ixe.ods.sica.posicion.util.PosicionDivisaCellRenderer"
+                                       textAlign="right" width="100"/>
+                </mx:Array>
+            </sica:columns>
+        </sica:PosicionDivisaDetalle>
+
+        <sica:PosicionDivisaDetalle label="TRADER MXN" marginLeft="10" marginRight="10" marginTop="10"
+                                    marginBottom="10" horizontalAlign="center" verticalGap="20"
+                                    dataProvider="{dataProvider}" tipoCambioId="tipoCambioCliente" idMesaCambio="{com.ixe.ods.sica.posicion.Posicion.TRADER_MXN}">
+            <sica:columns>
+                <mx:Array>
+                    <mx:DataGridColumn headerText="Divisa" columnName="idDivisa" width="65"/>
+                    <mx:DataGridColumn headerText="Posici&#243;n Inicial"
+                                       columnName="tipoCambioCliente.posicionInicial"
+                                       cellRenderer="com.ixe.ods.sica.posicion.util.PosicionDivisaCellRenderer"
+                                       textAlign="right" width="100"/>
+                    <mx:DataGridColumn headerText="Compras" columnName="tipoCambioCliente.compra.tipoCambioCompra"
+                                       cellRenderer="com.ixe.ods.sica.posicion.util.PosicionDivisaCellRenderer"
+                                       textAlign="right" width="100"/>
+                    <mx:DataGridColumn headerText="Ventas" columnName="tipoCambioCliente.venta.tipoCambioVenta"
+                                       cellRenderer="com.ixe.ods.sica.posicion.util.PosicionDivisaCellRenderer"
+                                       textAlign="right" width="100"/>
+                    <mx:DataGridColumn headerText="Posici&#243;n Final"
+                                       columnName="tipoCambioCliente.posicionFinal.tipoCambioPosicionFinal"
+                                       cellRenderer="com.ixe.ods.sica.posicion.util.PosicionDivisaCellRenderer"
+                                       textAlign="right" width="100"/>
+                </mx:Array>
+            </sica:columns>
+        </sica:PosicionDivisaDetalle>
+
+        <sica:PosicionDivisaDetalle label="ESTRATEGIA" marginLeft="10" marginRight="10" marginTop="10"
+                                    marginBottom="10" horizontalAlign="center" verticalGap="20"
+                                    dataProvider="{dataProvider}" tipoCambioId="tipoCambioCliente" idMesaCambio="{com.ixe.ods.sica.posicion.Posicion.ESTRATEGIA}">
+            <sica:columns>
+                <mx:Array>
+                    <mx:DataGridColumn headerText="Divisa" columnName="idDivisa" width="65"/>
+                    <mx:DataGridColumn headerText="Posici&#243;n Inicial"
+                                       columnName="tipoCambioCliente.posicionInicial"
+                                       cellRenderer="com.ixe.ods.sica.posicion.util.PosicionDivisaCellRenderer"
+                                       textAlign="right" width="100"/>
+                    <mx:DataGridColumn headerText="Compras" columnName="tipoCambioCliente.compra.tipoCambioCompra"
+                                       cellRenderer="com.ixe.ods.sica.posicion.util.PosicionDivisaCellRenderer"
+                                       textAlign="right" width="100"/>
+                    <mx:DataGridColumn headerText="Ventas" columnName="tipoCambioCliente.venta.tipoCambioVenta"
+                                       cellRenderer="com.ixe.ods.sica.posicion.util.PosicionDivisaCellRenderer"
+                                       textAlign="right" width="100"/>
+                    <mx:DataGridColumn headerText="Posici&#243;n Final"
+                                       columnName="tipoCambioCliente.posicionFinal.tipoCambioPosicionFinal"
+                                       cellRenderer="com.ixe.ods.sica.posicion.util.PosicionDivisaCellRenderer"
+                                       textAlign="right" width="100"/>
+                </mx:Array>
+            </sica:columns>
+        </sica:PosicionDivisaDetalle>
+
+    </mx:Accordion>
+
+    <mx:HBox width="{accordion.width}">
+        <mx:Spacer width="100%"/>
+        <mx:Link id="synchLink" icon="@Embed('resources/sync.gif')" toolTip="Sincronizar informaci&#243;n"/>
+    </mx:HBox>
+
+</view:PosicionDivisas>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CapturaLineaCredito.page,v 1.15.72.1 2016/07/13 21:46:43 mejiar Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.lineacredito.CapturaLineaCredito">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <bean name="doubleValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="minimum" expression="0"/>
+    </bean>
+
+    <component id="importe" type="ValidField">
+        <binding name="validator" expression="beans.doubleValidator"/>
+        <binding name="value" expression="lineaCredito.importe"/>
+        <static-binding name="displayName" value="Importe:"/>
+        <static-binding name="type" value="String"/>
+    </component>
+    
+    <component id="montoTextField" type="MontoTextField">
+        <binding name="value" expression="lineaCredito.importePAyTF"/>
+    </component>
+
+    <component id="montoFechaValorTextField" type="MontoTextField">
+        <binding name="value" expression="lineaCredito.importeFV"/>
+    </component>
+
+	<component id="tipoAutorizacionComboBox" type="PropertySelection">
+        <binding name="model" expression="tipoAutorizacionModel" />
+        <binding name="value" expression="tipoAutorizacionSeleccionada" />
+    </component>
+    
+    <component id="tipoAutorizacionComboBox2" copy-of="tipoAutorizacionComboBox" />
+    
+    <component id="formalizacionComboBox" type="PropertySelection">
+        <binding name="model" expression="formalizacionModel" />
+        <binding name="value" expression="formalizacionSeleccionada" />
+    </component>
+
+	<component id="formalizacionComboBox2" copy-of="formalizacionComboBox" />
+
+	<component id="instanciaFacultadaComboBox" type="PropertySelection">
+        <binding name="model" expression="instanciaFacultadaModel" />
+        <binding name="value" expression="instanciaFacultadaSeleccionada" />
+    </component>
+    
+    <component id="instanciaFacultadaComboBox2" copy-of="instanciaFacultadaComboBox" />
+
+    <property-specification name="lineaCredito" type="com.ixe.ods.sica.model.LineaCambio" initial-value='new com.ixe.ods.sica.model.LineaCambio()' persistent="yes"/>
+    <property-specification name="modoEdicion" type="boolean" persistent="yes"/>
+    <property-specification name="paginaAnterior" type="java.lang.String" persistent="yes"/>  
+	<property-specification name="tipoAutorizacionSeleccionada" type="com.ixe.ods.sica.model.TipoAutorizacion" persistent="yes"/>
+    <property-specification name="formalizacionSeleccionada" type="com.ixe.ods.sica.model.Formalizacion" persistent="yes"/>
+	<property-specification name="instanciaFacultadaSeleccionada" type="com.ixe.ods.sica.model.InstanciaFacultada" persistent="yes"/>
+	
+	
+	<property-specification name="idCorporativo" type="java.lang.Integer" persistent="yes"/>
+	<property-specification name="razonSocialCorporativo" type="java.lang.String" persistent="yes"/>
+	<property-specification name="contraparte" type="boolean" persistent="yes"/>
+	<property-specification name="operacionExitosa" type="boolean" persistent="yes"/>
+	
+
+    <context-asset name="aceptarButton" path="/images/aceptar.gif" />
+    <context-asset name="backButton" path="/images/back.gif" />
+
+</page-specification>

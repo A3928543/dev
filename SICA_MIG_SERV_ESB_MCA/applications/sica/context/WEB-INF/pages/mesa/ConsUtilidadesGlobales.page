@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ConsUtilidadesGlobales.page,v 1.3 2008/02/22 18:25:31 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.mesa.ConsUtilidadesGlobales">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+
+    <property-specification name="fechaInicio" type="java.util.Date" />
+    <property-specification name="fechaFin" type="java.util.Date" />
+    <property-specification name="importeGral" type="double" persistent="yes" initial-value="" />
+    <property-specification name="importeGralPerdida" type="double" persistent="yes" initial-value="" />
+    <property-specification name="registros" type="java.util.List" initial-value="new java.util.ArrayList()" persistent="yes"/>
+
+    <context-asset name="bBuscar" path="/images/search.gif" />
+
+</page-specification>

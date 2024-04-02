@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.LogAuditoria"
+        table="SC_LOG_AUDITORIA"
+        proxy="com.ixe.ods.sica.model.LogAuditoria"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idLogAuditoria"
+            column="ID_LOG_AUDITORIA"
+            type="java.lang.String"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-LogAuditoria.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="datosAdicionales"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="DATOS_ADICIONALES"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="direccionIp"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="DIRECCION_IP"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fecha"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ticket"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TICKET"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="idDeal"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DEAL"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="idPersona"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_PERSONA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="idUsuario"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_USUARIO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoOperacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_OPERACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-LogAuditoria.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

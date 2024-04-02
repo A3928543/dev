@@ -1,0 +1,33 @@
+    <table width="100%">
+        <tr>
+            <td width="3%" class="title" nowrap>No. Deal:</td>
+            <td><span jwcid="@DisabledField" value="ognl: deal.idDeal" /></td>
+            <td width="3%" class="title" nowrap>Fecha Valor:</td>
+            <td><span jwcid="@DisabledField" value="ognl: deal.tipoValor" /></td>
+            <td width="3%" class="title" nowrap>Fecha Captura:</td>
+            <td><span jwcid="@DisabledField" value="ognl: page.dateFormat.format(deal.fechaCaptura)" /></td>
+            <td width="3%" class="title" nowrap>Fecha Liquidaci&#243;n:</td>
+            <td><span jwcid="@DisabledField" value="ognl: page.dateFormat.format(deal.fechaLiquidacion)" /></td>
+            <td width="3%" class="title" nowrap>Operaci&#243;n:</td>
+            <td><span jwcid="@DisabledField" value="ognl: deal.compra ? 'COMPRA' : 'VENTA'" /></td>
+        </tr>
+        <tr>
+            <td width="3%" class="title">Cliente:</td>
+            <td colspan="9"><span jwcid="@DisabledField" value="ognl: deal.contratoSica ? (deal.contratoSica.noCuenta + ' ' + deal.cliente.nombreCompleto) : '&nbsp;'" /></td>
+        </tr>
+    </table>
+    <table jwcid="@TableBorder" title="ognl: null" columnCount="6" subtitles="ognl: {'Folio', 'Op.', 'Divisa', 'Monto', 'T.C.C.', 'Importe'}" width="100%">
+        <span jwcid="forDets@Foreach" source="ognl: deal.detalles">
+            <span jwcid="@Conditional" condition="ognl: !components.forDets.value.cancelado">
+                <tr jwcid="@Any" element="tr" class="ognl: beans.evenOdd.next">
+                    <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forDets.value.folioDetalle" /></td>
+                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDets.value.recibimos ? 'REC' : 'ENT'" /></td>
+                    <td class="normal" align="center"><span jwcid="@Bandera" divisa="ognl: components.forDets.value.divisa" /></td>
+                    <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forDets.value.monto" format="ognl: page.moneyFormat" /></td>
+                    <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forDets.value.tipoCambio" format="ognl: page.currencyFormatSix" /></td>
+                    <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forDets.value.importe" format="ognl: page.moneyFormat" /></td>
+                </tr>
+            </span>
+        </span>
+
+    </table>

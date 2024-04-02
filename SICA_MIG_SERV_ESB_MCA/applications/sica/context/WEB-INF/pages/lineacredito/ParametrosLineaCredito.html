@@ -1,0 +1,52 @@
+<!-- $Id: ParametrosLineaCredito.html,v 1.10 2008/02/22 18:25:47 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Parametros para L&iacute;neas de Cr&eacute;dito</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+   	<form jwcid="@Form" listener="ognl: listeners.actualizaParametros" delegate="ognl: beans.delegate" align="center">
+	<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+   		<table jwcid="@ActionPortletBorder" title="Avisos a Promoci&oacute;n">
+   			<table jwcid="@TableBorder" title="ognl: null" columnCount="2" width="100%">
+	        	<tr class="titlecell" align="center">
+	            	<td width="50%" class="title" align="right">
+	                	<span jwcid="@FieldLabel" field="ognl: components.lineaCreditoLlena">Porcentaje de l&iacute;nea para informar a Promoci&oacute;n:</span>
+                    </td>
+                    <td class="normalcell" align="left"><select jwcid="lineaCreditoLlena"/></td>
+                </tr>
+	            <tr class="titlecell" align="center">
+	            	<td width="50%" class="title" align="right">
+	                	<span jwcid="@FieldLabel" field="ognl: components.diasVencimientoLinea">Se informar&aacute; al Promotor cuando falten:</span>
+                    </td>
+	                <td class="normalcell" align="left"><select jwcid="diasVencimientoLinea"/> d&iacute;as h&aacute;biles al vencimiento</td>
+                </tr>
+                <tr class="titlecell" align="center">
+                    <td width="50%" class="title" align="right">
+	                	<span jwcid="@FieldLabel" field="ognl: components.maxExcedentes">M&aacuteximo de excedentes de la l&iacutenea por mes:</span>
+                    </td>
+	                <td class="normalcell" align="left"><select jwcid="maxExcedentes"/></td>
+                </tr>
+            </table>
+       	</table>
+       	<br />
+       	<table jwcid="@ActionPortletBorder" title="Definici&oacute;n de las Formas de Cobro que utilizan L&iacute;neas de Cr&eacute;dito 
+       	y su Plazo de Liberaci&oacute;n">
+       		<table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "Forma de Cobro", "Descripci&oacute;n", "Producto", "Divisa", "Tiempo Liberaci&oacute;n"}' columnCount="5" width="100%">
+                <tr jwcid="forFormasCobro@Foreach" source="ognl: formasCobro" element="tr" class="ognl: beans.evenOdd.next">
+			    	<td class="normal" align="center"><span jwcid="@Insert" value='ognl: components.forFormasCobro.value.mnemonico + "-" + components.forFormasCobro.value.nombreFormaLiquidacion' raw="yes" /></td>
+                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forFormasCobro.value.nombreFormaLiquidacion" raw="yes" /></td>
+                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forFormasCobro.value.claveFormaLiquidacion" raw="yes" /></td>
+                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forFormasCobro.value.idDivisa" raw="yes" /></td>
+                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forFormasCobro.value.tiempoLiberacion" raw="yes" /></td>
+	            </tr>
+            </table>
+            <br />
+	    </table>
+	    <br />
+        <div align="center">
+            <input jwcid="@ImageSubmit" image="ognl: assets.saveButton" onclick="return fnDisableForm(this.form);" />
+        </div>
+    </form>
+</body>
+</html>

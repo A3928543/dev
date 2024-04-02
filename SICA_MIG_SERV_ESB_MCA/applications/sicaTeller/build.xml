@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<!--$Id: build.xml,v 1.9.46.1 2010/10/08 01:11:13 ccovian Exp $ -->
+<project name="Sica Teller Application" default="build-all" basedir=".">
+
+    <property name="root.dir" value="${basedir}/../.."/>
+
+    <property file="${root.dir}/config/common.properties"/>
+
+    <path id="ods-model.classpath">
+        <pathelement location="${dist.dir}/${sica.jar}"/>
+    </path>
+
+    <path id="ods.classpath">
+        <pathelement location="${dist.dir}/${ods-sica.jar}"/>
+    </path>
+
+    <path id="project.classpath">
+        <fileset dir="${root.lib.dir}">
+            <exclude name="xdoclet/*.jar"/>
+            <include name="**/*.jar"/>
+        </fileset>
+        <pathelement location="${dist.dir}/sica.jar" />
+        <pathelement location="${dist.dir}/sica-interfaces.jar" />
+        <pathelement location="${dist.dir}/sica-teller-interfaces.jar" />
+        <pathelement location="${dist.dir}/sica-interfaces.jar" />
+        <pathelement location="${dist.dir}/pizarra.jar" />
+        <path refid="ods.classpath"/>
+        <path refid="ods-model.classpath"/>
+    </path>
+
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${classes.dir}"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${classes.dir}"/>
+    </target>
+
+    <target name="compile" depends="init" description="Compile all classes in the framework.">
+        <javac destdir="${classes.dir}" debug="on" target="1.1">
+            <src path="${src.dir}"/>
+            <classpath refid="project.classpath"/>
+        </javac>
+    </target>
+
+    <target name="javadoc">
+        <mkdir dir="${javadoc.dir}"/>
+        <javadoc author="true"
+            destdir="${javadoc.dir}"
+            packagenames="com.ixe.ods.sica.*"
+            sourcepath="${src.dir}"
+            use="true"
+            version="true"
+            windowtitle="Documentation"
+            private="true">
+            <classpath refid="project.classpath"/>
+        </javadoc>
+    </target>
+	
+	<target name="build-war" depends="compile">
+		<war warfile="${dist.dir}/${sicaTeller.war}" 
+			webxml="${context.dir}/WEB-INF/web.xml">
+			
+			<webinf dir="${context.dir}/WEB-INF">
+				<include name="weblogic.xml"/>
+			</webinf>
+			
+			<classes dir="${classes.dir}"/>
+			
+			<classes dir="${src.dir}">
+				<exclude name="**/*.java"/>
+				<exclude name="**/package.html"/>
+			</classes>
+			
+			<lib dir="${root.lib.dir}/teller/integracion">
+				<include name="*.jar"/>
+			</lib>
+			
+			<lib dir="${root.lib.dir}/misc">
+				<include name="${xp33_min.jar}"/>
+			</lib>
+			
+			<fileset dir="${context.dir}">
+				<include name="*.jsp" />
+                <include name="*.gif" />
+				<include name="images/**"/>
+                <include name="scripts/**"/>
+				<include name="**/*.html"/>
+				<include name="WEB-INF/log4j.properties" />
+			</fileset>
+			
+		</war>
+	</target>
+
+    <target name="build-all" depends="build-war">
+    </target>
+
+</project>

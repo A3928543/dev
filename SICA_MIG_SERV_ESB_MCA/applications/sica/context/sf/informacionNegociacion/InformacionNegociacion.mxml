@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:InformacionNegociacionApplication xmlns:mx="http://www.macromedia.com/2003/mxml" 
+	xmlns:views="com.ixe.ods.sica.informacionnegociacion.views.*" xmlns:ixe="*" width="100%" height="100%" 
+	creationComplete="inicializar()" marginTop="5" marginBottom="10" marginLeft="10" marginRight="10" >
+
+	<mx:Style source="resources/ixe.css"/>
+	<mx:RemoteObject id="informacionNegociacionService" source="spring://informacionNegociacionDelegate" concurrency="last" showBusyCursor="true">        
+        <mx:method name="getClientesEjecutivo" result="onClientesGot(event.result)" fault="falla(event.fault)"/>  
+    	<mx:method name="marcarClienteFavorito" fault="falla(event.fault)"/>
+    	<mx:method name="getLastFiveDeals" result="onGotLastFiveDeals(event.result)" fault="falla(event.fault)"/>
+    	<mx:method name="editContactInfo" result="onContactInfoEdited(event.result)" fault="falla(event.fault)"/>  
+    </mx:RemoteObject>    
+
+	<mx:Canvas width="100%" height="100%" >
+	
+		<mx:TabNavigator id="tabPestanas" width="100%" height="100%" change="changeTabFavorito(event)" >
+	
+		<mx:VBox width="100%" label="Favoritos">	
+		
+				<mx:HBox>
+					<mx:Label id="nombreFiltroLabelFav" text="Nombre:"/>
+					<mx:TextInput  id="nombreFiltroFav" change="filtrarPorNombreFav()"/>
+					
+					<mx:Label id="contratoFiltroLabelFav" text="Contrato corto:"/>
+					<mx:TextInput  id="contratoFiltroFav" change="filtrarPorNombreFav()"/>
+				</mx:HBox>
+			
+						<mx:DataGrid id="clientesFavoritos" width="100%" height="100%" cellPress="getLastFiveDeals(clientesFavoritos.selectedItem.idCliente)" >
+							<mx:columns>
+								<mx:Array>
+									<mx:DataGridColumn headerText="" columnName="idCliente" width="0" resizable="false" />
+									<mx:DataGridColumn headerText="Contrato Corto" columnName="contratoCorto" width="100" />
+									<mx:DataGridColumn headerText="Cliente" columnName="cliente" width="200" />
+									<mx:DataGridColumn headerText="Contrato SICA" columnName="contratoSica" width="100" />
+									<mx:DataGridColumn headerText="Teléfono" columnName="telefono" width="100"/>
+									<mx:DataGridColumn headerText="Contacto" columnName="contacto" width="150"/>
+									<mx:DataGridColumn headerText="email" columnName="email" width="100"/>
+									<mx:DataGridColumn headerText="Ultima Operaci&#243;n" columnName="ultimaOperacion" width="120"/>
+									<mx:DataGridColumn headerText="" columnName="editar" width="20" cellRenderer="com.ixe.ods.sica.informacionnegociacion.views.EditCellRenderer" />
+								</mx:Array>
+							</mx:columns>
+				        </mx:DataGrid>
+				        
+				        <mx:Label text="5 Operaciones m&#225;s recientes" />
+				        <mx:DataGrid id="lastFiveDealsFavoritos" width="100%" height="100%" >
+							<mx:columns>
+								<mx:Array>
+									<mx:DataGridColumn headerText="Fecha" columnName="fechaCaptura" width="120" />
+									<mx:DataGridColumn headerText="Deal" columnName="idDeal" width="80" />
+									<mx:DataGridColumn headerText="Operaci&#243;n" columnName="tipoOperacion" width="80" />
+									<mx:DataGridColumn headerText="Fecha Valor" columnName="fechaValor" width="80" />
+									<mx:DataGridColumn headerText="Importe" columnName="monto" width="100" textAlign="right" />
+									<mx:DataGridColumn headerText="Divisa" columnName="divisa" width="80" />
+									<mx:DataGridColumn headerText="TC Cliente" columnName="tcCliente" width="100" textAlign="right" />
+									<mx:DataGridColumn headerText="Spread" columnName="spread" width="100" textAlign="right" />
+								</mx:Array>
+							</mx:columns>
+				        </mx:DataGrid>
+			
+		</mx:VBox>
+		
+		
+		<mx:VBox width="100%" label="Todos sus clientes">
+		
+				<mx:HBox>
+					<mx:Label id="nombreFiltroLabel" text="Nombre:"/>
+					<mx:TextInput  id="nombreFiltro" change="filtrarPorNombre()"/>
+					
+					<mx:Label id="contratoFiltroLabel" text="Contrato corto:"/>
+					<mx:TextInput  id="contratoFiltro" change="filtrarPorNombre()"/>
+				</mx:HBox>	
+		
+						<mx:DataGrid id="clientesTodos" width="100%" height="100%" cellPress="getLastFiveDeals(clientesTodos.selectedItem.idCliente)" >
+							<mx:columns>
+								<mx:Array>
+									<mx:DataGridColumn headerText="" columnName="idCliente" width="0" resizable="false" />
+									<mx:DataGridColumn headerText="Favorito" columnName="favorito" width="70" cellRenderer="com.ixe.ods.sica.informacionnegociacion.views.CheckBoxCellRenderer"/>
+									<mx:DataGridColumn headerText="Contrato Corto" columnName="contratoCorto" width="100" />
+									<mx:DataGridColumn headerText="Cliente" columnName="cliente" width="150" />
+									<mx:DataGridColumn headerText="Contrato SICA" columnName="contratoSica" width="100" />
+									<mx:DataGridColumn headerText="Teléfono" columnName="telefono" width="100"/>
+									<mx:DataGridColumn headerText="Contacto" columnName="contacto" width="150"/>
+									<mx:DataGridColumn headerText="email" columnName="email" width="100"/>
+									<mx:DataGridColumn headerText="Ultima Operaci&#243;n" columnName="ultimaOperacion" width="120"/>
+									<mx:DataGridColumn headerText="" columnName="editar" width="20" cellRenderer="com.ixe.ods.sica.informacionnegociacion.views.EditCellRenderer" />
+								</mx:Array>
+							</mx:columns>
+				        </mx:DataGrid>
+				        
+				        <mx:Label text="5 Operaciones m&#225;s recientes" />
+				        <mx:DataGrid id="lastFiveDealsTodos" width="100%" height="100%" >
+							<mx:columns>
+								<mx:Array>
+									<mx:DataGridColumn headerText="Fecha" columnName="fechaCaptura" width="120" />
+									<mx:DataGridColumn headerText="Deal" columnName="idDeal" width="80" />
+									<mx:DataGridColumn headerText="Operaci&#243;n" columnName="tipoOperacion" width="80" />
+									<mx:DataGridColumn headerText="Fecha Valor" columnName="fechaValor" width="80" />
+									<mx:DataGridColumn headerText="Importe" columnName="monto" width="100" textAlign="right" />
+									<mx:DataGridColumn headerText="Divisa" columnName="divisa" width="80" />
+									<mx:DataGridColumn headerText="TC Cliente" columnName="tcCliente" width="100" textAlign="right" />
+									<mx:DataGridColumn headerText="Spread" columnName="spread" width="100" textAlign="right" />
+								</mx:Array>
+							</mx:columns>
+				        </mx:DataGrid>
+			
+		</mx:VBox>
+		
+		
+		</mx:TabNavigator>
+	
+	</mx:Canvas>
+	
+</views:InformacionNegociacionApplication>

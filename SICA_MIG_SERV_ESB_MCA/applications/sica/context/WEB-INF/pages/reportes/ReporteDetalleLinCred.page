@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ReporteDetalleLinCred.page,v 1.9 2008/02/22 18:25:41 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.reportes.ReporteDetalleLinCred">
+
+  	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />  
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+    
+    <component id="printLink" type="ServiceLink">
+    	<static-binding name="service" value="jasper" />
+    	<binding name="parameters" expression='new java.lang.String[] { "WEB-INF/jasper/ReporteLinCredAut.jasper", "ReporteLinCredAut", "0" }' />
+    </component>  
+    
+    <property-specification name="idLineaCredito" type="java.lang.Integer" persistent="yes" />
+    <property-specification name="corporativo" type="java.lang.String" persistent="yes" initial-value="" />
+    <property-specification name="status" type="java.lang.String" persistent="yes" initial-value="" />
+    <property-specification name="tipoLineaCredito" type="java.lang.String" persistent="yes" initial-value="" />
+    <property-specification name="ultimaModificacion" type="java.util.Date" persistent="yes" initial-value="" />
+    <property-specification name="vencimiento" type="java.util.Date" persistent="yes" initial-value="" />
+    <property-specification name="numeroExcepciones" type="int" persistent="yes" initial-value="" />
+    <property-specification name="numeroExcepcionesMes" type="int" persistent="yes" initial-value="" />
+    <property-specification name="promedioLinea" type="double" persistent="yes" initial-value="" />
+    <property-specification name="importeGral" type="double" persistent="yes" initial-value="" />
+    <property-specification name="usoLinea" type="double" persistent="yes" initial-value="" />
+    <property-specification name="saldoFinal" type="double" persistent="yes" initial-value="" />
+    <property-specification name="lineasCreditoLog" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" /> 
+    <property-specification name="fechaSeleccionada" type="java.lang.String" persistent="yes"/>  
+    <property-specification name="paginaAnterior" type="java.lang.String" persistent="yes"/>   
+
+    <context-asset name="backButton" path="/images/back.gif" />          
+    <context-asset name="insertButton" path="/images/add.gif" />
+    <context-asset name="searchButton" path="/images/search.gif" />
+	<context-asset name="verPdfButton" path="/images/ver_pdf.gif" />
+	
+	
+</page-specification>

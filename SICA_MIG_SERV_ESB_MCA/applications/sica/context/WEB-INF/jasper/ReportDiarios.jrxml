@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="ReportDiarios" language="java" pageWidth="870" pageHeight="595" orientation="Landscape" columnWidth="830" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30">
+	<property name="com.jasperassistant.designer.Rulers" value="true"/>
+	<property name="com.jasperassistant.designer.GridHeight" value="5"/>
+	<property name="com.jasperassistant.designer.GridWidth" value="5"/>
+	<property name="com.jasperassistant.designer.HGuides" value="69,480,741,810"/>
+	<property name="com.jasperassistant.designer.DataSource" value="Reporte Diarios Data Source"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="true"/>
+	<property name="com.jasperassistant.designer.Margins" value="true"/>
+	<property name="com.jasperassistant.designer.Grid" value="true"/>
+	<property name="com.jasperassistant.designer.SnapToGuides" value="true"/>
+	<field name="claveFormaLiquidacion" class="java.lang.String">
+	</field>
+	<field name="cliente" class="java.lang.String">
+	</field>
+	<field name="divisa" class="java.lang.String">
+	</field>
+	<field name="fechaCaptura" class="java.util.Date">
+	</field>
+	<field name="fechaLiquidacion" class="java.util.Date">
+	</field>
+	<field name="folioDetalle" class="java.lang.Integer">
+	</field>
+	<field name="idDeal" class="java.lang.Integer">
+	</field>
+	<field name="image" class="java.io.InputStream">
+	</field>
+	<field name="importe" class="java.lang.Double">
+	</field>
+	<field name="isRecibimos" class="java.lang.Boolean">
+	</field>
+	<field name="monto" class="java.lang.Double">
+	</field>
+	<field name="promotor" class="java.lang.String">
+	</field>
+	<field name="status" class="java.lang.String">
+	</field>
+	<field name="tipoCambio" class="java.lang.Double">
+	</field>
+	<variable name="totalMonto" class="java.lang.Double" resetType="Group" resetGroup="Group_2" calculation="Sum">
+		<variableExpression><![CDATA[$F{monto}]]></variableExpression>
+		<initialValueExpression><![CDATA[$F{monto}]]></initialValueExpression>
+	</variable>
+	<variable name="totalMn" class="java.lang.Double" resetType="Group" resetGroup="Group_2" calculation="Sum">
+		<variableExpression><![CDATA[$F{importe}]]></variableExpression>
+		<initialValueExpression><![CDATA[$F{importe}]]></initialValueExpression>
+	</variable>
+	<variable name="totalDivisaPagina" class="java.lang.Double" resetType="Group" resetGroup="Group_1" calculation="Sum">
+		<variableExpression><![CDATA[$F{monto}]]></variableExpression>
+		<initialValueExpression><![CDATA[$F{monto}]]></initialValueExpression>
+	</variable>
+	<variable name="totalMnPagina" class="java.lang.Double" resetType="Group" resetGroup="Group_1" calculation="Sum">
+		<variableExpression><![CDATA[$F{importe}]]></variableExpression>
+		<initialValueExpression><![CDATA[$F{importe}]]></initialValueExpression>
+	</variable>
+	<variable name="GranTotDivisa" class="java.lang.Double" resetType="Group" resetGroup="Group_5" incrementType="Group" incrementGroup="Group_1" calculation="Sum">
+		<variableExpression><![CDATA[$V{totalDivisaPagina}]]></variableExpression>
+		<initialValueExpression><![CDATA[$V{totalDivisaPagina}]]></initialValueExpression>
+	</variable>
+	<variable name="GranTotMn" class="java.lang.Double" incrementType="Group" incrementGroup="Group_1" calculation="Sum">
+		<variableExpression><![CDATA[$V{totalMnPagina}]]></variableExpression>
+		<initialValueExpression><![CDATA[$V{totalMnPagina}]]></initialValueExpression>
+	</variable>
+	<variable name="montoProducto" class="java.lang.Double" resetType="Group" resetGroup="Group_6" calculation="Sum">
+		<variableExpression><![CDATA[$F{monto}]]></variableExpression>
+	</variable>
+	<variable name="importeProducto" class="java.lang.Double" resetType="Group" resetGroup="Group_6" calculation="Sum">
+		<variableExpression><![CDATA[$F{importe}]]></variableExpression>
+	</variable>
+	<group name="Group_5" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{divisa}]]></groupExpression>
+	</group>
+	<group name="Group_1" isStartNewPage="true" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{isRecibimos}]]></groupExpression>
+		<groupHeader>
+		<band height="11">
+			<staticText>
+				<reportElement positionType="Float" x="5" y="0" width="45" height="10"/>
+				<textElement>
+					<font fontName="Tw Cen MT" size="7" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Operación :]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="50" y="0" width="80" height="10"/>
+				<textElement>
+					<font fontName="Tw Cen MT" size="7" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{isRecibimos}.booleanValue() == true ? "COMPRAS" : "VENTAS"]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupHeader>
+		<groupFooter>
+		<band height="17" isSplitAllowed="false">
+			<line>
+				<reportElement positionType="Float" x="280" y="1" width="60" height="1"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="355" y="1" width="60" height="1"/>
+				<graphicElement/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="4" y="3" width="23" height="12" printWhenGroupChanges="Group_6"/>
+				<textElement>
+					<font fontName="Tw Cen MT" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="29" y="3" width="41" height="12" printWhenGroupChanges="Group_6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tw Cen MT" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{isRecibimos}.booleanValue() == true ? "COMPRAS" : "VENTAS"]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#">
+				<reportElement positionType="Float" x="274" y="3" width="67" height="12"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tw Cen MT" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{totalDivisaPagina}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#">
+				<reportElement positionType="Float" x="349" y="3" width="68" height="12"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tw Cen MT" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{totalMnPagina}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupFooter>
+	</group>
+	<group name="Group_6">
+		<groupExpression><![CDATA[$F{claveFormaLiquidacion}]]></groupExpression>
+		<groupHeader>
+		<band height="13">
+			<textField>
+				<reportElement positionType="Float" x="115" y="0" width="155" height="10"/>
+				<textElement>
+					<font fontName="Tw Cen MT" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{claveFormaLiquidacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="70" y="0" width="45" height="10"/>
+				<textElement>
+					<font fontName="Tw Cen MT" size="7" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Producto :]]></text>
+			</staticText>
+		</band>
+		</groupHeader>
+		<groupFooter>
+		<band height="17">
+			<textField>
+				<reportElement positionType="Float" x="95" y="3" width="170" height="12"/>
+				<textElement>
+					<font fontName="Tw Cen MT" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{claveFormaLiquidacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="70" y="3" width="25" height="12" printWhenGroupChanges="Group_6"/>
+				<textElement>
+					<font fontName="Tw Cen MT" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField pattern="#,##0.00#">
+				<reportElement positionType="Float" x="275" y="3" width="65" height="12"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tw Cen MT" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{montoProducto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#">
+				<reportElement positionType="Float" x="350" y="3" width="65" height="12"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tw Cen MT" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{importeProducto}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupFooter>
+	</group>
+	<group name="Group_2">
+		<groupExpression><![CDATA[$F{promotor}]]></groupExpression>
+		<groupHeader>
+		<band height="11">
+			<staticText>
+				<reportElement positionType="Float" x="70" y="1" width="54" height="10"/>
+				<textElement>
+					<font fontName="Tw Cen MT" size="7" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Promotor :]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="135" y="1" width="136" height="10"/>
+				<textElement>
+					<font fontName="Tw Cen MT" size="7" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{promotor}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupHeader>
+	</group>
+	<pageHeader>
+		<band height="108">
+			<staticText>
+				<reportElement positionType="Float" x="215" y="70" width="40" height="25"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Núm.
+Op.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="302" y="60" width="80" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Monto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="283" y="80" width="55" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Divisa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="350" y="80" width="56" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[M.N.]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="279" y="75" width="128" height="1"/>
+				<graphicElement/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="509" y="60" width="86" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="640" y="60" width="80" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="621" y="75" width="116" height="1"/>
+				<graphicElement/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="748" y="60" width="63" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Estatus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="619" y="80" width="61" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Concertación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="688" y="80" width="47" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Liq.]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="281" y="95" width="59" height="1"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="422" y="95" width="59" height="1"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="350" y="95" width="59" height="1"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="620" y="95" width="59" height="1"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="683" y="95" width="59" height="1"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="208" y="95" width="59" height="1"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="750" y="95" width="60" height="1"/>
+				<graphicElement/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="490" y="95" width="125" height="1"/>
+				<graphicElement/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="430" y="70" width="43" height="25"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Tipo
+Cambio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="0" width="444" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="arial" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[IXE BANCO]]></text>
+			</staticText>
+			<textField pattern="d/MM/yyyy">
+				<reportElement positionType="Float" x="535" y="15" width="85" height="15"/>
+				<textElement>
+					<font fontName="arial" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaCaptura}]]></textFieldExpression>
+			</textField>
+			<image isLazy="true">
+				<reportElement positionType="Float" x="18" y="10" width="80" height="30"/>
+				<graphicElement/>
+				<imageExpression class="java.lang.String"><![CDATA["applications/sica/images/reportes/logo_ixe.gif"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement positionType="Float" x="175" y="15" width="361" height="16"/>
+				<textElement>
+					<font fontName="arial" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE OPERACIONES DE COMPRA VENTA DEL DIA]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="40" y="95" width="96" height="12"/>
+				<textElement>
+					<font fontName="Tw Cen MT" size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{divisa}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="5" y="95" width="32" height="12"/>
+				<textElement>
+					<font fontName="Tw Cen MT" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Divisa :]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="12">
+			<textField>
+				<reportElement positionType="Float" x="200" y="0" width="30" height="10"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tw Cen MT" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{idDeal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#">
+				<reportElement positionType="Float" x="275" y="0" width="65" height="10"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tw Cen MT" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{monto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#">
+				<reportElement positionType="Float" x="350" y="0" width="65" height="10"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tw Cen MT" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{importe}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.000000">
+				<reportElement positionType="Float" x="420" y="0" width="60" height="10"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tw Cen MT" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tipoCambio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="490" y="0" width="125" height="10"/>
+				<textElement>
+					<font fontName="Tw Cen MT" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="750" y="0" width="61" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tw Cen MT" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<textField pattern="d/MM/yyyy">
+				<reportElement positionType="Float" x="624" y="0" width="55" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tw Cen MT" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaCaptura}]]></textFieldExpression>
+			</textField>
+			<textField pattern="d/MM/yyyy">
+				<reportElement positionType="Float" x="687" y="0" width="55" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tw Cen MT" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaLiquidacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="245" y="0" width="15" height="10"/>
+				<textElement>
+					<font fontName="Tw Cen MT" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{folioDetalle}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="230" y="0" width="15" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tw Cen MT" size="7"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="18">
+			<staticText>
+				<reportElement positionType="Float" x="4" y="4" width="103" height="12"/>
+				<textElement>
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Fecha del Reporte :]]></text>
+			</staticText>
+			<textField pattern="d/MM/yyyy">
+				<reportElement positionType="Float" x="104" y="4" width="103" height="12"/>
+				<textElement>
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="669" y="5" width="33" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tw Cen MT" size="8"/>
+				</textElement>
+				<text><![CDATA[Hoja]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="704" y="5" width="38" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tw Cen MT" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="744" y="5" width="18" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tw Cen MT" size="8"/>
+				</textElement>
+				<text><![CDATA[de]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement positionType="Float" x="769" y="4" width="33" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tw Cen MT" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: PizarronExt.page,v 1.9 2008/02/22 18:25:15 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.PizarronExt">
+
+    <property-specification name="idMesaCambio" type="int" />
+	<property-specification name="idTipoPizarron" type="int" />
+
+</page-specification>

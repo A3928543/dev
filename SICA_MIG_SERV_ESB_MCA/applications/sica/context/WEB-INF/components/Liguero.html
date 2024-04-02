@@ -1,0 +1,26 @@
+<span>[</span>
+<font class="normal">
+<span jwcid="forLetras@Foreach" source="ognl: letras" index ="ognl: indice">
+<span jwcid="@Conditional" condition="ognl: letraSeleccionada.equals(components.forLetras.value)">
+<span jwcid="@Conditional" condition="ognl: indice == 0">
+<a jwcid="@DirectLink" listener="ognl: leerLetraListener" parameters="ognl: components.forLetras.value" disabled="ognl: true" onClick="fnShowWaitImage();"> <span jwcid="@Insert" value="ognl: components.forLetras.value" raw="yes" /></a>
+</span>
+<span jwcid="@Conditional" condition="ognl: indice != 0">
+<span>|</span>
+<a jwcid="@DirectLink" listener="ognl: leerLetraListener" parameters="ognl: components.forLetras.value" disabled="ognl: true" onClick="fnShowWaitImage();"> <span jwcid="@Insert" value="ognl: components.forLetras.value" raw="yes" /></a>
+</span>
+</span>
+<span jwcid="@Conditional" condition="ognl: !letraSeleccionada.equals(components.forLetras.value)">
+<span jwcid="@Conditional" condition="ognl: indice == 0">
+<a jwcid="@DirectLink" listener="ognl: leerLetraListener" parameters="ognl: components.forLetras.value" onClick="fnShowWaitImage();"> <span jwcid="@Insert" value="ognl: components.forLetras.value" raw="yes" /></a>
+</span>
+<span jwcid="@Conditional" condition="ognl: indice != 0">
+<span>|</span>
+<a jwcid="@DirectLink" listener="ognl: leerLetraListener" parameters="ognl: components.forLetras.value" onClick="fnShowWaitImage();"> <span jwcid="@Insert" value="ognl: components.forLetras.value" raw="yes" /></a>
+</span>
+</span>
+</span>
+</font>
+<span>]</span>
+<br/>
+<br/>

@@ -1,0 +1,73 @@
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Reportes</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <script type="text/javascript">
+        <!--
+        
+        function aparecerMensaje(form1) {
+            
+            $('mensaje').innerHTML = '<br /><table border="0" cellspacing="1" width="100%" cellpadding="3" align="center" class="tableborder"> <tr valign="top">' +
+                        '<td bgcolor="#d0f9d1"><img src="/sica/images/ok.gif" border="0" width="41" height="36" align="left"/> <p class="title">El reporte se est&aacute; procesando. Espere por favor, la operaci&oacute;n puede llevar varios minutos.</p>' +                        
+                        '</td></tr></table>';
+                        //'Para realizar otra busqueda <a href="javascript:restart()">click aqui</a></p>'+
+            $('loading').style.display = 'block';                        
+            $('boton').style.display = 'none';    
+           
+            form1.submit();
+            return false;
+        }
+        function $(id){
+        	return document.getElementById(id);
+        }
+        //-->
+    </script>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+   		<tr>
+    		<td colspan="3">
+    			<div id="mensaje"></div>
+    			<br />
+    			<div id="loading" style="display:none"> <img src="/sica/images/loading.gif"/></div>
+    		</td>
+    	</tr>
+        <tr valign="top">
+        	
+            <td width="200">            
+             	<div align="center">
+	            	&nbsp;
+	            </div>
+			    <table jwcid="@ActionPortletBorder" title="Reportes de Autorizaciones Otorgadas por Mesa de Control">
+				     <form jwcid="@Form" listener="ognl: listeners.reportes" delegate="ognl: beans.delegate" >
+				           <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+			           		    <fieldset class="normal">
+			           		        <legend class="legend">Impresi&oacute;n de Reportes</legend>
+				                        Canal :<br />
+				                        <select jwcid="canalComboBox" /><br />
+				                        Status Autorizaci&oacute;n:<br />
+				                        <select jwcid="statusAutorizacionComboBox" /><br />
+				                        <br />
+				                        Tipo Autorizaci&oacute;n :<br />
+				                        <select jwcid="autorizacionesComboBox" /><br />
+				                        Del :<br />
+				                        <span jwcid="@ls:DatePicker" value="ognl: registerDate" format="dd/MM/yyyy"/><br />
+                                         Al :<br />
+				                        <span jwcid="@ls:DatePicker" value="ognl: registerDateHasta" format="dd/MM/yyyy"/><br />
+			                   </fieldset>
+			                <div align="center">
+			                    <input id="boton" jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return aparecerMensaje(this.form);" />
+			                </div>
+			    	</form>
+			   </table>
+   			</td>
+   			<td width="1%">&nbsp;</td>
+            <td>
+            	
+               &nbsp;
+           </td>
+        </tr>
+    </table>
+    <span jwcid="@ls:DatePickerColophon" />
+</body>
+</html>

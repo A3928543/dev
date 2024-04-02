@@ -1,0 +1,86 @@
+<!-- $Id: CapturaCuentaIxe.html,v 1.9.48.1.30.1 2015/03/30 18:19:27 mejiar Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Captura de Plantilla Cuenta Ixe</title>
+    <link rel="StyleSheet" href="../../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="tb@Block"><span jwcid="@EventosDeal" deal="ognl: dealDetalle.deal" /></span>
+    <table jwcid="@ActionPortletBorder" title="Deal" titleBlock="ognl: components.tb">
+        <span jwcid="@EncabezadoDeal" deal="ognl: dealDetalle.deal" disabled="yes" />
+        <form jwcid="@Form" listener="ognl: listeners.submit" delegate="ognl: beans.delegate">
+            <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" width="100%"/>
+            <table jwcid="@DetailFieldset" dealDetalle="ognl: dealDetalle">
+				<span jwcid="@Conditional" condition ="ognl: page.sicaServiceData.findParametro(@com.ixe.ods.sica.model.ParametroSica@MODO_BUP_ALTAMIRA).valor.equals('BUP') ||
+										                     dealDetalle.plantilla.noCuentaIxe != null || 
+															 @com.ixe.ods.sica.pages.deals.formliq.CapturaCuentaIxe@PAGINA_CAPTURA_BENEFICIARIOS.equals(paginaAnterior)" >
+                <tr class="normal" valign="top">
+                    <td class="title" align="right">Clave Plantilla:</td>
+                    <td>
+                        <span jwcid="@contrib:Choose">
+                            <span jwcid="@contrib:When" condition="ognl: !modoCaptura">
+                                <input class="uppercase" jwcid="@ixe:UppercaseTextField" value="ognl: dealDetalle.plantilla.clavePlantilla" maxlength="4" size="4" />
+                            </span>
+                            <span jwcid="@contrib:Otherwise">
+                                <span jwcid="@DisabledField" value="ognl: dealDetalle.plantilla.clavePlantilla" />
+                            </span>
+                        </span>
+                    </td>
+                    <td class="title" align="right">No.Cuenta Ixe:</td>
+                    <td>
+                        <span jwcid="@contrib:Choose">
+                            <span jwcid="@contrib:When" condition="ognl: !modoCaptura && dealDetalle.plantilla.beneficiario != null &&
+                            page.sicaServiceData.findParametro(@com.ixe.ods.sica.model.ParametroSica@MODO_BUP_ALTAMIRA).valor.equals('BUP')">
+				                	<select jwcid="@PropertySelection" model="ognl: cuentasEjeModel" value="ognl: dealDetalle.plantilla.noCuentaIxe" />
+                            </span>
+                            <span jwcid="@contrib:When" condition="ognl: @com.ixe.ods.sica.pages.deals.formliq.CapturaCuentaIxe@PAGINA_CAPTURA_BENEFICIARIOS.equals(paginaAnterior) &&
+                            											 noCuentaIxe != null" >
+                            	<span jwcid="@DisabledField" value="ognl: noCuentaIxe" />
+                            </span>
+                            <span jwcid="@contrib:Otherwise">
+                                <span jwcid="@DisabledField" value="ognl: dealDetalle.plantilla.noCuentaIxe" />
+                            </span>
+                        </span>
+                    </td>
+                    <td class="title" align="right">Nombre Beneficiario:</td>
+                    <td>
+                        <span jwcid="@contrib:Choose">
+                            <span jwcid="@contrib:When" condition="ognl: dealDetalle.plantilla.mnemonico.charAt(0) == 'R' ||
+                            							!page.sicaServiceData.findParametro(@com.ixe.ods.sica.model.ParametroSica@MODO_BUP_ALTAMIRA).valor.equals('BUP') ">
+                                <span jwcid="@DisabledField" value="ognl: dealDetalle.plantilla.beneficiario.nombreCorto"/>
+                            </span>
+                            <span jwcid="@contrib:Otherwise">
+                                <span jwcid="@contrib:Choose">
+                                    <span jwcid="@contrib:When" condition="ognl: !modoCaptura">
+                                        <select jwcid="beneficiarioComboBox"/><input jwcid="@ImageSubmit" image="ognl: assets.searchButton" selected="ognl: modoSubmit" tag="5" onclick="fnShowWaitImage();"/>
+                                    </span>
+                                    <span jwcid="@contrib:Otherwise">
+                                        <span jwcid="@DisabledField" value="ognl: dealDetalle.plantilla.beneficiario.nombreCorto"/>
+                                    </span>
+                                </span>
+                            </span>
+                        </span>
+                    </td>
+                    <td class="title" align="right">CR:</td>
+                    <td>
+						<span jwcid="@DisabledField" value="ognl: cr"/>
+                    </td>
+                    <td colspan="4">&nbsp;</td>
+                </tr>
+                </span>
+            </table>
+            <br />
+            <div align="center">
+            	<span jwcid="@contrib:FormConditional" condition="ognl: !modoCaptura">
+            		<a jwcid="@DirectLink" listener="ognl: listeners.agregaBeneficiario" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bNuevoBeneficiario" /></a>
+	                <span jwcid="@Conditional" condition ="ognl: page.sicaServiceData.findParametro(@com.ixe.ods.sica.model.ParametroSica@MODO_BUP_ALTAMIRA).valor.equals('BUP') ||
+	                											@com.ixe.ods.sica.pages.deals.formliq.CapturaCuentaIxe@PAGINA_CAPTURA_BENEFICIARIOS.equals(paginaAnterior)" >
+		                <input jwcid="@ImageSubmit" image="ognl: assets.bActualizar" onclick="return fnDisableForm(this.form);"/>
+		             </span>
+                </span>
+                <input jwcid="@RegresarCapturaDeal" idDeal="ognl: dealDetalle.deal.idDeal" />
+            </div>
+        </form>
+    </table>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!-- $Id: PageBorderWithoutMesaCanal.html,v 1.9 2008/02/22 18:25:06 ccovian Exp $ -->
+<html jwcid="@Shell" stylesheet="ognl:assets.stylesheet" title='ognl: "Sistema de Cambios"' doctype="" delegate="ognl: page.visit">
+<head jwcid="$remove$">
+    <title>Sistema de Cambios</title>
+    <link rel="stylesheet" type="text/css" href="../../css/ixe.css"/>
+    <script type="text/javascript" src="../../scripts/sothink/stm31.js"></script>
+</head>
+<body jwcid="@Body" background="images/seal.gif" bgproperties="fixed" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr><td width="10%"><img src="images/header_left.gif" width="195" height="28" alt=""></td><td width="1%" background="images/header_center.gif">&nbsp;&nbsp;&nbsp;</td><td width="80%" background="images/header_center.gif">&nbsp;</td></tr>
+        <tr><td colspan="3"><img src="images/header_bottom.gif" width="100%" height="6" alt=""></td></tr>
+        <tr>
+            <td colspan="2" bgcolor="black" class="headercell">&nbsp;&nbsp;<b>Usuario:</b>
+                <span jwcid="@contrib:Choose">
+                    <span jwcid="@contrib:When" condition="ognl: page.visit.user != null">
+                        <span jwcid="@Insert" value="ognl: page.visit.user.clave" />
+                    </span>
+                    <span jwcid="@contrib:Otherwise">
+                        <script type="text/javascript">
+                            <!--
+                            window.top.location = '/sica/app?service=login';
+                            //-->
+                        </script>
+                    </span>
+                </span>
+            </td>
+            <td bgcolor="black" class="headercell" align="right" nowrap><span jwcid="@Insert" value="ognl: page.estadoActual ? ('&lt;b&gt;Estado&lt;/b&gt;: ' + page.estadoActual.nombreEstado) : ''" raw="ognl: true" />&nbsp;&nbsp;&nbsp;</td>
+        </tr>
+    </table>
+	<span jwcid="@Conditional" condition="ognl: !menuDisabled">
+        <span jwcid="@menu:XmlMenu" name="SICA" menu="ognl: page.visit.menu" listener="ognl: page.visit.menuListener"/>
+        <br />
+    </span>
+    <br />
+    <table jwcid="@Conditional" condition="ognl: wideOpenMode" element="table" width="98%" align="center">
+        <tr>
+            <td>
+                <span jwcid="@LoadingImage" visible="ognl: true" breaksBeforeLoadingImage="ognl: breaksBeforeLoadingImage" />
+                <span jwcid="@RenderBody" />
+            </td>
+        </tr>
+    </table>
+    <table jwcid="@Conditional" condition="ognl: !wideOpenMode" element="table" width="980" align="center">
+        <tr>
+            <td>
+                <span jwcid="@LoadingImage" visible="ognl: true" breaksBeforeLoadingImage="ognl: breaksBeforeLoadingImage" />
+                <span jwcid="@RenderBody" />
+            </td>
+        </tr>
+    </table>
+    <table>
+  		<tr>
+			<td valign="bottom">
+				<span jwcid="@contrib:InspectorButton" disabled="ognl: !page.engine.showInspector"/>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

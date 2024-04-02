@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<!--$Id: build.xml,v 1.20.8.6.16.1 2012/10/30 00:13:10 mejiar Exp $ -->
+<project name="Securidad EJB Module" default="build-all" basedir=".">
+
+    <property name="root.dir" value="${basedir}/../.."/>
+
+    <property file="${root.dir}/config/common.properties"/>
+
+    <property name="sica-ejbgen.dir" value="${tmp.dir}/sica"/>
+
+    <path id="weblogic.classpath">
+        <pathelement location="${weblogic.lib.dir}/${weblogic.jar}"/>
+    </path>
+
+    <path id="sica.classpath">
+        <pathelement location="${dist.dir}/${sica.jar}"/>
+        <pathelement location="${dist.dir}/${ods-sica.jar}"/>
+    </path>
+
+    <path id="project.classpath">
+        <fileset dir="${root.lib.dir}">
+            <exclude name="xdoclet/*.jar"/>
+            <include name="**/*.jar"/>
+        </fileset>
+        <path refid="sica.classpath"/>
+        <path refid="weblogic.classpath"/>
+    </path>
+
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${classes.dir}"/>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Clean everything                                                    -->
+    <!-- =================================================================== -->
+    <target name="clean">
+        <delete dir="${classes.dir}"/>
+    </target>
+
+    <target name="build-ejbgen">
+        <ant antfile="${root.dir}/common.xml" target="ejbgen" inheritRefs="true">
+            <property name="ejbgen.src.beans" value="${src.dir}/com/ixe/ods/sica/SicaSessionBean.java,${src.dir}/com/ixe/ods/sica/SicaWorkFlowSessionBean.java,${src.dir}/com/ixe/ods/sica/SicaPizarronSessionBean.java,${src.dir}/com/ixe/ods/sica/SicaTellerSessionBean.java,${src.dir}/com/ixe/ods/sica/SiteSicaReceiverBean.java,${src.dir}/com/ixe/ods/sica/SeguridadSessionBean.java,${src.dir}/com/ixe/ods/sica/SicaInternalKondorSessionBean.java,${src.dir}/com/ixe/ods/sica/SicaKondorSessionBean.java"/>
+            <property name="ejbgen.dest.dir" value="${sica-ejbgen.dir}"/>
+        </ant>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Compile business logic                                              -->
+    <!-- =================================================================== -->
+    <target name="compile" depends="init" description="Compile hibernate Business Domain Model">
+        <javac destdir="${classes.dir}" debug="on" target="1.1">
+            <src path="${src.dir}"/>
+            <src path="${root.dir}/tmp"/>
+            <classpath refid="project.classpath"/>
+            <classpath refid="weblogic.classpath"/>
+        </javac>
+    </target>
+
+    <target name="javadoc">
+        <mkdir dir="${javadoc.dir}/${models.dir}"/>
+        <javadoc author="true"
+            destdir="${javadoc.dir}/${models.dir}"
+            packagenames="com.ixe.ods.*"
+            sourcepath="${src.dir}"
+            use="true"
+            version="true"
+            windowtitle="Documentation"
+            private="true">
+            <classpath refid="project.classpath"/>
+        </javadoc>
+    </target>
+
+    <!-- 
+=================================================================== -->
+    <!-- Build jars                                                          -->
+    <!-- 
+=================================================================== -->
+    <target name="build-ejbs" depends="compile">
+
+        <jar jarfile="${dist.dir}/${sica-ejb.jar}" basedir="${classes.dir}">
+            <metainf dir="${sica-ejbgen.dir}">
+                <include name="ejb-jar.xml"/>
+                <include name="weblogic-ejb-jar.xml"/>
+            </metainf>
+        </jar>
+
+        <ant antfile="${root.dir}/common.xml" target="ejbc" inheritRefs="true">
+            <property name="ejb.jar" value="${sica-ejb.jar}"/>
+            <property name="classpath.id" value="project.classpath"/>
+        </ant>
+
+    </target>
+
+    <target name="build-interfaces" depends="compile">
+        <jar jarfile="${dist.dir}/${sica-interfaces.jar}" basedir="${classes.dir}">
+            <exclude name="com/ixe/ods/sica/SiteSicaReceiver*.class"/>
+            <exclude name="com/ixe/ods/sica/SicaBanxicoReceiver*.class"/>
+            <!--include name="com/ixe/ods/sica/SiteSicaReceiver*.class"/-->
+            <exclude name="com/ixe/ods/sica/SicaSessionBean.class"/>
+            <exclude name="com/ixe/ods/sica/SicaWorkFlowSessionBean.class"/>
+            <exclude name="com/ixe/ods/sica/SicaPizarronSessionBean.class"/>
+            <exclude name="com/ixe/ods/sica/SeguridadSessionBean.class"/>            <exclude name="com/ixe/ods/sica/SicaInternalKondorSessionBean.class"/>
+        	<exclude name="com/ixe/ods/sica/SicaTeller*.class"/>
+            <exclude name="com/ixe/ods/sica/SicaKondorSessionBean.class"/>
+            <exclude name="com/ixe/ods/sica/SicaInternalKondorSessionBean.class"/>
+            <include name="com/ixe/ods/sica/SicaSession*.class"/>
+            <include name="com/ixe/ods/sica/SeguridadSession*.class"/>
+        	<include name="com/ixe/ods/sica/SicaWorkFlowSession*.class"/>
+            <include name="com/ixe/ods/sica/SicaPizarronSession*.class"/>
+            <include name="com/ixe/ods/sica/SicaKondorSession*.class"/>
+            <include name="com/ixe/ods/sica/SicaInternalKondorSession*.class"/>
+        </jar>
+        <jar jarfile="${dist.dir}/${sica-teller-interfaces.jar}" basedir="${classes.dir}">
+            <exclude name="com/ixe/ods/sica/SicaTellerSessionBean.class"/>
+            <exclude name="com/ixe/ods/sica/SicaPizarronBean.class"/>
+            <exclude name="com/ixe/ods/sica/SicaSession*.class"/>
+        	<exclude name="com/ixe/ods/sica/SicaKondor*.class"/>
+        	<exclude name="com/ixe/ods/sica/SeguridadSession*.class"/>
+            <include name="com/ixe/ods/sica/SicaTellerSession*.class"/>
+        </jar>
+
+        <mkdir dir="${dist.dir}/tmp" />
+
+        <unzip dest="${dist.dir}/tmp" src="${dist.dir}/${sica-ejb.jar}" overwrite="yes" />
+
+        <jar jarfile="${dist.dir}/sica-wmb-interfaces.jar" basedir="${dist.dir}/tmp">
+            <include name="com/ixe/ods/sica/*SicaKondorSession*.class"/>
+        </jar>
+    </target>
+
+    <!-- 
+=================================================================== -->
+    <!-- Build everything                                                    -->
+    <!-- 
+=================================================================== -->
+
+    <target name="build-all" depends="clean, build-ejbgen, build-ejbs, build-interfaces"/>
+
+
+    <target name="just-deploy">
+        <copy todir="${standalone.deployment.dir}">
+            <fileset dir="${dist.dir}" includes="${sica-ejb.jar}"/>
+        </copy>
+    </target>
+
+    <target name="deploy" depends="build-all, just-deploy">
+    </target>
+
+</project>

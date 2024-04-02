@@ -1,0 +1,726 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.Deal"
+        table="SC_DEAL"
+        proxy="com.ixe.ods.sica.model.Deal"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idDeal"
+            column="ID_DEAL"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_DEAL_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Deal.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <version
+            name="version"
+            type="java.lang.Integer"
+            column="VERSION"
+            access="property"
+            unsaved-value="undefined"
+        />
+
+        <property
+            name="acudirCon"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ACUDIR_CON"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="cambioRfc"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CAMBIO_RFC"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="cambioEmail"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CAMBIO_EMAIL"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="compra"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="emailFactura"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="EMAIL_FACTURA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="emailFacturaOtro"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="EMAIL_FACTURA_OTRO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="comprobante"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ENVIAR_AL_CLIENTE"
+            not-null="true"
+        />
+
+        <property
+            name="emailsComprobantes"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="EMAILS_COMPROBANTES"
+            not-null="false"
+        />
+
+        <property
+            name="eventosDeal"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="EVENTOS_DEAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="factura"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="FACTURA"
+            not-null="true"
+        />
+
+        <property
+            name="fechaCaptura"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_CAPTURA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fechaLiquidacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_LIQUIDACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="factorRiesgo"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="FACTOR_RIESGO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="idLiquidacion"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_LIQUIDACION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="mensajeria"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="MENSAJERIA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="montoEquivLc"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO_EQUIV_LC"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="tipoValor"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_VALOR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambioCobUsdDiv"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="TC_COB_USD_DIV"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambioCobMxnUsd"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="TC_COB_MXN_USD"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="nombreFactura"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NOMBRE_FACTURA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="originalDe"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ORIGINAL_DE"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="contrarioDe"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="CONTRARIO_DE"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="correccion"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="CORRECCION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="rfcFactura"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="RFC_FACTURA"
+            not-null="false"
+            unique="false"
+        />
+
+        <many-to-one
+            name="dirFactura"
+            class="com.ixe.ods.bup.model.Direccion"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIR_FACTURA"
+            unique="false"
+        />
+
+        <many-to-one
+            name="dirFacturaMensajeria"
+            class="com.ixe.ods.bup.model.Direccion"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIR_FACT_MENS"
+            unique="false"
+        />
+
+        <property
+            name="observaciones"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="OBSERVACIONES"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="pagoAnticipado"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="PAGO_ANTICIPADO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="reversado"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="REVERSADO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoDeal"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="SIMPLE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="statusDeal"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATUS_DEAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tomaEnFirme"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="TOMA_EN_FIRME"
+            not-null="true"
+            unique="false"
+        />
+
+        <component
+            name="canalMesa"
+            class="com.ixe.ods.sica.model.CanalMesa"
+        >
+
+        <many-to-one
+            name="canal"
+            class="com.ixe.ods.sica.model.Canal"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_CANAL"
+            unique="false"
+        />
+
+        <many-to-one
+            name="mesaCambio"
+            class="com.ixe.ods.sica.model.MesaCambio"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_MESA_CAMBIO"
+            unique="false"
+        />
+
+        </component>
+
+        <property
+            name="noCuentaIxe"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NO_CUENTA_IXE"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="claveReferencia"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_REFERENCIA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="contieneNeteo"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="NETEO"
+            not-null="false"
+            unique="false"
+        />
+
+        <many-to-one
+            name="broker"
+            class="com.ixe.ods.sica.model.Broker"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_BROKER"
+            unique="false"
+        />
+
+        <many-to-one
+            name="contratoSica"
+            class="com.ixe.ods.bup.model.ContratoSica"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="NO_CUENTA"
+            unique="false"
+        />
+
+        <many-to-one
+            name="direccion"
+            class="com.ixe.ods.bup.model.Direccion"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIRECCION_MENSAJERIA"
+            unique="false"
+        />
+
+        <many-to-one
+            name="promotor"
+            class="com.ixe.ods.bup.model.EmpleadoIxe"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_PROMOTOR"
+            unique="false"
+        />
+
+        <many-to-one
+            name="usuario"
+            class="com.ixe.ods.seguridad.model.Usuario"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_USUARIO"
+            unique="false"
+        />
+
+        <bag
+            name="detalles"
+            lazy="true"
+            inverse="true"
+            cascade="none"
+            order-by="FOLIO_DETALLE"
+        >
+
+              <key
+                  column="ID_DEAL"
+              >
+              </key>
+
+              <one-to-many
+                  class="com.ixe.ods.sica.model.DealDetalle"
+              />
+
+        </bag>
+
+        <many-to-one
+            name="swap"
+            class="com.ixe.ods.sica.model.Swap"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_FOLIO_SWAP"
+            unique="false"
+        />
+
+        <property
+            name="fechaLimiteCapturaContrato"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_LIM_CAPT_CONT"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="liquidacionEspecial"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="LIQUIDACION_ESPECIAL"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="liquidacionAnticipada"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="LIQUIDACION_ANTICIPADA"
+            not-null="true"
+            unique="false"
+        />
+
+        <many-to-one
+            name="grupoTrabajo"
+            class="com.ixe.ods.sica.model.GrupoTrabajo"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="id_grupo_trabajo"
+            unique="false"
+        />
+
+        <property
+            name="tipoExcepcion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_EXCEPCION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="tipoZona"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_ZONA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="esCliente"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ES_CLIENTE"
+            not-null="false"
+            unique="false"
+        />
+
+        <many-to-one
+            name="sistemaTce"
+            class="com.ixe.ods.sica.model.SistemaTce"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="id_sistema"
+            unique="false"
+        />
+
+        <property
+            name="especial"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ESPECIAL"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="estatusEspecial"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ESTATUS_ESPECIAL"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="metodoPago"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="METODO_PAGO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="cuentaPago"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CUENTA_PAGO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="cr"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="CR"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Deal.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findPersonaContratoSica"><![CDATA[
+            SELECT distinct cs, p FROM ContratoSica AS cs LEFT JOIN cs.roles AS pcr, com.ixe.ods.bup.model.Persona AS p WHERE pcr.id.persona.idPersona = p.idPersona AND cs.noCuenta = ? AND pcr.id.rol = 'TIT' AND pcr.status.estatus = 'VIG'
+        ]]></query>
+        <query name="findAllDealsBySectorAndDate"><![CDATA[
+            FROM Deal AS d WHERE d.fechaCaptura BETWEEN ? AND ? ORDER BY d.fechaLiquidacion
+        ]]></query>
+        <query name="findDealByStatus"><![CDATA[
+            FROM Deal AS d WHERE d.statusDeal = 'CO' OR d.statusDeal = 'PL' OR d.statusDeal = 'TP' ORDER BY d.idDeal
+        ]]></query>
+        <query name="findDealByStatusByFecha"><![CDATA[
+            FROM Deal AS d WHERE (d.statusDeal = 'CO' OR d.statusDeal = 'PL' OR d.statusDeal = 'TP') AND d.fechaLiquidacion BETWEEN ? AND ? ORDER BY d.idDeal
+        ]]></query>
+        <query name="findDealsPendientesReconocimiento"><![CDATA[
+            FROM Deal AS d WHERE d.statusDeal != 'CA' AND d.canalMesa.mesaCambio.divisaReferencia.idDivisa != 'MXN' ORDER BY d.idDeal
+        ]]></query>
+        <query name="findDealsPactadosHoy"><![CDATA[
+            FROM Deal AS d INNER JOIN FETCH d.detalles det INNER JOIN FETCH det.divisa LEFT JOIN FETCH det.plantilla WHERE (d.fechaCaptura BETWEEN ? AND ?) AND d.statusDeal != 'CA' ORDER BY d.idDeal
+        ]]></query>
+        <query name="findAllDealsBySectorAndDateOderByDivisaAndSector"><![CDATA[
+            FROM Deal AS d WHERE d.fechaCaptura BETWEEN ? AND ? ORDER BY d.fechaLiquidacion
+        ]]></query>
+        <query name="findDealsLiquidacionAnticipada"><![CDATA[
+            FROM Deal AS d INNER JOIN FETCH d.detalles det INNER JOIN FETCH det.divisa LEFT JOIN FETCH det.plantilla WHERE d.liquidacionAnticipada = '1'
+        ]]></query>
+
+</hibernate-mapping>

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<project name="ESB-Altamira" default="install" basedir=".">
+
+    <property name="root.dir" value="../.."/>
+
+    <property file="${user.home}/common.properties"/>
+    <property file="${root.dir}/config/common.properties"/>
+
+
+    <path id="project.classpath">
+        <fileset dir="${root.lib.dir}/axis">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <!-- Targets-->
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${classes.dir}"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${classes.dir}"/>
+    </target>
+
+    <target name="compile" depends="init" description="Compile all classes in the framework.">
+        <javac destdir="${classes.dir}" debug="on" target="1.1">
+            <src path="${src.dir}"/>
+            <classpath refid="project.classpath"/>
+        </javac>
+    </target>
+
+    <target name="install" depends="compile">
+        <jar jarfile="${dist.dir}/${esb-altamira.jar}" basedir="${classes.dir}">
+            <fileset dir="${src.dir}">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </jar>
+    </target>
+
+</project>

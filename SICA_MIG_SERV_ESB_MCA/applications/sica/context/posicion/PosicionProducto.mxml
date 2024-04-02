@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<view:PosicionProducto
+    xmlns:view="com.ixe.ods.sica.posicion.views.*"
+    xmlns:mx="http://www.macromedia.com/2003/mxml"
+    xmlns:ls="com.legosoft.*"
+    xmlns:sica="*">
+
+    <mx:Grid verticalGap="0">
+        <mx:GridRow id="canalesBox">
+            <mx:GridItem>
+                <mx:Label id="canalLabel" fontWeight="bold"/>
+            </mx:GridItem>
+            <mx:GridItem>
+                <ls:TruncatedLabel id="canales" wordWrap="false" width="400"/>
+            </mx:GridItem>
+        </mx:GridRow>
+        <mx:GridRow id="productosBox">
+            <mx:GridItem>
+                <mx:Label id="productoLabel" fontWeight="bold"/>
+            </mx:GridItem>
+            <mx:GridItem>
+                <ls:TruncatedLabel id="productos" wordWrap="false" width="400"/>
+            </mx:GridItem>
+        </mx:GridRow>
+    </mx:Grid>
+
+    <sica:TipoOperacion4Producto dataProvider="{dataProvider}"/>
+
+</view:PosicionProducto>

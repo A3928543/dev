@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:BusquedaPersona xmlns:mx="http://www.macromedia.com/2003/mxml"
+	xmlns:views="com.ixe.ods.sica.jerarquia.views.*" >
+	
+	<mx:DateFormatter id="dateFormatter" formatString="D/M/Y J"/>
+	
+		<mx:VBox>
+			<mx:HBox>
+				<mx:VBox>
+					<mx:HBox>
+						<mx:Label text="Buscar por:"></mx:Label>
+						<mx:ComboBox id="buscarCombo" change="buscarComboChange()"></mx:ComboBox>
+					</mx:HBox>
+				
+					<mx:ViewStack id="searchParameters" selectedIndex="0">
+						<mx:HBox width="100%" horizontalAlign="center" verticalAlign="middle">
+							<mx:VBox>
+								<mx:Label text="Apellido Paterno:"></mx:Label>
+									<mx:TextInput id="apPaterno"></mx:TextInput>
+							</mx:VBox>
+							<mx:VBox>
+								<mx:Label text="Apellido Materno:"></mx:Label>
+									<mx:TextInput id="apMaterno"></mx:TextInput>
+							</mx:VBox>
+							<mx:VBox>
+								<mx:Label text="Nombre:"></mx:Label>
+									<mx:TextInput id="nombre"></mx:TextInput>
+							</mx:VBox>
+						</mx:HBox>
+						<mx:HBox width="100%" horizontalAlign="center" verticalAlign="middle">
+							<mx:Label text="Clave de usuario:"></mx:Label>
+								<mx:TextInput id="cveUsuario" ></mx:TextInput>
+						</mx:HBox>
+						<mx:HBox width="100%" horizontalAlign="center" verticalAlign="middle">
+							<mx:Label text="Numero de nomina:"></mx:Label>
+								<mx:TextInput id="noNomina"></mx:TextInput>
+						</mx:HBox>
+						<mx:HBox width="100%" horizontalAlign="center" verticalAlign="middle">
+							<mx:Label text="RFC:"></mx:Label>
+								<mx:TextInput id="rfc"></mx:TextInput>
+						</mx:HBox>
+					</mx:ViewStack>
+				</mx:VBox>
+				
+				<mx:HBox verticalAlign="middle">
+					<mx:Button id="btnBuscar" click="findPersonEvent()" label="Buscar" width="60" />	
+				</mx:HBox>
+				
+			</mx:HBox>
+				
+				<mx:HBox>
+					<mx:DataGrid id="personasBusqueda" height="80" >
+						<mx:columns>
+							<mx:Array>
+								<mx:DataGridColumn headerText="ID Persona" columnName="idPersona" width="82" />
+								<mx:DataGridColumn headerText="Nombre" columnName="nombre" width="190" />
+								<mx:DataGridColumn headerText="RFC" columnName="rfc" width="105"/>
+								<mx:DataGridColumn headerText="Clave Usuario" columnName="claveUsuario" width="90"/>
+								<mx:DataGridColumn headerText="Nomina" columnName="nomina" width="80"/>
+							</mx:Array>
+						</mx:columns>
+		        	</mx:DataGrid>
+				
+					<mx:ViewStack id="botonesViewStack" resizeToContent="true">
+						<mx:HBox width="100%" >
+							<mx:Button label="Agregar" click="agregarClick()" width="60" visible="{personasBusqueda.selectedItem != null}" />
+						</mx:HBox>
+						
+						<mx:VBox width="100%">
+							<mx:VBox visible="{personasBusqueda.selectedItem != null}" width="100%">
+								<mx:HBox>
+									<mx:Label text="Inicio"></mx:Label>
+										<mx:DateField id="fechaInicio"></mx:DateField>
+									<mx:Label text="Fin"></mx:Label>  
+										<mx:DateField id="fechaFin"></mx:DateField>
+								</mx:HBox>
+								<mx:Button label="Asignar" click="asignarAlterno()" width="60"/>
+							</mx:VBox>
+						</mx:VBox>
+					</mx:ViewStack>
+				</mx:HBox>	
+					
+		</mx:VBox>
+
+</views:BusquedaPersona>

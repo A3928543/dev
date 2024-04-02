@@ -1,0 +1,187 @@
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <!-- $Id: AprobacionLineaCredito.html,v 1.22.10.1.60.2 2016/08/17 18:31:38 mejiar Exp $ -->
+    <title>Encabezado</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr valign="top">
+            <td width="200">
+            	<form jwcid="@Form" listener="ognl: listeners.fetch" delegate="ognl: beans.delegate">
+                	<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes"/>
+	                <table jwcid="@ActionPortletBorder" title="ognl: titleActionPortletBorder" minimizable="yes" minimized="ognl: minimizado" >
+        	            <fieldset class="normal">
+                        	<legend class="legend">Seleccione un Promotor</legend>
+                        	<select jwcid="promotorSolicitudComboBox" />
+                        </fieldset>
+		            	<fieldset class="normal">
+		            		<legend class="legend">Seleccione Estatus</legend>
+		            		<span jwcid="@RadioGroup" selected="ognl: estatus">
+		            			<span jwcid="@contrib:Choose">
+		            				<span jwcid="@contrib:When" condition="ognl: modoDireccionPromocion">
+           								<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.LineaCambio@STATUS_SOLICITUD" />En solicitud<br />
+					                	<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.LineaCambio@STATUS_APROBADA" />Aprobadas<br />
+	            						<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.LineaCambio@STATUS_ACTIVADA" />Activadas<br />
+       		            				<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.LineaCambio@STATUS_VENCIDA" />Vencidas<br />
+			            				<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.LineaCambio@STATUS_SUSPENDIDA" />Suspendidas<br />
+			                        </span>
+				                    <span jwcid="@contrib:Otherwise">
+	            						<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.LineaCambio@STATUS_APROBADA" />Aprobadas<br />
+	            						<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.LineaCambio@STATUS_ACTIVADA" />Activadas<br />
+       		            				<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.LineaCambio@STATUS_VENCIDA" />Vencidas<br />
+	            						<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.LineaCambio@STATUS_SUSPENDIDA" />Suspendidas<br />
+		                            </span>
+			                    </span>
+		               		</span>
+	               		</fieldset>
+	               		<fieldset class="normal">
+		            		<legend class="legend">Porcentaje de Uso</legend>
+		            		L&iacute;mite Inferior <input type="text" jwcid="limiteInferior" /><br />
+		            		L&iacute;mite Superior <input type="text" jwcid="limiteSuperior" />
+		            	</fieldset>
+		            	<fieldset class="normal">
+							<legend class="legend">L&iacute;neas por Renovar</legend>
+	                    	<input jwcid="@Checkbox" selected="ognl: lineasPorRenovar" />
+                        </fieldset>
+	               		<br />
+	               		<div align="center">
+	               			<input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+               			</div>
+           			</table>
+       			</form>
+       			<span jwcid="@Conditional" condition="ognl: !modoDireccionPromocion">
+	   				<form jwcid="@Form" listener="ognl: listeners.fetchClientes" delegate="ognl: beans.delegate" onSubmit="return fnDisableForm(this);">
+	                    <table jwcid="@ActionPortletBorder" title="Busqueda por Empresas" width="100%">
+	                        <fieldset class="normal">
+	                            <legend class="legend">Empresas</legend>
+	                            <font class="normal"><u>R</u>az&oacute;n Social:</font><br />
+	                            <input class="uppercase" type="text" jwcid="empresasTextField@ixe:UppercaseTextField" accesskey="R" value="ognl: razonSocial" size="40"/><br />
+	                        </fieldset>
+	                        <fieldset class="normal">
+	                            <legend class="legend">Personas F&iacute;sicas</legend>
+	                            <font class="normal">Apellido <u>P</u>aterno:</font><br />
+	                            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" accesskey="P" value="ognl: paterno" size="40" /><br />
+	                            <font class="normal">Apellido <u>M</u>aterno:</font><br />
+	                            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" accesskey="M" value="ognl: materno" size="40" /><br />
+	                            <font class="normal"><u>N</u>ombre:</font><br />
+	                            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" value="ognl: nombre" accesskey="N" size="40" /><br />
+	                        </fieldset>
+	                        <fieldset class="normal">
+	                            <legend class="legend">Ambas</legend>
+	                            <font class="normal">Cuen<u>t</u>a / Contrato: <br>(sin omitir caracteres)</font><br />
+	                            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" accesskey="T" value="ognl: noCuenta" size="40" /><br />
+	                        </fieldset>
+	                        <br />
+	                        <div align="center">
+	                            <input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+	                        </div>
+	                    </table>
+	                </form>
+				</span>
+   			</td>
+   			<td width="1%">&nbsp;</td>
+            <td>
+            	<span jwcid="@Conditional" condition="ognl: lineasCredito.size() &gt; 0">
+	            	<table jwcid="@ActionPortletBorder" title="L&iacute;neas de Cr&eacute;dito">
+			            <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: {"Cliente", "Importe Total", "Excepci&oacute;n en Adeudos", "&Uacute;ltima Modificaci&oacute;n", "Fecha de Vencimiento", "Operaci&oacute;n", "&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;"}' columnCount="12" width="100%">
+	                        <tr jwcid="forLineasCredito@Foreach" source="ognl: lineasCredito" element="tr" class="ognl: beans.evenOdd.next">
+	                            <td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forLineasCredito.value.corporativo.nombreCompleto" raw="yes" /></td>
+	                            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forLineasCredito.value.importePAyTF==null || components.forLineasCredito.value.importeFV==null ? new java.math.BigDecimal(0) :components.forLineasCredito.value.totalLineaAutorizada" raw="yes" format="ognl: moneyFormat" /></td>
+                                <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forLineasCredito.value.casoExcepcion ? 'S\u00ed' : 'No'" /></td>
+	                            <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forLineasCredito.value.ultimaModificacion" raw="yes" format="ognl: dateFormat"/></td>
+	                            <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forLineasCredito.value.vencimiento" raw="yes" format="ognl: dateFormat"/></td>
+	                            <span jwcid="@contrib:Choose">
+	                                <span jwcid="@contrib:When" condition='ognl: modoDireccionPromocion && @com.ixe.ods.sica.model.LineaCambio@STATUS_SOLICITUD.equals(components.forLineasCredito.value.statusLinea)'>
+	                                    <td class="normal" align="center">
+	                                    	<a jwcid="@DirectLink" listener="ognl:listeners.operacionAprobar" parameters='ognl: components.forLineasCredito.value.idLineaCambio'
+	                                    	onClick="return confirm('\u00bfDesea Aprobar la L\u00ednea de Cr\u00e9dito?');">Aprobar</a>
+	                                    </td>
+	                                </span>
+	                                <span jwcid="@contrib:When" condition='ognl: !modoDireccionPromocion && @com.ixe.ods.sica.model.LineaCambio@STATUS_APROBADA.equals(components.forLineasCredito.value.statusLinea)'>
+	                                    <td class="normal" align="center">
+	                                    	<a jwcid="@DirectLink" listener="ognl:listeners.operacionActivar" parameters='ognl: {components.forLineasCredito.value.idLineaCambio,components.forLineasCredito.value.corporativo.nombreCompleto}'
+	                                    	onClick="return confirm('\u00bfEst\u00e1 seguro de Activar la L\u00ednea de Cr\u00e9dito?');">Activar</a>
+	                                    </td>
+	                                </span>
+	                                <span jwcid="@contrib:When" condition='ognl: !modoDireccionPromocion && @com.ixe.ods.sica.model.LineaCambio@STATUS_ACTIVADA.equals(components.forLineasCredito.value.statusLinea)'>
+	                                    <td class="normal" align="center">
+	                                    	<a jwcid="@DirectLink" listener="ognl:listeners.operacionSuspender" parameters='ognl: {components.forLineasCredito.value.idLineaCambio,components.forLineasCredito.value.corporativo.nombreCompleto}'
+	                                    	onClick="return confirm('\u00bfEst\u00e1 seguro de Suspender la L\u00ednea de Cr\u00e9dito?');">Suspender</a>
+	                                    </td>
+	                                </span>
+	                                <span jwcid="@contrib:When" condition='ognl: !modoDireccionPromocion && (@com.ixe.ods.sica.model.LineaCambio@STATUS_SUSPENDIDA.equals(components.forLineasCredito.value.statusLinea) || @com.ixe.ods.sica.model.LineaCambio@STATUS_VENCIDA.equals(components.forLineasCredito.value.statusLinea))'>
+	                                    <td class="normal" align="center">
+	                                    	<a jwcid="@DirectLink" listener="ognl:listeners.operacionReactivar" parameters='ognl: {components.forLineasCredito.value.idLineaCambio,components.forLineasCredito.value.corporativo.nombreCompleto}'
+	                                    	onClick="return confirm('\u00bfEst\u00e1 seguro de Reactivar la L\u00ednea de Cr\u00e9dito?');">Reactivar</a>
+	                                    </td>
+	                                </span>
+	                                <span jwcid="@contrib:Otherwise"><td class="normal" align="center">&nbsp;</td></span>
+	                            </span>
+								<td class="normal" align="left">
+									<a href="#" jwcid="@DirectLink" listener="ognl:listeners.consultarHistorialLineaCredito" parameters='ognl: {components.forLineasCredito.value.idLineaCambio,components.forLineasCredito.value.corporativo.nombreCompleto}' onClick="fnShowWaitImage();">
+									Consultar Historial L&iacute;nea de Cr&eacute;dito</a>
+								</td>
+    							<span jwcid="@contrib:Choose">
+									<span jwcid="@contrib:When" condition='ognl: !modoDireccionPromocion && @com.ixe.ods.sica.model.LineaCambio@STATUS_CANCELADA.equals(components.forLineasCredito.value.statusLinea)'>
+	                                    <td class="normal" align="center">&nbsp;</td>
+	                                    <td class="normal" align="center">&nbsp;</td>
+	                                </span>
+	                                <span jwcid="@contrib:When" condition='ognl: !modoDireccionPromocion'>
+	                                    <td class="normal" align="center">
+	                                    <a href="#" jwcid="@DirectLink" listener="ognl:listeners.modificarMonto" parameters="ognl: {components.forLineasCredito.value.corporativo.idPersona, components.forLineasCredito.value.corporativo.nombreCompleto, components.forLineasCredito.value.idLineaCambio}" onClick="fnShowWaitImage();">
+											Modificar L&iacute;nea de Cr&eacute;dito</a>
+	                                    </td>
+	                                    <td class="normal" align="center"> 
+											<a jwcid="@DirectLink" listener="ognl:listeners.operacionCancelar" parameters='ognl: {components.forLineasCredito.value.idLineaCambio, components.forLineasCredito.value.corporativo.nombreCompleto}' 
+											onClick="return confirm('\u00bfEst\u00e1 seguro de Cancelar la L\u00ednea de Cr\u00e9dito?');">Cancelar</a>
+			                            </td>
+	                                </span>
+	                                <span jwcid="@contrib:Otherwise">
+    									<td class="normal" align="left">
+											<a href="#" jwcid="@DirectLink" listener="ognl:listeners.modificarMonto" parameters="ognl: {components.forLineasCredito.value.corporativo.idPersona, components.forLineasCredito.value.corporativo.nombreCompleto, components.forLineasCredito.value.idLineaCambio}" onClick="fnShowWaitImage();">
+												Consultar L&iacute;nea de Cr&eacute;dito</a>
+										</td>
+										<td class="normal" align="center"> 
+											<a jwcid="@DirectLink" listener="ognl:listeners.operacionCancelar" parameters='ognl: {components.forLineasCredito.value.idLineaCambio,components.forLineasCredito.value.corporativo.nombreCompleto}' 
+											onClick="return confirm('\u00bfEst\u00e1 seguro de Cancelar la L\u00ednea de Cr\u00e9dito?');">Cancelar</a>
+			                            </td>
+			                        </span>
+			                   	</span>
+                                <td class="normal" align="center">
+                                    <a jwcid="@DirectLink" listener="ognl: listeners.verLineaCambios" parameters="ognl: {components.forLineasCredito.value.corporativo.idPersona, components.forLineasCredito.value.corporativo.nombreCorto }">Ver</a>
+                                </td>
+                                <td class="normal" align="center">
+                                    <a jwcid="@DirectLink" listener="ognl: listeners.ver" parameters="ognl: {components.forLineasCredito.value.corporativo.idPersona, components.forLineasCredito.value.corporativo.nombreCorto }">Revisar Usos por Fecha Valor</a>
+                                </td>
+                                <span jwcid="@Conditional" condition="ognl: visit.hasPermission(@com.ixe.ods.sica.FacultySystem@SICA_APROB_LINCRED_C)">
+                                    <td class="normal" align="center">
+                                        <span jwcid="@Conditional" condition="ognl: components.forLineasCredito.value.casoExcepcion">
+                                              <a jwcid="@DirectLink" listener="ognl:listeners.operacionExcepcionEnAdeudos" parameters='ognl: components.forLineasCredito.value.idLineaCambio'
+                                    	      onClick="return confirm('\u00bfDeseas quitar la excepci\u00f3n en adeudos?');">Quitar Excepci&oacute;n en Adeudos</a>
+                                           </span>
+                                           <span jwcid="@Conditional" condition="ognl: !components.forLineasCredito.value.casoExcepcion">
+                                              <a jwcid="@DirectLink" listener="ognl:listeners.operacionExcepcionEnAdeudos" parameters='ognl: components.forLineasCredito.value.idLineaCambio'
+                                    	      onClick="return confirm('\u00bfDeseas agregar la excepci\u00f3n en adeudos?');">Agregar Excepci&oacute;n en Adeudos</a>
+                                           </span>
+                                    </td>
+                                </span>
+                                <span jwcid="@Conditional" condition="ognl: !visit.hasPermission(@com.ixe.ods.sica.FacultySystem@SICA_APROB_LINCRED_C)">
+                                    <td class="normal" align="center">
+                                      &nbsp;
+                                    </td>
+                                </span>
+                            </tr>
+	                    </table>
+	        		</table>
+               </span>
+                <span jwcid="@Conditional" condition="ognl: corporativoSeleccionado">
+                    <br />
+                    <table jwcid="@ResumenLineasCredito" idCliente="ognl: corporativoSeleccionado.idPersona" nombreCorto="ognl: corporativoSeleccionado.nombreCorto" />
+                </span>
+               &nbsp;
+           </td>
+       	</tr>
+   	</table>
+</body>
+</html>

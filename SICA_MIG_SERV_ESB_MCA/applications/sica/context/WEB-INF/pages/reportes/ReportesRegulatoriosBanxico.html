@@ -1,0 +1,89 @@
+
+<html jwcid="@Shell" stylesheet="ognl:assets.stylesheet"
+	title="Sistema de Cambios" delegate="ognl: page.visit">
+<head jwcid="$remove$">
+<title>Reportes</title>
+<link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+	<span jwcid="@menu:XmlMenu" name="SICA" menu="ognl: page.visit.menu"
+		listener="ognl: page.visit.menuListener" />
+	<table border="0" cellpadding="0" cellspacing="0" width="980"
+		align="center">
+		<tr>
+			<td>
+				<div id="mensaje">
+					<br /> <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate"
+						insertBreakAtTail="yes" width="100%" />
+				</div> <span jwcid="@LoadingImage" visible="ognl: true"
+				breaksBeforeLoadingImage="ognl: 10" valign="center" />
+
+				<table border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tr valign="top">
+						<td width="200">
+
+							<form jwcid="@Form" listener="ognl: listeners.reportes"
+								delegate="ognl: beans.delegate"
+								onSubmit="descargar(); return fnDisableForm(this);">
+
+								<table jwcid="@ActionPortletBorder"
+									title="Descarga de reportes regulatorios de contrapartes">
+									
+									<tr>
+										<td align="right" class="title">Reporte:</td>
+
+										<td class="title">
+											<select jwcid="@PropertySelection" model="ognl: comboReportes" value="ognl: reporte" />
+										</td>
+										<td>
+											<span jwcid="@contrib:FormConditional" condition='ognl: errorComboReporte'>
+												<img src="images/error.gif" width="16" height="16" /> </span>
+										</td>
+									</tr>
+									
+									<tr>
+										<td align="right" class="title">Formato:</td>
+
+										<td class="title">
+											<select jwcid="@PropertySelection" model="ognl: comboFormatos" value="ognl: formato" />
+										</td>
+										<td>
+											<span jwcid="@contrib:FormConditional" condition='ognl: errorComboFormato'>
+												<img src="images/error.gif" width="16" height="16" /> 
+											</span>
+										</td>
+									</tr>
+									
+									<tr>
+										<td align="right" class="title">Fecha:</td>
+
+										<td class="title">
+											<span jwcid="@ls:DatePicker" value="ognl: fecha" format="dd-MM-yyyy" size="10" />
+										</td>
+										<td>
+											<span jwcid="@contrib:FormConditional"
+												  condition='ognl: errorFecha'>
+												<img src="images/error.gif" width="16" height="16" /> </span>
+										</td>
+									</tr>
+
+									<tr align="right">
+										<td colspan="3" align="right"><input jwcid="@ImageSubmit" image="ognl: assets.searchButton" /></td>
+									</tr>
+								</table>
+
+
+
+
+							</form></td>
+
+
+						<td>&nbsp;</td>
+					</tr>
+				</table></td>
+		</tr>
+	</table>
+	<span jwcid="@ls:DatePickerColophon" />
+	<script jwcid="@Script" script="/WEB-INF/scripts/Descargar.script" />
+</body>
+</html>

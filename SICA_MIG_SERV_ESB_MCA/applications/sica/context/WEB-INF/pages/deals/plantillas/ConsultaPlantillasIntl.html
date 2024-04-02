@@ -1,0 +1,56 @@
+<!-- $Id: ConsultaPlantillasIntl.html,v 1.15 2008/11/12 05:53:12 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Plantillas Internacionales</title>
+    <link rel="StyleSheet" href="../../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+<table width="100%">
+	<tr valign="top">
+		<td>
+            <table jwcid="@Cliente" contratoSica="ognl: contratoSica" nombreCliente="ognl: nombreCliente" idPersona="ognl: idPersona" width="100%" />
+			<br />
+		    <table jwcid="@ActionPortletBorder" title="Plantillas Internacionales">
+		        <form jwcid="@Form" listener="ognl: listeners.insertar" delegate="ognl:beans.delegate">
+		         <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+		            <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: {"Clave", "Mnem&oacute;nico", "Cta. Beneficiario", "Divisa", "Nombre Beneficiario", "Sistema Interm.", "Cve. Bco. Interm.", "Bco. Interm.", "Sistema de Beneficiario", "Cve. Bco. Beneficiario", "Bco. Beneficiario", "Pa&iacute;s", "Cuenta Banco Interm.", "Status", "&Uacute;ltima Modificaci&oacute;n", "&nbsp;"}' columnCount="16" width="100%">
+		                <tr jwcid="forDeals@Foreach" source='ognl: getSicaServiceData().findPlantillas(tipoPlantilla, contratoSica.noCuenta)' element="tr" class="ognl: beans.evenOdd.next">
+		                    <td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forDeals.value.clavePlantilla" /></td>
+							<td class="normal" align="left"><span jwcid="@Insert" value='ognl: components.forDeals.value.mnemonico != null ? components.forDeals.value.mnemonico : "" + " - " + components.forDeals.value.mnemonico != null ? getFormaPagoLiq(components.forDeals.value.mnemonico).descripcion : ""'/></td>
+		                    <td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forDeals.value.noCuentaBeneficiario" /></td>
+		                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value.divisa.idDivisa" /></td>
+		                    <td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forDeals.value.beneficiario.nombreCompleto" /></td>
+		                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value.tipoCuentaBancoInterm" /></td>
+  		                    <td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forDeals.value.claveBancoInterm" /></td>
+  		                    <td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forDeals.value.nombreBancoInterm" /></td>
+							<td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value.tipoCuentaBanco" /></td>
+  		                    <td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forDeals.value.claveBanco" /></td>
+  		                    <td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forDeals.value.nombreBanco" /></td>
+		                    <td class="normal" align="left"><span jwcid="@Insert" value='ognl: components.forDeals.value.idPais != null ? getPaisXClaveISO(visit.ticket, components.forDeals.value.idPais).nombrePais : "" ' /></td>
+		                    <td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forDeals.value.cuentaBancoInterm" /></td>
+		                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value.statusPlantilla" /></td>
+		                    <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value.ultimaModificacion" format="ognl: dateFormat" /></td>
+		                    <span jwcid="@contrib:Choose">
+		                    	<span jwcid="@contrib:When" condition='ognl: !components.forDeals.value.statusPlantilla.equals(@com.ixe.ods.sica.model.Plantilla@STATUS_PLANTILLA_SUSPENDIDA)'>
+		                    		<td class="normal" align="center"><a jwcid="@DirectLink" listener="ognl:listeners.inactivar" parameters="ognl: components.forDeals.value.idPlantilla" onClick="fnShowWaitImage();">Inactivar</a></td>
+	                    		</span>
+	                    		<span jwcid="@contrib:Otherwise">
+	                    			<td class="normal">&nbsp;</td>
+	                    		</span>
+                    		</span>
+		                </tr>
+		            </table>
+		            <br />
+		            <div align="center">
+		                <input jwcid="@ImageSubmit" image="ognl: assets.insertButton" onclick="return fnDisableForm(this.form);" />
+		                <a jwcid="@DirectLink" listener="ognl:listeners.cancelar" onClick="fnShowWaitImage();">
+							<img jwcid="@Image" image="ognl: assets.regresarButton" accesskey="R"/>
+						</a>
+		            </div>
+		        </form>
+		    </table>
+	    </td>
+    </tr>
+</table>
+</body>
+</html>

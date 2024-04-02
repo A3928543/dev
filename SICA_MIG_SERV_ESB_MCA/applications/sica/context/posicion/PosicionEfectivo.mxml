@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<view:PosicionEfectivo
+    xmlns:view="com.ixe.ods.sica.posicion.views.*"
+    xmlns:mx="http://www.macromedia.com/2003/mxml"
+    xmlns:sica="*">
+
+    <mx:Label fontWeight="bold" text="{com.ixe.ods.sica.posicion.Posicion.EFECTIVO}"/>
+
+    <sica:TipoOperacion4Producto dataProvider="{dataProvider}"/>
+
+</view:PosicionEfectivo>

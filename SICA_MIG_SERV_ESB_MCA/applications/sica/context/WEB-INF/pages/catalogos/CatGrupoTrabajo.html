@@ -1,0 +1,42 @@
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <!-- $Id: CatGrupoTrabajo.html,v 1.2 2010/04/30 15:31:41 ccovian Exp $ -->    
+    <title>Edicion Grupo Trabajo</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+	<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" width="100%" />
+	<form jwcid="@Form" listener="ognl: listeners.actualizar" delegate="ognl:beans.delegate">
+		<table jwcid="@ActionPortletBorder" title="Grupo de Trabajo" width="100%">
+			<table jwcid="@TableBorder" title="ognl: null" columnCount="2" width="100%">
+				<tr class="titlecell">
+					<td width="50%" align="right" class="title">Clave:</td>
+					<td class="normalcell">
+						<span jwcid="@contrib:Choose">
+							<span jwcid="@contrib:When" condition="ognl: !modoUpdate">
+								<input jwcid="claveTextField" size="10" maxlength="5"/>
+							</span>
+							<span jwcid="@contrib:Otherwise">
+								<span jwcid="@Insert" value="ognl: registro.idGrupoTrabajo"/>
+							</span>
+						</span>
+					</td>
+				</tr>
+				<tr class="titlecell">
+					<td align="right" class="title">Nombre:</td>
+					<td class="normalcell"><input jwcid="nombreTextField" size="15" maxlength="25" /></td>
+				</tr>
+				<tr class="titlecell">
+					<td align="right" class="title">Correo Electr&oacute;nico</td>
+					<td class="normalcell"><input jwcid="emailTextField" size="40" maxlength="255" /></td>
+				</tr>
+			</table>
+			<br/>
+			<div align="center">
+				<input jwcid="@ImageSubmit" image="ognl: assets.acceptButton" onclick="return fnDisableForm(this.form); " />
+				<a jwcid="@PageLink" page="CatGruposTrabajo" onclick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.cancelButton"/></a>
+			</div>
+		</table>
+	</form>
+</body>
+</html>

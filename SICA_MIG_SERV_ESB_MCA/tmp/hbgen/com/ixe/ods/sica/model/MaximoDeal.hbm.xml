@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.MaximoDeal"
+        table="SC_MAXIMO_DEAL"
+        proxy="com.ixe.ods.sica.model.MaximoDeal"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <composite-id
+            name="id"
+            class="com.ixe.ods.sica.model.MaximoDealPK"
+        >
+                     <key-property
+                        name="idDivisa"
+                        type="java.lang.String"
+                        column="ID_DIVISA"
+                />
+
+                     <key-property
+                        name="idMesaCambio"
+                        type="java.lang.Integer"
+                        column="ID_MESA_CAMBIO"
+                />
+
+        </composite-id>
+
+        <property
+            name="montoMaximo"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO_MAXIMO"
+            not-null="true"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-MaximoDeal.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findMaximoDealByIdMesaCambio"><![CDATA[
+            FROM MaximoDeal as md WHERE md.id.idMesaCambio = ?
+        ]]></query>
+        <query name="findMaximoDealByIdMesaCambioAndIdDivisa"><![CDATA[
+            FROM MaximoDeal as md WHERE md.id.idMesaCambio = ? AND md.id.idDivisa = ?
+        ]]></query>
+
+</hibernate-mapping>

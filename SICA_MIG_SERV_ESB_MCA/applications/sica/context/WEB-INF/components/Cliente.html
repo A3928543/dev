@@ -1,0 +1,17 @@
+<!-- $Id: Cliente.html,v 1.10 2008/02/22 18:25:05 ccovian Exp $ -->
+<table jwcid="@ActionPortletBorder" title="Cliente" width="100%">
+<table>
+<tr>
+<td align="right" class="title">No. Cta.:</td>
+<td class="normalcell"><span jwcid="@DisabledField" value="ognl: contratoSica.noCuenta" /></td>
+</tr>
+<tr>
+<td align="right" class="title">Nombre Cliente:</td>
+<td><span jwcid="@DisabledField" value="ognl: nombreCliente" /></td>
+</tr>
+<tr>
+<td align="right" class="title">N&uacute;m. Referencia:</td>
+<td><span jwcid="@DatosClaveReferencia" idPersona="ognl: idPersona" prefijo ="ognl: contratoSica.noCuenta" /></td>
+</tr>
+</table>
+</table>

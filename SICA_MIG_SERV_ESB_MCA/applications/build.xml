@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--$Id: build.xml,v 1.12 2008/12/26 23:17:31 ccovian Exp $ -->
+<project name="Sica Web Applications" default="build-apps" basedir=".">
+
+    <property name="root.dir" value="${basedir}/.."/>
+
+    <property file="${root.dir}/config/common.properties"/>
+
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="${dist.dir}"/>
+    </target>
+
+    <target name="clean" description="Clean everything">
+        <ant antfile="build.xml" target="clean" dir="sica"/>
+        <ant antfile="build.xml" target="clean" dir="sicaTeller"/>
+        <ant antfile="build.xml" target="clean" dir="cierre"/>
+    </target>
+
+    <target name="javadoc">
+        <ant antfile="build.xml" target="javadoc" dir="sica"/>
+        <ant antfile="build.xml" target="javadoc" dir="sicaTeller"/>
+        <ant antfile="build.xml" target="javadoc" dir="cierre"/>
+    </target>
+
+    <target name="compile" depends="init" description="Compile everything">
+        <ant antfile="build.xml" target="compile" dir="sica"/>
+        <ant antfile="build.xml" target="compile" dir="sicaTeller"/>
+        <ant antfile="build.xml" target="compile" dir="cierre"/>
+    </target>
+
+    <target name="build-sicaTeller" depends="init" description="Build Sica Application">
+        <ant antfile="build.xml" target="build-all" dir="sicaTeller"/>
+    </target>
+
+    <target name="build-sicaCierre" depends="init" description="Build Sica Application">
+        <ant antfile="build.xml" target="build-all" dir="cierre"/>
+    </target>
+
+    <target name="build-apps" depends="init">
+        <ant antfile="build.xml" target="build-war" dir="sica"/>
+        <ant antfile="build.xml" target="build-all" dir="sicaTeller"/>
+        <ant antfile="build.xml" target="build-all" dir="cierre"/>
+    </target>
+
+</project>

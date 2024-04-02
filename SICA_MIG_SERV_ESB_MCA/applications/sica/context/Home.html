@@ -1,0 +1,22 @@
+<!-- $Id: Home.html,v 1.9 2008/02/22 18:25:53 ccovian Exp $ -->
+<span jwcid="@Foreach" source="ognl: formasTiposLiq" />
+<html>
+    <head>
+        <title>Sistema de Cambios</title>
+    </head>
+    <span jwcid="@contrib:Choose">
+        <span jwcid="@contrib:When" condition="ognl: visit.mostrarPizarron">
+            <frameset rows="46, *, 105">
+                <frame jwcid="@Frame" page="Encabezado" name="encabezado" scrolling="no" noresize="yes" frameborder="0" />
+                <frame jwcid="@Frame" page="Empty" name="superior" frameborder="0" />
+                <frame jwcid="@Any" element="frame" src="ognl: '/sica/app?service=page/Pizarron&sp=S' + new java.util.Date().time" name="inferior" scrolling="no" noresize="yes" frameborder="0" />
+            </frameset>
+        </span>
+        <span jwcid="@contrib:Otherwise">
+            <frameset rows="46, *">
+                <frame jwcid="@Frame" page="Encabezado" name="encabezado" scrolling="no" noresize="yes" frameborder="0" />
+                <frame jwcid="@Frame" page="Empty" name="superior" frameborder="0" />
+            </frameset>
+        </span>
+    </span>
+</html>

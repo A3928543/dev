@@ -1,0 +1,161 @@
+<!-- $Id: ModificaMontoProductoDetalleDeal.html,v 1.2.2.2 2010/08/13 20:49:30 ccovian Exp $ -->
+<html jwcid="@Shell" stylesheet="ognl:assets.stylesheet" title="Sistema de Cambios" delegate="ognl: page.visit">
+<head>
+	<base target=_self>
+</head>
+<body jwcid="@PageBorderv2" onbeforeunloadFn='ognl: "windowClosed(" + mensaje + ");"' menuDisabled="ognl:true">
+	<script jwcid="@Script" script="/WEB-INF/scripts/ModificaMontoProductoDetalleDeal.script" type="text/javascript" />
+	<table align="center" jwcid="@ActionPortletBorder" title='ognl: "Modificaci&oacute;n por " + (modo == 0 ? "monto" : "producto")' raw="ognl: true">
+	 <tr valign="top"> 	
+	  <td>
+	   <form jwcid="formCantidad@Form" id="formCantidad" listener="ognl: listeners.modificar" delegate="ognl:beans.delegate" onSubmit="return fnDisableForm(this);">
+	    <input jwcid="hiddenModoSubmit@Hidden" value="ognl: modoSubmit" type="hidden" />
+	    <div align="center">
+			<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level="ognl: level"/>
+	 	</div>
+		<fieldset class="normal">
+		  <legend class="legend"><span jwcid="@Insert" value="Info:"></span></legend>
+			<table>
+				<tr class="title">
+					<td align="right">No. Deal:</td>
+					<td>
+						<span jwcid="@DisabledField" value='ognl: "<font class=big>" + dealDetalle.deal.idDeal + "</font>"' />
+					</td>
+					<td align="right">No. Detalle:</td>
+					<td>
+						<span jwcid="@DisabledField" value='ognl: "<font class=big>" + dealDetalle.folioDetalle + "</font>"' />
+					</td>
+					<td align="right">Divisa:</td>
+					<td>
+						<img jwcid="@Bandera" divisa="ognl: dealDetalle.divisa" />
+					</td>
+					<td align="right">Operaci&oacute;n:</td>
+					<td>
+						<span jwcid="@DisabledField" value='ognl: "<font class=big>" + (dealDetalle.recibimos ? "COMPRA" : "VENTA") + "</font>"' />
+					</td>
+				</tr>
+				<tr class="title">
+					<td align="right">Tipo Valor:</td>
+					<td>
+						<span jwcid="@DisabledField" value='ognl: "<font class=big>" + deal.descripcionTipoValor + "</font>"' />
+					</td>
+					<span jwcid="@contrib:Choose">
+						<span jwcid="@contrib:When" condition="ognl: existeModificacionPendiente && modo == 1 && muestraCampoNuevoProducto">
+							<td align="right">Prod Orig:</td>
+							<td>
+								<span jwcid="@DisabledField" value='ognl: "<font class=big>" + dealDetalle.claveFormaLiquidacion + "</font>"' />
+							</td>
+							<td align="right">Prod Solic:</td>
+							<td>
+					    		<span jwcid="@DisabledField" value='ognl: "<font class=big>" + nuevoProducto + "</font>"'/>
+							</td>
+						</span>
+						<span jwcid="@contrib:When" condition="ognl: (existeModificacionPendiente && modo == 0) || (existeModificacionPendiente && modo == 1)">
+							<td align="right">Producto:</td>
+							<td>
+								<span jwcid="@DisabledField" value='ognl: "<font class=big>" + dealDetalle.claveFormaLiquidacion + "</font>"' />
+							</td>
+						</span>
+						<span jwcid="@contrib:When" condition="ognl: !existeModificacionPendiente && modo == 1">
+							<td align="right">Producto:</td>
+							<td>
+								<input id="modoHidden" jwcid="modoHidden@Hidden" value="ognl: modo" type="hidden"/>
+								<select jwcid="@PropertySelection"
+                        				model="ognl: productsModel"
+                        				value="ognl: productOrig"
+                        				onchange="this.form.hiddenModoSubmit.value='modifProduct';this.form.submit();"/>
+							</td>
+						</span>
+					</span>
+					<span jwcid="@contrib:Choose">
+						<span jwcid="@contrib:When" condition="ognl: modo == 0">
+							<td align="right">Monto Original:</td>
+							<td>
+								<span jwcid="@DisabledField" value='ognl: "<font class=big>" + page.moneyFormat.format(montoActual) + "</font>"' />
+							</td>
+						</span>
+						<span jwcid="@contrib:When" condition="ognl: modo == 1">
+							<td align="right">Monto:</td>
+							<td>
+								<span jwcid="@DisabledField" value='ognl: "<font class=big>" + page.moneyFormat.format(montoActual) + "</font>"' />
+							</td>
+						</span>
+					</span>
+					<span jwcid="@contrib:Choose">
+						<span jwcid="@contrib:When" condition="ognl: !existeModificacionPendiente && modo == 0">
+				    		<td align="right">Nuevo Monto:</td>
+				     		<td nowrap>
+					    		<input id="modo" jwcid="@Hidden" value="ognl: modo" />
+					  			<input jwcid="@Hidden" value="ognl: montoActual" />
+					  			<span jwcid="@MontoTextField" value="ognl: nuevoMonto" />
+							</td>
+						</span>
+						<span jwcid="@contrib:When" condition="ognl: existeModificacionPendiente && modo == 0 && muestraCampoNuevoMonto">
+							<td align="right">Monto Solicitado:</td>
+							<td>
+					    		<span jwcid="@DisabledField" value='ognl: "<font class=big>" + page.moneyFormat.format(nuevoMonto) + "</font>"'/>
+							</td>
+						</span>
+					</span>
+				</tr>
+				<tr class="title">
+					<span jwcid="@contrib:Choose">
+						<span jwcid="@contrib:When" condition="ognl: existeModificacionPendiente && modo == 1 && muestraCampoNuevoTcc">
+							<td align="right">T.C.M. Orig:</td>
+							<td>
+								<span jwcid="@DisabledField" value='ognl: "<font class=big>" + page.currencyFormat.format(dealDetalle.tipoCambioMesa) + "</font>"'/>
+							</td>
+							<td align="right">T.C.M. Solic:</td>
+							<td>
+					    		<span jwcid="@DisabledField" value='ognl: "<font class=big>" + page.currencyFormat.format(tipoCambioMesa) + "</font>"'/>
+							</td>
+						</span>
+						<span jwcid="@contrib:When" condition="ognl: (existeModificacionPendiente && modo == 0) || (existeModificacionPendiente && modo == 1) || (!existeModificacionPendiente && modo == 1)">
+							<td align="right">T.C.M:</td>
+							<td>
+								<span jwcid="@DisabledField" value='ognl: "<font class=big>" + page.currencyFormat.format(tipoCambioMesa) + "</font>"'/>
+							</td>
+						</span>
+					</span>
+					<span jwcid="@contrib:Choose">
+						<span jwcid="@contrib:When" condition="ognl: existeModificacionPendiente && modo == 1 && muestraCampoNuevoTcc">
+							<td align="right">T.C.C:</td>
+							<td>
+								<span jwcid="@DisabledField" value='ognl: "<font class=big>" + page.currencyFormat.format(dealDetalle.tipoCambio) + "</font>"'/>
+							</td>
+						</span>
+						<span jwcid="@contrib:When" condition="ognl: (existeModificacionPendiente && modo == 0) || (existeModificacionPendiente && modo == 1)">
+							<td align="right">T.C.C:</td>
+							<td>
+								<span jwcid="@DisabledField" value='ognl: "<font class=big>" + page.currencyFormat.format(tipoCambioCliente) + "</font>"'/>
+							</td>
+						</span>
+						<span jwcid="@contrib:When" condition="ognl: !existeModificacionPendiente && modo == 1">
+							<td align="right">T.C.C:</td>
+							<td>
+								<span jwcid="@DisabledField" value='ognl: "<font class=big>" + page.currencyFormat.format(dealDetalle.tipoCambio) + "</font>"'/>
+							</td>
+						</span>
+					</span>
+					<td align="right">Importe M.N:</td>
+					<td>
+						<span jwcid="@DisabledField" value='ognl: "<font class=big>" + page.moneyFormat.format(dealDetalle.importe) + "</font>"' />
+					</td>
+					<td align="right">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+			<br/>
+			<div align="center">
+					<span jwcid="@Conditional" condition="ognl: !existeModificacionPendiente">
+						<input jwcid="@ImageSubmit" image="ognl: assets.bActualizar" onclick="return fnDisableForm(this.form);" />
+					</span>
+				 <span jwcid="@Any" element="img" src="ognl: assets.bRegresar" onClick='ognl: "handleBack(" + mensaje + ");return true;"' style="cursor:pointer" border="0"/>
+			</div>
+		</fieldset>
+	   </form>	
+	  </td>
+	 </tr> 	
+	</table>
+</body>
+</html>

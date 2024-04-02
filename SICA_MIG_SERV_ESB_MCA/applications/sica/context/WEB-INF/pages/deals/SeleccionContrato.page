@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: SeleccionContrato.page,v 1.9.46.1 2012/08/25 23:51:05 mejiar Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.deals.SeleccionContrato">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+    
+    <property-specification name="letrasContratos" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()"/>
+    <property-specification name="letraSeleccionada" type="java.lang.String" persistent="yes" />
+    <property-specification name="promotorIdPersona" type="java.lang.Integer" persistent="yes" initial-value="null" />
+    
+    <context-asset name="bRegresar" path="/images/back.gif" />
+    
+</page-specification>

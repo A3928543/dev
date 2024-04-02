@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ConsultaDeal.page,v 1.13.2.2.36.1 2013/12/21 03:07:36 mejiar Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.deals.ConsultaDeal">
+
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+   	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <bean name="intValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="false" />
+        <set-property name="valueType">"int"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <bean name="dateValidator" class="org.apache.tapestry.valid.DateValidator" lifecycle="page">
+        <set-property name="required" expression="false" />
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <component id="idTextField" type="ValidField">
+        <static-binding name="displayName" value="Cantidad: " />
+        <binding name="validator" expression="beans.intValidator" />
+        <binding name="value" expression="ids" />
+    </component>
+
+    <component id="fechaInicialTextField" type="ValidField">
+        <static-binding name="displayName" value="=Fecha Incial: " />
+        <binding name="validator" expression="beans.dateValidator" />
+        <binding name="value" expression="fechaInicio" />
+    </component>
+
+    <component id="fechaFinalTextField" type="ValidField">
+        <static-binding name="displayName" value="=Fecha Final: " />
+        <binding name="validator" expression="beans.dateValidator" />
+        <binding name="value" expression="fechaFinal" />
+    </component>
+
+    <component id="printLink" type="ServiceLink">
+    	<static-binding name="service" value="jasper" />
+    	<binding name="parameters" expression='{ "WEB-INF/jasper/ReportDeal.jasper", "ReportDeal", new java.lang.String(components.table.tableRow.idDeal) }' />
+    </component>
+    
+    <component id="promotorSolicitudComboBox" type="PropertySelection">
+        <binding name="model" expression="promotoresModel" />
+        <binding name="value" expression="promotor" />
+        <static-binding name="accesskey" value="o" />
+    </component>
+
+    <property-specification name="criteriosMinimizados" type="boolean" persistent="yes" />
+    <property-specification name="deals" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+    <property-specification name="currentInfoFactura" type="com.ixe.ods.sica.model.InfoFactura" />
+    <!--<property-specification name="fechaInicioOperacion" type="java.util.Date" persistent="yes"  initial-value="null"/>
+    <property-specification name="fechaFinalOperacion" type="java.util.Date" persistent="yes"  initial-value="null"/>
+    <property-specification name="fechaInicioLiquidacion" type="java.util.Date" persistent="yes" initial-value="null" />
+    <property-specification name="fechaFinalLiquidacion" type="java.util.Date" persistent="yes" initial-value="null" />-->
+    <property-specification name="fechaInicioBusqueda" type="java.util.Date" persistent="yes" initial-value="null" />
+    <property-specification name="fechaFinalBusqueda" type="java.util.Date" persistent="yes" initial-value="null" />
+    <property-specification name="ids" type="java.lang.Integer" persistent="yes" />
+    <property-specification name="status" type="java.lang.String" persistent="yes" />
+    <property-specification name="modo" type="java.lang.String" persistent="yes" />
+  	<property-specification name="nombre" type="java.lang.String" initial-value="" />
+    <property-specification name="paterno" type="java.lang.String" initial-value="" />
+    <property-specification name="materno" type="java.lang.String" initial-value="" />
+    <property-specification name="razonSocial" type="java.lang.String" initial-value="" />
+    <property-specification name="noCuenta" type="java.lang.String" initial-value="" />
+    <property-specification name="opcionMensajeria" type="java.lang.String" initial-value="" persistent="yes"/>
+    <property-specification name="tipoFecha" type="java.lang.String" initial-value="" persistent="yes"/>
+    <property-specification name="promotor" type="java.util.HashMap" persistent="yes" />
+    <property-specification name="idGrupoTrabajo" type="java.lang.String" persistent="yes" />
+  	<property-specification name="promotoresList" type="java.util.List" persistent="yes" />
+  	<property-specification name="idsPromotores" type="java.util.List" persistent="yes" />
+	<property-specification name="hrCombo" type="java.lang.String" persistent="no" />
+	<property-specification name="mtCombo" type="java.lang.String" persistent="no" />
+	<property-specification name="lcCombo" type="java.lang.String" persistent="no" />
+	<property-specification name="tfCombo" type="java.lang.String" persistent="no" />
+	<property-specification name="dcCombo" type="java.lang.String" persistent="no" />
+	<property-specification name="mdCombo" type="java.lang.String" persistent="no" />
+	<property-specification name="cnCombo" type="java.lang.String" persistent="no" />
+	<property-specification name="toCombo" type="java.lang.String" persistent="no" />
+    <property-specification name="divisa" type="com.ixe.ods.sica.model.Divisa" persistent="yes" />
+    <property-specification name="claveFormaLiquidacion" type="java.lang.String" persistent="yes" />
+
+    <context-asset name="insertButton" path="/images/add.gif" />
+    <context-asset name="searchButton" path="/images/search.gif" />
+    <context-asset name="pdfButton" path="/images/ver_pdf.gif" />
+    <context-asset name="xmlButton" path="/images/ver_xml.gif" />
+
+</page-specification>

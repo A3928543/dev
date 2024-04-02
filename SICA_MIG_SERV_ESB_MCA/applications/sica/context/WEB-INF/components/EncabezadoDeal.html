@@ -1,0 +1,271 @@
+<!-- $Id: EncabezadoDeal.html,v 1.17.24.2.14.1.2.1.24.1 2016/07/13 21:46:04 mejiar Exp $ -->
+<script type="text/javaScript">
+			
+window.onload = function(){
+	this.enableMessaje();
+};
+
+function enableFieldMetodoPago(){
+document.getElementById('idMetodoPag').disabled=false;
+}
+
+function enableMessaje(){	
+	var elementMetPag = document.getElementById('idMetodoPag');
+	var vlTxt="Los m\u00e9todos de pago y cuentas deben de estar separados por comas";
+
+	if (elementMetPag != null) {
+		if(elementMetPag.value==''){
+			elementMetPag.value=vlTxt; 
+		}else{
+			document.getElementById('idCuentaPag').readOnly = false;
+		}
+	}
+}
+
+function enableFieldCuentaPago(element){
+var msj="Los m\u00e9todos de pago y cuentas deben de estar separados por comas";
+var txtAct=element.value;
+if(txtAct==msj){
+element.value = '';
+}
+
+document.getElementById('idCuentaPag').readOnly = false;
+}
+
+function seleccionarConFactura(facturaCheckBox) {
+setSubmitMode(facturaCheckBox.form, 'Sfactura');
+}
+
+function IsEmpty(){
+	var elementMetPag = document.getElementById('idMetodoPag');
+	var msj="Los m￩todos de pago y cuentas deben de estar separados por comas";
+    
+	if (elementMetPag != null) {
+		if(elementMetPag.value.length==0) {
+			elementMetPag.value='';
+			}
+		  if(elementMetPag.value==msj){
+			  elementMetPag.value='';
+			}
+	}
+	
+	 
+	}	
+
+
+function setSubmitMode(forma, submitMode) {
+	       IsEmpty();
+	  	   forma.submitModeHidden.value = submitMode;
+   fnDisableForm(forma);
+}
+
+function refrescarDeal(idDeal) {
+fnShowWaitImage();
+document.location = '/sica/app?service=external/CapturaDeal&sp=3&sp=' + idDeal + '&sp=SSICA_CONS_DEAL';
+}
+
+function mostrarComboCorporativos(seleccionarCorporativoCheckBox) {
+if (seleccionarCorporativoCheckBox.checked) {
+seleccionarCorporativoCheckBox.form.nombreFacturaTextField.disabled = true;
+seleccionarCorporativoCheckBox.form.nombreFacturaCombo.disabled = false;
+}
+else {
+seleccionarCorporativoCheckBox.form.nombreFacturaTextField.disabled = false;
+seleccionarCorporativoCheckBox.form.nombreFacturaCombo.disabled = true;
+}
+}
+
+</script>
+
+<table width="100%">
+<tr valign="top">
+<td>
+<fieldset class="normal">
+<legend class="legend">Datos Generales:</legend>
+<table width="100%">
+<tr valign="top">
+<td width="1%" height="112" rowspan="6">&nbsp;</td>
+<td class="title" align="right">Cuenta:</td>
+<td class="normal">
+<span jwcid="@DisabledField" value='ognl: deal.contratoSica ? deal.contratoSica.noCuenta + " " + deal.cliente.nombreCompleto : ""' raw="yes" />
+</td>
+<td class="title" align="right">Status:</td>
+<td class="normal" nowrap>
+ <span jwcid="@StatusField" status="ognl: @com.ixe.ods.sica.components.StatusField@getStatusDeal(deal)" descripcion="ognl: deal.descripcionStatus" />
+</td>
+</tr>
+<tr valign="top">
+<td class="title" align="right">Promotor:</td>
+<td class="normal">
+<span jwcid="@DisabledField" value='ognl: deal.promotor ? deal.promotor.nombreCompleto : ""' raw="ognl: true" />
+</td>
+<span jwcid="@contrib:Choose">
+<span jwcid="@contrib:When" condition="ognl: !area">
+<td class="title" align="right">Utilidad:</td>
+<td class="normal" nowrap><span jwcid="@DisabledField" value="ognl: page.moneyFormat.format(page.dealService.getUtilidadPromotor(deal))">$0.00</span></td>
+</span>
+<span jwcid="@contrib:Otherwise">
+<td class="title" align="right">&nbsp;</td>
+<td class="normal" nowrap>&nbsp;</td>
+</span>
+</span>
+</tr>
+<tr valign="top">
+<td class="title" align="right">Captur&oacute;:</td>
+<td class="normal">
+<span jwcid="@DisabledField" value='ognl: deal.usuario ? deal.usuario.persona.nombreCompleto : ""' raw="ognl: true" />
+</td>
+<td class="title" align="right" nowrap>N&uacute;m. Ref.:</td>
+<td class="normal">
+<span jwcid="@DatosClaveReferencia" idPersona="ognl: deal.contratoSica && deal.cliente ? deal.cliente.idPersona : null" />
+</td>
+</tr>
+<tr valign="top">
+<td class="title" align="right">Observaciones:</td>
+<td class="normal" colspan="3"><span jwcid="@DisabledField" value="ognl: deal.observaciones" /></td>
+</tr>
+<tr valign="top" >
+   <td class="title" align="right">M&eacute;todo de Pago:</td>
+    <td class="normal" colspan="3">
+	   <span jwcid="@DisabledField" value="ognl: deal.metodoPago" />
+      </td>
+</tr>
+<tr valign="top">
+   <td class="title" align="right">Cuenta de Pago:</td>   
+   <td class="normal" colspan="3">
+                 <span jwcid="@DisabledField" value="ognl: deal.cuentaPago" />
+  </td>
+</tr>
+
+</table>
+</fieldset>
+</td>
+<td width="5%">
+<fieldset class="normal">
+<legend class="legend">Opciones:</legend>
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr class="title">
+<td width="1%" height="112" rowspan="6">&nbsp;</td>
+<td nowrap align="right">Mensajer&iacute;a:</td>
+<td class="normal" width="1%">
+<span jwcid="@contrib:Choose">
+<span jwcid="@contrib:When" condition="ognl: !disabled && (deal.contratoSica != null)">
+<input type="checkbox" jwcid="@Checkbox" selected="ognl: deal.mensajeria" onclick="setSubmitMode(this.form, 'mensajeria');" />
+</span>
+<span jwcid="@contrib:Otherwise">
+<span jwcid="@Insert" value='ognl: deal.mensajeria ? "S&iacute;" : "No"' raw="ognl: true" />
+</span>
+</span>
+</td>
+</tr>
+<tr class="title">
+<td nowrap align="right">Toma en firme:</td>
+<td class="normal">
+<span jwcid="@Conditional" condition="ognl: !disabled">
+<span jwcid="@contrib:FormConditional" condition="ognl: !disabled && disabledPAyTF">
+<input type="checkbox" jwcid="@Checkbox" selected="ognl: deal.tomaEnFirme" onclick="setSubmitMode(this.form, 'tomaEnFirme');" />
+</span>
+</span>
+<span jwcid="@Conditional" condition="ognl: disabled || !disabledPAyTF">
+<span jwcid="@Insert" value='ognl: deal.tomaEnFirme ? "S&iacute;" : "No"' raw="yes" />
+</span>
+</td>
+</tr>
+<tr class="title">
+<td nowrap align="right">Pago anticipado:</td>
+<td class="normal">
+<span jwcid="@Conditional" condition="ognl: !disabled">
+<span jwcid="@contrib:FormConditional" condition="ognl: !disabled && disabledPAyTF">
+<input type="checkbox" jwcid="@Checkbox" selected="ognl: deal.pagoAnticipado" onclick="setSubmitMode(this.form, 'pagoAnticipado');"/>
+</span>
+</span>
+<span jwcid="@Conditional" condition="ognl: disabled || !disabledPAyTF">
+<span jwcid="@Insert" value='ognl: deal.pagoAnticipado ? "S&iacute;" : "No"' raw="yes" />
+</span>
+</td>
+</tr>
+<tr class="title">
+<td nowrap align="right">Factura:</td>
+<td class="normal" nowrap>
+<span jwcid="@contrib:Choose">
+<span jwcid="@contrib:When" condition="ognl: !disabled && deal.contratoSica != null">
+<span jwcid="@RadioGroup" selected="ognl: deal.factura">
+<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.Deal@CON_FACTURA" onclick="seleccionarConFactura(this);"/>S&iacute;
+<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.Deal@SIN_FACTURA" onclick="seleccionarConFactura(this);"/>No
+</span>
+</span>
+<span jwcid="@contrib:Otherwise">
+<span jwcid="@Insert" value='ognl: deal.conFactura ? "S&iacute;" : "No"' raw="yes" />
+</span>
+</span>
+</td>
+</tr>
+<tr class="title">
+<td nowrap align="right">Comprobante:</td>
+<td class="normal" nowrap>
+<span jwcid="@contrib:Choose">
+<span jwcid="@contrib:When" condition="ognl: !disabled && (deal.contratoSica != null)">
+<span jwcid="@RadioGroup" selected="ognl: deal.comprobante">
+<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.Deal@CON_COMPROBANTE" onclick="setSubmitMode(this.form, 'SenviarAlCliente');"/>S&iacute;
+<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.Deal@SIN_COMPROBANTE" onclick="setSubmitMode(this.form, 'SenviarAlCliente');"/>No
+</span>
+</span>
+<span jwcid="@contrib:Otherwise">
+<span jwcid="@Insert" value='ognl: deal.enviarAlCliente ? "S&iacute;" : "No"' raw="yes" />
+</span>
+</span>
+</td>
+</tr>
+</table>
+</fieldset>
+</td>
+<td width="5%">
+<fieldset jwcid="@InfoDeal" deal="ognl: deal" />
+</td>
+</tr>
+<tr jwcid="@Conditional" condition="ognl: !ocultarDatosEnvio && deal.mensajeria" element="tr">
+<td colspan="3">
+<fieldset>
+<legend class="legend">Datos de Mensajer&iacute;a:</legend>
+<table width="100%">
+<tr valign="top">
+<td width="5%" align="right" class="title">Direcci&oacute;n:</td>
+<td><span jwcid="@DireccionField" direccion="ognl: direccionMensajeria" /></td>
+<td width="5%" align="right" class="title" nowrap>Acudir con:</td>
+<td><span jwcid="@DisabledField" value="ognl: deal.acudirCon" /></td>
+</tr>
+</table>
+</fieldset>
+</td>
+</tr>
+<tr jwcid="@Conditional" condition="ognl: !ocultarDatosFacturacion && deal.conFactura" element="tr">
+<td colspan="3">
+<fieldset>
+<legend class="legend">Datos de Facturaci&oacute;n:</legend>
+<table width="100%">
+<tr valign="top">
+<td width="5%" align="right" class="title">RFC:</td>
+<td><span jwcid="@DisabledField" value="ognl: deal.rfcFactura" /></td>
+<td rowspan="3" align="right" class="title">Distribuci&oacute;n:</td>
+<td rowspan="3">
+<span jwcid="@Conditional" condition="ognl: (deal.emailFactura && deal.emailFactura.length() > 0) || (deal.emailFacturaOtro && deal.emailFacturaOtro.length() > 0)">
+<span jwcid="@DisabledField" value="ognl: emailsFactura" />
+</span>
+<span jwcid="@Conditional" condition="ognl: deal.dirFacturaMensajeria">
+<span jwcid="@DireccionField" direccion="ognl: deal.dirFacturaMensajeria" />
+</span>
+</td>
+</tr>
+<tr>
+<td width="5%" align="right" class="title">Nombre:</td>
+<td><span jwcid="@DisabledField" value="ognl: deal.nombreFactura" /></td>
+</tr>
+<tr valign="top">
+<td class="title" align="right">Direcci&oacute;n:</td>
+<td><span jwcid="@DireccionField" direccion="ognl: deal.dirFactura" /></td>
+</tr>
+</table>
+</fieldset>
+</td>
+</tr>
+</table>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: LimiteRiesgo.page,v 1.10 2008/04/16 18:20:30 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.control.LimiteRiesgo">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+    <bean name="delegate2" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+    
+	<bean name="moneyValidator" lifecycle="render" class="com.legosoft.tapestry.valid.MoneyValidator">
+      <set-property name="required" expression="true" />
+      <set-property name="patternNotMatchedMessage">
+         "Las cantidades monetarias s&#243;lo permiten d&#237;gitos y los caracteres \'$\' y \',\'
+         Formato v&#225;lido: $99,999.99"
+	   </set-property>
+	</bean>
+	
+	<bean name="doubleValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="minimum" expression="0"/>
+        <set-property name="maximum" expression="100"/>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+    
+    <bean name="intValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"int"</set-property>
+        <set-property name="minimum" expression="0"/>
+        <set-property name="maximum" expression="100"/>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+    
+    <bean name="montoValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"int"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+    
+    <bean name="minutesValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"int"</set-property>
+        <set-property name="minimum" expression="5"/>
+        <set-property name="maximum" expression="45"/>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+    
+    <component id="mesasCambioComboBox" type="PropertySelection">
+	    <binding name="model" expression='new com.legosoft.tapestry.model.RecordSelectionModel(mesasCambio, "idMesaCambio", "nombre")' />
+	    <binding name="value" expression="mesaCambioSeleccionada" />
+        <static-binding name="onchange" value="fnShowWaitImage(); this.form.submit();" />
+    </component>
+    
+    <component id="divisasComboBox" type="PropertySelection">
+        <binding name="model" expression='new com.legosoft.tapestry.model.RecordSelectionModel(findLimitesByMesaAndDivisa(), "idDivisa", "descripcion" )' />
+        <binding name="value" expression="divisaSeleccionada" />
+        <static-binding name="onchange" value="fnShowWaitImage(); this.form.submit();" />
+    </component>
+            
+    <component id="capitalTotalTextField" type="ValidField">
+        <static-binding name="displayName" value="Capital Total" />
+        <binding name="validator" expression="beans.moneyValidator" />
+        <binding name="value" expression="capitalDelGrupo" />
+    </component>
+
+    <component id="porcCapitalTextField" type="ValidField">
+        <static-binding name="displayName" value="Porcentaje Capital" />
+        <binding name="validator" expression="beans.doubleValidator" />
+        <binding name="value" expression="porcentajeCapital" /> 
+    </component>
+    
+    <component id="minutosTextField" type="ValidField">
+        <static-binding name="displayName" value="Minutos Para Checar Limite" />
+        <binding name="validator" expression="beans.minutesValidator" />
+        <binding name="value" expression="minutosChecarLimite" />
+    </component>
+    
+    <component id="porcAvisoTextField" type="ValidField">
+        <static-binding name="displayName" value="Porcentaje de Aviso" />
+        <binding name="validator" expression="beans.intValidator" />
+        <binding name="value" expression="porcentajeAvisoGlobal" />
+    </component>
+    
+    <component id="porcAlarmaTextField" type="ValidField">
+        <static-binding name="displayName" value="Porcentaje de Alarma" />
+        <binding name="validator" expression="beans.intValidator" />
+        <binding name="value" expression="porcentajeAlarmaGlobal" />
+    </component>
+    
+    <component id="montoMaximoDealTextField" type="ValidField">
+        <static-binding name="displayName" value="Monto Maximo Deal" />
+        <binding name="validator" expression="beans.moneyValidator" />
+        <binding name="value" expression="montoMaximoDeal" />
+    </component>
+    
+    <component id="nivelConfianzaTextField" type="ValidField">
+        <static-binding name="displayName" value="Nivel de Confianza" />
+        <binding name="validator" expression="beans.doubleValidator" />
+        <binding name="value" expression="nivelDeConfianza" />
+    </component>
+
+    <property-specification name="mesaCambioSeleccionada" type="com.ixe.ods.sica.model.MesaCambio" initial-value="new com.ixe.ods.sica.model.MesaCambio()" persistent="yes" />
+	<property-specification name="capitalDelGrupo" type="double" persistent="yes" />
+	<property-specification name="porcentajeCapital" type="double" persistent="yes" />	   
+	<property-specification name="limiteRegulatorio" type="double" persistent="yes" />
+	<property-specification name="minutosChecarLimite" type="int" persistent="yes" />
+	<property-specification name="porcentajeAvisoGlobal" type="int" persistent="yes" />
+	<property-specification name="porcentajeAlarmaGlobal" type="int" persistent="yes" />
+	<property-specification name="montoMaximoDeal" type="int" persistent="yes" />
+	<property-specification name="nivelDeConfianza" type="double" persistent="yes" />
+	<property-specification name="horizonteTiempo" type="java.lang.String" persistent="yes" />
+	<property-specification name="limites" type="java.util.List" persistent="yes" />
+	<property-specification name="limitesPorDivisa" type="java.util.List" persistent="yes" />
+	<property-specification name="divisaSeleccionada" type="com.ixe.ods.sica.model.Divisa" persistent="yes" />
+    <property-specification name="mesasCambio" type="java.util.List" persistent="yes" />
+
+    <property-specification name="limitesGlobalesMinimizados" type="boolean" persistent="yes" />
+	<property-specification name="tieneLimites" type="boolean" persistent="yes" />
+	<property-specification name="limitesMesaMinimizados" type="boolean" persistent="yes" />
+    <property-specification name="modo" type="int" />
+  			
+    <context-asset name="automaticButton" path="/images/automatico.gif" />
+    <context-asset name="manualButton" path="/images/manual.gif" />
+    <context-asset name="addButton" path="/images/inic_en_ceros.gif" />
+    <context-asset name="saveButton" path="/images/actualizar.gif" />
+    <context-asset name="removeButton" path="/images/remove.gif" />
+    <context-asset name="searchButton" path="/images/search.gif" />
+
+</page-specification>

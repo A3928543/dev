@@ -1,0 +1,39 @@
+<!-- $Id: CapturarFormaLiquidacion.html,v 1.9 2008/02/22 18:25:08 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Encabezado</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <table jwcid="@bup:ShowError" level="0" width="100%" delegate="ognl: beans.delegate" />
+    <table jwcid="@ActionPortletBorder" title="ognl: 'Liquidaci&oacute;n en Pesos'">
+        <form jwcid="@Form" listener="ognl: listeners.aceptar" delegate="ognl: beans.delegate">
+            <table width="100%">
+                <tr class="normal">
+                    <td align="right" width="50%">Tipo de <span jwcid="@Insert" value='ognl: recibimos ? "Cobro:": "Pago:"' /></td>
+                    <td>
+                        <select jwcid="@PropertySelection" model="ognl: tiposLiquidacionModel" value="ognl: selectedTipoLiquidacion" onchange="fnShowWaitImage(); this.form.submit();" />
+                    </td>
+                </tr>
+                <span jwcid="@contrib:FormConditional" condition="ognl: selectedTipoLiquidacion" element="tr">
+                <tr class="normal">
+                    <td align="right" width="50%">Forma de <span jwcid="@Insert" value='ognl: recibimos ? "Cobro:": "Pago:"' /></td>
+                    <td><select jwcid="formasLiquidacionComboBox" /></td>
+                </tr>
+                <tr class="normal">
+                    <td align="right" width="50%">Cantidad: </td>
+                    <td><input jwcid="cantidadTextField" /></td>
+                </tr>
+                </span>
+            </table>
+            <br />
+            <div align="center">
+                <span jwcid="@contrib:FormConditional" condition="ognl: !formasLiquidacionFiltradas.isEmpty()">
+                    <input type="submit" jwcid="@ImageSubmit" image="ognl: assets.okButton" border="0" selected="ognl: modoSubmit" tag="1" accesskey="G" onclick="fnShowWaitImage(); this.form.submit();" />
+                </span>
+                <a jwcid="@PageLink" page="CapturaDeal"><img jwcid="@Image" image="ognl:assets.cancelButton" alt="Cancelar" border="0"/></a>
+            </div>
+        </form>
+    </table>
+</body>
+</html>

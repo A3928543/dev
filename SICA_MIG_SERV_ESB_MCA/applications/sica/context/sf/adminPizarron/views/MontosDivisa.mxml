@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.macromedia.com/2003/mxml">
+	  <mx:Form>
+		<mx:FormItem label="Mesa:">
+			<mx:ComboBox id="mesasComboBox">
+		            <mx:dataProvider>
+		                <mx:Array>
+		                    <mx:String>OPERACION</mx:String>
+		                </mx:Array>
+		            </mx:dataProvider>
+		        </mx:ComboBox>
+		</mx:FormItem>
+	  </mx:Form>
+	<mx:DataGrid width="252" height="100">   
+		<!--mx:dataProvider>     
+			<mx:Array>       
+				<mx:Object Artist="Pavement" Price="11.99"         Album="Slanted and Enchanted" />       
+				<mx:Object Artist="Pavement"         Album="Brighten the Corners" Price="11.99" />     
+			</mx:Array>   
+		</mx:dataProvider-->   
+		<mx:columns>     
+			<mx:Array>       
+				<mx:DataGridColumn columnName="Divisa" />      
+				<mx:DataGridColumn columnName="Monto" />     
+			</mx:Array>   
+		</mx:columns> 
+	</mx:DataGrid>
+	<mx:ControlBar>
+		<mx:HBox>
+			<mx:Button label="Listar" />
+			<mx:Button label="Guardar" />
+			<mx:Button label="Limpiar" />
+		</mx:HBox>
+	</mx:ControlBar>
+</mx:Panel>

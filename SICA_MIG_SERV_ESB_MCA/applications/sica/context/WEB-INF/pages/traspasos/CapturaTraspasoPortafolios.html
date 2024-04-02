@@ -1,0 +1,79 @@
+<!-- $Id: CapturaTraspasoPortafolios.html,v 1.9.38.2 2011/01/14 21:05:57 galiciad Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Captura de Traspasos entre Portafolios</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <form jwcid="@Form" listener="ognl: listeners.crearTraspaso" delegate="ognl:beans.delegate">
+		<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level="ognl: operacionExitosa ? 1 : 0"/>
+		<table width="60%" align="center">
+		    <tr>
+		    	<td width="100%">
+			        <table jwcid="@ActionPortletBorder" title="Captura de Traspasos entre Portafolios" width="50%">
+			            <table jwcid="@TableBorder" title="ognl: null" columnCount="2" width="100%">
+			                <tr class="titlecell">
+			                    <td colspan="1" align="right" class="title">Del Portafolio:</td>
+			                    <td colspan="3" class="normalcell">
+			                    	<select jwcid="@PropertySelection" model="ognl: delPortafolioModel" value="ognl: selectedDelPortafolio" onChange="fnShowWaitImage();this.form.submit();" disabled="ognl: modoMensaje"/>
+			                    </td>
+			                </tr>
+			                <tr class="titlecell">
+			                    <td colspan="1" align="right" class="title">Al Portafolio:</td>
+			                    <td colspan="3" class="normalcell">
+			                    	<select jwcid="@PropertySelection" model="ognl: alPortafolioModel" value="ognl: selectedAlPortafolio" onChange="fnShowWaitImage();this.form.submit();" disabled="ognl: modoMensaje"/>
+			                    </td>
+			                </tr>
+			                <tr class="titlecell">
+			                    <td colspan="1" align="right" class="title">Divisa:</td>
+			                    <td colspan="3" class="normalcell">
+		                    		<select jwcid="@PropertySelection" model="ognl: divisasModel" value="ognl: selectedDivisa" onChange="fnShowWaitImage();this.form.submit();" disabled="ognl: modoMensaje"/>
+			                    </td>
+			                </tr>
+			                <tr class="titlecell">
+			                	<td colspan="1" align="right" class="title">Valor:</td>
+			                    <td colspan="3" class="normalcell">
+			                    	<select jwcid="@PropertySelection" model="ognl: valorModel" value="ognl: selectedValor" disabled="ognl: modoMensaje"/>
+			                    </td>
+			                </tr>
+						    <tr class="titlecell">
+			                    <td colspan="1" align="right" class="title">Monto:</td>
+			                    <td colspan="3" class="normalcell">
+			                    	<input type="text" jwcid="montoTextField" format="ognl: moneyFormat" disabled="ognl: modoMensaje"/>
+			                    </td>
+			                </tr>
+			                <span jwcid="@contrib:FormConditional" condition="ognl: selectedDivisa != null ? !@com.ixe.ods.sica.model.Divisa@DOLAR.equals(selectedDivisa.idDivisa) : true">
+				                <tr class="titlecell">
+				                    <td colspan="1" align="right" class="title">Tipo de Cambio "Al Portafolio":</td>
+				                    <td colspan="3" class="normalcell">
+			    						<input type="text" jwcid="tipoCambioTextField" format="ognl: moneyFormat" disabled="ognl: modoMensaje"/>
+				                    </td>
+				                </tr>
+			                </span>
+			                <tr class="titlecell">
+			                    <td colspan="1" align="right" class="title">
+			                    	Tipo de Cambio "Del Portafolio" a 
+			                    	<span jwcid="@Insert" value='ognl: selectedDelPortafolio != null ? (selectedDelPortafolio.idMesaCambio != 0 ? selectedDelPortafolio.divisaReferencia.descripcion : "") : ""'/>:
+		                    	</td>
+			                    <td colspan="3" class="normalcell">
+		    						<select jwcid="tipoCambioATextField" format="ognl: moneyFormat" disabled="ognl: modoMensaje"/>
+			                    </td>
+			                </tr>
+			            </table>
+			            <br />
+			            <div align="center">
+			            	<span jwcid="@Conditional" condition="ognl: !modoMensaje">
+        						<input type="image" jwcid="@ImageSubmit" image="ognl: assets.aceptarButton" selected="ognl: modoSubmit" tag="1"/>
+    						</span>
+    						<span jwcid="@Conditional" condition="ognl: modoMensaje">
+        						<input type="image" jwcid="@ImageSubmit" image="ognl: assets.confirmarButton" selected="ognl: modoSubmit" tag="2"/>
+        						<input type="image" jwcid="@ImageSubmit" image="ognl: assets.cancelarButton" selected="ognl: modoSubmit" tag="3"/>
+    						</span>
+			            </div>
+			    	</table>
+		    	</td>
+	        </tr>
+        </table>
+    </form>
+</body>
+</html>

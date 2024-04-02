@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CatBroker.page,v 1.9.34.1 2010/09/09 00:29:40 galiciad Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.catalogos.CatBroker">
+
+	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <bean name="stringValidator" class="org.apache.tapestry.valid.StringValidator" lifecycle="page">
+        <set-property name="required" expression="false" />
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <component id="claveReutersTextField" type="ValidField">
+        <static-binding name="displayName" value="Clave Reuters" />
+        <binding name="validator" expression="beans.stringValidator" />
+        <binding name="value" expression="claveReuters" />
+        <static-binding name="maxlength" value="10" />
+        <static-binding name="class" value="uppercase" />
+    </component>
+    
+    <component id="tipoBrokerComboBox" type="PropertySelection">
+        <binding name="model" expression='tiposBroker' />
+        <binding name="value" expression="tipoBrokerSeleccionado" />
+        <static-binding name="onchange" value="fnShowWaitImage(); this.form.submit();" />
+    </component> 
+    
+    <component id="pagoAnticipadoComboBox" type="PropertySelection">
+    	<binding name="model" expression='pagoAnticipadoModel' />
+        <binding name="value" expression="pagoAnticipadoSeleccionado" />
+    </component>     
+       
+    <property-specification name="claveReuters" type="java.lang.String" persistent="yes"/>
+    <property-specification name="personaMoral" type="com.ixe.ods.bup.model.PersonaMoral" persistent="yes"/>
+    <property-specification name="paginaAnterior" type="java.lang.String" persistent="yes"/>
+    <property-specification name="tipoBroker" type="java.lang.String" persistent="yes"/>
+    <property-specification name="tipoOperacion" type="int" persistent="yes"/>
+    <property-specification name="tipoBrokerSeleccionado" type="java.lang.String" persistent="yes" />
+    <property-specification name="pagoAnticipadoSeleccionado" type="java.lang.String" persistent="yes" />
+    <property-specification name="visibleKondor" type="boolean" />
+    <property-specification name="idSaif" type="java.lang.String" />
+    <property-specification name="modoSubmit" type="int" />
+    <property-specification name="level" type="int" />
+ 
+    <context-asset name="acceptButton" path="/images/save.gif" />
+    <context-asset name="regresarButton" path="/images/back.gif" />
+
+</page-specification>

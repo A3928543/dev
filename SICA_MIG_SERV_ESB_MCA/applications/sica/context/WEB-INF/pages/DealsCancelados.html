@@ -1,0 +1,50 @@
+<!-- $Id: DealsCancelados.html,v 1.2 2008/02/22 18:25:15 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Deals de captura r&aacute;pida cancelados</title>
+    <link rel="StyleSheet" href="../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" width="100%" />
+    <form jwcid="@Form" listener="ognl: listeners.buscar" delegate="ognl: beans.delegate" onSubmit="return fnDisableForm(this);">
+        <table jwcid="@ActionPortletBorder" title="Consulta de Deals de Captura R&aacute;pida cancelados por no tener contrato asignado a tiempo.">
+            <fieldset>
+                <legend class="legend">Atributos de B&uacute;squeda</legend>
+                <table width="100%">
+                    <tr>
+                        <td class="title" width="1%" align="right" nowrap>Fecha Inicio:</td>
+                        <td><input jwcid="@ls:DatePicker" value="ognl: fechaInicio" format="dd/MM/YYYY" size="10" /></td>
+                        <td class="title" width="1%" align="right" nowrap>Fecha Fin:</td>
+                        <td><input jwcid="@ls:DatePicker" value="ognl: fechaFin" format="dd/MM/YYYY" size="10" /></td>
+                    </tr>
+                    <tr>
+                        <td class="title" align="right">Promotor:</td>
+                        <td><select jwcid="promotoresComboBox" /></td>
+                        <td class="title" align="right">Canal:</td>
+                        <td><select jwcid="canalesComboBox" /></td>
+                    </tr>
+                </table>
+            </fieldset>
+            <br />
+            <div align="center">
+                <img src="../../images/search.gif" jwcid="@ImageSubmit" image="ognl: assets.bBuscar" alt="Buscar" />
+            </div>
+            <span jwcid="@ls:DatePickerColophon" />
+        </table>
+    </form>
+    <span jwcid="@Conditional" condition="ognl: deals && !deals.empty">
+    <table jwcid="@ActionPortletBorder" title="Deals">
+        <table jwcid="@TableBorder" title="ognl: null" columnCount="ognl: 4" subtitles="ognl: {'No. Deal', 'Canal', 'Captur\u00f3', 'Fecha Captura', 'Fecha Valor', 'Detalles Divisa'}" width="100%">
+            <tr jwcid="forDeals@Foreach" source="ognl: deals" class="ognl: beans.evenOdd.next" element="tr">
+                <td class="normal" align="right"><a jwcid="@ExternalLink" page="DatosDeal" parameters="ognl: components.forDeals.value.idDeal" renderer='ognl: global.applicationContext.getBean("bigPopupLinkRenderer")'><span jwcid="@Insert" value="ognl: components.forDeals.value.idDeal" /></a></td>
+                <td class="normal"><span jwcid="@Insert" value="ognl: components.forDeals.value.canalMesa.canal.nombre" /></td>
+                <td class="normal"><span jwcid="@Insert" value="ognl: components.forDeals.value.usuario.persona.nombreCompleto" /></td>
+                <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value.fechaCaptura" format="ognl: fullDateFormat" /></td>
+                <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDeals.value.tipoValor" /></td>
+                <td class="normal" align="center"><span jwcid="@Insert" value="ognl: dealService.getClavesFormasLiquidacion(components.forDeals.value)" raw="ognl: true" /></td>
+            </tr>
+        </table>
+    </table>
+    </span>
+</body>
+</html>

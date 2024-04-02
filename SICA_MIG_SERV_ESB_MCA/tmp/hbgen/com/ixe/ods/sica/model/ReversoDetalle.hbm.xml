@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.ReversoDetalle"
+        table="SC_REVERSO_DETALLE"
+        proxy="com.ixe.ods.sica.model.ReversoDetalle"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idReversoDetalle"
+            column="ID_REVERSO_DETALLE"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_REVERSO_DETALLE_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-ReversoDetalle.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="montoNuevo"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO_NUEVO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambioNuevo"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO_NUEVO"
+            not-null="false"
+            unique="false"
+        />
+
+        <many-to-one
+            name="reverso"
+            class="com.ixe.ods.sica.model.Reverso"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_REVERSO"
+            unique="false"
+        />
+
+        <many-to-one
+            name="dealDetalle"
+            class="com.ixe.ods.sica.model.DealDetalle"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DEAL_POSICION"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-ReversoDetalle.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

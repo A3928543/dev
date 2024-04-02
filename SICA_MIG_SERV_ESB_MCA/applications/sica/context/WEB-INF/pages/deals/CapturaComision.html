@@ -1,0 +1,32 @@
+<!-- $Id: CapturaComision.html,v 1.10 2008/02/22 18:25:09 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Captura de comisiones</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="tb@Block"><span jwcid="@EventosDeal" deal="ognl: dealDetalle.deal" /></span>
+    <table jwcid="@ActionPortletBorder" title="Deal" titleBlock="ognl: components.tb">
+        <span jwcid="@EncabezadoDeal" deal="ognl: dealDetalle.deal" disabled="yes" />
+        <form jwcid="@Form" listener="ognl: listeners.submit" delegate="ognl: beans.delegate">
+            <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" width="100%"/>
+            <table jwcid="@DetailFieldset" dealDetalle="ognl: dealDetalle">
+                <tr class="normal" valign="top">
+                    <td class="title" align="right">Comisi&oacute;n Oficial USD:</td>
+                    <td><span jwcid="@DisabledField" value="ognl: dealDetalle.comisionOficialUsd" /></td>
+                    <td class="title" align="right">Comisi&oacute;n a cobrar USD:</td>
+                    <td><input jwcid="comisionCobradaUsdTextField"/></td>
+                    <td colspan="6">&nbsp;</td>
+                </tr>
+            </table>
+            <br />
+            <div align="center">
+                <span jwcid="@Conditional" condition="ognl: dealDetalle.mnemonico != null">                
+                    <input jwcid="@ImageSubmit" image="ognl: assets.bActualizar" onclick="return fnDisableForm(this.form);" />
+                </span>
+                <input jwcid="@RegresarCapturaDeal" idDeal="ognl: dealDetalle.deal.idDeal" />
+            </div>
+        </form>
+    </table>
+</body>
+</html>

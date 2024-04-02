@@ -1,0 +1,20 @@
+<!-- $Id: ReversosPendientes.html,v 1.2 2008/02/22 18:25:06 ccovian Exp $ -->
+<table jwcid="@ActionPortletBorder" title='ognl: "Reversos Pendientes " + titulo + " (" + numero +  ")"'  minimizable="yes" minimized="ognl: reversosMinimizados">
+<table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "No. Reverso", "No. Deal","Solicita","Fecha"}' columnCount="4" width="100%">
+<tr jwcid="forRegs1@Foreach" source="ognl: reversosPendientes" element="tr" class="normalcell">
+<td class="normal" align="center">
+<span jwcid="@Insert" value='ognl: components.forRegs1.value.idReverso' />
+</td>
+<td class="normal" align="center">
+<span jwcid="@Insert" value='ognl: components.forRegs1.value.dealOriginal.idDeal' />
+</td>
+<td class="normal" align="center">
+<span jwcid="@Insert" value="ognl: components.forRegs1.value.usuario.persona.nombreCompleto" />
+</td>
+<td class="normal" align="center">
+<span jwcid="@Insert" value="ognl: components.forRegs1.value.fecha" format="ognl: page.fullDateFormat" />
+</td>
+</tr>
+</table>
+<br/>
+</table>

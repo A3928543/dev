@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: MensajeBannerTce.page,v 1.1.2.1 2012/08/25 23:50:11 mejiar Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.autorizatce.MensajeBannerTce">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <component id="txtMensaje" type="TextArea">      
+        <binding name="value" expression="mensaje.mensaje" />
+    </component>
+    
+    <component id="radioGrpPrioridad" type="RadioGroup">
+        <binding name="selected" expression="mensaje.prioridad" />
+    </component>
+    
+    <component id="radioAlta" type="Radio">
+    	<binding name="value" expression="@com.ixe.ods.sica.model.MensajeTce@PRIORIDAD_ALTA" />
+    </component>
+    
+    <component id="radioMedia" type="Radio">
+    	<binding name="value" expression="@com.ixe.ods.sica.model.MensajeTce@PRIORIDAD_MEDIA" />
+    </component>
+    
+    <component id="radioBaja" type="Radio">
+    	<binding name="value" expression="@com.ixe.ods.sica.model.MensajeTce@PRIORIDAD_BAJA" />
+    </component>
+    
+    <component id="btnSubmit" type="ImageSubmit">
+    	<binding name="image" expression="assets.bAceptar" />
+    </component>
+    
+    <component id="btnCancelar" type="DirectLink">
+    	<binding name="listener" expression="listeners.cancelar" />
+    </component>
+
+
+	<property-specification name="mensaje" 			type="com.ixe.ods.sica.model.MensajeTce" persistent="yes" 
+		initial-value="new com.ixe.ods.sica.model.MensajeTce()" />
+	<property-specification name="listaMensajes" 	type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+	
+	<property-specification name="level" type="int" persistent="yes" />
+	
+	<!-- ################## Assets ################## -->
+    
+    <context-asset name="bAceptar" path="/images/aceptar.gif" />
+    <context-asset name="bCancelar" path="/images/cancel.gif" />
+    
+</page-specification>

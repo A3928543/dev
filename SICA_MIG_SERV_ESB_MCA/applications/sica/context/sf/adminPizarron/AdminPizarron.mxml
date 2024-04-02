@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.macromedia.com/2003/mxml" xmlns:views="views.*" width="950" height="700" creationComplete="segundaColumna.height = primeraColumna.height">
+
+	<mx:Style source="ixe.css"/>
+
+	<mx:HBox width="100%" height="100%">
+		<mx:VBox id="primeraColumna" width="30%">
+			<views:PrecioReferencia title="Precio de Referencia" width="100%" />
+			<mx:Panel title="Fechas Valor" width="100%" height="100%">
+				<mx:VBox>
+					<mx:Label id="etiqueta" text="CASH: 29 de marzo de 2006" fontWeight="bold" />
+					<mx:Label text="TOM: 30 de marzo de 2006" fontWeight="bold" />
+					<mx:Label text="SPOT: 31 de marzo de 2006" fontWeight="bold" />
+				</mx:VBox>
+			</mx:Panel>
+			<views:MontosDivisa title="Montos m&#225;ximos por divisa" />
+		</mx:VBox>
+		<mx:VBox id="segundaColumna" width="70%">
+			<views:Spreads title="Spreads" width="100%" height="100%" />
+			<views:FactoresDivisa title="Factores de conversi&#243;n" width="100%" height="100%" />
+		</mx:VBox>
+	</mx:HBox>
+
+</mx:Application>

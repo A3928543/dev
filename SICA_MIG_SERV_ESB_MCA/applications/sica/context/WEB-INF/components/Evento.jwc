@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--$Id: Evento.jwc,v 1.9 2008/02/22 18:25:06 ccovian Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<component-specification>
+
+    <parameter name="valor" type="java.lang.String" direction="in" required="yes" />
+    <parameter name="descripcion" type="java.lang.String" direction="in" />
+
+    <context-asset name="amarillo" path="/images/amarillo.gif" />
+    <context-asset name="rojo" path="/images/rojo.gif" />
+    <context-asset name="rojoTes" path="/images/rojo_tesoreria.gif" />
+    <context-asset name="verde" path="/images/verde.gif" />
+    <context-asset name="verdeTes" path="/images/verde_tesoreria.gif" />
+    <context-asset name="verdeUso" path="/images/verde_uso.gif" />
+    <context-asset name="blanco" path="/images/blanco.gif" />
+    <context-asset name="blancoInt" path="/images/blanco_int.gif" />
+    <context-asset name="naranja" path="/images/naranja.gif" />
+
+</component-specification>
+
+

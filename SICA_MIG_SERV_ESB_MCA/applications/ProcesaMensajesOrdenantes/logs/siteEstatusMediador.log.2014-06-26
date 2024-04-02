@@ -1,0 +1,99 @@
+--->>>>>> Inicia procesamiento de mensajes recibidos desde el Mediador....
+Thu Jun 26 15:59:38 CDT 2014
+Se realizó la lectura de las propiedades de configuración.
+config:{[ConfiguracionVO{queueManagerHost:15.156.2.105, queueManagerPort:1414, queueManagerChannel:CH.2, queueManager:QM_Odin_PC, queueIn:SITE.QL.IN, dataSourceName:SITEDataSource, initialContextFactory:weblogic.jndi.WLInitialContextFactory, providerURL:t3://wlsdev.unix.banorte.com:7025}]
+Se consiguió la referencia al dataSource de conexión a base de datos.
+Connection Factory creado.
+Connection creada.
+Session creada.
+Queue Session creada: SITE.QL.IN
+Consumidor creado.
+Conexión hacia la QUEUE establecida, esperando mensajes.................
+--->>>>>> Inicia procesamiento de mensajes recibidos desde el Mediador....
+Thu Jun 26 16:19:26 CDT 2014
+Se realizó la lectura de las propiedades de configuración.
+config:{[ConfiguracionVO{queueManagerHost:15.156.2.105, queueManagerPort:1414, queueManagerChannel:CH.2, queueManager:QM_Odin_PC, queueIn:SITE.QL.IN, dataSourceName:SITEDataSource, initialContextFactory:weblogic.jndi.WLInitialContextFactory, providerURL:t3://wlsdev.unix.banorte.com:7025}]
+Se consiguió la referencia al dataSource de conexión a base de datos.
+Connection Factory creado.
+Connection creada.
+Session creada.
+Queue Session creada: SITE.QL.IN
+Consumidor creado.
+Conexión hacia la QUEUE establecida, esperando mensajes.................
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?><siteResponse><codigoMediador>OK</codigoMediador><mensajeMediador>Operacion Correcta</mensajeMediador><folioMediador>1234567890</folioMediador><ordenID>514456</ordenID><operacionID>1220545</operacionID></siteResponse>
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?><siteResponse><codigoMediador>OK</codigoMediador><mensajeMediador>Operacion Correcta</mensajeMediador><folioMediador>1234567890</folioMediador><ordenID>514456</ordenID><operacionID>1220545</operacionID></siteResponse>
+El mensaje recibido es del tipo: RespuestaMediadorVO.
+El objeto mensaje es null: false
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_BITACORA_MEDIADOR SET CODIGO_MEDIADOR = 'OK', MENSAJE_MEDIADOR = 'Operacion Correcta', ESTATUS_MEDIADOR = 'NO MATCH', FOLIO_MEDIADOR = 1234567890 WHERE ID_DEAL = 514456 AND ID_DETALLE_LIQ = 1220545
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_DETALLE_LIQUIDACION SET ESTATUS_MEDIADOR = 'NO MATCH', FOLIO_MEDIADOR = 1234567890 WHERE ID_DETALLE_LIQUIDACION = 1220545
+Se procesaron 2 instrucciones SQL
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?><siteResponse><codigoMediador>OK</codigoMediador><mensajeMediador>Operacion Correcta</mensajeMediador><folioMediador>1234567890</folioMediador><ordenID>514456</ordenID><operacionID>1220545</operacionID></siteResponse>
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?><siteResponse><codigoMediador>OK</codigoMediador><mensajeMediador>Operacion Correcta</mensajeMediador><folioMediador>1234567890</folioMediador><ordenID>514456</ordenID><operacionID>1220545</operacionID></siteResponse>
+El mensaje recibido es del tipo: RespuestaMediadorVO.
+El objeto mensaje es null: false
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_BITACORA_MEDIADOR SET CODIGO_MEDIADOR = 'OK', MENSAJE_MEDIADOR = 'Operacion Correcta', ESTATUS_MEDIADOR = 'NO MATCH', FOLIO_MEDIADOR = 1234567890 WHERE ID_DEAL = 514456 AND ID_DETALLE_LIQ = 1220545
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_DETALLE_LIQUIDACION SET ESTATUS_MEDIADOR = 'NO MATCH', FOLIO_MEDIADOR = 1234567890 WHERE ID_DETALLE_LIQUIDACION = 1220545
+Se procesaron 2 instrucciones SQL
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?><siteResponse><codigoMediador>OK</codigoMediador><mensajeMediador>Operacion Correcta</mensajeMediador><folioMediador>1234567890</folioMediador><ordenID>514456</ordenID><operacionID>1220545</operacionID></siteResponse>
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?><siteResponse><codigoMediador>OK</codigoMediador><mensajeMediador>Operacion Correcta</mensajeMediador><folioMediador>1234567890</folioMediador><ordenID>514456</ordenID><operacionID>1220545</operacionID></siteResponse>
+El mensaje recibido es del tipo: RespuestaMediadorVO.
+El objeto mensaje es null: false
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_BITACORA_MEDIADOR SET CODIGO_MEDIADOR = 'OK', MENSAJE_MEDIADOR = 'Operacion Correcta', ESTATUS_MEDIADOR = 'NO MATCH', FOLIO_MEDIADOR = 1234567890 WHERE ID_DEAL = 514456 AND ID_DETALLE_LIQ = 1220545
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_DETALLE_LIQUIDACION SET ESTATUS_MEDIADOR = 'NO MATCH', FOLIO_MEDIADOR = 1234567890 WHERE ID_DETALLE_LIQUIDACION = 1220545
+Se procesaron 2 instrucciones SQL
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?><siteResponse><codigoMediador>OK</codigoMediador><mensajeMediador>Operacion Correcta</mensajeMediador><folioMediador>1234567890</folioMediador><ordenID>514456</ordenID><operacionID>1220545</operacionID></siteResponse>
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?><siteResponse><codigoMediador>OK</codigoMediador><mensajeMediador>Operacion Correcta</mensajeMediador><folioMediador>1234567890</folioMediador><ordenID>514456</ordenID><operacionID>1220545</operacionID></siteResponse>
+El mensaje recibido es del tipo: RespuestaMediadorVO.
+El objeto mensaje es null: false
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_BITACORA_MEDIADOR SET CODIGO_MEDIADOR = 'OK', MENSAJE_MEDIADOR = 'Operacion Correcta', ESTATUS_MEDIADOR = 'NO MATCH', FOLIO_MEDIADOR = 1234567890 WHERE ID_DEAL = 514456 AND ID_DETALLE_LIQ = 1220545
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_DETALLE_LIQUIDACION SET ESTATUS_MEDIADOR = 'NO MATCH', FOLIO_MEDIADOR = 1234567890 WHERE ID_DETALLE_LIQUIDACION = 1220545
+Se procesaron 2 instrucciones SQL
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?><siteResponse><codigoMediador>OK</codigoMediador><mensajeMediador>Operacion Correcta</mensajeMediador><folioMediador>1234567890</folioMediador><ordenID>514456</ordenID><operacionID>1220545</operacionID></siteResponse>
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?><siteResponse><codigoMediador>OK</codigoMediador><mensajeMediador>Operacion Correcta</mensajeMediador><folioMediador>1234567890</folioMediador><ordenID>514456</ordenID><operacionID>1220545</operacionID></siteResponse>
+El mensaje recibido es del tipo: RespuestaMediadorVO.
+El objeto mensaje es null: false
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_BITACORA_MEDIADOR SET CODIGO_MEDIADOR = 'OK', MENSAJE_MEDIADOR = 'Operacion Correcta', ESTATUS_MEDIADOR = 'NO MATCH', FOLIO_MEDIADOR = 1234567890 WHERE ID_DEAL = 514456 AND ID_DETALLE_LIQ = 1220545
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_DETALLE_LIQUIDACION SET ESTATUS_MEDIADOR = 'NO MATCH', FOLIO_MEDIADOR = 1234567890 WHERE ID_DETALLE_LIQUIDACION = 1220545
+Se procesaron 2 instrucciones SQL
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?><siteResponse><codigoMediador>OK</codigoMediador><mensajeMediador>Operacion Correcta</mensajeMediador><folioMediador>1234567890</folioMediador><ordenID>514456</ordenID><operacionID>1220545</operacionID></siteResponse>
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?><siteResponse><codigoMediador>OK</codigoMediador><mensajeMediador>Operacion Correcta</mensajeMediador><folioMediador>1234567890</folioMediador><ordenID>514456</ordenID><operacionID>1220545</operacionID></siteResponse>
+El mensaje recibido es del tipo: RespuestaMediadorVO.
+El objeto mensaje es null: false
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_BITACORA_MEDIADOR SET CODIGO_MEDIADOR = 'OK', MENSAJE_MEDIADOR = 'Operacion Correcta', ESTATUS_MEDIADOR = 'NO MATCH', FOLIO_MEDIADOR = 1234567890 WHERE ID_DEAL = 514456 AND ID_DETALLE_LIQ = 1220545
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_DETALLE_LIQUIDACION SET ESTATUS_MEDIADOR = 'NO MATCH', FOLIO_MEDIADOR = 1234567890 WHERE ID_DETALLE_LIQUIDACION = 1220545
+Se procesaron 2 instrucciones SQL
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?><siteResponse><codigoMediador>OK</codigoMediador><mensajeMediador>Operacion Correcta</mensajeMediador><folioMediador>1234567890</folioMediador><ordenID>514456</ordenID><operacionID>1220545</operacionID></siteResponse>
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?><siteResponse><codigoMediador>OK</codigoMediador><mensajeMediador>Operacion Correcta</mensajeMediador><folioMediador>1234567890</folioMediador><ordenID>514456</ordenID><operacionID>1220545</operacionID></siteResponse>
+El mensaje recibido es del tipo: RespuestaMediadorVO.
+El objeto mensaje es null: false
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_BITACORA_MEDIADOR SET CODIGO_MEDIADOR = 'OK', MENSAJE_MEDIADOR = 'Operacion Correcta', ESTATUS_MEDIADOR = 'NO MATCH', FOLIO_MEDIADOR = 1234567890 WHERE ID_DEAL = 514456 AND ID_DETALLE_LIQ = 1220545
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_DETALLE_LIQUIDACION SET ESTATUS_MEDIADOR = 'NO MATCH', FOLIO_MEDIADOR = 1234567890 WHERE ID_DETALLE_LIQUIDACION = 1220545
+Se procesaron 2 instrucciones SQL
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?><siteResponse><codigoMediador>OK</codigoMediador><mensajeMediador>Operacion Correcta</mensajeMediador><folioMediador>1234567890</folioMediador><ordenID>514456</ordenID><operacionID>1220545</operacionID></siteResponse>
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?><siteResponse><codigoMediador>OK</codigoMediador><mensajeMediador>Operacion Correcta</mensajeMediador><folioMediador>1234567890</folioMediador><ordenID>514456</ordenID><operacionID>1220545</operacionID></siteResponse>
+El mensaje recibido es del tipo: RespuestaMediadorVO.
+El objeto mensaje es null: false
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_BITACORA_MEDIADOR SET CODIGO_MEDIADOR = 'OK', MENSAJE_MEDIADOR = 'Operacion Correcta', ESTATUS_MEDIADOR = 'NO MATCH', FOLIO_MEDIADOR = 1234567890 WHERE ID_DEAL = 514456 AND ID_DETALLE_LIQ = 1220545
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_DETALLE_LIQUIDACION SET ESTATUS_MEDIADOR = 'NO MATCH', FOLIO_MEDIADOR = 1234567890 WHERE ID_DETALLE_LIQUIDACION = 1220545
+Se procesaron 2 instrucciones SQL
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?><siteResponse><codigoMediador>OK</codigoMediador><mensajeMediador>Operacion Correcta</mensajeMediador><folioMediador>1234567890</folioMediador><ordenID>514456</ordenID><operacionID>1220545</operacionID></siteResponse>
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?><siteResponse><codigoMediador>OK</codigoMediador><mensajeMediador>Operacion Correcta</mensajeMediador><folioMediador>1234567890</folioMediador><ordenID>514456</ordenID><operacionID>1220545</operacionID></siteResponse>
+El mensaje recibido es del tipo: RespuestaMediadorVO.
+El objeto mensaje es null: false
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_BITACORA_MEDIADOR SET CODIGO_MEDIADOR = 'OK', MENSAJE_MEDIADOR = 'Operacion Correcta', ESTATUS_MEDIADOR = 'NO MATCH', FOLIO_MEDIADOR = 1234567890 WHERE ID_DEAL = 514456 AND ID_DETALLE_LIQ = 1220545
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_DETALLE_LIQUIDACION SET ESTATUS_MEDIADOR = 'NO MATCH', FOLIO_MEDIADOR = 1234567890 WHERE ID_DETALLE_LIQUIDACION = 1220545
+Se procesaron 2 instrucciones SQL
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?><siteResponse><codigoMediador>OK</codigoMediador><mensajeMediador>Operacion Correcta</mensajeMediador><folioMediador>1234567890</folioMediador><ordenID>514456</ordenID><operacionID>1220545</operacionID></siteResponse>
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?><siteResponse><codigoMediador>OK</codigoMediador><mensajeMediador>Operacion Correcta</mensajeMediador><folioMediador>1234567890</folioMediador><ordenID>514456</ordenID><operacionID>1220545</operacionID></siteResponse>
+El mensaje recibido es del tipo: RespuestaMediadorVO.
+El objeto mensaje es null: false
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_BITACORA_MEDIADOR SET CODIGO_MEDIADOR = 'OK', MENSAJE_MEDIADOR = 'Operacion Correcta', ESTATUS_MEDIADOR = 'NO MATCH', FOLIO_MEDIADOR = 1234567890 WHERE ID_DEAL = 514456 AND ID_DETALLE_LIQ = 1220545
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_DETALLE_LIQUIDACION SET ESTATUS_MEDIADOR = 'NO MATCH', FOLIO_MEDIADOR = 1234567890 WHERE ID_DETALLE_LIQUIDACION = 1220545
+Se procesaron 2 instrucciones SQL
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?><siteConfirmacionMatch><operacionID>1220545</operacionID><folioMediador>1234567890</folioMediador><estatus>MATCH</estatus></siteConfirmacionMatch>
+El mensaje recibido es: <?xml version="1.0" encoding="UTF-8"?><siteConfirmacionMatch><operacionID>1220545</operacionID><folioMediador>1234567890</folioMediador><estatus>MATCH</estatus></siteConfirmacionMatch>
+El mensaje recibido es del tipo: EstatusOperacionMediadorVO.
+El objeto mensaje es null: false
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_BITACORA_MEDIADOR SET ESTATUS_MEDIADOR = 'MATCH'  WHERE FOLIO_MEDIADOR = 1234567890 AND ID_DETALLE_LIQ = 1220545
+Se va a ejecutar la instrucción: UPDATE SITE_ADMIN.TES_DETALLE_LIQUIDACION SET ESTATUS_MEDIADOR = 'MATCH', FOLIO_MEDIADOR = 1234567890 WHERE ID_DETALLE_LIQUIDACION = 1220545
+Se procesaron 2 instrucciones SQL

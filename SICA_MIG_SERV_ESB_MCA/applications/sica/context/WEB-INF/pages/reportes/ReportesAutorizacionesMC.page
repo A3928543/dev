@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.reportes.ReportesAutorizacionesMC">
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate"/>
+    
+    <component id="canalComboBox" type="PropertySelection">
+        <binding name="model" expression="getCanalesModel()" />
+        <binding name="value" expression="canalSeleccionado" />
+    </component>
+
+    <component id="autorizacionesComboBox" type="PropertySelection">
+        <binding name="model" expression='getTipoAutorizacionesModel()' />
+        <binding name="value" expression="tipoAutorizacionSeleccionada" />
+    </component>
+    
+    <component id="statusAutorizacionComboBox" type="PropertySelection">
+    	<binding name="model" expression='getStatusAutorizacionModel()' />
+        <binding name="value" expression="status" />
+    </component>
+     
+    <property-specification name="canalSeleccionado" type="com.ixe.ods.sica.model.Canal" persistent="yes" />
+    <property-specification name="status" type="java.lang.String" persistent="yes" />
+    <property-specification name="tipoAutorizacionSeleccionada" type="java.lang.String[]" persistent="yes" />
+    <property-specification name="registerDate" type="java.util.Date" persistent="yes" />
+    <property-specification name="gc" type="java.util.Date" persistent="yes" />    
+    <property-specification name="modo" type="java.lang.String" initial-value="" persistent="yes" />
+  	<property-specification name="registerDateHasta" type="java.util.Date" persistent="yes" />
+    
+    <context-asset name="searchButton" path="/images/search.gif" />
+	<context-asset name="verXlsButton" path="/images/ver_excel.gif" />
+
+</page-specification>

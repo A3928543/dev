@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: sica.application,v 1.9.46.1.14.1 2013/09/27 23:41:55 mejiar Exp $ -->
+<!DOCTYPE application PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<application name="sica" engine-class="com.ixe.ods.sica.SupportEngine">
+
+    <property name="org.apache.tapestry.visit-class">com.ixe.ods.sica.Visit</property>
+    <property name="org.apache.tapestry.global-class">com.ixe.ods.sica.Global</property>
+    <property name="ods.tapestry.resolver.locations" value="/WEB-INF/pages/,/WEB-INF/components/,/WEB-INF/pages/catalogos/,/WEB-INF/pages/control/,/WEB-INF/pages/deals/,/WEB-INF/pages/documentacion/,/WEB-INF/pages/tesoreria/,/WEB-INF/pages/lineacredito/,/WEB-INF/pages/lineaoperacion/,/WEB-INF/pages/contabilidad/,/WEB-INF/pages/deals/plantillas/,/WEB-INF/pages/deals/formliq/,/WEB-INF/pages/deals/interbancario/,/WEB-INF/pages/mesa/,/WEB-INF/pages/posicion/,/WEB-INF/pages/mesa/,/WEB-INF/pages/traspasos/,/WEB-INF/pages/reportes/,/WEB-INF/pages/administracion/,/WEB-INF/pages/autorizatce/,/WEB-INF/pages/sicamurex/" />
+
+    <page name="Exception" specification-path="Exception.page"/>
+    <page name="StaleSession" specification-path="StaleSessionPage.page"/>
+
+    <service name="image" class="com.legosoft.tapestry.image.ImageService"/>
+    <service name="home" class="com.ixe.ods.tapestry.services.HomeService"/>
+    <service name="login" class="com.ixe.ods.tapestry.services.LoginService"/>
+    <service name="autologin" class="com.ixe.ods.tapestry.services.AutoLoginService"/>
+    <service name="settings" class="com.ixe.ods.tapestry.services.SettingsService"/>
+    <service name="jasper" class="com.ixe.ods.tapestry.services.jasper.JasperService"/>
+    <service name="download" class="com.legosoft.tapestry.download.DownloadService"/>
+
+    <library id="contrib" specification-path="/org/apache/tapestry/contrib/Contrib.library"/>
+    <library id="tooltip" specification-path="/com/legosoft/tapestry/ToolTip.library"/>
+    <library id="ixe" specification-path="/com/ixe/isis/tapestry/Ixe.library"/>
+    <library id="bup" specification-path="/com/ixe/ods/tapestry/Bup.library"/>
+    <library id="menu" specification-path="/com/ixe/ods/tapestry/components/menu/Menu.library"/>
+    <library id="ls" specification-path="/com/legosoft/tapestry/Legosoft.library"/>
+
+    <extension name="org.apache.tapestry.specification-resolver-delegate" class="com.ixe.ods.tapestry.resolver.SpecificationResolverDelegate"/>
+
+</application>

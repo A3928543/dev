@@ -1,0 +1,93 @@
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <!-- $Id: CatGrupoTrabajoPromotor.html,v 1.2 2010/04/30 15:31:56 ccovian Exp $ -->
+    <title>Edicion Grupo Trabajo - Promotor</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+	<span jwcid="@bup:ShowError" width="100%" delegate="ognl:beans.delegate"/>
+	<br />
+	<table width="100%">
+		<tr valign="top">
+			<td align="center">
+				<table jwcid="@ActionPortletBorder" title="Grupos de Trabajo">
+					<tr>
+						<td align="center">
+							<table width="90%">
+								<span jwcid="forGruposTrabajoPromotorTop@Foreach" source="ognl: gruposTrabajoPromotores" index="ognl: indice">
+									<tr class="portlettitle">
+										<td align="left" class="legend">Clave:&nbsp;<span jwcid="@Insert" value="ognl:gruposTrabajoPromotores.get(indice).get(0).id.grupoTrabajo.idGrupoTrabajo" /></td>
+									</tr>
+									<tr class="titlecell">
+										<td>
+											<table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: {"Promotor", "Grupo", ""}' columnCount="3" width="100%">
+												<tr jwcid="forGruposTrabajoPromotor@Foreach" source="ognl: components.forGruposTrabajoPromotorTop.value" element="tr" class="ognl: beans.evenOdd.next">
+													<td class="normal" align="center" width="">
+														<span jwcid="@Insert" value="ognl:components.forGruposTrabajoPromotor.value.id.promotor.nombreCompleto" />
+													</td>
+													<td class="normal" align="center">
+														<span jwcid="@Insert" value="ognl:components.forGruposTrabajoPromotor.value.id.grupoTrabajo.nombre" />
+													</td>
+													<td class="normal" align="center">
+														<a jwcid="@DirectLink"
+															listener="ognl:listeners.eliminarCombinacion"
+															parameters="ognl:{components.forGruposTrabajoPromotor.value.id.promotor.idPersona, components.forGruposTrabajoPromotor.value.id.grupoTrabajo.idGrupoTrabajo}"
+															onclick="return confirm('\u00bfDesea eliminar el registro?')">
+																Eliminar
+														</a>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</span>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td width="1%">
+		  		&nbsp;
+		  	</td>
+		  	<td width="230px">
+		  		<table jwcid="@ActionPortletBorder" title="Asignaci&oacute;n de promotor a grupo de trabajo" width="100%">
+		  			<fieldset class="normal">
+		  			<legend class="legend">Asignaci&oacute;n</legend>
+			  			<form jwcid="@Form" listener="ognl: listeners.agregarCombinacion" delegate="ognl:beans.delegate">
+				  			<table width="100%">
+				  				<tr>
+				  					<td class="title">Promotores:</td>
+				  				</tr>
+				  				<tr>
+				  					<td>
+				  						<select jwcid="@PropertySelection" 
+				  								model="ognl: promotoresModel"
+				  								value="ognl: nuevaCombinacionGrupoPromotor.id.promotor"/>
+				  					</td>
+				  				</tr>
+				  				<tr>
+				  					<td class="title">Grupo Trabajo:</td>
+				  				</tr>
+				  				<tr>
+				  					<td>
+				  						<select jwcid="@PropertySelection"
+				  								model="ognl:grupoTrabajoModel"
+				  								value="ognl:nuevaCombinacionGrupoPromotor.id.grupoTrabajo"/>
+				  					</td>
+				  				</tr>
+				  				<tr>
+				  					<td align="center">
+				  						<br/>
+				  						<input jwcid="@ImageSubmit" image="ognl: assets.insertButton" onclick="return fnDisableForm(this.form);" />
+				  					</td>
+				  				</tr>
+				  			</table>
+			  			</form>
+		  			</fieldset>
+		  		</table>
+		  	</td>
+		</tr>
+	</table>
+</body>
+</html>

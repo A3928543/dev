@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.ContraparteBanxico"
+        table="BUP_CONTRAPARTE_BANXICO"
+        proxy="com.ixe.ods.sica.model.ContraparteBanxico"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idSaif"
+            column="ID_SAIF"
+            type="java.lang.String"
+            unsaved-value="null"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-ContraparteBanxico.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="idPersonaTas"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_PERSONA_TAS"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="idPersonaIxec"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_PERSONA_IXEC"
+            not-null="false"
+            unique="false"
+        />
+
+        <many-to-one
+            name="personaSica"
+            class="com.ixe.ods.bup.model.Persona"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_PERSONA_SICA"
+            unique="false"
+        />
+
+        <property
+            name="idPersonaSistebank"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_PERSONA_SISTEBANK"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="nombre"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NOMBRE"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="rfc"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="RFC"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="tipoContraparte"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CONTRAPARTE"
+            not-null="false"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-ContraparteBanxico.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findCveBanxicoByIdPersona"><![CDATA[
+            FROM ContraparteBanxico AS cb WHERE cb.personaSica.idPersona = ?
+        ]]></query>
+
+</hibernate-mapping>

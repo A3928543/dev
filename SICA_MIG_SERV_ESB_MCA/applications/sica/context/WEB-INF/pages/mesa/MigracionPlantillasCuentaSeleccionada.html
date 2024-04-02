@@ -1,0 +1,37 @@
+<!-- $Id: MigracionPlantillasCuentaSeleccionada.html,v 1.9 2008/02/22 18:25:30 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Encabezado</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+	<body jwcid="@PageBorder" menuDisabled="ognl: true">
+	<table align="center" width="100%">
+		<tr valign="top">
+		 	<td>
+			    <table jwcid="@ActionPortletBorder" title="Datos del cliente">
+				   <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: {"Plantillas Encontradas"}' columnCount="1" width="100%" >		                                                                
+				       <tr jwcid="forRegistros@Foreach" source="ognl: cuentaSeleccionada" element="tr" class="ognl: beans.evenOdd.next" align="center">
+		             	<td class="normal" align="left">
+		               		<b>N&uacute;mero de Cuenta: </b><span jwcid="@Insert" value="ognl: components.forRegistros.value.accNo" raw="yes" /><br>
+		               		<b>Cliente: </b> <span jwcid="@Insert" value="ognl: components.forRegistros.value.nombreCliente" raw="yes" /><br>
+		               		<b>Beneficiario: </b><span jwcid="@Insert" value="ognl: components.forRegistros.value.beneficiario" raw="yes" /><br>
+		               		<b>Cuenta Cliente: </b><span jwcid="@Insert" value="ognl: components.forRegistros.value.cuentaCliente" raw="yes" /><br>
+		               		<b>Banco: </b><span jwcid="@Insert" value="ognl: components.forRegistros.value.banco" raw="yes" /><br>
+		               		<b>Forma Liquidaci&oacute;n: </b><span jwcid="@Insert" value="ognl: components.forRegistros.value.idLiquidacion" raw="yes" /><br>
+		               		<b>Divisa: </b><span jwcid="@Insert" value="ognl: components.forRegistros.value.idMoneda" raw="yes" /><br>
+		               		<b>Clave: </b><span jwcid="@Insert" value="ognl: components.forRegistros.value.clave" raw="yes" /><br>
+		               		<b>Plaza: </b><span jwcid="@Insert" value="ognl: components.forRegistros.value.plaza" raw="yes" /><br>
+		               		<b>Pa&iacute;s: </b><span jwcid="@Insert" value="ognl: components.forRegistros.value.pais" raw="yes" /><br>
+		               		<b>Instrucciones Beneficiario: </b><span jwcid="@Insert" value="ognl: components.forRegistros.value.instBenef" raw="yes" /><br>
+		               		<b>Instrucciones Banco: </b><span jwcid="@Insert" value="ognl: components.forRegistros.value.instBanco" raw="yes" /><br>
+						</td>
+						</tr>
+		           </table>
+		        </table>
+		   </td>
+			
+		</tr>
+		
+	</table>
+	</body>
+</html>

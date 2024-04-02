@@ -1,0 +1,66 @@
+<!-- $Id: ReporteDealsPagoAnt.html,v 1.9 2008/02/22 18:25:41 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Reportes</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr valign="top">
+            <td width="200">
+			    <div align="center">
+	               	&nbsp; 
+	            </div>     	   
+			    <table jwcid="@ActionPortletBorder" title="Reportes Deals con Pago Anticipado">
+				     <form jwcid="@Form" listener="ognl: listeners.reportes" delegate="ognl: beans.delegate">				     				     
+				           <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+			           		    <fieldset class="normal">
+			           		        <legend class="legend">Impresi&oacute;n de Reportes</legend>                      
+				                        Fecha de la Operaci&oacute;n<br />
+				                        <span jwcid="@ls:DatePicker" value="ognl: registerDate" format="dd/MM/yyyy"/><br />
+				                        Ordenado Por :<br />
+				                        <select jwcid="ordenComboBox" /><br />				                        
+			                   </fieldset>
+				                <div align="center">
+				                    <input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+				                </div>			                   
+			    	</form>			    	
+			   </table>
+   			</td>
+   			<td width="1%">&nbsp;</td>
+            <td>
+            	<span jwcid="@Conditional" condition="ognl: detallesTable.size() &gt; 0">
+            	<!--div align="center">
+	                <a jwcid="printLink"><img jwcid="@Image" image="ognl: assets.verPdfButton"/></a> 
+	            </div-->	 
+	            &nbsp;
+            	<table jwcid="@ActionPortletBorder" title="Reporte a Imprimir">
+            	
+            		&nbsp;
+       				&nbsp;
+       				<table border="0" width="100%">
+     					<tr>
+      						<td align="center"><a jwcid="printLink"><img jwcid="@Image" image="ognl: assets.verPdfButton"/></a></td>
+       						<td align="center"><a jwcid="@DirectLink" listener="ognl:listeners.imprimirReporteXls" parameters= 'ognl: {"WEB-INF/jasper/ReporteDealsPAgoAnticipadoXls.jasper", "RepDealsPagoAntXls", "0" }'><img jwcid="@Image" image="ognl: assets.verXlsButton"/></a></td>
+      					</tr>
+       				</table>
+       				&nbsp;
+      				&nbsp;
+		            <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: {"Deal", "Producto", "No. Cuenta", "Promotor", "Monto"}' columnCount="8" width="100%" >		                                    
+                            <tr jwcid="forDt@Foreach" source="ognl: detallesTable" element="tr" class="ognl: beans.evenOdd.next" align="center">
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value.deal.idDeal" raw="yes" /></td>
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value.claveFormaLiquidacion" raw="yes" /></td>
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value.deal.contratoSica.noCuenta" raw="yes" /></td>
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value.deal.usuario.persona.nombreCompleto" raw="yes" /></td>
+                             <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forDt.value.monto" format = "ognl: moneyFormat" raw="yes" /></td>
+                            </tr> 
+                    </table>
+        		</table>
+        	    </span>
+               &nbsp;
+           </td>   			
+        </tr>
+    </table>
+    <span jwcid="@ls:DatePickerColophon" />
+</body>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CapturaComision.page,v 1.10 2008/02/22 18:25:08 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.deals.CapturaComision">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <bean name="doubleValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="minimum" expression="0"/>
+        <set-property name="clientScriptingEnabled" expression="true" />
+    </bean>
+
+    <component id="comisionCobradaUsdTextField" type="ValidField">
+        <static-binding name="displayName" value="Comsi&#243;n a cobrar:" />
+        <binding name="validator" expression="beans.doubleValidator" />
+        <binding name="value" expression="dealDetalle.comisionCobradaUsd" />
+    </component>
+
+    <property-specification name="dealDetalle" type="com.ixe.ods.sica.model.DealDetalle" persistent="yes"/>
+
+    <context-asset name="bActualizar" path="/images/save.gif" />
+
+</page-specification>

@@ -1,0 +1,84 @@
+<!-- $Id: ReportesDiarios.html,v 1.10 2008/02/22 18:25:40 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Reportes</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr valign="top">
+            <td width="200">
+             	<div align="center">
+	            	&nbsp;
+	            </div>     	   
+			    <table jwcid="@ActionPortletBorder" title="Reportes Diarios Compras/Ventas">
+				     <form jwcid="@Form" listener="ognl: listeners.reportes" delegate="ognl: beans.delegate" >
+				           <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+			           		    <fieldset class="normal">
+			           		        <legend class="legend">Impresi&oacute;n de Reportes</legend>
+				                        Divisa :<br />
+				                        <select jwcid="divisasComboBox" /><br />
+				                        Producto :<br />
+				                        <select jwcid="formasLiquidacionComboBox" /><br />
+				                        Tipo Operaci&oacute;n :<br />
+				                        <select jwcid="operacionesComboBox" /><br />
+				                        Promotor:<br />
+				                        <select jwcid="promotorSolicitudComboBox" /><br />	                        
+				                        Del :<br />
+				                        <span jwcid="@ls:DatePicker" value="ognl: registerDate" format="dd/MM/yyyy"/><br />
+                                         Al :<br />
+				                        <span jwcid="@ls:DatePicker" value="ognl: registerDateHasta" format="dd/MM/yyyy"/><br />
+			                   </fieldset>
+                               <fieldset class="normal">
+			           		        <legend class="legend">Montos</legend>
+				                        Monto M&iacute;nimo :<br />
+				                        <input jwcid="montoTextFieldMinimo" /><br />
+				                        Monto M&aacute;ximo :<br />
+				                        <input jwcid="montoTextFieldMaximo" /><br />
+			                   </fieldset>
+			                <div align="center">
+			                    <input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+			                </div>
+			    	</form>
+			   </table>
+   			</td>
+   			<td width="1%">&nbsp;</td>
+            <td>
+            	<span jwcid="@Conditional" condition="ognl: detallesTable.size() &gt; 0">
+            	<!--div align="center">
+			    	<a jwcid="printLink"><img jwcid="@Image" image="ognl: assets.verPdfButton"/></a>&nbsp;&nbsp;&nbsp;<a jwcid="@DirectLink" listener="ognl:listeners.imprimirReporteDiarioXls" parameters= 'ognl: {"WEB-INF/jasper/ReporteDiarioXls.jasper", "ReporteDiarioXls", "0" }'><img jwcid="@Image" image="ognl: assets.verXlsButton"/></a>
+			    </div--> 
+			    &nbsp;     
+            	<table jwcid="@ActionPortletBorder" title="Reporte a Imprimir">
+            		&nbsp;
+            		&nbsp;
+            		<table border="0" width="100%">
+            			<tr>
+            				<td align="center"><a jwcid="printLink"><img jwcid="@Image" image="ognl: assets.verPdfButton"/></a></td>
+            				<td align="center"><a jwcid="@DirectLink" listener="ognl:listeners.imprimirReporteDiarioXls" parameters= 'ognl: {"WEB-INF/jasper/ReporteDiarioXls.jasper", "ReporteDiarioXls", "0" }'><img jwcid="@Image" image="ognl: assets.verXlsButton"/></a></td>
+            			</tr>
+            		</table>
+            		&nbsp;
+            		&nbsp;
+            		<table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: {"Divisa", "Producto", "Operaci&oacute;n", "Promotor", "Cliente", "Fecha Captura", "Fecha Liquidaci&oacute;n", "Estatus"}' columnCount="8" width="100%" >		                                                                
+                            <tr jwcid="forDt@Foreach" source="ognl: detallesTable" element="tr" class="ognl: beans.evenOdd.next" align="center">
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value.divisa.descripcion" raw="yes" /></td>
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value.claveFormaLiquidacion" raw="yes" /></td>
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value.recibimos == true ? 'Compra' : 'Venta'" raw="yes" /></td>
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value.deal.promotor.nombreCompleto" raw="yes" /></td>
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value.deal.cliente.nombreCompleto" raw="yes" /></td>                             
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value.deal.fechaCaptura" format="ognl: dateFormat" raw="yes" /></td>
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value.deal.fechaLiquidacion" format="ognl: dateFormat" raw="yes" /></td>
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value.descripcionStatus" raw="yes" /></td>
+                             
+                            </tr>                                                         
+                    </table>
+        		</table>
+        	   </span>
+               &nbsp;
+           </td>   			
+        </tr>
+    </table>
+    <span jwcid="@ls:DatePickerColophon" />
+</body>
+</html>

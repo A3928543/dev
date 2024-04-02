@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<cairngorm:ServiceLocator xmlns:mx="http://www.macromedia.com/2003/mxml"
+                          xmlns:cairngorm="org.nevis.cairngorm.business.*">
+
+    <mx:RemoteObject id="posicionService" source="spring://posicionDelegate"
+        concurrency="multiple"
+        showBusyCursor="true"
+        result="event.call.resultHandler(event)"
+        fault="event.call.faultHandler(event)">
+    </mx:RemoteObject>
+
+</cairngorm:ServiceLocator>

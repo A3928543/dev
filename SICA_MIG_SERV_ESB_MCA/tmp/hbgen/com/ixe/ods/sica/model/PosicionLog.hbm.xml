@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.PosicionLog"
+        table="SC_POSICION_LOG"
+        proxy="com.ixe.ods.sica.model.PosicionLog"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idPosicionLog"
+            column="ID_POSICION_LOG"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_POSICION_LOG_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-PosicionLog.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="claveFormaLiquidacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_FORMA_LIQUIDACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <component
+            name="canalMesa"
+            class="com.ixe.ods.sica.model.CanalMesa"
+        >
+
+        <many-to-one
+            name="canal"
+            class="com.ixe.ods.sica.model.Canal"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_CANAL"
+            unique="false"
+        />
+
+        <many-to-one
+            name="mesaCambio"
+            class="com.ixe.ods.sica.model.MesaCambio"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_MESA_CAMBIO"
+            unique="false"
+        />
+
+        </component>
+
+        <property
+            name="idUsuario"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_USUARIO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="monto"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="montoMn"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO_MN"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="nombreCliente"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NOMBRE_CLIENTE"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="precioReferencia"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="PRECIO_REFERENCIA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoOperacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_OPERACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambioCliente"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO_CLIENTE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambioMesa"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO_MESA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoValor"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_VALOR"
+            not-null="true"
+            unique="false"
+        />
+
+        <many-to-one
+            name="dealPosicion"
+            class="com.ixe.ods.sica.model.DealPosicion"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DEAL_POSICION"
+            unique="false"
+        />
+
+        <many-to-one
+            name="deal"
+            class="com.ixe.ods.sica.model.Deal"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DEAL"
+            unique="false"
+        />
+
+        <many-to-one
+            name="divisa"
+            class="com.ixe.ods.sica.model.Divisa"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIVISA"
+            unique="false"
+        />
+
+        <property
+            name="fecha"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA"
+            not-null="false"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-PosicionLog.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findPosicionesLogByIdMesaAndIdDivisaMayoresA"><![CDATA[
+            FROM PosicionLog AS pl WHERE pl.canalMesa.mesaCambio.idMesaCambio = ? AND pl.divisa.idDivisa = ? AND pl.idPosicionLog > ? ORDER BY pl.idPosicionLog
+        ]]></query>
+        <query name="findTipoValorByIdDealPosicion"><![CDATA[
+            FROM PosicionLog AS pl WHERE pl.dealPosicion.idDealPosicion = ?
+        ]]></query>
+        <query name="findPosicionesLogByFecha"><![CDATA[
+            FROM PosicionLog AS pl WHERE to_char(pl.fecha, 'dd/MM/yyyy') = ? ORDER BY pl.idPosicionLog
+        ]]></query>
+        <query name="findPosicionesLogMayoresA"><![CDATA[
+            FROM PosicionLog AS pl WHERE pl.idPosicionLog > ? AND (NOMBRE_CLIENTE != 'IXE BANCO SUCURSALES' OR NOMBRE_CLIENTE IS NULL) ORDER BY pl.idPosicionLog
+        ]]></query>
+
+</hibernate-mapping>

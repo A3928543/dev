@@ -1,0 +1,51 @@
+<html jwcid="$content$">
+	
+	<head jwcid="$remove$">
+	    <title>Solicitud de L&iacute;neas de Operaci&oacute;n</title>
+	    <link rel="StyleSheet" href="css/ixe.css">
+	</head>
+	
+	<body jwcid="@PageBorder">
+		<script jwcid="@Script" script="/WEB-INF/scripts/FirstField.script" symbols="ognl: firstTextFieldMap" />
+		<table border="0" cellpadding="0" cellspacing="0" width="100%">
+		        <tr valign="top">
+		            <td width="200">
+		                <form jwcid="@Form" listener="ognl: listeners.fetch" delegate="ognl: beans.delegate">
+		                	<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+		                	<table jwcid="@ActionPortletBorder" title="ognl: titleActionPortletBorder">
+							    <fieldset class="normal">
+		                            <font class="normal"><u>R</u>az&oacute;n Social:</font><br />
+		                            <input class="uppercase" type="text" jwcid="razonSocialTextField@ixe:UppercaseTextField" accesskey="R" value="ognl: razonSocial" size=40/><br />
+		                        </fieldset>
+		                        <br />
+		                        <div align="center">
+		                            <input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+		                        </div>
+		                    </table>
+		                </form>
+		            </td>
+		            <td width="1%">&nbsp;</td>
+		            <td>
+	    	            <span jwcid="@Conditional" condition="ognl: brokers.size() &gt; 0">
+    	    	   	     <table jwcid="@ActionPortletBorder" title="Brokers">
+    	    	   	     <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "Raz&oacute;n Social", "&nbsp;" }' columnCount="2" width="100%">
+    	    	   	     	<tr jwcid="forBrokers@Foreach" source="ognl: brokers" element="tr" class="ognl: beans.evenOdd.next">
+    	    	   	     		<td class="normal" align="left">
+	                            	    	<span jwcid="@Insert" value='ognl: components.forBrokers.value.razonSocial' raw="yes" />
+								</td>
+								<td class="normal" align="center">
+									<a jwcid="@DirectLink" listener="ognl:listeners.editar" parameters="ognl: {components.forBrokers.value.idPersona, components.forBrokers.value.razonSocial}">
+       	            		    		Solicitar / Modificar / Reactivar L&iacute;nea de Operaci&oacute;n
+     	        		    		</a>
+                            	</td>
+							</tr>
+    	    	   	     </table>
+    	        		 </table>
+    	           		</span>
+    	            	&nbsp;
+	            	</td>
+			 	</tr>
+	     </table>	     
+     </body>
+     
+</html>

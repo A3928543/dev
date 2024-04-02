@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: LayerLoading.script,v 1.2 2010/04/30 15:41:03 ccovian Exp $ -->
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+
+<script>
+    <body>
+        <![CDATA[
+        	var originalInnerWidth;
+   			var originalInnerHeight;
+   			
+   			var submitDone = false;
+   			
+   			/*window.onload = function ()
+				{
+					if (typeof (window.innerWidth) == 'number') {
+		         		//Non-IE
+		         		originalInnerWidth = window.innerWidth;
+		         		originalInnerHeight = window.innerHeight;
+		      		} else if (document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight) ) {
+		         		//IE 6+ in 'standards compliant mode'
+		         		originalInnerWidth = document.documentElement.clientWidth;
+		         		originalInnerHeight = document.documentElement.clientHeight;
+		      		} else {
+		         		originalInnerWidth = document.body.clientWidth;
+		         		originalInnerHeight = document.body.clientHeight;
+		      		}
+				}
+		   */
+		   function fnDisableForm(form) {
+	            if (!submitDone) {
+	               form.submit();
+	               submitDone = true;
+	               form.disabled = true;
+	               document.getElementById('layerLoading').style.left = 0;
+			       document.getElementById('layerLoading').style.top = 0;
+			       document.getElementById('layerLoading').style.width = document.body.clientWidth;
+			       document.getElementById('layerLoading').style.height = document.body.clientHeight;
+	               document.getElementById('layerLoading').style.visibility = "visible";
+	            }
+	            return false;
+	        }
+	
+	        function fnShowWaitImage() {
+	        	document.getElementById('layerLoading').style.left = 0;
+				document.getElementById('layerLoading').style.top = 0;
+				document.getElementById('layerLoading').style.width = document.body.clientWidth;
+				document.getElementById('layerLoading').style.height = document.body.clientHeight;
+				document.getElementById('layerLoading').style.visibility = "visible";
+	        }
+	    ]]>
+    </body>
+</script>

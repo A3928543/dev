@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.ComplementoDatos"
+        table="SC_COMPLEMENTO_DATOS"
+        proxy="com.ixe.ods.sica.model.ComplementoDatos"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="noCuenta"
+            column="NO_CUENTA"
+            type="java.lang.String"
+            unsaved-value="null"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-ComplementoDatos.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="nacionalidad"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NACIONALIDAD"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="noPasaporte"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="PASAPORTE_NUMERO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="folioIfe"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="IFE_FOLIO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="anioRegistroIfe"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="IFE_ANIO_REGISTRO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="noEmisionIfe"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="IFE_NUMERO_EMISION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="ocrIfe"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="IFE_OCR"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="cliente"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLIENTE"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="fechaCreacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_CREACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fechaUltimaModificacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_ULTIMA_MOD"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="idUsuario"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_USUARIO_MOD"
+            not-null="false"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-ComplementoDatos.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

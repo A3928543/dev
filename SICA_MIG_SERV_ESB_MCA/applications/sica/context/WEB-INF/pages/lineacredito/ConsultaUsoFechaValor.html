@@ -1,0 +1,71 @@
+<!-- $Id: ConsultaUsoFechaValor.html,v 1.3.84.1 2016/07/13 21:46:43 mejiar Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Consulta Uso por Fecha Valor</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+<table jwcid="@ActionPortletBorder" title='ognl: "Resumen de la L&iacute;nea de Cr&eacute;dito "'>
+    <table border="0">
+        <tr class="title">
+        <td>Status:</td>
+        <td><span  jwcid="@DisabledField" value="ognl: linea.descripcionStatus" /></td>
+        <td nowrap>&nbsp;&nbsp;Excepciones en el mes:</td>
+        <td><span  jwcid="@DisabledField" value="ognl: linea.numeroExcepcionesMes" /></td>
+        </tr>
+        </table>
+        <table jwcid="@TableBorder" title="ognl: null" columnCount="ognl: 12" width="100%">
+        <tr class="titlecell">
+            <th rowspan="2" class="title">Deal</th>
+            <th rowspan="2" class="title">Factor Riesgo</th>
+            <th class="title"> &nbsp; </th>
+            <th class="title">CASH</th>
+            <th class="title">TOM</th>
+            <th class="title">SPOT</th>
+            <th class="title">72HR</th>
+            <th class="title">96HR</th>
+        </tr>
+        <tr class="titlecell">
+            <th class="title">Total de l&iacute;nea Autorizada</th>
+            <th class="title">Pago Anticipado y Toma en Firme</th>
+            <th class="title">Fecha Valor</th>
+            <th class="title">Fecha Valor</th>
+            <th class="title">Fecha Valor</th>
+            <th class="title">Fecha Valor</th>
+            
+        </tr>
+        <tr jwcid="forDeals@Foreach" source="ognl: deals" class="ognl: beans.evenOdd.next" element="tr">
+            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forDeals.value.idDeal">250323</span></td>
+            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forDeals.value.factorRiesgo">250323</span></td>
+            <td> &nbsp; </td>
+            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forDeals.value.cash" format="ognl: moneyFormat">34,000.00</span></td>
+            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forDeals.value.tom" format="ognl: moneyFormat">34,000.00</span></td>
+            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forDeals.value.spot" format="ognl: moneyFormat">34,000.00</span></td>
+            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forDeals.value.hr72" format="ognl: moneyFormat">34,000.00</span></td>
+            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forDeals.value.hr96" format="ognl: moneyFormat">34,000.00</span></td>
+        </tr>
+        <tr jwcid="@Any" element="tr" class="ognl: beans.evenOdd.next">
+            <td colspan="2" class="title" align="right">Importe:</td>
+      		<td class="normal" align="right"><span jwcid="@Insert" value="ognl: linea.totalLineaAutorizada" format="ognl: page.moneyFormat" /></td>
+			<td class="normal" align="right"><span jwcid="@Insert" value="ognl: linea.importePAyTF" format="ognl: page.moneyFormat" /></td>
+			<td class="normal" align="center" colspan="4"><span jwcid="@Insert" value="ognl: linea.importeFV" format="ognl: page.moneyFormat" /></td>
+        </tr>
+        <tr jwcid="@Any" element="tr" class="ognl: beans.evenOdd.next">
+            <td colspan="2" class="title" align="right">Uso:</td>
+            <td align="right" class="normal" nowrap><span jwcid="@Insert" value="ognl: linea.usoTotal" format="ognl: page.moneyFormat"/></td>
+			<td align="right" class="normal" nowrap><span jwcid="@Insert" value="ognl: linea.usoCash" format="ognl: page.moneyFormat"/></td>
+			<td align="right" class="normal" nowrap><span jwcid="@Insert" value="ognl: linea.usoTom" format="ognl: page.moneyFormat"/></td>
+			<td align="right" class="normal" nowrap><span jwcid="@Insert" value="ognl: linea.usoSpot" format="ognl: page.moneyFormat"/></td>
+			<td align="right" class="normal" nowrap><span jwcid="@Insert" value="ognl: linea.uso72Hr" format="ognl: page.moneyFormat"/></td>
+			<td align="right" class="normal" nowrap><span jwcid="@Insert" value="ognl: linea.uso96Hr" format="ognl: page.moneyFormat"/></td>
+        </tr>
+        <tr jwcid="@Any" element="tr" class="ognl: beans.evenOdd.next">
+            <td colspan="2" class="title" align="right">Saldo:</td>
+           <td align="right" class="title" nowrap><span jwcid="@Insert" value="ognl: linea.saldoLineaAutorizada" format="ognl: page.moneyFormat" /></td>
+				<td align="right" class="title" nowrap><span jwcid="@Insert" value="ognl: linea.saldoPAyTF" format="ognl: page.moneyFormat" /></td>
+				<td align="center" class="title" colspan="4"><span jwcid="@Insert" value="ognl: linea.saldoFV" format="ognl: page.moneyFormat" /></td>
+        </tr>
+    </table>
+</table>
+</body>
+</html>

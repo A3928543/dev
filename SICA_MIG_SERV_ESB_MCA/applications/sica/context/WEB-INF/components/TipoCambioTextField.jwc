@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: TipoCambioTextField.jwc,v 1.2 2010/04/30 15:27:13 ccovian Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+<component-specification class="com.ixe.ods.sica.components.TipoCambioTextField" allow-body="no" allow-informal-parameters="yes">
+    
+    <parameter name="value" direction="form" type="double" required="yes" />
+    <parameter name="numDecimals" direction="in" type="int" required="yes" />
+    
+    <property-specification name="form" type="org.apache.tapestry.IForm" />
+    <property-specification name="name" type="java.lang.String" />
+    
+</component-specification>

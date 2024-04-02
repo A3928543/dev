@@ -1,0 +1,107 @@
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <!-- $Id: Configuraciones.html,v 1.12 2009/11/17 16:18:11 ccovian Exp $ -->
+    <title>Configuraciones SICA</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+	<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level="ognl: operacionExitosa ? 1 : 0" width="100%"/>
+    <table width="100%" align="center">
+        <tr valign="top">
+            <td>
+            	<form jwcid="@Form" listener="ognl: listeners.actualizarParametros">
+	                <table jwcid="@ActionPortletBorder" title="Configuraci&oacute;n de Par&aacute;metros">
+	                    <table jwcid="@TableBorder" title="ognl: null" columnCount="3" width="100%">
+	                        <tr class="titlecell" align="center">
+	                            <td class="title" align="center">Par&aacute;metro</td>
+	                            <td class="title" align="center">Tipo Valor</td>
+	                            <td class="title" align="center">Valor</td>
+	                        </tr>
+	                        <tr jwcid="forParams@Foreach" source="ognl: parametros" element="tr">
+	                        	<td class = "normalcell" align = "center"><span jwcid="@Insert" value="ognl: components.forParams.value.idParametro"/></td>
+	                        	<td class = "normalcell" align = "center"><span jwcid="@Insert" value="ognl: components.forParams.value.tipoValor"/></td>
+	                        	<td class = "normalcell" align = "center"><span jwcid="@TextField" size = "40" value="ognl: components.forParams.value.valor"/></td>
+	                        </tr>
+	                    </table>
+	                    <br/>
+	                    <div align="center">
+					        <img jwcid="@ImageSubmit" image="ognl: assets.actualizarButton" src="../../../images/actualizar.gif" border="0"/>
+					    </div>
+	                </table>
+                </form>
+            </td>
+            <td width="1%">&nbsp;</td>                        
+            <td valign="top">
+                <table jwcid="@ActionPortletBorder" title="Captura nuevo Par&aacute;metro">
+                    <form jwcid="@Form" listener="ognl: listeners.insertaParametro" delegate="ognl: beans.delegate">
+						<table width="100%">
+							<tr>
+	                            <td width="50%" class="title" align="right">
+	                                Par&aacute;metro:
+	                            </td>
+	                            <td align="left" colspan="2">
+	                                <span jwcid="idParametroTextField" />
+	                            </td>
+                            </tr>
+                            <tr>
+                                <td width="50%" class="title" align="right">
+                                    Tipo Valor:
+                                </td>
+                                <td align="center">
+                                    <span jwcid="@TextField" size="30"
+                                          value="ognl: nuevoParametro.tipoValor"/>
+                                </td>
+                                <td align="left">
+                                    <select jwcid="@PropertySelection" model="ognl: modeloTipoValor"
+                                            value="ognl: nuevoParametro.tipoValor"/>
+                                </td>
+                            </tr>
+                            <tr>
+	                            <td width="50%" class="title" align="right">
+	                                Valor: 
+	                            </td>
+	                            <td align="left" colspan="2">
+	                                <span jwcid="valorParametroTextField" />
+	                            </td>
+	                        </tr>
+						</table>
+						<br/>
+	                    <div align="center">
+					        <img jwcid="@ImageSubmit" image="ognl: assets.agregarButton" src="../../../images/add.gif" border="0"/>
+					    </div>					
+                    </form>
+                </table>            	
+                <br />
+                <table jwcid="@ActionPortletBorder" title="Cambiar a Operaci&oacute;n Normal Manualmente">
+                    <div align="center">
+                        <a href="#" jwcid="@DirectLink" listener="ognl:listeners.iniciarDia" onClick="fnShowWaitImage();">
+                            <img jwcid="@Image" image="ognl: assets.aceptarButton" src="../../../images/aceptar.gif" border="0"/>
+                        </a>                        
+                    </div>
+                </table>
+                <br/>
+                <table jwcid="@ActionPortletBorder" title="Cach&eacute;">
+                    <table width="100%">
+                        <tr>
+                            <td class="title" align="right">SicaSiteCache:</td>
+                            <td width="50%">
+                                <a href="#" jwcid="@DirectLink" listener="ognl: listeners.limpiarSiteSicaCache" onClick="fnShowWaitImage();">
+                                    <img jwcid="@Image" image="ognl: assets.aceptarButton" src="../../../images/aceptar.gif" border="0"/>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title" align="right">Fechas Inh&aacute;biles EUA:</td>
+                            <td width="50%">
+                                <a href="#" jwcid="@DirectLink" listener="ognl: listeners.limpiarCacheFechasInhabilesEua" onClick="fnShowWaitImage();">
+                                    <img jwcid="@Image" image="ognl: assets.aceptarButton" src="../../../images/aceptar.gif" border="0"/>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </table>                
+            </td>
+        </tr>
+    </table>
+ </body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.banorte.com/ws/ConsultaIdIxeAltamiraRequest" xmlns:tns="http://www.banorte.com/ws/ConsultaIdIxeAltamiraRequest" elementFormDefault="qualified">
+	<xsd:complexType name="ConsultaIdIxeAltamira">
+		<xsd:sequence>
+			<xsd:element name="NumClIx" minOccurs="0" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="8"></xsd:maxLength>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="NumClBn" minOccurs="0" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="8"></xsd:maxLength>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ConsultaIxeAltamiraRequest" type="tns:ConsultaIdIxeAltamira"></xsd:element>
+</xsd:schema>

@@ -1,0 +1,64 @@
+-<!-- $Id: AsignaUtilPromocion.html,v 1.10 2008/02/22 18:25:14 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Asignaci&oacute;n de Utilidades a Promoci&oacute;n</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr valign="top">
+            <td width="200">			    
+			     <form jwcid="@Form" listener="ognl: listeners.search" delegate="ognl: beans.delegate" onSubmit="return fnDisableForm(this);">			       
+			           <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />  		            
+			            <table jwcid="@ActionPortletBorder" title="Asignaci&oacute;n de utilidades a Promoci&oacute;n">
+		           		    <fieldset class="normal">
+        	                    N&uacute;mero de Deal:<br />                            
+                                <input jwcid="noDealTextField" size="40"/><br />      		                        
+		                    </fieldset>
+		                <br />
+		                <div align="center">
+		                    <input jwcid="@ImageSubmit" image="ognl: assets.searchButton" />
+		                </div>
+		                </table>
+		    	</form>
+		    </td>
+   			<td width="1%">&nbsp;</td>
+		    <td> 
+		   <span jwcid="@Conditional" condition="ognl: detRecibimos.size() &gt; 0 || detEntregamos.size() &gt; 0">
+		    <table jwcid="@ActionPortletBorder" title="ognl: 'No. de Deal: ' + noDeal">		   
+			    <form jwcid="@Form" listener="ognl: listeners.update" delegate="ognl: beans.delegate" onsubmit="fnShowWaitImage(); return fnDisableForm(this.form);">				    
+				     <font class="normal">Recibimos: </font>
+			         <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "Folio", "Divisa", "F. Cobro","Producto","TCC","TCM" }' columnCount="8" width="100%"> 	
+							  <tr jwcid="forDetR@Foreach" source="ognl: detRecibimos" element="tr" class="ognl: beans.evenOdd.next" align="center">
+								   <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDetR.value.folioDetalle" raw="yes" /></td>
+								   <td class="normal"><img jwcid="@Bandera" divisa="ognl: components.forDetR.value.divisa" /></td>
+								   <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDetR.value.mnemonico" raw="yes" /></td>
+								   <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDetR.value.claveFormaLiquidacion" raw="yes" /></td>
+								   <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDetR.value.tipoCambio" raw="yes" /></td>
+								   <td class="normal" align="center"><input jwcid="tipoCambioRTextField" type="text" size="10"/></td>	                            					  
+							  </tr>
+						 </table> 										   			
+				   <br />				   
+				     <font class="normal">Entregamos: </font>
+						 <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "Folio", "Divisa", "F. Cobro","Producto","TCC","TCM" }' columnCount="8" width="100%"> 	
+							  <tr jwcid="forDetE@Foreach" source="ognl: detEntregamos" element="tr" class="ognl: beans.evenOdd.next" align="center">
+								   <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDetE.value.folioDetalle" raw="yes" /></td>
+								   <td class="normal"><img jwcid="@Bandera" divisa="ognl: components.forDetE.value.divisa" /></td>
+								   <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDetE.value.mnemonico" raw="yes" /></td>
+								   <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDetE.value.claveFormaLiquidacion" raw="yes" /></td>
+								   <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDetE.value.tipoCambio" raw="yes" /></td>
+								   <td class="normal" align="center"><input jwcid="tipoCambioETextField" type="text" size="10"/></td>	                            					  
+							  </tr>
+						 </table> 
+				   <br/>
+				   <div align="center">
+			            <input jwcid="@ImageSubmit" image="ognl: assets.updateButton" onclick="return fnDisableForm(this.form);" />		              
+			       </div>	
+				 </form>
+			 </table>	 
+		   </span>  				    	 
+           </td>   			
+        </tr>
+    </table>		   
+</body>
+</html>	             

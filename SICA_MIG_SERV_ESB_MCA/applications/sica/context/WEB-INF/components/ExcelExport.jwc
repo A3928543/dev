@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--$Id: ExcelExport.jwc,v 1.2 2008/06/19 21:01:01 ccovian Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<component-specification class="com.ixe.ods.sica.components.ExcelExport" allow-body="yes">
+
+    <parameter name="nombreArchivo" type="java.lang.String" direction="in" required="yes" />
+    <parameter name="titulo" type="java.lang.String" direction="in" required="yes" />
+    <parameter name="titulos" type="java.util.List" direction="in" required="yes" />
+    <parameter name="expresiones" type="java.util.List" direction="in" required="yes" />
+    <parameter name="coleccion" type="java.util.List" direction="in" required="yes" />
+
+    <context-asset name="bExcel" path="images/ver_excel.gif" />
+
+</component-specification>

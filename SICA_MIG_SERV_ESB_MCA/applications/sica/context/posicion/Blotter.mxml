@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: Blotter.mxml,v 1.9.30.1 2010/06/16 15:35:25 galiciad Exp $ -->
+<view:Blotter
+    xmlns:mx="http://www.macromedia.com/2003/mxml"
+    xmlns:view="com.ixe.ods.sica.posicion.views.*"
+    xmlns:sica="*">
+
+    <mx:Script>
+        function formatNumber(item : Object, columnName : String) : String
+        {
+           return item != undefined ? numberFormatter.format(item[columnName]) : "";
+        }
+
+        function formatExchangeNumber(item : Object, columnName : String) : String
+        {
+           return item != undefined ? exchangeFormatter.format(item[columnName]) : "";
+        }
+    </mx:Script>
+
+    <mx:NumberFormatter id="numberFormatter" precision="2"/>
+
+    <mx:NumberFormatter id="exchangeFormatter" precision="6"/>
+
+    <mx:DataGrid id="dataGrid" width="100%" rowCount="8" headerHeight="30" vScrollPolicy="auto"
+                 dataProvider="{dataProvider}" headerRelease="compare(event)" height="130">
+        <mx:columns>
+            <mx:Array>
+                <mx:DataGridColumn headerText='# Deal' columnName="numeroDeal" textAlign="right" width="65" />
+                <mx:DataGridColumn headerText="C/V" columnName="tipoOperacion" width="30" />
+                <mx:DataGridColumn headerText="F.Val." columnName="fechaValor" width="40" />
+                <mx:DataGridColumn headerText="Promotor" columnName="promotor" width="120" />
+                <mx:DataGridColumn headerText="Cliente" columnName="cliente" />
+                <mx:DataGridColumn headerText="Monto" columnName="monto" labelFunction="formatNumber" textAlign="right"
+                                   width="100"/>
+                <mx:DataGridColumn headerText="Divisa" columnName="divisa" width="45" />
+                <mx:DataGridColumn headerText="Monto Equiv." columnName="montoMn" labelFunction="formatNumber"
+                                   textAlign="right" width="100" />
+                <mx:DataGridColumn headerText="T.C. Cliente" columnName="tipoCambioCliente"
+                                   labelFunction="formatExchangeNumber" textAlign="right" width="80" />
+                <mx:DataGridColumn headerText="T.C. Mesa" columnName="tipoCambioMesa"
+                                   labelFunction="formatExchangeNumber" textAlign="right" width="80" />
+                <mx:DataGridColumn headerText="Precio{newline}Referencia" columnName="precioReferencia"
+                                   labelFunction="formatExchangeNumber" textAlign="right" width="80" />
+            </mx:Array>
+        </mx:columns>
+    </mx:DataGrid>
+
+    <mx:HBox width="100%">
+        <mx:Button label="Ver Deal" enabled="{dataGrid.selectedItem != null}" click="openDeal()"/>
+        <mx:Spacer width="100%"/>
+        <mx:Label text="Monto minimo del deal" fontWeight="bold"/>
+        <mx:TextInput id="minimumAmountField" text='{minimumAmount + ""}' width="80"
+                      creationComplete="event.target.restrict='0-9'"/>
+        <mx:Link id="synchLink" icon="@Embed('resources/sync.gif')" toolTip="Sincronizar informaci&#243;n"/>
+    </mx:HBox>
+
+</view:Blotter>

@@ -1,0 +1,80 @@
+<!-- $Id: AprobacionLineaOperacion.html,v 1.9 2008/02/22 18:25:49 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Encabezado</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr valign="top">
+            <td width="200">
+            	<form jwcid="@Form" listener="ognl: listeners.fetch" delegate="ognl: beans.delegate">
+                	<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+	                <table jwcid="@ActionPortletBorder" title="ognl: titleActionPortletBorder">
+        	           <fieldset class="normal">
+                            <font class="normal"><u>R</u>az&oacute;n Social:</font><br />
+                            <input class="uppercase" type="text" jwcid="razonSocialTextField@ixe:UppercaseTextField" accesskey="R" value="ognl: razonSocial" size=40/><br />
+                        </fieldset>
+                        <fieldset class="normal">
+		            		<legend class="legend">Seleccione Estatus</legend>
+		            		<span jwcid="@RadioGroup" selected="ognl: estatus">
+		            			<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.LineaOperacion@STATUS_SOLICITUD" />En solicitud<br />
+	            				<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.LineaOperacion@STATUS_AUTORIZADA" />Autorizadas<br />
+	   		            		<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.LineaOperacion@STATUS_SUSPENDIDA" />Suspendidas<br />
+   		            		</span>
+	               		</fieldset>
+	               		<fieldset class="normal">
+		            		<legend class="legend">Porcentaje de Uso</legend>
+		            		L&iacute;mite Inferior <input type="text" jwcid="limiteInferior" /><br />
+		            		L&iacute;mite Superior <input type="text" jwcid="limiteSuperior" />
+		            	</fieldset>
+		            	<br />
+	               		<div align="center">
+	               			<input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+               			</div>
+           			</table>
+       			</form>
+   			</td>
+   			<td width="1%">&nbsp;</td>
+            <td>
+            	<span jwcid="@Conditional" condition="ognl: lineasOperacion.size() &gt; 0">
+            	<table jwcid="@ActionPortletBorder" title="L&iacute;neas de Operaci&oacute;n">
+		            <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: {"Broker", "Importe", "Uso de la L&iacute;nea", "&Uacute;ltima Modificaci&oacute;n", "Operaci&oacute;n", "&nbsp;", "&nbsp;"}' columnCount="6" width="100%">
+                        <tr jwcid="forLineasOperacion@Foreach" source="ognl: lineasOperacion" element="tr" class="ognl: beans.evenOdd.next">
+                            <td class="normal" align="left"><span jwcid="@Insert" value="ognl: sicaServiceData.findBrokerByIdPersona(new java.lang.Integer(components.forLineasOperacion.value.idBroker)).get(0).id.personaMoral.razonSocial" raw="yes" /></td>
+                            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forLineasOperacion.value.importe" raw="yes" format="ognl: moneyFormat"/></td>
+                           	<td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forLineasOperacion.value.usoLinea" raw="yes" format="ognl: moneyFormat"/></td>
+                            <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forLineasOperacion.value.ultimaModificacion" raw="yes" format="ognl: dateFormat"/></td>
+                            <span jwcid="@contrib:Choose">
+                                <span jwcid="@contrib:When" condition='ognl: !modoMesaCambios && @com.ixe.ods.sica.model.LineaOperacion@STATUS_SOLICITUD.equals(estatus)'>
+                                    <td class="normal" align="center">
+                                    	<a jwcid="@DirectLink" listener="ognl:listeners.operacionAutorizar" parameters='ognl: components.forLineasOperacion.value.idLineaOperacion'
+                                    	onClick="return confirm('\u00bfEst\u00e1 seguro de Autorizar la L\u00ednea de Operaci\u00f3n?');">Autorizar</a>
+                                    </td>
+                                </span>
+                                <span jwcid="@contrib:When" condition='ognl: !modoMesaCambios && @com.ixe.ods.sica.model.LineaOperacion@STATUS_AUTORIZADA.equals(estatus)'>
+                                    <td class="normal" align="center">
+                                    	<a jwcid="@DirectLink" listener="ognl:listeners.operacionSuspender" parameters='ognl: components.forLineasOperacion.value.idLineaOperacion'
+                                    	onClick="return confirm('\u00bfEst\u00e1 seguro de Suspender la L\u00ednea de Operaci\u00f3n?');">Suspender</a>
+                                    </td>
+                                </span>
+                                <span jwcid="@contrib:Otherwise"><td class="normal" align="center">&nbsp;</td></span>
+                            </span>
+							<td class="normal" align="center">
+								<a href="#" jwcid="@DirectLink" listener="ognl:listeners.consultarHistorialLineaOperacion" parameters='ognl: {components.forLineasOperacion.value.idLineaOperacion, components.forLineasOperacion.value.idBroker}' onClick="fnShowWaitImage();">
+								Consultar Historial L&iacute;nea de Operaci&oacute;n</a>
+							</td>
+							<td class="normal" align="center">
+                                    	<a jwcid="@DirectLink" listener="ognl:listeners.operacionCancelar" parameters='ognl: components.forLineasOperacion.value.idLineaOperacion'
+                                    	onClick="return confirm('\u00bfEst\u00e1 seguro de Cancelar la L\u00ednea de Operaci\u00f3n?');">Cancelar</a>
+                            </td>
+                        </tr>
+                    </table>
+        		</table>
+               </span>
+               &nbsp;
+           </td>
+       	</tr>
+   	</table>
+</body>
+</html>

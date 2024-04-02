@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--$Id: DealsPendientesDia.jwc,v 1.1 2008/05/01 03:09:14 ccovian Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<component-specification class="com.ixe.ods.sica.pages.mesa.DealsPendientesDia"   allow-body="yes">
+
+	<parameter name="dealsPendientes" type="java.util.List" direction="in"  />
+    <parameter name="dealsMinimizados"  type="boolean" direction="in" />
+    <parameter name="numero"  type="int" direction="in" />
+    <parameter name="titulo"  type="java.lang.String" direction="in" />
+
+</component-specification>

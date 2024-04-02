@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CapturaDealInterbancario.page,v 1.14.10.1.8.1.52.1 2016/07/13 21:46:43 mejiar Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.deals.interbancario.CapturaDealInterbancario">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+    
+    <property-specification name="deal" type="com.ixe.ods.sica.model.Deal" persistent="yes" />
+    <property-specification name="level" type="int" />
+    <property-specification name="modoSubmit" type="java.lang.String" />
+    <property-specification name="modoInsercion" type="boolean" persistent="yes" />
+    <property-specification name="mensaje" type="java.lang.String" persistent="yes" />
+    <property-specification name="modifMap" type="java.util.Map" />
+    <property-specification name="splitMap" type="java.util.Map" />
+    <property-specification name="paginaRetorno" type="boolean" persistent="yes"  />
+    <property-specification name="limitesRestriccionOperacion" type="com.ixe.ods.sica.model.LimitesRestriccionOperacion" persistent="yes" />
+    <property-specification name="estadoLineaCredito" type="java.lang.String" persistent="yes" />
+
+    <context-asset name="bBalancear" path="/images/balancear.gif" />
+    <context-asset name="bCancelar" path="/images/cancel.gif" />
+    <context-asset name="bDefinirContraparte" path="/images/def_contraparte.gif" />
+    <context-asset name="bGuardar" path="/images/save.gif" />
+    <context-asset name="bInstrucciones" path="/images/instrucciones.gif" />
+    <context-asset name="bObservaciones" path="/images/observaciones.gif" />
+    <context-asset name="bProcesar" path="/images/procesar.gif" />
+    <context-asset name="bRegresar" path="/images/back.gif" />
+    <context-asset name="bDatosEnvio" path="/images/datos_envio.gif" />
+
+</page-specification>

@@ -1,0 +1,42 @@
+				<!-- $Id: DealsDescuadrePosicion.html,v 1.2 2008/05/28 17:33:44 ccovian Exp $ -->
+				<table jwcid="@ActionPortletBorder" title='ognl: titulo + "(" + numero + ")"'  minimizable="yes" minimized="ognl: dealsMinimizados">
+   				<fieldset class="normal">
+				<legend class="legend">Deals No Cancelados</legend>
+				<table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "No. Deal", "Folio Detalle", "Monto", "Importe", "Status", "Clave Divisa", "Fecha Valor", "T.C.C.", "T.C.M."}' columnCount="9" width="100%">
+                    <tr jwcid="forNoCancelados@Foreach" source="ognl: dealsNoCancelados" element="tr" class="normalcell">
+                        <td class="normal" align="center">
+                            <a jwcid="@ExternalLink" page='ognl: "DatosDeal"' parameters="ognl: components.forNoCancelados.value[0]" renderer='ognl: page.global.applicationContext.getBean("bigPopupLinkRenderer")' ><span jwcid= "@Insert" value="ognl: components.forNoCancelados.value[0]" /></a>
+                        </td>
+                        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forNoCancelados.value[1]" /></td>
+                        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forNoCancelados.value[3]" format="ognl: page.moneyFormat"/></td>
+                        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forNoCancelados.value[4]" format="ognl: page.moneyFormat"/></td>
+						<td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forNoCancelados.value[5]" /></td>
+                        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forNoCancelados.value[7]" /></td>
+						<td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forNoCancelados.value[8]" /></td>
+						<td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forNoCancelados.value[9]" format="ognl: page.currencyFormat"/></td>
+                        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forNoCancelados.value[10]" format="ognl: page.currencyFormat"/></td>
+					</tr>
+				<br/>
+				</table>
+				</fieldset>
+                <br/>
+				<fieldset class="normal">
+                	<legend class="legend">Deals Cancelados</legend><br />
+					<table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "No. Deal", "Folio Detalle", "Monto", "Importe", "Status", "Clave Divisa", "Fecha Valor", "T.C.C.", "T.C.M."}' columnCount="9" width="100%">
+                    	<tr jwcid="forCancelados@Foreach" source="ognl: dealsCancelados" element="tr" class="normalcell">
+                        <td class="normal" align="center">
+                            <a jwcid="@ExternalLink" page='ognl: "DatosDeal"' parameters="ognl: components.forCancelados.value[0]" renderer='ognl: page.global.applicationContext.getBean("bigPopupLinkRenderer")' ><span jwcid= "@Insert" value="ognl: components.forCancelados.value[0]" /></a>
+                        </td>
+                        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forCancelados.value[1]" /></td>
+                        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forCancelados.value[3]" format="ognl: page.moneyFormat"/></td>
+                        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forCancelados.value[4]" format="ognl: page.moneyFormat"/></td>
+						<td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forCancelados.value[5]" /></td>
+                        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forCancelados.value[7]" /></td>
+						<td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forCancelados.value[8]" /></td>
+						<td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forCancelados.value[9]" format="ognl: page.currencyFormat"/></td>
+                        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forCancelados.value[10]" format="ognl: page.currencyFormat"/></td>
+					</tr>
+					</table>
+    			</fieldset>
+				<br/>
+				</table>

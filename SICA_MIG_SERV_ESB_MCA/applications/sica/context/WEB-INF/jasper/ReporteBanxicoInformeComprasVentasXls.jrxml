@@ -1,0 +1,752 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="Unnamed" language="java" pageWidth="1300" pageHeight="842" columnWidth="1300" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="com.jasperassistant.designer.Rulers" value="true"/>
+	<property name="com.jasperassistant.designer.GridWidth" value="10"/>
+	<property name="com.jasperassistant.designer.GridHeight" value="10"/>
+	<property name="com.jasperassistant.designer.DataSource" value="ReporteInformeDataSource"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="true"/>
+	<property name="com.jasperassistant.designer.Margins" value="true"/>
+	<property name="com.jasperassistant.designer.Grid" value="true"/>
+	<property name="com.jasperassistant.designer.SnapToGuides" value="true"/>
+	<field name="class" class="java.lang.Class">
+	</field>
+	<field name="fecha" class="java.util.Date">
+	</field>
+	<field name="idDivisa" class="java.lang.String">
+	</field>
+	<field name="image" class="java.net.URL">
+	</field>
+	<field name="isForward" class="java.lang.Boolean">
+	</field>
+	<field name="isForwardEstra" class="java.lang.Boolean">
+	</field>
+	<field name="isRecibimos" class="java.lang.Boolean">
+	</field>
+	<field name="isSectorResmerca" class="java.lang.Boolean">
+	</field>
+	<field name="montoForward" class="java.lang.Double">
+	</field>
+	<field name="montoForwardEstra" class="java.lang.Double">
+	</field>
+	<field name="montoForwardEstraCompras" class="java.lang.Double">
+	</field>
+	<field name="montoForwardEstraVentas" class="java.lang.Double">
+	</field>
+	<field name="montoFwEstraSectores" class="java.lang.Double">
+	</field>
+	<field name="montoResmerca" class="java.lang.Double">
+	</field>
+	<field name="posicionFinal" class="java.lang.Double">
+	</field>
+	<field name="posicionFinal72Hr" class="java.lang.Double">
+	</field>
+	<field name="posicionFinalCash" class="java.lang.Double">
+	</field>
+	<field name="posicionFinalResmerca" class="java.lang.Double">
+	</field>
+	<field name="posicionFinalSpot" class="java.lang.Double">
+	</field>
+	<field name="posicionFinalTom" class="java.lang.Double">
+	</field>
+	<field name="posicionFinalVFut" class="java.lang.Double">
+	</field>
+	<field name="posicionInicial" class="java.lang.Double">
+	</field>
+	<field name="posicionInicial72Hr" class="java.lang.Double">
+	</field>
+	<field name="posicionInicialCash" class="java.lang.Double">
+	</field>
+	<field name="posicionInicialSpot" class="java.lang.Double">
+	</field>
+	<field name="posicionInicialTom" class="java.lang.Double">
+	</field>
+	<field name="posicionInicialVFut" class="java.lang.Double">
+	</field>
+	<field name="remercaVentas" class="java.lang.Double">
+	</field>
+	<field name="remercaVentasString" class="java.lang.String">
+	</field>
+	<field name="resmercaCompras" class="java.lang.Double">
+	</field>
+	<field name="resmercaComprasString" class="java.lang.String">
+	</field>
+	<field name="resmercaString" class="java.lang.String">
+	</field>
+	<field name="sector" class="java.lang.String">
+	</field>
+	<field name="sector72Hr" class="java.lang.Double">
+	</field>
+	<field name="sectorCash" class="java.lang.Double">
+	</field>
+	<field name="sectorSpot" class="java.lang.Double">
+	</field>
+	<field name="sectorTom" class="java.lang.Double">
+	</field>
+	<field name="sectorVFut" class="java.lang.Double">
+	</field>
+	<field name="swap" class="java.lang.Double">
+	</field>
+	<field name="swapMn" class="java.lang.Double">
+	</field>
+	<field name="tipoCambioCompra" class="java.lang.Double">
+	</field>
+	<field name="tipoCambioCompra72Hr" class="java.lang.Double">
+	</field>
+	<field name="tipoCambioCompraCash" class="java.lang.Double">
+	</field>
+	<field name="tipoCambioCompraSpot" class="java.lang.Double">
+	</field>
+	<field name="tipoCambioCompraTom" class="java.lang.Double">
+	</field>
+	<field name="tipoCambioCompraVFut" class="java.lang.Double">
+	</field>
+	<field name="tipoCambioVenta" class="java.lang.Double">
+	</field>
+	<field name="tipoCambioVenta72Hr" class="java.lang.Double">
+	</field>
+	<field name="tipoCambioVentaCash" class="java.lang.Double">
+	</field>
+	<field name="tipoCambioVentaSpot" class="java.lang.Double">
+	</field>
+	<field name="tipoCambioVentaTom" class="java.lang.Double">
+	</field>
+	<field name="tipoCambioVentaVFut" class="java.lang.Double">
+	</field>
+	<variable name="sumaCash" class="java.lang.Double" resetType="Group" resetGroup="sectores" calculation="Sum">
+		<variableExpression><![CDATA[$F{sectorCash}]]></variableExpression>
+	</variable>
+	<variable name="sumaTom" class="java.lang.Double" resetType="Group" resetGroup="sectores" calculation="Sum">
+		<variableExpression><![CDATA[$F{sectorTom}]]></variableExpression>
+	</variable>
+	<variable name="sumaSpot" class="java.lang.Double" resetType="Group" resetGroup="sectores" calculation="Sum">
+		<variableExpression><![CDATA[$F{sectorSpot}]]></variableExpression>
+	</variable>
+	<variable name="suma72Hr" class="java.lang.Double" resetType="Group" resetGroup="sectores" calculation="Sum">
+		<variableExpression><![CDATA[$F{sector72Hr}]]></variableExpression>
+	</variable>
+	<variable name="sumaVFut" class="java.lang.Double" resetType="Group" resetGroup="sectores" calculation="Sum">
+		<variableExpression><![CDATA[$F{sectorVFut}]]></variableExpression>
+	</variable>
+	<variable name="sumaSwap" class="java.lang.Double" resetType="Group" resetGroup="sectores" calculation="Sum">
+		<variableExpression><![CDATA[$F{swap}]]></variableExpression>
+	</variable>
+	<variable name="totales" class="java.lang.Double" resetType="Group" resetGroup="sectores" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{sectorCash}.doubleValue() + $F{sectorSpot}.doubleValue() +$F{sectorTom}.doubleValue()+$F{sector72Hr}.doubleValue()+$F{sectorVFut}.doubleValue())]]></variableExpression>
+	</variable>
+	<variable name="totalCash" class="java.lang.Double" resetType="Group" resetGroup="recibimos" calculation="Sum">
+		<variableExpression><![CDATA[$F{sectorCash}]]></variableExpression>
+	</variable>
+	<variable name="totalTom" class="java.lang.Double" resetType="Group" resetGroup="sectores" calculation="Sum">
+		<variableExpression><![CDATA[$F{sectorTom}]]></variableExpression>
+	</variable>
+	<variable name="totalSpot" class="java.lang.Double" resetType="Group" resetGroup="recibimos" calculation="Sum">
+		<variableExpression><![CDATA[$F{sectorSpot}]]></variableExpression>
+	</variable>
+	<variable name="total72Hr" class="java.lang.Double" resetType="Group" resetGroup="recibimos" calculation="Sum">
+		<variableExpression><![CDATA[$F{sectorVFut}]]></variableExpression>
+	</variable>
+	<variable name="totalVFut" class="java.lang.Double" resetType="Group" resetGroup="recibimos" calculation="Sum">
+		<variableExpression><![CDATA[$F{sectorVFut}]]></variableExpression>
+	</variable>
+	<variable name="totalSwap" class="java.lang.Double" resetType="Group" resetGroup="recibimos" calculation="Sum">
+		<variableExpression><![CDATA[$F{swap}]]></variableExpression>
+	</variable>
+	<variable name="totalForward" class="java.lang.Double" resetType="Group" resetGroup="recibimos" calculation="Sum">
+		<variableExpression><![CDATA[$F{montoForward}]]></variableExpression>
+	</variable>
+	<variable name="sumaTotales" class="java.lang.Double" resetType="Group" resetGroup="recibimos" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() ? new Double($F{sectorCash}.doubleValue() + $F{sectorSpot}.doubleValue() +$F{sectorTom}.doubleValue()+$F{sector72Hr}.doubleValue()+$F{sectorVFut}.doubleValue())  : new Double($F{sectorCash}.doubleValue() + $F{sectorSpot}.doubleValue() +$F{sectorTom}.doubleValue()+$F{sector72Hr}.doubleValue()+$F{sectorVFut}.doubleValue())]]></variableExpression>
+	</variable>
+	<variable name="forwardCompras" class="java.lang.Double" resetType="Group" resetGroup="Group_1" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() ? new Double($F{montoForward}.doubleValue()) : new Double(0.0)]]></variableExpression>
+	</variable>
+	<variable name="forwardVentas" class="java.lang.Double" resetType="Group" resetGroup="Group_1" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() ? new Double(0.0) : new Double($F{montoForward}.doubleValue())]]></variableExpression>
+	</variable>
+	<variable name="forwardEstraVentas" class="java.lang.Double" resetType="Group" resetGroup="Group_1" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() ? new Double(0.0) : new Double($F{montoForwardEstra}.doubleValue())]]></variableExpression>
+	</variable>
+	<variable name="forwardEstraCompras" class="java.lang.Double" resetType="Group" resetGroup="Group_1" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() ? new Double($F{montoForwardEstra}.doubleValue()) : new Double(0.0)]]></variableExpression>
+	</variable>
+	<variable name="sumaForwardEstra" class="java.lang.Double" resetType="Group" resetGroup="sectores" calculation="Sum">
+		<variableExpression><![CDATA[$F{montoForwardEstra}]]></variableExpression>
+	</variable>
+	<variable name="totalForwardEstra" class="java.lang.Double" resetType="Group" resetGroup="recibimos" calculation="Sum">
+		<variableExpression><![CDATA[$F{montoForwardEstra}]]></variableExpression>
+	</variable>
+	<variable name="totalFwEstraSectores" class="java.lang.Double" resetType="Group" resetGroup="recibimos" incrementType="Group" incrementGroup="sectores" calculation="Sum">
+		<variableExpression><![CDATA[$F{montoFwEstraSectores}]]></variableExpression>
+	</variable>
+	<group name="Group_4">
+		<groupHeader>
+		<band height="10">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="350" height="10"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[INFORME SUMARIZADO DE OPERACIONES DE CAMBIOS, CONCERTADAS EL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="550" y="0" width="400" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[CIFRAS EN MILES]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="350" y="0" width="100" height="10"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupHeader>
+	</group>
+	<group name="Group_1">
+		<groupExpression><![CDATA[$F{idDivisa}]]></groupExpression>
+		<groupHeader>
+		<band height="30">
+			<staticText>
+				<reportElement positionType="Float" x="250" y="10" width="100" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MISMO DIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="350" y="10" width="100" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[24 HORAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="450" y="10" width="100" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[48 HORAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="650" y="10" width="100" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[V. FUTURO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="850" y="10" width="100" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTALES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="750" y="10" width="100" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EN SWAPS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="10" width="250" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONCEPTO]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" mode="Opaque" x="250" y="0" width="500" height="10" backcolor="#c0c0c0"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{idDivisa}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="250" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIVISA:   ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="20" width="250" height="10" backcolor="#65dd42"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[POSICION INICIAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="550" y="10" width="100" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[72 HORAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="750" y="0" width="400" height="10" backcolor="#c0c0c0"/>
+				<textElement/>
+			</staticText>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="250" y="20" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{posicionInicialCash}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="350" y="20" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{posicionInicialTom}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="450" y="20" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{posicionInicialSpot}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.000000" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="550" y="20" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{posicionInicial72Hr}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.000000" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="650" y="20" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{posicionInicialVFut}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.000000" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="850" y="20" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{posicionInicial}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="1050" y="10" width="100" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RESMERCA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="950" y="10" width="100" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FORWARDS]]></text>
+			</staticText>
+		</band>
+		</groupHeader>
+		<groupFooter>
+		<band height="20">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="950" height="20"/>
+				<textElement/>
+			</staticText>
+		</band>
+		</groupFooter>
+	</group>
+	<group name="TIPO_CAMBIO_COMPRAS">
+		<groupFooter>
+		<band height="64">
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="250" height="10" backcolor="#65dd42"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CAMBIO PROMEDIO POND. COM.]]></text>
+			</staticText>
+			<textField pattern="#,##0.000000" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="250" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tipoCambioCompraCash}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.000000" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="350" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tipoCambioCompraTom}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.000000" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="450" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tipoCambioCompraSpot}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.000000" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="550" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tipoCambioCompra72Hr}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.000000" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="650" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tipoCambioCompraVFut}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.000000" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="850" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tipoCambioCompra}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="750" y="20" width="100" height="10" backcolor="#65dd42"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FORWARDS COMPRAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="750" y="10" width="100" height="10" backcolor="#65dd42"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FORWARDS VENTAS]]></text>
+			</staticText>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="850" y="10" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[new Double($V{forwardVentas}.doubleValue() + $F{montoForwardEstraVentas}.doubleValue())]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="850" y="20" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[new Double($V{forwardCompras}.doubleValue() + $F{montoForwardEstraCompras}.doubleValue())]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupFooter>
+	</group>
+	<group name="TIPO_CAMBIO_VENTAS">
+		<groupFooter>
+		<band height="10">
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="250" height="10" backcolor="#65dd42"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CAMBIO PROMEDIO POND. VTA.]]></text>
+			</staticText>
+			<textField pattern="#,##0.000000" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="250" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tipoCambioVentaCash}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.000000" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="350" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tipoCambioVentaTom}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.000000" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="450" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tipoCambioVentaSpot}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.000000" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="550" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tipoCambioVenta72Hr}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.000000" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="650" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tipoCambioVentaVFut}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.000000" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="850" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tipoCambioVenta}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupFooter>
+	</group>
+	<group name="Group_5">
+		<groupFooter>
+		<band height="10">
+		</band>
+		</groupFooter>
+	</group>
+	<group name="Group_6" isReprintHeaderOnEachPage="true">
+		<groupFooter>
+		<band height="10">
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="250" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{posicionFinalCash}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="350" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{posicionFinalTom}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="450" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{posicionFinalSpot}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="650" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{posicionFinalVFut}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="850" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{posicionFinal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="250" height="10" backcolor="#65dd42"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[POSICION FINAL]]></text>
+			</staticText>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="550" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{posicionFinal72Hr}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="1050" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{posicionFinalResmerca}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupFooter>
+	</group>
+	<group name="recibimos">
+		<groupExpression><![CDATA[$F{isRecibimos}]]></groupExpression>
+		<groupHeader>
+		<band height="10">
+			<textField>
+				<reportElement positionType="Float" isPrintRepeatedValues="false" mode="Opaque" x="0" y="0" width="250" height="10" backcolor="#65dd42"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{isRecibimos}.booleanValue() ? "COMPRAS" : "VENTAS"]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupHeader>
+		<groupFooter>
+		<band height="10">
+			<textField>
+				<reportElement positionType="Float" isPrintRepeatedValues="false" mode="Opaque" x="0" y="0" width="250" height="10" backcolor="#c0c0c0"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{isRecibimos}.booleanValue() ? "TOTAL COMPRAS:" : "TOTAL VENTAS:"]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="250" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{isRecibimos}.booleanValue() ? $V{totalCash} : $V{totalCash}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="350" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{isRecibimos}.booleanValue() ? $V{totalTom} : $V{totalTom}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="450" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{isRecibimos}.booleanValue() ? $V{totalSpot} : $V{totalSpot}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="650" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{isRecibimos}.booleanValue() ? $V{totalVFut} : $V{totalVFut}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="850" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumaTotales}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="750" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{isRecibimos}.booleanValue() ? $V{totalSwap} : $V{totalSwap}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="550" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{isRecibimos}.booleanValue() ? $V{total72Hr} : $V{total72Hr}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="950" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{isRecibimos}.booleanValue()  ? $V{totalFwEstraSectores} : $V{totalFwEstraSectores}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="1050" y="0" width="100" height="10" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{isRecibimos}.booleanValue() ? new Double($V{sumaTotales}.doubleValue() - $V{forwardCompras}.doubleValue() - $F{montoForwardEstraCompras}.doubleValue() )  : new Double($V{sumaTotales}.doubleValue() - $V{forwardVentas}.doubleValue() - $F{montoForwardEstraVentas}.doubleValue() )]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupFooter>
+	</group>
+	<group name="sectores">
+		<groupExpression><![CDATA[$F{sector}]]></groupExpression>
+		<groupFooter>
+		<band height="15">
+			<textField>
+				<reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="250" height="15"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sector}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="250" y="0" width="100" height="15" backcolor="#c0c0c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumaCash}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="350" y="0" width="100" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumaTom}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="450" y="0" width="100" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumaSpot}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="650" y="0" width="100" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumaVFut}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="750" y="0" width="100" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumaSwap}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="850" y="0" width="100" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{totales}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="550" y="0" width="100" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{suma72Hr}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="1050" y="0" width="100" height="15">
+					<printWhenExpression><![CDATA[$F{isSectorResmerca}]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{sector}.equals("EMPRESAS") ? $F{isRecibimos}.booleanValue() ? $F{resmercaCompras} : $F{remercaVentas}  : $V{totales}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="950" y="0" width="100" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{montoFwEstraSectores}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="40">
+			<staticText>
+				<reportElement x="250" y="0" width="900" height="40"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[IXE BANCO]]></text>
+			</staticText>
+			<image>
+				<reportElement positionType="Float" x="0" y="0" width="101" height="31"/>
+				<graphicElement/>
+				<imageExpression class="java.net.URL"><![CDATA[$F{image}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+</jasperReport>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<view:PosicionInventarioEfectivo
+    xmlns:view="com.ixe.ods.sica.posicion.views.*"
+    xmlns:mx="http://www.macromedia.com/2003/mxml"
+    xmlns:ls="com.legosoft.*"
+    xmlns:sica="*">
+
+    <mx:HBox id="sucursalesBox">
+        <mx:Label id="sucursalLabel" fontWeight="bold"/>
+        <ls:TruncatedLabel id="sucursales" wordWrap="false" width="400"/>
+    </mx:HBox>
+
+    <mx:Label fontWeight="bold" text="{com.ixe.ods.sica.posicion.Posicion.INVENTARIO_EFECTIVO}"/>
+
+    <sica:TipoOperacion4InventarioEfectivo dataProvider="{dataProvider}"/>
+
+</view:PosicionInventarioEfectivo>

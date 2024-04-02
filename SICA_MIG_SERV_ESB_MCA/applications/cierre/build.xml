@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<!--$Id: build.xml,v 1.2 2008/12/26 23:17:36 ccovian Exp $ -->
+<project name="Sica Cierre" default="build-all" basedir=".">
+
+    <property name="root.dir" value="${basedir}/../.."/>
+
+    <property file="${root.dir}/config/common.properties"/>
+
+    <path id="ods-model.classpath">
+        <pathelement location="${dist.dir}/${sica.jar}"/>
+    </path>
+
+    <path id="ods.classpath">
+        <pathelement location="${dist.dir}/${ods-sica.jar}"/>
+    </path>
+
+    <path id="project.classpath">
+        <fileset dir="${root.lib.dir}">
+            <exclude name="xdoclet/*.jar"/>
+            <include name="**/*.jar"/>
+        </fileset>
+        <pathelement location="${dist.dir}/sica-interfaces.jar" />
+        <path refid="ods.classpath"/>
+        <path refid="ods-model.classpath"/>
+    </path>
+
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${classes.dir}"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${classes.dir}"/>
+    </target>
+
+    <target name="compile" depends="init" description="Compile all classes in the framework.">
+        <javac destdir="${classes.dir}" debug="on" target="1.1">
+            <src path="${src.dir}"/>
+            <classpath refid="project.classpath"/>
+        </javac>
+    </target>
+
+    <target name="javadoc">
+        <mkdir dir="${javadoc.dir}"/>
+        <javadoc author="true"
+            destdir="${javadoc.dir}"
+            packagenames="com.ixe.ods.sica.*"
+            sourcepath="${src.dir}"
+            use="true"
+            version="true"
+            windowtitle="Documentation"
+            private="true">
+            <classpath refid="project.classpath"/>
+        </javadoc>
+    </target>
+
+    <target name="build-all" depends="compile">
+
+        <mkdir dir="${dist.dir}/SicaCierre/lib" />
+
+        <jar jarfile="${dist.dir}/SicaCierre/lib/sica-cierre.jar" basedir="${classes.dir}">
+            <include name="**/sica/*.class" />
+        </jar>
+
+        <copy todir="${dist.dir}/SicaCierre/lib">
+            <fileset dir="${dist.dir}">
+                <include name="sica-interfaces.jar" />
+            </fileset>
+            <fileset dir="${root.dir}/lib/bea">
+                <include name="wlclient.jar" />
+            </fileset>
+            <fileset dir="${root.dir}/lib/jakarta">
+                <include name="log4j-1.2.7.jar" />
+            </fileset>
+            <fileset dir="${resources.dir}">
+                <include name="log4j.properties" />
+            </fileset>
+        </copy>
+
+        <copy todir="${dist.dir}/SicaCierre">
+            <fileset dir="${resources.dir}">
+                <include name="*.cmd" />
+                <include name="*.sh" />
+            </fileset>
+        </copy>
+
+        <copy todir="/tmp/SicaCierre">
+            <fileset dir="${dist.dir}/SicaCierre">
+                <include name="**/*.*" />
+            </fileset>
+        </copy>
+    </target>
+
+</project>

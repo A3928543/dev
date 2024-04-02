@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<view:TipoCambio verticalGap="0" height="100%"
+                 xmlns:mx="http://www.macromedia.com/2003/mxml"
+                 xmlns:view="com.ixe.ods.sica.posicion.views.*"
+                 xmlns:sica="*">
+
+    <view:FlujoTipoCambioHeader/>
+
+    <!--sica:FlujoTipoCambioPosicionInicial dataProvider="{dataProvider}"/-->
+
+    <view:TipoCambioSeparator/>
+
+    <view:FlujoTipoCambioFecha rowLabel="CASH" compra="{dataProvider.compraCash}" venta="{dataProvider.ventaCash}"
+                               posicionFinal="{dataProvider.posicionFinalCash + dataProvider.posicionInicialCash}"
+	                           posicionFinalMN="{-1 * (dataProvider.posicionFinalMnCash + dataProvider.posicionInicialMnCash)}"
+							   tick="{dataProvider.tickPosicionFinalCash}"/>
+
+    <view:TipoCambioPromedio tipoCambioCompra="{dataProvider.tipoCambioCompraCash}"
+                             tipoCambioVenta="{dataProvider.tipoCambioVentaCash}"/>
+
+    <view:TipoCambioSeparator/>
+
+    <view:FlujoTipoCambioFecha rowLabel="TOM" compra="{dataProvider.compraTom}" venta="{dataProvider.ventaTom}"
+                               posicionFinal="{dataProvider.posicionFinalTom + dataProvider.posicionInicialTom}"
+							   posicionFinalMN="{-1 * (dataProvider.posicionFinalMnTom + dataProvider.posicionInicialMnTom)}"
+                               tick="{dataProvider.tickPosicionFinalTom}"/>
+
+    <view:TipoCambioPromedio tipoCambioCompra="{dataProvider.tipoCambioCompraTom}"
+                             tipoCambioVenta="{dataProvider.tipoCambioVentaTom}"/>
+
+    <view:TipoCambioSeparator/>
+
+    <view:FlujoTipoCambioFecha rowLabel="SPOT" compra="{dataProvider.compraSpot}" venta="{dataProvider.ventaSpot}"
+                               posicionFinal="{dataProvider.posicionFinalSpot + dataProvider.posicionInicialSpot}"
+							   posicionFinalMN="{-1 * (dataProvider.posicionFinalMnSpot + dataProvider.posicionInicialMnSpot)}"
+                               tick="{dataProvider.tickPosicionFinalSpot}"/>
+
+    <view:TipoCambioPromedio tipoCambioCompra="{dataProvider.tipoCambioCompraSpot}"
+                             tipoCambioVenta="{dataProvider.tipoCambioVentaSpot}"/>
+
+    <view:TipoCambioSeparator/>
+	
+	<view:FlujoTipoCambioFecha rowLabel="72HR" compra="{dataProvider.compra72Hr}" venta="{dataProvider.venta72Hr}"
+                               posicionFinal="{dataProvider.posicionFinal72Hr + dataProvider.posicionInicial72Hr}"
+							   posicionFinalMN="{-1 * (dataProvider.posicionFinalMn72Hr + dataProvider.posicionInicialMn72Hr)}"
+                               tick="{dataProvider.tickPosicionFinal72Hr}"/>
+
+    <view:TipoCambioPromedio id="tipoCambioPromedio" tipoCambioCompra="{dataProvider.tipoCambioCompra72Hr}"
+                             tipoCambioVenta="{dataProvider.tipoCambioVenta72Hr}"/>
+	
+    <view:TipoCambioSeparator id="separator72Hr" />
+	
+	<view:FlujoTipoCambioFecha rowLabel="96HR" compra="{dataProvider.compraVFut}" venta="{dataProvider.ventaVFut}"
+                               posicionFinal="{dataProvider.posicionFinalVFut + dataProvider.posicionInicialVFut}"
+							   posicionFinalMN="{-1 * (dataProvider.posicionFinalMnVFut + dataProvider.posicionInicialMnVFut)}"
+                               tick="{dataProvider.tickPosicionFinalVFut}"
+							   height="{parentApplication.vFut ? tipoCambioPromedio.height : 0}" />
+
+    <view:TipoCambioPromedio tipoCambioCompra="{dataProvider.tipoCambioCompraVFut}"
+                             tipoCambioVenta="{dataProvider.tipoCambioVentaVFut}"
+							 height="{parentApplication.vFut ? tipoCambioPromedio.height : 0}" />
+	
+    <view:TipoCambioSeparator height="{parentApplication.vFut ? separator72Hr.height : 0}"/>
+
+    <sica:FlujoTipoCambioPosicionFinal dataProvider="{dataProvider}"/>
+
+</view:TipoCambio>

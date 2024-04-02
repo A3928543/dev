@@ -1,0 +1,74 @@
+<!-- $Id: CapturaDatosEnvio.html,v 1.13 2009/08/03 21:49:57 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Captura de datos de env&iacute;o</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="tb@Block"><span jwcid="@EventosDeal" deal="ognl: deal" /></span>
+    <table jwcid="@ActionPortletBorder" title="Captura de Deal" titleBlock="ognl: components.tb">
+        <table jwcid="@bup:ShowError" level="0" width="100%" delegate="ognl: beans.delegate" />
+        <form jwcid="@Form" listener="ognl: listeners.aceptar" delegate="ognl:beans.delegate">
+            <span jwcid="@EncabezadoDeal" deal="ognl: deal" disabled="yes" ocultarDatosEnvio="yes" />
+            <fieldset>
+                <legend class="legend">Datos de Env&iacute;o:</legend>
+                <table width="100%">
+                    <tr valign="top">
+                        <td class="title" align="right">Acudir con:</td>
+                        <td><input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" accesskey="a" value="ognl: deal.acudirCon" size="50" /></td>
+                    </tr>
+                    <tr valign="top">
+                        <td class="title" align="right">Direcci&oacute;n:</td>
+                        <td>
+                          	<span jwcid="@RadioGroup" selected="ognl: idDireccion">
+	                            <table>
+	                                <tr jwcid="forDirecciones@Foreach" source="ognl: direcciones" element="tr">
+	                                	<td colspan="7" class="normal">
+                                            <input type="radio" jwcid="@Radio" value="ognl: components.forDirecciones.value.idDireccion" /> 
+                                            <span jwcid="@Insert" value='ognl: components.forDirecciones.value' />
+	                                    </td>
+	                                </tr>
+	                                <tr valign="top">
+	                                    <td class="title" rowspan="4" nowrap>
+	                                        <input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.pages.deals.CapturaDatosEnvio@ID_DIRECCION_OTRO" /> 
+	                                        Otra:<br/>(* campos requeridos)
+	                                    </td>
+	                                    <td class="normal" nowrap>
+                                            * Calle:
+	                                    </td>
+                                        <td colspan="2"><input jwcid="calle"/></td>
+                                        <td class="normal" nowrap>*N&uacute;m. Ext:</td>
+                                        <td><input jwcid="noExterno" /></td>
+                                        <td class="normal" nowrap>N&uacute;m. Int:<input jwcid="noInterno" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="normal" nowrap>* Colonia:</td>
+                                        <td colspan="6"><input jwcid="colonia"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="normal" nowrap>* C.P.:</td>
+                                        <td><input jwcid="codigoPostal"/></td>
+                                        <td class="normal" align="right" nowrap>Delegaci&oacute;n:</td>
+                                        <td colspan="3"><input jwcid="delegacion"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="normal" nowrap>* Ciudad:</td>
+                                        <td><input jwcid="ciudad"/></td>
+                                        <td class="normal" align="right" nowrap>* Estado:</td>
+                                        <td colspan="3"><input jwcid="estado"/></td>
+	                                </tr>
+	                            </table>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+            <br />
+            <div class="textocentrado">
+                <input type="image" jwcid="@ImageSubmit" image="ognl: assets.bAceptar" src="../../../images/aceptar.gif" onclick="return fnDisableForm(this.form);" />
+                <a jwcid="@DirectLink" listener="ognl: listeners.regresar" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bRegresar" src="../../../images/back.gif" border="0" alt="Deshacer los cambios" /></a>
+            </div>
+        </form>
+    </table>
+</body>
+</html>

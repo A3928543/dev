@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.TesBancoInternacional"
+        table="TES_BANCO_INTERNACIONAL"
+        proxy="com.ixe.ods.sica.model.TesBancoInternacional"
+        dynamic-update="false"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="false"
+    >
+
+        <id
+            name="idBancoInternacional"
+            column="ID_BANCO_INTERNACIONAL"
+            type="int"
+            unsaved-value="0"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-TesBancoInternacional.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="nombre"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NOMBRE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="clavePais"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_PAIS"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ciudad"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CIUDAD"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="claveRuteoPais"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_RUTEO_PAIS"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="numeroRuteoPais"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NUMERO_RUTEO_PAIS"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="claveSwift"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_SWIFT"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="claveChips"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_CHIPS"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="status"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATUS"
+            not-null="true"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-TesBancoInternacional.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findBancoInternacionalByNombreAndPais"><![CDATA[
+            SELECT t.nombre, p.nombreLargo, t.ciudad, t.claveRuteoPais, t.numeroRuteoPais, t.claveSwift, t.claveChips, t.status, t.clavePais, t.idBancoInternacional FROM TesBancoInternacional AS t, TesPais p WHERE t.status = 'ACTI' AND t.clavePais = p.claveIso AND t.nombre like ? AND t.clavePais = ? ORDER BY t.nombre, p.nombreLargo, t.ciudad, t.claveRuteoPais, t.numeroRuteoPais, t.claveSwift, t.claveChips
+        ]]></query>
+
+</hibernate-mapping>

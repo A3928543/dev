@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: jdbcDaoApplicationContext.xml,v 1.4 2010/02/26 01:01:31 ccovian Exp $ -->
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+        "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+
+        <property name="driverClassName">
+            <value>oracle.jdbc.driver.OracleDriver</value>
+        </property>
+
+        <property name="url">
+            <value>jdbc:oracle:thin:@10.4.160.40:1521:isisdesar</value>
+        </property>
+        <property name="username">
+            <value>SICA_APPS</value>
+        </property>
+        <property name="password">
+            <value>as_u_wish</value>
+        </property>
+
+    </bean>
+
+    <!-- Session Factory para Hibernate (solo una instancia por JVM) -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate.LocalSessionFactoryBean">
+        <description>Session Factory para Hibernate (solo una instancia por JVM)</description>
+        <property name="dataSource">
+            <ref local="dataSource"/>
+        </property>
+        <property name="mappingResources">
+            <list>
+                <value>com/ixe/ods/sica/model/Variacion.hbm.xml</value>
+            </list>
+        </property>
+
+<property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">net.sf.hibernate.dialect.OracleDialect</prop>
+                <prop key="hibernate.show_sql">true</prop> <!-- FAVOR DE NO CAMBIAR -->
+                <prop key="hibernate.jdbc.batch_size">0</prop>
+                <prop key="hibernate.use_outer_join">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- TransactionManager generico -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate.HibernateTransactionManager">
+        <description>TransactionManager generico</description>
+        <property name="sessionFactory">
+            <ref local="sessionFactory"/>
+        </property>
+    </bean>
+
+    <bean id="actividadDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.impl.JdbcActividadDao">
+                <property name="dataSource">
+                    <ref local="dataSource" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="brokerDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref local="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.impl.JdbcBrokerDao">
+                <property name="dataSource">
+                    <ref local="dataSource" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="dealDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.impl.JdbcDealDao">
+                <property name="dataSource">
+                    <ref local="dataSource" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+ 
+    <bean id="lineaCambioDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.impl.JdbcLineaCambioDao">
+                <property name="dataSource">
+                    <ref local="dataSource" />
+                </property>
+                <property name="pizarronServiceData">
+                    <bean class="test.ods.sica.impostores.FakePizarronServiceData" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+    
+    <bean id="contabiliadadDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.impl.JdbcContabilidadDao">
+                <property name="dataSource">
+                    <ref local="dataSource" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+    
+</beans>

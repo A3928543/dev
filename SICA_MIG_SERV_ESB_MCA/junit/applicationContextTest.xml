@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: applicationContextTest.xml,v 1.1.2.1 2012/03/13 02:28:41 mejiar Exp $ -->
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+<!-- configuracion test para el cierre contable-->
+	<bean id="weblogicJndiTemplateTest"
+			class="org.springframework.jndi.JndiTemplate" lazy-init="true">
+			<property name="environment">
+				<props>
+					<prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
+					<!--  TODO: se suben comentados para la seg local.
+						<prop key="java.naming.provider.url">t3://192.168.14.247:7101</prop>
+					<prop key="java.naming.provider.url">t3://10.4.162.25:7503</prop>
+					-->
+						<prop key="java.naming.provider.url">t3://10.2.40.54:7001</prop>
+					<prop key="java.naming.security.principal">mw</prop>
+					<prop key="java.naming.security.credentials">12345678</prop>
+				</props>
+			</property>
+		</bean>
+	
+	<bean id="sicaSession"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName">
+			<value>ejb/sica/SicaHome</value>
+		</property>
+		<property name="businessInterface">
+			<value>test.com.ixe.ods.sica.SicaSession</value>
+		</property>
+		<property name="jndiTemplate">
+			<ref bean="weblogicJndiTemplateTest" />
+		</property>
+		<property name="lookupHomeOnStartup">
+			<value>false</value>
+		</property>
+	</bean>
+<!-- fin  configuracion test para el cierre contable-->
+
+<!-- Inicio del las autorizaciones test -->
+
+ <bean id="sicaWorkFlowService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" lazy-init="true">
+        <property name="jndiName">
+            <value>ejb/sica/SicaWorkFlowHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaWorkFlowService</value>
+        </property>
+        <property name="jndiTemplate">
+			<ref bean="weblogicJndiTemplateTest" />
+		</property>
+		<property name="lookupHomeOnStartup">
+			<value>false</value>
+		</property>
+    </bean>
+    
+<!-- Fin del las autorizaciones test -->
+</beans>

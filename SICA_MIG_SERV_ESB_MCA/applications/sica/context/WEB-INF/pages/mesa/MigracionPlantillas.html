@@ -1,0 +1,177 @@
+<!-- $Id: MigracionPlantillas.html,v 1.9 2008/02/22 18:25:30 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Encabezado</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+	<body jwcid="@PageBorder">
+	<div align="center">
+    	<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level="ognl: level" width="100%" />
+	</div>
+    <table align="left" width="100%">
+        <span jwcid="@Conditional" condition="ognl: mostrarBusquedaYResultados" >
+		<tr valign="top">
+		 	<td width="30%" align="left">
+             	<div align="center">
+	            	&nbsp;
+	            </div>
+                <table jwcid="@ActionPortletBorder" title="Consulta de Cuentas">
+				     <form jwcid="@Form" listener="ognl: listeners.buscarCuentasPlantillas" delegate="ognl: beans.delegate">
+				     	<fieldset class="normal">
+			           		<legend class="legend">Criterios de Consulta</legend>
+			           		<span jwcid="@RadioGroup" selected="ognl: criterioSeleccionado">
+                        		<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.pages.mesa.MigracionPlantillas@CRITERIO_UNO" />Transferencia Internacional <br />
+				            	&nbsp;&nbsp;Divisa : <select jwcid="divisaComboBox" /><br />
+   		            			<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.pages.mesa.MigracionPlantillas@CRITERIO_TRES" />Transferencia Nacional<br />
+				                <input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.pages.mesa.MigracionPlantillas@CRITERIO_CUATRO" />Cuentas IXE<br />
+								N&uacute;mero de Contrato: <input jwcid="noContratoTextField" /><br>
+			                </span>
+			        	</fieldset>
+                        <br>
+			            <div align="center">
+			            	<input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+			            </div>
+			    	 </form>
+			    </table>
+   			</td>
+   			<td width="1%">&nbsp;</td>
+			<td width="69%" align="left">
+				&nbsp;
+				<span jwcid="@Conditional" condition="ognl: registros.size() &gt; 0" >
+		        <table jwcid="@ActionPortletBorder" title="Registros" minimizable="yes" minimized="ognl: busquedaMinimizado">
+				    <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: {"N&uacute;mero de Cuenta","Cliente"}' columnCount="1" width="100%" >		                                                                
+				     <tr jwcid="forRegistros@Foreach" source="ognl: registros" element="tr" class="ognl: beans.evenOdd.next" align="center">
+		               	<td class="normal" align="center"><a jwcid="@DirectLink" listener="ognl: listeners.cargarDatosCuentaSeleccionada" parameters="ognl: components.forRegistros.value.accNo" ><span jwcid="@Insert" value="ognl: components.forRegistros.value.accNo" raw="yes" /></a></td>
+		               	<td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forRegistros.value.nombreCliente" raw="yes" /></td>
+		           	 </tr>                                                         
+		           </table>
+		        </table>
+		        </span>
+				&nbsp;
+		        <span jwcid="@Conditional" condition="ognl: listaPlantillas.size() &gt; 0" >
+		        <table jwcid="@ActionPortletBorder" title="Datos del cliente">
+				   <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: {"Plantillas Encontradas"}' columnCount="1" width="100%" >		                                                                
+				    <tr jwcid="forListaPlantillas@Foreach" source="ognl: listaPlantillas" element="tr" class="ognl: beans.evenOdd.next" index="ognl: indicePlantilla" align="center">
+		             	<td class="normal" align="left">
+		               		<b>N&uacute;mero de Cuenta: </b><span jwcid="@Insert" value="ognl: components.forListaPlantillas.value.accNo" raw="yes" /><br>
+		               		<b>Cliente: </b> <span jwcid="@Insert" value="ognl: components.forListaPlantillas.value.nombreCliente" raw="yes" /><br>
+		               		<b>Beneficiario: </b><span jwcid="@Insert" value="ognl: components.forListaPlantillas.value.beneficiario" raw="yes" /><br>
+		               		<b>Cuenta Cliente: </b><span jwcid="@Insert" value="ognl: components.forListaPlantillas.value.cuentaCliente" raw="yes" /><br>
+		               		<b>Banco: </b><span jwcid="@Insert" value="ognl: components.forListaPlantillas.value.banco" raw="yes" /><br>
+		               		<b>Forma Liquidaci&oacute;n: </b><span jwcid="@Insert" value="ognl: components.forListaPlantillas.value.tipoLiquidacion" raw="yes" /><br>
+		               		<b>Divisa: </b><span jwcid="@Insert" value="ognl: components.forListaPlantillas.value.divisa" raw="yes" /><br>
+		               		<b>Clave: </b><span jwcid="@Insert" value="ognl: components.forListaPlantillas.value.clave" raw="yes" /><br>
+		               		<b>Plaza: </b><span jwcid="@Insert" value="ognl: components.forListaPlantillas.value.plaza" raw="yes" /><br>
+		               		<b>Pa&iacute;s: </b><span jwcid="@Insert" value="ognl: components.forListaPlantillas.value.pais" raw="yes" /><br>
+		               		<b>Instrucciones Beneficiario: </b><span jwcid="@Insert" value="ognl: components.forListaPlantillas.value.instBenef" raw="yes" /><br>
+		               		<b>Instrucciones Banco: </b><span jwcid="@Insert" value="ognl: components.forListaPlantillas.value.instBanco" raw="yes" /><br>
+		               		<div align="center">
+					   			<b><a jwcid="@DirectLink" listener="ognl: listeners.asignarBeneficiario" parameters="ognl: indicePlantilla">Registar Plantilla</a></b>
+							</div>
+						</td>
+					</tr>
+		           </table>
+			    </table>
+			</span>
+		</td>
+		</tr>
+		</span>
+		<span jwcid="@Conditional" condition="ognl: edicionMnemonico" >
+			<tr width="100%" valign="top" >
+				<td align="left">
+					<table jwcid="@ActionPortletBorder" title="Datos de la Plantilla">
+                    	<tr>
+						  <form jwcid="@Form" listener="ognl: listeners.editarPlantilla">
+							<td class="normal" align="left">
+		               			<b>N&uacute;mero de Cuenta: </b><span jwcid="@Insert" value="ognl: mapaEdicionMnemonico.accNo" raw="yes" /><br>
+			               		<b>Cliente: </b> <span jwcid="@Insert" value="ognl: mapaEdicionMnemonico.nombreCliente" raw="yes" /><br>
+			               		<b>Banco: </b><span jwcid="@Insert" value="ognl: mapaEdicionMnemonico.banco" raw="yes" /><br>
+		        	       		<b>Divisa: </b><span jwcid="@Insert" value="ognl: mapaEdicionMnemonico.divisa" raw="yes" /><br>
+		            	   		<b>Clave: </b><span jwcid="@Insert" value="ognl: mapaEdicionMnemonico.clave" raw="yes" /><br>
+		               			<b>Plaza: </b><span jwcid="@Insert" value="ognl: mapaEdicionMnemonico.plaza" raw="yes" /><br>
+		               			<b>Pa&iacute;s: </b><span jwcid="@Insert" value="ognl: mapaEdicionMnemonico.pais" raw="yes" /><br>
+			               		<b>Instrucciones Beneficiario: </b><span jwcid="@Insert" value="ognl: mapaEdicionMnemonico.instBenef" raw="yes" /><br>
+			               		<b>Instrucciones Banco: </b><span jwcid="@Insert" value="ognl: mapaEdicionMnemonico.instBanco" raw="yes" /><br>
+								&nbsp;
+								<fieldset class="normal">
+									    <legend class="legend">Datos del Beneficiario</legend>
+										<table width="100%">
+	                    					<tr class="normal">
+			               						<td>
+			               							<b>Beneficiario: </b><span jwcid="@Insert" value="ognl: mapaEdicionMnemonico.beneficiario" raw="yes" /><br>
+			               							<b>Cuenta Cliente: </b><span jwcid="@Insert" value="ognl: mapaEdicionMnemonico.cuentaCliente" raw="yes" /><br>
+			                				
+			                					</td>
+            	           					</tr>
+            	           				</table>
+            	           		</fieldset>
+            	           			
+            	           		<span jwcid="@Conditional" condition="ognl: @com.ixe.ods.sica.pages.mesa.MigracionPlantillas@PAGINA_CAPTURA_BENEFICIARIO.equals(paginaAnterior)" >
+			               		&nbsp;
+			               			<fieldset class="normal">
+								    <legend class="legend">Nuevo Beneficiario</legend>
+										<table width="100%">
+	                    					<tr class="normal">
+			               						<td>
+			               							<b>Beneficiario: </b><span jwcid="@Insert" value="ognl: nuevoBeneficiario.nombreCompleto" raw="yes" /><br>
+			               						</td>
+            	           					</tr>
+            	           				</table>
+            	           			</fieldset>
+            	           		</span>
+			               		&nbsp;
+								<div align="center">
+	  								<a jwcid="@DirectLink" listener="ognl: listeners.buscarBeneficiario"><img jwcid="@Image" image="ognl: assets.searchBenefButton"/></a>
+									<span jwcid="@Conditional" condition="ognl: !@com.ixe.ods.sica.pages.mesa.MigracionPlantillas@PAGINA_CAPTURA_BENEFICIARIO.equals(paginaAnterior)" >
+			               				<a jwcid="@DirectLink" listener="ognl: listeners.cancelarAsignacionMnemonico"><img jwcid="@Image" image="ognl: assets.cancelButton"/></a>
+				           			</span>
+				           		</div>
+								&nbsp;
+								<span jwcid="@Conditional" condition="ognl: @com.ixe.ods.sica.pages.mesa.MigracionPlantillas@PAGINA_CAPTURA_BENEFICIARIO.equals(paginaAnterior)" >
+									<fieldset class="normal">
+					           		        <legend class="legend">Asignaci&oacute;n de Mnem&oacute;nico</legend>
+											<table width="100%">
+	        	            					<tr class="normal">
+			    	           						<td><b>Forma Liquidaci&oacute;n: </b></td>
+			        	       						<td><span jwcid="@Insert" value="ognl: mapaEdicionMnemonico.tipoLiquidacion" raw="yes" /></td>
+            	        	   					</tr>
+            	           						<span jwcid="@Conditional" condition="ognl: criterioSeleccionado == 1" >
+                		       						<tr class="title">
+		            		   							<td><b>Mnemomico:</b></td>
+		               									<td><select jwcid="formasPagoLiqComboBox" /></td>
+                       								</tr>
+													<tr class="title">
+		    	           									<td><b>Sist. de pago Benef.:</b></td>
+			               									<td><select jwcid="tiposCuentaBancoIntermComboBox" /></td>
+		                       						</tr>
+		                       					</span>
+		                       					<span jwcid="@Conditional" condition="ognl: criterioSeleccionado == 3 || criterioSeleccionado == 2" >
+	    	                   						<tr class="title">
+		    	        	   							<td><b>Mnem&oacute;mico:</b></td>
+		        	       								<td><select jwcid="formasPagoLiqLinBanComboBox" /></td>
+	                	       						</tr>
+	                    	   					</span>
+	                       						<span jwcid="@Conditional" condition="ognl: criterioSeleccionado == 4" >
+	                       							<tr class="title">
+		            	   								<td><b>Mnem&oacute;mico:</b></td>
+		               									<td><select jwcid="formasPagoLiqCuentaIxeComboBox" /></td>
+		                       						</tr>
+		                       					</span>
+			            	   				</table>
+									</fieldset>
+									&nbsp;		
+									<div align="center">
+										<input type="submit" jwcid="@ImageSubmit" image="ognl: assets.acceptButton" onclick="return fnDisableForm(this.form);"/>
+										<a jwcid="@DirectLink" listener="ognl: listeners.cancelarAsignacionMnemonico"><img jwcid="@Image" image="ognl: assets.cancelButton"/></a>
+									</div>
+								</span>
+    	        		  		</td>
+                    	  </form>
+                    	</tr>
+                	</table>
+				</td>
+			</tr>
+		</span>
+	</table>
+	</body>
+</html>

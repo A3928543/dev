@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: TablaCancelDetDeal.mxml,v 1.1.2.1 2010/06/30 23:08:44 ccovian Exp $ -->
+<views:Tabla xmlns:mx="http://www.macromedia.com/2003/mxml" xmlns:views="views.*" width="100%" height="100%">
+
+	<mx:NumberFormatter id="formateadorMonto" thousandsSeparatorFrom="," thousandsSeparatorTo="," precision="2" />
+
+    <mx:NumberFormatter id="formateadorTc" thousandsSeparatorFrom="," thousandsSeparatorTo="," precision="8" />
+
+    <mx:HBox width="100%" height="100%" marginTop="10" marginBottom="10" marginLeft="10" marginRight="10">
+
+		<mx:Script source="formatos.as" />
+
+	    <mx:Effect>
+	        <mx:WipeUp name="wipeUp"/>
+	        <mx:WipeDown name="wipeDown"/>
+	    </mx:Effect>
+
+		<mx:Image source="{icono}" width="20" height="20" />
+		<mx:VBox width="100%" height="100%">
+			<mx:DataGrid id="tabla" width="100%" height="100%" dataProvider="{workitems}">
+				<mx:columns>
+					<mx:Array>
+						<mx:DataGridColumn columnName="idDeal" headerText="No." width="45"/>
+						<mx:DataGridColumn columnName="folioDetalle" headerText="Folio" width="40"/>
+						<mx:DataGridColumn columnName="fechaValor" headerText="F. Val." width="45"/>
+		                <mx:DataGridColumn columnName="operacion" headerText="Oper." width="50"/>
+						<mx:DataGridColumn columnName="nomCliente" headerText="Cliente" />
+						<mx:DataGridColumn columnName="nomPromotor" headerText="Promotor" />
+                        <mx:DataGridColumn columnName="nomUsuario" headerText="Captur&#243;" />
+						<mx:DataGridColumn columnName="fecha" headerText="Fecha" />
+						<mx:DataGridColumn columnName="idDivisa" headerText="Div." width="35" />
+						<mx:DataGridColumn columnName="monto" headerText="Monto" labelFunction="formatearMonto" textAlign="right" />
+						<mx:DataGridColumn columnName="tcc" headerText="T.C.C." labelFunction="formatearTcc" textAlign="right" width="85" />
+						<mx:DataGridColumn columnName="contieneNeteo" headerText="Net." textAlign="center" cellRenderer="views.NeteoCellRenderer" width="28" />
+					</mx:Array>
+				</mx:columns>
+			</mx:DataGrid>
+			<mx:HBox width="100%">
+				<mx:Link label="Ver" click="verDeal()" enabled="{tabla.selectedItem != null}" icon="@Embed('resources/ver.gif')" />
+				<mx:Link label="{soloConfirmar ? 'Confirmar' : 'Autorizar'}" click="completarWorkitem(true)" enabled="{tabla.selectedItem != null}" icon="@Embed('resources/autorizar.gif')"/>
+				<mx:Link label="Negar" click="completarWorkitem(false)" visible="{!(soloConfirmar || noRechazar)}" enabled="{tabla.selectedItem != null}" icon="@Embed('resources/no_autorizar.gif')"/>
+				<mx:Spacer width="100%" />
+			</mx:HBox>
+		</mx:VBox>
+	</mx:HBox>
+</views:Tabla>

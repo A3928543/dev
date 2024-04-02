@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.CombinacionDivisa"
+        table="SC_COMBINACION_DIVISA"
+        proxy="com.ixe.ods.sica.model.CombinacionDivisa"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <composite-id
+            name="id"
+            class="com.ixe.ods.sica.model.CombinacionDivisaPK"
+        >
+
+                    <key-many-to-one
+                        name="divisa"
+                        class="com.ixe.ods.sica.model.Divisa"
+                        column="DIVISA"
+                    />
+
+                    <key-many-to-one
+                        name="contraDivisa"
+                        class="com.ixe.ods.sica.model.Divisa"
+                        column="CONTRA_DIVISA"
+                    />
+
+        </composite-id>
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-CombinacionDivisa.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

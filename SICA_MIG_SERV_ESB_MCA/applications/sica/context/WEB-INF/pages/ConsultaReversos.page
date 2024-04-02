@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ConsultaReversos.page,v 1.4 2008/12/26 23:17:35 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.ConsultaReversos">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+
+    <property-specification name="indice" type="int" />
+    <property-specification name="reversos" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+    <property-specification name="modoPromocion" type="boolean" persistent="yes" />
+    <property-specification name="fechaInicio" type="java.util.Date" persistent="yes" />
+    <property-specification name="fechaFin" type="java.util.Date" persistent="yes" />
+
+    <context-asset name="bBuscar" path="/images/search.gif" />
+    <context-asset name="paloma" path="/images/checked.gif" />
+    <context-asset name="pixel" path="/images/pixel.gif" />
+    <context-asset name="verXls" path="/images/ver_excel.gif" />
+
+</page-specification>

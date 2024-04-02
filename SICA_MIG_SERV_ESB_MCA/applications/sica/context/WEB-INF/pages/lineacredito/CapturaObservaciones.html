@@ -1,0 +1,29 @@
+<!-- $Id: CapturaObservaciones.html,v 1.10 2008/02/22 18:25:47 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Captura de Observaciones de Suspensi&oacute;n de L&iacute;neas de Cr&eacute;dito</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <form jwcid="@Form" listener="ognl: listeners.activaObservaciones" delegate="ognl:beans.delegate">
+		<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+        <table jwcid="@ActionPortletBorder" title="Captura de Observaciones de Suspensi&oacute;n/Cancelaci&oacute;n de L&iacute;neas" width="100%">
+            <table jwcid="@TableBorder" title="ognl: null" columnCount="2" width="100%">
+                <tr class="titlecell">
+                    <td width="50%" align="right" class="title">Observaciones:</td>
+                    <td class="normalcell">
+						<textarea jwcid="observacionesTextArea@TextArea" value="ognl: observaciones" cols="90" rows="4"></textarea>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <div align="center">
+                <input type="image" jwcid="@ImageSubmit" image="ognl: assets.aceptarButton" onclick="return fnDisableForm(this.form);" />
+	            <a jwcid="@DirectLink" listener="ognl:listeners.cancelarOperacion" onClick="fnShowWaitImage();">
+	            	<img jwcid="@Image" image="ognl: assets.cancelarButton" accesskey="C"/>
+            	</a>
+            </div>
+        </table>
+    </form>
+</body>
+</html>

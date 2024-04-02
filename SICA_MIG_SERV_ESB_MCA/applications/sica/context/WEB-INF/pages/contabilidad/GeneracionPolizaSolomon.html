@@ -1,0 +1,32 @@
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Generaci&oacute;n Poliza Solomon</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+	<body jwcid="@PageBorder">
+		<table border="0" cellpadding="0" cellspacing="0" width="100%">
+        	<tr valign="top">
+            	<td width="300">			    
+				     <form jwcid="@Form" listener="ognl: listeners.formSubmit" delegate="ognl: beans.delegate" >
+				           <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+				            <table jwcid="@ActionPortletBorder" title="Generaci&oacute;n de Reportes Solom&oacute;n">
+			           		    <fieldset class="normal">
+			           		        <legend class="legend">Impresi&oacute;n de Reporte CSV Polizas</legend>				                
+				                        Fecha :<br />
+				                        <span jwcid="@ls:DatePicker" value="ognl: registerDate" format="dd/MM/yyyy"/><br />
+                                        &nbsp;
+			                   </fieldset>
+			                <div align="center">
+			                    <input jwcid="@ImageSubmit" image="ognl: assets.refreshButton" />
+			                </div>
+			                </table>
+			    	</form>
+   				</td>
+   				<td width="1%">&nbsp;</td>
+				<td width="1%">&nbsp;</td>   			
+        	</tr>
+		</table>
+	<span jwcid="@ls:DatePickerColophon" />
+	</body>
+</html>
+

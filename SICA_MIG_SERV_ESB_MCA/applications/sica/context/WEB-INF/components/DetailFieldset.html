@@ -1,0 +1,30 @@
+<!-- $Id: DetailFieldset.html,v 1.9 2008/02/22 18:25:08 ccovian Exp $ -->
+<fieldset class="normal">
+<legend class="legend">Datos del detalle:</legend>
+<table width="100%">
+<tr valign="top" class="normal">
+<td class="title" align="right">No:</td>
+<td><span jwcid="@DisabledField" value="ognl: dealDetalle.folioDetalle" /></td>
+<td class="title" align="right">Producto:</td>
+<td><span jwcid="@DisabledField" value="ognl: dealDetalle.claveFormaLiquidacion" /></td>
+<td class="title" align="right">Mnem&oacute;nico:</td>
+<td><span jwcid="@DisabledField" value="ognl: dealDetalle.mnemonico" /></td>
+<td class="title" align="right">Status:</td>
+<td colspan="2" nowrap><span jwcid="@DisabledField" value="ognl: dealDetalle.descripcionStatus" /></td>
+<td class="title" align="right"><span jwcid="@Insert" value='ognl: dealDetalle.recibimos ? "Recibimos" : "Entregamos"' /></td>
+</tr>
+<tr valign="top" class="normal">
+<td class="title" align="right">Divisa:</td>
+<td><span jwcid="@DisabledField" value="ognl: dealDetalle.divisa.idDivisa" /></td>
+<td class="title" align="right">Cantidad:</td>
+<td><span jwcid="@DisabledField" value="ognl: page.moneyFormat.format(dealDetalle.monto)" /></td>
+<td class="title" align="right">T.C.M:</td>
+<td nowrap><span jwcid="@DisabledField" value="ognl: dealDetalle.tipoCambioMesa" /></td>
+<td class="title" align="right">T.C.C:</td>
+<td nowrap><span jwcid="@DisabledField" value="ognl: dealDetalle.tipoCambio" /></td>
+<td class="title" align="right">Importe:</td>
+<td nowrap><span jwcid="@DisabledField" value="ognl: page.moneyFormat.format(dealDetalle.importe)" /></td>
+</tr>
+<span jwcid="@RenderBody" />
+</table>
+</fieldset>

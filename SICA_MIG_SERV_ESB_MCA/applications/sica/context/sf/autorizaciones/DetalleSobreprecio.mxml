@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: DetalleSobreprecio.mxml,v 1.2 2010/04/30 15:21:31 ccovian Exp $ -->
+<mx:TitleWindow xmlns:mx="http://www.macromedia.com/2003/mxml" xmlns:raiz="*" xmlns:views="views.*" title="Autorizaci&#243;n m&#250;ltiple de sobreprecio para el deal: {deal.idDeal}"
+closeButton="true" click="this.deletePopUp();" marginTop="10" marginBottom="10" marginLeft="10"  marginRight="10" creationComplete="inicializar()">
+
+	<mx:RemoteObject id="autorizacionesService" source="spring://autorizacionesDelegate" concurrency="last" showBusyCursor="true">
+        <mx:method name="getItemsForAutorizacionMult" result="llenarArreglos(event.result)" fault="falla(event.fault)"/>
+	</mx:RemoteObject>
+
+	<mx:Script>
+	<![CDATA[
+
+		import mx.core.Application;
+		import mx.managers.CursorManager;
+		import mx.controls.*;
+
+		var deal : Object;
+		var _tipoOperIndex : Number;
+		var _idDivisaIndex : Number;
+		var _formaLiqIndex : Number;
+		var _nuevoTipoCambio : Number;
+		var recib : Boolean = false;
+      	var parentRef;
+
+		[Bindable] var botonApetar : Boolean = false;
+		[Bindable] public var items : Array;
+		[Bindable] public var titles : Array;
+
+
+		/**
+          * Inicializa la lista de t&iacute;tulos para las cejas que presentan la informaci&oacute;n
+          *
+          */
+         private function inicializar() : Void
+		{
+			items = new Array();
+			var dets : Array = new Array();
+			for (var i: Number = 0; i < deal.detalles.length; i++) {
+				dets[i] = new com.ixe.ods.sica.vo.DealDetalleVO();
+				dets[i].idDealPosicion = deal.detalles[i].idDealPosicion;
+				if (deal.detalles[i].tipoOp == 'REC'){
+					dets[i].recibimos = !recib;
+				}else{
+					dets[i].recibimos = recib;
+				}
+				dets[i].idDivisa = deal.detalles[i].idDivisa;
+				dets[i].monto = deal.detalles[i].monto;
+				dets[i].tipoCambio = deal.detalles[i].tcc;
+				dets[i].tipoCambioMesa = deal.detalles[i].tcm;
+				dets[i].importe = deal.detalles[i].monto * deal.detalles[i].tcc;
+				dets[i].claveFormaLiquidacion = deal.detalles[i].claveFormaLiquidacion;
+				dets[i].tipoCambioModificado = deal.detalles[i].tipoCambioModificado;
+			}
+			this['autorizacionesService'].getItemsForAutorizacionMult(dets);
+		}
+
+		/**
+		 * LLena los arreglos que utiliza la pantalla para la presentaci&oacute;n.
+		 * 
+		 * @param lista. La lista de arreglos que envia el servicio "autorizacionesService"
+		 */
+		private function llenarArreglos(lista : Array) : Void
+		{
+			items = lista[0];
+			titles = lista[1];
+	         for (var i: Number = 0; i < titles.length; i++) {
+	            if (titles[i].modificado) {
+	               botonApetar = true;
+	            }
+	         }
+		}
+
+		/**
+		 * Funcion que sirve para indicar que hubo un error al llamar los servicios de java.
+		 * 
+		 * @param causa. La descripci&oacute;n de la falla.
+		 */
+		function falla(causa : Object) : Void
+    	{
+        	CursorManager.removeBusyCursor();
+        	mx.controls.Alert.show(causa.description, 'Atenci\u00f3n:');
+    	}
+
+		/**
+		 * Funcion que obtiene el t&iacute;tulo del tipo de operaci&oacutem.
+		 * 
+		 * @param tipoOperIndex. El indice que queremos buscar.
+		 */
+		function getLabelTipoOper(tipoOperIndex: Number) : String
+		{
+			return ((((items[tipoOperIndex])[0])[0])[0]).recibimos ? "COMPRAS" : "VENTAS";
+		}
+
+		/**
+		 * Funcion que obtiene el t&iacute;tulo de la divisa.
+		 * 
+		 * @param tipoOperIndex. El indice que queremos buscar.
+		 */
+		function getDivisaLabel(tipoOperIndex: Number, idDivisaIndex: Number) : String
+		{
+			return ((((items[tipoOperIndex])[idDivisaIndex])[0])[0]).idDivisa;
+		}
+
+		/**
+		 * Funcion que obtiene el t&iacute;tulo de la forma de liquidación.
+		 * 
+		 * @param tipoOperIndex. El indice que queremos buscar.
+		 */
+		function getLabelFormaLiq(tipoOperIndex: Number, idDivisaIndex: Number, formaLiqIndex: Number)
+		{
+			return ((((items[tipoOperIndex])[idDivisaIndex])[formaLiqIndex])[0]).claveFormaLiquidacion;
+		}
+
+		/**
+		 * Funcion que obtiene la ruta de la imagen de la divisa.
+		 * 
+		 * @param tipoOperIndex. El indice que queremos buscar.
+		 */
+		function getDivisaImage(tipoOperIndex: Number, idDivisaIndex: Number, formaLiqIndex: Number)
+		{
+			return 'resources/' + ((((items[tipoOperIndex])[idDivisaIndex])[formaLiqIndex])[0]).idDivisa + '.jpg';
+		}
+
+		/**
+		 * Funcion que es llamada al dispararse el evento "aplicado", cuando se han realizado los 
+		 * cambios del tipo de cambio de la mesa y actualiza los datos de la vista.
+		 * 
+		 * @param key. La llave del mapa de titulos.
+		 * @param detallesMod. Los detalles que se han modificado
+		 */
+		function callAplicaModificacionTipoCambioMesa(key : String, detallesMod : Array) : Void
+		{
+         for (var i: Number = 0; i < titles.length; i++) {
+            if (titles[i].label == key) {
+               titles[i].modificado = true;
+               botonApetar = true;
+            }
+         }
+         parentRef.modificarMultTcm(detallesMod)
+		}
+		
+		/**
+		 * Esta funcion solo cierra el popUp.
+		 * 
+		 */
+		function commitAplicaModificacionTipoCambioMesa() : Void
+		{
+			deletePopUp();
+		}
+
+		/**
+		 * Funcion para dar formato a un n&uacutemero.
+		 * 
+		 */
+		function formatNumber(item : Object, columnName : String) : String
+        {
+           return item != undefined ? formateadorMoneda.format(item[columnName]) : "";
+        }
+
+		/**
+		 * Funcion para dar formato a un n&uacutemero que sea un tipo de cambio.
+		 * 
+		 */
+		function formatNumberTipoCambio(item : Object, columnName : String) : String
+        {
+           return item != undefined ? formateadorTc.format(item[columnName]) : "";
+        }
+
+	]]>
+     </mx:Script>
+
+	<mx:NumberFormatter id="formateadorMoneda" thousandsSeparatorFrom="," thousandsSeparatorTo=","
+                        precision="2" />
+
+    <mx:NumberFormatter id="formateadorTc" thousandsSeparatorFrom="" thousandsSeparatorTo=""
+                        precision="8" />
+
+	 <mx:HBox width="715" height="410">
+		<mx:Panel title="Detalles Modificados:">
+			<mx:Repeater  id="rpItems" dataProvider="{titles}">
+				<mx:CheckBox label="{rpItems.currentItem.label}" value="{rpItems.currentItem.modificado}" enabled="{false}"/>
+			</mx:Repeater>
+			<mx:ControlBar>
+				<mx:Button label="Aceptar" id="btmAceptar" click="commitAplicaModificacionTipoCambioMesa()" enabled="{botonApetar}"/>
+			</mx:ControlBar>
+		</mx:Panel>
+		<mx:TabNavigator width="100%" height="100%">
+			<mx:Repeater  id="rpItems2" dataProvider="{items}">
+				<mx:HBox label="{getLabelTipoOper(rpItems2.currentIndex)}" width="100%" height="100%" marginTop="10" marginBottom="10" marginLeft="10" marginRight="10">
+					<mx:Accordion width="100%" height="100%">
+						<mx:Repeater  id="rpPorDivisa2" dataProvider="{rpItems2.currentItem}">
+							<mx:HBox label="Divisa: {getDivisaLabel(rpItems2.currentIndex, rpPorDivisa2.currentIndex)}" width="100%" height="100%" marginTop="10" marginBottom="10" marginLeft="10" marginRight="10">
+								<mx:TabNavigator width="100%" height="100%">
+									<mx:Repeater  id="rpPorFormaLiq2" dataProvider="{rpPorDivisa2.currentItem}">
+										<views:TablaDetalleSobrePrecio indexTipoOper="{rpItems2.currentIndex}" indexIdDivisa="{rpPorDivisa2.currentIndex}"
+													indexFormaLiq="{rpPorFormaLiq2.currentIndex}" listaDetalles="{rpPorFormaLiq2.currentItem}"
+													aplicado="callAplicaModificacionTipoCambioMesa(event.returnKey, event.detallesMod)" 
+													lblTitle="{getLabelFormaLiq(rpItems2.currentIndex, rpPorDivisa2.currentIndex, rpPorFormaLiq2.currentIndex)}"
+													imgSource="{getDivisaImage(rpItems2.currentIndex, rpPorDivisa2.currentIndex, rpPorFormaLiq2.currentIndex)}"/>
+									</mx:Repeater>
+								</mx:TabNavigator>
+							</mx:HBox>
+						</mx:Repeater>
+					</mx:Accordion>
+				</mx:HBox>
+			</mx:Repeater>
+		</mx:TabNavigator>
+	 </mx:HBox>
+</mx:TitleWindow>

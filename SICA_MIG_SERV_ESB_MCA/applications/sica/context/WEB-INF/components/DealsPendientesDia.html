@@ -1,0 +1,32 @@
+<!-- $Id: DealsPendientesDia.html,v 1.2 2008/10/27 23:20:08 ccovian Exp $ -->
+<table jwcid="@ActionPortletBorder" title='ognl: "Deals Pendientes " + titulo + " (" + numero +  ")"'  minimizable="yes" minimized="ognl: dealsMinimizados">
+<table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "No. Deal", "Status","Cliente","Fecha de Captura"}' columnCount="2" width="100%">
+<tr jwcid="forRegs1@Foreach" source="ognl: dealsPendientes" element="tr" class="normalcell">
+<td class="normal" align="center">
+<span jwcid="@Conditional" condition="ognl: !components.forRegs1.value.interbancario">
+	<a jwcid="@ExternalLink"
+	page='CapturaDeal'
+	parameters='ognl: { @com.ixe.ods.sica.pages.deals.CapturaDeal@OPCION_EDITAR_DEALS_PENDIENTE_DIA, components.forRegs1.value.idDeal, "SICA_CONS_DEAL", "DealsPendientesDia" }'>
+	<span jwcid= "@Insert" value="ognl: components.forRegs1.value.idDeal" />
+	</a>
+</span>
+<span jwcid="@Conditional" condition="ognl: components.forRegs1.value.interbancario">
+    <a jwcid="@DirectLink" listener="ognl: listeners.verDealPendientesDia" parameters="ognl: components.forRegs1.value.idDeal">
+    <span jwcid= "@Insert" value="ognl: components.forRegs1.value.idDeal" />
+    </a>
+</span>
+</td>
+<td class="normal" align="center">
+<span jwcid="@StatusField" status="ognl: @com.ixe.ods.sica.components.StatusField@getStatusDeal(components.forRegs1.value)" descripcion="ognl: components.forRegs1.value.descripcionStatus" />
+</td>
+<td class="normal" align="center">
+<span jwcid="@Insert" value='ognl: components.forRegs1.value.contratoSica ? components.forRegs1.value.cliente.nombreCompleto : ""' />
+</td>
+<td class="normal" align="center">
+<span jwcid="@Insert" value="ognl: components.forRegs1.value.fechaCaptura" format="ognl: page.fullDateFormat" />
+</td>
+</tr>
+</table>
+<br/>
+</table>
+

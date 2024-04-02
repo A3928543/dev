@@ -1,0 +1,64 @@
+<!-- $Id: ControlHorarios.html,v 1.10 2008/02/22 18:25:30 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Control de Horarios</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+	<body jwcid="@PageBorder">
+	    <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" width="100%" />
+		<table jwcid="@ActionPortletBorder" title="Control de Horarios de Operaci&oacute;n">
+			<table width="100%">
+				<tr>
+					<td class="title" align="left">Fecha de operaci&oacute;n:<td class="normal" nowrap><span jwcid="@Insert"  value="ognl: dateFormat.format(new java.util.Date())"/></td></td>
+					<td valign="middle" class="title" align="left" nowrap>Hora:
+                        <applet codebase="/sica/applet/" code="com.ixe.ods.sica.applet.Reloj.class" width="85" height="18" archive="reloj.jar">
+                            <param jwcid="@Any" element="param" name="hora" value='ognl: new java.text.SimpleDateFormat("HH:mm:ss").format(new java.util.Date())' />
+                        </applet>
+                    </td>
+				</tr>
+				<tr>
+					<td class="title" align="left">Estado del SICA:</td><td class="normal" nowrap><span jwcid="@Insert" raw="yes" value="ognl: actual.nombreEstado" /></td>
+				</tr>
+				<tr>
+					<form jwcid="@Form" listener="ognl: listeners.actualizarHoraFin" delegate="ognl: beans.delegate">
+						<table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "ESTADO", "Hora que inici&oacute", "Hora que desea terminar", "Aplicativo"}' columnCount="3" width="100%">
+							<span jwcid="forEstado@Foreach" source="ognl: estados">
+								<tr jwcid="@Any" element="tr" class='ognl: components.forEstado.value.actual ? "odd" : "even"'>
+									<span jwcid="@Conditional" condition='ognl:components.forEstado.value.idEstado == 6 && cierre'>
+										<td align="center"><font class="normal"><a jwcid="@DirectLink" listener="ognl: listeners.cerrarSica" onClick="fnShowWaitImage();" > Cierre de d&iacute;a</a></font></td>
+									</span>
+									<span jwcid="@Conditional" condition='ognl:components.forEstado.value.idEstado == 6 && !cierre'>
+										<td align="center"><font class="normal"><span jwcid="@Insert" raw="yes" value="ognl: components.forEstado.value.nombreEstado" /></font></td>
+									</span>                                    
+									<span jwcid="@Conditional" condition='ognl: components.forEstado.value.idEstado != 6'>
+										<td align="center"><font class="normal"><span jwcid="@Insert" raw="yes" value="ognl: components.forEstado.value.nombreEstado" /></font></td>
+									</span>
+							    	<td align="center"><font class="normal"><span jwcid="@Insert" value="ognl: components.forEstado.value.horaInicio" /></font></td>
+							    	<td><span jwcid="@Conditional" condition="ognl:components.forEstado.value.horaFin "><span jwcid="horaTextField" /></span></td>
+							    	<td align="center"><font class="normal"><a jwcid="@DirectLink" listener="ognl:listeners.activarPagina" parameters="ognl: components.forEstado.value.urlAplicacion" disabled="ognl: !components.forEstado.value.actual" onClick="fnShowWaitImage();"><span jwcid="@Insert" raw="yes" value="ognl: components.forEstado.value.nombreAplicacion" /></a></font></td>
+								</tr>
+							</span>
+						</table>
+						<br/>
+						<div align="center"><input jwcid="@ImageSubmit" image="ognl: assets.saveButton" onclick="return fnDisableForm(this.form);"/>
+                                            <a jwcid="@DirectLink" listener="ognl: listeners.refrescar"><input jwcid="@Image" image="ognl: assets.refreshButton"/></a>
+						<br/>
+                        <br/>                                            
+							<fieldset class="normal">
+							<legend class="legend" align="center">Bloqueo del Sistema</legend>
+								<br/> 
+                            	*OPERACION DE ALTA PRIORIDAD*<br />
+								 Se bloquea cualquier captura de operaciones del sistema.Cuando el sistema sea<br />
+								 desbloqueado se regresar&aacute; al estado en que se encontraba el sistema.<br />
+								<span jwcid="@Conditional" condition='ognl:!actual.nombreEstado.equals("Sistema Bloqueado")'>
+                                    <a jwcid="@DirectLink" listener="ognl:listeners.bloquearDesbloquear" onClick="fnShowWaitImage();"> Bloquear Sistema</a>
+								<br/>
+								</span>
+							</fieldset>
+		    		 </form>
+				</tr>
+			</table>
+		</table>
+	</body>
+</html>
+

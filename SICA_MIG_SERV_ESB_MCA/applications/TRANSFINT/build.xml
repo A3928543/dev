@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="TRANSFINT">
+    <property environment="env"/>
+	<property name="debuglevel" value="source,lines,vars"/>
+	<property name="target" value="1.5"/>
+	<property name="source" value="1.5"/>
+	<property name="lib.dir" value="lib/"/>
+	<property name="src.dir" value="src/"/>
+	<property name="build.dir" value="bin/"/>
+	<property name="dist.dir" value="dist"/>
+	<property name="archivos.dir" value="archivos"/>
+	<property name="shell.dir" value="shell"/>
+	
+	<path id="classpath">
+		<fileset dir="${lib.dir}" includes="*.jar"/>
+	</path>
+
+	<target name="clean">
+		<delete dir="${build.dir}"/>
+		<delete dir="${dist.dir}"/>
+	</target>
+	
+    <target name="prepare">
+    	<mkdir dir="${build.dir}"/>
+    	<mkdir dir="${dist.dir}"/>
+    	<mkdir dir="${dist.dir}/TRANSFINT"/>
+    	<mkdir dir="${dist.dir}/TRANSFINT/lib"/>
+    	<mkdir dir="${dist.dir}/TRANSFINT/archivos"/>
+    	<mkdir dir="${dist.dir}/TRANSFINT/archivos/config"/>
+    	<mkdir dir="${dist.dir}/TRANSFINT/archivos/reportes"/>
+    	<mkdir dir="${dist.dir}/TRANSFINT/archivos/reportes/diarios"/>
+    	<copy todir="${build.dir}">
+			<fileset dir="${src.dir}" includes="log4j.properties"/>
+		</copy>
+    </target>
+	
+	<!-- <target name="build" depends="clean, prepare">
+		<javac debug="true" debuglevel="${debuglevel}" destdir="${build.dir}" source="${source}" target="${target}">
+			<src path="${src.dir}"/>
+			<classpath refid="classpath"/>
+		</javac>
+	</target> -->
+	
+	<target name="build" depends="clean, prepare">
+		<javac debug="true" debuglevel="${debuglevel}" destdir="${build.dir}" source="${source}" target="${target}">
+			<src path="${src.dir}"/>
+			<classpath refid="classpath"/>
+		</javac>
+		<copy todir="${build.dir}">
+			<fileset dir="${src.dir}" includes="log4j.properties"/>
+			<fileset dir="${src.dir}" includes="*.xml"/>
+		</copy>
+		<jar destfile="${dist.dir}/TRANSFINT/lib/transfint.jar" basedir="${build.dir}">
+			<!-- <manifest>
+				<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+				<attribute name="Rsrc-Class-Path" value="./ ${manifest.classpath}" />
+				<attribute name="Rsrc-Main-Class" value="com.ixe.ods.sica.batch.poliza.GeneracionPolizaDetalle"/>
+			</manifest>
+			<zipfileset src="jar-in-jar-loader.zip"/> -->
+			<include name="com/banorte/ods/sica/batch/transfint/**/*"/>
+			<include name="*.jar"/>
+			<include name="*.xml"/>
+			<include name="log4j.properties"/>
+		</jar>
+		<copy todir="${dist.dir}/TRANSFINT/lib">
+			<fileset dir="${lib.dir}" includes="*.jar"/>
+		</copy>
+		<copy todir="${dist.dir}/TRANSFINT/archivos/config">
+			<fileset dir="${archivos.dir}/config" includes="*.*"/>
+		</copy>
+		<copy todir="${dist.dir}/TRANSFINT">
+			<fileset dir="${shell.dir}" includes="*.*"/>
+		</copy>
+		
+	</target>
+	
+	<!-- <pathconvert property="manifest.classpath" pathsep=" ">
+  		<path refid="classpath"/>
+  		<mapper>
+    		<chainedmapper>
+       			<flattenmapper/>
+       			<globmapper from="*.jar" to="*.jar"/>
+    		</chainedmapper>
+  		</mapper>
+	</pathconvert> -->
+	
+</project>

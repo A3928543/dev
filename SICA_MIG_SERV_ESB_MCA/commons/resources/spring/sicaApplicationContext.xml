@@ -1,0 +1,1631 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: sicaApplicationContext.xml,v 1.67.2.1.4.2.2.4.2.1.4.2.4.2.2.1.8.2.2.6.6.1.18.1.2.3 2017/10/20 15:57:30 mejiar Exp $ -->
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	
+    <!-- CONFIGURACION GENERAL -->
+    <!-- Data source para la BUP y Seguridad -->
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <description>Data source para la BUP y Seguridad</description>
+        <property name="jndiName">
+            <value>ODSSicaDataSource</value>
+        </property>
+    </bean>
+
+    <!-- 
+    Para la migración de SC_BITACORA_ENVIADAS y sus dependencias al esquema de la BUP.
+    <bean id="sicaTasDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <description>Data source para la BUP y Seguridad</description>
+        <property name="jndiName">
+            <value>ds/tas/SicaTasDataSource</value>
+</property>
+</bean>
+
+    <bean id="sicaTasJtaDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <description>Data source para la BUP y Seguridad</description>
+        <property name="jndiName">
+            <value>ds/tas/SicaTasJtaDataSource</value>
+</property>
+    </bean>-->
+
+    <bean id="jtaDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <description>Data source para la BUP y Seguridad</description>
+        <property name="jndiName">
+        	<value>ds/ods/SicaXADataSource</value>
+            <!--value>ODSSicaJtaDataSource</value-->
+        </property>
+    </bean>
+
+    <!-- Session Factory para Hibernate (solo una instancia por JVM) -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate.LocalSessionFactoryBean">
+        <description>Session Factory para Hibernate (solo una instancia por JVM)</description>
+        <property name="dataSource">
+            <ref local="dataSource"/>
+        </property>
+        <property name="configLocation">
+            <value>classpath:hibernate.cfg.xml</value>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.show_sql">false</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- Interceptor de Hibernate para la seguridad -->
+    <bean id="seguridadInterceptor" class="com.ixe.ods.seguridad.hibernate.SeguridadInterceptor" singleton="false">
+        <description>Interceptor de Hibernate para la seguridad</description>
+    </bean>
+
+    <!-- TransactionManager generico -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate.HibernateTransactionManager">
+        <description>TransactionManager generico</description>
+        <property name="sessionFactory">
+            <ref local="sessionFactory"/>
+        </property>
+        <property name="entityInterceptorBeanName">
+            <value>seguridadInterceptor</value>
+        </property>
+    </bean>
+
+    <!-- Interceptor de Hibernate para auditInterceptor -->
+    <bean id="auditHibernateInterceptor" class="com.ixe.ods.seguridad.hibernate.ExposeHibernateInterceptor">
+        <description>Interceptor de Hibernate para auditInterceptor</description>
+        <property name="sessionFactory">
+            <ref local="sessionFactory"/>
+        </property>
+        <property name="entityInterceptorBeanName">
+            <value>seguridadInterceptor</value>
+        </property>
+    </bean>
+
+    <!-- Definicion general de un proxy que agrega transaccionalidad -->
+    <bean id="baseTransactionProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" abstract="true">
+        <description>Definicion general de un proxy que agrega transaccionalidad</description>
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- DAO para acceso a la BUP -->
+    <bean id="bupDao" class="com.ixe.ods.bup.sdo.impl.HibernateBupServiceData">
+        <description>DAO para acceso a la BUP</description>
+        <property name="sessionFactory">
+            <ref local="sessionFactory"/>
+        </property>
+        <property name="jdbcDao">
+			<bean class="com.ixe.ods.bup.dao.impl.JdbcBupDaoImpl">
+				<property name="dataSource">
+					<ref bean="dataSource"/>
+				</property>
+			</bean>
+	    </property>
+    </bean>
+
+	<!-- DAO para acceso a los deals capturados por fecha -->
+	<bean id="banxicoDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.JdbcBanxicoDaoImpl">
+                <property name="dataSource">
+                    <ref local="dataSource" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- DAO para deteccion de descuadre de la posicion -->
+    <bean id="descuadreDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.JdbcDescuadreDaoImpl">
+                <property name="dataSource">
+                    <ref local="dataSource" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+	<!-- DAO para acceso a ejecutivos por lineas de credito -->
+	<bean id="cierreDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.JdbcCierreDaoImpl">
+                <property name="dataSource">
+                    <ref local="dataSource" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- DAO para acceso a Seguridad -->
+    <bean id="securityDao" class="com.ixe.ods.seguridad.sdo.impl.HibernateSeguridadServiceData">
+        <description>DAO para acceso a Seguridad</description>
+        <property name="sessionFactory">
+            <ref local="sessionFactory"/>
+        </property>
+    </bean>
+
+    <bean id="securityJtaDao" class="com.ixe.ods.seguridad.sdo.impl.HibernateSeguridadServiceData">
+        <description>DAO para acceso a Seguridad</description>
+        <property name="sessionFactory">
+            <ref local="jtaHibernateSessionFactory" />
+        </property>
+    </bean>
+
+    <!-- Proxy transaccional para las entidades de la BUP -->
+    <bean id="bupServiceData" parent="baseTransactionProxy">
+        <description>Proxy transaccional para las entidades de la BUP</description>
+        <property name="target">
+            <ref local="bupDao"/>
+        </property>
+    </bean>
+
+    <!-- Proxy transaccional para las entidades de Seguridad -->
+    <bean id="securityServiceData" parent="baseTransactionProxy">
+        <description>Proxy transaccional para las entidades de Seguridad</description>
+        <property name="target">
+            <ref local="securityDao"/>
+        </property>
+    </bean>
+
+    <!-- Proxy transaccional usado por el middleware para las entidades de la BUP -->
+    <bean id="bupMWServiceData" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" >
+        <description>Proxy transaccional para las entidades de la BUP</description>
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_SUPPORTS</prop>
+            </props>
+        </property>
+        <property name="target">
+            <ref local="bupDao"/>
+        </property>
+    </bean>
+
+    <!-- Definicion generica del proxy para los servicios transaccionales -->
+    <bean id="transactionProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" abstract="true">
+        <description>Definicion generica del proxy para los servicios transaccionales</description>
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- Servicios para facultades simples -->
+    <bean id="facultyService" parent="transactionProxy" lazy-init="true">
+        <description>Servicios para facultades simples</description>
+        <property name="target">
+            <bean class="com.ixe.ods.seguridad.services.impl.FacultadSimpleServiceImpl">
+                <property name="seguridadDao">
+                    <ref local="securityDao"/>
+                </property>
+                <property name="logFacultadQueueSender">
+                    <ref local="logFacultadQueueSender"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <!--bean id="ldapAuthentification" class="com.ixe.ods.sica.FakeLdap"/-->
+    <bean id="ldapAuthentification" class="com.ixe.ods.seguridad.services.impl.LdapAutentificacionImpl">
+        <description>Realiza la autentificacion por LDAP</description>
+        <property name="ldapProvider">
+            <value>ldap://15.128.25.17:9389/</value>
+        </property>
+        <property name="ldapPrincipal">
+            <value>, ou=People, o=ixecorp.ixe.com.mx</value>
+        </property>
+        <property name="ldapAlternative">
+            <value>, ou=SpecialUsers, o=ixecorp.ixe.com.mx</value>
+        </property>
+        <property name="ldapProviderAD">
+            <value>ldap://15.152.2.19/</value>
+        </property>
+        <property name="ldapPrincipalAD">
+            <value>edificios</value>
+        </property>
+        <property name="ldapPrincipalADAlt">
+            <value>sucursales</value>
+        </property>
+    </bean>
+
+    <bean id="numeroIntentosFallidos" class="java.lang.Integer">
+        <description>Define el numero de intentos fallidos permitidos antes de bloquear el perfil.</description>
+        <constructor-arg>
+            <value>3</value>
+        </constructor-arg>
+    </bean>
+
+    <!-- Servicios de login -->
+    <bean id="loginService" parent="transactionProxy" lazy-init="true">
+        <description>Servicios de login</description>
+        <property name="target">
+            <bean class="com.ixe.ods.seguridad.services.impl.LoginServiceImpl">
+                <property name="ldapAutentificacion">
+                    <ref local="ldapAuthentification"/>
+                </property>
+                <property name="seguridadDao">
+                    <ref local="securityDao"/>
+                </property>
+                <property name="logFacultadQueueSender">
+                    <ref local="logFacultadQueueSender"/>
+                </property>
+                <property name="numeroIntentosFallidos">
+                    <ref local="numeroIntentosFallidos"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+        <!-- Servicios de login -->
+    <bean id="loginJtaService" parent="baseJtaTransactionProxy" lazy-init="true">
+        <description>Servicios de login</description>
+        <property name="target">
+            <bean class="com.ixe.ods.seguridad.services.impl.LoginServiceImpl">
+                <property name="ldapAutentificacion">
+                    <ref local="ldapAuthentification"/>
+                </property>
+                <property name="seguridadDao">
+                    <ref local="securityJtaDao"/>
+                </property>
+                <property name="logFacultadQueueSender">
+                    <ref local="logFacultadQueueSender"/>
+                </property>
+                <property name="numeroIntentosFallidos">
+                    <ref local="numeroIntentosFallidos"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- Servicios para operaciones que dejan auditoria -->
+    <bean id="auditService" parent="transactionProxy" lazy-init="true">
+        <description>Servicios para operaciones que dejan auditoria</description>
+        <property name="preInterceptors">
+            <list>
+                <!--<bean class="org.springframework.aop.interceptor.DebugInterceptor"/>-->
+                <ref local="auditHibernateInterceptor"/>
+            </list>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.seguridad.services.impl.AuditServiceImpl">
+                <property name="ldapAutentificacion">
+                    <ref local="ldapAuthentification"/>
+                </property>
+                <property name="seguridadDao">
+                    <ref local="securityDao"/>
+                </property>
+                <property name="numeroIntentosFallidos">
+                    <ref local="numeroIntentosFallidos"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- Servicios de ticket -->
+    <bean id="ticketService" parent="transactionProxy" lazy-init="true">
+        <description>Servicios de ticket</description>
+        <property name="target">
+            <bean class="com.ixe.ods.seguridad.services.impl.TicketServiceImpl">
+                <property name="seguridadDao">
+                    <ref local="securityDao"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="ticketJtaService" parent="baseJtaTransactionProxy" lazy-init="true">
+        <description>Servicios de ticket</description>
+        <property name="target">
+            <bean class="com.ixe.ods.seguridad.services.impl.TicketServiceImpl">
+                <property name="seguridadDao">
+                    <ref local="securityJtaDao"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+	<!-- Servicios de usuario -->
+    <bean id="userService" parent="transactionProxy" lazy-init="true">
+        <description>Servicios de usuario</description>
+        <property name="transactionAttributes">
+            <props>
+	            <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="remove*">PROPAGATION_REQUIRED</prop>
+                <prop key="getUsuario">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="getSistemasPorUsuario">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="is*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="cambia*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED</prop>
+                <prop key="valida*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.seguridad.services.impl.UsuarioServiceImpl">
+                <property name="seguridadDao">
+                    <ref local="securityDao"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- Servicios de autenticacion -->
+    <bean id="authenticationService" parent="transactionProxy" lazy-init="true">
+        <description>Servicios de autenticacion</description>
+        <property name="target">
+            <bean class="com.ixe.ods.seguridad.services.impl.AuthenticationServiceImpl">
+               <property name="procedureDao">
+				   	<bean class="com.ixe.ods.seguridad.dao.impl.ProcedureSecurityDaoImpl">
+				       	<property name="dataSource">
+				           	<ref bean="dataSource"/>
+				        </property>
+				    </bean>
+				</property>
+			</bean>
+        </property>
+    </bean>
+
+	<!-- ConnectionFactory para JMS -->
+    <bean id="connectionFactory" class="org.springframework.jndi.JndiObjectFactoryBean" lazy-init="true">
+        <description>ConnectionFactory para JMS</description>
+        <property name="jndiName">
+            <value>jms/QCF</value>
+        </property>
+    </bean>
+
+    <!-- Servicio encargado de enviar mensajes a la cola de facultades simples -->
+    <bean id="logFacultadQueueSender" class="com.ixe.ods.seguridad.jms.impl.LogFacultadQueueSenderImpl" lazy-init="true">
+        <description>Servicio encargado de enviar mensajes a la cola de facultades simples</description>
+        <property name="connectionFactory">
+            <ref local="connectionFactory"/>
+        </property>
+        <property name="queueJndiName">
+            <value>jms/SEGULOGFAC</value>
+        </property>
+    </bean>
+
+    <!-- Servicio encargado de enviar mensajes a la cola de facultades cuenta -->
+    <bean id="logFacultadCuentaQueueSender" class="com.ixe.ods.seguridad.jms.impl.LogFacultadQueueSenderImpl" lazy-init="true">
+        <description>Servicio encargado de enviar mensajes a la cola de facultades cuenta</description>
+        <property name="connectionFactory">
+            <ref local="connectionFactory"/>
+        </property>
+        <property name="queueJndiName">
+            <value>jms/SEGULOGCTA</value>
+        </property>
+    </bean>
+
+    <!-- Servicio encargado de enviar mensajes a la cola de autorizaciones mancomunadas -->
+    <bean id="logAutMancomunadaQueueSender" class="com.ixe.ods.seguridad.jms.impl.LogFacultadQueueSenderImpl" lazy-init="true">
+        <description>Servicio encargado de enviar mensajes a la cola de autorizaciones mancomunadas</description>
+        <property name="connectionFactory">
+            <ref local="connectionFactory"/>
+        </property>
+        <property name="queueJndiName">
+            <value>jms/SEGULOGAUTMANC</value>
+        </property>
+    </bean>
+
+    <!-- Servicios de perfil -->
+    <bean id="profileService" parent="transactionProxy" lazy-init="true">
+        <description>Servicios de perfil</description>
+        <property name="target">
+            <bean class="com.ixe.ods.seguridad.services.impl.PerfilServiceImpl">
+                <property name="seguridadDao">
+                    <ref local="securityDao"/>
+                </property>
+                <property name="bupDao">
+                    <ref local="bupDao"/>
+                </property>
+                <property name="logFacultadCuentaQueueSender">
+                    <ref local="logFacultadCuentaQueueSender"/>
+                </property>
+                <property name="logAutMancomunadaQueueSender">
+                    <ref local="logAutMancomunadaQueueSender"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+	<!-- DAO para recurrencias -->
+    <bean id="recurrenciasDao" class="com.ixe.ods.recurrencias.sdo.impl.HibernateRecurrenciasServiceData">
+        <description>DAO para recurrencias</description>
+        <property name="sessionFactory">
+            <ref local="sessionFactory"/>
+        </property>
+    </bean>
+
+    <!-- Proxy para las entidades relacionadas con recurrencias -->
+    <bean id="recurrenciasServiceData" parent="baseTransactionProxy">
+        <description>Proxy para las entidades relacionadas con recurrencias</description>
+        <property name="target">
+            <ref local="recurrenciasDao"/>
+        </property>
+    </bean>
+
+    <!-- Servicio de cancelacion de recurrencias-->
+    <bean id="recurrenciasService" parent="baseTransactionProxy">
+        <description>Servicio de cancelacion de recurrencias y excepciones</description>
+        <property name="target">
+            <bean class="com.ixe.ods.recurrencias.service.impl.RecurrenciasServiceImpl">
+                <property name="serviceData">
+                    <ref local="recurrenciasDao"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- Proxy para accesar al ejb del middleware de DigitalSignature para operaciones que utilicen certificado Digital. -->
+	<bean id="digitalSignatureService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" lazy-init="true">
+		<description>Proxy para accesar al ejb del DigitalSignature para Empresarial</description>
+		<property name="jndiName">
+	   		<value>ejb/middleware/DigitalSignatureHome</value>
+		</property>
+		<property name="businessInterface">
+   			<value>com.ixe.mw.banco.sdo.DigitalSignatureService</value>
+		</property>
+	</bean>
+
+    <!-- CONFIGURACION SICA -->
+    <!-- Proxy para las entidades relacionadas con la Sica -->
+    <bean id="sicaServiceData" parent="baseTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.sdo.impl.HibernateSicaServiceData">
+                <property name="sessionFactory">
+                    <ref local="sessionFactory"/>
+                </property>
+                <property name="loginService">
+                    <ref local="loginService" />
+                </property>
+                <property name="extraDao">
+                    <ref local="extraDao" />
+                </property>
+                <property name="h2hService">
+                	<ref local="h2hService"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="dealServiceData" parent="baseTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.sdo.impl.HibernateDealServiceData">
+                <property name="sessionFactory">
+                    <ref local="sessionFactory"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="reversosServiceData" parent="baseJtaTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.sdo.impl.HibernateReversosServiceData">
+                <property name="sessionFactory">
+                    <ref local="jtaHibernateSessionFactory"/>
+                </property>
+                <property name="formasPagoLiqService">
+			    	<ref local="formasPagoLiqService" />
+				</property>
+				<property name="pizarronServiceData">
+			    	<ref local="pizarronServiceData" />
+				</property>
+				<property name="h2hService">
+                	<ref local="h2hService"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="swapsServiceData" parent="baseTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.sdo.impl.HibernateSwapsServiceData">
+                <property name="sessionFactory">
+                    <ref local="sessionFactory"/>
+                </property>
+                <property name="bitacoraEnviadasDao">
+                    <ref local="bitacoraEnviadasDao" />
+                </property>
+                <property name="pizarronServiceData">
+                    <ref local="pizarronServiceData" />
+                </property>
+                <property name="sicaServiceData">
+                    <ref local="sicaServiceData" />
+                </property>
+                <property name="swapDao">
+                    <ref local="swapDao" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="jtaSwapsServiceData" parent="baseJtaTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.sdo.impl.HibernateSwapsServiceData">
+                <property name="sessionFactory">
+                    <ref local="jtaHibernateSessionFactory"/>
+                </property>
+                <property name="bitacoraEnviadasDao">
+                    <ref local="jtaBitacoraEnviadasDao" />
+                </property>
+                <property name="pizarronServiceData">
+                    <ref local="jtaPizarronServiceData" />
+                </property>
+                <property name="sicaServiceData">
+                    <ref local="sicaWorkFlowServiceData" />
+                </property>
+                <property name="swapDao">
+                    <ref local="jtaSwapDao" />
+                </property>
+                <property name="desviacionInterbancaria">
+                    <ref local="jtaDesviacionInterbancaria" />
+                </property>
+                </bean>
+        </property>
+    </bean>
+    
+    <bean id="corteMurexServiceData" parent="baseTransactionProxy">
+    <description>bean para servicios de acceso a datos de corte murex</description>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.sdo.impl.HibernateCorteMurexServiceData">
+                <property name="sessionFactory">
+                    <ref local="sessionFactory"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="limiteDao" parent="baseTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.impl.HibernateLimiteDao">
+                <property name="sessionFactory">
+                    <ref local="sessionFactory"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    
+    <bean id="h2hDao" parent="baseTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.impl.H2HDaoImpl">
+                <property name="sessionFactory">
+                    <ref local="sessionFactory"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    
+    <bean id="extraDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.JdbcExtraDaoImpl">
+                <property name="dataSource">
+                    <ref bean="dataSource"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="clienteDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.JdbcClienteDaoImpl">
+                <property name="dataSource">
+                    <ref local="dataSource" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="actividadDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref local="jtaTransactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.impl.JdbcActividadDao">
+                <property name="dataSource">
+                    <ref local="dataSource" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+    
+    <!--  Modificaiones a sica ARP por igodinez -->
+    
+    <bean id="basicDataSource" class="com.ixe.ods.sica.util.DataSourceImpl">
+    	<property name="sessionFactory">
+	    	<ref local="sessionFactory"/>
+    	</property>        
+    </bean>
+    
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+    	<constructor-arg>
+    		<ref bean="basicDataSource" />
+    	</constructor-arg>
+    </bean>
+    
+    <bean id="seguridadServiceDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    	<property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.SeguridadDaoImpl">
+                <property name="sessionFactory">
+            		<ref local="sessionFactory"/>
+       	 		</property>
+       	 		<property name="jdbcTemplate">
+       	 			<ref bean="jdbcTemplate"/>
+       	 		</property>
+            </bean>
+        </property>
+    </bean>
+    
+    <bean id="jerarquiaDao" class="com.ixe.ods.sica.dao.impl.HibernateJerarquiaDao">
+        <property name="sessionFactory">
+            <ref local="sessionFactory"/>
+        </property>
+    </bean>
+
+   <bean id="dealDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.impl.JdbcDealDao">
+                <property name="dataSource">
+                    <ref local="dataSource" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+    
+    <bean id="informacionNegociacionDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.impl.JdbcInformacionNegociacionDao">
+                <property name="dataSource">
+                    <ref local="dataSource" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="lineaCambioDao" class="com.ixe.ods.sica.dao.impl.JdbcLineaCambioDao">
+        <property name="dataSource">
+            <ref local="dataSource"/>
+        </property>
+        <property name="pizarronServiceData">
+            <ref local="pizarronServiceData"/>
+        </property>
+    </bean>
+
+    <bean id="sicaSiteCache" class="com.ixe.ods.sica.SicaSiteCache" singleton="true" lazy-init="true">
+        <property name="siteService">
+            <ref local="siteService" />
+        </property>
+    </bean>
+
+    <bean id="siteService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" lazy-init="true">
+        <property name="jndiName">
+            <value>ejb.site.ExternalSiteHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SiteService</value>
+        </property>
+    </bean>
+
+    <bean id="sicaWorkFlowService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" lazy-init="true">
+        <property name="jndiName">
+            <value>ejb/sica/SicaWorkFlowHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaWorkFlowService</value>
+        </property>
+    </bean>
+
+    <bean id="sicaSeguridadService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" lazy-init="true">
+        <property name="jndiName">
+            <value>ejb/sica/SeguridadHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SeguridadServices</value>
+        </property>       
+    </bean>
+
+    <bean id="sicaAlertasService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName">
+            <value>ejb.AlrmSICARemoteHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaAlertasService</value>
+        </property>
+    </bean>
+
+	<bean id="cierreServiceData" parent="baseTransactionProxy">
+	    <property name="target">
+	        <bean class="com.ixe.ods.sica.sdo.impl.HibernateCierreSicaServiceData">
+	            <property name="sessionFactory">
+	                <ref local="sessionFactory"/>
+	            </property>
+	            <property name="sicaAlertasService">
+	                <ref local="sicaAlertasService" />
+	            </property>
+	            <property name="extraDao">
+	                <ref local="extraDao" />
+	            </property>
+	            <property name="pizarronServiceData">
+	                <ref local="pizarronServiceData" />
+	            </property>
+	            <property name="cierreDao">
+	                <ref local="cierreDao" />
+	            </property>
+                <property name="limiteDao">
+                    <ref local="limiteDao" />
+                </property>
+                <!--property name="phoenixDao">
+                    <ref local="phoenixDao" />
+                </property-->
+            </bean>
+	    </property>
+	</bean>
+	
+	<bean id="contratoDireccionesService" class="com.ixe.ods.sica.services.impl.ContratoDireccionesServiceImpl">
+        <property name="sicaServiceData">
+            <ref local="sicaServiceData" />
+        </property>
+        <property name="sicaConsultaRelacionesCuentaService">
+            <ref local="sicaConsultaRelacionesCuentaService" />
+        </property>
+        <property name="sicaConsultaProductosPersonaService">
+            <ref local="sicaConsultaProductosPersonaService" />
+        </property>
+        <property name="sicaConsultaDireccionesPersonaService">
+            <ref local="sicaConsultaDireccionesPersonaService" />
+        </property>
+        <property name="sicaBusquedaPersonaService">
+            <ref local="sicaBusquedaPersonaService" />
+        </property>
+        <property name="valorFuturoService">
+            <ref local="valorFuturoService" />
+        </property>
+   </bean>
+   
+   <bean id="sicaConsultaRelacionesCuentaService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" >
+        <property name="jndiName">
+            <value>ejb.ConsultaRelacionesCuentaSessionRemoteHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaConsultaRelacionesCuentaService</value>
+        </property>
+    </bean>
+    
+    <bean id="sicaConsultaDireccionesPersonaService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" >
+        <property name="jndiName">
+            <value>ejb.ConsultaDireccionesPersonaSessionRemoteHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaConsultaDireccionesPersonaService</value>
+        </property>
+    </bean>
+
+    <bean id="pizarronServiceData" parent="baseTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.sdo.impl.HibernatePizarronServiceData">
+                <property name="sessionFactory">
+                    <ref local="sessionFactory"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="jtaPizarronServiceData" parent="baseJtaTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.sdo.impl.HibernatePizarronServiceData">
+                <property name="sessionFactory">
+                    <ref local="jtaHibernateSessionFactory"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="contabilidadServiceData" parent="baseTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.sdo.impl.HibernateContabilidadSicaServiceData">
+                <property name="sessionFactory">
+                    <ref local="sessionFactory"/>
+                </property>
+                <property name="pizarronServiceData">
+	                <ref local="pizarronServiceData" />
+	            </property>
+                <property name="contabilidadDao">
+                    <bean class="com.ixe.ods.sica.dao.impl.JdbcContabilidadDao">
+                        <property name="dataSource">
+                            <ref local="dataSource" />
+                        </property>
+                        <property name="logExpresionContable">
+                            <ref local="logExplosionContable" />
+                        </property>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="swapDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref local="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="crear*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.JdbcSwapDaoImpl">
+                <property name="dataSource">
+                    <!-- 
+    				Para la migración de SC_BITACORA_ENVIADAS y sus dependencias al esquema de la BUP.
+                    <ref local="sicaTasDataSource"/>
+                    -->
+                    <ref local="dataSource"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="jtaSwapDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref local="jtaTransactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="crear*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.JdbcSwapDaoImpl">
+                <property name="dataSource">
+                    <!-- 
+    				Para la migración de SC_BITACORA_ENVIADAS y sus dependencias al esquema de la BUP.
+                    <ref local="sicaTasJtaDataSource"/>
+                    -->
+                    <ref local="jtaDataSource"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="sicaWorkFlowServiceData" parent="baseJtaTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.sdo.impl.HibernateWorkFlowServiceData">
+                <property name="sessionFactory">
+                    <ref local="jtaHibernateSessionFactory"/>
+                </property>
+                <property name="registroMedioContactoPersonaService">
+                    <ref local="sicaRegistroMedioContactoPersonaService" />
+                </property>
+                <property name="h2hService">
+                	<ref local="h2hService"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="lineasCambioJtaServiceData" parent="baseJtaTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.sdo.impl.HibernateLineaCambioServiceData">
+                <property name="sessionFactory">
+                    <ref local="jtaHibernateSessionFactory"/>
+                </property>
+                <property name="pizarronServiceData">
+                    <ref local="jtaPizarronServiceData" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="lineasCambioServiceData" parent="baseJtaTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.sdo.impl.HibernateLineaCambioServiceData">
+                <property name="sessionFactory">
+                    <ref local="sessionFactory"/>
+                </property>
+                <property name="pizarronServiceData">
+                    <ref local="pizarronServiceData" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+    
+    <bean id="lineasCambioOptimisticServiceData" parent="baseTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.sdo.impl.HibernateLineaCambioServiceData">
+                <property name="sessionFactory">
+                    <ref local="sessionFactory"/>
+                </property>
+                <property name="pizarronServiceData">
+                    <ref local="pizarronServiceData" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="generalMailSender" class="com.ixe.ods.sica.services.impl.GeneralMailSenderImpl">
+        <property name="mailSender">
+            <ref bean="mailSender"/>
+        </property>
+        <property name="velocityEngine">
+            <ref bean="velocityEngine"/>
+        </property>
+    </bean>
+    
+    <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="resourceLoaderPath">
+            <value>archivos/sica/velocity/</value>
+        </property>
+    </bean>
+
+    <bean id="sicaDealMailSender" class="com.ixe.ods.sica.DealMailSender">
+        <property name="sicaWorkFlowServiceData">
+            <ref local="sicaWorkFlowServiceData" />
+        </property>
+        <property name="bupServiceData">
+            <ref local="bupServiceData" />
+        </property>
+        <property name="sicaSiteCache">
+            <ref local="sicaSiteCache" />
+        </property>
+        <property name="host">
+            <value>mail3</value>
+        </property>
+        <property name="from">
+            <value>ixecambios@ixe.com.mx</value>
+        </property>
+    </bean>
+
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host">
+            <value>mail3</value>
+        </property>
+    </bean>
+
+    <bean id="reversoMailMessage" class="org.springframework.mail.SimpleMailMessage">
+        <property name="from">
+            <value>ixecambios@ixe.com.mx</value>
+        </property>
+        <property name="subject">
+            <value>SICA: Informaci&#243;n de Reverso</value>
+        </property>
+    </bean>
+
+    <bean id="reversoMailSender" class="com.ixe.ods.sica.services.impl.ReversoMailSenderImpl">
+        <property name="mailSender">
+            <ref bean="mailSender"/>
+        </property>
+        <property name="message">
+            <ref bean="reversoMailMessage"/>
+        </property>
+    </bean>
+
+    <bean id="capturaRapidaMailMessage" class="org.springframework.mail.SimpleMailMessage">
+        <property name="from">
+            <value>ixecambios@ixe.com.mx</value>
+        </property>
+        <property name="subject">
+            <value>SICA: Deals de captura r&#225;pida</value>
+        </property>
+    </bean>
+
+    <bean id="capturaRapidaMailSender" class="com.ixe.ods.sica.services.impl.CapturaRapidaMailSenderImpl">
+        <property name="mailSender">
+            <ref bean="mailSender"/>
+        </property>
+        <property name="message">
+            <ref bean="capturaRapidaMailMessage"/>
+        </property>
+    </bean>
+
+    <bean id="cancelacionMailSender" class="com.ixe.ods.sica.services.impl.CancelacionMailSenderImpl">
+        <property name="mailSender">
+            <ref bean="mailSender"/>
+        </property>
+        <property name="message">
+		    <bean class="org.springframework.mail.SimpleMailMessage">
+		        <property name="from">
+		            <value>ixecambios@ixe.com.mx</value>
+		        </property>
+		        <property name="subject">
+		            <value>SICA: Deal cancelado al cierre</value>
+		        </property>
+		    </bean>
+        </property>
+    </bean>
+    
+    <!-- Connection Factory de jms -->
+    <bean id="sicaConnectionFactory" class="org.springframework.jndi.JndiObjectFactoryBean" lazy-init="true">
+        <property name="jndiName">
+            <value>jms/sicaConnectionFactory</value>
+        </property>
+    </bean>
+
+    <!-- Generic TManager -->
+    <bean id="jtaTransactionManager" class="org.springframework.transaction.jta.WebLogicJtaTransactionManager">
+        <description>TransactionManager suited for Weblogic's JTA</description>
+    </bean>
+
+    <!-- Abstract proxy for transaction managing -->
+    <bean id="baseJtaTransactionProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" abstract="true">
+        <description>Generic Proxy for transaction-advised objects</description>
+        <property name="transactionManager">
+            <ref bean="jtaTransactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_REQUIRED, -java.lang.Exception</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- Hibernate transactional session factory //-->
+    <bean id="jtaHibernateSessionFactory" class="org.springframework.orm.hibernate.LocalSessionFactoryBean">
+        <description>Hibernate Local Session Factory</description>
+        <property name="dataSource">
+            <ref local="jtaDataSource"/>
+        </property>
+        <property name="configLocation">
+            <value>classpath:hibernate.cfg.xml</value>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">net.sf.hibernate.dialect.OracleDialect</prop>
+                <prop key="hibernate.max_fetch_depth">1</prop>
+                <prop key="hibernate.use_outer_join">true</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.jdbc.batch_size">0</prop>
+                <prop key="hibernate.cglib.use_reflection_optimizer">true</prop>
+				<prop key="transaction.factory_class">net.sf.hibernate.transaction.JTATransactionFactory</prop>
+                <prop key="jtaTransaction">java:comp/UserTransaction</prop>
+                <prop key="hibernate.transaction.manager_lookup">net.sf.hibernate.transaction.WeblogicTransactionManagerLookup</prop>
+            </props>
+        </property>
+    </bean>
+
+	<!--bean id="sybaseDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <description>Data source para la Phoenix</description>
+        <property name="jndiName">
+            <value>PhoenixDataSource</value>
+        </property>
+    </bean>
+
+    <bean id="phoenixDao" class="com.ixe.ods.sica.dao.impl.JdbcPhoenixDao">
+        <property name="dataSource">
+            <ref local="sybaseDataSource" />
+        </property>
+        <property name="sicaServiceData">
+            <ref local="sicaServiceData" />
+        </property>
+    </bean-->
+    
+    <!-- Configuración para Cuentas Migradas de Phoenix -->
+    <!--bean id="phoenixMigCtaDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+    	<description>Data Source para Cuentas Migradas</description>
+    	<property name="jndiName">
+    		<value>ds/phoenix/MigCtaDataSource</value>
+    	</property>
+    </bean>
+    
+    <bean id="phoenixCuentaMigradaDao" class="com.ixe.ods.sica.dao.impl.JdbcPhoenixCuentaMigradaDao">
+    	<property name="dataSource">
+    		<ref bean="phoenixMigCtaDataSource"/>
+    	</property>
+    </bean-->
+    
+    <!-- Termina configuración para Cuentas Migradas de Phoenix -->
+    
+    <!-- Servicios de Altamira en el ESB -->
+    
+    <!--bean id="locatorIdIxeAltamira" class="com.banorte.www.ws.esb.consultaIdIxeAltamira.ConsultaIdIxeAltamiraServiceLocator">
+    	<description>El service locator para el servicio de consulta de Id Altamira - IXE en el ESB</description>
+    </bean>
+    
+    <bean id="consultaIdIxeAltamiraService" class="com.ixe.ods.sica.services.impl.IdIxeAltamiraServiceImpl">
+    	<property name="locatorIdIxeAltamira">
+    		<ref bean="locatorIdIxeAltamira"/>
+    	</property>
+    
+    	<property name="sicaServiceData">
+    		<ref bean="sicaServiceData"/>
+    	</property>
+    </bean-->
+    
+    <bean id="locatorInformacionCuenta" class="com.banorte.www.ws.esb.ConsultaInformacionCuenta.ConsultaInformacionCuentaServiceLocator">
+    	<description>El service locator del servicio de Consulta de Información de Cuentas en el ESB</description>
+    </bean>
+    
+    <bean id="informacionCuentaAltamiraService" class="com.ixe.ods.sica.services.impl.InformacionCuentaAltamiraServiceImpl">
+    	<property name="locatorInformacionCuenta">
+    		<ref bean="locatorInformacionCuenta"/>
+    	</property>
+    	
+    	<property name="sicaServiceData">
+    		<ref bean="sicaServiceData"/>
+    	</property>
+    	
+    	<property name="consultaDatosBasicosClienteService">
+    		<ref bean="consultaDatosBasicosClienteService"/>
+    	</property>
+    	
+    	<property name="sicaRegistroPersonaService">
+    		<ref bean="sicaRegistroPersonaService"/>
+    	</property>
+    </bean>
+    
+    <bean id="locatorDatosBasicosCliente" 
+       class="com.banorte.www.ws.esb.MantenimientoDatosBasicosCliente.MantenimientoDatosBasicosClienteServiceLocator">
+    	<description>El service locator del servicio de Mantenimiento de Datos Basicos del Cliente en el ESB</description>
+    </bean>
+    
+    <bean id="consultaDatosBasicosClienteService" class="com.ixe.ods.sica.services.impl.ConsultaDatosBasicosClienteServiceImpl">
+    	<property name="locatorDatosBasicosCliente">
+    		<ref bean="locatorDatosBasicosCliente"/>
+    	</property>
+    	
+    	<property name="sicaServiceData">
+    		<ref bean="sicaServiceData"/>
+    	</property>
+    </bean>
+    
+    <!-- Terminan servicios de Altamira en el ESB -->
+
+    <bean id="valorFuturoService" class="com.ixe.ods.sica.services.impl.ValorFuturoServiceImpl">
+        <property name="sicaServiceData">
+            <ref local="sicaServiceData" />
+        </property>
+    </bean>
+
+    <bean id="formasPagoLiqService" class="com.ixe.ods.sica.services.impl.FormasPagoLiqServiceImpl">
+        <property name="sicaSiteCache">
+            <ref local="sicaSiteCache" />
+        </property>
+   </bean>
+
+    <bean id="dealService" class="com.ixe.ods.sica.services.impl.DealServiceImpl">
+        <property name="sicaServiceData">
+            <ref local="sicaServiceData" />
+        </property>
+        <property name="formasPagoLiqService">
+            <ref local="formasPagoLiqService" />
+        </property>
+        <property name="pizarronServiceData">
+            <ref local="pizarronServiceData" />
+        </property>
+        <property name="valorFuturoService">
+            <ref local="valorFuturoService" />
+        </property>
+    </bean>
+    
+    <!-- bean id="sicaEsbService" class="com.ixe.ods.sica.services.impl.EsbServiceImpl" >
+	    <property name="sicaServiceData">
+            <ref local="sicaServiceData" />
+        </property>
+    </bean -->
+
+    <bean id="registroClienteContratoService" class="com.ixe.ods.sica.services.impl.RegistroClienteContratoServiceImpl">
+	    <property name="sicaBusquedaPersonaService">
+	        <ref local="sicaBusquedaPersonaService" />
+	    </property>
+        <property name="sicaContratacionProductoBancoService">
+            <ref local="sicaContratacionProductoBancoService" />
+        </property>
+        <property name="sicaRegistroPersonaService">
+            <ref local="sicaRegistroPersonaService" />
+        </property>
+    </bean>
+
+    <!--Servicios de Contratacion-->
+    <bean id="sicaValidaClienteMontoTresMilUSDService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" >
+        <property name="jndiName">
+            <value>ejb.ConsultaRelacionesCuentaSessionRemoteHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaValidaClienteMontoTresMilUSDService</value>
+        </property>
+    </bean>
+    
+     <bean id="SicaConsultaDocumentacionService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+    	<property name="jndiName">
+    		<value>ejb.ConsultaDocumentacionPersonaOpeSessionRemoteHome</value>
+    	</property>
+    	<property name="businessInterface">
+    		<value>com.ixe.ods.sica.SicaConsultaDocumentacionService</value>
+    	</property>
+    </bean>
+
+    <bean id="riesgosService" class="com.ixe.ods.sica.services.impl.RiesgosServiceImpl">
+        <property name="sicaServiceData" ref="sicaServiceData"/>
+        <property name="limiteDao" ref="limiteDao"/>
+    </bean>
+
+    <bean id="banxicoSessionFactory" class="org.springframework.orm.hibernate.LocalSessionFactoryBean">
+        <description>Session Factory para Hibernate (solo una instancia por JVM)</description>
+        <property name="dataSource">
+            
+<!-- 
+    	Para la migración de SC_BITACORA_ENVIADAS y sus dependencias al esquema de la BUP.
+                <ref local="sicaTasDataSource"/>-->
+			<ref local="dataSource"/>
+        </property>
+        <property name="mappingResources">
+            <list>
+                <value>com/ixe/ods/sica/model/BitacoraEnviadas.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.show_sql">false</prop>
+            </props>
+        </property>
+    </bean>	
+    
+    <!-- Hibernate transactional session factory //-->
+    <bean id="jtaBanxicoSessionFactory" class="org.springframework.orm.hibernate.LocalSessionFactoryBean">
+        <description>Hibernate Local Session Factory</description>
+        <property name="dataSource">
+            <!-- 
+	    Para la migración de SC_BITACORA_ENVIADAS y sus dependencias al esquema de la BUP.
+            <ref local="sicaTasJtaDataSource"/>
+             -->
+        	<ref local="jtaDataSource"/>
+        </property>
+        <property name="mappingResources">
+            <list>
+                <value>com/ixe/ods/sica/model/BitacoraEnviadas.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.show_sql">false</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="bitacoraEnviadasDao" parent="baseTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.impl.BitacoraEnviadasDaoImpl">
+                <property name="sessionFactory">
+                   <ref local="banxicoSessionFactory"/>
+                </property>
+                <property name="swapDao">
+                    <ref local="swapDao"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="jtaBitacoraEnviadasDao" parent="baseJtaTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.impl.BitacoraEnviadasDaoImpl">
+                <property name="sessionFactory">
+                    <ref local="jtaBanxicoSessionFactory"/>
+                </property>
+            <property name="swapDao">
+                    <ref local="jtaSwapDao" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+    
+	<!-- Modificaciones TCS para ARP pespinosa -->
+	
+	<!-- DAO para acceso a datos de los reportes -->
+	<bean id="reportesDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.JdbcReportesDaoImpl">
+                <property name="dataSource">
+                    <ref local="dataSource" />
+                </property>
+            </bean>
+        </property>
+    </bean>	
+    
+    <!-- Proxy para las entidades relacionadas con la Sica -->
+    <bean id="reportesServiceData" parent="baseTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.sdo.impl.JdbcReportesServiceData">
+                <property name="reportesDao">
+                    <ref local="reportesDao" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+	<!-- Fin de modificaciones ARP -->
+
+    <bean id="reporteUtilidadesDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.JdbcReporteUtilidadesDaoImpl">
+                <property name="dataSource">
+                    <ref bean="dataSource"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+	<bean id="h2hService" class="com.ixe.ods.sica.services.impl.H2HServiceImpl">
+		<property name="h2hDao">
+			<ref bean="h2hDao"/>
+		</property>
+	</bean>
+
+    <!-- Bean para el log de la Generacion de movimientos contables -->
+    <bean id="logExplosionContable" class="com.ixe.ods.sica.model.LogExpresionContable" />
+
+    <bean id="pdfService" class="com.ixe.ods.sica.services.impl.PdfServiceImpl" />
+
+    <bean id="mailVespertinoService" class="com.ixe.ods.sica.services.impl.MailVespertinoServiceImpl">
+        <property name="sicaServiceData">
+            <ref bean="sicaServiceData" />
+        </property>
+        <property name="generalMailSender">
+            <ref bean="generalMailSender" />
+        </property>
+        <property name="pdfService">
+            <ref bean="pdfService" />
+        </property>
+        <property name="condorProcCambiosDao">
+            <ref bean="condorProcCambiosDao" />
+        </property>
+    </bean>
+
+    <bean id="mailKondorService" class="com.ixe.ods.sica.services.impl.MailKondorServiceImpl">
+        <property name="sicaServiceData">
+            <ref local="sicaServiceData"/>
+        </property>
+        <property name="generalMailSender">
+            <ref local="generalMailSender"/>
+        </property>
+    </bean>
+
+    <bean id="condorProcCambiosDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.impl.CondorProcCambiosDaoImpl">
+                <property name="dataSource">
+                    <ref bean="dataSource"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="jtaDesviacionInterbancaria" class="com.ixe.ods.sica.services.impl.DesviacionInterbancariaImpl">
+        <property name="pizarronServiceData">
+            <ref local="jtaPizarronServiceData"/>
+        </property>
+        <property name="sicaServiceData">
+            <ref local="sicaWorkFlowServiceData"/>
+        </property>
+    </bean>
+
+    <bean id="sicaRegistroMedioContactoPersonaService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" >
+        <property name="jndiName">
+            <value>ejb.RegistroMedioContactoPersonaSessionHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaRegistroMedioContactoPersonaService</value>
+        </property>
+    </bean>
+
+    <bean id="sicaBusquedaPersonaService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" >
+        <property name="jndiName">
+            <value>ejb.BusquedaPersonaSessionRemoteHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaBusquedaPersonaService</value>
+        </property>
+    </bean>
+
+    <bean id="sicaContratacionProductoBancoService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" >
+        <property name="jndiName">
+            <value>ejb.ContratacionProductoBancoSessionRemoteHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaContratacionProductoBancoService</value>
+        </property>
+    </bean>
+
+    <bean id="sicaRegistroPersonaService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" >
+        <property name="jndiName">
+            <value>ejb.RegistroPersonaSessionRemoteHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaRegistroPersonaService</value>
+        </property>
+    </bean>
+
+    <bean id="sicaConsultaProductosPersonaService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" >
+        <property name="jndiName">
+            <value>ejb.ConsultaProductosPersonaSessionRemoteHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaConsultaProductosPersonaService</value>
+        </property>
+    </bean>
+
+    <bean id="sicaRegistroRelacionCuentaPersonaService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" >
+        <property name="jndiName">
+            <value>ejb.RegistroRelacionCuentaPersonaSessionRemoteHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaRegistroRelacionCuentaPersonaService</value>
+        </property>
+    </bean>
+    
+    <bean id="personaExtranjeraDao" parent="baseTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.impl.PersonaExtranjeraDaoImpl">
+                <property name="sessionFactory">
+                    <ref local="sessionFactory"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="personaService" class="com.ixe.ods.sica.services.impl.PersonaServiceImpl">
+        <property name="busqPersonaService">
+            <ref local="sicaBusquedaPersonaService"/>
+        </property>
+        <property name="regPersonaService">
+            <ref local="sicaRegistroPersonaService"/>
+        </property>
+        <property name="personaExtranjeraDao">
+            <ref local="personaExtranjeraDao"/>
+        </property>
+        <property name="regDireccionPersonaService">
+            <ref local="sicaRegistroDireccionPersonaService"/>
+        </property>
+        <property name="regRelacionService">
+            <ref local="sicaRegistroRelacionContratacionService"/>
+        </property>
+        <property name="serviceData">
+            <ref local="sicaServiceData"/>
+        </property>
+        <property name="catalogosService">
+            <ref local="sicaConsultaCatalogosService"/>
+        </property>
+        <property name="generalMailSender">
+            <ref local="generalMailSender"/>
+        </property>
+    </bean>
+
+    <bean id="sicaRegistroDireccionPersonaService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" >
+        <property name="jndiName">
+            <value>ejb.RegistroDireccionPersonaSessionRemoteHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaRegistroDireccionPersonaService</value>
+        </property>
+    </bean>
+
+    <bean id="sicaRegistroRelacionContratacionService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" >
+        <property name="jndiName">
+            <value>ejb.RegistroRelacionPersonaSessionRemoteHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaRegistroRelacionContratacionService</value>
+        </property>
+    </bean>
+
+    <bean id="sicaConsultaCatalogosService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" >
+        <property name="jndiName">
+            <value>ejb.ConsultaCatalogosSessionRemoteHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaConsultaCatalogosService</value>
+        </property>
+    </bean>
+    
+</beans>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CuadreLineasCambio.page,v 1.3 2010/02/26 00:37:40 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.administracion.CuadreLineasCambio">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+    
+    <property-specification name="resultados" type="java.util.List"
+                            initial-value="new java.util.ArrayList()" />
+
+	<context-asset name="aceptarButton" path="/images/aceptar.gif" />
+
+</page-specification>

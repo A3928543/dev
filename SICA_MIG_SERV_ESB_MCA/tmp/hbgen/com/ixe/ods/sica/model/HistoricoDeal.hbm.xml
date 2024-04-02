@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.HistoricoDeal"
+        table="SC_H_DEAL"
+        proxy="com.ixe.ods.sica.model.HistoricoDeal"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idDeal"
+            column="ID_DEAL"
+            type="int"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-HistoricoDeal.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="idMesaCambio"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_MESA_CAMBIO"
+            not-null="true"
+        />
+
+        <property
+            name="compra"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="enviarAlCliente"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="ENVIAR_AL_CLIENTE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="eventosDeal"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="EVENTOS_DEAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="factura"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="FACTURA"
+            not-null="true"
+        />
+
+        <property
+            name="fechaCaptura"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_CAPTURA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fechaLiquidacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_LIQUIDACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="idLiquidacion"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_LIQUIDACION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="mensajeria"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="MENSAJERIA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoValor"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_VALOR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="nombreFactura"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NOMBRE_FACTURA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="rfcFactura"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="RFC_FACTURA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="dirFactura"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIR_FACTURA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="observaciones"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="OBSERVACIONES"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="pagoAnticipado"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="PAGO_ANTICIPADO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoDeal"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="SIMPLE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="statusDeal"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATUS_DEAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tomaEnFirme"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="TOMA_EN_FIRME"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="broker"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_BROKER"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="contratoSica"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="NO_CUENTA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="direccion"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIRECCION_MENSAJERIA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="promotor"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_PROMOTOR"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="usuario"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_USUARIO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="swap"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_FOLIO_SWAP"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="idCanal"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_CANAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-HistoricoDeal.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

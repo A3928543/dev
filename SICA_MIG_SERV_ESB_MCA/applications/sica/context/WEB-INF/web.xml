@@ -1,0 +1,337 @@
+<?xml version="1.0"?>
+<!-- $Id: web.xml,v 1.5.20.1.46.1 2018/04/26 23:34:44 mejiar Exp $ -->
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+    <display-name>SICA</display-name>
+
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>/WEB-INF/log4j.properties</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/applicationContext.xml</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>webAppRootKey</param-name>
+        <param-value>sica.root</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>locatorFactorySelector</param-name>
+        <param-value>beanRefContext.xml</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>parentContextKey</param-name>
+        <param-value>sicaApplicationContext</param-value>
+    </context-param>
+
+    <context-param>
+       <param-name>flex.class.path</param-name>
+       <param-value>/WEB-INF/flex/jars</param-value>
+    </context-param>
+
+    <filter>
+        <filter-name>redirect</filter-name>
+        <filter-class>org.apache.tapestry.RedirectFilter</filter-class>
+    </filter>
+    
+    <filter>
+        <filter-name>hibernateFilter</filter-name>
+        <filter-class>org.springframework.orm.hibernate.support.OpenSessionInViewFilter</filter-class>
+    </filter>
+
+    <filter>
+      <filter-name>FlexDetectionFilter</filter-name>
+      <filter-class>flex.bootstrap.BootstrapFilter</filter-class>
+      <init-param>
+        <param-name>filter.class</param-name>
+        <param-value>flex.server.j2ee.DetectionFilter</param-value>
+      </init-param>
+    </filter>
+
+    <filter>
+      <filter-name>FlexCacheFilter</filter-name>
+      <filter-class>flex.bootstrap.BootstrapFilter</filter-class>
+      <init-param>
+          <param-name>filter.class</param-name>
+          <param-value>flex.server.j2ee.cache.CacheFilter</param-value>
+      </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>hibernateFilter</filter-name>
+        <url-pattern>*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+      <filter-name>FlexDetectionFilter</filter-name>
+      <servlet-name>FlexMxmlServlet</servlet-name>
+    </filter-mapping>
+
+    <filter-mapping>
+      <filter-name>FlexCacheFilter</filter-name>
+      <servlet-name>FlexMxmlServlet</servlet-name>
+    </filter-mapping>
+
+    <filter-mapping>
+      <filter-name>FlexCacheFilter</filter-name>
+      <servlet-name>FlexSwfServlet</servlet-name>
+    </filter-mapping>
+
+    <listener>
+        <listener-class>com.ixe.ods.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
+    
+    <filter-mapping>
+        <filter-name>redirect</filter-name>
+        <url-pattern>/</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>sica</servlet-name>
+        <servlet-class>org.apache.tapestry.ApplicationServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <!-- Flash Web Services Proxy -->
+    <servlet>
+        <servlet-name>FlexProxyServlet</servlet-name>
+        <display-name>Flex Web Services Proxy Servlet</display-name>
+        <description>Optional proxy for relaying web services messages</description>
+        <servlet-class>flex.bootstrap.BootstrapServlet</servlet-class>
+        <init-param>
+            <param-name>servlet.class</param-name>
+            <param-value>flex.server.j2ee.proxy.ProxyServlet</param-value>
+        </init-param>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>FlexSwfServlet</servlet-name>
+        <display-name>SWF Retriever</display-name>
+        <servlet-class>flex.bootstrap.BootstrapServlet</servlet-class>
+        <init-param>
+            <param-name>servlet.class</param-name>
+            <param-value>flex.server.j2ee.SwfServlet</param-value>
+        </init-param>
+        <!-- SwfServlet must be initialized after MxmlServlet -->
+        <load-on-startup>4</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>FlexMxmlServlet</servlet-name>
+        <display-name>MXML Processor</display-name>
+        <description>Servlet wrapper for the Mxml Compiler</description>
+        <servlet-class>flex.bootstrap.BootstrapServlet</servlet-class>
+        <init-param>
+            <param-name>servlet.class</param-name>
+            <param-value>flex.compiler.MxmlServlet</param-value>
+        </init-param>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>FlexErrorServlet</servlet-name>
+        <servlet-class>flex.bootstrap.BootstrapServlet</servlet-class>
+        <init-param>
+            <param-name>servlet.class</param-name>
+            <param-value>flex.compiler.ErrorPageServlet</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet>
+        <servlet-name>FlexInternalServlet</servlet-name>
+        <servlet-class>flex.bootstrap.BootstrapServlet</servlet-class>
+        <init-param>
+            <param-name>servlet.class</param-name>
+            <param-value>flex.server.j2ee.filemanager.FileManagerServlet</param-value>
+        </init-param>
+        <load-on-startup>10</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>FlexForbiddenServlet</servlet-name>
+        <display-name>Prevents access to *.as files</display-name>
+        <servlet-class>flex.bootstrap.BootstrapServlet</servlet-class>
+        <init-param>
+            <param-name>servlet.class</param-name>
+            <param-value>flex.server.j2ee.ForbiddenServlet</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet>
+        <servlet-name>session</servlet-name>
+        <display-name>Provides access to the current session; for use with RemoteObject</display-name>
+        <servlet-class>flex.bootstrap.BootstrapServlet</servlet-class>
+        <init-param>
+            <param-name>servlet.class</param-name>
+            <param-value>flex.server.j2ee.remote.Session</param-value>
+        </init-param>
+    </servlet>
+
+
+    <!-- RemoteObject AMF Gateway 1.1 -->
+    <servlet>
+        <servlet-name>AMFGatewayServlet</servlet-name>
+        <display-name>Flash Remoting AMF Servlet</display-name>
+        <description>Servlet-based plugin to Flash Remoting</description>
+        <servlet-class>flashgateway.controller.GatewayServlet</servlet-class>
+        <init-param>
+            <param-name>gateway.configuration.file</param-name>
+            <param-value>/WEB-INF/flex/gateway-config.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>whitelist.configuration.file</param-name>
+            <param-value>/WEB-INF/flex/flex-config.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>whitelist.parent.node</param-name>
+            <param-value>remote-objects</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>SicaKondorService</servlet-name>
+        <servlet-class>com.ixe.ods.sica.kondor.servlet.SicaKondorServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CheckDownload</servlet-name>
+        <jsp-file>/WEB-INF/servletPages/CheckDownload.jsp</jsp-file>
+    </servlet>
+    <servlet>
+    	<servlet-name>TceServlet</servlet-name>
+    	<display-name>TceServlet</display-name>
+    	<description></description>
+    	<servlet-class>com.ixe.ods.sica.pages.autorizatce.TceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CheckDownload</servlet-name>
+        <url-pattern>/CheckDownload</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+    	<servlet-name>SicaKondorService</servlet-name>
+    	<url-pattern>/kondor/service</url-pattern>
+  	</servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>sica</servlet-name>
+        <url-pattern>/app</url-pattern>
+    </servlet-mapping>
+	
+	<!-- F-51213- Task Force, Remediación de seguridad detectado por pruebas de caja gris -->
+	<!-- Filtro que pasa por todas las urls /app/ validando componentes de Tapestry -->
+	<filter>
+	  <filter-name>CrossSiteFilter</filter-name>
+	  <filter-class>com.ixe.ods.sica.filter.CrossSiteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	  <filter-name>CrossSiteFilter</filter-name>
+	  <url-pattern>/app/*</url-pattern>
+	</filter-mapping>
+	
+    <!-- Flash Remoting AMF Gateway URL -->
+    <servlet-mapping>
+        <servlet-name>AMFGatewayServlet</servlet-name>
+        <url-pattern>/amfgateway/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- Flash Web Services Proxy URL -->
+    <servlet-mapping>
+        <servlet-name>FlexProxyServlet</servlet-name>
+        <url-pattern>/flashproxy/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>FlexErrorServlet</servlet-name>
+        <url-pattern>/flex-error</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>FlexInternalServlet</servlet-name>
+        <url-pattern>/flex-internal/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>FlexMxmlServlet</servlet-name>
+        <url-pattern>*.mxml</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>FlexSwfServlet</servlet-name>
+        <url-pattern>*.swf</url-pattern>
+    </servlet-mapping>
+
+    <!-- use the same servlet for retreiving SWD debugging files -->
+    <servlet-mapping>
+        <servlet-name>FlexSwfServlet</servlet-name>
+        <url-pattern>*.swd</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>FlexForbiddenServlet</servlet-name>
+        <url-pattern>*.as</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>FlexForbiddenServlet</servlet-name>
+        <url-pattern>*.swc</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>FlexForbiddenServlet</servlet-name>
+        <url-pattern>*.sws</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>TceServlet</servlet-name>
+    	<url-pattern>/TceServlet</url-pattern>
+    </servlet-mapping>
+
+    <session-config>
+        <session-timeout>40</session-timeout>
+    </session-config>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <error-page>
+        <error-code>403</error-code>
+        <location>/flex-error</location>
+    </error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/flex-error</location>
+    </error-page>
+
+    <error-page>
+        <exception-type>javax.servlet.jsp.JspException</exception-type>
+        <location>/flex-error</location>
+    </error-page>
+
+    <error-page>
+        <exception-type>javax.servlet.ServletException</exception-type>
+        <location>/flex-error</location>
+    </error-page>
+
+    <taglib>
+        <taglib-uri>FlexTagLib</taglib-uri>
+        <taglib-location>/WEB-INF/lib/flex-bootstrap.jar</taglib-location>
+    </taglib>
+
+    <login-config>
+        <auth-method>BASIC</auth-method>
+    </login-config>
+
+</web-app>

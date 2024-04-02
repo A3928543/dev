@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--$Id: RegresarCapturaDeal.jwc,v 1.9 2008/02/22 18:25:07 ccovian Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<component-specification>
+
+    <parameter name="interbancario" type="boolean" direction="in" required="no" />
+    <parameter name="idDeal" type="int" direction="in" required="no" />
+
+    <context-asset name="bRegresar" path="/images/back.gif" />
+
+</component-specification>

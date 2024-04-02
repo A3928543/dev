@@ -1,0 +1,22 @@
+                            GRUPO FINANCIERO BANORTE
+    DESCRIPCION .: $descripcion          	REPORTE.:  $reporte
+    CADENA      .: $cadena                   FECHA ..:  $fecha
+ ========================================================================================
+    APLICATIVO: $aplicativo
+                             		 		
+	                                  MOVIMIENTOS
+	             ID LIQUIDACION         ID DEAL                  FOLIO FISCAL                	   
+				 			#foreach( $cfdi in $cfdis )			 			
+    $cfdi.idLiq                 $cfdi.idDeal                   $cfdi.folio
+				 			#end
+    
+
+
+	                             			
+      	                              
+    TOTAL FACTURAS NO RECIBIDAS       	$cantFaltantes                      
+                                        ____________		   
+                                         
+
+
+ =========================================================================================

@@ -1,0 +1,112 @@
+<html jwcid="@Shell" stylesheet="ognl:assets.stylesheet"
+	title="Sistema de Cambios" delegate="ognl: page.visit">
+<head jwcid="$remove$">
+<title>Reportes</title>
+<link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+	<span jwcid="@menu:XmlMenu" name="SICA" menu="ognl: page.visit.menu"
+		listener="ognl: page.visit.menuListener" />
+	<table border="0" cellpadding="0" cellspacing="0" width="980"
+		align="center">
+		<tr>
+			<td>
+				<div id="mensaje">
+					<br /> <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate"
+						insertBreakAtTail="yes" width="100%" />
+				</div> <span jwcid="@LoadingImage" visible="ognl: true"
+				breaksBeforeLoadingImage="ognl: 10" valign="center" />
+
+
+				<table border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tr valign="top">
+						<td width="200">
+
+							<form jwcid="@Form" listener="ognl: listeners.fetch"
+								delegate="ognl: beans.delegate"
+								onSubmit="descargar(); return fnDisableForm(this);">
+
+
+
+								<table jwcid="@ActionPortletBorder"
+									title="ognl: tituloActionMC">
+
+									<tr>
+										<td align="left" class="title">
+											Divisas: <select jwcid="divisasList"/>
+										</td>
+									</tr>
+									<tr>	
+										<td align="left" class="title">
+										Fecha: <span jwcid="@ls:DatePicker"
+											value="ognl: fechaSeleccionada" format="dd-MM-yyyy" size="10" />
+										</td>
+									</tr>
+									<tr align="center">
+										<td><input jwcid="@ImageSubmit"
+											image="ognl: assets.searchButton" /></td>
+									</tr>
+								</table>
+							</form></td>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr><td> 
+			<p> </p>
+		</td></tr>
+		<tr>
+            <td>
+                <span jwcid="@Conditional" condition="ognl: corteDetalleList.size() &gt; 0">
+                <table jwcid="@ActionPortletBorder" title="MONITOR DE DEALS INTERBANCARIOS">
+                    <table jwcid="@TableBorder" title="Deals Interbancarios del día" columnCount="9" width="100%">
+                        <tr class="titlecell">
+                            <th class="title" nowrap>CORTE </th>
+                            <th class="title" nowrap>FECHA/HORA CORTE</th>
+                            <th class="title" nowrap>DIVISA</th>
+                            <th class="title" nowrap>FECHA VALOR</th>
+                            <th class="title" nowrap>OPERACION</th>
+                            <th class="title" nowrap>MONTO DIVISA</th>
+                            <th class="title" nowrap>T.C.</th>
+                            <th class="title" nowrap>NO. DEAL</th>
+                        </tr>
+                        <tr jwcid="forCorteDetalleList@Foreach" source="ognl: corteDetalleList" element="tr" class="ognl: beans.evenOdd.next">
+                            <td class="normal" align="center" nowrap><span jwcid="@Insert" value="ognl: components.forCorteDetalleList.value.idCorte" raw="yes" /></td>
+                            <td class="normal" align="center" nowrap><span jwcid="@Insert" value="ognl: components.forCorteDetalleList.value.fechaUltMod" raw="yes" /></td>
+                            <td class="normal" align="center" nowrap>
+                            	<img jwcid="@Any" src="ognl: components.forCorteDetalleList.value.icono" alt="ognl: components.forCorteDetalleList.value.divisa" />
+                            </td>
+                            <td class="normal" align="center" nowrap><span jwcid="@Insert" value="ognl: components.forCorteDetalleList.value.fechaValor" raw="yes" /></td>
+                           	<td class="normal" align="center" nowrap><span jwcid="@Insert" value="ognl: components.forCorteDetalleList.value.operacion" raw="yes" /></td>
+                           	<td class="normal" align="center" nowrap><span jwcid="@Insert" value="ognl: components.forCorteDetalleList.value.montoDivisa" raw="yes" format="ognl: page.moneyFormat" /></td>
+                            <td class="normal" align="center" nowrap><span jwcid="@Insert" value="ognl: components.forCorteDetalleList.value.tc" raw="yes" format="ognl: page.currencyFormatSix" /></td>
+                            <!-- td class="normal" align="center" nowrap><span jwcid="@Insert" value="ognl: components.forCorteDetalleList.value.idDeal" raw="yes" /></td>  -->
+                            <!--  <td class="normal" align="center" nowrap><a jwcid="@ExternalLink" page="DatosDeal" parameters="ognl: components.forCorteDetalleList.value.idDeal" renderer='ognl: page.global.applicationContext.getBean("bigPopupLinkRenderer")' ><span jwcid="@Insert" value="ognl: components.forCorteDetalleList.value.idDeal" /></a></td>-->
+                            <span jwcid="@Conditional" condition="ognl: components.forCorteDetalleList.value.idDeal &gt; 0">
+                            <td class="normal" align="center" nowrap><a jwcid="@ExternalLink" page="CapturaDeal" parameters='ognl: { @com.ixe.ods.sica.pages.deals.CapturaDeal@OPCION_EDITAR, components.forCorteDetalleList.value.idDeal, modo }' onClick="fnShowWaitImage();"><span jwcid="@Insert" value="ognl: components.forCorteDetalleList.value.idDeal"/></a></td>
+                            </span>
+                            <span jwcid="@Conditional" condition="ognl: components.forCorteDetalleList.value.idDeal &lt; 1">
+                            <td class="normal" align="center" nowrap><span jwcid="@Insert" value="ognl: components.forCorteDetalleList.value.idDeal" raw="yes" /></td>
+                            </span>
+                        </tr>
+                        
+                    </table>
+                    <table>
+                    	<tr >
+							<td align="center" colspan="7" class = "normal">
+								 <a jwcid="@DirectLink" listener="ognl:listeners.generarExcel" > Ver Excel</a>
+							</td>
+						</tr>
+                    </table>
+                    
+				</table>
+               </span>
+            </td>
+		</tr>
+		
+	</table>
+	<span jwcid="@ls:DatePickerColophon" />
+	<script jwcid="@Script" script="/WEB-INF/scripts/Descargar.script" />
+</body>
+</html>

@@ -1,0 +1,791 @@
+2017-06-07 10:50:04 - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3e86d0: startup date [Wed Jun 07 10:50:04 CDT 2017]; root of context hierarchy
+2017-06-07 10:50:04 - Loading XML bean definitions from file [C:\Users\a3928543\workspace\ReporteRentabilidad\config\applicationContext.xml]
+2017-06-07 10:50:04 - Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2017-06-07 10:50:04 - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd]
+2017-06-07 10:50:04 - Loading schema mappings from [META-INF/spring.schemas]
+2017-06-07 10:50:04 - Loaded schema mappings: {http://www.springframework.org/schema/lang/spring-lang.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.5.xsd=org/springframework/scripting/config/spring-lang-2.5.xsd, http://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd, http://www.springframework.org/schema/context/spring-context.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/util/spring-util-3.0.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.0.xsd=org/springframework/beans/factory/xml/spring-util-2.0.xsd, http://www.springframework.org/schema/task/spring-task-3.0.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.5.xsd=org/springframework/beans/factory/xml/spring-util-2.5.xsd, http://www.springframework.org/schema/tool/spring-tool-3.0.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.0.xsd=org/springframework/transaction/config/spring-tx-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.0.xsd=org/springframework/beans/factory/xml/spring-tool-2.0.xsd, http://www.springframework.org/schema/task/spring-task.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/context/spring-context-3.0.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.5.xsd=org/springframework/transaction/config/spring-tx-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-2.0.xsd=org/springframework/beans/factory/xml/spring-beans-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.5.xsd=org/springframework/beans/factory/xml/spring-tool-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/beans/spring-beans-2.5.xsd=org/springframework/beans/factory/xml/spring-beans-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/tool/spring-tool.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.0.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop-3.0.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.0.xsd=org/springframework/ejb/config/spring-jee-2.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.0.xsd=org/springframework/aop/config/spring-aop-2.0.xsd, http://www.springframework.org/schema/tx/spring-tx-3.0.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.5.xsd=org/springframework/ejb/config/spring-jee-2.5.xsd, http://www.springframework.org/schema/aop/spring-aop-2.5.xsd=org/springframework/aop/config/spring-aop-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-3.0.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-3.0.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.0.xsd=org/springframework/scripting/config/spring-lang-2.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/util/spring-util.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd}
+2017-06-07 10:50:04 - Found XML schema [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-3.0.xsd
+2017-06-07 10:50:04 - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/context/spring-context-3.0.xsd]
+2017-06-07 10:50:04 - Found XML schema [http://www.springframework.org/schema/context/spring-context-3.0.xsd] in classpath: org/springframework/context/config/spring-context-3.0.xsd
+2017-06-07 10:50:04 - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd]
+2017-06-07 10:50:04 - Found XML schema [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-tool-3.0.xsd
+2017-06-07 10:50:04 - Loading bean definitions
+2017-06-07 10:50:04 - Loaded NamespaceHandler mappings: {http://www.springframework.org/schema/p=org.springframework.beans.factory.xml.SimplePropertyNamespaceHandler, http://www.springframework.org/schema/util=org.springframework.beans.factory.xml.UtilNamespaceHandler, http://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandler, http://www.springframework.org/schema/aop=org.springframework.aop.config.AopNamespaceHandler, http://www.springframework.org/schema/jdbc=org.springframework.jdbc.config.JdbcNamespaceHandler, http://www.springframework.org/schema/tx=org.springframework.transaction.config.TxNamespaceHandler, http://www.springframework.org/schema/task=org.springframework.scheduling.config.TaskNamespaceHandler, http://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandler, http://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler}
+2017-06-07 10:50:04 - Loaded 10 bean definitions from location pattern [config/applicationContext.xml]
+2017-06-07 10:50:04 - Bean factory for org.springframework.context.support.FileSystemXmlApplicationContext@3e86d0: org.springframework.beans.factory.support.DefaultListableBeanFactory@1ab28fe: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailSender,generalMailSender,dataSource,mensajesVo,consultaDao,reporteService,transferenciasService]; root of factory hierarchy
+2017-06-07 10:50:04 - Creating shared instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2017-06-07 10:50:04 - Creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2017-06-07 10:50:04 - Eagerly caching bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0' to allow for resolving potential circular references
+2017-06-07 10:50:04 - Getting BeanInfo for class [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]
+2017-06-07 10:50:04 - Caching PropertyDescriptors for class [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]
+2017-06-07 10:50:04 - Found bean property 'beanFactory' of type [org.springframework.beans.factory.BeanFactory]
+2017-06-07 10:50:04 - Found bean property 'beanName' of type [java.lang.String]
+2017-06-07 10:50:04 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 10:50:04 - Found bean property 'fileEncoding' of type [java.lang.String]
+2017-06-07 10:50:04 - Found bean property 'ignoreResourceNotFound' of type [boolean]
+2017-06-07 10:50:04 - Found bean property 'ignoreUnresolvablePlaceholders' of type [boolean]
+2017-06-07 10:50:04 - Found bean property 'localOverride' of type [boolean]
+2017-06-07 10:50:04 - Found bean property 'location' of type [org.springframework.core.io.Resource]
+2017-06-07 10:50:04 - Found bean property 'locations' of type [[Lorg.springframework.core.io.Resource;]
+2017-06-07 10:50:04 - Found bean property 'nullValue' of type [java.lang.String]
+2017-06-07 10:50:04 - Found bean property 'order' of type [int]
+2017-06-07 10:50:04 - Found bean property 'placeholderPrefix' of type [java.lang.String]
+2017-06-07 10:50:04 - Found bean property 'placeholderSuffix' of type [java.lang.String]
+2017-06-07 10:50:04 - Found bean property 'properties' of type [java.util.Properties]
+2017-06-07 10:50:04 - Found bean property 'propertiesArray' of type [[Ljava.util.Properties;]
+2017-06-07 10:50:04 - Found bean property 'propertiesPersister' of type [org.springframework.util.PropertiesPersister]
+2017-06-07 10:50:04 - Found bean property 'searchSystemEnvironment' of type [boolean]
+2017-06-07 10:50:04 - Found bean property 'systemPropertiesMode' of type [int]
+2017-06-07 10:50:04 - Found bean property 'systemPropertiesModeName' of type [java.lang.String]
+2017-06-07 10:50:04 - Found bean property 'valueSeparator' of type [java.lang.String]
+2017-06-07 10:50:04 - Finished creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2017-06-07 10:50:04 - Loading properties file from file [C:\Users\a3928543\workspace\ReporteRentabilidad\config\config.properties]
+2017-06-07 10:50:04 - Resolved placeholder 'mail.host'
+2017-06-07 10:50:04 - Resolved placeholder 'mail.template.path'
+2017-06-07 10:50:04 - Resolved placeholder 'mail.template'
+2017-06-07 10:50:04 - Resolved placeholder 'mail.from'
+2017-06-07 10:50:04 - Resolved placeholder 'mail.subject'
+2017-06-07 10:50:04 - Resolved placeholder 'mail.ordenante.from'
+2017-06-07 10:50:04 - Resolved placeholder 'db.driver'
+2017-06-07 10:50:04 - Resolved placeholder 'db.username'
+2017-06-07 10:50:04 - Resolved placeholder 'db.password'
+2017-06-07 10:50:04 - Resolved placeholder 'db.url'
+2017-06-07 10:50:04 - Resolved placeholder 'msj.error.path'
+2017-06-07 10:50:04 - Resolved placeholder 'msj.error.emails'
+2017-06-07 10:50:04 - Resolved placeholder 'msj.error.email'
+2017-06-07 10:50:04 - Resolved placeholder 'msj.error.consulta.transferencias'
+2017-06-07 10:50:04 - Resolved placeholder 'msj.inicio.proceso'
+2017-06-07 10:50:04 - Resolved placeholder 'msj.fin.proceso'
+2017-06-07 10:50:04 - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1ab28fe: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailSender,generalMailSender,dataSource,mensajesVo,consultaDao,reporteService,transferenciasService]; root of factory hierarchy
+2017-06-07 10:56:46 - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3e86d0: startup date [Wed Jun 07 10:56:46 CDT 2017]; root of context hierarchy
+2017-06-07 10:56:46 - Loading XML bean definitions from file [C:\Users\a3928543\workspace\ReporteRentabilidad\config\applicationContext.xml]
+2017-06-07 10:56:46 - Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2017-06-07 10:56:46 - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd]
+2017-06-07 10:56:46 - Loading schema mappings from [META-INF/spring.schemas]
+2017-06-07 10:56:46 - Loaded schema mappings: {http://www.springframework.org/schema/lang/spring-lang.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.5.xsd=org/springframework/scripting/config/spring-lang-2.5.xsd, http://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd, http://www.springframework.org/schema/context/spring-context.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/util/spring-util-3.0.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.0.xsd=org/springframework/beans/factory/xml/spring-util-2.0.xsd, http://www.springframework.org/schema/task/spring-task-3.0.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.5.xsd=org/springframework/beans/factory/xml/spring-util-2.5.xsd, http://www.springframework.org/schema/tool/spring-tool-3.0.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.0.xsd=org/springframework/transaction/config/spring-tx-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.0.xsd=org/springframework/beans/factory/xml/spring-tool-2.0.xsd, http://www.springframework.org/schema/task/spring-task.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/context/spring-context-3.0.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.5.xsd=org/springframework/transaction/config/spring-tx-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-2.0.xsd=org/springframework/beans/factory/xml/spring-beans-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.5.xsd=org/springframework/beans/factory/xml/spring-tool-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/beans/spring-beans-2.5.xsd=org/springframework/beans/factory/xml/spring-beans-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/tool/spring-tool.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.0.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop-3.0.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.0.xsd=org/springframework/ejb/config/spring-jee-2.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.0.xsd=org/springframework/aop/config/spring-aop-2.0.xsd, http://www.springframework.org/schema/tx/spring-tx-3.0.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.5.xsd=org/springframework/ejb/config/spring-jee-2.5.xsd, http://www.springframework.org/schema/aop/spring-aop-2.5.xsd=org/springframework/aop/config/spring-aop-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-3.0.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-3.0.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.0.xsd=org/springframework/scripting/config/spring-lang-2.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/util/spring-util.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd}
+2017-06-07 10:56:46 - Found XML schema [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-3.0.xsd
+2017-06-07 10:56:46 - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/context/spring-context-3.0.xsd]
+2017-06-07 10:56:46 - Found XML schema [http://www.springframework.org/schema/context/spring-context-3.0.xsd] in classpath: org/springframework/context/config/spring-context-3.0.xsd
+2017-06-07 10:56:46 - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd]
+2017-06-07 10:56:46 - Found XML schema [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-tool-3.0.xsd
+2017-06-07 10:56:46 - Loading bean definitions
+2017-06-07 10:56:46 - Loaded NamespaceHandler mappings: {http://www.springframework.org/schema/p=org.springframework.beans.factory.xml.SimplePropertyNamespaceHandler, http://www.springframework.org/schema/util=org.springframework.beans.factory.xml.UtilNamespaceHandler, http://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandler, http://www.springframework.org/schema/aop=org.springframework.aop.config.AopNamespaceHandler, http://www.springframework.org/schema/jdbc=org.springframework.jdbc.config.JdbcNamespaceHandler, http://www.springframework.org/schema/tx=org.springframework.transaction.config.TxNamespaceHandler, http://www.springframework.org/schema/task=org.springframework.scheduling.config.TaskNamespaceHandler, http://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandler, http://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler}
+2017-06-07 10:56:46 - Loaded 10 bean definitions from location pattern [config/applicationContext.xml]
+2017-06-07 10:56:46 - Bean factory for org.springframework.context.support.FileSystemXmlApplicationContext@3e86d0: org.springframework.beans.factory.support.DefaultListableBeanFactory@1ab28fe: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailSender,generalMailSender,dataSource,mensajesVo,consultaDao,reporteService,transferenciasService]; root of factory hierarchy
+2017-06-07 10:56:46 - Creating shared instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2017-06-07 10:56:46 - Creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2017-06-07 10:56:46 - Eagerly caching bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0' to allow for resolving potential circular references
+2017-06-07 10:56:46 - Getting BeanInfo for class [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]
+2017-06-07 10:56:46 - Caching PropertyDescriptors for class [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]
+2017-06-07 10:56:46 - Found bean property 'beanFactory' of type [org.springframework.beans.factory.BeanFactory]
+2017-06-07 10:56:46 - Found bean property 'beanName' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 10:56:46 - Found bean property 'fileEncoding' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'ignoreResourceNotFound' of type [boolean]
+2017-06-07 10:56:46 - Found bean property 'ignoreUnresolvablePlaceholders' of type [boolean]
+2017-06-07 10:56:46 - Found bean property 'localOverride' of type [boolean]
+2017-06-07 10:56:46 - Found bean property 'location' of type [org.springframework.core.io.Resource]
+2017-06-07 10:56:46 - Found bean property 'locations' of type [[Lorg.springframework.core.io.Resource;]
+2017-06-07 10:56:46 - Found bean property 'nullValue' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'order' of type [int]
+2017-06-07 10:56:46 - Found bean property 'placeholderPrefix' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'placeholderSuffix' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'properties' of type [java.util.Properties]
+2017-06-07 10:56:46 - Found bean property 'propertiesArray' of type [[Ljava.util.Properties;]
+2017-06-07 10:56:46 - Found bean property 'propertiesPersister' of type [org.springframework.util.PropertiesPersister]
+2017-06-07 10:56:46 - Found bean property 'searchSystemEnvironment' of type [boolean]
+2017-06-07 10:56:46 - Found bean property 'systemPropertiesMode' of type [int]
+2017-06-07 10:56:46 - Found bean property 'systemPropertiesModeName' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'valueSeparator' of type [java.lang.String]
+2017-06-07 10:56:46 - Finished creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2017-06-07 10:56:46 - Loading properties file from file [C:\Users\a3928543\workspace\ReporteRentabilidad\config\config.properties]
+2017-06-07 10:56:46 - Resolved placeholder 'mail.host'
+2017-06-07 10:56:46 - Resolved placeholder 'mail.template.path'
+2017-06-07 10:56:46 - Resolved placeholder 'mail.template'
+2017-06-07 10:56:46 - Resolved placeholder 'mail.from'
+2017-06-07 10:56:46 - Resolved placeholder 'mail.subject'
+2017-06-07 10:56:46 - Resolved placeholder 'mail.ordenante.from'
+2017-06-07 10:56:46 - Resolved placeholder 'db.driver'
+2017-06-07 10:56:46 - Resolved placeholder 'db.username'
+2017-06-07 10:56:46 - Resolved placeholder 'db.password'
+2017-06-07 10:56:46 - Resolved placeholder 'db.url'
+2017-06-07 10:56:46 - Resolved placeholder 'msj.error.path'
+2017-06-07 10:56:46 - Resolved placeholder 'msj.error.emails'
+2017-06-07 10:56:46 - Resolved placeholder 'msj.error.email'
+2017-06-07 10:56:46 - Resolved placeholder 'msj.error.consulta.transferencias'
+2017-06-07 10:56:46 - Resolved placeholder 'msj.inicio.proceso'
+2017-06-07 10:56:46 - Resolved placeholder 'msj.fin.proceso'
+2017-06-07 10:56:46 - Resolved placeholder 'parametro.path.reporte'
+2017-06-07 10:56:46 - Resolved placeholder 'parametro.emails.to'
+2017-06-07 10:56:46 - Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@ba9340]
+2017-06-07 10:56:46 - Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@15663a2]
+2017-06-07 10:56:46 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1ab28fe: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailSender,generalMailSender,dataSource,mensajesVo,consultaDao,reporteService,transferenciasService]; root of factory hierarchy
+2017-06-07 10:56:46 - Returning cached instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2017-06-07 10:56:46 - Creating shared instance of singleton bean 'javaMailSender'
+2017-06-07 10:56:46 - Creating instance of bean 'javaMailSender'
+2017-06-07 10:56:46 - Eagerly caching bean 'javaMailSender' to allow for resolving potential circular references
+2017-06-07 10:56:46 - Getting BeanInfo for class [org.springframework.mail.javamail.JavaMailSenderImpl]
+2017-06-07 10:56:46 - Caching PropertyDescriptors for class [org.springframework.mail.javamail.JavaMailSenderImpl]
+2017-06-07 10:56:46 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 10:56:46 - Found bean property 'defaultEncoding' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'defaultFileTypeMap' of type [javax.activation.FileTypeMap]
+2017-06-07 10:56:46 - Found bean property 'host' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'javaMailProperties' of type [java.util.Properties]
+2017-06-07 10:56:46 - Found bean property 'password' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'port' of type [int]
+2017-06-07 10:56:46 - Found bean property 'protocol' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'session' of type [javax.mail.Session]
+2017-06-07 10:56:46 - Found bean property 'username' of type [java.lang.String]
+2017-06-07 10:56:46 - Finished creating instance of bean 'javaMailSender'
+2017-06-07 10:56:46 - Creating shared instance of singleton bean 'velocityEngine'
+2017-06-07 10:56:46 - Creating instance of bean 'velocityEngine'
+2017-06-07 10:56:46 - Eagerly caching bean 'velocityEngine' to allow for resolving potential circular references
+2017-06-07 10:56:46 - Getting BeanInfo for class [org.springframework.ui.velocity.VelocityEngineFactoryBean]
+2017-06-07 10:56:46 - Caching PropertyDescriptors for class [org.springframework.ui.velocity.VelocityEngineFactoryBean]
+2017-06-07 10:56:46 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 10:56:46 - Found bean property 'configLocation' of type [org.springframework.core.io.Resource]
+2017-06-07 10:56:46 - Found bean property 'object' of type [java.lang.Object]
+2017-06-07 10:56:46 - Found bean property 'objectType' of type [java.lang.Class]
+2017-06-07 10:56:46 - Found bean property 'overrideLogging' of type [boolean]
+2017-06-07 10:56:46 - Found bean property 'preferFileSystemAccess' of type [boolean]
+2017-06-07 10:56:46 - Found bean property 'resourceLoader' of type [org.springframework.core.io.ResourceLoader]
+2017-06-07 10:56:46 - Found bean property 'resourceLoaderPath' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'singleton' of type [boolean]
+2017-06-07 10:56:46 - Found bean property 'velocityProperties' of type [java.util.Properties]
+2017-06-07 10:56:46 - Found bean property 'velocityPropertiesMap' of type [java.util.Map]
+2017-06-07 10:56:46 - Invoking afterPropertiesSet() on bean with name 'velocityEngine'
+2017-06-07 10:56:46 - Resource loader path [config/] resolved to file [C:\Users\a3928543\workspace\ReporteRentabilidad\config]
+2017-06-07 10:56:46 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2017-06-07 10:56:46 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2017-06-07 10:56:46 - LogSystem has been deprecated. Please use a LogChute implementation.
+2017-06-07 10:56:46 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2017-06-07 10:56:46 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2017-06-07 10:56:46 - Do unicode file recognition:  false
+2017-06-07 10:56:46 - FileResourceLoader : adding path 'C:\Users\a3928543\workspace\ReporteRentabilidad\config'
+2017-06-07 10:56:46 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2017-06-07 10:56:46 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2017-06-07 10:56:46 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2017-06-07 10:56:46 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2017-06-07 10:56:46 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2017-06-07 10:56:46 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2017-06-07 10:56:46 - Created '20' parsers.
+2017-06-07 10:56:46 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2017-06-07 10:56:46 - Velocimacro : Default library not found.
+2017-06-07 10:56:46 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2017-06-07 10:56:46 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2017-06-07 10:56:46 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2017-06-07 10:56:46 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2017-06-07 10:56:46 - Finished creating instance of bean 'velocityEngine'
+2017-06-07 10:56:46 - Creating shared instance of singleton bean 'mailSender'
+2017-06-07 10:56:46 - Creating instance of bean 'mailSender'
+2017-06-07 10:56:46 - Eagerly caching bean 'mailSender' to allow for resolving potential circular references
+2017-06-07 10:56:46 - Returning cached instance of singleton bean 'velocityEngine'
+2017-06-07 10:56:46 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.MailSenderImpl]
+2017-06-07 10:56:46 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.MailSenderImpl]
+2017-06-07 10:56:46 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 10:56:46 - Found bean property 'from' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'javaMailSender' of type [org.springframework.mail.javamail.JavaMailSender]
+2017-06-07 10:56:46 - Found bean property 'subject' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'template' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'to' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'velocityEngine' of type [org.apache.velocity.app.VelocityEngine]
+2017-06-07 10:56:46 - Returning cached instance of singleton bean 'javaMailSender'
+2017-06-07 10:56:46 - Finished creating instance of bean 'mailSender'
+2017-06-07 10:56:46 - Creating shared instance of singleton bean 'generalMailSender'
+2017-06-07 10:56:46 - Creating instance of bean 'generalMailSender'
+2017-06-07 10:56:46 - Eagerly caching bean 'generalMailSender' to allow for resolving potential circular references
+2017-06-07 10:56:46 - Returning cached instance of singleton bean 'javaMailSender'
+2017-06-07 10:56:46 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.GeneralMailSenderImpl]
+2017-06-07 10:56:46 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.GeneralMailSenderImpl]
+2017-06-07 10:56:46 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 10:56:46 - Found bean property 'from' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'mailSender' of type [org.springframework.mail.MailSender]
+2017-06-07 10:56:46 - Found bean property 'subject' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'to' of type [java.lang.String]
+2017-06-07 10:56:46 - Finished creating instance of bean 'generalMailSender'
+2017-06-07 10:56:46 - Creating shared instance of singleton bean 'dataSource'
+2017-06-07 10:56:46 - Creating instance of bean 'dataSource'
+2017-06-07 10:56:46 - Eagerly caching bean 'dataSource' to allow for resolving potential circular references
+2017-06-07 10:56:46 - Getting BeanInfo for class [org.springframework.jdbc.datasource.DriverManagerDataSource]
+2017-06-07 10:56:46 - Caching PropertyDescriptors for class [org.springframework.jdbc.datasource.DriverManagerDataSource]
+2017-06-07 10:56:46 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 10:56:46 - Found bean property 'connection' of type [java.sql.Connection]
+2017-06-07 10:56:46 - Found bean property 'connectionProperties' of type [java.util.Properties]
+2017-06-07 10:56:46 - Found bean property 'driverClassName' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'logWriter' of type [java.io.PrintWriter]
+2017-06-07 10:56:46 - Found bean property 'loginTimeout' of type [int]
+2017-06-07 10:56:46 - Found bean property 'password' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'url' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'username' of type [java.lang.String]
+2017-06-07 10:56:46 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2017-06-07 10:56:46 - Finished creating instance of bean 'dataSource'
+2017-06-07 10:56:46 - Creating shared instance of singleton bean 'mensajesVo'
+2017-06-07 10:56:46 - Creating instance of bean 'mensajesVo'
+2017-06-07 10:56:46 - Eagerly caching bean 'mensajesVo' to allow for resolving potential circular references
+2017-06-07 10:56:46 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.dto.MensajesVo]
+2017-06-07 10:56:46 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.dto.MensajesVo]
+2017-06-07 10:56:46 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 10:56:46 - Found bean property 'mensajeErrorEmailsTo' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'mensajeErrorPath' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'mensajeErrorPathEmail' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'mensajeErrorStoredProcedure' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'mensajeErrorTransferencias' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'mensajeFinProceso' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'mensajeInicioproceso' of type [java.lang.String]
+2017-06-07 10:56:46 - Finished creating instance of bean 'mensajesVo'
+2017-06-07 10:56:46 - Creating shared instance of singleton bean 'consultaDao'
+2017-06-07 10:56:46 - Creating instance of bean 'consultaDao'
+2017-06-07 10:56:46 - Eagerly caching bean 'consultaDao' to allow for resolving potential circular references
+2017-06-07 10:56:46 - Returning cached instance of singleton bean 'dataSource'
+2017-06-07 10:56:46 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.dao.impl.ConsultaDaoImpl]
+2017-06-07 10:56:46 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.dao.impl.ConsultaDaoImpl]
+2017-06-07 10:56:46 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 10:56:46 - Found bean property 'dataSource' of type [javax.sql.DataSource]
+2017-06-07 10:56:46 - Found bean property 'jdbcTemplate' of type [org.springframework.jdbc.core.JdbcTemplate]
+2017-06-07 10:56:46 - Found bean property 'nombreStored' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'parametroEmailsTo' of type [java.lang.String]
+2017-06-07 10:56:46 - Found bean property 'parametroPathReporte' of type [java.lang.String]
+2017-06-07 10:56:46 - Invoking afterPropertiesSet() on bean with name 'consultaDao'
+2017-06-07 10:56:46 - Finished creating instance of bean 'consultaDao'
+2017-06-07 10:56:46 - Creating shared instance of singleton bean 'reporteService'
+2017-06-07 10:56:46 - Creating instance of bean 'reporteService'
+2017-06-07 10:56:46 - Eagerly caching bean 'reporteService' to allow for resolving potential circular references
+2017-06-07 10:56:46 - Finished creating instance of bean 'reporteService'
+2017-06-07 10:56:46 - Creating shared instance of singleton bean 'transferenciasService'
+2017-06-07 10:56:46 - Creating instance of bean 'transferenciasService'
+2017-06-07 10:56:46 - Eagerly caching bean 'transferenciasService' to allow for resolving potential circular references
+2017-06-07 10:56:46 - Returning cached instance of singleton bean 'consultaDao'
+2017-06-07 10:56:46 - Getting BeanInfo for class [com.banorte.reporte.mensual.rentabilidad.services.impl.TransferenciasServiceImpl]
+2017-06-07 10:56:46 - Caching PropertyDescriptors for class [com.banorte.reporte.mensual.rentabilidad.services.impl.TransferenciasServiceImpl]
+2017-06-07 10:56:46 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 10:56:46 - Found bean property 'consultaDao' of type [com.banorte.reporte.UIF.transferencias.dao.IConsultaDao]
+2017-06-07 10:56:46 - Found bean property 'generalMailSender' of type [com.banorte.reporte.UIF.transferencias.services.mail.GeneralMailSender]
+2017-06-07 10:56:46 - Found bean property 'mailSender' of type [com.banorte.reporte.UIF.transferencias.services.mail.MailSender]
+2017-06-07 10:56:46 - Found bean property 'mensajesVo' of type [com.banorte.reporte.UIF.transferencias.dto.MensajesVo]
+2017-06-07 10:56:46 - Found bean property 'reporteService' of type [com.banorte.reporte.UIF.transferencias.services.IReporteService]
+2017-06-07 10:56:46 - Returning cached instance of singleton bean 'mailSender'
+2017-06-07 10:56:46 - Returning cached instance of singleton bean 'generalMailSender'
+2017-06-07 10:56:46 - Returning cached instance of singleton bean 'mensajesVo'
+2017-06-07 10:56:46 - Returning cached instance of singleton bean 'reporteService'
+2017-06-07 10:56:46 - Finished creating instance of bean 'transferenciasService'
+2017-06-07 10:56:46 - Unable to locate LifecycleProcessor with name 'lifecycleProcessor': using default [org.springframework.context.support.DefaultLifecycleProcessor@811c88]
+2017-06-07 10:56:46 - Returning cached instance of singleton bean 'lifecycleProcessor'
+2017-06-07 10:56:46 - Publishing event in org.springframework.context.support.FileSystemXmlApplicationContext@3e86d0: org.springframework.context.event.ContextRefreshedEvent[source=org.springframework.context.support.FileSystemXmlApplicationContext@3e86d0: startup date [Wed Jun 07 10:56:46 CDT 2017]; root of context hierarchy]
+2017-06-07 10:56:46 - **********************************************************************************************************
+2017-06-07 10:56:46 - *****************************          PROCESO MENSUAL GENERADOR DEL REPORTE DE RENTABILIDAD   ***********
+2017-06-07 10:56:46 - **********************************************************************************************************
+2017-06-07 10:56:46 - Returning cached instance of singleton bean 'transferenciasService'
+2017-06-07 10:56:46 - Executing prepared SQL query
+2017-06-07 10:56:46 - Executing prepared SQL statement [select VALOR from SC_PARAMETRO where ID_PARAMETRO = ?]
+2017-06-07 10:56:46 - Fetching JDBC Connection from DataSource
+2017-06-07 10:56:46 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2017-06-07 10:56:47 - Setting SQL statement parameter value: column index 1, parameter value [PATH_REPORTE_RENTABILIDAD], value class [java.lang.String], SQL type unknown
+2017-06-07 10:56:47 - Returning JDBC Connection to DataSource
+2017-06-07 10:56:47 - Executing prepared SQL query
+2017-06-07 10:56:47 - Executing prepared SQL statement [select VALOR from SC_PARAMETRO where ID_PARAMETRO = ?]
+2017-06-07 10:56:47 - Fetching JDBC Connection from DataSource
+2017-06-07 10:56:47 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2017-06-07 10:56:47 - Setting SQL statement parameter value: column index 1, parameter value [EMAILS_REPORTE_RENTABILIDAD], value class [java.lang.String], SQL type unknown
+2017-06-07 10:56:47 - Returning JDBC Connection to DataSource
+2017-06-07 10:56:47 - --> No se ha definido el path donde se almacenará el reporte mensual de Rentabilidad.
+2017-06-07 10:56:47 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2017-06-07 10:56:47 - getFrom(): IxeCambios@ixe.com.mx
+2017-06-07 10:56:47 - getTo(): jesus.cortes@banorte.com
+2017-06-07 10:56:47 - getSubject(): Notificación del proceso de reporte mensual de Rentabilidad.
+2017-06-07 10:56:47 - jesus.cortes@banorte.com
+2017-06-07 10:56:47 - ResourceManager : found reporteDiarioTransferenciasTemplate.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2017-06-07 10:56:48 - **********************************************************************************************************
+2017-06-07 10:56:48 - ******************************     FIN DE PROCESO MENSUAL DE RENTABILIDAD     **************************
+2017-06-07 10:56:48 - **********************************************************************************************************
+2017-06-07 10:56:48 - 
+
+
+
+2017-06-07 14:51:34 - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3e86d0: startup date [Wed Jun 07 14:51:34 CDT 2017]; root of context hierarchy
+2017-06-07 14:51:34 - Loading XML bean definitions from file [C:\Users\a3928543\workspace\ReporteRentabilidad\config\applicationContext.xml]
+2017-06-07 14:51:34 - Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2017-06-07 14:51:34 - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd]
+2017-06-07 14:51:34 - Loading schema mappings from [META-INF/spring.schemas]
+2017-06-07 14:51:34 - Loaded schema mappings: {http://www.springframework.org/schema/lang/spring-lang.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.5.xsd=org/springframework/scripting/config/spring-lang-2.5.xsd, http://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd, http://www.springframework.org/schema/context/spring-context.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/util/spring-util-3.0.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.0.xsd=org/springframework/beans/factory/xml/spring-util-2.0.xsd, http://www.springframework.org/schema/task/spring-task-3.0.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.5.xsd=org/springframework/beans/factory/xml/spring-util-2.5.xsd, http://www.springframework.org/schema/tool/spring-tool-3.0.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.0.xsd=org/springframework/transaction/config/spring-tx-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.0.xsd=org/springframework/beans/factory/xml/spring-tool-2.0.xsd, http://www.springframework.org/schema/task/spring-task.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/context/spring-context-3.0.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.5.xsd=org/springframework/transaction/config/spring-tx-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-2.0.xsd=org/springframework/beans/factory/xml/spring-beans-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.5.xsd=org/springframework/beans/factory/xml/spring-tool-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/beans/spring-beans-2.5.xsd=org/springframework/beans/factory/xml/spring-beans-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/tool/spring-tool.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.0.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop-3.0.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.0.xsd=org/springframework/ejb/config/spring-jee-2.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.0.xsd=org/springframework/aop/config/spring-aop-2.0.xsd, http://www.springframework.org/schema/tx/spring-tx-3.0.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.5.xsd=org/springframework/ejb/config/spring-jee-2.5.xsd, http://www.springframework.org/schema/aop/spring-aop-2.5.xsd=org/springframework/aop/config/spring-aop-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-3.0.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-3.0.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.0.xsd=org/springframework/scripting/config/spring-lang-2.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/util/spring-util.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd}
+2017-06-07 14:51:34 - Found XML schema [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-3.0.xsd
+2017-06-07 14:51:34 - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/context/spring-context-3.0.xsd]
+2017-06-07 14:51:34 - Found XML schema [http://www.springframework.org/schema/context/spring-context-3.0.xsd] in classpath: org/springframework/context/config/spring-context-3.0.xsd
+2017-06-07 14:51:34 - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd]
+2017-06-07 14:51:34 - Found XML schema [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-tool-3.0.xsd
+2017-06-07 14:51:34 - Loading bean definitions
+2017-06-07 14:51:34 - Loaded NamespaceHandler mappings: {http://www.springframework.org/schema/p=org.springframework.beans.factory.xml.SimplePropertyNamespaceHandler, http://www.springframework.org/schema/util=org.springframework.beans.factory.xml.UtilNamespaceHandler, http://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandler, http://www.springframework.org/schema/aop=org.springframework.aop.config.AopNamespaceHandler, http://www.springframework.org/schema/jdbc=org.springframework.jdbc.config.JdbcNamespaceHandler, http://www.springframework.org/schema/tx=org.springframework.transaction.config.TxNamespaceHandler, http://www.springframework.org/schema/task=org.springframework.scheduling.config.TaskNamespaceHandler, http://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandler, http://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler}
+2017-06-07 14:51:34 - Loaded 10 bean definitions from location pattern [config/applicationContext.xml]
+2017-06-07 14:51:34 - Bean factory for org.springframework.context.support.FileSystemXmlApplicationContext@3e86d0: org.springframework.beans.factory.support.DefaultListableBeanFactory@1ab28fe: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailSender,generalMailSender,dataSource,mensajesVo,consultaDao,reporteService,transferenciasService]; root of factory hierarchy
+2017-06-07 14:51:34 - Creating shared instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2017-06-07 14:51:34 - Creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2017-06-07 14:51:34 - Eagerly caching bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0' to allow for resolving potential circular references
+2017-06-07 14:51:34 - Getting BeanInfo for class [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]
+2017-06-07 14:51:34 - Caching PropertyDescriptors for class [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]
+2017-06-07 14:51:34 - Found bean property 'beanFactory' of type [org.springframework.beans.factory.BeanFactory]
+2017-06-07 14:51:34 - Found bean property 'beanName' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 14:51:34 - Found bean property 'fileEncoding' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'ignoreResourceNotFound' of type [boolean]
+2017-06-07 14:51:34 - Found bean property 'ignoreUnresolvablePlaceholders' of type [boolean]
+2017-06-07 14:51:34 - Found bean property 'localOverride' of type [boolean]
+2017-06-07 14:51:34 - Found bean property 'location' of type [org.springframework.core.io.Resource]
+2017-06-07 14:51:34 - Found bean property 'locations' of type [[Lorg.springframework.core.io.Resource;]
+2017-06-07 14:51:34 - Found bean property 'nullValue' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'order' of type [int]
+2017-06-07 14:51:34 - Found bean property 'placeholderPrefix' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'placeholderSuffix' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'properties' of type [java.util.Properties]
+2017-06-07 14:51:34 - Found bean property 'propertiesArray' of type [[Ljava.util.Properties;]
+2017-06-07 14:51:34 - Found bean property 'propertiesPersister' of type [org.springframework.util.PropertiesPersister]
+2017-06-07 14:51:34 - Found bean property 'searchSystemEnvironment' of type [boolean]
+2017-06-07 14:51:34 - Found bean property 'systemPropertiesMode' of type [int]
+2017-06-07 14:51:34 - Found bean property 'systemPropertiesModeName' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'valueSeparator' of type [java.lang.String]
+2017-06-07 14:51:34 - Finished creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2017-06-07 14:51:34 - Loading properties file from file [C:\Users\a3928543\workspace\ReporteRentabilidad\config\config.properties]
+2017-06-07 14:51:34 - Resolved placeholder 'mail.host'
+2017-06-07 14:51:34 - Resolved placeholder 'mail.template.path'
+2017-06-07 14:51:34 - Resolved placeholder 'mail.template'
+2017-06-07 14:51:34 - Resolved placeholder 'mail.from'
+2017-06-07 14:51:34 - Resolved placeholder 'mail.subject'
+2017-06-07 14:51:34 - Resolved placeholder 'mail.ordenante.from'
+2017-06-07 14:51:34 - Resolved placeholder 'db.driver'
+2017-06-07 14:51:34 - Resolved placeholder 'db.username'
+2017-06-07 14:51:34 - Resolved placeholder 'db.password'
+2017-06-07 14:51:34 - Resolved placeholder 'db.url'
+2017-06-07 14:51:34 - Resolved placeholder 'msj.error.path'
+2017-06-07 14:51:34 - Resolved placeholder 'msj.error.emails'
+2017-06-07 14:51:34 - Resolved placeholder 'msj.error.email'
+2017-06-07 14:51:34 - Resolved placeholder 'msj.error.consulta.transferencias'
+2017-06-07 14:51:34 - Resolved placeholder 'msj.inicio.proceso'
+2017-06-07 14:51:34 - Resolved placeholder 'msj.fin.proceso'
+2017-06-07 14:51:34 - Resolved placeholder 'parametro.path.reporte'
+2017-06-07 14:51:34 - Resolved placeholder 'parametro.emails.to'
+2017-06-07 14:51:34 - Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@ba9340]
+2017-06-07 14:51:34 - Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@15663a2]
+2017-06-07 14:51:34 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1ab28fe: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailSender,generalMailSender,dataSource,mensajesVo,consultaDao,reporteService,transferenciasService]; root of factory hierarchy
+2017-06-07 14:51:34 - Returning cached instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2017-06-07 14:51:34 - Creating shared instance of singleton bean 'javaMailSender'
+2017-06-07 14:51:34 - Creating instance of bean 'javaMailSender'
+2017-06-07 14:51:34 - Eagerly caching bean 'javaMailSender' to allow for resolving potential circular references
+2017-06-07 14:51:34 - Getting BeanInfo for class [org.springframework.mail.javamail.JavaMailSenderImpl]
+2017-06-07 14:51:34 - Caching PropertyDescriptors for class [org.springframework.mail.javamail.JavaMailSenderImpl]
+2017-06-07 14:51:34 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 14:51:34 - Found bean property 'defaultEncoding' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'defaultFileTypeMap' of type [javax.activation.FileTypeMap]
+2017-06-07 14:51:34 - Found bean property 'host' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'javaMailProperties' of type [java.util.Properties]
+2017-06-07 14:51:34 - Found bean property 'password' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'port' of type [int]
+2017-06-07 14:51:34 - Found bean property 'protocol' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'session' of type [javax.mail.Session]
+2017-06-07 14:51:34 - Found bean property 'username' of type [java.lang.String]
+2017-06-07 14:51:34 - Finished creating instance of bean 'javaMailSender'
+2017-06-07 14:51:34 - Creating shared instance of singleton bean 'velocityEngine'
+2017-06-07 14:51:34 - Creating instance of bean 'velocityEngine'
+2017-06-07 14:51:34 - Eagerly caching bean 'velocityEngine' to allow for resolving potential circular references
+2017-06-07 14:51:34 - Getting BeanInfo for class [org.springframework.ui.velocity.VelocityEngineFactoryBean]
+2017-06-07 14:51:34 - Caching PropertyDescriptors for class [org.springframework.ui.velocity.VelocityEngineFactoryBean]
+2017-06-07 14:51:34 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 14:51:34 - Found bean property 'configLocation' of type [org.springframework.core.io.Resource]
+2017-06-07 14:51:34 - Found bean property 'object' of type [java.lang.Object]
+2017-06-07 14:51:34 - Found bean property 'objectType' of type [java.lang.Class]
+2017-06-07 14:51:34 - Found bean property 'overrideLogging' of type [boolean]
+2017-06-07 14:51:34 - Found bean property 'preferFileSystemAccess' of type [boolean]
+2017-06-07 14:51:34 - Found bean property 'resourceLoader' of type [org.springframework.core.io.ResourceLoader]
+2017-06-07 14:51:34 - Found bean property 'resourceLoaderPath' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'singleton' of type [boolean]
+2017-06-07 14:51:34 - Found bean property 'velocityProperties' of type [java.util.Properties]
+2017-06-07 14:51:34 - Found bean property 'velocityPropertiesMap' of type [java.util.Map]
+2017-06-07 14:51:34 - Invoking afterPropertiesSet() on bean with name 'velocityEngine'
+2017-06-07 14:51:34 - Resource loader path [config/] resolved to file [C:\Users\a3928543\workspace\ReporteRentabilidad\config]
+2017-06-07 14:51:34 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2017-06-07 14:51:34 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2017-06-07 14:51:34 - LogSystem has been deprecated. Please use a LogChute implementation.
+2017-06-07 14:51:34 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2017-06-07 14:51:34 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2017-06-07 14:51:34 - Do unicode file recognition:  false
+2017-06-07 14:51:34 - FileResourceLoader : adding path 'C:\Users\a3928543\workspace\ReporteRentabilidad\config'
+2017-06-07 14:51:34 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2017-06-07 14:51:34 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2017-06-07 14:51:34 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2017-06-07 14:51:34 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2017-06-07 14:51:34 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2017-06-07 14:51:34 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2017-06-07 14:51:34 - Created '20' parsers.
+2017-06-07 14:51:34 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2017-06-07 14:51:34 - Velocimacro : Default library not found.
+2017-06-07 14:51:34 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2017-06-07 14:51:34 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2017-06-07 14:51:34 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2017-06-07 14:51:34 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2017-06-07 14:51:34 - Finished creating instance of bean 'velocityEngine'
+2017-06-07 14:51:34 - Creating shared instance of singleton bean 'mailSender'
+2017-06-07 14:51:34 - Creating instance of bean 'mailSender'
+2017-06-07 14:51:34 - Eagerly caching bean 'mailSender' to allow for resolving potential circular references
+2017-06-07 14:51:34 - Returning cached instance of singleton bean 'velocityEngine'
+2017-06-07 14:51:34 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.MailSenderImpl]
+2017-06-07 14:51:34 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.MailSenderImpl]
+2017-06-07 14:51:34 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 14:51:34 - Found bean property 'from' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'javaMailSender' of type [org.springframework.mail.javamail.JavaMailSender]
+2017-06-07 14:51:34 - Found bean property 'subject' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'template' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'to' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'velocityEngine' of type [org.apache.velocity.app.VelocityEngine]
+2017-06-07 14:51:34 - Returning cached instance of singleton bean 'javaMailSender'
+2017-06-07 14:51:34 - Finished creating instance of bean 'mailSender'
+2017-06-07 14:51:34 - Creating shared instance of singleton bean 'generalMailSender'
+2017-06-07 14:51:34 - Creating instance of bean 'generalMailSender'
+2017-06-07 14:51:34 - Eagerly caching bean 'generalMailSender' to allow for resolving potential circular references
+2017-06-07 14:51:34 - Returning cached instance of singleton bean 'javaMailSender'
+2017-06-07 14:51:34 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.GeneralMailSenderImpl]
+2017-06-07 14:51:34 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.GeneralMailSenderImpl]
+2017-06-07 14:51:34 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 14:51:34 - Found bean property 'from' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'mailSender' of type [org.springframework.mail.MailSender]
+2017-06-07 14:51:34 - Found bean property 'subject' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'to' of type [java.lang.String]
+2017-06-07 14:51:34 - Finished creating instance of bean 'generalMailSender'
+2017-06-07 14:51:34 - Creating shared instance of singleton bean 'dataSource'
+2017-06-07 14:51:34 - Creating instance of bean 'dataSource'
+2017-06-07 14:51:34 - Eagerly caching bean 'dataSource' to allow for resolving potential circular references
+2017-06-07 14:51:34 - Getting BeanInfo for class [org.springframework.jdbc.datasource.DriverManagerDataSource]
+2017-06-07 14:51:34 - Caching PropertyDescriptors for class [org.springframework.jdbc.datasource.DriverManagerDataSource]
+2017-06-07 14:51:34 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 14:51:34 - Found bean property 'connection' of type [java.sql.Connection]
+2017-06-07 14:51:34 - Found bean property 'connectionProperties' of type [java.util.Properties]
+2017-06-07 14:51:34 - Found bean property 'driverClassName' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'logWriter' of type [java.io.PrintWriter]
+2017-06-07 14:51:34 - Found bean property 'loginTimeout' of type [int]
+2017-06-07 14:51:34 - Found bean property 'password' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'url' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'username' of type [java.lang.String]
+2017-06-07 14:51:34 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2017-06-07 14:51:34 - Finished creating instance of bean 'dataSource'
+2017-06-07 14:51:34 - Creating shared instance of singleton bean 'mensajesVo'
+2017-06-07 14:51:34 - Creating instance of bean 'mensajesVo'
+2017-06-07 14:51:34 - Eagerly caching bean 'mensajesVo' to allow for resolving potential circular references
+2017-06-07 14:51:34 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.dto.MensajesVo]
+2017-06-07 14:51:34 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.dto.MensajesVo]
+2017-06-07 14:51:34 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 14:51:34 - Found bean property 'mensajeErrorEmailsTo' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'mensajeErrorPath' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'mensajeErrorPathEmail' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'mensajeErrorStoredProcedure' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'mensajeErrorTransferencias' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'mensajeFinProceso' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'mensajeInicioproceso' of type [java.lang.String]
+2017-06-07 14:51:34 - Finished creating instance of bean 'mensajesVo'
+2017-06-07 14:51:34 - Creating shared instance of singleton bean 'consultaDao'
+2017-06-07 14:51:34 - Creating instance of bean 'consultaDao'
+2017-06-07 14:51:34 - Eagerly caching bean 'consultaDao' to allow for resolving potential circular references
+2017-06-07 14:51:34 - Returning cached instance of singleton bean 'dataSource'
+2017-06-07 14:51:34 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.dao.impl.ConsultaDaoImpl]
+2017-06-07 14:51:34 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.dao.impl.ConsultaDaoImpl]
+2017-06-07 14:51:34 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 14:51:34 - Found bean property 'dataSource' of type [javax.sql.DataSource]
+2017-06-07 14:51:34 - Found bean property 'jdbcTemplate' of type [org.springframework.jdbc.core.JdbcTemplate]
+2017-06-07 14:51:34 - Found bean property 'nombreStored' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'parametroEmailsTo' of type [java.lang.String]
+2017-06-07 14:51:34 - Found bean property 'parametroPathReporte' of type [java.lang.String]
+2017-06-07 14:51:34 - Invoking afterPropertiesSet() on bean with name 'consultaDao'
+2017-06-07 14:51:34 - Finished creating instance of bean 'consultaDao'
+2017-06-07 14:51:34 - Creating shared instance of singleton bean 'reporteService'
+2017-06-07 14:51:34 - Creating instance of bean 'reporteService'
+2017-06-07 14:51:34 - Eagerly caching bean 'reporteService' to allow for resolving potential circular references
+2017-06-07 14:51:34 - Finished creating instance of bean 'reporteService'
+2017-06-07 14:51:34 - Creating shared instance of singleton bean 'transferenciasService'
+2017-06-07 14:51:34 - Creating instance of bean 'transferenciasService'
+2017-06-07 14:51:34 - Eagerly caching bean 'transferenciasService' to allow for resolving potential circular references
+2017-06-07 14:51:34 - Returning cached instance of singleton bean 'consultaDao'
+2017-06-07 14:51:34 - Getting BeanInfo for class [com.banorte.reporte.mensual.rentabilidad.services.impl.TransferenciasServiceImpl]
+2017-06-07 14:51:34 - Caching PropertyDescriptors for class [com.banorte.reporte.mensual.rentabilidad.services.impl.TransferenciasServiceImpl]
+2017-06-07 14:51:34 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 14:51:34 - Found bean property 'consultaDao' of type [com.banorte.reporte.UIF.transferencias.dao.IConsultaDao]
+2017-06-07 14:51:34 - Found bean property 'generalMailSender' of type [com.banorte.reporte.UIF.transferencias.services.mail.GeneralMailSender]
+2017-06-07 14:51:34 - Found bean property 'mailSender' of type [com.banorte.reporte.UIF.transferencias.services.mail.MailSender]
+2017-06-07 14:51:34 - Found bean property 'mensajesVo' of type [com.banorte.reporte.UIF.transferencias.dto.MensajesVo]
+2017-06-07 14:51:34 - Found bean property 'reporteService' of type [com.banorte.reporte.UIF.transferencias.services.IReporteService]
+2017-06-07 14:51:34 - Returning cached instance of singleton bean 'mailSender'
+2017-06-07 14:51:34 - Returning cached instance of singleton bean 'generalMailSender'
+2017-06-07 14:51:34 - Returning cached instance of singleton bean 'mensajesVo'
+2017-06-07 14:51:34 - Returning cached instance of singleton bean 'reporteService'
+2017-06-07 14:51:34 - Finished creating instance of bean 'transferenciasService'
+2017-06-07 14:51:34 - Unable to locate LifecycleProcessor with name 'lifecycleProcessor': using default [org.springframework.context.support.DefaultLifecycleProcessor@2c1e6b]
+2017-06-07 14:51:34 - Returning cached instance of singleton bean 'lifecycleProcessor'
+2017-06-07 14:51:34 - Publishing event in org.springframework.context.support.FileSystemXmlApplicationContext@3e86d0: org.springframework.context.event.ContextRefreshedEvent[source=org.springframework.context.support.FileSystemXmlApplicationContext@3e86d0: startup date [Wed Jun 07 14:51:34 CDT 2017]; root of context hierarchy]
+2017-06-07 14:51:34 - **********************************************************************************************************
+2017-06-07 14:51:34 - *****************************          PROCESO MENSUAL GENERADOR DEL REPORTE DE RENTABILIDAD   ***********
+2017-06-07 14:51:34 - **********************************************************************************************************
+2017-06-07 14:51:34 - Returning cached instance of singleton bean 'transferenciasService'
+2017-06-07 14:51:34 - Executing prepared SQL query
+2017-06-07 14:51:34 - Executing prepared SQL statement [select VALOR from SC_PARAMETRO where ID_PARAMETRO = ?]
+2017-06-07 14:51:34 - Fetching JDBC Connection from DataSource
+2017-06-07 14:51:34 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2017-06-07 14:51:35 - Setting SQL statement parameter value: column index 1, parameter value [PATH_REPORTE_RENTABILIDAD], value class [java.lang.String], SQL type unknown
+2017-06-07 14:51:35 - Returning JDBC Connection to DataSource
+2017-06-07 14:51:35 - Executing prepared SQL query
+2017-06-07 14:51:35 - Executing prepared SQL statement [select VALOR from SC_PARAMETRO where ID_PARAMETRO = ?]
+2017-06-07 14:51:35 - Fetching JDBC Connection from DataSource
+2017-06-07 14:51:35 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2017-06-07 14:51:35 - Setting SQL statement parameter value: column index 1, parameter value [EMAILS_REPORTE_RENTABILIDAD], value class [java.lang.String], SQL type unknown
+2017-06-07 14:51:35 - Returning JDBC Connection to DataSource
+2017-06-07 14:51:35 - --> No se ha definido el path donde se almacenará el reporte mensual de Rentabilidad.
+2017-06-07 14:51:35 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2017-06-07 14:51:35 - getFrom(): IxeCambios@ixe.com.mx
+2017-06-07 14:51:35 - getTo(): jesus.cortes@banorte.com
+2017-06-07 14:51:35 - getSubject(): Notificación del proceso de reporte mensual de Rentabilidad.
+2017-06-07 14:51:35 - jesus.cortes@banorte.com
+2017-06-07 14:51:35 - ResourceManager : found reporteDiarioTransferenciasTemplate.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2017-06-07 14:51:36 - **********************************************************************************************************
+2017-06-07 14:51:36 - ******************************     FIN DE PROCESO MENSUAL DE RENTABILIDAD     **************************
+2017-06-07 14:51:36 - **********************************************************************************************************
+2017-06-07 14:51:36 - 
+
+
+
+2017-06-07 14:55:54 - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3e86d0: startup date [Wed Jun 07 14:55:54 CDT 2017]; root of context hierarchy
+2017-06-07 14:55:54 - Loading XML bean definitions from file [C:\Users\a3928543\workspace\ReporteRentabilidad\config\applicationContext.xml]
+2017-06-07 14:55:54 - Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2017-06-07 14:55:54 - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd]
+2017-06-07 14:55:54 - Loading schema mappings from [META-INF/spring.schemas]
+2017-06-07 14:55:54 - Loaded schema mappings: {http://www.springframework.org/schema/lang/spring-lang.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.5.xsd=org/springframework/scripting/config/spring-lang-2.5.xsd, http://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd, http://www.springframework.org/schema/context/spring-context.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/util/spring-util-3.0.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.0.xsd=org/springframework/beans/factory/xml/spring-util-2.0.xsd, http://www.springframework.org/schema/task/spring-task-3.0.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.5.xsd=org/springframework/beans/factory/xml/spring-util-2.5.xsd, http://www.springframework.org/schema/tool/spring-tool-3.0.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.0.xsd=org/springframework/transaction/config/spring-tx-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.0.xsd=org/springframework/beans/factory/xml/spring-tool-2.0.xsd, http://www.springframework.org/schema/task/spring-task.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/context/spring-context-3.0.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.5.xsd=org/springframework/transaction/config/spring-tx-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-2.0.xsd=org/springframework/beans/factory/xml/spring-beans-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.5.xsd=org/springframework/beans/factory/xml/spring-tool-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/beans/spring-beans-2.5.xsd=org/springframework/beans/factory/xml/spring-beans-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/tool/spring-tool.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.0.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop-3.0.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.0.xsd=org/springframework/ejb/config/spring-jee-2.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.0.xsd=org/springframework/aop/config/spring-aop-2.0.xsd, http://www.springframework.org/schema/tx/spring-tx-3.0.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.5.xsd=org/springframework/ejb/config/spring-jee-2.5.xsd, http://www.springframework.org/schema/aop/spring-aop-2.5.xsd=org/springframework/aop/config/spring-aop-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-3.0.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-3.0.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.0.xsd=org/springframework/scripting/config/spring-lang-2.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/util/spring-util.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd}
+2017-06-07 14:55:54 - Found XML schema [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-3.0.xsd
+2017-06-07 14:55:54 - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/context/spring-context-3.0.xsd]
+2017-06-07 14:55:54 - Found XML schema [http://www.springframework.org/schema/context/spring-context-3.0.xsd] in classpath: org/springframework/context/config/spring-context-3.0.xsd
+2017-06-07 14:55:54 - Trying to resolve XML entity with public id [null] and system id [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd]
+2017-06-07 14:55:54 - Found XML schema [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-tool-3.0.xsd
+2017-06-07 14:55:54 - Loading bean definitions
+2017-06-07 14:55:54 - Loaded NamespaceHandler mappings: {http://www.springframework.org/schema/p=org.springframework.beans.factory.xml.SimplePropertyNamespaceHandler, http://www.springframework.org/schema/util=org.springframework.beans.factory.xml.UtilNamespaceHandler, http://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandler, http://www.springframework.org/schema/aop=org.springframework.aop.config.AopNamespaceHandler, http://www.springframework.org/schema/jdbc=org.springframework.jdbc.config.JdbcNamespaceHandler, http://www.springframework.org/schema/tx=org.springframework.transaction.config.TxNamespaceHandler, http://www.springframework.org/schema/task=org.springframework.scheduling.config.TaskNamespaceHandler, http://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandler, http://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler}
+2017-06-07 14:55:54 - Loaded 10 bean definitions from location pattern [config/applicationContext.xml]
+2017-06-07 14:55:54 - Bean factory for org.springframework.context.support.FileSystemXmlApplicationContext@3e86d0: org.springframework.beans.factory.support.DefaultListableBeanFactory@1ab28fe: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailSender,generalMailSender,dataSource,mensajesVo,consultaDao,reporteService,transferenciasService]; root of factory hierarchy
+2017-06-07 14:55:54 - Creating shared instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2017-06-07 14:55:54 - Creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2017-06-07 14:55:54 - Eagerly caching bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0' to allow for resolving potential circular references
+2017-06-07 14:55:54 - Getting BeanInfo for class [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]
+2017-06-07 14:55:54 - Caching PropertyDescriptors for class [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]
+2017-06-07 14:55:54 - Found bean property 'beanFactory' of type [org.springframework.beans.factory.BeanFactory]
+2017-06-07 14:55:54 - Found bean property 'beanName' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 14:55:54 - Found bean property 'fileEncoding' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'ignoreResourceNotFound' of type [boolean]
+2017-06-07 14:55:54 - Found bean property 'ignoreUnresolvablePlaceholders' of type [boolean]
+2017-06-07 14:55:54 - Found bean property 'localOverride' of type [boolean]
+2017-06-07 14:55:54 - Found bean property 'location' of type [org.springframework.core.io.Resource]
+2017-06-07 14:55:54 - Found bean property 'locations' of type [[Lorg.springframework.core.io.Resource;]
+2017-06-07 14:55:54 - Found bean property 'nullValue' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'order' of type [int]
+2017-06-07 14:55:54 - Found bean property 'placeholderPrefix' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'placeholderSuffix' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'properties' of type [java.util.Properties]
+2017-06-07 14:55:54 - Found bean property 'propertiesArray' of type [[Ljava.util.Properties;]
+2017-06-07 14:55:54 - Found bean property 'propertiesPersister' of type [org.springframework.util.PropertiesPersister]
+2017-06-07 14:55:54 - Found bean property 'searchSystemEnvironment' of type [boolean]
+2017-06-07 14:55:54 - Found bean property 'systemPropertiesMode' of type [int]
+2017-06-07 14:55:54 - Found bean property 'systemPropertiesModeName' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'valueSeparator' of type [java.lang.String]
+2017-06-07 14:55:54 - Finished creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2017-06-07 14:55:54 - Loading properties file from file [C:\Users\a3928543\workspace\ReporteRentabilidad\config\config.properties]
+2017-06-07 14:55:54 - Resolved placeholder 'mail.host'
+2017-06-07 14:55:54 - Resolved placeholder 'mail.template.path'
+2017-06-07 14:55:54 - Resolved placeholder 'mail.template'
+2017-06-07 14:55:54 - Resolved placeholder 'mail.from'
+2017-06-07 14:55:54 - Resolved placeholder 'mail.subject'
+2017-06-07 14:55:54 - Resolved placeholder 'mail.ordenante.from'
+2017-06-07 14:55:54 - Resolved placeholder 'db.driver'
+2017-06-07 14:55:54 - Resolved placeholder 'db.username'
+2017-06-07 14:55:54 - Resolved placeholder 'db.password'
+2017-06-07 14:55:54 - Resolved placeholder 'db.url'
+2017-06-07 14:55:54 - Resolved placeholder 'msj.error.path'
+2017-06-07 14:55:54 - Resolved placeholder 'msj.error.emails'
+2017-06-07 14:55:54 - Resolved placeholder 'msj.error.email'
+2017-06-07 14:55:54 - Resolved placeholder 'msj.error.consulta.transferencias'
+2017-06-07 14:55:54 - Resolved placeholder 'msj.inicio.proceso'
+2017-06-07 14:55:54 - Resolved placeholder 'msj.fin.proceso'
+2017-06-07 14:55:54 - Resolved placeholder 'parametro.path.reporte'
+2017-06-07 14:55:54 - Resolved placeholder 'parametro.emails.to'
+2017-06-07 14:55:54 - Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@ba9340]
+2017-06-07 14:55:54 - Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@15663a2]
+2017-06-07 14:55:54 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1ab28fe: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailSender,generalMailSender,dataSource,mensajesVo,consultaDao,reporteService,transferenciasService]; root of factory hierarchy
+2017-06-07 14:55:54 - Returning cached instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2017-06-07 14:55:54 - Creating shared instance of singleton bean 'javaMailSender'
+2017-06-07 14:55:54 - Creating instance of bean 'javaMailSender'
+2017-06-07 14:55:54 - Eagerly caching bean 'javaMailSender' to allow for resolving potential circular references
+2017-06-07 14:55:54 - Getting BeanInfo for class [org.springframework.mail.javamail.JavaMailSenderImpl]
+2017-06-07 14:55:54 - Caching PropertyDescriptors for class [org.springframework.mail.javamail.JavaMailSenderImpl]
+2017-06-07 14:55:54 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 14:55:54 - Found bean property 'defaultEncoding' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'defaultFileTypeMap' of type [javax.activation.FileTypeMap]
+2017-06-07 14:55:54 - Found bean property 'host' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'javaMailProperties' of type [java.util.Properties]
+2017-06-07 14:55:54 - Found bean property 'password' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'port' of type [int]
+2017-06-07 14:55:54 - Found bean property 'protocol' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'session' of type [javax.mail.Session]
+2017-06-07 14:55:54 - Found bean property 'username' of type [java.lang.String]
+2017-06-07 14:55:54 - Finished creating instance of bean 'javaMailSender'
+2017-06-07 14:55:54 - Creating shared instance of singleton bean 'velocityEngine'
+2017-06-07 14:55:54 - Creating instance of bean 'velocityEngine'
+2017-06-07 14:55:54 - Eagerly caching bean 'velocityEngine' to allow for resolving potential circular references
+2017-06-07 14:55:54 - Getting BeanInfo for class [org.springframework.ui.velocity.VelocityEngineFactoryBean]
+2017-06-07 14:55:54 - Caching PropertyDescriptors for class [org.springframework.ui.velocity.VelocityEngineFactoryBean]
+2017-06-07 14:55:54 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 14:55:54 - Found bean property 'configLocation' of type [org.springframework.core.io.Resource]
+2017-06-07 14:55:54 - Found bean property 'object' of type [java.lang.Object]
+2017-06-07 14:55:54 - Found bean property 'objectType' of type [java.lang.Class]
+2017-06-07 14:55:54 - Found bean property 'overrideLogging' of type [boolean]
+2017-06-07 14:55:54 - Found bean property 'preferFileSystemAccess' of type [boolean]
+2017-06-07 14:55:54 - Found bean property 'resourceLoader' of type [org.springframework.core.io.ResourceLoader]
+2017-06-07 14:55:54 - Found bean property 'resourceLoaderPath' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'singleton' of type [boolean]
+2017-06-07 14:55:54 - Found bean property 'velocityProperties' of type [java.util.Properties]
+2017-06-07 14:55:54 - Found bean property 'velocityPropertiesMap' of type [java.util.Map]
+2017-06-07 14:55:54 - Invoking afterPropertiesSet() on bean with name 'velocityEngine'
+2017-06-07 14:55:54 - Resource loader path [config/] resolved to file [C:\Users\a3928543\workspace\ReporteRentabilidad\config]
+2017-06-07 14:55:54 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2017-06-07 14:55:54 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2017-06-07 14:55:54 - LogSystem has been deprecated. Please use a LogChute implementation.
+2017-06-07 14:55:54 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2017-06-07 14:55:54 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2017-06-07 14:55:54 - Do unicode file recognition:  false
+2017-06-07 14:55:54 - FileResourceLoader : adding path 'C:\Users\a3928543\workspace\ReporteRentabilidad\config'
+2017-06-07 14:55:54 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2017-06-07 14:55:54 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2017-06-07 14:55:54 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2017-06-07 14:55:54 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2017-06-07 14:55:54 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2017-06-07 14:55:54 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2017-06-07 14:55:54 - Created '20' parsers.
+2017-06-07 14:55:54 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2017-06-07 14:55:54 - Velocimacro : Default library not found.
+2017-06-07 14:55:54 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2017-06-07 14:55:54 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2017-06-07 14:55:54 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2017-06-07 14:55:54 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2017-06-07 14:55:54 - Finished creating instance of bean 'velocityEngine'
+2017-06-07 14:55:54 - Creating shared instance of singleton bean 'mailSender'
+2017-06-07 14:55:54 - Creating instance of bean 'mailSender'
+2017-06-07 14:55:54 - Eagerly caching bean 'mailSender' to allow for resolving potential circular references
+2017-06-07 14:55:54 - Returning cached instance of singleton bean 'velocityEngine'
+2017-06-07 14:55:54 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.MailSenderImpl]
+2017-06-07 14:55:54 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.MailSenderImpl]
+2017-06-07 14:55:54 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 14:55:54 - Found bean property 'from' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'javaMailSender' of type [org.springframework.mail.javamail.JavaMailSender]
+2017-06-07 14:55:54 - Found bean property 'subject' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'template' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'to' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'velocityEngine' of type [org.apache.velocity.app.VelocityEngine]
+2017-06-07 14:55:54 - Returning cached instance of singleton bean 'javaMailSender'
+2017-06-07 14:55:54 - Finished creating instance of bean 'mailSender'
+2017-06-07 14:55:54 - Creating shared instance of singleton bean 'generalMailSender'
+2017-06-07 14:55:54 - Creating instance of bean 'generalMailSender'
+2017-06-07 14:55:54 - Eagerly caching bean 'generalMailSender' to allow for resolving potential circular references
+2017-06-07 14:55:54 - Returning cached instance of singleton bean 'javaMailSender'
+2017-06-07 14:55:54 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.GeneralMailSenderImpl]
+2017-06-07 14:55:54 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.services.mail.impl.GeneralMailSenderImpl]
+2017-06-07 14:55:54 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 14:55:54 - Found bean property 'from' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'mailSender' of type [org.springframework.mail.MailSender]
+2017-06-07 14:55:54 - Found bean property 'subject' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'to' of type [java.lang.String]
+2017-06-07 14:55:54 - Finished creating instance of bean 'generalMailSender'
+2017-06-07 14:55:54 - Creating shared instance of singleton bean 'dataSource'
+2017-06-07 14:55:54 - Creating instance of bean 'dataSource'
+2017-06-07 14:55:54 - Eagerly caching bean 'dataSource' to allow for resolving potential circular references
+2017-06-07 14:55:54 - Getting BeanInfo for class [org.springframework.jdbc.datasource.DriverManagerDataSource]
+2017-06-07 14:55:54 - Caching PropertyDescriptors for class [org.springframework.jdbc.datasource.DriverManagerDataSource]
+2017-06-07 14:55:54 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 14:55:54 - Found bean property 'connection' of type [java.sql.Connection]
+2017-06-07 14:55:54 - Found bean property 'connectionProperties' of type [java.util.Properties]
+2017-06-07 14:55:54 - Found bean property 'driverClassName' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'logWriter' of type [java.io.PrintWriter]
+2017-06-07 14:55:54 - Found bean property 'loginTimeout' of type [int]
+2017-06-07 14:55:54 - Found bean property 'password' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'url' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'username' of type [java.lang.String]
+2017-06-07 14:55:54 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2017-06-07 14:55:54 - Finished creating instance of bean 'dataSource'
+2017-06-07 14:55:54 - Creating shared instance of singleton bean 'mensajesVo'
+2017-06-07 14:55:54 - Creating instance of bean 'mensajesVo'
+2017-06-07 14:55:54 - Eagerly caching bean 'mensajesVo' to allow for resolving potential circular references
+2017-06-07 14:55:54 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.dto.MensajesVo]
+2017-06-07 14:55:54 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.dto.MensajesVo]
+2017-06-07 14:55:54 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 14:55:54 - Found bean property 'mensajeErrorEmailsTo' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'mensajeErrorPath' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'mensajeErrorPathEmail' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'mensajeErrorStoredProcedure' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'mensajeErrorTransferencias' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'mensajeFinProceso' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'mensajeInicioproceso' of type [java.lang.String]
+2017-06-07 14:55:54 - Finished creating instance of bean 'mensajesVo'
+2017-06-07 14:55:54 - Creating shared instance of singleton bean 'consultaDao'
+2017-06-07 14:55:54 - Creating instance of bean 'consultaDao'
+2017-06-07 14:55:54 - Eagerly caching bean 'consultaDao' to allow for resolving potential circular references
+2017-06-07 14:55:54 - Returning cached instance of singleton bean 'dataSource'
+2017-06-07 14:55:54 - Getting BeanInfo for class [com.banorte.reporte.UIF.transferencias.dao.impl.ConsultaDaoImpl]
+2017-06-07 14:55:54 - Caching PropertyDescriptors for class [com.banorte.reporte.UIF.transferencias.dao.impl.ConsultaDaoImpl]
+2017-06-07 14:55:54 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 14:55:54 - Found bean property 'dataSource' of type [javax.sql.DataSource]
+2017-06-07 14:55:54 - Found bean property 'jdbcTemplate' of type [org.springframework.jdbc.core.JdbcTemplate]
+2017-06-07 14:55:54 - Found bean property 'nombreStored' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'parametroEmailsTo' of type [java.lang.String]
+2017-06-07 14:55:54 - Found bean property 'parametroPathReporte' of type [java.lang.String]
+2017-06-07 14:55:55 - Invoking afterPropertiesSet() on bean with name 'consultaDao'
+2017-06-07 14:55:55 - Finished creating instance of bean 'consultaDao'
+2017-06-07 14:55:55 - Creating shared instance of singleton bean 'reporteService'
+2017-06-07 14:55:55 - Creating instance of bean 'reporteService'
+2017-06-07 14:55:55 - Eagerly caching bean 'reporteService' to allow for resolving potential circular references
+2017-06-07 14:55:55 - Finished creating instance of bean 'reporteService'
+2017-06-07 14:55:55 - Creating shared instance of singleton bean 'transferenciasService'
+2017-06-07 14:55:55 - Creating instance of bean 'transferenciasService'
+2017-06-07 14:55:55 - Eagerly caching bean 'transferenciasService' to allow for resolving potential circular references
+2017-06-07 14:55:55 - Returning cached instance of singleton bean 'consultaDao'
+2017-06-07 14:55:55 - Getting BeanInfo for class [com.banorte.reporte.mensual.rentabilidad.services.impl.TransferenciasServiceImpl]
+2017-06-07 14:55:55 - Caching PropertyDescriptors for class [com.banorte.reporte.mensual.rentabilidad.services.impl.TransferenciasServiceImpl]
+2017-06-07 14:55:55 - Found bean property 'class' of type [java.lang.Class]
+2017-06-07 14:55:55 - Found bean property 'consultaDao' of type [com.banorte.reporte.UIF.transferencias.dao.IConsultaDao]
+2017-06-07 14:55:55 - Found bean property 'generalMailSender' of type [com.banorte.reporte.UIF.transferencias.services.mail.GeneralMailSender]
+2017-06-07 14:55:55 - Found bean property 'mailSender' of type [com.banorte.reporte.UIF.transferencias.services.mail.MailSender]
+2017-06-07 14:55:55 - Found bean property 'mensajesVo' of type [com.banorte.reporte.UIF.transferencias.dto.MensajesVo]
+2017-06-07 14:55:55 - Found bean property 'reporteService' of type [com.banorte.reporte.UIF.transferencias.services.IReporteService]
+2017-06-07 14:55:55 - Returning cached instance of singleton bean 'mailSender'
+2017-06-07 14:55:55 - Returning cached instance of singleton bean 'generalMailSender'
+2017-06-07 14:55:55 - Returning cached instance of singleton bean 'mensajesVo'
+2017-06-07 14:55:55 - Returning cached instance of singleton bean 'reporteService'
+2017-06-07 14:55:55 - Finished creating instance of bean 'transferenciasService'
+2017-06-07 14:55:55 - Unable to locate LifecycleProcessor with name 'lifecycleProcessor': using default [org.springframework.context.support.DefaultLifecycleProcessor@64883c]
+2017-06-07 14:55:55 - Returning cached instance of singleton bean 'lifecycleProcessor'
+2017-06-07 14:55:55 - Publishing event in org.springframework.context.support.FileSystemXmlApplicationContext@3e86d0: org.springframework.context.event.ContextRefreshedEvent[source=org.springframework.context.support.FileSystemXmlApplicationContext@3e86d0: startup date [Wed Jun 07 14:55:54 CDT 2017]; root of context hierarchy]
+2017-06-07 14:55:55 - **********************************************************************************************************
+2017-06-07 14:55:55 - *****************************          PROCESO MENSUAL GENERADOR DEL REPORTE DE RENTABILIDAD   ***********
+2017-06-07 14:55:55 - **********************************************************************************************************
+2017-06-07 14:55:55 - Returning cached instance of singleton bean 'transferenciasService'
+2017-06-07 14:55:55 - Executing prepared SQL query
+2017-06-07 14:55:55 - Executing prepared SQL statement [select VALOR from SC_PARAMETRO where ID_PARAMETRO = ?]
+2017-06-07 14:55:55 - Fetching JDBC Connection from DataSource
+2017-06-07 14:55:55 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2017-06-07 14:55:55 - Setting SQL statement parameter value: column index 1, parameter value [PATH_REPORTE_RENTABILIDAD], value class [java.lang.String], SQL type unknown
+2017-06-07 14:55:55 - Returning JDBC Connection to DataSource
+2017-06-07 14:55:55 - Executing prepared SQL query
+2017-06-07 14:55:55 - Executing prepared SQL statement [select VALOR from SC_PARAMETRO where ID_PARAMETRO = ?]
+2017-06-07 14:55:55 - Fetching JDBC Connection from DataSource
+2017-06-07 14:55:55 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2017-06-07 14:55:55 - Setting SQL statement parameter value: column index 1, parameter value [EMAILS_REPORTE_RENTABILIDAD], value class [java.lang.String], SQL type unknown
+2017-06-07 14:55:55 - Returning JDBC Connection to DataSource
+2017-06-07 14:55:55 - --> No se ha definido el path donde se almacenará el reporte mensual de Rentabilidad.
+2017-06-07 14:55:55 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2017-06-07 14:55:55 - getFrom(): IxeCambios@ixe.com.mx
+2017-06-07 14:55:55 - getTo(): jesus.cortes@banorte.com
+2017-06-07 14:55:55 - getSubject(): Notificación del proceso de reporte mensual de Rentabilidad.
+2017-06-07 14:55:55 - jesus.cortes@banorte.com
+2017-06-07 14:55:55 - ResourceManager : found reporteDiarioTransferenciasTemplate.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2017-06-07 14:55:56 - **********************************************************************************************************
+2017-06-07 14:55:56 - ******************************     FIN DE PROCESO MENSUAL DE RENTABILIDAD     **************************
+2017-06-07 14:55:56 - **********************************************************************************************************
+2017-06-07 14:55:56 - 
+
+
+

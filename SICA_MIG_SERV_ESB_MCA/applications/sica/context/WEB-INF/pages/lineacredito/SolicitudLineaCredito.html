@@ -1,0 +1,71 @@
+<!-- $Id: SolicitudLineaCredito.html,v 1.16.72.1 2016/07/13 21:46:43 mejiar Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Solicitud de L&iacute;neas de Cr&eacute;dito</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr valign="top">
+            <td width="200">
+                <form jwcid="@Form" listener="ognl: listeners.fetch" delegate="ognl: beans.delegate">
+                	<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+                	<table jwcid="@ActionPortletBorder" title="ognl: titleActionPortletBorder">
+					    <fieldset class="normal">
+							<legend class="legend">Empresas</legend>
+                            <font class="normal"><u>R</u>az&oacute;n Social:</font><br />
+                            <input class="uppercase" type="text" jwcid="razonSocialTextField@ixe:UppercaseTextField" accesskey="R" value="ognl: razonSocial" size=40/><br />
+                        </fieldset>
+                        <span jwcid="@contrib:FormConditional" condition="ognl: !modoMesaCambio">
+	                        <fieldset class="normal">
+	                            <legend class="legend">Personas F&iacute;sicas</legend>
+	                            <font class="normal">Apellido <u>P</u>aterno:</font><br />
+	                            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" accesskey="P" value="ognl: paterno" size="40" /><br />
+	                            <font class="normal">Apellido <u>M</u>aterno:</font><br />
+	                            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" accesskey="M" value="ognl: materno" size="40" /><br />
+	                            <font class="normal"><u>N</u>ombre:</font><br />
+	                            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" value="ognl: nombre" accesskey="N" size="40" /><br />
+	                        </fieldset>
+                            <fieldset class="normal">
+                            	<legend class="legend">Ambas</legend>
+                            	<font class="normal">Cuen<u>t</u>a / Contrato: <br>(sin omitir caracteres)</font><br />
+	                            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" accesskey="T" value="ognl: noCuenta" size="40" /><br />
+	                            <input type="checkbox" jwcid="@Checkbox" selected="ognl: cuentasSubordinados" accesskey="B"/><u>B</u>uscar en todas las cuentas de mi jerarqu&iacute;a
+        	                </fieldset>
+                        </span>
+                        <br />
+                        <div align="center">
+                            <input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+                        </div>
+                    </table>
+                </form>
+            </td>
+            <td width="1%">&nbsp;</td>
+            <td>
+                <span jwcid="@Conditional" condition="ognl: corporativos.size() &gt; 0">
+                <table jwcid="@ActionPortletBorder" title="Clientes">
+                    <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "Raz&oacute;n Social / Nombre Corto", "&nbsp;", "&nbsp;" }' columnCount="3" width="100%">
+                        <tr jwcid="forCorporativos@Foreach" source="ognl: corporativos" element="tr" class="ognl: beans.evenOdd.next">
+                            <td class="normal" align="left">
+                            	<span jwcid="@Insert" value='ognl: components.forCorporativos.value.nombreCompleto' raw="yes" />
+                            </td>
+                            <td class="normal" align="center">
+                            	<a jwcid="@DirectLink" listener="ognl:listeners.editar" parameters="ognl: {components.forCorporativos.value.idPersona, components.forCorporativos.value.nombreCompleto}" onClick="fnShowWaitImage();">
+		   	            		    Solicitar / Consultar L&iacute;nea de Cr&eacute;dito
+ 	    	    		    	</a>
+                            </td>
+                            <td class="normal" align="center">
+                            	<a jwcid="@DirectLink" listener="ognl:listeners.ver" parameters="ognl: {components.forCorporativos.value.idPersona, components.forCorporativos.value.nombreCompleto}" onClick="fnShowWaitImage();">
+		   	            		    Revisar Usos por Fecha Valor
+ 	    	    		    	</a>
+                            </td>
+                        </tr>
+                    </table>
+                </table>
+                </span>
+                &nbsp;
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

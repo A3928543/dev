@@ -1,0 +1,201 @@
+2016-03-17 12:29:01 - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@253498: startup date [Thu Mar 17 12:29:01 CST 2016]; root of context hierarchy
+2016-03-17 12:29:01 - Loading XML bean definitions from file [C:\banorte\WorkspaceBanorteProc_1_6\DetallesDealsH2H\config\applicationContext.xml]
+2016-03-17 12:29:01 - Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2016-03-17 12:29:01 - Loading schema mappings from [META-INF/spring.schemas]
+2016-03-17 12:29:01 - Loaded schema mappings: {http://www.springframework.org/schema/lang/spring-lang.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.5.xsd=org/springframework/scripting/config/spring-lang-2.5.xsd, http://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd, http://www.springframework.org/schema/context/spring-context.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/util/spring-util-3.0.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.0.xsd=org/springframework/beans/factory/xml/spring-util-2.0.xsd, http://www.springframework.org/schema/task/spring-task-3.0.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.5.xsd=org/springframework/beans/factory/xml/spring-util-2.5.xsd, http://www.springframework.org/schema/tool/spring-tool-3.0.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.0.xsd=org/springframework/transaction/config/spring-tx-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.0.xsd=org/springframework/beans/factory/xml/spring-tool-2.0.xsd, http://www.springframework.org/schema/task/spring-task.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/context/spring-context-3.0.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.5.xsd=org/springframework/transaction/config/spring-tx-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-2.0.xsd=org/springframework/beans/factory/xml/spring-beans-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.5.xsd=org/springframework/beans/factory/xml/spring-tool-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/beans/spring-beans-2.5.xsd=org/springframework/beans/factory/xml/spring-beans-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/tool/spring-tool.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.0.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop-3.0.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.0.xsd=org/springframework/ejb/config/spring-jee-2.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.0.xsd=org/springframework/aop/config/spring-aop-2.0.xsd, http://www.springframework.org/schema/tx/spring-tx-3.0.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.5.xsd=org/springframework/ejb/config/spring-jee-2.5.xsd, http://www.springframework.org/schema/aop/spring-aop-2.5.xsd=org/springframework/aop/config/spring-aop-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-3.0.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-3.0.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.0.xsd=org/springframework/scripting/config/spring-lang-2.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/util/spring-util.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd}
+2016-03-17 12:29:01 - Found XML schema [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-3.0.xsd
+2016-03-17 12:29:01 - Found XML schema [http://www.springframework.org/schema/context/spring-context-3.0.xsd] in classpath: org/springframework/context/config/spring-context-3.0.xsd
+2016-03-17 12:29:01 - Found XML schema [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-tool-3.0.xsd
+2016-03-17 12:29:01 - Loading bean definitions
+2016-03-17 12:29:02 - Loaded NamespaceHandler mappings: {http://www.springframework.org/schema/p=org.springframework.beans.factory.xml.SimplePropertyNamespaceHandler, http://www.springframework.org/schema/util=org.springframework.beans.factory.xml.UtilNamespaceHandler, http://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandler, http://www.springframework.org/schema/aop=org.springframework.aop.config.AopNamespaceHandler, http://www.springframework.org/schema/jdbc=org.springframework.jdbc.config.JdbcNamespaceHandler, http://www.springframework.org/schema/tx=org.springframework.transaction.config.TxNamespaceHandler, http://www.springframework.org/schema/task=org.springframework.scheduling.config.TaskNamespaceHandler, http://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandler, http://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler}
+2016-03-17 12:29:02 - Loaded 9 bean definitions from location pattern [config/applicationContext.xml]
+2016-03-17 12:29:02 - Bean factory for org.springframework.context.support.FileSystemXmlApplicationContext@253498: org.springframework.beans.factory.support.DefaultListableBeanFactory@1ab28fe: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailSender,mensajesVo,sicaDao,productosFxDao,enlaceUsdDao,h2hService]; root of factory hierarchy
+2016-03-17 12:29:02 - Creating shared instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-03-17 12:29:02 - Creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-03-17 12:29:02 - Eagerly caching bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0' to allow for resolving potential circular references
+2016-03-17 12:29:02 - Finished creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-03-17 12:29:02 - Loading properties file from file [C:\banorte\WorkspaceBanorteProc_1_6\DetallesDealsH2H\config\config.properties]
+2016-03-17 12:29:02 - Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@14c194d]
+2016-03-17 12:29:02 - Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@1989f84]
+2016-03-17 12:29:02 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1ab28fe: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailSender,mensajesVo,sicaDao,productosFxDao,enlaceUsdDao,h2hService]; root of factory hierarchy
+2016-03-17 12:29:02 - Returning cached instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-03-17 12:29:02 - Creating shared instance of singleton bean 'javaMailSender'
+2016-03-17 12:29:02 - Creating instance of bean 'javaMailSender'
+2016-03-17 12:29:02 - Eagerly caching bean 'javaMailSender' to allow for resolving potential circular references
+2016-03-17 12:29:02 - Finished creating instance of bean 'javaMailSender'
+2016-03-17 12:29:02 - Creating shared instance of singleton bean 'velocityEngine'
+2016-03-17 12:29:02 - Creating instance of bean 'velocityEngine'
+2016-03-17 12:29:02 - Eagerly caching bean 'velocityEngine' to allow for resolving potential circular references
+2016-03-17 12:29:02 - Invoking afterPropertiesSet() on bean with name 'velocityEngine'
+2016-03-17 12:29:02 - Resource loader path [config/] resolved to file [C:\banorte\WorkspaceBanorteProc_1_6\DetallesDealsH2H\config]
+2016-03-17 12:29:02 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2016-03-17 12:29:02 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2016-03-17 12:29:02 - LogSystem has been deprecated. Please use a LogChute implementation.
+2016-03-17 12:29:02 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2016-03-17 12:29:02 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2016-03-17 12:29:02 - Do unicode file recognition:  false
+2016-03-17 12:29:02 - FileResourceLoader : adding path 'C:\banorte\WorkspaceBanorteProc_1_6\DetallesDealsH2H\config'
+2016-03-17 12:29:02 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2016-03-17 12:29:02 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2016-03-17 12:29:02 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2016-03-17 12:29:02 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2016-03-17 12:29:02 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2016-03-17 12:29:02 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2016-03-17 12:29:02 - Created '20' parsers.
+2016-03-17 12:29:02 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2016-03-17 12:29:02 - Velocimacro : Default library not found.
+2016-03-17 12:29:02 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2016-03-17 12:29:02 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2016-03-17 12:29:02 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2016-03-17 12:29:02 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2016-03-17 12:29:02 - Finished creating instance of bean 'velocityEngine'
+2016-03-17 12:29:02 - Creating shared instance of singleton bean 'mailSender'
+2016-03-17 12:29:02 - Creating instance of bean 'mailSender'
+2016-03-17 12:29:02 - Eagerly caching bean 'mailSender' to allow for resolving potential circular references
+2016-03-17 12:29:02 - Returning cached instance of singleton bean 'velocityEngine'
+2016-03-17 12:29:02 - Returning cached instance of singleton bean 'javaMailSender'
+2016-03-17 12:29:02 - Finished creating instance of bean 'mailSender'
+2016-03-17 12:29:02 - Creating shared instance of singleton bean 'mensajesVo'
+2016-03-17 12:29:02 - Creating instance of bean 'mensajesVo'
+2016-03-17 12:29:02 - Eagerly caching bean 'mensajesVo' to allow for resolving potential circular references
+2016-03-17 12:29:02 - Finished creating instance of bean 'mensajesVo'
+2016-03-17 12:29:02 - Creating shared instance of singleton bean 'sicaDao'
+2016-03-17 12:29:02 - Creating instance of bean 'sicaDao'
+2016-03-17 12:29:02 - Eagerly caching bean 'sicaDao' to allow for resolving potential circular references
+2016-03-17 12:29:02 - Finished creating instance of bean 'sicaDao'
+2016-03-17 12:29:02 - Creating shared instance of singleton bean 'productosFxDao'
+2016-03-17 12:29:02 - Creating instance of bean 'productosFxDao'
+2016-03-17 12:29:02 - Eagerly caching bean 'productosFxDao' to allow for resolving potential circular references
+2016-03-17 12:29:02 - Finished creating instance of bean 'productosFxDao'
+2016-03-17 12:29:02 - Creating shared instance of singleton bean 'enlaceUsdDao'
+2016-03-17 12:29:02 - Creating instance of bean 'enlaceUsdDao'
+2016-03-17 12:29:02 - Eagerly caching bean 'enlaceUsdDao' to allow for resolving potential circular references
+2016-03-17 12:29:02 - Finished creating instance of bean 'enlaceUsdDao'
+2016-03-17 12:29:02 - Creating shared instance of singleton bean 'h2hService'
+2016-03-17 12:29:02 - Creating instance of bean 'h2hService'
+2016-03-17 12:29:02 - Eagerly caching bean 'h2hService' to allow for resolving potential circular references
+2016-03-17 12:29:02 - Finished creating instance of bean 'h2hService'
+2016-03-17 12:29:02 - Unable to locate LifecycleProcessor with name 'lifecycleProcessor': using default [org.springframework.context.support.DefaultLifecycleProcessor@157c2bd]
+2016-03-17 12:29:02 - Returning cached instance of singleton bean 'lifecycleProcessor'
+2016-03-17 12:29:02 - **********************************************************************************************************
+2016-03-17 12:29:02 - *****************************        PROCESO ENVIO DE OPERACIONES A H2H         **************************
+2016-03-17 12:29:02 - **********************************************************************************************************
+2016-03-17 12:29:02 - **********************************************************************************************************
+2016-03-17 12:29:02 - ********************     FIN DE PROCESO PROCESO ENVIO DE OPERACIONES A H2H     ***************************
+2016-03-17 12:29:02 - **********************************************************************************************************
+2016-03-17 12:29:02 - 
+
+
+
+2016-03-17 13:01:28 - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@253498: startup date [Thu Mar 17 13:01:28 CST 2016]; root of context hierarchy
+2016-03-17 13:01:28 - Loading XML bean definitions from file [C:\banorte\WorkspaceBanorteProc_1_6\DetallesDealsH2H\config\applicationContext.xml]
+2016-03-17 13:01:28 - Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2016-03-17 13:01:28 - Loading schema mappings from [META-INF/spring.schemas]
+2016-03-17 13:01:28 - Loaded schema mappings: {http://www.springframework.org/schema/lang/spring-lang.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.5.xsd=org/springframework/scripting/config/spring-lang-2.5.xsd, http://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd, http://www.springframework.org/schema/context/spring-context.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/util/spring-util-3.0.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.0.xsd=org/springframework/beans/factory/xml/spring-util-2.0.xsd, http://www.springframework.org/schema/task/spring-task-3.0.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.5.xsd=org/springframework/beans/factory/xml/spring-util-2.5.xsd, http://www.springframework.org/schema/tool/spring-tool-3.0.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.0.xsd=org/springframework/transaction/config/spring-tx-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.0.xsd=org/springframework/beans/factory/xml/spring-tool-2.0.xsd, http://www.springframework.org/schema/task/spring-task.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/context/spring-context-3.0.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.5.xsd=org/springframework/transaction/config/spring-tx-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-2.0.xsd=org/springframework/beans/factory/xml/spring-beans-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.5.xsd=org/springframework/beans/factory/xml/spring-tool-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/beans/spring-beans-2.5.xsd=org/springframework/beans/factory/xml/spring-beans-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/tool/spring-tool.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.0.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop-3.0.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.0.xsd=org/springframework/ejb/config/spring-jee-2.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.0.xsd=org/springframework/aop/config/spring-aop-2.0.xsd, http://www.springframework.org/schema/tx/spring-tx-3.0.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.5.xsd=org/springframework/ejb/config/spring-jee-2.5.xsd, http://www.springframework.org/schema/aop/spring-aop-2.5.xsd=org/springframework/aop/config/spring-aop-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-3.0.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-3.0.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.0.xsd=org/springframework/scripting/config/spring-lang-2.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/util/spring-util.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd}
+2016-03-17 13:01:28 - Found XML schema [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-3.0.xsd
+2016-03-17 13:01:28 - Found XML schema [http://www.springframework.org/schema/context/spring-context-3.0.xsd] in classpath: org/springframework/context/config/spring-context-3.0.xsd
+2016-03-17 13:01:28 - Found XML schema [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-tool-3.0.xsd
+2016-03-17 13:01:28 - Loading bean definitions
+2016-03-17 13:01:28 - Loaded NamespaceHandler mappings: {http://www.springframework.org/schema/p=org.springframework.beans.factory.xml.SimplePropertyNamespaceHandler, http://www.springframework.org/schema/util=org.springframework.beans.factory.xml.UtilNamespaceHandler, http://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandler, http://www.springframework.org/schema/aop=org.springframework.aop.config.AopNamespaceHandler, http://www.springframework.org/schema/jdbc=org.springframework.jdbc.config.JdbcNamespaceHandler, http://www.springframework.org/schema/tx=org.springframework.transaction.config.TxNamespaceHandler, http://www.springframework.org/schema/task=org.springframework.scheduling.config.TaskNamespaceHandler, http://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandler, http://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler}
+2016-03-17 13:01:28 - Loaded 9 bean definitions from location pattern [config/applicationContext.xml]
+2016-03-17 13:01:28 - Bean factory for org.springframework.context.support.FileSystemXmlApplicationContext@253498: org.springframework.beans.factory.support.DefaultListableBeanFactory@1ab28fe: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailH2hSender,mensaje,sicaDao,productosFxDao,enlaceUsdDao,h2hService]; root of factory hierarchy
+2016-03-17 13:01:28 - Creating shared instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-03-17 13:01:28 - Creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-03-17 13:01:28 - Eagerly caching bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0' to allow for resolving potential circular references
+2016-03-17 13:01:28 - Finished creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-03-17 13:01:28 - Loading properties file from file [C:\banorte\WorkspaceBanorteProc_1_6\DetallesDealsH2H\config.properties]
+2016-03-17 13:01:28 - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1ab28fe: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailH2hSender,mensaje,sicaDao,productosFxDao,enlaceUsdDao,h2hService]; root of factory hierarchy
+2016-03-17 13:02:26 - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@253498: startup date [Thu Mar 17 13:02:26 CST 2016]; root of context hierarchy
+2016-03-17 13:02:26 - Loading XML bean definitions from file [C:\banorte\WorkspaceBanorteProc_1_6\DetallesDealsH2H\config\applicationContext.xml]
+2016-03-17 13:02:26 - Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2016-03-17 13:02:26 - Loading schema mappings from [META-INF/spring.schemas]
+2016-03-17 13:02:26 - Loaded schema mappings: {http://www.springframework.org/schema/lang/spring-lang.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.5.xsd=org/springframework/scripting/config/spring-lang-2.5.xsd, http://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd, http://www.springframework.org/schema/context/spring-context.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/util/spring-util-3.0.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.0.xsd=org/springframework/beans/factory/xml/spring-util-2.0.xsd, http://www.springframework.org/schema/task/spring-task-3.0.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.5.xsd=org/springframework/beans/factory/xml/spring-util-2.5.xsd, http://www.springframework.org/schema/tool/spring-tool-3.0.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.0.xsd=org/springframework/transaction/config/spring-tx-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.0.xsd=org/springframework/beans/factory/xml/spring-tool-2.0.xsd, http://www.springframework.org/schema/task/spring-task.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/context/spring-context-3.0.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.5.xsd=org/springframework/transaction/config/spring-tx-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-2.0.xsd=org/springframework/beans/factory/xml/spring-beans-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.5.xsd=org/springframework/beans/factory/xml/spring-tool-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/beans/spring-beans-2.5.xsd=org/springframework/beans/factory/xml/spring-beans-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/tool/spring-tool.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.0.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop-3.0.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.0.xsd=org/springframework/ejb/config/spring-jee-2.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.0.xsd=org/springframework/aop/config/spring-aop-2.0.xsd, http://www.springframework.org/schema/tx/spring-tx-3.0.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.5.xsd=org/springframework/ejb/config/spring-jee-2.5.xsd, http://www.springframework.org/schema/aop/spring-aop-2.5.xsd=org/springframework/aop/config/spring-aop-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-3.0.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-3.0.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.0.xsd=org/springframework/scripting/config/spring-lang-2.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/util/spring-util.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd}
+2016-03-17 13:02:26 - Found XML schema [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-3.0.xsd
+2016-03-17 13:02:27 - Found XML schema [http://www.springframework.org/schema/context/spring-context-3.0.xsd] in classpath: org/springframework/context/config/spring-context-3.0.xsd
+2016-03-17 13:02:27 - Found XML schema [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-tool-3.0.xsd
+2016-03-17 13:02:27 - Loading bean definitions
+2016-03-17 13:02:27 - Loaded NamespaceHandler mappings: {http://www.springframework.org/schema/p=org.springframework.beans.factory.xml.SimplePropertyNamespaceHandler, http://www.springframework.org/schema/util=org.springframework.beans.factory.xml.UtilNamespaceHandler, http://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandler, http://www.springframework.org/schema/aop=org.springframework.aop.config.AopNamespaceHandler, http://www.springframework.org/schema/jdbc=org.springframework.jdbc.config.JdbcNamespaceHandler, http://www.springframework.org/schema/tx=org.springframework.transaction.config.TxNamespaceHandler, http://www.springframework.org/schema/task=org.springframework.scheduling.config.TaskNamespaceHandler, http://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandler, http://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler}
+2016-03-17 13:02:27 - Loaded 9 bean definitions from location pattern [config/applicationContext.xml]
+2016-03-17 13:02:27 - Bean factory for org.springframework.context.support.FileSystemXmlApplicationContext@253498: org.springframework.beans.factory.support.DefaultListableBeanFactory@1ab28fe: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailH2hSender,mensaje,sicaDao,productosFxDao,enlaceUsdDao,h2hService]; root of factory hierarchy
+2016-03-17 13:02:27 - Creating shared instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-03-17 13:02:27 - Creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-03-17 13:02:27 - Eagerly caching bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0' to allow for resolving potential circular references
+2016-03-17 13:02:27 - Finished creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-03-17 13:02:27 - Loading properties file from file [C:\banorte\WorkspaceBanorteProc_1_6\DetallesDealsH2H\config\config.properties]
+2016-03-17 13:02:27 - Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@76e369]
+2016-03-17 13:02:27 - Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@1989f84]
+2016-03-17 13:02:27 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1ab28fe: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailH2hSender,mensaje,sicaDao,productosFxDao,enlaceUsdDao,h2hService]; root of factory hierarchy
+2016-03-17 13:02:27 - Returning cached instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-03-17 13:02:27 - Creating shared instance of singleton bean 'javaMailSender'
+2016-03-17 13:02:27 - Creating instance of bean 'javaMailSender'
+2016-03-17 13:02:27 - Eagerly caching bean 'javaMailSender' to allow for resolving potential circular references
+2016-03-17 13:02:27 - Finished creating instance of bean 'javaMailSender'
+2016-03-17 13:02:27 - Creating shared instance of singleton bean 'velocityEngine'
+2016-03-17 13:02:27 - Creating instance of bean 'velocityEngine'
+2016-03-17 13:02:27 - Eagerly caching bean 'velocityEngine' to allow for resolving potential circular references
+2016-03-17 13:02:27 - Invoking afterPropertiesSet() on bean with name 'velocityEngine'
+2016-03-17 13:02:27 - Resource loader path [config/] resolved to file [C:\banorte\WorkspaceBanorteProc_1_6\DetallesDealsH2H\config]
+2016-03-17 13:02:27 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2016-03-17 13:02:27 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2016-03-17 13:02:27 - LogSystem has been deprecated. Please use a LogChute implementation.
+2016-03-17 13:02:27 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2016-03-17 13:02:27 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2016-03-17 13:02:27 - Do unicode file recognition:  false
+2016-03-17 13:02:27 - FileResourceLoader : adding path 'C:\banorte\WorkspaceBanorteProc_1_6\DetallesDealsH2H\config'
+2016-03-17 13:02:27 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2016-03-17 13:02:27 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2016-03-17 13:02:27 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2016-03-17 13:02:27 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2016-03-17 13:02:27 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2016-03-17 13:02:27 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2016-03-17 13:02:27 - Created '20' parsers.
+2016-03-17 13:02:27 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2016-03-17 13:02:27 - Velocimacro : Default library not found.
+2016-03-17 13:02:27 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2016-03-17 13:02:27 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2016-03-17 13:02:27 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2016-03-17 13:02:27 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2016-03-17 13:02:27 - Finished creating instance of bean 'velocityEngine'
+2016-03-17 13:02:27 - Creating shared instance of singleton bean 'mailH2hSender'
+2016-03-17 13:02:27 - Creating instance of bean 'mailH2hSender'
+2016-03-17 13:02:27 - Eagerly caching bean 'mailH2hSender' to allow for resolving potential circular references
+2016-03-17 13:02:27 - Returning cached instance of singleton bean 'velocityEngine'
+2016-03-17 13:02:27 - Returning cached instance of singleton bean 'javaMailSender'
+2016-03-17 13:02:27 - Finished creating instance of bean 'mailH2hSender'
+2016-03-17 13:02:27 - Creating shared instance of singleton bean 'mensaje'
+2016-03-17 13:02:27 - Creating instance of bean 'mensaje'
+2016-03-17 13:02:27 - Eagerly caching bean 'mensaje' to allow for resolving potential circular references
+2016-03-17 13:02:27 - Finished creating instance of bean 'mensaje'
+2016-03-17 13:02:27 - Creating shared instance of singleton bean 'sicaDao'
+2016-03-17 13:02:27 - Creating instance of bean 'sicaDao'
+2016-03-17 13:02:27 - Eagerly caching bean 'sicaDao' to allow for resolving potential circular references
+2016-03-17 13:02:27 - Finished creating instance of bean 'sicaDao'
+2016-03-17 13:02:27 - Creating shared instance of singleton bean 'productosFxDao'
+2016-03-17 13:02:27 - Creating instance of bean 'productosFxDao'
+2016-03-17 13:02:27 - Eagerly caching bean 'productosFxDao' to allow for resolving potential circular references
+2016-03-17 13:02:27 - Finished creating instance of bean 'productosFxDao'
+2016-03-17 13:02:27 - Creating shared instance of singleton bean 'enlaceUsdDao'
+2016-03-17 13:02:27 - Creating instance of bean 'enlaceUsdDao'
+2016-03-17 13:02:27 - Eagerly caching bean 'enlaceUsdDao' to allow for resolving potential circular references
+2016-03-17 13:02:27 - Finished creating instance of bean 'enlaceUsdDao'
+2016-03-17 13:02:27 - Creating shared instance of singleton bean 'h2hService'
+2016-03-17 13:02:27 - Creating instance of bean 'h2hService'
+2016-03-17 13:02:27 - Eagerly caching bean 'h2hService' to allow for resolving potential circular references
+2016-03-17 13:02:27 - Returning cached instance of singleton bean 'sicaDao'
+2016-03-17 13:02:27 - Returning cached instance of singleton bean 'productosFxDao'
+2016-03-17 13:02:27 - Returning cached instance of singleton bean 'enlaceUsdDao'
+2016-03-17 13:02:27 - Returning cached instance of singleton bean 'mailH2hSender'
+2016-03-17 13:02:27 - Returning cached instance of singleton bean 'mensaje'
+2016-03-17 13:02:27 - Finished creating instance of bean 'h2hService'
+2016-03-17 13:02:27 - Unable to locate LifecycleProcessor with name 'lifecycleProcessor': using default [org.springframework.context.support.DefaultLifecycleProcessor@1c5f743]
+2016-03-17 13:02:27 - Returning cached instance of singleton bean 'lifecycleProcessor'
+2016-03-17 13:02:27 - **********************************************************************************************************
+2016-03-17 13:02:27 - *****************************        PROCESO ENVIO DE OPERACIONES A H2H         **************************
+2016-03-17 13:02:27 - **********************************************************************************************************
+2016-03-17 13:02:27 - **********************************************************************************************************
+2016-03-17 13:02:27 - ********************     FIN DE PROCESO PROCESO ENVIO DE OPERACIONES A H2H     ***************************
+2016-03-17 13:02:27 - **********************************************************************************************************
+2016-03-17 13:02:27 - 
+
+
+

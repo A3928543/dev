@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.DealReinicioPosicion"
+        table="SC_DEAL_REINICIO_POSICION"
+        proxy="com.ixe.ods.sica.model.DealReinicioPosicion"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idDealReinicioPosicion"
+            column="ID_DEAL_REINICIO_POSICION"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_DEAL_REINICIO_POSICION_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-DealReinicioPosicion.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="idDeal"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DEAL"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="idCorte"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_CORTE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="idDivisa"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIVISA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="operacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="OPERACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="monto"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambio"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO"
+            not-null="true"
+            unique="false"
+        />
+
+        <many-to-one
+            name="corte"
+            class="com.ixe.ods.sica.model.Corte"
+            cascade="none"
+            outer-join="auto"
+            update="false"
+            insert="false"
+            access="property"
+            column="ID_CORTE"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-DealReinicioPosicion.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findDealReinicioById"><![CDATA[
+            FROM DealReinicioPosicion as drp where drp.idDealReinicioPosicion = ?
+        ]]></query>
+        <query name="findDealReinicioByCorteId"><![CDATA[
+            FROM DealReinicioPosicion as drp where drp.idCorte = ?
+        ]]></query>
+        <query name="findDealReinicio"><![CDATA[
+            FROM DealReinicioPosicion as drp where drp.idCorte = ? and drp.idDivisa=? and operacion = ?
+        ]]></query>
+        <query name="findDealReiniciobyfechaAndDivisa"><![CDATA[
+            FROM DealReinicioPosicion as drp where to_char(drp.corte.fechaAlta, 'dd/MM/yyyy') = ? and drp.idDivisa = ?
+        ]]></query>
+        <query name="findDealReiniciobyfecha"><![CDATA[
+            FROM DealReinicioPosicion as drp where to_char(drp.corte.fechaAlta, 'dd/MM/yyyy') = ? 
+        ]]></query>
+
+</hibernate-mapping>

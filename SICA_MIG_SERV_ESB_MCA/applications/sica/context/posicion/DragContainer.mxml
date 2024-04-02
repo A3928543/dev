@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<view:DragContainer
+    xmlns:mx="http://www.macromedia.com/2003/mxml"
+    xmlns:view="com.ixe.ods.sica.posicion.views.*">
+
+    <mx:HBox>
+        <mx:VBox>
+            <mx:DataGrid id="canalDataGrid" rowCount="4" sortableColumns="false" multipleSelection="true"
+                         dragEnabled="true">
+                <mx:columns>
+                    <mx:Array>
+                        <mx:DataGridColumn columnName="nombre" headerText="Canal"/>
+                    </mx:Array>
+                </mx:columns>
+            </mx:DataGrid>
+
+            <mx:HBox width="100%">
+                <mx:Spacer width="100%"/>
+                <mx:Link id="canalTrashLink" icon="@Embed('resources/trash.gif')" visible="false"/>
+            </mx:HBox>
+        </mx:VBox>
+
+        <mx:VBox>
+            <mx:DataGrid id="productoDataGrid" rowCount="4" sortableColumns="false" multipleSelection="true">
+                <mx:columns>
+                    <mx:Array>
+                        <mx:DataGridColumn columnName="idProducto" headerText="Producto"/>
+                    </mx:Array>
+                </mx:columns>
+            </mx:DataGrid>
+
+            <mx:HBox width="100%">
+                <mx:Spacer width="100%"/>
+                <mx:Link id="productoTrashLink" icon="@Embed('resources/trash.gif')" visible="false"/>
+            </mx:HBox>
+        </mx:VBox>
+    </mx:HBox>
+
+    <mx:Link id="runLink" icon="@Embed('resources/rundatabase.gif')" toolTip="Ejecutar consulta" visible="false"/>
+
+</view:DragContainer>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ConsultaClientes.page,v 1.10.60.1 2013/08/28 23:17:18 mejiar Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.ConsultaClientes">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate"/>
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+
+    <property-specification name="modo" type="java.lang.String" persistent="yes" />
+	<property-specification name="nombre" type="java.lang.String" initial-value="" />
+    <property-specification name="paterno" type="java.lang.String" initial-value="" />
+    <property-specification name="materno" type="java.lang.String" initial-value="" />
+    <property-specification name="razonSocial" type="java.lang.String" initial-value="" />
+    <property-specification name="noCuenta" type="java.lang.String" initial-value="" />
+    <property-specification name="clientes" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+    <property-specification name="tituloActionPB" type="java.lang.String" persistent="yes" />
+    <property-specification name="altaRapidaDeClientesYContratos" type="boolean" persistent="yes" />
+    <property-specification name="cuentasSubordinados" type="boolean" persistent="yes" />	
+	<property-specification name="nombrePromotor" type="java.lang.String" persistent="yes" />
+	<property-specification name="idBloqueo" type="java.lang.Integer" persistent="yes" />
+    <property-specification name="level" type="int" />
+    
+    <context-asset name="searchButton" path="/images/search.gif" />
+
+</page-specification>

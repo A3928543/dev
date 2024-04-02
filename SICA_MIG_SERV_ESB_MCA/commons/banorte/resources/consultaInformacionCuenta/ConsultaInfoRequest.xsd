@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.banorte.com/ws/esb/ConsultaInfoRequest" xmlns:tns="http://www.banorte.com/ws/esb/ConsultaInfoRequest" elementFormDefault="qualified">
+	<xsd:complexType name="ConsultaInfoRequest">
+		<xsd:sequence>
+			<xsd:element name="TipoMovimiento" minOccurs="1" maxOccurs="1" >
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="1"></xsd:maxLength>	
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="NumeroCuenta" minOccurs="1" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="16"></xsd:maxLength>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="FechaInicio" minOccurs="0" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:int">
+						<xsd:pattern value="([0-9]{1,6})"></xsd:pattern>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="FechaFin" minOccurs="0" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:int">
+						<xsd:pattern value="([0-9]{1,6})"></xsd:pattern>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="ClaveServicio" minOccurs="0" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="4"></xsd:maxLength>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ConsultaInformacionCuenta" type="tns:ConsultaInfoRequest"></xsd:element>
+</xsd:schema>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.Divisa"
+        table="SC_DIVISA"
+        proxy="com.ixe.ods.sica.model.Divisa"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idDivisa"
+            column="ID_DIVISA"
+            type="java.lang.String"
+            unsaved-value="0"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Divisa.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="descripcion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="DESCRIPCION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="icono"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ICONO_FNAME"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="idMoneda"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_MONEDA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="orden"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ORDEN"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="tipo"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="grupo"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="GRUPO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="equivalenciaMetal"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="EQUIVALENCIA_METAL"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="divide"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="DIVIDE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="spreadSucursales"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="SPREAD_SUCURSALES"
+            not-null="true"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Divisa.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findAllDivisasByOrdenAlfabetico"><![CDATA[
+            FROM Divisa AS d ORDER BY d.orden
+        ]]></query>
+        <query name="findDivisasNoFrecuentes"><![CDATA[
+            FROM Divisa AS d WHERE d.tipo = 'N' ORDER BY d.orden
+        ]]></query>
+        <query name="findDivisasMetales"><![CDATA[
+            FROM Divisa AS d WHERE d.tipo = 'M' ORDER BY d.orden
+        ]]></query>
+        <query name="findDivisasFrecuentes"><![CDATA[
+            FROM Divisa AS d WHERE d.tipo = 'F' ORDER BY d.orden
+        ]]></query>
+
+</hibernate-mapping>

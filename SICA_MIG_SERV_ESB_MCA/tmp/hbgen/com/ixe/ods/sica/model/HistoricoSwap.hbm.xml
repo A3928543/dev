@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.HistoricoSwap"
+        table="SC_H_SWAP"
+        proxy="com.ixe.ods.sica.model.HistoricoSwap"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idFolioSwap"
+            column="ID_FOLIO_SWAP"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-HistoricoSwap.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="compra"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMPRA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fechaOperacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_OPERACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="folioSwapInicio"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="FOLIO_SWAP_INICIO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="monto"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="montoAsignado"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO_ASIGNADO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="status"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATUS"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoSwap"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_SWAP"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="contratoSica"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NO_CUENTA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="divisa"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIVISA"
+            not-null="true"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-HistoricoSwap.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

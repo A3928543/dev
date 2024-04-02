@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: ContrapartesWindow.mxml,v 1.2 2008/02/22 18:25:49 ccovian Exp $ -->
+<mx:TitleWindow xmlns:mx="http://www.macromedia.com/2003/mxml" title="Reverso por equivocaci&#243;n en el Cliente."
+				creationComplete="inicializar()" width="800" height="480"
+                marginTop="10" marginRight="10" marginLeft="10" marginBottom="10">
+
+	<mx:Script>
+	<![CDATA[
+		import mx.controls.Alert;
+
+		var contrapartesVisibles : Array;
+		var contrapartes : Array;
+		var letras : Array;
+
+	    private function inicializar() : Void
+	    {
+	    	contrapartes = new Array();
+	    	contrapartesVisibles = new Array();
+			letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
+                'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+        	reversosService.findContrapartes();
+	    }
+
+	    private function respFindContrapartes(ctps : Array ) : Void
+	    {
+	    	contrapartes = ctps;
+	    	filtrarContrapartes('0');
+	    }
+
+	    /**
+	     * Recorre la lista de contrapartes. Las contrapartes cuyo nombreCompleto comience con la letra especificada, son
+	     * agregadas a la lista contrapartesVisibles. Si letra es '0', contrapartesVisibles tendr&#225; todos los objetos
+	     * de la lista contrapartes. (S&#243;lo en modo Contado).
+	     *
+	     * @param letra La letra para filtrar las contrapartes.
+	     */
+		private function filtrarContrapartes(letra : String) : Void
+		{
+			if (letra == '0') {
+				contrapartesVisibles = contrapartes;
+			}
+			else {
+				contrapartesVisibles = new Array();
+				var i : Number;
+				for (i = 0; i < contrapartes.length; i++) {
+					if (contrapartes[i].nombreCompleto.charAt(0) == letra) {
+						contrapartesVisibles[contrapartesVisibles.length] = contrapartes[i];
+					}
+				}
+			}
+		}
+
+        private function aceptar() : Void
+        {
+        	mx.core.Application.application.contratoNuevo =
+                {noCuenta : contrapartesDataGrid.selectedItem.noCuenta,
+                    razonSocial : contrapartesDataGrid.selectedItem.nombreCompleto};
+        	this.deletePopUp();
+        }
+
+        private function cerrar() : Void
+        {
+        	mx.core.Application.application.contratoNuevo = null;
+        	mx.core.Application.application.clienteCheckBox.selected = false;
+            this.deletePopUp();
+        }
+
+    	/**
+	     * Muestra un Alert panel con el mensaje de error.
+	     */
+		private function falla(causa : Object) : Void
+	    {
+	        Alert.show(causa.description, 'Atenci\u00f3n:');
+	    }
+	    ]]>
+	</mx:Script>
+
+    <mx:RemoteObject id="reversosService" source="spring://reversosDelegate" concurrency="last" showBusyCursor="true">
+        <mx:method name="findContrapartes" result="respFindContrapartes(event.result)" fault="falla(event.fault)" />
+    </mx:RemoteObject>
+
+	<mx:VBox width="100%">
+		<mx:HBox>
+			<mx:Repeater id="letrasRepeater" dataProvider="{letras}">
+				<mx:Link id="letraLabel" label="{letrasRepeater.currentItem}" click="filtrarContrapartes(event.target.label)"/>
+			</mx:Repeater>
+			<mx:Link label="Todos" click="filtrarContrapartes('0')" />
+		</mx:HBox>
+	</mx:VBox>
+	<mx:DataGrid id="contrapartesDataGrid" dataProvider="{contrapartesVisibles}" width="100%" height="100%" change="dispatchEvent({type:'contraparteSeleccionada',eventPropCont:contrapartesDataGrid.selectedItem})">
+		<mx:columns>
+			<mx:Array>
+				<mx:DataGridColumn columnName="noCuenta" headerText="No. Contrato" width="100" />
+				<mx:DataGridColumn columnName="nombreCompleto" headerText="Raz&#243;n Social" />
+				<mx:DataGridColumn columnName="claveReuters" headerText="Clave Reuters" width="100" />
+			</mx:Array>
+		</mx:columns>
+	</mx:DataGrid>
+	<mx:ControlBar>
+		<mx:Spacer width="100%" />
+		<mx:Button label="Aceptar" click="aceptar()" enabled="{contrapartesDataGrid.selectedItem != null}" />
+		<mx:Button label="Cancelar" click="cerrar()" />
+	</mx:ControlBar>
+
+</mx:TitleWindow>

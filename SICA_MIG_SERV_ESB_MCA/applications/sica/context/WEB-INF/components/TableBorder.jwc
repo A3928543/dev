@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--$Id: TableBorder.jwc,v 1.9 2008/02/22 18:25:06 ccovian Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<component-specification allow-body="yes" allow-informal-parameters="yes">
+
+    <parameter name="columnCount" type="java.lang.String" direction="in" required="yes"/>
+    <parameter name="subtitles" type="java.util.List" direction="in" />
+    <parameter name="title" type="java.lang.String" direction="in" required="yes" />
+
+    <component id="table" type="Any" inherit-informal-parameters="yes">
+        <static-binding name="element">table</static-binding>
+    </component>
+
+</component-specification>

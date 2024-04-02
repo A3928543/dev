@@ -1,0 +1,25 @@
+<!-- $Id: InfoDeal.html,v 1.9 2008/02/22 18:25:07 ccovian Exp $ -->
+<fieldset class="normal"><legend class="legend"><span jwcid="@Insert" value="Info.:" /></legend>
+<table width="100%">
+<tr class="title">
+<td align="right">No.:</td>
+<td nowrap align="right"><span jwcid="@DisabledField" value='ognl: "<font class=big>" + deal.idDeal + "</font>"' /></td>
+</tr>
+<tr class="title">
+<td align="right">Captura:</td>
+<td nowrap><span jwcid="@DisabledField" value='ognl: "<font class=big>" + page.dateFormat.format(deal.fechaCaptura) + "</font>"' /></td>
+</tr>
+<tr class="title">
+<td align="right">Liquid:</td>
+<td nowrap><span jwcid="@DisabledField" value='ognl: "<font class=big>" + (deal.fechaLiquidacion ? page.dateFormat.format(deal.fechaLiquidacion) : "") + "</font>"' /></td>
+</tr>
+<tr class="title">
+<td nowrap align="right">Operaci&oacute;n:</td>
+<td nowrap><span jwcid="@DisabledField" value='ognl: "<font class=big>" + (deal.detalles.size() == 0 ? "&nbsp;" : (deal.compra ? "COMPRA" : "VENTA")) + "</font>"' /></td>
+</tr>
+<tr class="title">
+<td nowrap align="right">Tipo Valor:</td>
+<td nowrap><span jwcid="@DisabledField" value='ognl: "<font class=big>" + (deal.tipoValor ? deal.descripcionTipoValor : "&nbsp;") + "</font>"' /></td>
+</tr>
+</table>
+</fieldset>

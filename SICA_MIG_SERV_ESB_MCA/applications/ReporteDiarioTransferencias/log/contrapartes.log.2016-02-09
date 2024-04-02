@@ -1,0 +1,600 @@
+2016-02-09 19:14:24 - **********************************************************************************************************
+2016-02-09 19:14:24 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-09 19:14:24 - **********************************************************************************************************
+2016-02-09 19:14:25 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-09 19:14:25 - -->Ha ocurrido un error al solicitar la ejecución del stored procedure del reporte diario de transferencias. <br>Por este motivo, no se realizó la consulta para obtener la información del reporte en cuestión. <br><br>Descripción del error: <br>
+org.springframework.jdbc.BadSqlGrammarException: CallableStatementCallback; bad SQL grammar [{call SC_INSERTA_TRAEXT_ENV()}]; nested exception is java.sql.SQLException: ORA-06550: línea 1, columna 7:
+PLS-00201: identifier 'SC_INSERTA_TRAEXT_ENV' must be declared
+ORA-06550: línea 1, columna 7:
+PL/SQL: Statement ignored
+
+	at org.springframework.jdbc.support.SQLStateSQLExceptionTranslator.doTranslate(SQLStateSQLExceptionTranslator.java:98)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:80)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:80)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:969)
+	at org.springframework.jdbc.core.JdbcTemplate.call(JdbcTemplate.java:1003)
+	at org.springframework.jdbc.object.StoredProcedure.execute(StoredProcedure.java:125)
+	at com.banorte.reporte.diario.transferencias.dao.impl.ConsultaDaoImpl$StoredProcesaTransferencias.execute(ConsultaDaoImpl.java:100)
+	at com.banorte.reporte.diario.transferencias.dao.impl.ConsultaDaoImpl.ejecutarStoredProcedure(ConsultaDaoImpl.java:66)
+	at com.banorte.reporte.diario.transferencias.services.impl.TransferenciasServiceImpl.consultarTransferenciasReporte(TransferenciasServiceImpl.java:56)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.iniciar(ReporteDiarioTransferencias.java:36)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.main(ReporteDiarioTransferencias.java:25)
+Caused by: java.sql.SQLException: ORA-06550: línea 1, columna 7:
+PLS-00201: identifier 'SC_INSERTA_TRAEXT_ENV' must be declared
+ORA-06550: línea 1, columna 7:
+PL/SQL: Statement ignored
+
+	at oracle.jdbc.dbaccess.DBError.throwSqlException(DBError.java:134)
+	at oracle.jdbc.ttc7.TTIoer.processError(TTIoer.java:289)
+	at oracle.jdbc.ttc7.Oall7.receive(Oall7.java:582)
+	at oracle.jdbc.ttc7.TTC7Protocol.doOall7(TTC7Protocol.java:1983)
+	at oracle.jdbc.ttc7.TTC7Protocol.parseExecuteFetch(TTC7Protocol.java:1141)
+	at oracle.jdbc.driver.OracleStatement.executeNonQuery(OracleStatement.java:2149)
+	at oracle.jdbc.driver.OracleStatement.doExecuteOther(OracleStatement.java:2032)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:2894)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:608)
+	at oracle.jdbc.driver.OraclePreparedStatement.execute(OraclePreparedStatement.java:684)
+	at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:169)
+	at org.springframework.jdbc.core.JdbcTemplate$5.doInCallableStatement(JdbcTemplate.java:1005)
+	at org.springframework.jdbc.core.JdbcTemplate$5.doInCallableStatement(JdbcTemplate.java:1)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:953)
+	... 7 more
+2016-02-09 19:14:25 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-09 19:14:25 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-09 19:14:25 - getTo(): vicente.delasancha_praxis@banorte.com
+2016-02-09 19:14:25 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-09 19:14:25 - vicente.delasancha_praxis@banorte.com
+2016-02-09 19:14:25 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha ocurrido un error al solicitar la ejecución del stored procedure del reporte diario de transferencias. <br>Por este motivo, no se realizó la consulta para obtener la información del reporte en cuestión. <br><br>Descripción del error: <br>CallableStatementCallback; bad SQL grammar [{call SC_INSERTA_TRAEXT_ENV()}]; nested exception is java.sql.SQLException: ORA-06550: línea 1, columna 7:
+PLS-00201: identifier 'SC_INSERTA_TRAEXT_ENV' must be declared
+ORA-06550: línea 1, columna 7:
+PL/SQL: Statement ignored
+
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-09 19:14:26 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-09 19:14:26 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-09 19:14:26 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-09 19:14:26 - getTo(): vicente.delasancha_praxis@banorte.com
+2016-02-09 19:14:26 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-09 19:14:26 - vicente.delasancha_praxis@banorte.com
+2016-02-09 19:14:26 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-09 19:14:26 - **********************************************************************************************************
+2016-02-09 19:14:26 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-09 19:14:26 - **********************************************************************************************************
+2016-02-09 19:14:26 - 
+
+
+
+2016-02-09 19:19:15 - **********************************************************************************************************
+2016-02-09 19:19:15 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-09 19:19:15 - **********************************************************************************************************
+2016-02-09 19:19:16 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-09 19:19:19 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-09 19:19:19 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-09 19:19:19 - -->Ha ocurrido un error al consultar las transferencias del reporte diario.  <br><br>Descripción del error: <br>
+java.lang.IllegalArgumentException
+	at java.sql.Date.valueOf(Date.java:138)
+	at oracle.jdbc.driver.OracleStatement.getDateValue(OracleStatement.java:4815)
+	at oracle.jdbc.driver.OracleResultSetImpl.getDate(OracleResultSetImpl.java:651)
+	at org.apache.commons.dbcp.DelegatingResultSet.getDate(DelegatingResultSet.java:206)
+	at com.banorte.reporte.diario.transferencias.dao.impl.ConsultaDaoImpl$ConsultaDatosOperaciones.mapRow(ConsultaDaoImpl.java:131)
+	at com.banorte.reporte.diario.transferencias.dao.impl.ConsultaDaoImpl$ConsultaDatosOperaciones.mapRow(ConsultaDaoImpl.java:1)
+	at org.springframework.jdbc.object.MappingSqlQuery.mapRow(MappingSqlQuery.java:65)
+	at org.springframework.jdbc.object.MappingSqlQueryWithParameters$RowMapperImpl.mapRow(MappingSqlQueryWithParameters.java:115)
+	at org.springframework.jdbc.core.RowMapperResultSetExtractor.extractData(RowMapperResultSetExtractor.java:92)
+	at org.springframework.jdbc.core.RowMapperResultSetExtractor.extractData(RowMapperResultSetExtractor.java:1)
+	at org.springframework.jdbc.core.JdbcTemplate$1.doInPreparedStatement(JdbcTemplate.java:648)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:586)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:636)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:661)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:701)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:112)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:122)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:137)
+	at com.banorte.reporte.diario.transferencias.dao.impl.ConsultaDaoImpl.consultarTransferenciasReporte(ConsultaDaoImpl.java:78)
+	at com.banorte.reporte.diario.transferencias.services.impl.TransferenciasServiceImpl.consultarTransferenciasReporte(TransferenciasServiceImpl.java:71)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.iniciar(ReporteDiarioTransferencias.java:36)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.main(ReporteDiarioTransferencias.java:25)
+2016-02-09 19:19:19 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-09 19:19:19 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-09 19:19:19 - getTo(): vicente.delasancha_praxis@banorte.com
+2016-02-09 19:19:19 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-09 19:19:19 - vicente.delasancha_praxis@banorte.com
+2016-02-09 19:19:19 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha ocurrido un error al consultar las transferencias del reporte diario.  <br><br>Descripción del error: <br>null
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-09 19:19:20 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-09 19:19:20 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-09 19:19:20 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-09 19:19:20 - getTo(): vicente.delasancha_praxis@banorte.com
+2016-02-09 19:19:20 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-09 19:19:20 - vicente.delasancha_praxis@banorte.com
+2016-02-09 19:19:20 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-09 19:19:20 - **********************************************************************************************************
+2016-02-09 19:19:20 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-09 19:19:20 - **********************************************************************************************************
+2016-02-09 19:19:20 - 
+
+
+
+2016-02-09 19:21:58 - **********************************************************************************************************
+2016-02-09 19:21:58 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-09 19:21:58 - **********************************************************************************************************
+2016-02-09 19:21:59 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-09 19:22:02 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-09 19:22:02 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-09 19:22:02 - -->Ha ocurrido un error al consultar las transferencias del reporte diario.  <br><br>Descripción del error: <br>
+java.lang.IllegalArgumentException
+	at java.sql.Date.valueOf(Date.java:138)
+	at oracle.jdbc.driver.OracleStatement.getDateValue(OracleStatement.java:4815)
+	at oracle.jdbc.driver.OracleResultSetImpl.getDate(OracleResultSetImpl.java:651)
+	at org.apache.commons.dbcp.DelegatingResultSet.getDate(DelegatingResultSet.java:206)
+	at com.banorte.reporte.diario.transferencias.dao.impl.ConsultaDaoImpl$ConsultaDatosOperaciones.mapRow(ConsultaDaoImpl.java:131)
+	at com.banorte.reporte.diario.transferencias.dao.impl.ConsultaDaoImpl$ConsultaDatosOperaciones.mapRow(ConsultaDaoImpl.java:1)
+	at org.springframework.jdbc.object.MappingSqlQuery.mapRow(MappingSqlQuery.java:65)
+	at org.springframework.jdbc.object.MappingSqlQueryWithParameters$RowMapperImpl.mapRow(MappingSqlQueryWithParameters.java:115)
+	at org.springframework.jdbc.core.RowMapperResultSetExtractor.extractData(RowMapperResultSetExtractor.java:92)
+	at org.springframework.jdbc.core.RowMapperResultSetExtractor.extractData(RowMapperResultSetExtractor.java:1)
+	at org.springframework.jdbc.core.JdbcTemplate$1.doInPreparedStatement(JdbcTemplate.java:648)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:586)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:636)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:661)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:701)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:112)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:122)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:137)
+	at com.banorte.reporte.diario.transferencias.dao.impl.ConsultaDaoImpl.consultarTransferenciasReporte(ConsultaDaoImpl.java:78)
+	at com.banorte.reporte.diario.transferencias.services.impl.TransferenciasServiceImpl.consultarTransferenciasReporte(TransferenciasServiceImpl.java:71)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.iniciar(ReporteDiarioTransferencias.java:36)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.main(ReporteDiarioTransferencias.java:25)
+2016-02-09 19:22:02 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-09 19:22:02 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-09 19:22:02 - getTo(): vicente.delasancha_praxis@banorte.com
+2016-02-09 19:22:02 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-09 19:22:02 - vicente.delasancha_praxis@banorte.com
+2016-02-09 19:22:02 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha ocurrido un error al consultar las transferencias del reporte diario.  <br><br>Descripción del error: <br>null
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-09 19:22:02 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-09 19:22:02 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-09 19:22:02 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-09 19:22:02 - getTo(): vicente.delasancha_praxis@banorte.com
+2016-02-09 19:22:02 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-09 19:22:02 - vicente.delasancha_praxis@banorte.com
+2016-02-09 19:22:02 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-09 19:22:02 - **********************************************************************************************************
+2016-02-09 19:22:02 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-09 19:22:02 - **********************************************************************************************************
+2016-02-09 19:22:02 - 
+
+
+
+2016-02-09 19:28:20 - **********************************************************************************************************
+2016-02-09 19:28:20 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-09 19:28:20 - **********************************************************************************************************
+2016-02-09 19:28:20 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-09 19:28:24 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-09 19:28:24 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-09 19:28:24 - -->Ha ocurrido un error al consultar las transferencias del reporte diario.  <br><br>Descripción del error: <br>
+java.lang.IllegalArgumentException
+	at java.sql.Date.valueOf(Date.java:138)
+	at oracle.jdbc.driver.OracleStatement.getDateValue(OracleStatement.java:4815)
+	at oracle.jdbc.driver.OracleResultSetImpl.getDate(OracleResultSetImpl.java:651)
+	at org.apache.commons.dbcp.DelegatingResultSet.getDate(DelegatingResultSet.java:206)
+	at com.banorte.reporte.diario.transferencias.dao.impl.ConsultaDaoImpl$ConsultaDatosOperaciones.mapRow(ConsultaDaoImpl.java:131)
+	at com.banorte.reporte.diario.transferencias.dao.impl.ConsultaDaoImpl$ConsultaDatosOperaciones.mapRow(ConsultaDaoImpl.java:1)
+	at org.springframework.jdbc.object.MappingSqlQuery.mapRow(MappingSqlQuery.java:65)
+	at org.springframework.jdbc.object.MappingSqlQueryWithParameters$RowMapperImpl.mapRow(MappingSqlQueryWithParameters.java:115)
+	at org.springframework.jdbc.core.RowMapperResultSetExtractor.extractData(RowMapperResultSetExtractor.java:92)
+	at org.springframework.jdbc.core.RowMapperResultSetExtractor.extractData(RowMapperResultSetExtractor.java:1)
+	at org.springframework.jdbc.core.JdbcTemplate$1.doInPreparedStatement(JdbcTemplate.java:648)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:586)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:636)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:661)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:701)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:112)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:122)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:137)
+	at com.banorte.reporte.diario.transferencias.dao.impl.ConsultaDaoImpl.consultarTransferenciasReporte(ConsultaDaoImpl.java:78)
+	at com.banorte.reporte.diario.transferencias.services.impl.TransferenciasServiceImpl.consultarTransferenciasReporte(TransferenciasServiceImpl.java:71)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.iniciar(ReporteDiarioTransferencias.java:36)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.main(ReporteDiarioTransferencias.java:25)
+2016-02-09 19:28:24 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-09 19:28:24 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-09 19:28:24 - getTo(): vicente.delasancha_praxis@banorte.com
+2016-02-09 19:28:24 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-09 19:28:24 - vicente.delasancha_praxis@banorte.com
+2016-02-09 19:28:24 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha ocurrido un error al consultar las transferencias del reporte diario.  <br><br>Descripción del error: <br>null
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-09 19:28:24 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-09 19:28:24 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-09 19:28:24 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-09 19:28:24 - getTo(): vicente.delasancha_praxis@banorte.com
+2016-02-09 19:28:24 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-09 19:28:24 - vicente.delasancha_praxis@banorte.com
+2016-02-09 19:28:24 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-09 19:28:24 - **********************************************************************************************************
+2016-02-09 19:28:24 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-09 19:28:24 - **********************************************************************************************************
+2016-02-09 19:28:24 - 
+
+
+
+2016-02-09 19:31:43 - **********************************************************************************************************
+2016-02-09 19:31:43 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-09 19:31:43 - **********************************************************************************************************
+2016-02-09 19:31:44 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-09 19:31:47 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-09 19:31:47 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-09 19:31:47 - -->Ha ocurrido un error al consultar las transferencias del reporte diario.  <br><br>Descripción del error: <br>
+java.lang.NullPointerException
+	at com.banorte.reporte.diario.transferencias.dao.impl.ConsultaDaoImpl$ConsultaDatosOperaciones.mapRow(ConsultaDaoImpl.java:131)
+	at com.banorte.reporte.diario.transferencias.dao.impl.ConsultaDaoImpl$ConsultaDatosOperaciones.mapRow(ConsultaDaoImpl.java:1)
+	at org.springframework.jdbc.object.MappingSqlQuery.mapRow(MappingSqlQuery.java:65)
+	at org.springframework.jdbc.object.MappingSqlQueryWithParameters$RowMapperImpl.mapRow(MappingSqlQueryWithParameters.java:115)
+	at org.springframework.jdbc.core.RowMapperResultSetExtractor.extractData(RowMapperResultSetExtractor.java:92)
+	at org.springframework.jdbc.core.RowMapperResultSetExtractor.extractData(RowMapperResultSetExtractor.java:1)
+	at org.springframework.jdbc.core.JdbcTemplate$1.doInPreparedStatement(JdbcTemplate.java:648)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:586)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:636)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:661)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:701)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:112)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:122)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:137)
+	at com.banorte.reporte.diario.transferencias.dao.impl.ConsultaDaoImpl.consultarTransferenciasReporte(ConsultaDaoImpl.java:78)
+	at com.banorte.reporte.diario.transferencias.services.impl.TransferenciasServiceImpl.consultarTransferenciasReporte(TransferenciasServiceImpl.java:71)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.iniciar(ReporteDiarioTransferencias.java:36)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.main(ReporteDiarioTransferencias.java:25)
+2016-02-09 19:31:47 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-09 19:31:47 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-09 19:31:47 - getTo(): vicente.delasancha_praxis@banorte.com
+2016-02-09 19:31:47 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-09 19:31:47 - vicente.delasancha_praxis@banorte.com
+2016-02-09 19:31:47 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha ocurrido un error al consultar las transferencias del reporte diario.  <br><br>Descripción del error: <br>null
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-09 19:31:47 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-09 19:31:47 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-09 19:31:47 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-09 19:31:47 - getTo(): vicente.delasancha_praxis@banorte.com
+2016-02-09 19:31:47 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-09 19:31:47 - vicente.delasancha_praxis@banorte.com
+2016-02-09 19:31:47 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-09 19:31:48 - **********************************************************************************************************
+2016-02-09 19:31:48 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-09 19:31:48 - **********************************************************************************************************
+2016-02-09 19:31:48 - 
+
+
+
+2016-02-09 19:36:00 - **********************************************************************************************************
+2016-02-09 19:36:00 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-09 19:36:00 - **********************************************************************************************************
+2016-02-09 19:36:01 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-09 19:36:05 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-09 19:36:05 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-09 19:36:05 - --> Total de registros encontrados: 12
+
+2016-02-09 19:36:05 - --> Termina consulta de transferencias.
+
+
+2016-02-09 19:36:05 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-09 19:36:05 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-09 19:36:05 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-09 19:36:05 - getTo(): vicente.delasancha_praxis@banorte.com
+2016-02-09 19:36:05 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-09 19:36:05 - vicente.delasancha_praxis@banorte.com
+2016-02-09 19:36:05 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-09 19:36:05 - **********************************************************************************************************
+2016-02-09 19:36:05 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-09 19:36:05 - **********************************************************************************************************
+2016-02-09 19:36:05 - 
+
+
+
+2016-02-09 19:37:13 - **********************************************************************************************************
+2016-02-09 19:37:13 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-09 19:37:13 - **********************************************************************************************************
+2016-02-09 19:37:14 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-09 19:37:17 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-09 19:37:17 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-09 19:37:18 - --> Total de registros encontrados: 14
+
+2016-02-09 19:37:18 - --> Termina consulta de transferencias.
+
+
+2016-02-09 19:37:18 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-09 19:37:18 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-09 19:37:18 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-09 19:37:18 - getTo(): vicente.delasancha_praxis@banorte.com
+2016-02-09 19:37:18 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-09 19:37:18 - vicente.delasancha_praxis@banorte.com
+2016-02-09 19:37:18 - Texto correo: <html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	</head>
+    <body>
+	    <table width="100%" cellspacing="10" cellpadding="5">
+	    	  <tr>
+    			<td><img src="cid:headerBanorte"></td>
+    		  </tr>
+    		  <tr></tr>
+    		  <tr></tr>
+			  <tr>
+    			<td align="left" valign="top">
+					<pre style="font-family:'Times New Roman, Times, serif';font-size:14px">
+						<font size="3" face="Courier New, Courier, mono">
+Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+
+Este mensaje es generado de forma autom&aacute;tica, no responda este email.
+</font></pre> 
+	</td>
+  </tr>
+	    </table>
+    </body>
+</html>
+2016-02-09 19:37:18 - **********************************************************************************************************
+2016-02-09 19:37:18 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-09 19:37:18 - **********************************************************************************************************
+2016-02-09 19:37:18 - 
+
+
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.macromedia.com/2003/mxml" creationComplete="findFactoresDivisaActuales()">
+
+    <mx:RemoteObject id="factoresService" source="com.ixe.ods.sica.PizarronDelegate" concurrency="multiple" showBusyCursor="true">
+        <mx:method name="findFactoresDivisaActuales" result="respFindFactoresDivisaActuales(event.result)" fault="falla(event.fault)"/>
+    </mx:RemoteObject>
+
+    <mx:Script>
+        <![CDATA[
+
+        var factoresDivisa : Array;
+
+        function findFactoresDivisaActuales() : Void
+        {
+            factoresService.findFactoresDivisaActuales();
+        }
+
+        function respFindFactoresDivisaActuales(factores : Array) : Void
+        {
+                factoresDivisa = factores;
+        }
+
+        function falla(falla) : Void
+        {
+        }
+
+        ]]>
+    </mx:Script>
+
+    <mx:DataGrid width="620" dataProvider="{factoresDivisa}">
+		<mx:columns>
+			<mx:Array>       
+				<mx:DataGridColumn columnName="idFromDivisa" />
+				<mx:DataGridColumn columnName="idToDivisa" />
+				<mx:DataGridColumn columnName="factor" />
+				<mx:DataGridColumn columnName="sobrePrecioIxe" />
+				<mx:DataGridColumn columnName="carry" />
+				<mx:DataGridColumn columnName="ultimaModificacion" />
+			</mx:Array>   
+		</mx:columns> 
+	</mx:DataGrid>
+	<mx:ControlBar>
+		<mx:HBox>
+            <mx:Button label="Listar" click="findFactoresDivisaActuales()"/>
+			<mx:Button label="Guardar" />
+			<mx:Button label="Limpiar" />
+		</mx:HBox>
+	</mx:ControlBar>
+</mx:Panel>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.PosicionLogCorte"
+        table="SC_POSICION_LOG_CORTES"
+        proxy="com.ixe.ods.sica.model.PosicionLogCorte"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idPosicionLogCorte"
+            column="ID_POSICION_LOG_CORTE"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_POSICION_LOG_CORTES_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-PosicionLogCorte.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="idPosicionLog"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_POSICION_LOG"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="monto"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="montoMn"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO_MN"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="precioReferencia"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="PRECIO_REFERENCIA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoOperacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_OPERACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambioCliente"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO_CLIENTE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambioMesa"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO_MESA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoValor"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_VALOR"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="deal"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DEAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="divisa"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIVISA"
+            unique="false"
+        />
+
+        <property
+            name="corte"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_CORTE"
+            unique="false"
+        />
+
+        <property
+            name="fecha"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA"
+            not-null="false"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-PosicionLogCorte.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findMaxIdPosicionLog"><![CDATA[
+            SELECT max (pl.idPosicionLog) FROM PosicionLogCorte AS pl 
+        ]]></query>
+
+</hibernate-mapping>

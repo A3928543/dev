@@ -1,0 +1,28 @@
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Generaci&oacute;n de movimientos contables</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <script jwcid="@Script" script="/WEB-INF/scripts/Log.script" />
+	<form jwcid="@Form" listener="ognl:listeners.formSubmit" delegate="ognl:beans.delegate">
+         <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level = "1" width="100%"/>
+         <table width="60%" align="center">
+		    <tr>
+		    	<td width="100%">
+					<table jwcid="@ActionPortletBorder" title="Generaci&oacute;n de movimientos contables">
+						<font class=title>
+							<pre>
+								<span jwcid="@Insert" value="ognl: result" raw="yes" />
+							</pre>
+						</font>
+                        <div id="logDiv"></div>
+						<br/>
+						<div align="center"><input jwcid="@ImageSubmit" image="ognl: assets.refreshButton" onclick="showLog(); return fnDisableForm(this.form);"/></div>
+					</table>
+               </td>
+	    	</tr>
+         </table>
+	</form>
+</body>
+</html>

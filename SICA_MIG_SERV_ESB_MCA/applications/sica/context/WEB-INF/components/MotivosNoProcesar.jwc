@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: MotivosNoProcesar.jwc,v 1.7.90.1 2017/07/29 03:18:47 mejiar Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<component-specification class="com.ixe.ods.sica.components.MotivosNoProcesar" allow-body="no">
+
+    <parameter name="deal" direction="in" type="com.ixe.ods.sica.model.Deal" required="yes" />
+    <parameter name="service" direction="in" type="com.ixe.ods.sica.services.PersonaService" required="yes" />
+     
+</component-specification>

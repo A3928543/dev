@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ResumenUtilidadesPromocionRep.jrxml,v 1.2 2010/04/30 15:29:09 ccovian Exp $ -->        
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport name="ResumenUtilidadesPromocionRep" language="java" pageWidth="842" pageHeight="595" orientation="Landscape"
+              columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+
+    <field name="mesa" class="java.lang.String"/>
+    <field name="canal" class="java.lang.String"/>
+    <field name="utlCpa" class="java.lang.Double"/>
+    <field name="utlVta" class="java.lang.Double"/>
+    <field name="utlPeriodo" class="java.lang.Double"/>
+    <field name="montoCpa" class="java.lang.Double"/>
+    <field name="montoVta" class="java.lang.Double"/>
+    <field name="fechaReporte" class="java.util.Date"/>
+    
+    <variable name="totalUtlCpaMesa" class="java.lang.Double" resetType="Group" resetGroup="mesaGroup"
+              calculation="Sum">
+        <variableExpression><![CDATA[$F{utlCpa}]]></variableExpression>
+    </variable>
+    <variable name="totalUtlVtaMesa" class="java.lang.Double" resetType="Group" resetGroup="mesaGroup"
+              calculation="Sum">
+        <variableExpression><![CDATA[$F{utlVta}]]></variableExpression>
+    </variable>
+    <variable name="totalMtoCpaMesa" class="java.lang.Double" resetType="Group" resetGroup="mesaGroup"
+              calculation="Sum">
+        <variableExpression><![CDATA[$F{montoCpa}]]></variableExpression>
+    </variable>
+    <variable name="totalMtoVtaMesa" class="java.lang.Double" resetType="Group" resetGroup="mesaGroup"
+              calculation="Sum">
+        <variableExpression><![CDATA[$F{montoVta}]]></variableExpression>
+    </variable>
+    <variable name="totalUtlPerMesa" class="java.lang.Double" resetType="Group" resetGroup="mesaGroup"
+              calculation="Sum">
+        <variableExpression><![CDATA[$F{utlPeriodo}]]></variableExpression>
+    </variable>
+	
+    <group name="mesaGroup" isStartNewPage="true" isReprintHeaderOnEachPage="true">
+        <groupExpression><![CDATA[$F{mesa}]]></groupExpression>
+        <groupHeader>
+            <band height="19">
+                <staticText>
+                    <reportElement x="10" y="3" width="100" height="13"/>
+                    <text><![CDATA[Mesa]]></text>
+                </staticText>
+                <textField>
+                    <reportElement positionType="Float" x="50" y="3" width="350" height="13"/>
+                    <textElement>
+                        <font fontName="Arial"/>
+                    </textElement>
+                    <textFieldExpression class="java.lang.String">
+                        <![CDATA[$F{mesa}]]></textFieldExpression>
+                </textField>
+                <line>
+                    <reportElement x="10" y="18" width="750" height="1"/>
+                </line>
+            </band>
+        </groupHeader>
+        <!--
+        Aqu&iacute; se pinta el total por mesa en la secci&oacute;n de footer del grupo de mesa:
+        -->
+        <groupFooter>
+            <band height="19">
+            	<line>
+                    <reportElement x="95" y="0" width="650" height="1"/>
+                </line>
+                <textField>
+                    <reportElement x="20" y="3" width="70" height="15"/>
+                    <textElement><font isBold="true" fontName="Arial" size="12" /></textElement>
+                    <textFieldExpression>
+                        <![CDATA["TOTAL"]]></textFieldExpression>
+                </textField>
+                <textField pattern="$#,##0.00">
+                    <reportElement positionType="Float" x="50" y="3" width="109" height="15"/>
+                    <textElement textAlignment="Right">
+                    	<font fontName="Arial"/>
+                	</textElement>
+                    <textFieldExpression class="java.lang.Double">
+                        <![CDATA[$V{totalUtlCpaMesa}]]></textFieldExpression>
+                </textField>
+                <textField pattern="$#,##0.00">
+                    <reportElement positionType="Float" x="170" y="3" width="109" height="15"/>
+                    <textElement textAlignment="Right">
+                    	<font fontName="Arial"/>
+                	</textElement>
+                    <textFieldExpression class="java.lang.Double">
+                        <![CDATA[$V{totalUtlVtaMesa}]]></textFieldExpression>
+                </textField>
+                <textField pattern="$#,##0.00">
+                    <reportElement positionType="Float" x="290" y="3" width="109" height="15"/>
+                    <textElement textAlignment="Right">
+                    	<font fontName="Arial"/>
+                	</textElement>
+                    <textFieldExpression class="java.lang.Double">
+                        <![CDATA[$V{totalMtoCpaMesa}]]></textFieldExpression>
+                </textField>
+                <textField pattern="$#,##0.00">
+                    <reportElement positionType="Float" x="410" y="3" width="109" height="15"/>
+                    <textElement textAlignment="Right">
+                    	<font fontName="Arial"/>
+                	</textElement>
+                    <textFieldExpression class="java.lang.Double">
+                        <![CDATA[$V{totalMtoVtaMesa}]]></textFieldExpression>
+                </textField>
+                <textField pattern="$#,##0.00">
+                    <reportElement positionType="Float" x="530" y="3" width="109" height="15"/>
+                    <textElement textAlignment="Right">
+                    	<font fontName="Arial"/>
+                	</textElement>
+                    <textFieldExpression class="java.lang.Double">
+                        <![CDATA[$V{totalUtlPerMesa}]]></textFieldExpression>
+                </textField>
+            </band>
+        </groupFooter>
+    </group>
+
+    <group name="canalGroup" isStartNewPage="false" isReprintHeaderOnEachPage="true">
+        <groupExpression><![CDATA[$F{canal}]]></groupExpression>
+        <groupHeader>
+            <band height="40">
+                <staticText>
+                    <reportElement x="20" y="0" width="100" height="13"/>
+                    <text><![CDATA[Canal]]></text>
+                </staticText>
+                <textField>
+                    <reportElement positionType="Float" x="70" y="3" width="350" height="13"/>
+                    <textElement>
+                        <font fontName="Arial"/>
+                    </textElement>
+                    <textFieldExpression class="java.lang.String">
+                        <![CDATA[$F{canal}]]></textFieldExpression>
+                </textField>
+                <staticText>
+                    <reportElement x="50" y="20" width="110" height="16"/>
+                    <textElement textAlignment="Center">
+                    	<font isBold="true" fontName="Arial" size="12"/>
+                    </textElement>
+                    <text>Utilidad/Compras</text>
+                </staticText>
+                <staticText>
+                    <reportElement x="170" y="20" width="110" height="16"/>
+                    <textElement textAlignment="Center"><font isBold="true" fontName="Arial" size="12"/></textElement>
+                    <text>Utilidad/Ventas</text>
+                </staticText>
+                <staticText>
+                    <reportElement x="290" y="20" width="110" height="16"/>
+                    <textElement textAlignment="Center"><font isBold="true" fontName="Arial" size="12"/></textElement>
+                    <text>Monto/Compras</text>
+                </staticText>
+                <staticText>
+                    <reportElement x="410" y="20" width="110" height="16"/>
+                    <textElement textAlignment="Center"><font isBold="true" fontName="Arial" size="12"/></textElement>
+                    <text>Monto/Ventas</text>
+                </staticText>
+                <staticText>
+                    <reportElement x="530" y="20" width="110" height="16"/>
+                    <textElement textAlignment="Center">
+                        <font isBold="true" fontName="Arial" size="12"/></textElement>
+                    <text>Utilidad/Periodo</text>
+                </staticText>
+            </band>
+        </groupHeader>
+    </group>
+
+    <pageHeader>
+        <band height="40">
+            <image isLazy="true">
+                <reportElement positionType="Float" x="0" y="0" width="80" height="26"/>
+                <graphicElement/>
+                <imageExpression class="java.lang.String">
+                    <![CDATA["applications/sica/images/reportes/logo_ixe.gif"]]></imageExpression>
+            </image>
+            <staticText>
+                <reportElement x="100" y="0" width="560" height="39" />
+                <textElement>
+                    <font fontName="Arial" isBold="true" size="25" />
+                </textElement>
+                <text><![CDATA[Resumen de Utilidades de Promoción]]></text>
+            </staticText>
+            <textField pattern="dd/MM/yyyy">
+				<reportElement positionType="Float" x="700" y="0" width="65" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaReporte}]]></textFieldExpression>
+			</textField>
+        </band>
+    </pageHeader>
+
+    <detail>
+        <band height="20">
+            <textField pattern="$#,##0.00">
+                <reportElement positionType="Float" x="50" y="3" width="109" height="13"/>
+                <textElement textAlignment="Right">
+                    <font fontName="Arial"/>
+                </textElement>
+                <textFieldExpression class="java.lang.Double">
+                    <![CDATA[$F{utlCpa}]]></textFieldExpression>
+            </textField>
+
+            <textField pattern="$#,##0.00">
+                <reportElement positionType="Float" x="170" y="3" width="109" height="13"/>
+                <textElement textAlignment="Right">
+                    <font fontName="Arial"/>
+                </textElement>
+                <textFieldExpression class="java.lang.Double">
+                    <![CDATA[$F{utlVta}]]></textFieldExpression>
+            </textField>
+
+            <textField pattern="$#,##0.00">
+                <reportElement positionType="Float" x="290" y="3" width="109" height="13"/>
+                <textElement textAlignment="Right">
+                    <font fontName="Arial"/>
+                </textElement>
+                <textFieldExpression class="java.lang.Double">
+                    <![CDATA[$F{montoCpa}]]></textFieldExpression>
+            </textField>
+
+            <textField pattern="$#,##0.00">
+                <reportElement positionType="Float" x="410" y="3" width="109" height="13"/>
+                <textElement textAlignment="Right">
+                    <font fontName="Arial"/>
+                </textElement>
+                <textFieldExpression class="java.lang.Double">
+                    <![CDATA[$F{montoVta}]]></textFieldExpression>
+            </textField>
+            
+            <textField pattern="$#,##0.00">
+                <reportElement positionType="Float" x="530" y="3" width="109" height="13"/>
+                <textElement textAlignment="Right">
+                    <font fontName="Arial"/>
+                </textElement>
+                <textFieldExpression class="java.lang.Double">
+                    <![CDATA[$F{utlPeriodo}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+</jasperReport>
+

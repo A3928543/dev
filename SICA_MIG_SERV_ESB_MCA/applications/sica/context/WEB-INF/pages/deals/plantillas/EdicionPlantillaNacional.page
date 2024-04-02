@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: EdicionPlantillaNacional.page,v 1.11 2008/02/22 18:25:38 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.deals.plantillas.EdicionPlantillaNacional">
+
+	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <component id="beneficiarioComboBox" type="PropertySelection">
+        <binding name="model" expression="beneficiariosModel" /> 
+        <binding name="value" expression="registro.beneficiario" />
+    </component>
+
+    <property-specification name="registro" type="java.io.Serializable" persistent="yes" />
+    <property-specification name="modoUpdate" type="boolean" persistent="yes" />
+    <property-specification name="nombrePaginaConsulta" type="java.lang.String" initial-value='"ConsultaPlantillasNacionales"' />
+    <property-specification name="modoSubmit" type="int" initial-value='1' />
+    <property-specification name="idPersona" type="java.lang.Integer" persistent="yes"/>
+    <property-specification name="nombreCliente" type="java.lang.String" persistent="yes"/>
+    <property-specification name="clabeOCuenta" type="java.lang.String" persistent="yes"/>
+    <property-specification name="nombreBanco" type="java.lang.String" />
+    <property-specification name="selectedCuentaEje" type="java.lang.String"/>
+
+    <context-asset name="acceptButton" path="/images/aceptar.gif" />
+    <context-asset name="addButton" path="/images/add.gif" />
+    <context-asset name="cancelButton" path="/images/cancel.gif" />
+    <context-asset name="regresarButton" path="/images/back.gif" />
+
+</page-specification>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: TablaContrapartes.mxml,v 1.10 2010/04/13 15:29:52 ccovian Exp $ -->
+<mx:VBox xmlns:mx="http://www.macromedia.com/2003/mxml" label="Selecci&#243;n de Contraparte" width="100%" height="100%"
+         marginTop="10" marginBottom="10" marginLeft="10" marginRight="10"  horizontalAlign="center" creationComplete="inicializar()">
+
+	<mx:Metadata>
+		[Event("contraparteSeleccionada")]
+		[Event("letraSeleccionada")]
+	</mx:Metadata>
+
+	<mx:Script>
+	<![CDATA[
+		var contrapartes : Array;
+		var letras : Array;
+
+		function inicializar() : Void
+		{
+			letras = new Array();
+			letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+		}
+	]]>
+	</mx:Script>
+
+	<mx:HBox width="100%" horizontalAlign="left">
+		<mx:Repeater id="letrasRepeater" dataProvider="{letras}">
+			<mx:Link label="{letrasRepeater.currentItem}" click="dispatchEvent({type: 'letraSeleccionada', letra: event.target.label})"/>
+		</mx:Repeater>
+		<mx:Spacer width="100%" />
+		<mx:Link label="Todos" click="dispatchEvent({type: 'letraSeleccionada', letra: '0'})" />
+	</mx:HBox>
+	<mx:DataGrid id="contrapartesDataGrid" dataProvider="{contrapartes}" width="100%" height="100%" change="dispatchEvent({type:'contraparteSeleccionada',eventPropCont:contrapartesDataGrid.selectedItem})">
+		<mx:columns>
+			<mx:Array>
+				<mx:DataGridColumn columnName="nombreCompleto" headerText="Raz&#243;n Social" />
+				<mx:DataGridColumn columnName="claveReuters" headerText="Clave Reuters" />
+			</mx:Array>
+		</mx:columns>
+	</mx:DataGrid>
+</mx:VBox>

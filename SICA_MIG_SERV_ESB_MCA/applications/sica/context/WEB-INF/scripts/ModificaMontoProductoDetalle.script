@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ModificaMontoProductoDetalle.script,v 1.2.2.1 2010/06/17 21:24:42 ccovian Exp $ -->
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+
+<script>
+    <body>
+        <![CDATA[
+        	function modificarMontoProducto(arg1, arg2) {
+            	if (arg1) {
+            		var random = Math.floor(Math.random() * 6648);
+            		var response = showModalDialog('/sica/app?service=external/ModificaMontoProductoDetalleDeal&sp=' + arg1 + '&sp=' + arg2 + '&sp=S' + random, 
+            		null, 'dialogWidth:765px; dialogHeight:310px');
+            		if (response) {
+            			fnShowWaitImage();
+            			document.location = '/sica/app?service=external/CapturaDeal&sp=3&sp=' + response + '&sp=SSICA_CONS_DEAL';
+            		}
+            	}
+            	return true;
+            }
+	    ]]>
+    </body>
+</script>

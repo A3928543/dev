@@ -1,0 +1,63 @@
+<!-- $Id: ConsultaCuentas.html,v 1.9.88.1 2017/07/29 03:18:47 mejiar Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Encabezado</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder" menuDisabled="yes">
+	<span jwcid="@Conditional" condition="ognl: cerrarVentana">
+		<script jwcid="@Script" script="/WEB-INF/scripts/CerrarVentanaConsCtas.script" />
+	</span>
+	<table width="100%">
+		<tr valign="top">
+			<td width="20%">		
+          		<form jwcid="@Form" listener="ognl: listeners.search" delegate="ognl: beans.delegate" >
+          		<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+                    <table jwcid="@ActionPortletBorder" title="B&uacute;squeda de cuentas">
+               		    <fieldset class="normal">
+               		        <legend class="legend">Asignar cuenta</legend>
+                            <font class="normal"><u>R</u>az&oacute;n Social:</font><br />
+                            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" value="ognl: razonSocial" size=40/><br />
+                            <font class="normal"><u>N</u>ombre:</font><br />
+                            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" value="ognl: nombre"  size=40/><br />
+                            <font class="normal">Apellido <u>P</u>aterno:</font><br />
+                            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" value="ognl: paterno" size=40/><br />
+                            <font class="normal">Apellido <u>M</u>aterno:</font><br />
+                            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField"  value="ognl: materno" size=40/><br />
+                            <font class="normal">No. Cuen<u>t</u>a: <br>(sin omitir caracteres)</font><br />
+                            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" value="ognl: noCuenta" size=40/><br />
+                      </fieldset>
+                        <br />
+                        <div align="center">
+                            <input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+                        </div>
+                    </table>
+            	</form>
+        	<td width="1%">&nbsp;</td>
+            <td>
+            	<span jwcid="@Conditional" condition="ognl: cuentasEncontradas.size() &gt; 0">
+				<table jwcid="@ActionPortletBorder" title="Cuentas encontradas">
+					<table jwcid="table@bup:Table" cellpadding="3" cellspacing="1" width="100%" source="ognl: cuentasEncontradas" columns='ognl: "idPersona:Id Persona:idPersona, cliente:Cliente:cliente ,noCuenta:No. Cuenta:noCuenta"' class="tableborder" />
+					<span jwcid="noCuentaColumnValue@Block">
+						 <div align="left">
+							<a jwcid="@DirectLink" listener="ognl: listeners.seleccionarCuenta" parameters="ognl: {components.table.tableRow.noCuenta, components.table.tableRow.idPersona}" onClick="fnShowWaitImage();"><span jwcid="@Insert" value="ognl: components.table.tableRow.noCuenta" /></a>
+						 </div>
+					</span>
+					<span jwcid="idPersonaColumnValue@Block">
+						<div align="right">
+							<span jwcid="@Insert" value="ognl: components.table.tableRow.idPersona" />
+						</div>
+					</span>
+					<span jwcid="clienteColumnValue@Block">
+						<div align="left">
+							<span jwcid="@Insert" value="ognl: components.table.tableRow.cliente" />
+					    </div>
+					</span>										
+				</table>
+				&nbsp;
+				</span>
+		    </td>
+	    </tr>
+    </table>
+</body>
+</html>

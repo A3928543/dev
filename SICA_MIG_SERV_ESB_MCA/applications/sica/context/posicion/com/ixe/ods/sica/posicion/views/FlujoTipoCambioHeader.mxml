@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<mx:GridRow xmlns:mx="http://www.macromedia.com/2003/mxml">
+    <mx:GridItem/>
+    <mx:GridItem horizontalAlign="center">
+        <mx:Label text="Compras" fontWeight="bold"/>
+    </mx:GridItem>
+    <mx:GridItem horizontalAlign="center">
+        <mx:Label text="Ventas" fontWeight="bold"/>
+    </mx:GridItem>
+    <mx:GridItem horizontalAlign="center">
+        <mx:Label text="Posici&#243;n Final" fontWeight="bold"/>
+    </mx:GridItem>
+	<mx:GridItem horizontalAlign="center">
+        <mx:Label text="Posici&#243;n Final MXN" fontWeight="bold"/>
+    </mx:GridItem>
+</mx:GridRow>

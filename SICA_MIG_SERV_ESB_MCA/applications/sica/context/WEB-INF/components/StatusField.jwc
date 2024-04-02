@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--$Id: StatusField.jwc,v 1.10 2008/10/27 23:20:08 ccovian Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<component-specification class="com.ixe.ods.sica.components.StatusField" allow-body="no">
+
+    <parameter name="status" type="java.lang.String" direction="in" required="yes" />
+
+    <parameter name="descripcion" type="java.lang.String" direction="in" required="yes" />
+
+</component-specification>

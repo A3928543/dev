@@ -1,0 +1,104 @@
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <!-- $Id: CapturaDeal.html,v 1.22.20.1.4.3.14.1.24.3 2017/08/21 16:21:31 mejiar Exp $ -->
+    <title>Captura de deal normal</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css" />
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="@bup:ShowError" level="ognl: level" delegate="ognl:beans.delegate" insertBreakAtTail="yes" width="100%" />
+    <span jwcid="@Conditional" condition="ognl: validaCapturaDivisas">
+        <script jwcid="@Script" script="/WEB-INF/scripts/CapturaDealApplet.script" type="text/javascript" />
+    </span>
+    <script jwcid="@Script" script="/WEB-INF/scripts/OnUnLoad.script" type="text/javascript" />
+    <span jwcid="@Conditional" condition="ognl: splitMap">
+        <script jwcid="@Script" script="/WEB-INF/scripts/SplitDealDetalle.script" symbols="ognl: splitMap" type="text/javascript" />
+    </span>
+    <span jwcid="@Conditional" condition="ognl: modifMap">
+        <script jwcid="@Script" script="/WEB-INF/scripts/ModifDealDetalle.script" symbols="ognl: modifMap" type="text/javascript" />
+    </span>
+    <span jwcid="@Conditional" condition="ognl: mensajearApplet">
+        <script jwcid="@Script" script="/WEB-INF/scripts/TipoDeal.script" symbols="ognl: tipoDealMap" type="text/javascript" />
+    </span>
+    <span jwcid="tb@Block"><span jwcid="@EventosDeal" deal="ognl: deal" /></span>
+    <table jwcid="@ActionPortletBorder" title='ognl: "Captura de Deal (" + (deal.simple ? "Simple" : "Compleja") + ")"' titleBlock="ognl: components.tb">
+        <form jwcid="@Form" listener="ognl: listeners.save" delegate="ognl: beans.delegate">
+            <span jwcid="@MotivosNoProcesar" deal="ognl: deal" service="ognl: personaService"/>
+            <input jwcid="submitModeHidden@Hidden" value="ognl: submitMode" type="hidden" />
+            <span jwcid="@EncabezadoDeal" deal="ognl: deal" area="ognl: area" 
+            disabled="ognl: @com.ixe.ods.sica.model.Deal@STATUS_DEAL_CANCELADO.equals(deal.statusDeal) || @com.ixe.ods.sica.model.Deal@STATUS_DEAL_TOTALMENTE_LIQUIDADO.equals(deal.statusDeal) || deal.reversadoProcesoReverso || deal.isAutorizadoTce()" 
+            disabledPAyTF="ognl: @com.ixe.ods.sica.services.LineaCreditoConstantes@STATUS_ACTIVADA.equals(estadoLineaCredito)" />
+            <br />
+            <div align="center">
+                <span jwcid="@Conditional" condition="ognl: !(@com.ixe.ods.sica.model.Deal@STATUS_DEAL_CANCELADO.equals(deal.statusDeal) || @com.ixe.ods.sica.model.Deal@STATUS_DEAL_TOTALMENTE_LIQUIDADO.equals(deal.statusDeal) ||
+                (@com.ixe.ods.sica.model.Deal@DEAL_SIN_INICIALIZAR == deal.idDeal) || deal.reversadoProcesoReverso || deal.isAutorizadoTce())">
+                    <a  style="text-decoration: none" jwcid="@DirectLink" listener="ognl: listeners.capturarObservaciones">
+						 <img jwcid="@Image" image="ognl: assets.bObservaciones" border="0" />
+					</a>
+				</span>
+				<span  jwcid="@Conditional" condition="ognl: !(@com.ixe.ods.sica.model.Deal@STATUS_DEAL_CANCELADO.equals(deal.statusDeal) ||
+				 (@com.ixe.ods.sica.model.Deal@DEAL_SIN_INICIALIZAR == deal.idDeal) || deal.reversadoProcesoReverso || deal.isAutorizadoTce())">
+                    <a  style="text-decoration: none" jwcid="@DirectLink" listener="ognl: listeners.capturarMetodoPago" >
+						 <img jwcid="@Image" image="ognl: assets.bFormaPago" border="0" />
+					</a>
+				</span>
+                <span jwcid="@Conditional" condition="ognl: solAutSobrePrecioVisible && !deal.isAutorizadoTce()">
+                    <a jwcid="@DirectLink" listener="ognl: listeners.solAutSobreprecio" onClick="if (confirm('La solicitud llegar\u00e1 a la Mesa de Cambios inmediatamente.\n\u00bfDesea solicitarla en este momento?')) { fnShowWaitImage(); } else { return false; }"><img jwcid="@Image" image="ognl: assets.bSolAutSobrePrecio" src="../../../images/sol_aut_sobrepr.gif" border="0" alt='ognl: "Solicitar autorizaci\u00f3n de sobreprecio"' /></a>
+                </span>
+                <span jwcid="@Conditional" condition="ognl: !deal.contratoSica && isCapturableContratoPorFecha() && deal.detalles.size() &gt; 0 && !deal.isAutorizadoTce()">
+                	<a jwcid="@DirectLink" listener="ognl: listeners.definirContrato" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bContrato" src="../../../images/contrato.gif" border="0" alt="Asignar el contrato del cliente"/></a>
+        		</span>
+                <span jwcid="@Conditional" condition="ognl: !(@com.ixe.ods.sica.model.Deal@STATUS_DEAL_CANCELADO.equals(deal.statusDeal) || @com.ixe.ods.sica.model.Deal@STATUS_DEAL_TOTALMENTE_LIQUIDADO.equals(deal.statusDeal)) && deal.mensajeria && !deal.isAutorizadoTce()"><a jwcid="@DirectLink" listener="ognl: listeners.capturarDatosEnvio" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bDatosEnvio" src="../../../images/datos_envio.gif" border="0" alt="Capturar Datos de Env&iacute;o"/></a></span>
+                <span jwcid="@Conditional" condition="ognl: !(@com.ixe.ods.sica.model.Deal@STATUS_DEAL_CANCELADO.equals(deal.statusDeal) || @com.ixe.ods.sica.model.Deal@STATUS_DEAL_TOTALMENTE_LIQUIDADO.equals(deal.statusDeal)) && deal.conFactura && deal.idLiquidacion == null && !deal.isAutorizadoTce()"><a jwcid="@DirectLink" listener="ognl: listeners.capturarDatosFacturacion" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bDatosFacturacion" src="../../../images/datos_facturacion.gif" border="0" alt="Capturar Datos de Facturaci&oacute;n"/></a></span>
+                <span jwcid="@Conditional" condition="ognl: !(@com.ixe.ods.sica.model.Deal@STATUS_DEAL_CANCELADO.equals(deal.statusDeal) || @com.ixe.ods.sica.model.Deal@STATUS_DEAL_TOTALMENTE_LIQUIDADO.equals(deal.statusDeal)) && deal.enviarAlCliente && deal.idLiquidacion == null && !deal.isAutorizadoTce()"><a jwcid="@DirectLink" listener="ognl: listeners.capturarDatosComprobante" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bDatosComprobante" src="../../../images/datos_comprobante.gif" border="0" alt="Capturar Datos del Comprobante"/></a></span>
+				<span jwcid="@contrib:FormConditional" condition="ognl: @com.ixe.ods.sica.model.Deal@STATUS_DEAL_PROCESO_CAPTURA.equals(deal.statusDeal) && deal.isProcesable(formasTiposLiq) && deal.contratoSica && !deal.isAutorizadoTce() && !(deal.conFactura && (deal.metodoPago == null || deal.metodoPago.trim().equals('')) )"><input type="image" jwcid="@ImageSubmit" image="ognl: assets.bProcesar" onClick="setSubmitMode(this.form, 'procesar'); return false;" /></span>
+                <span jwcid="@contrib:FormConditional" condition="ognl: deal.cancelable && !deal.isAutorizadoTce()"><input type="image" jwcid="@ImageSubmit" image="ognl: assets.bCancelar" onClick="if (confirm('\u00bfDesea solicitar la cancelaci\u00f3n del deal?')) { setSubmitMode(this.form, 'Scancelar'); } return false;" /></span>
+                <span jwcid="@contrib:FormConditional" condition="ognl: @com.ixe.ods.sica.model.Deal@STATUS_DEAL_PROCESO_CAPTURA.equals(deal.statusDeal) && deal.detalles.size() &gt; 0 && !deal.isAutorizadoTce()">
+                     <input type="image" jwcid="@ImageSubmit" image="ognl: assets.bActualizar" onClick="setSubmitMode(this.form, 'Ssalvar'); return false;" />
+                </span>
+                <span jwcid="@contrib:FormConditional" condition="ognl: deal.detalles.size() &gt; 0  && !deal.isAutorizadoTce()"><input type="image" jwcid="@ImageSubmit" image="ognl: assets.bRefrescar" onClick='ognl: "refrescarDeal(" + deal.idDeal + ");return false;"' /></span>
+				
+				<span jwcid="@Conditional" condition="ognl: deal.isAutorizadoTce()">
+                	<a jwcid="@DirectLink" listener="ognl: listeners.aceptarTcEspecial" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bAceptarTcEspecial" src="../../../images/aceptar_tce.gif" border="0" alt="Aceptar TC Especial"/></a>
+        		</span>
+				
+				<span jwcid="@Conditional" condition='ognl: paginaRegreso==null'>
+                     <span jwcid="@Conditional" condition="ognl: ! modoInsercion">
+                         <a href="#" jwcid="@PageLink" page="ConsultaDeal" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bRegresar" border="0" /></a>
+                     </span>
+				</span>
+				<span jwcid="@Conditional" condition='ognl: paginaRegreso!=null && !deal.isAutorizadoTce()'>
+					<a jwcid="@PageLink" page="ConsultaPendientesDia" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bRegresar" border="0" /></a>
+                </span>
+            </div>
+            <span jwcid="@Conditional" condition="ognl: speiRecibimosPresente">
+                <br />
+				<font class="normal"><b>Nota:</b> Favor de instruir al cliente que la referencia num&eacute;rica del SPEI en su banco origen debe ser el N&Uacute;MERO DE DEAL.</font>
+            </span>
+            <table jwcid="@DealDetailTable" recibimos="yes" deal="ognl: deal" detalles="ognl: deal.recibimos" total="ognl: deal.totalRecibimos"
+                disabled="ognl: deal.isAutorizadoTce()" deleteListener="ognl: listeners.delete" insertarFormaLiqListener="ognl: listeners.insertarFormaLiquidacion"
+                modificacionListener="ognl: listeners.solicitarModificacionDetalle" splitListener="ognl: listeners.partirDetalle" area="ognl: area" />
+            <table border="0" cellpadding="0" cellspacing="2" align="center">
+                <tr>
+                    <td class="title" align="right">Balance:</td>
+                    <td class="title"><span jwcid="@Insert" value="ognl: deal.balance" format="ognl: moneyFormat" /></td>
+                    <td class="title" align="right">M.N.</td>
+                </tr>
+            </table>
+            <table jwcid="@DealDetailTable" recibimos="ognl: false" deal="ognl: deal" detalles="ognl: deal.entregamos" total="ognl: deal.totalEntregamos"
+                disabled="ognl: deal.isAutorizadoTce()" deleteListener="ognl: listeners.delete" insertarFormaLiqListener="ognl: listeners.insertarFormaLiquidacion"
+                modificacionListener="ognl: listeners.solicitarModificacionDetalle" splitListener="ognl: listeners.partirDetalle" area="ognl: area"/>
+        </form>
+    </table>
+    <span jwcid="@Conditional" condition="ognl: deal.contratoSica">
+    <table jwcid="@ResumenLineasCredito" idCliente="ognl: deal.cliente.idPersona" />
+    </span>
+    <script type="text/javaScript">
+
+window.onload = function(){
+					this.enableMessaje();
+				};
+
+
+</script>
+</body>
+</html>

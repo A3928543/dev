@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.MontoMaximoSucursal"
+        table="SC_MONTO_MAXIMO_SUCURSAL"
+        proxy="com.ixe.ods.sica.model.MontoMaximoSucursal"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idMontoMaximoSucursal"
+            column="ID_MONTO_MAXIMO_SUC"
+            type="java.lang.Integer"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_MONTO_MAXIMO_SUC_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-MontoMaximoSucursal.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="claveFormaLiquidacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_FORMA_LIQUIDACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="montoMaximo"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO_MAXIMO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="montoOperado"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO_OPERADO"
+            not-null="true"
+            unique="false"
+        />
+
+        <many-to-one
+            name="canal"
+            class="com.ixe.ods.sica.model.Canal"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_CANAL"
+            unique="false"
+        />
+
+        <many-to-one
+            name="divisa"
+            class="com.ixe.ods.sica.model.Divisa"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIVISA"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-MontoMaximoSucursal.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findMontosMaximosByCanalProducto"><![CDATA[
+            FROM MontoMaximoSucursal AS mms WHERE mms.canal.idCanal = ? AND mms.claveFormaLiquidacion = ?
+        ]]></query>
+
+</hibernate-mapping>

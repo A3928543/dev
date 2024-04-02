@@ -1,0 +1,21 @@
+*************************************************************************************************************************************
+** FECHA: 29 de Septiembre de 2010                                                                                                 **
+** AUTOR: Emmanuel Victoria Trujillo. Area Arquitectura.                                                                           **
+** DESCRIPCION: Script que contiene la definición de objetos MQ, utilizados para consumir el servicio de Consulta-IFE.	   		   **
+*************************************************************************************************************************************
+
+*************************************************************************************************************************************
+**                                                 BLOQUE DE DEFINICION DE QUEUES                                                  **
+*************************************************************************************************************************************
+**Queue Local de salida para el servicio: ConsultaIfe
+DEFINE QLOCAL(QL.VIFESICA.OUT) DESCR('Queue de entrada del flujo ConsultaIfe') REPLACE
+
+**Queue Alias de salida para el servicio: ConsultaIfe
+DEFINE QA(QA.L.VIFESICAOUT) TARGQ(QL.VIFESICA.OUT) DESCR('Queue alias de salida al flujo ConsultaIfe') REPLACE
+
+**************************************************************************************************************************************
+**                                                  BLOQUE DE DEFINICION DE CANALES                                                 **
+**************************************************************************************************************************************
+**Canal de tipo server para que la aplicación WebPortal se conecte al QMGR de TDC.
+DEFINE CHANNEL(CHL.SICA) CHLTYPE(SVRCONN) TRPTYPE(TCP) DESCR('Canal ServerConn SICA') REPLACE
+

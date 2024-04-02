@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: TipoCambioInterbancario4Mesa.mxml,v 1.9 2008/02/22 18:25:35 ccovian Exp $ -->
+<view:TipoCambio4Mesa
+        xmlns:mx="http://www.macromedia.com/2003/mxml"
+        xmlns:view="com.ixe.ods.sica.posicion.views.*"
+        xmlns:ls="com.legosoft.*"
+        xmlns:sica="*">
+
+    <mx:NumberFormatter id="numberFormatter" precision="2"/>
+
+    <mx:NumberFormatter id="exchangeFormatter" precision="6"/>
+
+    <mx:HBox width="100%">
+        <mx:Spacer width="100%"/>
+        <mx:Link id="zoomLink" icon="{zoomLink.selected ? zoomOut : zoomIn}" toggle="true"/>
+    </mx:HBox>
+
+    <mx:ViewStack selectedIndex="{zoomLink.selected ? 1 : 0}">
+        <mx:Grid verticalGap="0" horizontalGap="0" height="{flujoTipoCambio.height}">
+
+            <view:TipoCambioHeader width="500"/>
+
+            <sica:TipoCambioCompra dataProvider="{dataProvider}"/>
+
+            <sica:TipoCambioVenta dataProvider="{dataProvider}"/>
+
+            <sica:TipoCambioPosicionFinal4Mesa posicionFinalLabel="Neto" dataProvider="{dataProvider}"/>
+        </mx:Grid>
+
+        <sica:FlujoTipoCambioInterbancario id="flujoTipoCambio" dataProvider="{dataProvider}" marginLeft="10"
+                                           marginRight="10" marginTop="0" marginBottom="0" height="245"/>
+    </mx:ViewStack>
+
+</view:TipoCambio4Mesa>

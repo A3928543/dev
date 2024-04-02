@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.Plaza"
+        table="SC_PLAZA"
+        proxy="com.ixe.ods.sica.model.Plaza"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idPlaza"
+            column="ID_PLAZA"
+            type="java.lang.Integer"
+            unsaved-value="null"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Plaza.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <many-to-one
+            name="division"
+            class="com.ixe.ods.sica.model.Division"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIVISION"
+            unique="false"
+        />
+
+        <property
+            name="nombre"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NOMBRE"
+            not-null="false"
+            unique="false"
+        />
+
+        <bag
+            name="zonas"
+            lazy="true"
+            inverse="true"
+            cascade="none"
+            order-by="ID_ZONA"
+        >
+
+              <key
+                  column="ID_PLAZA"
+              >
+              </key>
+
+              <one-to-many
+                  class="com.ixe.ods.sica.model.Zona"
+              />
+
+        </bag>
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Plaza.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findPlazasByDivision"><![CDATA[
+            FROM Plaza AS p WHERE p.division.idDivision = ? ORDER BY p.nombre
+        ]]></query>
+
+</hibernate-mapping>

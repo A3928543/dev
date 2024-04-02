@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="Unnamed" language="java" pageWidth="700" pageHeight="842" columnWidth="700" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="com.jasperassistant.designer.Rulers" value="true"/>
+	<property name="com.jasperassistant.designer.GridHeight" value="10"/>
+	<property name="com.jasperassistant.designer.GridWidth" value="10"/>
+	<property name="com.jasperassistant.designer.HGuides" value="299,369"/>
+	<property name="com.jasperassistant.designer.DataSource" value="ReporteBanxicoDataSource"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="true"/>
+	<property name="com.jasperassistant.designer.Margins" value="true"/>
+	<property name="com.jasperassistant.designer.Grid" value="true"/>
+	<property name="com.jasperassistant.designer.SnapToGuides" value="true"/>
+	<field name="class" class="java.lang.Class">
+	</field>
+	<field name="claveContraparte" class="java.lang.String">
+	</field>
+	<field name="claveGfIXE" class="java.lang.String">
+	</field>
+	<field name="cliente" class="java.lang.String">
+	</field>
+	<field name="codigoContraparte" class="java.lang.String">
+	</field>
+	<field name="compra_venta" class="java.lang.String">
+	</field>
+	<field name="comprado" class="java.lang.Double">
+	</field>
+	<field name="dealDivisaDivisa" class="java.lang.String">
+	</field>
+	<field name="divisa" class="java.lang.String">
+	</field>
+	<field name="estrategia" class="java.lang.String">
+	</field>
+	<field name="factorDivisa" class="java.lang.Double">
+	</field>
+	<field name="fechaCaptura" class="java.util.Date">
+	</field>
+	<field name="fechaLiquidacion" class="java.util.Date">
+	</field>
+	<field name="fechaPacto" class="java.util.Date">
+	</field>
+	<field name="fechaValor" class="java.util.Date">
+	</field>
+	<field name="folioEstrategia" class="java.lang.String">
+	</field>
+	<field name="folioInterno" class="java.lang.String">
+	</field>
+	<field name="idSector" class="java.lang.Integer">
+	</field>
+	<field name="image" class="java.io.InputStream">
+	</field>
+	<field name="mes" class="java.lang.String">
+	</field>
+	<field name="monto" class="java.lang.String">
+	</field>
+	<field name="sector" class="java.lang.String">
+	</field>
+	<field name="tipoContraparte" class="java.lang.String">
+	</field>
+	<field name="vendido" class="java.lang.Double">
+	</field>
+	<variable name="sumaComprado" class="java.lang.Double" resetType="Group" resetGroup="Group_4" calculation="Sum">
+		<variableExpression><![CDATA[$F{comprado}]]></variableExpression>
+	</variable>
+	<variable name="sumaVendido" class="java.lang.Double" resetType="Group" resetGroup="Group_4" calculation="Sum">
+		<variableExpression><![CDATA[$F{vendido}]]></variableExpression>
+	</variable>
+	<variable name="subtotalComprado" class="java.lang.Double" resetType="Group" resetGroup="Group_3" calculation="Sum">
+		<variableExpression><![CDATA[$F{comprado}]]></variableExpression>
+	</variable>
+	<variable name="subtotalVendido" class="java.lang.Double" resetType="Group" resetGroup="Group_3" calculation="Sum">
+		<variableExpression><![CDATA[$F{vendido}]]></variableExpression>
+	</variable>
+	<group name="Group_5">
+		<groupHeader>
+		<band height="10">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="370" height="10"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[INFORME ANALÍTICO DE OPERACIONES DE CAMBIOS, CONCERTADAS EL]]></text>
+			</staticText>
+			<textField pattern="d/MM/yyyy">
+				<reportElement positionType="Float" x="370" y="0" width="110" height="10"/>
+				<textElement>
+					<font fontName="Arial" size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaValor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="480" y="0" width="200" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[CIFRAS EN MILES DE DOLARES AMERICANOS]]></text>
+			</staticText>
+		</band>
+		</groupHeader>
+	</group>
+	<group name="Group_1">
+		<groupExpression><![CDATA[$F{divisa}]]></groupExpression>
+		<groupHeader>
+		<band height="10">
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="40" height="10" backcolor="#c0c0c0"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIVISA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" mode="Opaque" x="40" y="0" width="260" height="10" backcolor="#c0c0c0"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{divisa}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="300" y="0" width="380" height="10" backcolor="#c0c0c0"/>
+				<textElement/>
+			</staticText>
+		</band>
+		</groupHeader>
+		<groupFooter>
+		<band height="20">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="681" height="20"/>
+				<textElement/>
+			</staticText>
+		</band>
+		</groupFooter>
+	</group>
+	<group name="Group_2">
+		<groupExpression><![CDATA[$F{sector}]]></groupExpression>
+		<groupHeader>
+		<band height="20">
+			<textField>
+				<reportElement positionType="Float" mode="Opaque" x="130" y="0" width="460" height="10" backcolor="#6397ed"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sector}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="130" height="10" backcolor="#6397ed"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TIPO DE CONTRAPARTE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="370" y="10" width="110" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COMPRAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="480" y="10" width="110" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VENTAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="300" y="10" width="70" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA VALOR]]></text>
+			</staticText>
+		</band>
+		</groupHeader>
+	</group>
+	<group name="Group_3">
+		<groupExpression><![CDATA[$F{fechaValor}]]></groupExpression>
+		<groupHeader>
+		<band height="10">
+			<textField pattern="d/MM/yyyy">
+				<reportElement positionType="Float" x="300" y="0" width="70" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaValor}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupHeader>
+		<groupFooter>
+		<band height="10">
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="130" y="0" width="170" height="10" backcolor="#5b97ed"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Subtotal Fecha Valor:      ]]></text>
+			</staticText>
+			<textField pattern="d/MM/yyyy">
+				<reportElement positionType="Float" mode="Opaque" x="300" y="0" width="70" height="10" backcolor="#5b97ed"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaValor}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" mode="Opaque" x="370" y="0" width="110" height="10" backcolor="#5b97ed"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{subtotalComprado}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" mode="Opaque" x="480" y="0" width="110" height="10" backcolor="#5b97ed"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{subtotalVendido}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupFooter>
+	</group>
+	<group name="Group_4">
+		<groupExpression><![CDATA[$F{cliente}]]></groupExpression>
+		<groupFooter>
+		<band height="10">
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="370" y="0" width="110" height="10"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumaComprado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="0" width="300" height="10"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cliente}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="480" y="0" width="110" height="10"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumaVendido}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="10">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="100" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[IXE BANCO]]></text>
+			</staticText>
+		</band>
+	</title>
+</jasperReport>

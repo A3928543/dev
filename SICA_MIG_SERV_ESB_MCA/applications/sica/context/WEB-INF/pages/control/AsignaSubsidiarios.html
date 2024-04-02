@@ -1,0 +1,179 @@
+<!-- $Id: AsignaSubsidiarios.html,v 1.10 2009/08/03 21:49:31 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Asignaci&oacute;n de Subsidiarios</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level="ognl: operacionExitosa ? 1 : 0" width="100%"/>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	    <tr valign="top">
+    	    <td width="200">
+				<form jwcid="@Form" listener="ognl: listeners.fetch" delegate="ognl: beans.delegate" >
+                    <table jwcid="@ActionPortletBorder" title="ognl: clientes.size() == 1 ? 'B&uacute;squeda de Subsidiarios por Asignar' : 'B&uacute;squeda de Corporativos'">
+                    	<fieldset class="normal">
+                        	<legend class="legend">Empresas</legend>
+                            <font class="normal"><u>R</u>az&oacute;n Social:</font><br />
+                            <input class="uppercase" type="text" jwcid="empresasTextField@ixe:UppercaseTextField" accesskey="R" value="ognl: razonSocial" size="40"/><br />
+                        </fieldset>
+                        <fieldset class="normal">
+                            <legend class="legend">Cuen<u>t</u>a / Contrato</legend>
+                            <font class="normal">No. Cuenta: <br>(sin omitir caracteres)</font><br />
+                            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" accesskey="T" value="ognl: noCuenta" size="40" /><br />
+                        </fieldset>
+                        <br />
+						<div align="center">
+	                    	<input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+	                    	<input jwcid="@ImageSubmit" image="ognl: assets.cancelarButton"  selected="ognl: modoRefresh" tag= "1" />
+                        </div>
+                        <br />
+                        <fieldset class="normal">
+                            <font class="normal"><i>Para buscar y/o seleccionar otro Corporativo, d&eacute; Click en "CANCELAR TODO".</i></font>
+                        </fieldset>
+                    </table>
+				</form>
+			</td>
+			<td width="1%">&nbsp;</td>
+            <td>
+				<span jwcid="@Conditional" condition="ognl: clientes.size() &gt; 0">
+					<table jwcid="@ActionPortletBorder" title="Corporativos" >
+						<table jwcid="@TableBorder" title="ognl: null" columnCount="5" width="100%">
+							<tr class="titlecell">
+								<th class="title">No. Cta</th>
+					        	<th class="title">Nombre</th>
+    	    					<th class="title">Corporativo/Subsidiario/Contraparte</th>
+    	    					<th class="title">Operaci&oacute;n</th>
+                                <th class="title">Operaci&oacute;n</th>
+                            </tr>
+					    	<tr jwcid="forClientes@Foreach" source="ognl: clientes" element="tr" class="ognl: beans.evenOdd.next">
+		    					<td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forClientes.value[0]" raw="yes" /></td>
+					        	<td class="normal"><span jwcid="@Insert" value="ognl: components.forClientes.value[1]" raw="yes" /></td>
+		        				<td class="normal" align="center">
+                                    <span jwcid="@Insert" value='ognl: components.forClientes.value[6] != null && components.forClientes.value[8] != null ?
+		        				        ("S".equals(components.forClientes.value[6]) && components.forClientes.value[5].equals(components.forClientes.value[8]) ?
+		        				         (components.forClientes.value[7] == null ? "Corporativo" : "Contraparte") : ("N".equals(components.forClientes.value[6])
+		        				         && components.forClientes.value[8].equals(components.forClientes.value[7]) ? "Subsidiario" : "Sin configurar")
+                                        )
+                                        : "Sin configurar"' raw="yes" />
+                                </td>
+		        				<td class= "normal" align="center">
+                                    <span jwcid="@contrib:Choose">
+                                        <span jwcid="@contrib:When" condition='ognl: components.forClientes.value[8] != null &&
+                                        "S".equals(components.forClientes.value[6]) && components.forClientes.value[7] == null &&
+                                        components.forClientes.value[5].equals(components.forClientes.value[8])'>
+                                            <a jwcid="@DirectLink" listener="ognl:listeners.seleccionar" parameters="ognl: {components.forClientes.value[0], components.forClientes.value[1]}" onClick="fnShowWaitImage();">Seleccionar</a>
+                                        </span>
+                                        <span jwcid="@contrib:Otherwise">
+                                            <a jwcid="@DirectLink" listener="ognl:listeners.crearCorporativo" parameters="ognl: {components.forClientes.value[0]}" onClick="fnShowWaitImage();">Crear Corporativo</a>
+                                        </span>
+                                    </span>
+                                </td>
+                                <td class= "normal" align="center">
+                                    <span jwcid="@contrib:Choose">
+                                        <span jwcid="@contrib:When" condition='ognl: components.forClientes.value[8] != null &&
+                                        "S".equals(components.forClientes.value[6]) && components.forClientes.value[7] == null &&
+                                        components.forClientes.value[5].equals(components.forClientes.value[8])'>
+                                            <a jwcid="@DirectLink" listener="ognl:listeners.borrarCorporativo" parameters="ognl: {components.forClientes.value[0]}" onClick="fnShowWaitImage();">Borrar Corporativo</a>
+                                        </span>
+                                        <span jwcid="@contrib:Otherwise">&nbsp;</span>
+                                    </span>
+                                </td>
+                            </tr>
+                        </table>
+					</table>
+				</span>
+				<br/>
+                <span jwcid="@Conditional" condition="ognl: clientes.size() == 1">
+                    <span jwcid="@contrib:Choose">
+                        <span jwcid="@contrib:When" condition="ognl: idCorporativo">
+                            <table jwcid="@ResumenLineasCredito" idCliente="ognl: idCorporativo" nombreCorto='ognl: nombreCorto' />
+                        </span>
+                        <span jwcid="@contrib:Otherwise">
+                            <table jwcid="@ActionPortletBorder" title="Res&uacute;men de L&iacute;neas de Cr&eacute;dito">
+                                <table jwcid="@TableBorder" title="ognl: null" columnCount="1" width="100%">
+                                    <tr class="normalcell">
+                                        <td class="normal" align="center">
+                                            <span jwcid="@Insert" value="No ha seleccionado un Corporativo o el Corporativo seleccionado no tiene L&iacute;neas de Cr&eacute;dito" raw="yes" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </table>
+                        </span>
+                    </span>
+                </span>
+                <br/>
+                <span jwcid="@Conditional" condition="ognl: clientes.size() == 1">
+                    <span jwcid="@contrib:Choose">
+                        <span jwcid="@contrib:When" condition="ognl: asignados.size() &gt; 0">
+                            <table jwcid="@ActionPortletBorder" title='ognl: "Subsidiarios Asignados de " + nombreCorto'>
+                                <table jwcid="@TableBorder" title="ognl: null" columnCount="5" width="100%">
+                                    <tr class="titlecell">
+                                        <th class="title">No. Cta</th>
+                                        <th class="title">Nombre</th>
+                                        <th class="title">&nbsp;</th>
+                                        <th class="title">&nbsp;</th>
+                                    </tr>
+                                    <tr jwcid="forClien@Foreach" source="ognl: asignados" element="tr" class="ognl: beans.evenOdd.next">
+                                        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forClien.value[0]" raw="yes" /></td>
+                                        <td class="normal"><span jwcid="@Insert" value="ognl: components.forClien.value[1]" raw="yes" /></td>
+                                        <td class="normal" align="center"><span jwcid="@Insert" value='ognl: "Subsidiario"' raw="yes" /></td>
+                                        <td class= "normal" align="center">
+                                            <a jwcid="@DirectLink" listener="ognl:listeners.desasignar" parameters="ognl:components.forClien.value[0]" onClick="fnShowWaitImage();">Desasignar</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </table>
+                        </span>
+                        <span jwcid="@contrib:Otherwise">
+                            <table jwcid="@ActionPortletBorder" title="Subsidiarios Asignados">
+                                <table jwcid="@TableBorder" title="ognl: null" columnCount="1" width="100%">
+                                    <tr class="normalcell">
+                                        <td class="normal" align="center">
+                                            <span jwcid="@Insert" value="No ha seleccionado un Corporativo o el Corporativo seleccionado no tiene Subsidiarios Asignados" raw="yes" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </table>
+                        </span>
+                    </span>
+                </span>
+                <br/>
+				<span jwcid="@Conditional" condition="ognl: clientes.size() == 1 && subsidiarios.size() &gt; 0">
+					<table jwcid="@ActionPortletBorder" title="Subsidiarios" >
+						<table jwcid="@TableBorder" title="ognl: null" columnCount="5" width="100%">
+							<tr class="titlecell">
+								<th class="title">No. Cta</th>
+	        					<th class="title">Nombre</th>
+    	    					<th class="title">Corporativo/Subsidiario/Contraparte</th>
+    	    					<th class="title">&nbsp;</th>
+    						</tr>
+	    					<tr jwcid="forSubs@Foreach" source="ognl: subsidiarios" element="tr" class="ognl: beans.evenOdd.next">
+		    					<td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forSubs.value[0]" raw="yes" /></td>
+	        					<td class="normal"><span jwcid="@Insert" value="ognl: components.forSubs.value[1]" raw="yes" /></td>
+		        				<td class="normal" align="center">
+                                    <span jwcid="@Insert" value='ognl: components.forSubs.value[6] != null && components.forSubs.value[8] != null ?
+		        				        ("S".equals(components.forSubs.value[6]) && components.forSubs.value[5].equals(components.forSubs.value[8]) ?
+		        				         (components.forSubs.value[7] == null ? "Corporativo" : "Contraparte") : ("N".equals(components.forSubs.value[6])
+		        				         && components.forSubs.value[8].equals(components.forSubs.value[7]) ? "Subsidiario" : "Sin configurar")
+                                        )
+                                        : "Sin configurar"' raw="yes" />
+                                </td>
+		        				<td class= "normal" align="center">
+                                    <a jwcid="@DirectLink" listener="ognl: listeners.asignar" parameters="ognl: components.forSubs.value[0]" onClick="fnShowWaitImage();">
+                                        <span jwcid="@Insert" value='ognl: components.forSubs.value[6] != null && components.forSubs.value[8] != null ?
+		        				        ("S".equals(components.forSubs.value[6]) && components.forSubs.value[5].equals(components.forSubs.value[8]) ?
+		        				         (components.forSubs.value[7] == null ? "" : "") : ("N".equals(components.forSubs.value[6])
+		        				         && components.forSubs.value[8].equals(components.forSubs.value[7]) ? "" : "Asignar")
+                                        )
+                                        : "Asignar"' raw="yes" />
+                                    </a>
+                                </td>
+    						</tr>
+						</table>
+					</table>
+				</span>
+			</td>
+        </tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--$Id: TablaLimites.jwc,v 1.10 2008/02/22 18:25:06 ccovian Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+        "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+        "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<component-specification allow-body="yes">
+
+    <parameter name="limites" type="java.util.List" direction="in" required="yes"/>
+
+    <parameter name="alCierre" type="boolean" direction="in"/>
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate"/>
+
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+
+    <bean name="doubleValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true"/>
+        <set-property name="valueType">"double"</set-property>
+    </bean>
+
+    <bean name="porcValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true"/>
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="minimum" expression="0"/>
+        <set-property name="maximum" expression="100"/>
+    </bean>
+
+    <bean name="moneyValidator" lifecycle="render"
+          class="com.legosoft.tapestry.valid.MoneyValidator">
+        <set-property name="required" expression="true"/>
+        <set-property name="patternNotMatchedMessage">
+            "Las cantidades monetarias s&#243;lo permiten d&#237;gitos y los caracteres \'$\' y
+            \',\'
+            Formato v&#225;lido: $99,999.99"
+        </set-property>
+    </bean>
+
+    <bean name="porcValidator2" class="org.apache.tapestry.valid.NumberValidator" lifecycle="none">
+        <set-property name="required" expression="true"/>
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="minimum" expression="components.forLimites.value.porcentajeAviso"/>
+        <set-property name="maximum" expression="100"/>
+    </bean>
+
+    <component id="limiteTextField" type="ValidField">
+        <static-binding name="displayName" value="Limite"/>
+        <binding name="validator" expression="beans.moneyValidator"/>
+        <binding name="value" expression="components.forLimites.value.limite"/>
+        <static-binding name="format" value="#0.00"/>
+    </component>
+
+    <component id="porcAlarmaTextField" type="ValidField">
+        <static-binding name="displayName" value="Porcentaje de Alarma"/>
+        <binding name="validator" expression="beans.porcValidator2"/>
+        <binding name="value" expression="components.forLimites.value.porcentajeAlarma"/>
+    </component>
+
+    <component id="porcAvisoTextField" type="ValidField">
+        <static-binding name="displayName" value="Porcentaje de Aviso"/>
+        <binding name="validator" expression="beans.porcValidator"/>
+        <binding name="value" expression="components.forLimites.value.porcentajeAviso"/>
+    </component>
+
+    <component id="checkBoxFinDeDia" type="Checkbox">
+        <binding name="selected" expression="components.forLimites.value.tipoLimite.alCierre"/>
+    </component>
+
+
+</component-specification>

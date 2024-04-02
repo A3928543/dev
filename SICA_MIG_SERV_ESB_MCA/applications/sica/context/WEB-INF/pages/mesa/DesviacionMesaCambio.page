@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: DesviacionMesaCambio.page,v 1.9 2008/02/22 18:25:30 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.mesa.DesviacionMesaCambio">
+
+	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+   
+	<bean name="doubleValidatorMountAvg" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="minimum" expression="0"/>
+        <set-property name="clientScriptingEnabled" expression="false" />
+    </bean>
+
+	<bean name="doubleValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="clientScriptingEnabled" expression="false" />
+    </bean>
+	
+	 <component id="textFieldDesviacionPorcentajeMaximo" type="ValidField">
+        <binding name="validator" expression="beans.doubleValidatorMountAvg"/>
+        <binding name="value" expression="desviacionPorcentajeMaximo"/>
+        <static-binding name="displayName" value="Porcentaje M&#225;ximo de Desviaci&#243;n"/>
+    </component>
+    
+    <component id="textFieldDesviacionMontoMaximo" type="ValidField">
+        <binding name="validator" expression="beans.doubleValidatorMountAvg"/>
+        <binding name="value" expression="desviacionMontoMaximo"/>
+        <static-binding name="displayName" value="Monto M&#225;ximo de Desviaci&#243;n"/>
+    </component>
+    
+	<component id="textFieldDesviacionPorcentajeMontoMinimo" type="ValidField">
+        <binding name="validator" expression="beans.doubleValidatorMountAvg"/>
+        <binding name="value" expression="desviacionPorcentajeMontoMinimo"/>
+        <static-binding name="displayName" value="Porcentaje M&#237;nimo de Desviaci&#243;n"/>
+    </component>
+    
+    
+    <component id="textFieldFactorDesviacion_1" type="ValidField">
+        <binding name="validator" expression="beans.doubleValidator"/>
+        <binding name="value" expression="factorDesviacion_1"/>
+        <static-binding name="displayName" value="Factor de Desviaci&#243;n 1"/>
+    </component>
+
+    <component id="textFieldFactorDesviacion_2" type="ValidField">
+        <binding name="validator" expression="beans.doubleValidator"/>
+        <binding name="value" expression="factorDesviacion_2"/>
+        <static-binding name="displayName" value="Factor de Desviaci&#243;n 2"/>
+    </component>
+    
+
+	<property-specification name="desviacionPorcentajeMaximo" type="double" />
+    <property-specification name="desviacionMontoMaximo" type="double"  />
+    <property-specification name="desviacionPorcentajeMontoMinimo" type="double" />
+    <property-specification name="factorDesviacion_1" type="double" />
+    <property-specification name="factorDesviacion_2" type="double" />
+    
+    <context-asset name="aceptarButton" path="/images/aceptar.gif" />
+    
+
+</page-specification>

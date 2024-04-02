@@ -1,0 +1,42 @@
+<!-- $Id: CatCanales.html,v 1.11.34.1 2010/10/08 01:01:48 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Cat&aacute;logo de canales</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <table jwcid="@ActionPortletBorder" title="Cat&aacute;logo de Canales">
+        <form jwcid="@Form" listener="ognl: listeners.insertar">
+            <table jwcid="table@bup:Table" cellpadding="3" cellspacing="1" width="100%" source="ognl:getSicaServiceData().findAll(@com.ixe.ods.sica.model.Canal@class)"
+                   columns='ognl: "idCanal:Clave:idCanal, nombre:Nombre:nombre, !sucursal:Sucursal:sucursal, mesaCambio.nombre:Mesa de Cambios:mesaCambio.nombre, tipoPizarron.descripcion:Tipo Pizarron:tipoPizarron.descripcion, !facultad:Facultad:facultad, !codigoPostal:Codigo Postal:codigoPostal, emailJefe:Email:emailJefe, !editar, !montosMaximos"' class="tableborder" pageSize="100" />
+	     	<span jwcid="sucursalColumnValue@Block">
+		 		<span jwcid="@Insert" value='ognl: components.table.tableRow.sucursal != null ? components.table.tableRow.sucursal.nombre : ""' />
+			</span>
+             <span jwcid="tipoPizarronColumnValue@Block">
+		 		<span jwcid="@Insert" value='ognl: components.table.tableRow.tipoPizarron != null components.table.tableRow.tipoPizarron.descripcion : ""' />
+			</span>			
+	     	<span jwcid="facultadColumnValue@Block">
+		 		<span jwcid="@Insert" value='ognl: components.table.tableRow.facultad != null ? components.table.tableRow.facultad.descripcion : ""' />
+			</span>
+			<span jwcid="codigoPostalColumnValue@Block">
+		 		<span jwcid="@Insert" value='ognl: components.table.tableRow.codigoPostal' />
+			</span>		
+            <span jwcid="emailColumnValue@Block">
+                <span jwcid="@Insert" value="ognl: getEmail(components.table.tableRow.emailJefe)" />
+           </span>
+	     	<span jwcid="editarColumnHeader@Block">&nbsp;</span>
+	     	<span jwcid="editarColumnValue@Block">
+		 		<a jwcid="@DirectLink" listener="ognl:listeners.editar" parameters="ognl: components.table.tableRow.idCanal" onClick="fnShowWaitImage();"> Editar </a>
+			</span>
+            <span jwcid="montosMaximosColumnHeader@Block">&nbsp;</span>
+            <span jwcid="montosMaximosColumnValue@Block">
+                <a jwcid="@ExternalLink" page="CatMontosMaximosSucursal" parameters="ognl: components.table.tableRow.idCanal" disabled="ognl: components.table.tableRow.sucursal == null" onClick="fnShowWaitImage();">Montos M&aacute;ximos Sucursales</a>
+           </span>
+            <br />
+            <div align="center">
+                <input jwcid="@ImageSubmit" image="ognl: assets.insertButton" onclick="return fnDisableForm(this.form);"/>
+            </div>
+        </form>
+    </table>
+</body>
+</html>

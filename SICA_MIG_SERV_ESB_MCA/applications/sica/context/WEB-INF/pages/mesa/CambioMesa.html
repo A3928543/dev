@@ -1,0 +1,19 @@
+<!-- $Id: CambioMesa.html,v 1.9 2008/02/22 18:25:30 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Cambio de Mesa</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+	<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level="ognl: operacionExitosa ? 1 : 0"/>
+    <form jwcid="@Form"  listener="ognl: listeners.submit">
+        <table jwcid="@ActionPortletBorder" title="Cambiar la mesa de cambios actual" width="100%">
+            <div align="center">
+                <span class="title">Canal: </span> <select jwcid="@PropertySelection" model="ognl: canalesModel" value="ognl: selectedCanal" /><br /><br />
+                <input jwcid="@ImageSubmit" image="ognl: assets.saveButton" />
+            </div>
+        </table>
+    </form>
+</body>
+</html>
+

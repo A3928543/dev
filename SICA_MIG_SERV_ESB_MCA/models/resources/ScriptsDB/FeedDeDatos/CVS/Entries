@@ -1,0 +1,20 @@
+/Alter_PreRef_RenPiz.sql/1.1.2.6/Tue May 10 16:43:05 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/Alter_PreRef_RenPiz_Rev.sql/1.1.2.5/Tue May  3 18:57:51 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+D/PLSQL////
+/Permisos_SICA_BATCH.sql/1.1.2.1/Fri Jul 29 00:05:14 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/Permisos_SICA_BATCH_rev.sql/1.1.2.1/Fri Jul 29 00:05:04 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/add_fdd_params.sql/1.1.2.2/Fri Jul 29 00:04:37 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/add_fdd_params_rev.sql/1.1.2.2/Thu Jul 28 21:23:47 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/alter_sica_variacion.sql/1.1.2.1/Thu Jun  2 16:30:15 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/alter_sica_variacion_rev.sql/1.1.2.1/Thu Jun  2 16:30:07 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+D/auxiliar////
+/drop_stored_procedures_rev.sql/1.1.2.2/Fri Jul 29 00:04:54 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/pl_deal_det_fd_pr_fill.sql/1.1.2.2/Tue May 10 16:43:05 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/pl_sc_factor_divisa_actual.sql/1.1.2.3/Tue May 10 16:43:05 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/pl_sc_factor_divisa_actual_rev.sql/1.1.2.2/Mon May  2 21:50:43 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/sp_actualiza_precio_referencia.sql/1.1.2.8/Thu Jun  2 16:32:08 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/sp_genera_pizarrones.sql/1.1.2.16/Thu Jun  2 16:33:40 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/trg_actualiza_precio_referencia.sql/1.1.2.6/Thu Jun  2 16:34:26 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/trg_actualiza_precio_referencia_rev.sql/1.1.2.1/Tue Apr  5 01:28:10 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/trg_fac_div_prec_ref_actual.sql/1.1.2.4/Tue May 10 16:43:05 2011/-kb/TSICA_MIG_SERV_ESB_MCA
+/trg_fac_div_prec_ref_actual_rev.sql/1.1.2.2/Mon Apr 18 22:28:28 2011/-kb/TSICA_MIG_SERV_ESB_MCA

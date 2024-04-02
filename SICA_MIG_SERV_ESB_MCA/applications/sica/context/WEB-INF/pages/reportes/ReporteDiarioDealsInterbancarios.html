@@ -1,0 +1,52 @@
+<!-- $Id: ReporteDiarioDealsInterbancarios.html,v 1.11 2008/08/14 02:31:50 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Reportes</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+	<table align= "center" border="0" cellpadding="0" cellspacing="0" width="80%">
+        <tr valign="top">
+            <td width="100%">
+             	<div align="center">
+	            	&nbsp;
+	            </div>     	   
+                 <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+			     <table jwcid="@ActionPortletBorder" title="Reportes Diarios Deals Interbancarios">
+				     <form jwcid="@Form" delegate="ognl: beans.delegate" onSubmit="descargar(); fnShowWaitImage(); return true;">
+				       		    <fieldset class="normal">
+			           		        <legend class="legend">Impresi&oacute;n de Reportes</legend>
+				                		<table>
+                                            <tr>
+                                            	<td width="1%" class="title" nowrap>Del&nbsp;:</td>
+                                                <td align="left"><span jwcid="@ls:DatePicker" value="ognl: registerDateDesde" format="dd/MM/yyyy"/></td>    
+												<td width="1%" class="title" nowrap>Hasta&nbsp;:</td>
+                                                <td align="left"><span jwcid="@ls:DatePicker" value="ognl: registerDateHasta" format="dd/MM/yyyy"/></td>
+                                           	</tr>
+                                           <tr>
+												<td width="1%" class="title" nowrap>Divisa&nbsp;:</td>
+                                                <td align="left"><select jwcid="divisasComboBox" /></td>
+												<td width="1%" class="title" nowrap>Mesa&nbsp;:</td>
+                                                <td align="left"><select jwcid="mesasComboBox" /></td>                                                												                                        
+                                            </tr>
+        									<tr>
+												<td width="1%" class="title" nowrap>Cliente&nbsp;:</td>
+                                                <td align="left" ><select jwcid="brokersComboBox" /></td>        
+                                            </tr>
+                                        </table>        
+                                </fieldset>
+                                <br />
+				                <div align="center">
+                             		<img jwcid="@ImageSubmit" listener="ognl:listeners.imprimirReporte" image="ognl: assets.verPdfButton" />&nbsp;
+							 		<img jwcid="@ImageSubmit" listener="ognl:listeners.imprimirReporteXls" image="ognl: assets.verXlsButton" />
+                        		<div/>
+			    		</form>
+                     	
+				   </table>
+   			</td>
+        </tr>
+    </table>
+    <span jwcid="@ls:DatePickerColophon" />
+    <script jwcid="@Script" script="/WEB-INF/scripts/Descargar.script" />
+</body>
+</html>

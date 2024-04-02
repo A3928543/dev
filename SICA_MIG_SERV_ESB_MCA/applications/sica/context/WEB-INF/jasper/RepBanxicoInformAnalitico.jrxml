@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="Unnamed" language="java" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30" whenResourceMissingType="Empty">
+	<property name="com.jasperassistant.designer.HGuides" value="34,60"/>
+	<property name="com.jasperassistant.designer.Rulers" value="true"/>
+	<property name="com.jasperassistant.designer.GridHeight" value="10"/>
+	<property name="com.jasperassistant.designer.GridWidth" value="10"/>
+	<property name="com.jasperassistant.designer.DataSource" value="RepBanxicoInformeDataSource"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="false"/>
+	<property name="com.jasperassistant.designer.Margins" value="true"/>
+	<property name="com.jasperassistant.designer.Grid" value="true"/>
+	<property name="com.jasperassistant.designer.SnapToGuides" value="true"/>
+	<field name="class" class="java.lang.Class">
+	</field>
+	<field name="cliente" class="java.lang.String">
+	</field>
+	<field name="conSwaps" class="java.lang.String">
+	</field>
+	<field name="fecha" class="java.util.Date">
+	</field>
+	<field name="fechaLiquidacion" class="java.util.Date">
+	</field>
+	<field name="fechaValor" class="java.util.Date">
+	</field>
+	<field name="flag" class="java.lang.String">
+	</field>
+	<field name="idDivisa" class="java.lang.String">
+	</field>
+	<field name="image" class="java.io.InputStream">
+	</field>
+	<field name="isRecibimos" class="java.lang.Boolean">
+	</field>
+	<field name="posicionInicial" class="java.lang.Double">
+	</field>
+	<field name="sector" class="java.lang.String">
+	</field>
+	<field name="sector72Hr" class="java.lang.Double">
+	</field>
+	<field name="sectorCash" class="java.lang.Double">
+	</field>
+	<field name="sectorSpot" class="java.lang.Double">
+	</field>
+	<field name="sectorTom" class="java.lang.Double">
+	</field>
+	<field name="sectorVFut" class="java.lang.Double">
+	</field>
+	<field name="sinSwaps" class="java.lang.String">
+	</field>
+	<field name="swap" class="java.lang.Double">
+	</field>
+	<field name="totalCompras" class="java.lang.Double">
+	</field>
+	<field name="totalVentas" class="java.lang.Double">
+	</field>
+	<variable name="sectorCash" class="java.lang.Double" resetType="None" calculation="Sum">
+		<variableExpression><![CDATA[$F{sectorCash}]]></variableExpression>
+	</variable>
+	<variable name="sectorTom" class="java.lang.Double" resetType="None" calculation="Sum">
+		<variableExpression><![CDATA[$F{sectorTom}]]></variableExpression>
+	</variable>
+	<variable name="sectorSpot" class="java.lang.Double" resetType="None" calculation="Sum">
+		<variableExpression><![CDATA[$F{sectorSpot}]]></variableExpression>
+	</variable>
+	<variable name="totales" class="java.lang.Double" resetType="None" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{sectorCash}.doubleValue() + $F{sectorSpot}.doubleValue() +$F{sectorTom}.doubleValue())]]></variableExpression>
+	</variable>
+	<variable name="totalVentas" class="java.lang.Double" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() == true ? new Double(0.00) : $F{sectorCash}]]></variableExpression>
+	</variable>
+	<variable name="totalCompras" class="java.lang.Double" resetType="Group" resetGroup="TITUL" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() == true ? $F{sectorCash} : new Double(0.00)]]></variableExpression>
+	</variable>
+	<variable name="totalComprasTom" class="java.lang.Double" resetType="Group" resetGroup="TITUL" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() == true ? $F{sectorTom} : new Double(0.00)]]></variableExpression>
+	</variable>
+	<variable name="totalVentasTom" class="java.lang.Double" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() == true ?  new Double(0.00) : $F{sectorTom}]]></variableExpression>
+	</variable>
+	<variable name="totalComprasSpot" class="java.lang.Double" resetType="Group" resetGroup="TITUL" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() == true ? $F{sectorSpot} : new Double(0.00)]]></variableExpression>
+	</variable>
+	<variable name="totalVentasSpot" class="java.lang.Double" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() == true ? new Double(0.00) : $F{sectorSpot}]]></variableExpression>
+	</variable>
+	<variable name="posicionFinal" class="java.lang.Double" resetType="None" incrementType="Page">
+		<variableExpression><![CDATA[new Double( $V{totalCompras}.doubleValue() - $V{totalVentas}.doubleValue() )]]></variableExpression>
+	</variable>
+	<variable name="posicionFinalTom" class="java.lang.Double" resetType="None">
+		<variableExpression><![CDATA[new Double( $V{totalComprasTom}.doubleValue() - $V{totalVentasTom}.doubleValue() )]]></variableExpression>
+	</variable>
+	<variable name="posicionFinalSpot" class="java.lang.Double" resetType="None">
+		<variableExpression><![CDATA[new Double( $V{totalComprasSpot}.doubleValue() - $V{totalVentasSpot}.doubleValue() )]]></variableExpression>
+	</variable>
+	<variable name="posicionFinalTotales" class="java.lang.Double" resetType="None">
+		<variableExpression><![CDATA[new Double( new Double($V{totalCompras}.doubleValue()  +  $V{totalComprasSpot}.doubleValue()  +$V{totalComprasTom}.doubleValue()).doubleValue() - new Double($V{totalVentas}.doubleValue()  +  $V{totalVentasSpot}.doubleValue()  +$V{totalVentasTom}.doubleValue() ).doubleValue())]]></variableExpression>
+	</variable>
+	<variable name="totalesC" class="java.lang.Double" resetType="Group" resetGroup="TITUL" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() == true ?  new Double ( $F{sectorCash}.doubleValue() +$F{sectorTom}.doubleValue() + $F{sectorSpot}.doubleValue()+ $F{sector72Hr}.doubleValue()+ $F{sectorVFut}.doubleValue()):new Double (0.00)]]></variableExpression>
+	</variable>
+	<variable name="totalesV" class="java.lang.Double" resetType="Group" resetGroup="TITUL" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() == true ?  new Double (0.00) : new Double ( $F{sectorCash}.doubleValue() + $F{sectorTom}.doubleValue() + $F{sectorSpot}.doubleValue()+ $F{sector72Hr}.doubleValue()+ $F{sectorVFut}.doubleValue())]]></variableExpression>
+	</variable>
+	<variable name="swap" class="java.lang.Double" resetType="None" calculation="Sum">
+		<variableExpression><![CDATA[$F{swap}]]></variableExpression>
+	</variable>
+	<variable name="totalCompraSwap" class="java.lang.Double" resetType="Group" resetGroup="TITUL" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() == true ? $F{swap} : new Double(0.00)]]></variableExpression>
+	</variable>
+	<variable name="totalVentaSwap" class="java.lang.Double" resetType="Group" resetGroup="TITUL" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() == true ? new Double(0.00) :$F{swap}]]></variableExpression>
+	</variable>
+	<variable name="posicionFinalSwap" class="java.lang.Double" resetType="None">
+		<variableExpression><![CDATA[new Double( $V{totalCompraSwap}.doubleValue() - $V{totalVentaSwap}.doubleValue() )]]></variableExpression>
+	</variable>
+	<variable name="TotalComprasSinSwap" class="java.lang.Double" resetType="Group" resetGroup="Group_1" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() == true ?  new Double ( $F{sectorCash}.doubleValue() +$F{sectorTom}.doubleValue() + $F{sectorSpot}.doubleValue()+ $F{sector72Hr}.doubleValue()+ $F{sectorVFut}.doubleValue()):new Double (0.00)]]></variableExpression>
+	</variable>
+	<variable name="totalVentasSinSwaps" class="java.lang.Double" resetType="Group" resetGroup="Group_1" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() == true ?  new Double (0.00) : new Double ( $F{sectorCash}.doubleValue() + $F{sectorTom}.doubleValue() + $F{sectorSpot}.doubleValue()+ $F{sector72Hr}.doubleValue()+ $F{sectorVFut}.doubleValue())]]></variableExpression>
+	</variable>
+	<variable name="totalComprasConSwaps" class="java.lang.Double" resetType="Group" resetGroup="Group_1" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() == true ? $F{swap} : new Double(0.00)]]></variableExpression>
+	</variable>
+	<variable name="totalVentasConSwaps" class="java.lang.Double" resetType="Group" resetGroup="Group_1" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() == true ? new Double(0.00) :$F{swap}]]></variableExpression>
+	</variable>
+	<variable name="borrablesectrocash" class="java.lang.Double" resetType="None" incrementType="Group" incrementGroup="sectores" calculation="Sum">
+		<variableExpression><![CDATA[$F{sectorCash}]]></variableExpression>
+	</variable>
+	<variable name="Variable_1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($V{sectorCash}.doubleValue()+$V{sectorTom}.doubleValue()+$V{sectorSpot}.doubleValue()+$V{Variable_2}.doubleValue())]]></variableExpression>
+	</variable>
+	<variable name="Variable_2" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($V{sectorCash}.doubleValue()+$V{sectorTom}.doubleValue()+$V{sectorSpot}.doubleValue())]]></variableExpression>
+	</variable>
+	<variable name="Variable_3" class="java.lang.String">
+	</variable>
+	<variable name="sumaComprasSwap" class="java.lang.Double" resetType="Group" resetGroup="sectores" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() == true ? $F{swap} : new Double (0.00)]]></variableExpression>
+	</variable>
+	<variable name="sumaVentasSwap" class="java.lang.Double" resetType="Group" resetGroup="sectores" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() == true ? new Double (0.00):$F{swap}]]></variableExpression>
+	</variable>
+	<variable name="sumaVentasSnSwap" class="java.lang.Double" resetType="Group" resetGroup="sectores" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() == true ?  new Double (0.00) : new Double ( $F{sectorCash}.doubleValue() + $F{sectorTom}.doubleValue() + $F{sectorSpot}.doubleValue()+ $F{sector72Hr}.doubleValue()+ $F{sectorVFut}.doubleValue())]]></variableExpression>
+	</variable>
+	<variable name="sumaComprasSnSwap" class="java.lang.Double" resetType="Group" resetGroup="sectores" calculation="Sum">
+		<variableExpression><![CDATA[$F{isRecibimos}.booleanValue() == true ?  new Double ( $F{sectorCash}.doubleValue() +$F{sectorTom}.doubleValue() + $F{sectorSpot}.doubleValue()+ $F{sector72Hr}.doubleValue()+ $F{sectorVFut}.doubleValue()):new Double (0.00)]]></variableExpression>
+	</variable>
+	<group name="Group_2" isStartNewPage="true" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{idDivisa}]]></groupExpression>
+		<groupHeader>
+		<band height="13">
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="10" y="0" width="39" height="10" backcolor="#c0c0c0"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[DIVISA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" mode="Opaque" x="49" y="0" width="210" height="10" backcolor="#c0c0c0"/>
+				<textElement>
+					<font fontName="Arial" size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{idDivisa}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupHeader>
+	</group>
+	<group name="Group_1">
+		<groupExpression><![CDATA[$F{sector}]]></groupExpression>
+		<groupHeader>
+		<band height="41">
+			<textField>
+				<reportElement positionType="Float" mode="Opaque" x="12" y="2" width="112" height="10" backcolor="#6397ed"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["TIPO DE CONTRAPARTE :"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" mode="Opaque" x="124" y="2" width="303" height="10" backcolor="#6397ed"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sector}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="289" y="27" width="118" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["FECHA VALOR:"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="410" y="30" width="143" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Compras                            Ventas"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="425" y="17" width="118" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["SIN SWAPS:"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="610" y="31" width="143" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Compras                            Ventas"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="627" y="17" width="118" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["CON SWAPS:"]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupHeader>
+		<groupFooter>
+		<band height="14">
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="11" y="1" width="84" height="10" backcolor="#6397ed"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Totales:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" mode="Opaque" x="91" y="1" width="299" height="10" backcolor="#6397ed"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sector}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" mode="Opaque" x="401" y="1" width="81" height="10" backcolor="#6397ed"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{TotalComprasSinSwap}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" mode="Opaque" x="491" y="1" width="81" height="10" backcolor="#6397ed"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{totalVentasSinSwaps}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" mode="Opaque" x="601" y="1" width="81" height="10" backcolor="#6397ed"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{totalComprasConSwaps}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" mode="Opaque" x="691" y="1" width="81" height="10" backcolor="#6397ed"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{totalVentasConSwaps}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupFooter>
+	</group>
+	<group name="TITUL">
+		<groupExpression><![CDATA[$F{fechaValor}]]></groupExpression>
+		<groupHeader>
+		<band height="10">
+			<textField pattern="d/MM/yyyy">
+				<reportElement positionType="Float" x="310" y="0" width="77" height="10"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaValor}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupHeader>
+		<groupFooter>
+		<band height="31">
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="400" y="13" width="80" height="10" backcolor="#6397ed"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{totalesC}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="490" y="13" width="80" height="10" backcolor="#6397ed"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{totalesV}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="600" y="13" width="80" height="10" backcolor="#6397ed"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{totalCompraSwap}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="186" y="13" width="123" height="10" backcolor="#6397ed"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Subtotal Fecha valor :"]]></textFieldExpression>
+			</textField>
+			<textField pattern="d/MM/yyyy">
+				<reportElement positionType="Float" mode="Opaque" x="310" y="13" width="77" height="10" backcolor="#6397ed"/>
+				<textElement>
+					<font fontName="Arial" size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaValor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="400" y="0" width="170" height="10"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[_______________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="600" y="0" width="170" height="10"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[_________________________________________]]></text>
+			</staticText>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Opaque" x="690" y="13" width="80" height="10" backcolor="#6397ed"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{totalVentaSwap}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupFooter>
+	</group>
+	<group name="sectores">
+		<groupExpression><![CDATA[$F{cliente}]]></groupExpression>
+		<groupFooter>
+		<band height="10">
+			<textField>
+				<reportElement positionType="Float" x="10" y="0" width="369" height="10" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cliente}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="600" y="0" width="80" height="10"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumaComprasSwap}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="690" y="0" width="80" height="10"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumaVentasSwap}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="490" y="0" width="80" height="10"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumaVentasSnSwap}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="400" y="0" width="80" height="10"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumaComprasSnSwap}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="1">
+		</band>
+	</title>
+	<pageHeader>
+		<band height="48">
+			<staticText>
+				<reportElement x="289" y="2" width="178" height="15" printWhenGroupChanges="Group_2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[IXE BANCO]]></text>
+			</staticText>
+			<textField pattern="d/MM/yyyy">
+				<reportElement positionType="Float" x="500" y="15" width="64" height="10" printWhenGroupChanges="Group_2"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="155" y="15" width="384" height="15" printWhenGroupChanges="Group_2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[INFORME ANALITICO DE OPERACIONES DE CAMBIOS, CONCERTADAS EL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="428" y="35" width="300" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[CIFRAS EN MILES DE DOLARES AMERICANOS]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="32" isSplitAllowed="false">
+			<staticText>
+				<reportElement positionType="Float" x="622" y="21" width="40" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Hoja]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="712" y="21" width="20" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[de]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="672" y="21" width="30" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement positionType="Float" x="742" y="21" width="30" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="d/MM/yyyy">
+				<reportElement positionType="Float" x="119" y="20" width="130" height="10"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="10" y="20" width="100" height="10"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Fecha del Reporte:"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="10" y="10" width="789" height="14" forecolor="#c0c0c0"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[________________________________________________________________________________________________________________________________________________________________________]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

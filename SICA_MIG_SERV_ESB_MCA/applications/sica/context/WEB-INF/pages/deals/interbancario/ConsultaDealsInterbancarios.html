@@ -1,0 +1,103 @@
+<!-- $Id: ConsultaDealsInterbancarios.html,v 1.13.12.2.10.1 2010/12/21 22:41:17 egordoa Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Consulta de deals interbancarios</title>
+    <link rel="StyleSheet" href="../../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder" breaksBeforeLoadingImage="16">
+    <form jwcid="@Form" listener="ognl: listeners.listar" delegate="ognl:beans.delegate">
+        <table jwcid="@ActionPortletBorder" title="Criterios para Consulta de Deal Interbancario" minimizable="yes" minimized="ognl: criteriosMinimizados">
+            <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" width="100%" />
+            <fieldset jwcid="@CriteriosConsultaDeal" blockCriterios="ognl: components.cbPromotorBlock"
+            		  tipoFecha="ognl: tipoFecha" fechaInicioBusqueda="ognl: fechaInicioBusqueda" 
+            		  fechaFinalBusqueda="ognl: fechaFinalBusqueda"
+                    idDeal="ognl: ids" materno="ognl: materno" noCuenta="ognl: noCuenta" nombre="ognl: nombre"
+                    paterno="ognl: paterno" razonSocial="ognl: razonSocial" status="ognl: status"
+                    mostrarOpcionesMensajeria="ognl: true" opcionMensajeria="ognl: opcionMensajeria"
+                    divisa="ognl: divisa"   listaDivisas="ognl: obtenCatalogoDivisas()"  
+                    claveFormaLiquidacion="ognl: claveFormaLiquidacion"
+                     listaFormasLiquidacion="ognl: arregloFormasLiquidacion() "                      
+                     />
+            <fieldset class="normal">
+                <legend class="legend">Sem&aacute;foros</legend>
+                <table width="100%">
+                    <tr class="title">
+                        <td align="right">Documentaci&oacute;n:</td>
+                        <td><span jwcid="@PropertySelection" model="ognl: @com.ixe.ods.sica.components.EventosSelectionModel@getDocumentacionSelModel()" value="ognl: evDoc"/></td>
+                        <td align="right">Cancelaci&oacute;n:</td>
+                        <td><span jwcid="@PropertySelection" model="ognl: @com.ixe.ods.sica.components.EventosSelectionModel@getCancelacionSelModel()" value="ognl: evCan"/></td>
+                        <td align="right">L&iacute;nea de Cr&eacute;dito:</td>
+                        <td><span jwcid="@PropertySelection" model="ognl: @com.ixe.ods.sica.components.EventosSelectionModel@getLineaCreditoSelModel()" value="ognl: evLinCred"/></td>
+                    </tr>
+                    <tr class="title">
+                        <td align="right">L&iacute;nea de operaci&oacute;n:</td>
+                        <td colspan="5"><span jwcid="@PropertySelection" model="ognl: @com.ixe.ods.sica.components.EventosSelectionModel@getLineaOperacionSelModel()" value="ognl: evLinOp"/></td>
+                    </tr>
+                </table>
+            </fieldset>
+            <br />
+            <div class="textocentrado">
+                <input type="submit" value="Listar" jwcid="@ImageSubmit" image="ognl: assets.bListar" onclick="return fnDisableForm(this.form);" />
+            </div>
+            <span jwcid="@ls:DatePickerColophon" />
+        </table>
+    </form>
+     <span jwcid="cbPromotorBlock@Block">
+        <td width="12%" align="left">Pr<u>o</u>motor:</td>
+        <td><select jwcid="promotorSolicitudComboBox" /></td>
+    </span>
+    <span jwcid="@Conditional" condition="ognl: deals.size() &gt; 0">
+    <table jwcid="@ActionPortletBorder" title="Deals:">
+        <table border="0" cellspacing="1" cellpadding="3" width="100%" jwcid="table@bup:Table" source="ognl: deals" initialSortColumn="idDeal" pageSize="25"
+                columns='ognl: "idDeal:No. Deal:idDeal, broker:Contraparte:broker, usuario:Captur\u00f3:usuario, tipoOperacion:Operaci\u00f3n:tipoOperacion, tipoValor:Tipo Valor:tipoValor,
+                fechaCaptura:Fecha operaci\u00f3n:fechaCaptura, fechaLiquidacion:Fecha liquidaci\u00f3n:fechaLiquidacion, descripcionStatus:Status:descripcionStatus, !clavesFormasLiquidacion:Detalle:clavesFormasLiquidacion, !editar, !imprimir"' class="tableborder" />
+        <span jwcid="idDealColumnValue@Block">
+            <a jwcid="@ExternalLink" page="DatosDealInterbancario" parameters="ognl: components.table.tableRow.idDeal" renderer='ognl: page.global.applicationContext.getBean("bigPopupLinkRenderer")' disabled="ognl: verHabilitado"><span jwcid="@Insert" value="ognl: components.table.tableRow.idDeal" /></a>
+        </span>
+        <span jwcid="fechaCapturaColumnValue@Block">
+           <div align="center">
+              <span jwcid="@Insert" value="ognl: components.table.tableRow.fechaCaptura" format="ognl: fullDateFormat" />
+           </div>
+        </span>
+        <span jwcid="fechaLiquidacionColumnValue@Block">
+           <div align="center">
+              <span jwcid="@Insert" value="ognl: components.table.tableRow.fechaLiquidacion" format="ognl: fullDateFormat" />
+           </div>
+        </span>
+        <span jwcid="descripcionStatusColumnValue@Block">
+            <span jwcid="@StatusField" status="ognl: @com.ixe.ods.sica.components.StatusField@getStatusDeal(components.table.tableRow)" descripcion="ognl: components.table.tableRow.descripcionStatus" />
+        </span>
+        <span jwcid="editarColumnHeader@Block">&nbsp;</span>
+        <span jwcid="editarColumnValue@Block">
+           <div align="center">
+            <a jwcid="@DirectLink" listener="ognl: listeners.verDeal" parameters="ognl: components.table.tableRow.idDeal" disabled="ognl: !verHabilitado" onClick="fnShowWaitImage();">Ver</a>
+           </div>
+        </span>
+        <span jwcid="imprimirColumnHeader@Block">&nbsp;</span>
+        <span jwcid="imprimirColumnValue@Block">
+           <div align="center">
+           <span jwcid="@Conditional" condition='ognl: ! @com.ixe.ods.sica.model.Deal@STATUS_DEAL_CANCELADO.equals(components.table.tableRow.statusDeal) && ! @com.ixe.ods.sica.model.Deal@STATUS_DEAL_PROCESO_CAPTURA.equals(components.table.tableRow.statusDeal)'>
+                <a jwcid="printLink">Ver PDF</a>
+           </span>
+           <span jwcid="@Conditional" condition='ognl:  @com.ixe.ods.sica.model.Deal@STATUS_DEAL_CANCELADO.equals(components.table.tableRow.statusDeal) ||  @com.ixe.ods.sica.model.Deal@STATUS_DEAL_PROCESO_CAPTURA.equals(components.table.tableRow.statusDeal)'>
+                <span jwcid= "@Insert" value="Ver PDF"  />
+           </span>
+           </div>
+         </span>
+        <span jwcid="clavesFormasLiquidacionColumnValue@Block">
+            <table border="0" cellspacing="1" cellpadding="2" width="100%" class="portletbackground">
+                <span jwcid="forDets@Foreach" source="ognl: components.table.tableRow.detalles">
+                <tr class="normalcell" jwcid="@Conditional" condition="ognl: mostrarDetalle(components.forDets.value, components.table.tableRow)" element="tr">
+                    <td with="1%"><span jwcid="@Insert" value="ognl: components.forDets.value.claveFormaLiquidacion" /></td>
+                    <td with="1%"><span jwcid="@Insert" value="ognl: components.forDets.value.recibimos ? 'REC' : 'ENT'" /></td>
+                    <td align="right"><span jwcid="@Insert" value="ognl: components.forDets.value.monto" format="ognl: moneyFormat" /></td>
+                    <td with="1%"><span jwcid="@Insert" value="ognl: components.forDets.value.idDivisa" /></td>
+                    <td with="1%"><span jwcid="@Insert" value="ognl: components.forDets.value.tipoCambio" format="ognl: currencyFormatSix" /></td>
+                </tr>
+                </span>
+            </table>
+        </span>
+    </table>
+    </span>
+</body>
+</html>

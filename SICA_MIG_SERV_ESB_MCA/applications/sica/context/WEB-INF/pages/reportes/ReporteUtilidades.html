@@ -1,0 +1,55 @@
+<!-- $Id: ReporteUtilidades.html,v 1.17 2008/08/11 20:07:59 ccovian Exp $ -->
+<html jwcid="@Shell" stylesheet="ognl:assets.stylesheet" title="Sistema de Cambios" delegate="ognl: page.visit">
+<head jwcid="$remove$">
+    <title>Reportes</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@Body" background="images/seal.gif" bgproperties="fixed">
+	<span jwcid="@menu:XmlMenu" name="SICA" menu="ognl: page.visit.menu" listener="ognl: page.visit.menuListener"/>
+    <table border="0" cellpadding="0" cellspacing="0" width="980" align="center">
+        <tr>
+            <td>
+                <div id="mensaje">
+                    <br />
+                    <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" width="100%"/>
+                </div>
+                <span jwcid="@LoadingImage" visible="ognl: true" breaksBeforeLoadingImage="ognl: 10" valign="center"/>
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr valign="top">
+                        <td width="200">
+                             <form jwcid="@Form" listener="ognl: listeners.reportes" delegate="ognl: beans.delegate" onSubmit="descargar(); return fnDisableForm(this);">
+                                <table jwcid="@ActionPortletBorder" title="Reportes de Utilidades">
+                                    <fieldset class="normal">
+                                        <legend class="legend">Impresi&oacute;n de Reportes</legend>
+                                            Promotor:<br />
+                                           <select jwcid="promotoresComboBox" /><br /><br />
+                                            <span jwcid="@Insert" value="ognl: rangoFechasPermitido ? 'De:' : 'Fecha:'" /><br />
+                                            <span jwcid="@ls:DatePicker" value="ognl: registerDateDe" format="dd/MM/yyyy"/><br />
+                                            <span jwcid="@contrib:FormConditional" condition="ognl: rangoFechasPermitido">
+                                                Hasta :<br />
+                                                <span jwcid="@ls:DatePicker" value="ognl: registerDateHasta" format="dd/MM/yyyy"/><br />
+                                            </span>
+                                             Divisa :<br />
+                                            <select jwcid="divisasComboBox" /><br /><br />
+                                            Canal: <br />
+                                            <select jwcid="canalesComboBox" /><br /><br />
+                                           Tipo de Reporte: <br />
+                                           <select jwcid="reportesPropertySelection" /><br />
+                                    </fieldset>
+                                    <br />
+                                    <div align="center">
+                                        <input jwcid="@ImageSubmit" image="ognl: assets.searchButton" />
+                                    </div>
+                                </table>
+                            </form>
+                        </td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+                </td>
+            </tr>
+        </table>
+    <span jwcid="@ls:DatePickerColophon" />
+    <script jwcid="@Script" script="/WEB-INF/scripts/Descargar.script" />    
+</body>
+</html>

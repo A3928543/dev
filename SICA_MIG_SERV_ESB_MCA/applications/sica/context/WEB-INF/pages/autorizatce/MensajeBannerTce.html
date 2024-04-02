@@ -1,0 +1,102 @@
+<!-- $Id: MensajeBannerTce.html,v 1.1.2.4.2.3 2012/12/01 03:22:34 mejiar Exp $ -->
+<html jwcid="$content$">
+	<head jwcid="$remove$">
+		<title>Mensaje Banner</title>
+		<link rel="StyleSheet" href="../../../css/ixe.css">
+	</head>
+
+	<body jwcid="@PageBorderTce" menuDisabled="yes">
+		<script type="text/javascript" src="scripts/tce/banner-mensajes.js">
+</script>
+		<script type="text/javascript">
+jQuery().ready(function() {
+	setUpBanner();
+});
+</script>
+		<script type="text/javascript">
+function validaSubmit() {
+	var mensaje = document.getElementById("txtMensaje").value;
+	if (mensaje.length > 1000) {
+		alert("Longitud del mensaje excedida.\nM&aacute;ximo 1,000 caracteres\n Mensaje actual:"
+				+ mensaje.length);
+		return false;
+	} else {
+		fnShowWaitImage();
+		return true;
+	}
+}
+</script>
+		<span jwcid="@AutorizaTceMenu" esPromocion="ognl: isPromocion()" /> <!--<form jwcid="formMensajeBannerTce@Form" listener="ognl: listeners.submit" delegate="ognl: beans.delegate">-->
+			<form jwcid="formMensajeBannerTce@Form"
+				listener="ognl: listeners.submit" delegate="ognl: beans.delegate"
+				onsubmit="return validaSubmit()">
+				<table jwcid="@bup:ShowError" level="ognl: level" width="100%"
+					delegate="ognl: beans.delegate" insertBreakAtTail="yes" />
+					<table jwcid="@ActionPortletBorder" title="Mensajes" width="100%">
+						<fieldset>
+							<legend class="legend">
+								Publicar Mensaje en Banner:
+							</legend>
+							<table width="100%">
+								<tr class="title">
+									<td>
+										<div>
+											Mensaje::
+										</div>
+										<textarea jwcid="txtMensaje" cols="175" rows="3"
+											id="txtMensaje" />
+            		
+									</td>
+								</tr>
+								<tr class="title">
+									<td>
+										<fieldset>
+											<legend class="legend">
+												Prioridad:
+											</legend>
+											<span jwcid="radioGrpPrioridad">
+												<table width="100%">
+													<tr class="title">
+														<td width="10%">
+															<input type="radio" jwcid="radioAlta" />
+															Alta
+														</td>
+														<td width="10%">
+															<input type="radio" jwcid="radioMedia" />
+															Media
+														</td>
+														<td width="10%">
+															<input type="radio" jwcid="radioBaja" />
+															Baja
+														</td>
+														<td width="70%"></td>
+													</tr>
+												</table> </span>
+										</fieldset>
+									</td>
+								</tr>
+								<tr class="title">
+									<td>
+										<table align="center">
+											<tr>
+												<td>
+													<input type="submit" value="Aceptar" jwcid="btnSubmit" />
+												</td>
+												<td>
+													<a jwcid="btnCancelar"> <img
+															src="../../../images/cancel.gif" jwcid="@Image"
+															image="ognl: assets.bCancelar" border="0" alt="Cancelar" />
+													</a>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</fieldset>
+					</table>
+					</form>
+					<br />
+					<table id="bannerMensajes"></table>
+	</body>
+</html>

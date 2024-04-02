@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	version="1.0">
+	<persistence-unit name="sicaPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+		<!-- <class>com.studytrails.tutorials.springhibernatejpa.Person</class> -->
+		<class>com.ixe.ods.sica.batch.domain.ScLoteProcesado</class>
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <jta-data-source>ODSSicaDataSource</jta-data-source>
+		<non-jta-data-source>ODSSicaDataSource</non-jta-data-source>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+			<property name="hibernate.format_sql" value="true" />
+		</properties>
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,32 @@
+<!-- $Id: CapturaDatosComprobante.html,v 1.1.2.2 2014/01/31 21:28:49 mejiar Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Captura de datos de comprobante</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+<span jwcid="tb@Block"><span jwcid="@EventosDeal" deal="ognl: deal" /></span>
+<table jwcid="@ActionPortletBorder" title="Captura de Deal" titleBlock="ognl: components.tb">
+    <table jwcid="@bup:ShowError" level="0" width="100%" delegate="ognl: beans.delegate" />
+    <form jwcid="@Form" listener="ognl: listeners.submit" delegate="ognl:beans.delegate">
+        <span jwcid="@EncabezadoDeal" deal="ognl: deal" disabled="yes" ocultarDatosFacturacion="yes" />
+        <fieldset>
+            <legend class="legend">Direcciones de correo para env&iacute;o de comprobante de operaci&oacute;n</legend>
+            <table width="100%">
+                <tr valign="top">
+                    <td class="title" align="right" width="50%">Correos (separados por punto y coma):</td>
+                    <td class="normal">
+                        <input jwcid="@TextField" value="ognl: deal.emailsComprobantes" size="100" maxlength="100" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <br />
+        <div class="textocentrado">
+            <input type="image" jwcid="@ImageSubmit" listener="ognl: listeners.aceptar" image="ognl: assets.bAceptar" src="../../../images/aceptar.gif" onclick="fnShowWaitImage();" />
+            <a jwcid="@DirectLink" listener="ognl: listeners.regresar" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bRegresar" src="../../../images/back.gif" border="0" alt="Deshacer los cambios" /></a>
+        </div>
+    </form>
+</table>
+</body>
+</html>

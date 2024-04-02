@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:Q2="http://www.banorte.com/ws/ESBResponse"
+  xmlns:Q1="http://www.banorte.com/ws/ESBRequest" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:tns="http://www.banorte.com/ws/esb/MantenimientoDatosBasicosCliente"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  name="MantenimientoDatosBasicosCliente" 
+  targetNamespace="http://www.banorte.com/ws/esb/MantenimientoDatosBasicosCliente">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.banorte.com/ws/esb/" xmlns:mrm="http://www.banorte.com/ws/esb/">
+      <xsd:import namespace="http://www.banorte.com/ws/ESBRequest" schemaLocation="ESBRequest.xsd" />
+      <xsd:import namespace="http://www.banorte.com/ws/ESBResponse" schemaLocation="ESBResponse.xsd" />
+    </xsd:schema>
+  </wsdl:types>
+
+  <wsdl:message name="ESBRequest_in">
+    <wsdl:part name="ESB" element="Q1:ESBRequest" />
+  </wsdl:message>
+
+  <wsdl:message name="ESBResponse_out">
+    <wsdl:part name="ESB" element="Q2:ESBResponse" />
+  </wsdl:message>
+
+  <wsdl:message name="ESB_fault1">
+    <wsdl:part name="Error" element="Q2:Error" />
+  </wsdl:message>
+
+  <wsdl:portType name="ESBPort">
+    <wsdl:operation name="mantenimientoDatosBasicosCliente">
+      <wsdl:input message="tns:ESBRequest_in" />
+      <wsdl:output message="tns:ESBResponse_out" />
+      <wsdl:fault message="tns:ESB_fault1" name="Fault" />
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="SOAPBinding" type="tns:ESBPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="mantenimientoDatosBasicosCliente">
+      <soap:operation soapAction="http://www.banorte.com/ws/esb/MantenimientoDatosBasicosCliente" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+
+      <wsdl:fault name="Fault">
+        <soap:fault use="literal" name="Fault" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="MantenimientoDatosBasicosClienteService">
+    <wsdl:port binding="tns:SOAPBinding" name="ESBPort">
+      <soap:address location="https://15.128.25.12:7861/ws/MantenimientoDatosBasicosCliente" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

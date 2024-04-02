@@ -1,0 +1,288 @@
+<!-- $Id: AdminPizarron.html,v 1.15.40.1 2011/06/02 16:37:35 galiciad Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Precio de Referencia</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" level="ognl: level" insertBreakAtTail="yes" width="100%" />
+    <table width="100%">
+        <tr valign="top">
+            <td width="300">
+                <table jwcid="@ActionPortletBorder" title="Precio de Referencia">
+                    <form jwcid="@Form" listener="ognl: listeners.actualizarPrecioReferencia">
+                        <fieldset class="normal">
+                            <legend class="legend">M&eacute;todo de Actualizaci&oacute;n</legend>
+                            <span jwcid="metodoActualizacionRadioGroup">
+                                <input jwcid="manualRadio" /> Manual
+                                <span jwcid="@contrib:FormConditional" condition="ognl: !precioReferencia.vespertino">
+                                    <input jwcid="automaticoRadio" /> Autom&aacute;tico
+                                    <input jwcid="midSpotRadio" /> Mid-Spot
+                                </span>
+                                <span jwcid="@contrib:FormConditional" condition="ognl: precioReferencia.vespertino">
+                                    <input jwcid="vespertinoRadio" /> Vespertino
+                                </span>
+                            </span>
+                        </fieldset>
+                    </form>
+                    <form jwcid="@Form" listener="ognl: listeners.actualizarPrecioReferencia" delegate="ognl: beans.delegate">
+                        <table jwcid="@TableBorder" title="ognl: null" columnCount="2" width="100%">
+                            <span jwcid="@contrib:Choose">
+                                <span jwcid="@contrib:When" condition="ognl: precioReferencia.actualizacionManual || precioReferencia.vespertino">
+                                    <tr class="titlecell">
+                                        <td width="50%" class="title" align="right">Precio Spot:</td>
+                                        <td class="normalcell"><input jwcid="precioSpotTextField" /></td>
+                                    </tr>
+                                </span>
+                                <span jwcid="@contrib:Otherwise">
+                                    <tr class="titlecell">
+                                        <td width="50%" class="title" align="right">Slack para el cambio de precio:</td>
+                                        <td class="normalcell"><input jwcid="slackTextField" /></td>
+                                    </tr>
+                                    <tr class="titlecell">
+                                        <td width="50%" class="title" align="right">Precio Compra:</td>
+                                        <td class="normalcell"><span jwcid="@Insert" value="ognl: precioReferencia.preRef.precioCompra" format="ognl: currencyFormatSix" /></td>
+                                    </tr>
+                                    <tr class="titlecell">
+                                        <td width="50%" class="title" align="right">Precio Venta:</td>
+                                        <td class="normalcell"><span jwcid="@Insert" value="ognl: precioReferencia.preRef.precioVenta" format="ognl: currencyFormatSix" /></td>
+                                    </tr>
+                                </span>
+                            </span>
+                        </table>
+                        <br />
+                        <div align="center">
+                            <span jwcid="@Conditional" condition="ognl: precioReferencia.midSpot || precioReferencia.actualizacionAutomatica">
+                                <input jwcid="@ImageSubmit" image="ognl: assets.refreshButton" selected="ognl: modo" tag="ognl:@com.ixe.ods.sica.pages.mesa.AdminPizarron@REFRESCAR" />
+                            </span>
+                            <input jwcid="@ImageSubmit" image="ognl: assets.saveButton" />
+                            <input jwcid="@ImageSubmit" image="ognl: assets.cancelButton" />
+                            <span jwcid="@Conditional" condition='ognl: "1".equals(parConfPrecioReferencia.valor)'>
+                                <input jwcid="@ImageSubmit" image="ognl: assets.confirmButton" selected="ognl: modo" tag="ognl:@com.ixe.ods.sica.pages.mesa.AdminPizarron@CONFIRMAR" onclick="fnShowWaitImage();"  />
+                            </span>
+                            <br/>
+                            <font class="normal">&Uacute;ltima Modificaci&oacute;n: <span jwcid="@Insert" value="ognl: precioReferencia.preRef.ultimaModificacion" format="ognl: applicationContext.getBean('fullDateFormat')"/><font/>
+                        </div>
+                    </form>
+                </table>
+                <br />
+                <table jwcid="@ActionPortletBorder" title="Variaci&oacute;n">
+                	<form jwcid="@Form" listener="ognl: listeners.actualizarOrigenVariacion">
+                		<fieldset class="normal">
+                            <legend class="legend">Origen de datos</legend>
+                            <span jwcid="origenVariacionRadioGroup">
+                                <input jwcid="origVarExcelRadio" />Excel
+                                <input jwcid="origVarRmdsRadio" />RMDS
+                            </span>
+                        </fieldset>
+                	</form>
+                </table>
+                <br />
+                <table jwcid="@ActionPortletBorder" title="Fechas Valor:" minimizable="yes" minimized="ognl: fechasMinimizado">
+                    <fieldset class="normal">
+                        <legend class="legend">Fecha de Operaci&oacute;n</legend>
+                        <span jwcid="@Insert" value="ognl: @com.ixe.ods.sica.pages.mesa.AdminPizarron@FORMATEADOR_FECHA.format(fechaOperacion)" />
+                    </fieldset>
+                    <fieldset class="normal">
+                        <legend class="legend">Fecha TOM</legend>
+                        <span jwcid="@Insert" value="ognl: @com.ixe.ods.sica.pages.mesa.AdminPizarron@FORMATEADOR_FECHA.format(fechaTOM)" />
+                    </fieldset>
+                    <fieldset class="normal">
+                        <legend class="legend">Fecha SPOT</legend>
+                        <span jwcid="@Insert" value="ognl: @com.ixe.ods.sica.pages.mesa.AdminPizarron@FORMATEADOR_FECHA.format(fechaSPOT)" />
+                    </fieldset>
+                    <fieldset class="normal">
+                        <legend class="legend">Fecha 72HR</legend>
+                        <span jwcid="@Insert" value="ognl: @com.ixe.ods.sica.pages.mesa.AdminPizarron@FORMATEADOR_FECHA.format(fecha72HR)" />
+                    </fieldset>
+                    <fieldset jwcid="@Conditional" condition="ognl: global.applicationContext.getBean('pizarronServiceData').valorFuturoHabilitado" element="fieldset" class="normal">
+                        <legend class="legend">Fecha VFUT</legend>
+                        <span jwcid="@Insert" value="ognl: @com.ixe.ods.sica.pages.mesa.AdminPizarron@FORMATEADOR_FECHA.format(fechaVFUT)" />
+                    </fieldset>
+                </table>
+                <br />
+                <table jwcid="@ActionPortletBorder" title="Montos M&aacute;ximos sin Autorizaci&oacute;n" minimizable="yes" minimized="ognl: montosMaximosMinimizado">
+				    <form jwcid="@Form" listener="ognl: listeners.cargarMontosMaximos" delegate="ognl: beans.delegate">
+				      	<div align="center">
+				      		<font class="normal">Mesa:<select jwcid="mesasCambioComboBoxMontoMax" /></font>
+				      		<br/><br/>
+				      		<input type="submit" jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);"/>
+			      		</div>
+				    </form>
+				    <span jwcid="@Conditional" condition="ognl: registros.size() &gt; 0">
+				      <form jwcid="@Form" listener="ognl: listeners.actualizarMontosMaximos" delegate="ognl: beans.delegate">
+				        <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "Divisa", "Monto" }' columnCount="3" width="100%">
+				            <tr jwcid="forDs@Foreach" source="ognl: registros" element="tr" class="normalcell" align="center">
+				                <td class="normal"><span jwcid="@Insert" value="ognl: components.forDs.value.id.idDivisa" /></td>
+				                <td class="normal"><span jwcid="montoMaximoTextField" />
+				            </tr>
+				        </table>
+				        <br />
+				        <div align="center">
+				          <input jwcid="@ImageSubmit" image="ognl: assets.saveButton" onclick="return fnDisableForm(this.form);"/>
+				        </div>
+					  </form>
+					</span>
+	         </table>
+            </td>
+            <td width="1%">&nbsp;</td>
+            <td>
+                <table jwcid="@ActionPortletBorder" title="Spreads" minimizable="yes" minimized="ognl: spreadsMinimizado">
+                    <form jwcid="@Form" listener="ognl: listeners.listarSpreads">
+                        <fieldset>
+                            <legend class="legend">Criterios de consulta</legend>
+                            <table width="100%">
+                                <tr class="title">
+                                    <td nowrap>Tipo Pizarr&oacute;n:</td>
+                                    <td><select jwcid="tiposPizarronComboBox" /></td>
+
+                                    <td width="10%">Divisa:</td>
+                                    <td width="80%"><select jwcid="divisasComboBox" /></td>
+                                </tr>
+                                <tr class="title">
+                                    <td width="10%">&Uacute;ltima Modificaci&oacute;n: </td>
+                                    <span jwcid="@Conditional" condition="ognl: spreads.size() &gt; 0">
+                                    	<td class="normal"><span jwcid="@Insert" value="ognl: fechaMasReciente()" format="ognl: applicationContext.getBean('fullDateFormat')" /></td>
+                                    </span>
+                                </tr>
+                            </table>
+                            <div align="center"><input type="submit" jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" /></div>
+                        </fieldset>
+                    </form>
+                    <span jwcid="@Conditional" condition="ognl: spreads.size() &gt; 0">
+                    <form jwcid="@Form" listener="ognl: listeners.actualizarSpreads" delegate="ognl: beans.delegate">
+                        <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "Producto", "C (CASH)", "V (CASH)", "C (TOM)", "V (TOM)", "C (SPOT)", "V (SPOT)", "C(72HR)", "V(72HR)", "C (96HR)", "V(96HR)" }' columnCount="10" width="100%">
+                            <tr jwcid="forSps@Foreach" source="ognl: spreads" element="tr" class="normalcell" align="center" class="ognl: beans.evenOdd.next">
+                                <td class="normal"><span jwcid="@Insert" value="ognl: components.forSps.value.claveFormaLiquidacion" /></td>
+                                <td class="normal"><input jwcid="cCashTextField" /></td>
+                                <td class="normal"><input jwcid="vCashTextField" /></td>
+                                <td class="normal"><input jwcid="cTomTextField" /></td>
+                                <td class="normal"><input jwcid="vTomTextField" /></td>
+                                <td class="normal"><input jwcid="cSpotTextField" /></td>
+                                <td class="normal"><input jwcid="vSpotTextField" /></td>
+                                <td class="normal"><input jwcid="c72HrTextField" /></td>
+                                <td class="normal"><input jwcid="v72HrTextField" /></td>
+                                <td class="normal"><input jwcid="cVFutTextField" /></td>
+                                <td class="normal"><input jwcid="vVFutTextField" /></td>
+                            </tr>
+                        </table>
+                        <br />
+                        <div align="center">
+                            <input jwcid="@ImageSubmit" image="ognl: assets.saveButton" /> <input jwcid="@ImageSubmit" image="ognl: assets.cancelButton" onclick="this.form.reset(); return false;" />
+                            <span jwcid="@Conditional" condition='ognl: "1".equals(parConfSpread.valor)'>
+                                <input jwcid="@ImageSubmit" image="ognl: assets.confirmButton" selected="ognl: modo" tag="ognl:@com.ixe.ods.sica.pages.mesa.AdminPizarron@CONFIRMAR" onclick="fnShowWaitImage();" />
+                            </span>
+                        </div>
+                    </form>
+                    </span>
+                </table>
+                <br />
+                <table jwcid="@ActionPortletBorder" title="Factores por divisa" minimizable="yes" minimized="ognl: factoresDivisaMinimizado">
+                    <span class="title">Modo actual: </span><span class="normal"><span jwcid="@Insert" value="ognl: factorAutomatico ? 'Autom\u00e1tico' : 'Manual'" /></span>
+                    <form jwcid="@Form" listener="ognl: listeners.actualizarFactoresDivisa" delegate="ognl: beans.delegate">
+                        <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "De", "A", "Factor Cpra", "Factor Vta", "Sobreprecio IXE", "Spread", "Carry", "Slack"}' columnCount="8" width="100%">
+                            <span jwcid="forFDs@Foreach" source="ognl: factoresDivisa">
+                                <tr jwcid="@Any" element="tr" class="ognl: beans.evenOdd.next">
+                                    <td jwcid="@Any" element="td" class="normal" colspan="8" align="right" algo="ognl: beans.evenOdd.next">
+                                        <span jwcid="@Insert" value="ognl: components.forFDs.value.facDiv.ultimaModificacion" format="ognl: applicationContext.getBean('fullDateFormat')" />
+                                    </td>
+                                </tr>
+                                <tr jwcid="@Any" element="tr" class="ognl: beans.evenOdd.next" align="center">
+                                    <td class="normal"><span jwcid="@Bandera" divisa="ognl: components.forFDs.value.facDiv.fromDivisa" /></td>
+                                    <td class="normal"><span jwcid="@Bandera" divisa="ognl: components.forFDs.value.facDiv.toDivisa" /></td>
+                                    <td class="normal" align="right"><span jwcid="@Insert" value="ognl: isFactorCompraVisible(components.forFDs.value) ? currencyFormatSix.format(components.forFDs.value.facDiv.factorCompraTmp) : '&nbsp'" raw="ognl: true" /></td>
+                                    <td jwcid="@Any" element="td" class="normal" align="ognl: factorAutomatico ? 'right' : 'center'">
+                                        <span jwcid="@Conditional" condition="ognl: factorAutomatico">
+                                            <span jwcid="@Insert" value="ognl: components.forFDs.value.facDiv.factorTmp" format="ognl: currencyFormatSix" />
+                                        </span>
+                                        <span jwcid="@contrib:FormConditional" condition="ognl: !factorAutomatico">
+                                            <span jwcid="factorDivisaTextField" />
+                                        </span>
+                                    </td>
+                                    <td class="normal"><span jwcid="spreadReferenciaTextField" /></td>
+                                    <td class="normal"><span jwcid="spreadCompraTextField" /></td>
+                                    <td class="normal"><span jwcid="carryTextField" /></td>
+                                    <td class="normal"><span jwcid="slackFacDivTextField" /></td>
+                                </tr>
+                            </span>
+                        </table>
+                        <br />
+                        <div align="center">
+                            <a jwcid="@DirectLink" listener="ognl: listeners.establecerAutomaticoManual" onclick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: factorAutomatico ? assets.manualButton : assets.automaticButton" border="0" /></a>
+                          	<input jwcid="@ImageSubmit" image="ognl: assets.saveButton" /> <input jwcid="@ImageSubmit" image="ognl: assets.cancelButton" onclick="this.form.reset(); return false;" />
+                            <span jwcid="@Conditional" condition='ognl: "1".equals(parConfFactorDivisa.valor)'>
+                        	    <input jwcid="@ImageSubmit" image="ognl: assets.confirmButton" selected="ognl: modo" tag="ognl:@com.ixe.ods.sica.pages.mesa.AdminPizarron@CONFIRMAR" onclick="fnShowWaitImage();" />
+                        	</span>
+                        </div>
+                    </form>
+                </table>
+                <br />
+                <span jwcid="@Conditional" condition="ognl: estadoActual.idEstado == 0">
+                <table jwcid="@ActionPortletBorder" title="Deals capturados durante la operaci&oacute;n nocturna" minimizable="yes" minimized="ognl: dealsPendientesMinimizado">
+					<span jwcid="@Conditional" condition="ognl: divisasDealsPendientes!= null ">
+                    <table jwcid="@TableBorder" title="ognl: null" subtitles="ognl: null" columnCount="ognl: divisasDealsPendientes.length" width="100%">
+                        <tr>
+                           <td class="titlecell"><font class="title">Divisa:</font></td>
+                           <td jwcid="forDivisas@Foreach" source="ognl: divisasDealsPendientes" element="td" class="titlecell" align="center" >
+                               <span jwcid="@Insert" value="ognl: components.forDivisas.value" class="title" />
+                           </td>
+                        </tr>
+				        <tr class="normalcell">
+                           <td class="titlecell"><font class="title">Compras:</font></td>
+                           <td jwcid="forTotalesCompras@Foreach" source="ognl: totalesOperaciones" element="td" class="normalcell" align="center" >
+                               <span jwcid="@Insert" value="ognl: components.forTotalesCompras.value.compras" format="ognl: page.moneyFormat" />
+                           </td>
+                        </tr>
+				        <tr class="normalcell">
+                            <td class="titlecell"><font class="title">Ventas:</font></td>
+                           <td jwcid="forTotalesVentas@Foreach" source="ognl: totalesOperaciones" element="td" class="normalcell" align="center" >
+                               <span jwcid="@Insert" value="ognl: components.forTotalesVentas.value.ventas" format="ognl: page.moneyFormat"/>
+                           </td>
+                        </tr>
+				        <tr class="normalcell">
+                           <td class="titlecell"><font class="title">Balance:</font></td>
+                           <td jwcid="forTotalesBalance@Foreach" source="ognl: totalesOperaciones" element="td" class="normalcell" align="center" >
+                               <span jwcid="@Insert" value="ognl: components.forTotalesBalance.value.balance" format="ognl: page.moneyFormat" />
+                           </td>
+                        </tr>
+                    </table>
+                    </span>
+                    <br />
+                    <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "No. Deal", "Cliente", "Captur\u00f3", "Operaci\u00f3n" ,"Fecha Valor", "Fecha Captura", "Fecha Liquidacion", "Productos"}' columnCount="8" width="100%">
+                    <tr jwcid="forDeals@Foreach" source="ognl: dealsPendientes" element="tr" align="center" class="normalcell">
+						<td class="normal" align="center">
+                            <a jwcid="@ExternalLink" page='ognl: components.forDeals.value.interbancario ? "DatosDealInterbancario" : "DatosDeal"' parameters="ognl: components.forDeals.value.idDeal" renderer='ognl: page.global.applicationContext.getBean("bigPopupLinkRenderer")' >
+                                <span jwcid= "@Insert" value="ognl: components.forDeals.value.idDeal" />
+                            </a>
+                        </td>
+                        <td class="normal" align="center">
+                            <span jwcid="@Insert" value="ognl: components.forDeals.value.cliente.nombreCompleto" />
+                        </td>
+	                    <td class="normal" align="center">
+                            <span jwcid="@Insert" value="ognl: components.forDeals.value.usuario.persona.nombreCompleto" />
+                        </td>
+                        <td class="normal" align="center">
+                            <span jwcid="@Insert" value='ognl: components.forDeals.value.compra ? "COMPRA" : "VENTA" ' />
+                        </td>
+                        <td class="normal" align="center">
+                            <span jwcid="@Insert" value="ognl: components.forDeals.value.tipoValor" />
+                        </td>
+                        <td class="normal" align="center">
+                            <span jwcid="@Insert" value="ognl: components.forDeals.value.fechaCaptura" format="ognl: dateFormat" />
+                        </td>
+                        <td class="normal" align="center">
+                            <span jwcid="@Insert" value="ognl: components.forDeals.value.fechaLiquidacion" format="ognl: dateFormat" />
+                        </td>
+                        <td class="normal" align="center">
+                            <span jwcid="@Insert" raw="ognl: true" value="ognl: dealService.getClavesFormasLiquidacion(components.forDeals.value)" />
+                        </td>
+                    </tr>
+					</table>
+                </table>
+				</span>
+                <br />
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

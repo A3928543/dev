@@ -1,0 +1,91 @@
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Reportes</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+	<script type="text/javascript">
+        <!--
+        function changeHandler(textField){
+        	if(textField.value == null || textField.value =="" || textField.value.length ==0){
+        		$('buscar').style.display='none'
+        		$('verXls').style.display='block'
+        	}else{
+        		$('verXls').style.display='none'
+        		$('buscar').style.display='block'
+        	}
+
+        }
+        
+        function $(id){
+        	return document.getElementById(id);
+        }
+        //-->
+    </script>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr valign="top">
+            <td width="200">
+             	<div align="center">
+	            	&nbsp;
+	            </div>
+			    <table jwcid="@ActionPortletBorder" title="Reportes Documentaci&oacute;n Faltante">
+				     <form jwcid="@Form" listener="ognl: listeners.reportes" delegate="ognl: beans.delegate" >
+				           <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+			           		    <fieldset class="normal">
+			           		        <legend class="legend">Impresi&oacute;n de Reportes</legend>
+<!--				                        Nombre Corto :<br />
+				                        <input type="text" jwcid="nombreCortoTextField" /><br />
+-->				                        
+				                        Numero de contrato SICA:<br />
+				                        <input id="noContratoTextField" type="text" jwcid="noContratoTextField" onkeypress="changeHandler(this)" onkeyup="changeHandler(this)" /><br />
+			                   </fieldset>
+			                <div align="center">
+			                    <input style="display:none" id="buscar" jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+			                    <input id="verXls" border="0" type="image" onclick="return this.form.submit();" src="/sica/images/ver_todos.gif" name="$ImageSubmit"/>
+			                </div>
+			    	</form>
+			   </table>
+   			</td>
+   			<td width="1%">&nbsp;</td>
+            <td>
+            	<span jwcid="@Conditional" condition="ognl: detallesTable.size() &gt; 0">
+			    &nbsp;
+            	<table jwcid="@ActionPortletBorder" title="Reporte a Imprimir">
+            		&nbsp;
+            		&nbsp;
+            		<table border="0" width="100%">
+            			<tr>
+            				<td align="center">
+            				<div id="descargar">
+            				<a jwcid="@DirectLink" listener="ognl:listeners.imprimirReporteDocumentacionFaltanteXls" parameters= 'ognl: {"WEB-INF/jasper/RepDocFaltante.jasper", "ReporteDocumentacionFaltanteXls", "0" }'><img jwcid="@Image" image="ognl: assets.verXlsButton"/></a>
+            				</div>
+            				</td>
+            			</tr>
+            		</table>
+            		&nbsp;
+            		&nbsp;
+            		<table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: {"Contrato", "Fecha Apertura", "Cliente", "Tipo Persona", "Estado", "Faltantes", "Informaci&oacute;n Dummy", "Relacionado con", "Promotor", "Canal", "Holding", "Credito"}' columnCount="12" width="100%" >
+                            <tr jwcid="forDt@Foreach" source="ognl: detallesTable" element="tr" class="ognl: beans.evenOdd.next" align="center">
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value[0]" raw="yes" /></td>
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value[1]" raw="yes" /></td>
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value[2]" raw="yes" /></td>
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value[3]" raw="yes" /></td>
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value[4]" raw="yes" /></td>
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value[5]" raw="yes" /></td>
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value[6]" raw="yes" /></td>
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value[7]" raw="yes" /></td>
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value[8]" raw="yes" /></td>
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value[9]" raw="yes" /></td>
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value[10]" raw="yes" /></td>
+                             <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forDt.value[11]" raw="yes" /></td>
+                             
+                            </tr>
+                    </table>
+        		</table>
+        	   </span>
+               &nbsp;
+           </td>
+        </tr>
+    </table>
+</body>
+</html>

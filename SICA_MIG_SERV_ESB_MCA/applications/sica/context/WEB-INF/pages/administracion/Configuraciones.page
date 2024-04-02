@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: Configuraciones.page,v 1.10 2009/11/17 16:18:35 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.administracion.Configuraciones">
+
+	<bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+    
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <bean name="stringValidator" class="org.apache.tapestry.valid.StringValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+    </bean>
+    
+   <component id="idParametroTextField" type="ValidField">
+        <static-binding name="displayName" value="Par&#225;metro:" />
+        <binding name="validator" expression="beans.stringValidator" />
+        <binding name="value" expression="nuevoParametro.idParametro" />
+        <static-binding name="size" value="30" />        
+        <static-binding name="maxlength" value="30" />        
+    </component>
+
+   <component id="valorParametroTextField" type="ValidField">
+        <static-binding name="displayName" value="Valor:" />
+        <binding name="validator" expression="beans.stringValidator" />
+        <binding name="value" expression="nuevoParametro.valor" />
+        <static-binding name="size" value="30" />        
+        <static-binding name="maxlength" value="256" />        
+    </component>
+    
+    <property-specification name="operacionExitosa" type="boolean" persistent="yes"/>
+    <property-specification name="parametros" type="java.util.List" persistent="yes"/>    
+    <property-specification name="nuevoParametro" type="com.ixe.ods.sica.model.ParametroSica" initial-value="new com.ixe.ods.sica.model.ParametroSica()" />
+      
+	<context-asset name="aceptarButton" path="/images/aceptar.gif" />
+	<context-asset name="actualizarButton" path="/images/actualizar.gif" />
+	<context-asset name="agregarButton" path="/images/add.gif" />
+	
+</page-specification>

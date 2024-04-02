@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: TipoCambioPosicionFinal.mxml,v 1.9 2008/02/22 18:25:36 ccovian Exp $ -->
+<view:TipoCambioPosicionFinal
+    xmlns:mx="http://www.macromedia.com/2003/mxml"
+    xmlns:view="com.ixe.ods.sica.posicion.views.*"
+    xmlns:ls="com.legosoft.*">
+
+    <mx:NumberFormatter id="numberFormatter" precision="2"/>
+
+    <mx:NumberFormatter id="exchangeFormatter" precision="6"/>
+
+    <mx:GridItem verticalAlign="middle">
+        <mx:Label text="{posicionFinalLabel}" fontWeight="bold"/>
+    </mx:GridItem>
+    <mx:GridItem horizontalAlign="right">
+        <mx:Label text="{numberFormatter.format(dataProvider.posicionFinal)}"
+            toolTip='{"CASH:" + numberFormatter.format(dataProvider.posicionFinalCash) + " TOM:" + numberFormatter.format(dataProvider.posicionFinalTom) + " SPOT:" + numberFormatter.format(dataProvider.posicionFinalSpot) + " 72HR:" + numberFormatter.format(dataProvider.posicionFinal72Hr) + (parentApplication.vFut ? " 96HR:" + numberFormatter.format(dataProvider.posicionFinalVFut) : " ")}'/>
+    </mx:GridItem>
+    <mx:GridItem horizontalAlign="center" verticalAlign="middle">
+        <ls:TickImage tick="{dataProvider.tickPosicionFinal}"/>
+    </mx:GridItem>
+    <mx:GridItem horizontalAlign="right">
+        <mx:Label text="{exchangeFormatter.format(dataProvider.tipoCambioPosicionFinal)}"
+            toolTip='{"CASH:" + exchangeFormatter.format(dataProvider.tipoCambioPosicionFinalCash) + " TOM:" + exchangeFormatter.format(dataProvider.tipoCambioPosicionFinalTom) + " SPOT:" + exchangeFormatter.format(dataProvider.tipoCambioPosicionFinalSpot) + " 72HR:" + exchangeFormatter.format(dataProvider.tipoCambioPosicionFinal72Hr) + (parentApplication.vFut ? " 96HR:" + exchangeFormatter.format(dataProvider.tipoCambioPosicionFinalVFut) : " ")}'/>
+    </mx:GridItem>
+    <mx:GridItem horizontalAlign="center" verticalAlign="middle">
+        <ls:TickImage tick="{dataProvider.tickTipoCambioPosicionFinal}"/>
+    </mx:GridItem>
+    <mx:GridItem horizontalAlign="right">
+        <mx:Label text="{numberFormatter.format(-1 * dataProvider.posicionFinal * dataProvider.tipoCambioPosicionFinal)}"
+            toolTip='{"CASH:" + numberFormatter.format(-1 * dataProvider.posicionFinalMnCash) + " TOM:" + numberFormatter.format(-1 * dataProvider.posicionFinalMnTom) + " SPOT:" + numberFormatter.format(-1 * dataProvider.posicionFinalMnSpot) + " 72HR:" + numberFormatter.format(-1 * dataProvider.posicionFinalMn72Hr) + (parentApplication.vFut ? " 96HR:" + numberFormatter.format(-1 * dataProvider.posicionFinalMnVFut) : " ")}'/>
+    </mx:GridItem>
+    <mx:GridItem horizontalAlign="center" verticalAlign="middle">
+        <ls:TickImage tick="{dataProvider.tickPosicionFinalMn}"/>
+    </mx:GridItem>
+
+</view:TipoCambioPosicionFinal>

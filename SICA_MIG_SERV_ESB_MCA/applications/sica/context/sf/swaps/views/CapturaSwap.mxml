@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: CapturaSwap.mxml,v 1.13 2010/04/13 15:27:28 ccovian Exp $ -->
+<views:CapSwap label="Datos del Swap (03/04/2006)" xmlns:mx="http://www.macromedia.com/2003/mxml"
+                   xmlns:views="views.*" width="100%" height="100%" marginTop="10" marginBottom="10" marginLeft="10"
+                   marginRight="10" creationComplete="inicializar()">
+
+    <mx:Script>
+        <![CDATA[
+            function formatearMonto(item : Object) : String
+            {
+               return formateadorMonto.format(item.monto);
+            }
+
+            function formatearTipoCambio(item : Object) : String
+            {
+               return formateadorTipoCambio.format(item.tipoCambio);
+            }
+
+            function formatearBalance(item : Object) : String
+            {
+               return formateadorMonto.format(item.balance);
+            }
+
+            function mostrarToolTip(flag : Boolean) : Void
+            {
+                montoToolTip.visible = flag;
+                if (!flag) {
+                    montoTextField.text = formateadorMonto.format(Number(montoTextField.text));
+                }
+            }
+
+        ]]>
+    </mx:Script>
+
+    <mx:Model id="dealInicio">
+        <tipo>{'Inicio'}</tipo>
+        <tipoOperacion>{operacionRadio.selectedData }</tipoOperacion>
+        <fechaValor>{fechasValorComboBox.selectedItem.inicio}</fechaValor>
+        <idDeal></idDeal>
+        <claveFormaLiquidacion>{productosComboBox.selectedItem}</claveFormaLiquidacion>
+        <monto>{Number(numberBase.parseNumberString(montoTextField.text))}</monto>
+        <tipoCambio>{tipoCambioTextField.text}</tipoCambio>
+        <puntosSwap>{puntosTextField.text}</puntosSwap>
+        <balance>{Number(numberBase.parseNumberString(montoTextField.text))}</balance>
+    </mx:Model>
+
+    <mx:Model id="dealFin">
+        <tipo>{'Fin'}</tipo>
+        <tipoOperacion>{(operacionRadio.selectedData == 'Compra' ? 'Venta' : operacionRadio.selectedData == 'Venta' ? 'Compra' : '')}</tipoOperacion>
+        <fechaValor>{fechasValorComboBox.selectedItem.fin}</fechaValor>
+        <idDeal></idDeal>
+        <claveFormaLiquidacion>{productosFinComboBox.selectedItem}</claveFormaLiquidacion>
+        <monto>{Number(numberBase.parseNumberString(montoTextField.text))}</monto>
+        <tipoCambio>{tipoCambioFinTextField.text}</tipoCambio>
+    </mx:Model>
+
+    <mx:Effect>
+        <mx:WipeLeft name="wipeLeft"/>
+        <mx:WipeRight name="wipeRight"/>
+    </mx:Effect>
+
+    <mx:NumberFormatter id="formateadorTipoCambio" precision="6" />
+
+    <mx:NumberFormatter id="formateadorMonto" thousandsSeparatorFrom="," thousandsSeparatorTo="," precision="2" />
+
+    <mx:NumberValidator field="dealInicio.monto" requiredFieldError="El campo es requerido." listener="montoTextField"
+                        minValue="0.01" maxValue="999999999999.99" domain="real" precision="2" allowNegative="false"
+                        exceedsMaxError="El n&#250;mero excede el m&#225;ximo valor permitido."
+                        lowerThanMinError="El n&#250;mero es menor que el m&#237;nimo valor permitido."
+                        negativeError="El n&#250;mero no debe ser negativo."
+                        precisionError="Deben ser solo dos decimales."
+                        separationError="El separador de miles debe ser seguido por tres d&#237;gitos."
+                        decimalPointCountError="El separador decimal s&#243;lo puede ocurrir una vez."
+                        invalidCharError="El valor ingresado contiene caracteres inv&#225;lidos."
+                        invalidFormatCharsError="Unos de los par&#225;metros del formato es inv&#225;lido." />
+
+    <mx:NumberValidator field="dealInicio.tipoCambio" requiredFieldError="El campo es requerido."
+                        listener="tipoCambioTextField" minValue="0.000001" maxValue="999999999999.99" domain="real"
+                        precision="6" allowNegative="false"
+                        exceedsMaxError="El n&#250;mero excede el m&#225;ximo valor permitido."
+                        lowerThanMinError="El n&#250;mero es menor que el m&#237;nimo valor permitido."
+                        negativeError="El n&#250;mero no debe ser negativo."
+                        precisionError="Deben ser solo dos decimales."
+                        separationError="El separador de miles debe ser seguido por tres d&#237;gitos."
+                        decimalPointCountError="El separador decimal s&#243;lo puede ocurrir una vez."
+                        invalidCharError="El valor ingresado contiene caracteres inv&#225;lidos."
+                        invalidFormatCharsError="Unos de los par&#225;metros del formato es inv&#225;lido." />
+
+    <mx:NumberValidator field="dealInicio.puntosSwap" requiredFieldError="El campo es requerido." precision="6"
+                        listener="puntosTextField" minValue="0" maxValue="999999999999.99" domain="real"
+                        allowNegative="false" exceedsMaxError="El n&#250;mero excede el m&#225;ximo valor permitido."
+                        lowerThanMinError="El n&#250;mero es menor que el m&#237;nimo valor permitido."
+                        integerError="El n&#250;mero debe ser un entero."
+                        negativeError="El n&#250;mero no debe ser negativo."
+                        separationError="El separador de miles debe ser seguido por tres d&#237;gitos."
+                        invalidCharError="El valor ingresado contiene caracteres inv&#225;lidos."
+                        invalidFormatCharsError="Unos de los par&#225;metros del formato es inv&#225;lido." />
+
+    <mx:NumberValidator field="dealFin.tipoCambio" requiredFieldError="El campo es requerido."
+                        listener="tipoCambioFinTextField" minValue="0.000001" maxValue="999999999999.99" domain="real"
+                        precision="6" allowNegative="false"
+                        exceedsMaxError="El n&#250;mero excede el m&#225;ximo valor permitido."
+                        lowerThanMinError="El n&#250;mero es menor que el m&#237;nimo valor permitido."
+                        negativeError="El n&#250;mero no debe ser negativo."
+                        precisionError="Deben ser seis decimales."
+                        separationError="El separador de miles debe ser seguido por tres d&#237;gitos."
+                        decimalPointCountError="El separador decimal s&#243;lo puede ocurrir una vez."
+                        invalidCharError="El valor ingresado contiene caracteres inv&#225;lidos."
+                        invalidFormatCharsError="Unos de los par&#225;metros del formato es inv&#225;lido." />
+
+
+    <mx:Form width="100%">
+        <mx:FormItem label="Folio del Swap:" width="100%" fontWeight="bold">
+            <mx:HBox width="100%">
+                <mx:TextInput id="folioSwapTextField" text="0" enabled="false" width="50" fontWeight="normal"
+                        restrict="0-9" />
+            </mx:HBox>
+        </mx:FormItem>
+        <mx:FormItem label="Contraparte:" width="100%" fontWeight="bold">
+            <mx:HBox width="100%">
+                <mx:Label text="{contraparte.nombreCompleto}" fontWeight="normal" />
+                <mx:Spacer width="100%" />
+                <mx:Label text="Modo:" />
+                <mx:CheckBox id="multipleCheckBox" label="M&#250;ltiple"
+                             click="multipleSimple()" fontWeight="normal" />
+            </mx:HBox>
+        </mx:FormItem>
+        <mx:FormItem label="Fecha Valor:" direction="horizontal" width="100%" fontWeight="bold">
+            <mx:HBox width="100%">
+                <mx:ComboBox id="fechasValorComboBox" dataProvider="{fechasValor}" labelField="descripcion" width="100"
+                             fontWeight="normal" change="sincronizar()" />
+                <mx:Spacer width="100%" />
+                <mx:Label text="Divisa:"  />
+                <mx:ComboBox id="divisasComboBox" dataProvider="{divisas}" labelField="descripcion" fontWeight="normal"
+                			change="findProductos()" />
+                <mx:Spacer width="100%" />
+                <mx:Label text="Operaci&#243;n:" />
+                <mx:RadioButtonGroup id="operacionRadio" change="cambiarTipoOperacion()" />
+                <mx:RadioButton id="compraRadio" groupName="operacionRadio" label="Compra"
+                                fontWeight="normal" />
+                <mx:RadioButton id="ventaRadio" groupName="operacionRadio" label="Venta"
+                                fontWeight="normal" />
+            </mx:HBox>
+        </mx:FormItem>
+        <mx:FormItem label="Producto:" width="100%" fontWeight="bold">
+            <mx:HBox width="100%">
+                <mx:ComboBox id="productosComboBox" dataProvider="{productos}" fontWeight="normal"
+                             change="sincronizar()"/>
+                <mx:Spacer width="100%" />
+                <mx:Label text="Monto:"  />
+                <mx:TextInput id="montoTextField" text="0.0" fontWeight="normal" width="120"
+                              textAlign="right" restrict="0-9\." change="sincronizar()" focusIn="mostrarToolTip(true)"
+                              focusOut="mostrarToolTip(false)" />
+                <mx:Spacer width="100%" />
+                <mx:Label id="tipoCambioInicioLabel" text="Tipo de cambio Inicio:"/>
+                <mx:TextInput id="tipoCambioTextField" text="0.0" textAlign="right" width="80" fontWeight="normal"
+                              restrict="0-9\." change="sincronizar()"/>
+                <mx:HBox>
+                    <mx:Spacer width="100%" />
+                    <mx:CheckBox id="puntosCheckBox" label="Puntos Swap:" selected="{true}" click="cambiarPuntosSwap()"/>
+                    <mx:TextInput id="puntosTextField" text="0" textAlign="right" width="80" fontWeight="normal"
+                                  restrict="0-9\." change="sincronizar()"/>
+                </mx:HBox>
+            </mx:HBox>
+        </mx:FormItem>
+        <mx:FormItem id="datosContraparte" label="Producto:" showEffect="wipeRight" hideEffect="wipeLeft" width="100%"
+                     fontWeight="bold">
+            <mx:HBox width="100%">
+                <mx:ComboBox id="productosFinComboBox" dataProvider="{productos}" fontWeight="normal"
+                             change="sincronizar()"/>
+                <mx:Spacer width="100%" />
+                <mx:VBox id="montoToolTip" horizontalAlign="center" backgroundColor="#EEF5EE" borderStyle="solid"
+                         visible="false" width="100%">
+                    <mx:Label text="{formateadorMonto.format(Number(numberBase.parseNumberString(montoTextField.text)))}" />
+                </mx:VBox>
+                <mx:Spacer width="100%" />
+                <mx:Label id="tipoCambioFinLabel" enabled="{false}" text="Tipo de cambio Fin:"/>
+                <mx:TextInput id="tipoCambioFinTextField" enabled="{false}" text="0.0" textAlign="right" width="80"
+                              fontWeight="normal" restrict="0-9\." change="sincronizar()"/>
+                <mx:Spacer width="193" />
+            </mx:HBox>
+        </mx:FormItem>
+    </mx:Form>
+    <mx:DataGrid id="dataGrid" width="100%" height="100%" dataProvider="{deals}">
+	    <mx:columns>
+	        <mx:Array>
+	            <mx:DataGridColumn sortable="false" columnName="tipo" headerText="Tipo" />
+	            <mx:DataGridColumn sortable="false" columnName="tipoOperacion" headerText="Operaci&#243;n" />
+	            <mx:DataGridColumn sortable="false" columnName="idDeal" headerText="No. Deal" />
+	            <mx:DataGridColumn sortable="false" columnName="fechaValor" headerText="Fecha Valor" />
+	            <mx:DataGridColumn sortable="false" columnName="claveFormaLiquidacion" headerText="Producto"/>
+                <mx:DataGridColumn sortable="false" columnName="monto" headerText="Monto" textAlign="right"
+                                   labelFunction="formatearMonto" />
+	            <mx:DataGridColumn sortable="false" columnName="tipoCambio" headerText="Tipo de cambio"
+                                   textAlign="right" labelFunction="formatearTipoCambio" />
+	            <mx:DataGridColumn sortable="false" columnName="balance" headerText="Balance" textAlign="right"
+                                   labelFunction="formatearBalance" />
+	        </mx:Array>
+	    </mx:columns>
+	</mx:DataGrid>
+	<mx:HBox width="100%" horizontalAlign="center">
+	    <mx:HBox id="botonesMultiple" visible="false" showEffect="wipeRight" hideEffect="wipeLeft">
+	        <mx:Button label="Agregar Fin" click="agregarDetalle()" />
+	        <mx:Button label="Eliminar Fin" click="eliminarDetalle()" />
+	    </mx:HBox>
+	    <mx:Button label="Escribir Swap" click="guardarSwap()"/>
+	</mx:HBox>
+</views:CapSwap>

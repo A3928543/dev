@@ -1,0 +1,109 @@
+<!-- $Id: ReporteLinCredAutMC.html,v 1.12 2008/12/26 23:17:32 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Encabezado</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr valign="top">
+            <td width="200">
+            	<form jwcid="@Form" listener="ognl: listeners.fetch" delegate="ognl: beans.delegate">
+                	<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level="ognl: movimientosLinea" />
+	                <div align="center">
+	               		&nbsp; 
+	                </div>     	   
+					<!--table jwcid="@ActionPortletBorder" title="L&iacute;neas de Cr&eacute;dito"-->
+					<table jwcid="@ActionPortletBorder" title="ognl: titleActionPortletBorder">
+						<fieldset class="normal">
+                            <legend class="legend">Empresas</legend>
+                            <font class="normal"><u>R</u>az&oacute;n Social:</font><br />
+                            <input class="uppercase" type="text" jwcid="razonSocialTextField@ixe:UppercaseTextField" accesskey="R" value="ognl: razonSocial" size=40/><br />                        
+                        </fieldset>
+                        <fieldset class="normal">
+                            <legend class="legend">Personas F&iacute;sicas</legend>
+                            <font class="normal">Apellido <u>P</u>aterno:</font><br />
+                            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" accesskey="P" value="ognl: paterno" size="40" /><br />
+                            <font class="normal">Apellido <u>M</u>aterno:</font><br />
+                            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" accesskey="M" value="ognl: materno" size="40" /><br />
+                            <font class="normal"><u>N</u>ombre:</font><br />
+                            <input class="uppercase" type="text" jwcid="@ixe:UppercaseTextField" value="ognl: nombre" accesskey="N" size="40" /><br />
+                        </fieldset>
+        	           <fieldset class="normal">
+        	           <legend class="legend">Impresi&oacute;n de Reportes</legend>
+                       Seleccione un Promotor:<br />                         	
+                        	<select jwcid="promotorSolicitudComboBox" /><br />                   
+                       Fecha Operaci&oacute;n:<br />
+                        	<select jwcid="fechaComboBox" /><br />                      	
+                        </fieldset>                               
+                        <br />                                                                    
+	               		<div align="center">
+	               			<input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+               			</div>
+           			</table>     			
+       			</form>
+            	<form jwcid="@Form" listener="ognl: listeners.searchByDateStatus" delegate="ognl: beans.delegates">
+                	<span jwcid="@bup:ShowError" delegate="ognl:beans.delegates" insertBreakAtTail="yes" />
+	                <table jwcid="@ActionPortletBorder" title="Movimientos de L&iacute;neas de Cr&eacute;dito" width="100%">
+       	                <fieldset class="normal">
+        	            <legend class="legend">Estatus:</legend>                        
+           				<span jwcid="@RadioGroup" selected="ognl: criterioSeleccionado" >
+   		            			<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.pages.reportes.ReporteLinCredAutMC@CRITERIO_UNO" /> Por Vencer <br />
+   		            			<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.pages.reportes.ReporteLinCredAutMC@CRITERIO_DOS" /> 80% de Uso <br />
+            				</span>
+            			</fieldset>                 
+            			<br />                                                                                       
+	               		<div align="center">
+	               			<input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+               			</div>
+           			</table>
+           			  			
+       			</form>       			
+   			</td>
+   			<td width="1%">&nbsp;</td>
+            <td>
+            	<span jwcid="@Conditional" condition="ognl: lineasCredito.size() &gt; 0">
+					&nbsp; 
+            		<table jwcid="@ActionPortletBorder" title="Movimientos de L&iacute;neas de Cr&eacute;dito">			
+            				&nbsp;
+            				&nbsp;
+            				<table border="0" width="100%">
+            					<tr>
+            						<td align="center"><a jwcid="printLink"><img jwcid="@Image" image="ognl: assets.verPdfButton"/></a></td>
+            						<td align="center"><a jwcid="@DirectLink" listener="ognl:listeners.imprimirReporteCompletoXls" parameters= 'ognl: {"WEB-INF/jasper/ReporteLinCredAutCompletoXls.jasper", "ReporteLinCredAutCompletoXls", "0" }'><img jwcid="@Image" image="ognl: assets.verXlsButton"/></a></td>
+            					</tr>
+            				</table>
+            				&nbsp;
+            				&nbsp;
+							<table border="0" cellspacing="1" cellpadding="3" width="100%" jwcid="table@bup:Table" source="ognl: lineasCredito"
+								  pageSize="ognl: 25"
+							      columns='ognl: "!importe, !uso, !corporativo, !detalle"' class="tableborder"/>
+							<span jwcid="detalleColumnHeader@Block">&nbsp;</span>
+							<span jwcid="detalleColumnValue@Block">
+								<a jwcid="@DirectLink" listener="ognl:listeners.verDetalle" parameters= "ognl: components.table.tableRow.idLineaCredito"> Ver Detalle </a>
+							</span>
+							<span jwcid="importeColumnHeader@Block">Importe</span>
+							<span jwcid="importeColumnValue@Block">
+								<div align="right">
+	               					<span jwcid="@Insert" format="ognl:moneyFormat" value="ognl: components.table.tableRow.importe" />
+								<div>
+							</span>
+							<span jwcid="usoColumnHeader@Block">Uso</span>
+							<span jwcid="usoColumnValue@Block">
+								<div align="right">
+	               					<span jwcid="@Insert" format="ognl:moneyFormat" value="ognl: components.table.tableRow.usoCash" />
+								<div>
+							</span>
+							<span jwcid="corporativoColumnHeader@Block">Corporativo</span>
+							<span jwcid="corporativoColumnValue@Block">
+								<div align="left">
+	               					<span jwcid="@Insert" value="ognl: components.table.tableRow.corporativo.nombreCompleto" />
+								<div>
+							</span>
+					</table>
+               </span>
+           </td>
+       	</tr>
+   	</table>
+</body>
+</html>

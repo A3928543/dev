@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="TransactionResponse" type="TransactionType"/>
+  <xs:complexType name="TransactionType">
+    <xs:sequence>
+      <xs:element type="OutputType" name="Output"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OutputType">
+    <xs:sequence>
+      <xs:element type="HeaderType" name="Header"/>
+      <xs:element type="ResponsesType" name="Responses"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResponseType">
+    <xs:sequence>
+            <xs:element name="folio" type="xs:string"></xs:element>
+            <xs:element type="IdConfsType" name="idConfs" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResponsesType">
+    <xs:sequence>
+      <xs:element type="ResponseType" name="Response"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HeaderType">
+    <xs:sequence>
+    	<xs:element type="xs:string" name="NombreAplic" minOccurs="0" maxOccurs="1"/>
+    	<xs:element type="ErroresType" name="Errores" minOccurs="0" maxOccurs="1"/>
+    	<xs:element name="MessageId" type="xs:anySimpleType" minOccurs="0" maxOccurs="1"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ErrorType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="MsgError"/>
+      <xs:element type="xs:string" name="MsgDesc"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ErroresType">
+    <xs:sequence>
+      <xs:element type="ErrorType" name="Error" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IdConfsType">
+    <xs:sequence>
+      <xs:element name="idConf" maxOccurs="unbounded" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string" />
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

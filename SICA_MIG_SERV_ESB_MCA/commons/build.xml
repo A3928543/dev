@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--$Id: build.xml,v 1.12.48.1 2012/11/05 15:12:40 mejiar Exp $ -->
+<project name="Sica" default="build-all" basedir=".">
+
+    <property name="root.dir" value="${basedir}/.."/>
+
+    <property file="${root.dir}/config/common.properties"/>
+
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="${dist.dir}"/>
+    </target>
+
+    <target name="clean" description="Clean everything">
+        <ant antfile="build.xml" target="clean" dir="ods-sica"/>
+    </target>
+
+    <target name="compile" depends="init" description="Compile everything">
+    	<ant antfile="build.xml" target="compile" dir="banorte" />
+    	<ant antfile="build.xml" target="compile" dir="ods-sica"/>
+        <ant antfile="build.xml" target="compile" dir="java-storedProcedures"/>
+    </target>
+
+    <target name="build-sica-core" description="Build Sica Core" depends="init">
+		<ant antfile="build.xml" target="install" dir="banorte" />
+    	<ant antfile="build.xml" target="install" dir="ods-sica"/>
+        <ant antfile="build.xml" target="install" dir="java-storedProcedures"/>
+    </target>
+
+    <target name="build-sica" description="Build Ods extensions" depends="init, build-sica-core">
+        <ant antfile="build.xml" target="install" dir="ods-sica"/>
+    </target>
+
+    <target name="build-all" depends="build-sica"/>
+
+
+</project>

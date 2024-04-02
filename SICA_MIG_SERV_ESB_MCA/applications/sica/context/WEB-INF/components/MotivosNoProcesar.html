@@ -1,0 +1,31 @@
+<!-- $Id: MotivosNoProcesar.html,v 1.8.90.1 2017/07/29 03:18:47 mejiar Exp $ -->
+<span jwcid="@Conditional" condition="ognl: !deal.deSucursal">
+<span jwcid="@Conditional" condition="ognl: @com.ixe.ods.sica.model.Deal@STATUS_DEAL_PROCESO_CAPTURA.equals(deal.statusDeal) && !(@com.ixe.ods.sica.model.Deal@STATUS_DEAL_PROCESO_CAPTURA.equals(deal.statusDeal) && deal.isProcesable(page.formasTiposLiq) && deal.contratoSica)">
+<table border="0" cellspacing="1" cellpadding="3" align="center" class="tableborder" width="100%">
+<tr valign="top">
+<td bgcolor="#ffff99">
+<span class="title"><a jwcid="@tooltip:ToolTip" title="Causas:" value="ognl: components.procesarDataBlock" sticky="ognl: true" clickable="ognl: true" commands='WIDTH, "280", CLOSETEXT, "X", FGCOLOR, "#dddddd", BGCOLOR, "#002f2c", CAPCOLOR, "#f79c00", CLOSECOLOR, "#FFFFFF"'>&iquest;Por qu&eacute; no se puede procesar este deal?</a></span>
+</td>
+</tr>
+</table>
+</span>
+<span jwcid="procesarDataBlock@Block">
+<table border="0" cellspacing="1" cellpadding="2" align="center" class="tableborder">
+<tr valign="top">
+<td bgcolor="#ffff99">
+<li jwcid="forMotivos@Foreach" source="ognl: motivosNoProcesar" element="li" class="normal">
+<span jwcid="@Insert" value="ognl: components.forMotivos.value" />
+</li>
+</td>
+</tr>
+</table>
+</span>
+</span>
+<table border="0" cellspacing="1" cellpadding="3" align="center" class="tableborder" width="100%">
+<tr valign="top">
+<td bgcolor="#ffff99">
+<!--<span class="title">Datos faltantes del cliente: Identificador de Extranjero.</span> -->
+<span jwcid="@Insert" value="ognl: errorDatosFaltantes" class="title"/>
+</td>
+</tr>
+</table>

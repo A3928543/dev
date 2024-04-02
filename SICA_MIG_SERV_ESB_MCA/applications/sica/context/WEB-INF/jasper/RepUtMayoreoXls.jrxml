@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="RepUtMayoreoXls" language="java" pageWidth="1100" pageHeight="2000" orientation="Landscape" columnWidth="1060" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30">
+	<property name="com.jasperassistant.designer.GridHeight" value="5"/>
+	<property name="com.jasperassistant.designer.GridWidth" value="5"/>
+	<property name="com.jasperassistant.designer.Rulers" value="true"/>
+	<property name="com.jasperassistant.designer.HGuides" value="985"/>
+	<property name="com.jasperassistant.designer.DataSource" value="RepUtMayoreoContable"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="true"/>
+	<property name="com.jasperassistant.designer.Margins" value="true"/>
+	<property name="com.jasperassistant.designer.Grid" value="true"/>
+	<property name="com.jasperassistant.designer.SnapToGuides" value="true"/>
+	<field name="divisaDescripcion" class="java.lang.String">
+	</field>
+	<field name="fechaReporte" class="java.util.Date">
+	</field>
+	<field name="idMesaCambio" class="java.lang.String">
+	</field>
+	<field name="image" class="java.io.InputStream">
+	</field>
+	<field name="montoCompras" class="java.lang.Double">
+	</field>
+	<field name="montoVentas" class="java.lang.Double">
+	</field>
+	<field name="tipoDeCambioCompra" class="java.lang.Double">
+	</field>
+	<field name="tipoDeCambioVenta" class="java.lang.Double">
+	</field>
+	<field name="tipoDeal" class="java.lang.String">
+	</field>
+	<field name="utilidadCompras" class="java.lang.Double">
+	</field>
+	<field name="utilidadPeriodo" class="java.lang.Double">
+	</field>
+	<field name="utilidadVentas" class="java.lang.Double">
+	</field>
+	<variable name="sumUtilidadCompra" class="java.lang.Double" resetType="Group" resetGroup="Group_3" calculation="Sum">
+		<variableExpression><![CDATA[$F{utilidadCompras}]]></variableExpression>
+	</variable>
+	<variable name="sumUtilidadCompraTotal" class="java.lang.Double" resetType="Group" resetGroup="Group_1" calculation="Sum">
+		<variableExpression><![CDATA[$F{utilidadCompras}]]></variableExpression>
+	</variable>
+	<variable name="sumUtilidadVenta" class="java.lang.Double" resetType="Group" resetGroup="Group_3" calculation="Sum">
+		<variableExpression><![CDATA[$F{utilidadVentas}]]></variableExpression>
+	</variable>
+	<variable name="sumUtilidadPeriodo" class="java.lang.Double" resetType="Group" resetGroup="Group_3" calculation="Sum">
+		<variableExpression><![CDATA[$F{utilidadPeriodo}]]></variableExpression>
+	</variable>
+	<variable name="sumUtilidadVentaTotal" class="java.lang.Double" resetType="Group" resetGroup="Group_1" calculation="Sum">
+		<variableExpression><![CDATA[$F{utilidadVentas}]]></variableExpression>
+	</variable>
+	<variable name="sumMontoCompra" class="java.lang.Double" resetType="Group" resetGroup="Group_3" calculation="Sum">
+		<variableExpression><![CDATA[$F{montoCompras}]]></variableExpression>
+	</variable>
+	<variable name="sumMontoComprasTotal" class="java.lang.Double" resetType="Group" resetGroup="Group_1" calculation="Sum">
+		<variableExpression><![CDATA[$F{montoCompras}]]></variableExpression>
+	</variable>
+	<variable name="sumMontoVenta" class="java.lang.Double" resetType="Group" resetGroup="Group_3" calculation="Sum">
+		<variableExpression><![CDATA[$F{montoVentas}]]></variableExpression>
+	</variable>
+	<variable name="sumMontoVentasTotal" class="java.lang.Double" resetType="Group" resetGroup="Group_1" calculation="Sum">
+		<variableExpression><![CDATA[$F{montoVentas}]]></variableExpression>
+		<initialValueExpression><![CDATA[$F{montoVentas}]]></initialValueExpression>
+	</variable>
+	<variable name="Totalon_Compras" class="java.lang.Double" incrementType="Group" incrementGroup="Group_3" calculation="Sum">
+		<variableExpression><![CDATA[$V{sumUtilidadCompra}]]></variableExpression>
+	</variable>
+	<variable name="sumUtilidadPeriodoTotal" class="java.lang.Double" resetType="Group" resetGroup="Group_1" calculation="Sum">
+		<variableExpression><![CDATA[$F{utilidadPeriodo}]]></variableExpression>
+	</variable>
+	<variable name="sumTipoCambioCompra" class="java.lang.Double" resetType="Group" resetGroup="Group_3" calculation="Sum">
+		<variableExpression><![CDATA[new Double(($F{tipoDeCambioCompra}.doubleValue() * $F{montoCompras}.doubleValue()) / $V{sumMontoCompra}.doubleValue())]]></variableExpression>
+	</variable>
+	<variable name="sumTipoCambioVenta" class="java.lang.Double" resetType="Group" resetGroup="Group_3" calculation="Average">
+		<variableExpression><![CDATA[$F{tipoDeCambioVenta}]]></variableExpression>
+	</variable>
+	<variable name="sumTipoCambioCompraTotal" class="java.lang.Double" resetType="Page" calculation="Average">
+		<variableExpression><![CDATA[$F{tipoDeCambioCompra}]]></variableExpression>
+	</variable>
+	<variable name="sumTipoCambioVentaTotal" class="java.lang.Double" resetType="Page" calculation="Average">
+		<variableExpression><![CDATA[$F{tipoDeCambioVenta}]]></variableExpression>
+	</variable>
+	<variable name="AcsumTipoCambioCompra" class="java.lang.Double" resetType="Group" resetGroup="Group_3" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{tipoDeCambioCompra}.doubleValue() * $F{montoCompras}.doubleValue())]]></variableExpression>
+	</variable>
+	<variable name="AcsumTipoCambioVenta" class="java.lang.Double" resetType="Group" resetGroup="Group_3" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{tipoDeCambioVenta}.doubleValue() * $F{montoVentas}.doubleValue())]]></variableExpression>
+	</variable>
+	<variable name="Total_Ventas" class="java.lang.Double" incrementType="Group" incrementGroup="Group_3" calculation="Sum">
+		<variableExpression><![CDATA[$V{sumUtilidadVenta}]]></variableExpression>
+	</variable>
+	<variable name="Total_Periodo" class="java.lang.Double" incrementType="Group" incrementGroup="Group_3" calculation="Sum">
+		<variableExpression><![CDATA[$V{sumUtilidadPeriodo}]]></variableExpression>
+	</variable>
+	<variable name="Total_Monto_Compras" class="java.lang.Double" incrementType="Group" incrementGroup="Group_3" calculation="Sum">
+		<variableExpression><![CDATA[$V{sumMontoCompra}]]></variableExpression>
+	</variable>
+	<variable name="Total_Monto_Ventas" class="java.lang.Double" incrementType="Group" incrementGroup="Group_3" calculation="Sum">
+		<variableExpression><![CDATA[$V{sumMontoVenta}]]></variableExpression>
+	</variable>
+	<group name="Group_4">
+		<groupExpression><![CDATA[$F{idMesaCambio}]]></groupExpression>
+		<groupHeader>
+		<band height="15">
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="117" height="15" forecolor="#ffffff" backcolor="#701222"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Por Portafolio: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" mode="Opaque" x="117" y="0" width="701" height="15" forecolor="#ffffff" backcolor="#701222"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{idMesaCambio}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupHeader>
+	</group>
+	<group name="Group_1" isReprintHeaderOnEachPage="true" minHeightToStartNewPage="45">
+		<groupExpression><![CDATA[$F{tipoDeal}]]></groupExpression>
+		<groupHeader>
+		<band height="15">
+			<textField>
+				<reportElement positionType="Float" mode="Opaque" x="117" y="0" width="701" height="15" forecolor="#ffffff" backcolor="#7022"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipoDeal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="117" height="15" forecolor="#ffffff" backcolor="#7022"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Por Canal :
+]]></text>
+			</staticText>
+		</band>
+		</groupHeader>
+	</group>
+	<group name="Group_2">
+		<groupExpression><![CDATA[new Boolean ($F{tipoDeal}.equals("PROMOCION MAYOREO"))]]></groupExpression>
+		<groupFooter>
+		<band height="15">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="117" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[SUBTOTALES:]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="117" y="0" width="117" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumUtilidadCompraTotal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="234" y="0" width="117" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumUtilidadVentaTotal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="351" y="0" width="117" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumUtilidadPeriodoTotal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="468" y="0" width="117" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumMontoComprasTotal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="643" y="0" width="117" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumMontoVentasTotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="585" y="0" width="58" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="760" y="0" width="58" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[
+]]></text>
+			</staticText>
+		</band>
+		</groupFooter>
+	</group>
+	<group name="Group_5" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{tipoDeal}]]></groupExpression>
+		<groupHeader>
+		<band height="12">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="117" height="12"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Divisa 
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="117" y="0" width="117" height="12"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Utilidad/Compras]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="234" y="0" width="117" height="12"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Utilidad/Ventas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="351" y="0" width="117" height="12"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Utilidad/Periodo
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="468" y="0" width="117" height="12"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Monto de Compras]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="585" y="0" width="58" height="12"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[T.C.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="643" y="0" width="117" height="12"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Monto de Venta
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="760" y="0" width="58" height="12"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[T.C.
+]]></text>
+			</staticText>
+		</band>
+		</groupHeader>
+	</group>
+	<group name="Group_3">
+		<groupExpression><![CDATA[$F{divisaDescripcion}]]></groupExpression>
+		<groupFooter>
+		<band height="15">
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="117" y="0" width="117" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumUtilidadCompra}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="0" y="0" width="117" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{divisaDescripcion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="234" y="0" width="117" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumUtilidadVenta}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="351" y="0" width="117" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumUtilidadPeriodo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="468" y="0" width="117" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumMontoCompra}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00000000" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="585" y="0" width="58" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{AcsumTipoCambioCompra}.doubleValue()  == 0 ? new Double(0) : new Double ($V{AcsumTipoCambioCompra}.doubleValue() / $V{sumMontoCompra}.doubleValue() )]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="643" y="0" width="117" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumMontoVenta}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00000000">
+				<reportElement positionType="Float" x="760" y="0" width="58" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[new Double ($V{AcsumTipoCambioVenta}.doubleValue() / $V{sumMontoVenta}.doubleValue() )]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="50">
+			<staticText>
+				<reportElement x="0" y="0" width="117" height="50"/>
+				<textElement>
+					<font fontName="Verdana" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[IXE BANCO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="117" y="0" width="701" height="50"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Utilidades de Promoción]]></text>
+			</staticText>
+			<textField pattern="d/M/yy">
+				<reportElement positionType="Float" x="818" y="0" width="85" height="50"/>
+				<textElement>
+					<font fontName="arial" size="12" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaReporte}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageFooter>
+		<band height="15">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="117" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[TOTALES:]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="117" y="0" width="117" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{Totalon_Compras}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="234" y="0" width="117" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{Total_Ventas}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="351" y="0" width="117" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{Total_Periodo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="468" y="0" width="117" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{Total_Monto_Compras}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" x="643" y="0" width="117" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{Total_Monto_Ventas}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="585" y="0" width="58" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="760" y="0" width="58" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[
+]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,6 @@
+<span jwcid="@Conditional" condition="ognl: !interbancario">
+    <a jwcid="@ExternalLink" page="CapturaDeal" parameters='ognl: { @com.ixe.ods.sica.pages.deals.CapturaDeal@OPCION_REFRESCAR_DEAL, idDeal } ' onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bRegresar" /></a>
+</span>
+<span jwcid="@Conditional" condition="ognl: interbancario">
+    <a jwcid="@PageLink" page="CapturaDealInterbancario" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bRegresar" /></a>
+</span>

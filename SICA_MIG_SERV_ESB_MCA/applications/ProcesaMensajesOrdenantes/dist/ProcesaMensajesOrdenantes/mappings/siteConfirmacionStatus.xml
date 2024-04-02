@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://castor.exolab.org/ mapping.xsd">
+
+   <class name="com.banorte.site.mensajes.listener.vo.EstatusOperacionMediadorVO">
+   
+      <map-to xml="siteConfirmacionMatch"/>
+      
+      <field name="operacionID" type="string">
+         <bind-xml name="operacionID" />
+      </field>
+      
+      <field name="folioMediador" type="string">
+         <bind-xml name="folioMediador" />
+      </field>
+      
+      <field name="estatus" type="string">
+	  	<bind-xml name="estatus" />
+	  </field>
+	  <!--
+	  <field name="fed" type="string">
+	  	<bind-xml name="fed" />
+	  </field>
+	  
+	  <field name="mensajeMT" type="string">
+	  	<bind-xml name="mensajeMT" />
+	  </field>
+	  -->
+   </class>
+</mapping>

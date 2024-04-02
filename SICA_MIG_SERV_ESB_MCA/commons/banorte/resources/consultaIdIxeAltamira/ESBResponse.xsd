@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:pref="http://www.banorte.com/ws/ConsultaIdIxeAltamiraResponse" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.banorte.com/ws/ESBResponse" xmlns:tns="http://www.banorte.com/ws/ESBResponse" elementFormDefault="qualified">
+<xsd:import schemaLocation="ConsultaIdIxeAltamiraResponse.xsd" namespace="http://www.banorte.com/ws/ConsultaIdIxeAltamiraResponse"></xsd:import>
+	<xsd:complexType name="ResponseType">	
+        <xsd:sequence>		
+            <xsd:element ref="pref:ConsultaIdIxeAltamiraResponse"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+	<xsd:complexType name="ErrorType">
+        <xsd:sequence>
+            <xsd:element name="MsgError" type="xsd:string" />
+            <xsd:element name="DescError" type="xsd:string" minOccurs="0" />
+        </xsd:sequence>   
+        <xsd:attribute name="idError" use="required" type="xsd:string"/>        
+    </xsd:complexType>
+	<xsd:complexType name="HeaderResType">	
+        <xsd:sequence>		
+            <xsd:element name="Ticket" type="xsd:string" minOccurs="0" />      
+            <xsd:element name="Error" type="tns:ErrorType" />
+        </xsd:sequence> 
+        <xsd:attribute name="verHeaderRes" use="optional">
+            <xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="1.0" />
+				</xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+    </xsd:complexType>
+	<xsd:complexType name="ESBResponseType">
+        <xsd:sequence>	
+            <xsd:element name="Header" type="tns:HeaderResType" />
+            <xsd:element name="Response" type="tns:ResponseType" />
+        </xsd:sequence>
+    </xsd:complexType>
+	<xsd:element name="ESBResponse" type="tns:ESBResponseType" />
+	<xsd:element name="Error" type="tns:ErrorType" />
+</xsd:schema>

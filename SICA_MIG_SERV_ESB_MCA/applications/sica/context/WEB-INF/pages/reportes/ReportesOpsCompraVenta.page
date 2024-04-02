@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.reportes.ReportesOpsCompraVenta">
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate"/>
+    
+    <bean name="doubleValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="minimum" expression="0" />
+        <set-property name="invalidNumericFormatMessage">"Los datos en el rango de montos no son v&#225;lidos"</set-property>
+    </bean>
+    
+    <component id="divisasComboBox" type="PropertySelection">
+        <binding name="model" expression="getDivisasFrecuentes()" />
+        <binding name="value" expression="divisaSeleccionada" />
+    </component>
+
+    <component id="formasLiquidacionComboBox" type="PropertySelection">
+      	<binding name="model" expression="arregloFormasLiquidacion()" />
+        <binding name="value" expression="claveFormaLiquidacion" />
+    </component>
+
+    <component id="operacionesComboBox" type="PropertySelection">
+        <binding name="model" expression='tipoOperacion' />
+        <binding name="value" expression="operacionSeleccionada" />
+    </component>
+
+    <component id="origenOperacionesComboBox" type="PropertySelection">
+        <binding name="model" expression='origenOperacionModel' />
+        <binding name="value" expression="origenOperacionSeleccionada" />
+    </component>
+    
+    <component id="divisionComboBox" type="PropertySelection">
+        <binding name="model" expression='divisionModel' />
+        <binding name="value" expression="divisionSeleccionada" />
+        <binding name="disabled" expression="false" />
+    </component>
+    
+    <component id="plazaComboBox" type="PropertySelection">
+        <binding name="model" expression='plazaModel' />
+        <binding name="value" expression="plazaSeleccionada" />
+        <binding name="disabled" expression="false" />
+    </component>
+    
+    <component id="zonaComboBox" type="PropertySelection">
+        <binding name="model" expression='zonaModel' />
+        <binding name="value" expression="zonaSeleccionada" />
+        <binding name="disabled" expression="false" />
+    </component>
+    
+    <component id="sucursalComboBox" type="PropertySelection">
+        <binding name="model" expression='sucursalModel' />
+        <binding name="value" expression="sucursalSeleccionada" />
+        <binding name="disabled" expression="not soloCanalesSucursalesSelected" /> 
+    </component>
+
+     <component id="promotorSolicitudComboBox" type="PropertySelection">
+        <binding name="model" expression="promotoresModel" />
+        <binding name="value" expression="promotorHashMap" />
+    </component>
+    
+     <component id="montoTextFieldMinimo" type="MontoTextField">
+        <static-binding name="displayName" value="Desde:" />
+        <binding name="value" expression="montoMinimo" />
+    </component>
+     
+     <component id="montoTextFieldMaximo" type="MontoTextField">
+        <static-binding name="displayName" value="Hasta:" />
+        <binding name="value" expression="montoMaximo" />
+    </component>
+     
+    <component id="hiddenModoSubmit" type="Hidden">
+        <binding name="value" expression="modoSubmit" />
+    </component>
+    
+    <component id="textFieldContratoSica" type="TextField">
+        <binding name="value" expression="contratoSica" />
+    </component>
+    
+    <component id="comboBoxTipoCliente" type="PropertySelection">
+        <binding name="model" expression='tipoClienteModel' />
+        <binding name="value" expression="tipoClienteSeleccionado" />
+    </component>
+    
+    <component id="checkBoxMontoUsd" type="Checkbox">
+        <binding name="selected" expression='montoEquivUsd' />
+    </component>
+    
+    <property-specification name="divisaSeleccionada" type="com.ixe.ods.sica.model.Divisa" persistent="yes" />
+    <property-specification name="operacionSeleccionada" type="java.lang.String" persistent="yes" />
+    <property-specification name="origenOperacionSeleccionada" type="java.util.HashMap" persistent="yes" />
+    <property-specification name="claveFormaLiquidacion" type="java.lang.String" persistent="yes" />
+    <property-specification name="registerDate" type="java.util.Date" persistent="yes" />
+    <property-specification name="gc" type="java.util.Date" persistent="yes" />    
+	<property-specification name="productos" type="java.lang.String[]"/>
+    <property-specification name="divisas" type="java.util.List"/>
+    <property-specification name="modo" type="java.lang.String" initial-value="" persistent="yes" />
+   	<property-specification name="promotoresList" type="java.util.List" persistent="yes" />
+    <property-specification name="origenOperacionList" type="java.util.List" persistent="yes" />
+	<property-specification name="promotorSeleccionado" type="java.lang.Integer" persistent="yes" />
+    <property-specification name="promotorHashMap" type="java.util.HashMap" persistent="yes" />
+    <property-specification name="montoMinimo" type="double" persistent="yes" />
+	<property-specification name="montoMaximo" type="double" persistent="yes" />  
+  	<property-specification name="registerDateHasta" type="java.util.Date" persistent="yes" />
+    <property-specification name="dateRangeFilterAllowed" type="boolean" persistent="yes" />
+    
+    <property-specification name="divisionList" type="java.util.List" persistent="yes" />
+    <property-specification name="divisionSeleccionada" type="java.util.HashMap" persistent="yes" />
+    <property-specification name="plazaList" type="java.util.List" persistent="yes" />
+    <property-specification name="plazaSeleccionada" type="java.util.HashMap" persistent="yes" />
+    <property-specification name="zonaList" type="java.util.List" persistent="yes" />
+    <property-specification name="zonaSeleccionada" type="java.util.HashMap" persistent="yes" />
+    <property-specification name="sucursalList" type="java.util.List" persistent="yes" />
+    <property-specification name="sucursalSeleccionada" type="java.util.HashMap" persistent="yes" />
+    
+    <property-specification name="modoSubmit" type="java.lang.String" />
+    <property-specification name="soloCanalesSucursalesSelected" type="boolean" persistent="yes" />
+    <property-specification name="contratoSica" type="java.lang.String" persistent="yes" />
+    <property-specification name="tipoClienteSeleccionado" type="java.util.HashMap" persistent="yes" />
+    <property-specification name="montoEquivUsd" type="boolean" persistent="yes" />
+    
+    <context-asset name="searchButton" path="/images/search.gif" />
+	<context-asset name="verXlsButton" path="/images/ver_excel.gif" />
+
+</page-specification>

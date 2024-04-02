@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: DealsCancelados.page,v 1.2 2008/02/22 18:25:15 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.AbstractDealsCancelados">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd" lifecycle="render" />    
+
+    <component id="promotoresComboBox" type="PropertySelection">
+        <binding name="model" expression='new com.legosoft.tapestry.model.RecordSelectionModel(promotores, "idPersona", "nombreCompleto")' />
+        <binding name="value" expression="promotorSeleccionado" />
+        <static-binding name="accesskey" value="o" />
+    </component>
+    
+    <component id="canalesComboBox" type="PropertySelection">
+        <binding name="model" expression='new com.legosoft.tapestry.model.RecordSelectionModel(canales, "idCanal", "nombre")' />
+        <binding name="value" expression="canalSeleccionado" />
+    </component>
+    
+    <property-specification name="fechaInicio" type="java.util.Date" persistent="yes" initial-value="new java.util.Date()" />
+    <property-specification name="fechaFin" type="java.util.Date" persistent="yes" initial-value="new java.util.Date()" />
+    <property-specification name="canales" type="java.util.List" persistent="yes" />
+    <property-specification name="canalSeleccionado" type="com.ixe.ods.sica.model.Canal" persistent="yes" />
+    <property-specification name="deals" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+    <property-specification name="promotores" type="java.util.List" persistent="yes" />
+    <property-specification name="promotorSeleccionado" type="com.ixe.ods.bup.model.EmpleadoIxe" persistent="yes" />
+
+    <context-asset name="bBuscar" path="/images/search.gif" />
+
+
+</page-specification>

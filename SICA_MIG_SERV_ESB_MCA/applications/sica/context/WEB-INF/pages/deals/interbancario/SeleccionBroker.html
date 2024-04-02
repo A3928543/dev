@@ -1,0 +1,27 @@
+<!-- $Id: SeleccionBroker.html,v 1.9 2008/02/22 18:25:34 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Captura de Deal Interbancario.- Selecci&oacute;n de Contraparte</title>
+    <link rel="StyleSheet" href="../../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <form jwcid="@Form" listener="ognl: listeners.submit">
+        <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="ognl: true" width="100%" />
+        <table jwcid="@ActionPortletBorder" title="Seleccione una contraparte:">
+            <table jwcid="@TableBorder" title="ognl: null" subtitles="ognl: { 'Raz&oacute;n Social', 'Clave Reuters', 'Inst. Financiera'}" columnCount="ognl: 3" width="100%">
+                <tr jwcid="forContrapartes@Foreach" source="ognl: brokers" element="tr" class="ognl: beans.evenOdd.next">
+                    <td class="normal">
+                        <a href="#" jwcid="@DirectLink" listener="ognl: listeners.seleccionarBroker" parameters="ognl: components.forContrapartes.value.id.personaMoral.idPersona" onClick="fnShowWaitImage();"><span jwcid="@Insert" value="ognl: components.forContrapartes.value.id.personaMoral.nombreCompleto" /></a>                        
+                    </td>
+                    <td class="normal"><span jwcid="@Insert" value="ognl: components.forContrapartes.value.claveReuters" /></td>
+                    <td class="normal"><span jwcid="@Insert" value='ognl: @com.ixe.ods.sica.model.Broker@INSTITUCION_FINANCIERA.equals(components.forContrapartes.value.tipoBroker) ? "S&iacute;" : "No"' raw="yes" /></td>
+                </tr>
+            </table>
+            <br />
+            <div align="center">
+                <a href="#" jwcid="@DirectLink" listener="ognl: listeners.crearSinBroker" onClick="fnShowWaitImage();"><img src="../../../../images/por_definir.gif" jwcid="@Image" image="ognl: assets.bPorDefinir" border="0"/></a>
+            </div>
+        </table>
+    </form>
+</body>
+</html>

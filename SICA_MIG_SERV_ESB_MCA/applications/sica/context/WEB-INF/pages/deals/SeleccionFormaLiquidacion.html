@@ -1,0 +1,139 @@
+<!-- $Id: SeleccionFormaLiquidacion.html,v 1.14.68.1 2016/09/06 18:40:51 mejiar Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Selecci&oacute;n Formas Liquidaci&oacute;n</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="tb@Block"><span jwcid="@EventosDeal" deal="ognl: dealDetalle.deal" /></span>
+    <table jwcid="@ActionPortletBorder" title="Deal" titleBlock="ognl: components.tb">
+        <span jwcid="@EncabezadoDeal" deal="ognl: dealDetalle.deal" disabled="yes" />
+        <br />
+        <table jwcid="@DetailFieldset" dealDetalle="ognl: dealDetalle" />
+    </table>
+    <br />
+	<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+    <table width="100%">
+        <tr valign="top">
+            <span jwcid="@Conditional" condition="ognl: !dealDetalle.mnemonico">
+            <td width="49%">
+                <table jwcid="@ActionPortletBorder" title="Formas de Liquidaci&oacute;n">
+                    <form jwcid="@Form" listener="ognl: listeners.asignarMnemonico">
+                        <div align="left">
+                        	<font class="title">Tipo de Liquidaci&oacute;n:</font>
+		                    <select jwcid="@PropertySelection" model="ognl: tiposLiquidacionModel" value="ognl: selectedTipoLiquidacion" onChange="fnShowWaitImage(); this.form.submit();" />
+							<br /><br />
+	                        <font class="title">Mnem&oacute;nico:</font>
+	                        <select jwcid="@PropertySelection" model="ognl: mnemonicosModel" value="ognl: mnemonico" />
+                        </div>
+                        <br /><br />
+						<div align="center">
+                            <input type="submit" jwcid="@ImageSubmit" image="ognl: assets.bAsignar" selected="ognl: modoSubmit" tag="1" onClick="fnShowWaitImage();" />
+                            <a jwcid="@PageLink" page="CapturaDeal" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bRegresar" src="../../../images/back.gif" alt="Regresar" border="0"/></a>
+                        </div>
+                    </form>
+                </table>
+            </td>
+            <td>&nbsp;</td>
+            </span>
+            <td>
+                <span jwcid="@Conditional" condition="ognl: plantillasCuentaIxe.size() &gt; 0">
+                    <table jwcid="@ActionPortletBorder" title="Plantillas Cuentas Ixe">
+                        <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "Clave", "Mnem&oacute;nico", "No.Cuenta Ixe", "Beneficiario" }' columnCount="4" width="100%">
+                            <span jwcid="@Liguero" letras="ognl: letrasPlantillas"  leerLetraListener="ognl: listeners.leerLetra" letraSeleccionada="ognl: letraSeleccionada"/>
+                            <tr jwcid="forPltsCtaIxe@Foreach" source="ognl: filtrar(plantillasCuentaIxe)" element="tr" class="normalcell">
+                                <td align="center" class="normal"><span jwcid="@Insert" value="ognl: components.forPltsCtaIxe.value.clavePlantilla" /></td>
+                                <td align="left" class="normal"><span jwcid="@Insert" value='ognl: components.forPltsCtaIxe.value.mnemonico + " - " + getFormaPagoLiq(components.forPltsCtaIxe.value.mnemonico).descripcion' /></td>
+                                <td align="left" class="normal"><a jwcid="@DirectLink" listener="ognl: listeners.seleccionarPlantilla" parameters="ognl: components.forPltsCtaIxe.value.idPlantilla" onClick="fnShowWaitImage();"><span jwcid="@Insert" value="ognl: components.forPltsCtaIxe.value.noCuentaIxe" /></a></td>
+                                <td align="left" class="normal"><span jwcid="@Insert" value="ognl: components.forPltsCtaIxe.value.beneficiario.nombreCompleto" /></td>
+                            </tr>
+                        </table>
+                        <span jwcid="@Conditional" condition="ognl: dealDetalle.mnemonico">
+                        <br />
+                        <div align="center">
+                            <a href="#" jwcid="@DirectLink" listener="ognl: listeners.nuevaPlantilla" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bAgregar" border="0" /></a>
+                            <a jwcid="@PageLink" page="CapturaDeal" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bRegresar" src="../../../images/back.gif" alt="Regresar" border="0"/></a>
+                        </div>
+                        </span>
+                    </table>
+                    <br />
+                </span>
+                <span jwcid="@Conditional" condition="ognl: plantillasIntl.size() &gt; 0">
+                    <table jwcid="@ActionPortletBorder" title="Plantillas Internacionales">
+                        <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: {"Clave", "Mnem&oacute;nico", "Cta. Beneficiario", "Divisa", "Nombre Beneficiario", "Sistema Interm.", "Cve. Bco. Interm.", "Bco. Interm.", "Sistema de Beneficiario", "Cve. Bco. Beneficiario", "Bco. Beneficiario", "Pa&iacute;s", "Cuenta Banco Interm.", "Status"}' columnCount="14" width="100%">
+                            <span jwcid="@Liguero" letras="ognl: letrasPlantillas"  leerLetraListener="ognl: listeners.leerLetra" letraSeleccionada="ognl: letraSeleccionada"/>
+                            <tr jwcid="forPltsIntl@Foreach" source="ognl: filtrar(plantillasIntl)" element="tr"  class="ognl: beans.evenOdd.next">
+                                <td align="center" class="normal"><span jwcid="@Insert" value="ognl: components.forPltsIntl.value.clavePlantilla" /></td>
+                                <td align="left" class="normal"><span jwcid="@Insert" value='ognl: components.forPltsIntl.value.mnemonico + " - " + getFormaPagoLiq(components.forPltsIntl.value.mnemonico).descripcion' /></td>
+                                <td align="left" class="normal" nowrap><span jwcid="@Insert" value="ognl: components.forPltsIntl.value.noCuentaBeneficiario" /></td>
+                                <td align="center" class="normal" nowrap><span jwcid="@Insert" value="ognl: components.forPltsIntl.value.divisa.idDivisa" /></td>
+                                <td align="left" class="normal"><a jwcid="@DirectLink" listener="ognl: listeners.seleccionarPlantilla" parameters="ognl: components.forPltsIntl.value.idPlantilla" onClick="fnShowWaitImage();"><span jwcid="@Insert" value="ognl: components.forPltsIntl.value.beneficiario.nombreCompleto" /></a></td>
+                                <td align="center" class="normal" nowrap><span jwcid="@Insert" value="ognl: components.forPltsIntl.value.tipoCuentaBancoInterm" /></td>
+                                <td align="left" class="normal" nowrap><span jwcid="@Insert" value="ognl: components.forPltsIntl.value.claveBancoInterm" /></td>
+                                <td align="left" class="normal"><span jwcid="@Insert" value="ognl: components.forPltsIntl.value.nombreBancoInterm" /></td>
+                                <td align="center" class="normal" nowrap><span jwcid="@Insert" value="ognl: components.forPltsIntl.value.tipoCuentaBanco" /></td>
+                                <td align="left" class="normal" nowrap><span jwcid="@Insert" value='ognl: components.forPltsIntl.value.claveBanco != null ? components.forPltsIntl.value.claveBanco : "" '/></td>
+                                <td align="left" class="normal"><span jwcid="@Insert" value="ognl: components.forPltsIntl.value.nombreBanco" /></td>
+                                <td align="left" class="normal"><span jwcid="@Insert" value='ognl: components.forPltsIntl.value.idPais != null ? getPaisXClaveISO(page.visit.ticket, components.forPltsIntl.value.idPais).nombrePais : "" ' /></td>
+                                <td align="left" class="normal"><span jwcid="@Insert" value="ognl: components.forPltsIntl.value.cuentaBancoInterm" /></td>
+                                <td align="center" class="normal"><span jwcid="@Insert" value="ognl: components.forPltsIntl.value.statusPlantilla" /></td>
+                            </tr>
+                        </table>
+                        <span jwcid="@Conditional" condition="ognl: dealDetalle.mnemonico">
+                        <br />
+                        <div align="center">
+                            <a href="#" jwcid="@DirectLink" listener="ognl: listeners.nuevaPlantilla" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bAgregar" border="0" src="../../../images/add.gif" alt="Agregar" /></a>
+                            <a jwcid="@PageLink" page="CapturaDeal" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bRegresar" src="../../../images/back.gif" alt="Regresar" border="0"/></a>
+                        </div>
+                        </span>
+                    </table>
+                    <br />
+                </span>
+                <span jwcid="@Conditional" condition="ognl: plantillasNal.size() &gt; 0">
+                    <table jwcid="@ActionPortletBorder" title="Plantillas de cheques">
+                        <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "Clave", "Mnem&oacute;nico", "Beneficiario" }' columnCount="3" width="100%">
+                            <span jwcid="@Liguero" letras="ognl: letrasPlantillas"  leerLetraListener="ognl: listeners.leerLetra" letraSeleccionada="ognl: letraSeleccionada"/>
+                            <tr jwcid="forPltsNal@Foreach" source="ognl: filtrar(plantillasNal)" element="tr" class="normalcell">
+                                <td align="center" class="normal"><span jwcid="@Insert" value="ognl: components.forPltsNal.value.clavePlantilla" /></td>
+                                <td align="left" class="normal"><span jwcid="@Insert" value='ognl: components.forPltsNal.value.mnemonico + " - " + getFormaPagoLiq(components.forPltsNal.value.mnemonico).descripcion' /></td>
+                                <td align="left" class="normal"><a jwcid="@DirectLink" listener="ognl: listeners.seleccionarPlantilla" parameters="ognl: components.forPltsNal.value.idPlantilla" onClick="fnShowWaitImage();"><span jwcid="@Insert" value="ognl: components.forPltsNal.value.beneficiario.nombreCompleto" /></a></td>
+                            </tr>
+                        </table>
+                        <span jwcid="@Conditional" condition="ognl: dealDetalle.mnemonico">
+                        <br />
+                        <div align="center">
+                            <a href="#" jwcid="@DirectLink" listener="ognl: listeners.nuevaPlantilla" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bAgregar" border="0" src="../../../images/add.gif" alt="Agregar"/></a>
+                            <a jwcid="@PageLink" page="CapturaDeal" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bRegresar" src="../../../images/back.gif" alt="Regresar" border="0"/></a>
+                        </div>
+                        </span>
+                    </table>
+                    <br />
+                </span>
+                <span jwcid="@Conditional" condition="ognl: plantillasTranNal.size() &gt; 0">
+                    <table jwcid="@ActionPortletBorder" title="Plantillas Transferencias Nacionales">
+                        <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "Clave", "Mnem&oacute;nico", "Beneficiario", "Divisa", "CLABE/No.Cta", "Banco" }' columnCount="6" width="100%">
+                            <span jwcid="@Liguero" letras="ognl: letrasPlantillas"  leerLetraListener="ognl: listeners.leerLetra" letraSeleccionada="ognl: letraSeleccionada"/>
+                            <tr jwcid="forPltsTranNal@Foreach" source="ognl: filtrar(plantillasTranNal)" element="tr" class="normalcell">
+                                <td align="center" class="normal"><span jwcid="@Insert" value="ognl: components.forPltsTranNal.value.clavePlantilla" /></td>
+                                <td align="left" class="normal"><span jwcid="@Insert" value='ognl: components.forPltsTranNal.value.mnemonico + " - " + getFormaPagoLiq(components.forPltsTranNal.value.mnemonico).descripcion' /></td>
+                                <td align="left" class="normal"><a jwcid="@DirectLink" listener="ognl: listeners.seleccionarPlantilla" parameters="ognl: components.forPltsTranNal.value.idPlantilla" onClick="fnShowWaitImage();"><span jwcid="@Insert" value="ognl: components.forPltsTranNal.value.beneficiario.nombreCompleto" /></a></td>
+                                <td align="center" class="normal"><span jwcid="@Insert" value="ognl: components.forPltsTranNal.value.divisa.idDivisa" /></td>
+                                <td align="left" class="normal"><a jwcid="@DirectLink" listener="ognl: listeners.seleccionarPlantilla" parameters="ognl: components.forPltsTranNal.value.idPlantilla" onClick="fnShowWaitImage();"><span jwcid="@Insert" value="ognl: components.forPltsTranNal.value.clabe" /></a></td>
+                                <td align="left" class="normal"><a jwcid="@DirectLink" listener="ognl: listeners.seleccionarPlantilla" parameters="ognl: components.forPltsTranNal.value.idPlantilla" onClick="fnShowWaitImage();"><span jwcid="@Insert" value="ognl: components.forPltsTranNal.value.nombreBanco" /></a></td>
+                            </tr>
+                        </table>
+                        <span jwcid="@Conditional" condition="ognl: dealDetalle.mnemonico">
+                        <br />
+                        <div align="center">
+                            <a href="#" jwcid="@DirectLink" listener="ognl: listeners.nuevaPlantilla" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bAgregar" border="0" src="../../../images/add.gif"  alt="Agregar"/></a>
+                            <a jwcid="@PageLink" page="CapturaDeal" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bRegresar" src="../../../images/back.gif" alt="Regresar" border="0"/></a>
+                        </div>
+                        </span>
+                    </table>
+                    <br />
+                </span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

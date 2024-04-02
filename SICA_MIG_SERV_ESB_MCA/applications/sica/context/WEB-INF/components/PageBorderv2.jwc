@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: PageBorderv2.jwc,v 1.2 2010/04/30 15:27:00 ccovian Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<component-specification allow-informal-parameters="yes">
+    
+    <parameter name="menuDisabled" type="boolean" direction="in" />
+    <parameter name="onbeforeunloadFn" type="java.lang.String" direction="in" />
+    
+    <context-asset name="stylesheet" path="/css/ixe.css"/>
+	<context-asset name="loadingImage" path="/images/loading_ns.gif"/>
+    
+</component-specification>

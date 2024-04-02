@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CapturaDeal.page,v 1.13.10.1.10.1.4.1.14.1.24.2 2017/08/21 16:21:31 mejiar Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.deals.CapturaDeal">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <property-specification name="mensajearApplet" type="boolean" />   
+    <property-specification name="area" type="boolean" persistent="yes" />   
+    <property-specification name="deal" type="com.ixe.ods.sica.model.Deal" persistent="yes" />
+    <property-specification name="limitesRestriccionOperacion" type="com.ixe.ods.sica.model.LimitesRestriccionOperacion" persistent="yes" />
+    <property-specification name="modoInsercion" type="boolean" persistent="yes" />
+    <property-specification name="opcion" type="int" />
+    <property-specification name="splitMap" type="java.util.Map" />
+    <property-specification name="modifMap" type="java.util.Map" />
+    <property-specification name="submitMode" type="java.lang.String" />
+    <property-specification name="level" type="int" />    
+    <property-specification name="paginaRegreso" type="java.lang.String" persistent="yes" />
+    <property-specification name="estadoLineaCredito" type="java.lang.String" persistent="yes" />
+    
+    <context-asset name="bActualizar" path="/images/save.gif" />
+    <context-asset name="bCancelar" path="/images/cancel.gif" />
+    <context-asset name="bContrato" path="/images/contrato.gif" />
+    <context-asset name="bDatosEnvio" path="/images/datos_envio.gif" />
+    <context-asset name="bDatosFacturacion" path="/images/datos_facturacion.gif" />
+    <context-asset name="bDatosComprobante" path="/images/datos_comprobante.gif" />
+    <context-asset name="bObservaciones" path="/images/observaciones.gif" />
+    <context-asset name="bProcesar" path="/images/procesar.gif" />
+    <context-asset name="bRegresar" path="/images/back.gif" />
+    <context-asset name="bSolAutSobrePrecio" path="/images/sol_aut_sobrepr.gif" />
+    <context-asset name="bRefrescar" path="/images/refresh.gif" />
+    <context-asset name="bAceptarTcEspecial" path="/images/aceptar_tce.gif" />
+   <context-asset name="bFormaPago" path="/images/forma_pago.gif" />
+
+</page-specification>

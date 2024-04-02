@@ -1,0 +1,37 @@
+/ActividadDaoTest.java/1.1/Wed Sep 23 16:59:00 2009//TSICA_MIG_SERV_ESB_MCA
+/BitacoraEnviadasDaoTest.java/1.2/Tue Apr 13 20:30:10 2010//TSICA_MIG_SERV_ESB_MCA
+/BrokerDaoTest.java/1.1/Wed Sep 23 16:59:00 2009//TSICA_MIG_SERV_ESB_MCA
+/CancelacionMailSenderTest.java/1.1/Tue Jul  8 04:16:48 2008//TSICA_MIG_SERV_ESB_MCA
+/ClienteDaoTest.java/1.14/Wed Jun 17 20:23:19 2009//TSICA_MIG_SERV_ESB_MCA
+/CondorProcCambiosDaoTest.java/1.1/Wed Jan  7 17:26:09 2009//TSICA_MIG_SERV_ESB_MCA
+/ContabilidadServiceDataTest.java/1.1/Thu Jun 19 21:01:00 2008//TSICA_MIG_SERV_ESB_MCA
+/CorteMurexDaoTest.java/1.1.2.1/Sat Jun 29 22:28:14 2013//TSICA_MIG_SERV_ESB_MCA
+/DealDaoTest.java/1.1/Fri Sep 25 15:56:13 2009//TSICA_MIG_SERV_ESB_MCA
+/DescuadrePosicionTest.java/1.2/Fri Feb 22 18:25:44 2008//TSICA_MIG_SERV_ESB_MCA
+/DistribucionNormalInversaTest.java/1.2/Fri Sep 25 15:55:55 2009//TSICA_MIG_SERV_ESB_MCA
+/ExternalSiteSessionBeanTest.java/1.14/Tue Feb 26 18:34:52 2008//TSICA_MIG_SERV_ESB_MCA
+/GeneralMailSenderTest.java/1.1.28.1/Thu Jun 24 16:38:05 2010//TSICA_MIG_SERV_ESB_MCA
+/IntegracionTellerTest.java/1.17.34.1/Fri Oct  8 01:23:07 2010//TSICA_MIG_SERV_ESB_MCA
+/JerarquiaDaoTest.java/1.1/Mon Apr 27 15:59:49 2009//TSICA_MIG_SERV_ESB_MCA
+/LimiteDaoTest.java/1.4/Fri Dec 26 23:17:28 2008//TSICA_MIG_SERV_ESB_MCA
+/LineaCambioDaoTest.java/1.3/Fri Feb 26 01:02:24 2010//TSICA_MIG_SERV_ESB_MCA
+/LineasCambioServiceDataTest.java/1.3/Fri Dec 26 23:17:28 2008//TSICA_MIG_SERV_ESB_MCA
+/MailKondorServiceTest.java/1.2/Tue Apr 13 20:32:08 2010//TSICA_MIG_SERV_ESB_MCA
+/MailVespertinoServiceTest.java/1.3/Fri Dec 26 23:17:27 2008//TSICA_MIG_SERV_ESB_MCA
+/PdfServiceTest.java/1.3/Fri Dec 26 23:17:28 2008//TSICA_MIG_SERV_ESB_MCA
+/PizarronServiceDataTest.java/1.19/Mon Oct 27 23:20:09 2008//TSICA_MIG_SERV_ESB_MCA
+/PizarronSessionBeanTest.java/1.12/Fri Feb 22 18:25:43 2008//TSICA_MIG_SERV_ESB_MCA
+/ReporteUtilidadesDaoTest.java/1.1/Sat Jul 26 01:40:16 2008//TSICA_MIG_SERV_ESB_MCA
+/ReversoMailSenderTest.java/1.13.30.1/Thu Jun 24 16:39:00 2010//TSICA_MIG_SERV_ESB_MCA
+/ReversosServiceDataTest.java/1.2/Fri Feb 22 18:25:43 2008//TSICA_MIG_SERV_ESB_MCA
+/SicaInternalKondorTest.java/1.2/Tue Apr 13 20:32:08 2010//TSICA_MIG_SERV_ESB_MCA
+/SicaKondorTest.java/1.2/Tue Apr 13 20:32:08 2010//TSICA_MIG_SERV_ESB_MCA
+/SicaServiceDataTest.java/1.26/Tue Nov 17 16:53:52 2009//TSICA_MIG_SERV_ESB_MCA
+/SicaSessionBeanTest.java/1.4/Fri Feb 22 18:25:43 2008//TSICA_MIG_SERV_ESB_MCA
+/SicaSiteCacheTest.java/1.12/Fri Feb 22 18:25:44 2008//TSICA_MIG_SERV_ESB_MCA
+/ValorFuturoServiceTest.java/1.13/Tue Nov 17 16:54:18 2009//TSICA_MIG_SERV_ESB_MCA
+/WorkFlowServiceDataTest.java/1.11.42.1/Tue Mar 13 02:28:41 2012//TSICA_MIG_SERV_ESB_MCA
+/XlsServiceTest.java/1.3/Fri Dec 26 23:17:28 2008//TSICA_MIG_SERV_ESB_MCA
+/applicationContext.xml/1.22.38.1/Tue Mar 13 02:28:41 2012//TSICA_MIG_SERV_ESB_MCA
+D/impostores////
+D/pizarron////

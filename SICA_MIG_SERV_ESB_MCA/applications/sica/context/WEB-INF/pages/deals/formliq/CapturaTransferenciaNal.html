@@ -1,0 +1,97 @@
+<!-- $Id: CapturaTransferenciaNal.html,v 1.11 2010/03/03 21:14:36 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Captura de Transferencia Nacional</title>
+    <link rel="StyleSheet" href="../../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="tb@Block"><span jwcid="@EventosDeal" deal="ognl: dealDetalle.deal" /></span>
+    <table jwcid="@ActionPortletBorder" title="Deal" titleBlock="ognl: components.tb">
+        <span jwcid="@EncabezadoDeal" deal="ognl: dealDetalle.deal" disabled="yes" />
+        <form jwcid="@Form" listener="ognl: listeners.submit" delegate="ognl: beans.delegate">
+            <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" width="100%"/>
+            <table jwcid="@DetailFieldset" dealDetalle="ognl: dealDetalle">
+                <tr class="normal" valign="top">
+                    <td class="title" align="right">Clave Plantilla:</td>
+                    <td>
+                        <span jwcid="@contrib:Choose">
+                            <span jwcid="@contrib:When" condition="ognl: !modoCaptura">
+                                <input class="uppercase" jwcid="@ixe:UppercaseTextField" value="ognl: dealDetalle.plantilla.clavePlantilla" maxlength="4" size="4" />
+                            </span>
+                            <span jwcid="@contrib:Otherwise">
+                                <span jwcid="@DisabledField" value="ognl: dealDetalle.plantilla.clavePlantilla" />
+                            </span>
+                        </span>
+                    </td>
+                    <td class="title" align="right" nowrap>Nombre Beneficiario:</td>
+                    <td colspan="5">
+                        <span jwcid="@contrib:Choose">
+                            <span jwcid="@contrib:When" condition="ognl: !modoCaptura">
+	                            <select jwcid="beneficiarioComboBox" />
+                            </span>
+                            <span jwcid="@contrib:Otherwise">
+                                <span jwcid="@DisabledField" value="ognl: dealDetalle.plantilla.beneficiario.nombreCompleto" />
+                            </span>
+                        </span>
+                    </td>
+                    <td class="title" align="right">Divisa:</td>
+                    <td><span jwcid="@DisabledField" value="ognl: dealDetalle.plantilla.divisa.idDivisa" /></td>
+                </tr>
+                <tr class="normal" valign="top">
+                    <span jwcid="@contrib:FormConditional" condition="ognl: !modoCaptura">
+		                <td class="title" align="right">CLABE/Cuenta:</td>
+        		        <td colspan="9">
+                            <select jwcid="@PropertySelection" model="ognl: comboCLABECuenta" value="ognl: clabeOCuenta" onChange="fnShowWaitImage(); this.form.submit();" disabled="ognl: dealDetalle.plantilla.bancoTerceroSpei"/>
+                        </td>
+                    </span>
+                </tr>
+                <tr class="normal" valign="top">
+                    <td class="title" align="right" nowrap>
+						<span jwcid="@contrib:Choose">
+                    		<span jwcid="@contrib:When" condition='ognl: !modoCaptura && "CLABE".equals(clabeOCuenta)'>
+		                    	<span jwcid="@Insert" value="No. CLABE:" />
+		                    </span>
+                    		<span jwcid="@contrib:When" condition='ognl: !modoCaptura && !"CLABE".equals(clabeOCuenta)'>
+	                			<span jwcid="@Insert" value="No. Cuenta:" />
+	                		</span>
+	                		<span jwcid="@contrib:When" condition='ognl: modoCaptura && (dealDetalle.plantilla.clabe.length() == 18)'>
+		                    	<span jwcid="@Insert" value="No. CLABE:" />
+		                    </span>
+                    		<span jwcid="@contrib:Otherwise">
+	                			<span jwcid="@Insert" value="No. Cuenta:" />
+	                		</span>
+                		</span>
+                    </td>
+                    <td>
+                        <span jwcid="@contrib:Choose">
+                            <span jwcid="@contrib:When" condition="ognl: !modoCaptura">
+                                <input class="uppercase" jwcid="@ixe:UppercaseTextField" maxLength="33" value="ognl: dealDetalle.plantilla.clabe" />
+                            </span>
+                            <span jwcid="@contrib:Otherwise">
+                                <span jwcid="@DisabledField" value="ognl: dealDetalle.plantilla.clabe" />
+                            </span>
+                        </span>
+                    </td>
+                    <td class="title" align="right" nowrap>Banco:</td>
+                    <td colspan="7">
+                        <span jwcid="@contrib:FormConditional" condition="ognl: !modoCaptura && dealDetalle.plantilla.spei">
+                            <select jwcid="bancosComboBox" />
+                        </span>
+                        <span jwcid="@Conditional" condition="ognl: modoCaptura || !dealDetalle.plantilla.spei">
+                            <span jwcid="@DisabledField" value="ognl: dealDetalle.plantilla.nombreBanco" />
+                        </span>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <div align="center">
+				<span jwcid="@contrib:FormConditional" condition="ognl: !modoCaptura">
+					<a jwcid="@DirectLink" listener="ognl: listeners.agregaBeneficiario" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bNuevoBeneficiario" /></a>
+                	<input jwcid="@ImageSubmit" image="ognl: assets.bActualizar" selected="ognl: modoSubmit" tag="ognl: @com.ixe.ods.sica.pages.deals.formliq.CapturaTransferenciaNal@MODO_SUBMIT_ACTUALIZAR" />
+            	</span>
+                <input jwcid="@RegresarCapturaDeal" idDeal="ognl: dealDetalle.deal.idDeal" />
+            </div>
+        </form>
+    </table>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!-- $Id: CatDivisa.html,v 1.10 2008/10/27 23:20:07 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Encabezado</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <form jwcid="@Form" listener="ognl: listeners.actualizar" delegate="ognl:beans.delegate">
+        <table jwcid="@ActionPortletBorder" title="Divisa" width="100%">
+            <table jwcid="@TableBorder" title="ognl: null" columnCount="2" width="100%">
+                <tr class="titlecell">
+                    <td width="50%" align="right" class="title">Clave:</td>
+                    <td class="normalcell">
+                        <span jwcid="@contrib:Choose">
+                            <span jwcid="@contrib:When" condition="ognl: modoUpdate">
+                                <span jwcid="@Insert" value="ognl: registro.idDivisa" />
+                            </span>
+                            <span jwcid="@contrib:Otherwise">
+                                <input jwcid="idTextField" />
+                            </span>
+                        </span>
+                    </td>
+                </tr>
+                <tr class="titlecell">
+                    <td align="right" class="title">Descripci&oacute;n:</td>
+                    <td class="normalcell"><input jwcid="descripcionTextField" size="50" /></td>
+                </tr>
+                <tr class="titlecell">
+                    <td align="right" class="title">Tipo:</td>
+                    <td class="normalcell" nowrap>
+                        <font class="normal">
+                        <span jwcid="@RadioGroup" selected="ognl: registro.tipo">
+                            <span jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.Divisa@FRECUENTE" />Frecuente
+                            <span jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.Divisa@NO_FRECUENTE" />No Frecuente
+                            <span jwcid="@Radio" value="ognl: @com.ixe.ods.sica.model.Divisa@METAL_AMONEDADO" />Metal amonedado
+                        </span>
+                        </font>
+                    </td>                    
+                </tr>
+                <tr class="titlecell">
+                    <td align="right" class="title">Icono:</td>
+                    <td class="normalcell"><input jwcid="@TextField" value="ognl: registro.icono" size="50" /></td>
+                </tr>
+                <tr class="titlecell">
+                    <td align="right" class="title">Orden:</td>
+                    <td class="normalcell"><input jwcid="ordenTextField" /></td>
+                </tr>
+                <tr class="titlecell">
+                    <td align="right" class="title">Spread Sucursales:</td>
+                    <td class="normalcell"><input jwcid="spreadSucursalesTextField" /></td>
+                </tr>
+                <tr class="titlecell">
+                    <td align="right" class="title">Clave Moneda Phoenix:</td>
+                    <td class="normalcell"><input jwcid="@TextField" value="ognl: registro.idMoneda" size="2" /></td>
+                </tr>
+                <tr class="titlecell">
+                    <td align="right" class="title">Divide:</td>
+                    <td class="normalcell"><input type="checkbox" jwcid="@Checkbox" selected="ognl: registro.divide"/></td>
+                </tr>
+                
+            </table>
+            <br />
+            <div align="center">
+                <input jwcid="@ImageSubmit" image="ognl: assets.acceptButton" onclick="return fnDisableForm(this.form);" />
+                <a jwcid="@PageLink" page="CatDivisas" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.cancelButton"/></a>
+            </div>
+        </table>
+    </form>
+</body>
+</html>

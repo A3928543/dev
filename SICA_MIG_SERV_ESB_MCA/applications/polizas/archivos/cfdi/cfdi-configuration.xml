@@ -1,0 +1,462 @@
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/tx  
+    http://www.springframework.org/schema/tx/spring-tx.xsd">
+        
+    <import resource="file:archivos/db-connection.xml"/>
+        
+	<context:property-placeholder location="archivos/cfdi/cfdi.properties"/>
+	
+	<context:component-scan base-package="com.ixe.ods.sica.batch.dao, com.ixe.ods.sica.batch.cfdi" />
+		
+	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+  		<property name="host" value="${mail.host}"/>
+  		<!-- <property name="port">
+  			<bean class="java.lang.Integer">
+  				<constructor-arg type="java.lang.String" value="${mail.port}"/>
+  			</bean>
+  		</property>   -->
+  		<property name="javaMailProperties">
+			<props>
+		        <prop key="mail.smtp.starttls.enable">true</prop>
+	        </props>
+        </property>
+	</bean>
+	
+	<bean id="mailSender" class="com.ixe.ods.sica.batch.mail.impl.MailSenderImpl">
+		<property name="velocityEngine" ref="velocityEngine" />
+		<property name="mailSender" ref="javaMailSender" />
+		<property name="env">
+			<map>
+				<entry key="template" value="${mail.template}" />
+				<entry key="from" value="${mail.from}" />
+				<entry key="to" value="${mail.to}" />
+				<entry key="cc" value="${mail.cc}" />
+				<entry key="subject" value="${mail.subject}" />
+				<entry key="encoding" value="${mail.encoding}" />
+			</map>
+		</property>
+	</bean> 
+	
+	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="resourceLoaderPath">
+            <value>archivos/cfdi/</value>
+        </property>
+    </bean>
+	
+	<bean class="com.ixe.ods.sica.batch.cfdi.util.CfdiConfiguracionApp">
+		<property name="dirEntrada" value="${dir.entrada}"/>
+		<property name="dirSalida" value="${dir.porenviar}"/>
+		<property name="dirProcesados" value="${dir.procesados}"/>
+		<property name="dirEnviados" value="${dir.enviados}"/>
+		<property name="dirRepCfdiPorenviar" value="${dir.rep.cfdi.porenviar}"/>
+		<property name="dirRepCfdiEnviados" value="${dir.rep.cfdi.enviados}"/>
+		<property name="nombreRepCifrasError" value="${rep.cifras.nombre.error}"/>
+		<property name="pattern" value="${date.pattern}"/>
+		<property name="extFile" value="${file.indices.ext}"/>
+		<property name="extFileIn" value="${file.indices.ext.in}"/>
+		<property name="zipOut">
+			<bean class="java.lang.Boolean">
+   				<constructor-arg type="java.lang.String" value="${file.indices.out.zip}"/>
+   			</bean>
+		</property>
+		<property name="prefijoFile" value="${file.indices.prefijo}"/>
+		<property name="passwordFile" value="${file.indices.password}"/>
+		<property name="cadenaBuscar" value="${file.name.cadena.buscar}"/>
+		<property name="reEmplazar" value="${file.name.reemplazo}"/>
+		<property name="nombreArchErrores" value="${file.name.error}"/>
+		<property name="parserConfig" ref="parserConfig"/>
+		<property name="envReproceso">
+			<map>
+				<entry key="OK" value="${reproceso.ok}"/>
+				<entry key="KO" value="${reproceso.ko}"/>
+			</map>
+		</property>
+		<property name="statusFactura">
+			<map>
+				<entry key="FACT" value="${status.factura.fact.des}" />
+				<entry key="PEND" value="${status.factura.pend.des}" />
+				<entry key="CANC" value="${status.factura.canc.des}" />
+				<entry key="SCAN" value="${status.factura.scan.des}" />
+			</map>
+		</property>
+		<property name="configRepCifras">
+			<map>
+				<entry key="descripcion" value="${rep.cifras.desc}" />
+				<entry key="reporte" value="${rep.cifras.nombre}" />
+				<entry key="cadena" value="${rep.cifras.cadena}" />
+				<entry key="aplicativo" value="${rep.name.app}" />
+				<entry key="pattern" value="${rep.pattern.date}" />
+				<entry key="encoding" value="${rep.encoding}" />
+				<entry key="template" value="${rep.template.cifras}" />
+			</map>
+		</property>
+		<property name="configRepCfdiDet">
+			<map>
+				<entry key="descripcion" value="${rep.cfdis.det.desc}" />
+				<entry key="reporte" value="${rep.cfdis.det.nombre}" />
+				<entry key="cadena" value="${rep.cfdis.det.cadena}" />
+				<entry key="aplicativo" value="${rep.name.app}" />
+				<entry key="pattern" value="${rep.pattern.date}" />
+				<entry key="template" value="${rep.template.cfdi.det}" />
+			</map>
+		</property>
+		<!-- <property name="nomArchSalida">
+			<map>
+				<entry key="PrefijoFile">
+					<map>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${file.name.prefijo}" />
+					</map>					
+				</entry>
+				<entry key="AppFile">
+					<map>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${file.name.app}" />
+					</map>					
+				</entry>
+				<entry key="PacFile">
+					<map>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${file.name.pac}" />
+					</map>					
+				</entry>
+				<entry key="ProcesoFile">
+					<map>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${file.name.proceso}" />
+					</map>					
+				</entry>
+				<entry key="FechaFile">
+					<map>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<array>
+								<value>${date.pattern}</value>
+							</array>
+						</entry>
+					</map>					
+				</entry>
+				<entry key="ExtensionFile">
+					<map>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${file.name.ext}" />
+					</map>					
+				</entry>
+			</map>
+		</property>
+		<property name="nomArchErrores">
+			<map>
+				<entry key="PrefijoFile">
+					<map>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${file.name.prefijo}" />
+					</map>					
+				</entry>
+				<entry key="AppFile">
+					<map>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${file.name.app}" />
+					</map>					
+				</entry>
+				<entry key="ErrorFile">
+					<map>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${file.name.error}" />
+					</map>					
+				</entry>
+				<entry key="FechaFile">
+					<map>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<array>
+								<value>${date.pattern}</value>
+							</array>
+						</entry>
+					</map>					
+				</entry>
+				<entry key="ExtensionFile">
+					<map>
+						<entry key="from" value="FILE"/>
+						<entry key="value" value="${file.name.ext}" />
+					</map>					
+				</entry>
+			</map>
+		</property> -->
+		<property name="body">
+			<map>
+				<entry key="RefUnica">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="${lon.ref.unica}"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+					</map>
+				</entry>
+				<entry key="FolioFiscal">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="${lon.folio.fiscal}"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+					</map>
+				</entry>
+				<entry key="FolioFiscalAnt">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="${lon.folio.fiscal.ant}"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+					</map>
+				</entry>
+				<entry key="FechaProceso">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="${lon.fecha.proceso}"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<array>
+								<value>${file.date.pattern}</value>
+							</array>
+						</entry>
+					</map>
+				</entry>
+				<entry key="FechaTimbrado">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="${lon.fecha.timbrado}"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<array>
+								<value>${file.date.pattern}</value>
+							</array>
+						</entry>
+					</map>
+				</entry>
+				<entry key="FechaContable">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="${lon.fecha.contable}"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+						<entry key="params">
+							<array>
+								<value>${file.date.pattern}</value>
+							</array>
+						</entry>
+					</map>
+				</entry>
+				<entry key="IndReproceso">
+					<map>
+						<entry key="type" value="X"/>
+						<entry key="long">
+			    			<bean class="java.lang.Integer">
+			    				<constructor-arg type="java.lang.String" value="${lon.ind.reproceso}"/>
+			    			</bean>
+						</entry>
+						<entry key="from" value="CODE"/>
+					</map>
+				</entry>
+			</map>
+		</property>
+		<property name="finArchivo" value="${file.end}"/>
+		<property name="fillers">
+			<map>
+				<entry key="X">
+					<map>
+						<entry key="filler" value=" "/>
+						<entry key="method" value="right"/> 
+					</map>
+				</entry> 
+				<entry key="N">
+					<map>
+						<entry key="filler" value="0"/>
+						<entry key="method" value="left"/> 
+					</map>
+				</entry>
+				<entry key="A">
+					<map>
+						<entry key="filler" value=" "/>
+						<entry key="method" value="right"/> 
+					</map>
+				</entry>
+			</map>
+		</property>
+		<property name="diasHistorico">
+			<bean class="java.lang.Short">
+				<constructor-arg type="java.lang.String" value="${dias.historico}" />
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="parserConfig" class="com.ixe.ods.sica.batch.cfdi.parser.util.FileIndicesParserConfig">
+		<property name="longRow">
+			<bean class="java.lang.Short">
+				<constructor-arg type="java.lang.String" value="${indices.long.row}" />
+			</bean>
+		</property>
+		<property name="env">
+			<map>
+				<entry key="folioFiscal">
+					<map>
+						<entry key="lon">
+							<bean class="java.lang.Short">
+								<constructor-arg type="java.lang.String" value="${folio.fiscal.lon}" />
+							</bean>
+						</entry>
+						<entry key="type" value="${alphanumeric.type}" />
+						<entry key="isOptional">
+							<bean class="java.lang.Boolean">
+								<constructor-arg type="java.lang.String" value="true" />
+							</bean>
+						</entry>
+					</map>
+				</entry>
+				<entry key="cuenta">
+					<map>
+						<entry key="lon">
+							<bean class="java.lang.Short">
+								<constructor-arg type="java.lang.String" value="${cuenta.lon}" />
+							</bean>
+						</entry>
+						<entry key="type" value="${alphanumeric.type}" />
+						<!-- <entry key="separetor" value="${file.separetor}" />
+						<entry key="subfields">
+							<list>
+								<value>idDeal</value>
+								<value>idDetalleLiq</value>
+							</list>
+						</entry>  -->
+						<entry key="isOptional">
+							<bean class="java.lang.Boolean">
+								<constructor-arg type="java.lang.String" value="true" />
+							</bean>
+						</entry>
+					</map>
+				</entry>
+				<entry key="fechaProceso">
+					<map>
+						<entry key="lon">
+							<bean class="java.lang.Short">
+								<constructor-arg type="java.lang.String" value="${fecha.proceso.lon}" />
+							</bean>
+						</entry>
+						<entry key="type" value="${date.type}" />
+						<entry key="isOptional">
+							<bean class="java.lang.Boolean">
+								<constructor-arg type="java.lang.String" value="false" />
+							</bean>
+						</entry>
+						<entry key="pattern" value="${file.date.pattern}"/>
+					</map>
+				</entry>
+				<entry key="fechaTimbrado">
+					<map>
+						<entry key="lon">
+							<bean class="java.lang.Short">
+								<constructor-arg type="java.lang.String" value="${fecha.timbrado.lon}" />
+							</bean>
+						</entry>
+						<entry key="type" value="${date.type}" />
+						<entry key="isOptional">
+							<bean class="java.lang.Boolean">
+								<constructor-arg type="java.lang.String" value="false" />
+							</bean>
+						</entry>
+						<entry key="pattern" value="${file.date.pattern}"/>
+					</map>
+				</entry>
+				<entry key="fechaContable">
+					<map>
+						<entry key="lon">
+							<bean class="java.lang.Short">
+								<constructor-arg type="java.lang.String" value="${fecha.contable.lon}" />
+							</bean>
+						</entry>
+						<entry key="type" value="${date.type}" />
+						<entry key="isOptional">
+							<bean class="java.lang.Boolean">
+								<constructor-arg type="java.lang.String" value="false" />
+							</bean>
+						</entry>
+						<entry key="pattern" value="${file.date.pattern}"/>
+					</map>
+				</entry>
+				<entry key="fechaCorte">
+					<map>
+						<entry key="lon">
+							<bean class="java.lang.Short">
+								<constructor-arg type="java.lang.String" value="${fecha.contable.lon}" />
+							</bean>
+						</entry>
+						<entry key="type" value="${date.type}" />
+						<entry key="isOptional">
+							<bean class="java.lang.Boolean">
+								<constructor-arg type="java.lang.String" value="false" />
+							</bean>
+						</entry>
+						<entry key="pattern" value="${file.date.pattern}"/>
+					</map>
+				</entry>
+				<entry key="tipoRechazo">
+					<map>
+						<entry key="lon">
+							<bean class="java.lang.Short">
+								<constructor-arg type="java.lang.String" value="${tipo.rechazo.lon}" />
+							</bean>
+						</entry>
+						<entry key="type" value="${alphanumeric.type}" />
+						<entry key="isOptional">
+							<bean class="java.lang.Boolean">
+								<constructor-arg type="java.lang.String" value="true" />
+							</bean>
+						</entry>
+					</map>
+				</entry>
+			</map>
+		</property>
+		<property name="props" ref="props" />
+	</bean>
+	
+	<bean id="props" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename">
+			<value>file:archivos/cfdi/parser</value>
+		</property>
+		<property name="fallbackToSystemLocale" value="false"/>
+	</bean>
+	
+	<bean id="messages" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename">
+			<value>file:archivos/cfdi/messages</value>
+		</property>
+		<property name="fallbackToSystemLocale" value="false"/>
+	</bean>
+  	
+</beans>

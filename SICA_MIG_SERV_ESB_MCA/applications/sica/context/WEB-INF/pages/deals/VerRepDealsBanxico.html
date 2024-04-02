@@ -1,0 +1,92 @@
+<!-- $Id: VerRepDealsBanxico.html,v 1.9 2008/02/22 18:25:09 ccovian Exp $ -->
+<html jwcid="$content$">	
+<head jwcid="$remove$">
+    <title>Reenv&iacute;o de Reportes de Operaciones</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+	<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level="ognl: operacionExitosa ? 1 : 0"/>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    	<tr valign="top">
+        	<td>
+        		<table jwcid="@ActionPortletBorder" title="Reportes de Operaciones con Error">
+        			<table jwcid="@TableBorder" title="ognl: null" 
+        			subtitles='ognl: { "Id Conf.", "Divisa", "Folio", "Clave Contraparte", "Nombre", "RFC", 
+        			"Tipo Contraparte", "Accion", "Plazo", "Tipo Oper.", "Monto", "Swap", "Error", 
+        			"Folio Banxico", "Status Estrategia", "&nbsp;" }' columnCount="16" width="100%">        				
+        				<span jwcid="@contrib:Choose">
+        					<span jwcid="@contrib:When" condition="ognl: reportes.size() &gt; 0">
+				    	     	<tr jwcid="forReportes@Foreach" source="ognl: reportes" element="tr" class="ognl: beans.evenOdd.next">
+			   			     		<td class="normal" align="left" nowrap>
+		            	   				<span jwcid="@Insert" value='ognl: components.forReportes.value.id.idConf' />
+									</td>
+									<td class="normal" align="center">
+		            	   				<span jwcid="@Insert" value='ognl: components.forReportes.value.id.divisa' />
+									</td>
+			   			     		<td class="normal" align="right">
+		            	   				<span jwcid="@Insert" value='ognl: components.forReportes.value.folio' />
+									</td>
+									<td class="normal" align="left">
+		            	   				<span jwcid="@Insert" value='ognl: components.forReportes.value.claveContraparte' />
+									</td>
+									<td class="normal" align="left">
+		            	   				<span jwcid="@Insert" value='ognl: components.forReportes.value.nombre' />
+									</td>
+									<td class="normal" align="left">
+		            	   				<span jwcid="@Insert" value='ognl: components.forReportes.value.rfc' />
+									</td>
+									<td class="normal" align="center">
+		            	   				<span jwcid="@Insert" value='ognl: components.forReportes.value.tipoContraparte' />
+									</td>
+									<td class="normal" align="center">
+		            	   				<span jwcid="@Insert" value='ognl: components.forReportes.value.accion' />
+									</td>
+									<td class="normal" align="left">
+		            	   				<span jwcid="@Insert" value='ognl: components.forReportes.value.plazoSICA' />
+									</td>
+									<td class="normal" align="left">
+		            	   				<span jwcid="@Insert" value='ognl: components.forReportes.value.tipoOperSICA' />
+									</td>
+									<td class="normal" align="right">
+        		    	   				<span jwcid="@Insert" value='ognl: components.forReportes.value.monto' format='ognl: moneyFormat' />
+									</td>
+									<td class="normal" align="center">
+		            	   				<span jwcid="@Insert" value='ognl: components.forReportes.value.swap != null ? (components.forReportes.value.swap.equals("1") ? "SI" : "NO") : null' />
+									</td>
+									<td class="normal" align="right">
+		            	   				<span jwcid="@Insert" value='ognl: components.forReportes.value.error' />
+									</td>
+									<td class="normal" align="right">
+		            	   				<span jwcid="@Insert" value='ognl: components.forReportes.value.folioBanxico' />
+									</td>
+									<td class="normal" align="center">
+		            	   				<span jwcid="@Insert" value='ognl: components.forReportes.value.statusEstrategia' />
+									</td>
+									<td class="normal" align="left">
+										<span jwcid="@contrib:Choose">
+				        					<span jwcid="@contrib:When" condition="ognl: components.forReportes.value.error.intValue() == -100 || 
+				        																 components.forReportes.value.error.intValue() == -101 || 
+				        																 components.forReportes.value.error.intValue() == -103 || 
+				        																 components.forReportes.value.error.intValue() == -106 || 
+				        																 components.forReportes.value.error.intValue() == -107">
+												<a href="#" jwcid="@DirectLink" listener="ognl:listeners.reenviar" 
+												parameters='ognl: {components.forReportes.value.id.idConf, components.forReportes.value.id.divisa}' 
+												onClick="fnShowWaitImage();">Reenviar</a>
+											</span>
+				        					<span jwcid="@contrib:Otherwise">
+												<a href="#" jwcid="@DirectLink" listener="ognl:listeners.editar" 
+												parameters='ognl: {components.forReportes.value.id.idConf, components.forReportes.value.id.divisa, components.forReportes.value.error}' 
+												onClick="fnShowWaitImage();">Editar</a>
+				        					</span>
+										</span>
+									</td>
+								</tr>
+							</span>
+						</span>
+		    	    </table>
+   				</table>
+        	</td>
+	 	</tr>
+    </table>	     
+ </body>
+</html>

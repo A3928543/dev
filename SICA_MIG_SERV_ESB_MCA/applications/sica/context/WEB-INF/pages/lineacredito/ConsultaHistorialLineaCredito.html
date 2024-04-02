@@ -1,0 +1,46 @@
+<!-- $Id: ConsultaHistorialLineaCredito.html,v 1.12.86.2 2016/08/03 01:09:49 mejiar Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Encabezado</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+	<table jwcid="@ActionPortletBorder" title='ognl:"Historial de la L&iacute;nea de Cr&eacute;dito del Cliente: " + corporativo' >
+		<table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: {"ID L&iacute;nea de Cr&eacute;dito","Operaci&oacute;n", "Fecha", "Usuario",  "Divisa", "Importe USD", "No. Deal", "Observaciones"}' columnCount="8" width="100%">
+            <tr jwcid="forHistorial@Foreach" source="ognl: lista" element="tr" class="ognl: beans.evenOdd.next">
+            	<td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forHistorial.value.lineaCambio.idLineaCambio" raw="yes" /></td>
+                <td class="normal" align="left">
+	                <span jwcid="@contrib:Choose">
+    	                <span jwcid="@contrib:When" condition='ognl: "A".equals(components.forHistorial.value.tipoOper.trim())'>Aumento</span>
+    	                <span jwcid="@contrib:When" condition='ognl: "D".equals(components.forHistorial.value.tipoOper.trim())'>Disminuci&oacute;n</span>
+    	                <span jwcid="@contrib:When" condition='ognl: "V".equals(components.forHistorial.value.tipoOper.trim())'>Vencimiento</span>
+    	                <span jwcid="@contrib:When" condition='ognl: "U".equals(components.forHistorial.value.tipoOper.trim())'>Uso</span>
+    	                <span jwcid="@contrib:When" condition='ognl: "L".equals(components.forHistorial.value.tipoOper.trim())'>Liberaci&oacute;n</span>
+    	                <span jwcid="@contrib:When" condition='ognl: "S".equals(components.forHistorial.value.tipoOper.trim())'>Suspensi&oacute;n</span>
+    	                <span jwcid="@contrib:When" condition='ognl: "T".equals(components.forHistorial.value.tipoOper.trim())'>Alta</span>
+    	                <span jwcid="@contrib:When" condition='ognl: "P".equals(components.forHistorial.value.tipoOper.trim())'>Aprobaci&oacute;n</span>
+    	                <span jwcid="@contrib:When" condition='ognl: "C".equals(components.forHistorial.value.tipoOper.trim())'>Activaci&oacute;n</span>
+    	                <span jwcid="@contrib:When" condition='ognl: "E".equals(components.forHistorial.value.tipoOper.trim())'>Excedente</span>
+    	                <span jwcid="@contrib:When" condition='ognl: "O".equals(components.forHistorial.value.tipoOper.trim())'>Aviso</span>
+    	                <span jwcid="@contrib:When" condition='ognl: "N".equals(components.forHistorial.value.tipoOper.trim())'>Cancelaci&oacute;n</span>
+    	                <span jwcid="@contrib:When" condition='ognl: "F".equals(components.forHistorial.value.tipoOper.trim())'>Modificaci&oacute;n</span>
+    	                <span jwcid="@contrib:When" condition='ognl: "I".equals(components.forHistorial.value.tipoOper.trim())'>Modificaci&oacute;n</span>
+    	                <span jwcid="@contrib:When" condition='ognl: "Z".equals(components.forHistorial.value.tipoOper.trim())'>Modificaci&oacute;n</span>
+    	                <span jwcid="@contrib:When" condition='ognl: "M".equals(components.forHistorial.value.tipoOper.trim())'>Modificaci&oacute;n</span>
+	                </span>
+                </td>
+                <td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forHistorial.value.fechaOperacion" format='ognl: fullDateFormat' raw="yes" /></td>
+				<td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forHistorial.value.usuario.persona.nombreCompleto" raw="yes" /></td>
+				<td class="normal" align="center"><span jwcid="@Insert" value='ognl: components.forHistorial.value.divisa == null ? "" : components.forHistorial.value.divisa.idDivisa' raw="yes" /></td>
+				<td class="normal" align="right"><span jwcid="@Insert" value='ognl: moneyFormat.format(components.forHistorial.value.importe)' raw="yes" /></td>
+				<td class="normal" align="center"><span jwcid="@Insert" value='ognl: components.forHistorial.value.idDealDetalle == null ? "" : getSicaServiceData().findDealDetalle(components.forHistorial.value.idDealDetalle.intValue()).deal.idDeal' raw="yes" /></td>
+                <td class="normal" align="left"><span jwcid="@Insert" value='ognl: components.forHistorial.value.observaciones == null ? "" : components.forHistorial.value.observaciones' raw="yes" /></td>
+            </tr>
+        </table>
+	</table>
+	<br />
+    <div align="center">
+        <a jwcid="@DirectLink" listener="ognl:listeners.cancelarOperacion" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.backButton" accesskey="C"/></a>
+    </div>
+</body>
+</html>

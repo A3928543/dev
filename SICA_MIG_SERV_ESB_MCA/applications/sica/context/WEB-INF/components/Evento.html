@@ -1,0 +1,22 @@
+<!-- $Id: Evento.html,v 1.9 2008/02/22 18:25:05 ccovian Exp $ -->
+<span jwcid="@contrib:Choose"><span jwcid="@contrib:When" condition="ognl: @com.ixe.ods.sica.model.Deal@EV_SOLICITUD.equals(valor)">
+<img jwcid="@Image" image="ognl: assets.amarillo" alt="ognl: descripcion" />
+</span><span jwcid="@contrib:When" condition="ognl: @com.ixe.ods.sica.model.Deal@EV_APROBACION.equals(valor) || @com.ixe.ods.sica.model.Deal@EV_POSICION.equals(valor)">
+<img jwcid="@Image" image="ognl: assets.verde" alt="ognl: descripcion" />
+</span><span jwcid="@contrib:When" condition="ognl: @com.ixe.ods.sica.model.Deal@EV_NEGACION.equals(valor)">
+<img jwcid="@Image" image="ognl: assets.rojo" alt="ognl: descripcion" />
+</span><span jwcid="@contrib:When" condition="ognl: @com.ixe.ods.sica.model.Deal@EV_NORMAL.equals(valor)">
+<img jwcid="@Image" image="ognl: assets.blanco" alt="ognl: descripcion" />
+</span><span jwcid="@contrib:When" condition="ognl: @com.ixe.ods.sica.model.Deal@EV_NO_DETERMINADO.equals(valor)">
+<img jwcid="@Image" image="ognl: assets.blancoInt" alt="ognl: descripcion" />
+</span><span jwcid="@contrib:When" condition="ognl: @com.ixe.ods.sica.model.Deal@EV_APROBACION_TESORERIA.equals(valor)">
+<img jwcid="@Image" image="ognl: assets.verdeTes" alt="ognl: descripcion" />
+</span><span jwcid="@contrib:When" condition="ognl: @com.ixe.ods.sica.model.Deal@EV_USO.equals(valor)">
+<img jwcid="@Image" image="ognl: assets.verdeUso" alt="ognl: descripcion" />
+</span><span jwcid="@contrib:When" condition="ognl: @com.ixe.ods.sica.model.Deal@EV_NEGACION_TESORERIA.equals(valor)">
+<img jwcid="@Image" image="ognl: assets.rojoTes" alt="ognl: descripcion" />
+</span><span jwcid="@contrib:When" condition="ognl: @com.ixe.ods.sica.model.Deal@EV_CANCELACION.equals(valor)">
+<img jwcid="@Image" image="ognl: assets.naranja" alt="ognl: descripcion" />
+</span><span jwcid="@contrib:Otherwise">
+<span jwcid="@Insert" value="ognl: valor" />
+</span></span>

@@ -1,0 +1,133 @@
+<!-- $Id: ConsultaAutorizaTce.html,v 1.1.2.3 2012/10/25 23:06:59 mejiar Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Consulta Deals TC Especial</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+
+<body jwcid="@PageBorderTce" menuDisabled="yes">
+<span jwcid="@AutorizaTceMenu" esPromocion="ognl: isPromocion()" />
+<script type="text/javascript">
+  <!--
+// hace el submit para modificar valores en los campos de la pantalla
+function submitTceForm(hiddenName) {
+	log("submitTceForm, hiddenName = " + hiddenName + "...");
+	document.forms[0].hiddenModoSubmit.value = document.forms[0].elements[hiddenName].value;
+	fnShowWaitImage(); 
+	document.forms[0].submit();
+}
+// escribe en el log del firefox
+function log(message) {
+	try {
+		console.debug(message);
+	} catch (e) {
+		// TODO: handle exception
+	}
+}
+// muestra una confirmacion antes de cancelar el deal
+function confirmCancel() {
+	if (confirm('\u00bfDesea cancelar el deal?')) {  
+		fnShowWaitImage(); 
+		return true; 
+	} else { 
+		return false; 
+	}
+}
+//-->
+</script>
+<form jwcid="formCapturaTce@Form" listener="ognl: listeners.submit" delegate="ognl: beans.delegate">
+	<input type="hidden" jwcid="hiddenModoSubmit"/>
+	<table jwcid="@bup:ShowError" level="ognl: level" width="100%" delegate="ognl: beans.delegate" insertBreakAtTail="yes" />
+    <table jwcid="@ActionPortletBorder" title="Consulta Deals TC Especial" width="100%">
+        <fieldset>
+            <legend class="legend">Filtrar Autorizaciones TC Especial:</legend>
+            <table width="100%">
+                <tr class="title">
+                    <td align="right" width="14%">Ver:</td>
+                    <td width="10%"><select jwcid="cmbCapturadoPor" /></td>
+                    
+                    <td align="right" width="14%">N&uacute;mero de Deal:</td>
+                    <td width="10%"><input jwcid="txtNumeroDeal" /></td>
+            		
+            		<td align="right" width="14%">Estatus:</td>
+            		<td width="14%"><select jwcid="cmbEstatus" /></td> 
+                    
+                    <td width="8%">
+                    	<input type="submit" value="Aceptar" jwcid="btnSubmit" onClick="return fnShowWaitImage();" />
+                    </td>
+                    
+                    <td width="8%">
+                    	<span jwcid="@Conditional" condition="ognl: deals != null && !deals.isEmpty()">
+	                    	<a jwcid="@DirectLink" listener="ognl: listeners.generarReporteExcel" >
+			               		<img src="../../../images/ver_excel.gif" jwcid="@Image" image="ognl: assets.bVerExcel" border="0" alt="Ver Excel"/>
+			                </a>
+		                </span>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </table>
+</form>
+<span jwcid="@Conditional" condition="ognl: deals.size() &gt; 0">
+<table jwcid="@ActionPortletBorder" title="Deals:">
+<table border="0" cellspacing="1" cellpadding="3" width="100%" jwcid="table@bup:Table" source="ognl: deals" 
+initialSortColumn="idDeal" pageSize="25"
+columns='ognl: "idDeal:No. Deal:idDeal, 
+cliente:Cliente:cliente, 
+usuario:Captur\u00f3:usuario, 
+tipoOperacion:Operaci\u00f3n:tipoOperacion, 
+tipoValor:Tipo Valor:tipoValor, 
+estatusEspecial:TC Especial:estatusEspecial, 
+fechaCaptura:Fecha operaci\u00f3n:fechaCaptura, 
+fechaLiquidacion:Fecha liquidaci\u00f3n:fechaLiquidacion, 
+descripcionStatus:Status:descripcionStatus,
+!clavesFormasLiquidacion:Productos:clavesFormasLiquidacion, 
+!cancelar"' 
+class="tableborder" />
+	<span jwcid="idDealColumnValue@Block">
+	    <span jwcid="@Insert" value="ognl: components.table.tableRow.idDeal"></span>
+	</span>
+	<span jwcid="estatusEspecialColumnValue@Block">
+		<a jwcid="@ExternalLink" page="CapturaAutorizaTce" 
+		parameters='ognl: { components.table.tableRow.idDeal }' 
+		onClick="fnShowWaitImage();" 
+		disabled="ognl: ! @com.ixe.ods.sica.model.Deal@STATUS_ESPECIAL_TC_AUTORIZADO.equals(components.table.tableRow.estatusEspecial) || @com.ixe.ods.sica.model.Deal@STATUS_DEAL_CANCELADO.equals(components.table.tableRow.statusDeal) || isPromocion()">Modificar</a>
+	</span>
+	<span jwcid="fechaCapturaColumnValue@Block">
+	   <div align="center">
+	      <span jwcid= "@Insert" value="ognl: components.table.tableRow.fechaCaptura" format="ognl: fullDateFormat" />
+	   </div>
+	</span>
+	<span jwcid="fechaLiquidacionColumnValue@Block">
+	   <div align="center">
+	      <span jwcid= "@Insert" value="ognl: components.table.tableRow.fechaLiquidacion" format="ognl: dateFormat" />
+	   </div>
+	</span>
+	<span jwcid="cancelarColumnHeader@Block">&nbsp;</span>
+	<span jwcid="cancelarColumnValue@Block">
+	   <div align="center"></div>
+	   <a jwcid="@DirectLink" listener="ognl: listeners.cancelarDeal" 
+		parameters='ognl: { components.table.tableRow.idDeal }' 
+		onclick="return confirmCancel();" 
+		disabled="ognl: ! @com.ixe.ods.sica.model.Deal@STATUS_ESPECIAL_TC_AUTORIZADO.equals(components.table.tableRow.estatusEspecial) || @com.ixe.ods.sica.model.Deal@STATUS_DEAL_CANCELADO.equals(components.table.tableRow.statusDeal) || isPromocion()">Cancelar</a>
+	</span>
+	<span jwcid="descripcionStatusColumnValue@Block">
+	    <span jwcid="@StatusField" status="ognl: @com.ixe.ods.sica.components.StatusField@getStatusDeal(components.table.tableRow)" descripcion="ognl: components.table.tableRow.descripcionStatus" />
+	</span>
+	<span jwcid="clavesFormasLiquidacionColumnValue@Block">
+	    <table border="0" cellspacing="1" cellpadding="2" width="100%" class="portletbackground">
+	        <span jwcid="forDets@Foreach" source="ognl: components.table.tableRow.detalles">
+	        <tr class="normalcell" >
+	            <td with="1%"><span jwcid="@Insert" value="ognl: components.forDets.value.claveFormaLiquidacion" /></td>
+	            <td with="1%"><span jwcid="@Insert" value="ognl: components.forDets.value.recibimos ? 'REC' : 'ENT'" /></td>
+	            <td align="right"><span jwcid="@Insert" value="ognl: components.forDets.value.monto" format="ognl: moneyFormat" /></td>
+	            <td with="1%"><span jwcid="@Insert" value="ognl: components.forDets.value.idDivisa" /></td>
+	            <td with="1%"><span jwcid="@Insert" value="ognl: components.forDets.value.tipoCambio" format="ognl: currencyFormatSix" /></td>
+	        </tr>
+	        </span>
+	    </table>
+	</span>
+</table>
+</span>
+</body>
+</html>

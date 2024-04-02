@@ -1,0 +1,81 @@
+<!-- $Id: ReportesContabilidad.html,v 1.12 2008/06/23 21:20:23 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Reportes</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr valign="top">
+            <td width="200">
+                <form jwcid="@Form" listener="ognl: listeners.obtenerReportes" delegate="ognl: beans.delegate" >
+                    <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+                    <table jwcid="@ActionPortletBorder" title="Reportes Contabilidad">
+                        <fieldset class="normal">
+                            <legend class="legend">Impresi&oacute;n de Reportes</legend>
+                            Fecha :<br />
+                            <span jwcid="@ls:DatePicker" value="ognl: registerDate" format="dd/MM/yyyy"/><br />
+                            Reporte : <select jwcid="reportesComboBox" /><br />
+                            &nbsp;
+                        </fieldset>
+                        <div align="center">
+                            <input jwcid="@ImageSubmit" image="ognl: assets.searchButton" />
+                        </div>
+                    </table>
+                </form>
+            </td>
+   			<td width="1%">&nbsp;</td>
+			<td width="90%">
+                <span jwcid="@contrib:Choose">
+                    <span jwcid="@contrib:When" condition='ognl: !utilidadesForwards.keySet().empty'>
+                        <table jwcid="@ActionPortletBorder" title='ognl:"Utilidades Ixe Forwards (" + dateFormat.format(registerDate) + ")"' width="100%">
+                            <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: {"No. Deal Forward", "Operaci\u00f3n<br />Compra / Venta", "Fecha Valor", "Divisa", "Monto", "Monto Equiv.", "T. C.<br />Operado", "Utilidad / P\u00e9rdida", "Inicio<br />de<br />Swap"}' columnCount="4" width="100%">
+                                <span jwcid="forUtils@Foreach" source="ognl: utilidadesForwards.keySet()">
+                                    <tr class="titlecell">
+                                        <td class="title" align="left" colspan="9">Mesa: <span jwcid="@Insert" value="ognl: components.forUtils.value.nombre" /></td>
+                                    </tr>
+                                    <tr jwcid="forRegs@Foreach" source="ognl: utilidadesForwards.get(components.forUtils.value)" element="tr" class="ognl: beans.evenOdd.next">
+                                        <td class="normal" align="right">
+                                            <a jwcid="@ExternalLink" page="DatosDealInterbancario" parameters="ognl: components.forRegs.value.idDeal" renderer='ognl: page.global.applicationContext.getBean("bigPopupLinkRenderer")'>
+                                                <span jwcid="@Insert" value="ognl: components.forRegs.value.idDeal" />
+                                            </a>
+                                        </td>
+                                        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forRegs.value.recibimosDesc" /></td>
+                                        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forRegs.value.fechaValor" /></td>
+                                        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forRegs.value.idDivisa" /></td>
+                                        <td class="normal" align="right"><span jwcid="@Insert" value='ognl:  moneyFormat.format(components.forRegs.value.monto)' /></td>                                        
+                                        <td class="normal" align="right"><span jwcid="@Insert" value='ognl:  moneyFormat.format(components.forRegs.value.montoEquivalente)' /></td>
+                                        <td class="normal" align="right"><span jwcid="@Insert" value='ognl:  currencyFormat.format(components.forRegs.value.tipoCambioCliente)' /></td>
+                                        <td class="normal" align="right"><span jwcid="@Insert" value='ognl:  moneyFormat.format(components.forRegs.value.utilidad)' /></td>
+                                        <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forRegs.value.inicioSwapDesc" /></td>
+                                    </tr>
+                                    <tr class="normalcell">
+                                        <td class="title" align="right" colspan="8"><span jwcid="@Insert" value="ognl: moneyFormat.format(totalUtilidadForwards(utilidadesForwards.get(components.forUtils.value)))" /></td>
+                                        <td class="title" align="right">&nbsp;</td>
+                                    </tr>
+                                </span>
+                            </table>
+                            <br />
+                            <div align="center">
+                                <span jwcid="@ExcelExport"
+                                      nombreArchivo="ognl: 'UtilidadesForwards' + dateFormat.format(registerDate)"
+                                      titulo='ognl: "Utilidades Ixe Forwards (" + dateFormat.format(registerDate) + ")"'
+                                      titulos="ognl: {'Mesa de Cambios', 'No. Deal', 'Operaci\u00f3n', 'Fecha Valor', 'Divisa', 'Monto', 'Monto Equiv.', 'T. C. Operado', 'Utilidad / P\u00e9rdida', 'Inicio de Swap'}"
+                                      expresiones="ognl: {'mesaCambio.nombre', 'idDeal', 'recibimosDesc', 'fechaValor', 'idDivisa', 'monto', 'montoEquivalente', 'tipoCambioCliente', 'utilidad', 'inicioSwapDesc'}"
+                                      coleccion="ognl: listaUtilidades"/>
+                            </div>
+                            <div align="center">
+                            	<a jwcid="@DirectLink" listener="ognl:listeners.obtenerReporteIxeForwards" ><img jwcid="@Image" image="ognl: assets.verPdfButton"/></a>
+                            </div>	
+                        </table>
+                    </span>
+                    <span jwcid="@contrib:Otherwise">
+                        &nbsp;
+                    </span>
+                </span>
+            </td>
+        </tr>
+    </table>
+    <span jwcid="@ls:DatePickerColophon" />
+</body>
+</html>

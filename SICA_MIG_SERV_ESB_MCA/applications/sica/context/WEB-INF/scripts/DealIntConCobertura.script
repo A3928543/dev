@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: DealIntConCobertura.script,v 1.7 2008/02/22 18:25:19 ccovian Exp $ -->
+<!DOCTYPE script PUBLIC
+        "-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+        "http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+
+<script>
+    <input-symbol key="invertir" class="java.lang.Boolean" required="yes"/>
+    <body>
+        <![CDATA[
+        function calcularCobertura() {
+            try {
+                var monto = parseFloat(quitarComas(document.forms[0].montoTextField.value));
+        ]]>
+        <if-not expression="invertir">
+        <![CDATA[
+                var tipoCambio = parseFloat(document.forms[0].tipoCambioTextField.value);
+        ]]>
+        </if-not>
+        <if expression="invertir">
+        <![CDATA[
+                var tipoCambio = 1 / parseFloat(document.forms[0].tipoCambioTextField.value);
+        ]]>
+        </if>
+        <![CDATA[
+                var montoUsd = monto * tipoCambio;
+                var montoMxn = montoUsd * parseFloat(document.forms[0].tipoCambioCobTextField.value);
+                document.getElementById('montoUsd').innerHTML = ponerCeroAlFinal(formatCurrency('' + montoUsd + ''));
+                document.getElementById('montoMxn').innerHTML = ponerCeroAlFinal(formatCurrency('' + montoMxn + ''));
+                document.getElementById('tipoCambioCobertura').innerHTML = '(' + (Math.round((montoMxn / monto) * 1000000) / 1000000) + ')';
+            }
+            catch (e) {
+                alert('Por favor teclee valores num\u00e9ricos para el monto y tipo de cambio del primer ' +
+                      'detalle, y para el tipo de cambio del complemento.');
+            }
+        }
+        ]]>
+    </body>
+</script>

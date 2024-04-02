@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mx:VBox xmlns:mx="http://www.macromedia.com/2003/mxml">
+
+    <mx:NumberFormatter id="numberFormatter" precision="2"/>
+
+    <mx:NumberFormatter id="exchangeFormatter" precision="6"/>
+
+    <mx:Grid verticalGap="0" horizontalGap="0">
+        <mx:GridRow>
+            <mx:GridItem horizontalAlign="center">
+                <mx:Label text="{'Posici&#243;n inicial ' + parentApplication.idDivisaReferencia}" fontWeight="bold"/>
+            </mx:GridItem>
+            <mx:GridItem/>
+            <mx:GridItem horizontalAlign="center">
+                <mx:Label text="Compras" fontWeight="bold"/>
+            </mx:GridItem>
+            <mx:GridItem/>
+            <mx:GridItem horizontalAlign="center">
+                <mx:Label text="Ventas" fontWeight="bold"/>
+            </mx:GridItem>
+            <mx:GridItem/>
+            <mx:GridItem horizontalAlign="center">
+                <mx:Label text="{'Posici&#243;n final ' + parentApplication.idDivisaReferencia}" fontWeight="bold"/>
+            </mx:GridItem>
+        </mx:GridRow>
+
+        <mx:GridRow>
+            <mx:GridItem horizontalAlign="right">
+                <mx:Label text="{numberFormatter.format(tipoCambio.getPosicionInicialMn())}"/>
+            </mx:GridItem>
+            <mx:GridItem horizontalAlign="center">
+                <mx:Label text="+" fontWeight="bold"/>
+            </mx:GridItem>
+            <mx:GridItem horizontalAlign="right">
+                <mx:Label text="{numberFormatter.format(tipoCambio.compraMn)}"/>
+            </mx:GridItem>
+            <mx:GridItem horizontalAlign="center">
+                <mx:Label text="-" fontWeight="bold"/>
+            </mx:GridItem>
+            <mx:GridItem horizontalAlign="right">
+                <mx:Label text="{numberFormatter.format(tipoCambio.ventaMn)}"/>
+            </mx:GridItem>
+            <mx:GridItem horizontalAlign="center">
+                <mx:Label text="=" fontWeight="bold"/>
+            </mx:GridItem>
+            <mx:GridItem horizontalAlign="right">
+                <mx:Label text="{numberFormatter.format(tipoCambio.posicionFinal * tipoCambio.tipoCambioPosicionFinal)}"/>
+            </mx:GridItem>
+            <mx:GridItem/>
+            <mx:GridItem horizontalAlign="center">
+                <mx:Label text="T.C. Promedio" fontWeight="bold"/>
+            </mx:GridItem>
+        </mx:GridRow>
+
+        <mx:GridRow>
+            <mx:GridItem colSpan="6"/>
+            <mx:GridItem verticalAlign="middle" horizontalAlign="center">
+                <mx:HRule width="90%" color="#000000"/>
+            </mx:GridItem>
+            <mx:GridItem horizontalAlign="center">
+                <mx:Label text="=" fontWeight="bold"/>
+            </mx:GridItem>
+            <mx:GridItem>
+                <mx:Label text="{exchangeFormatter.format(tipoCambio.tipoCambioPosicionFinal)}"/>
+            </mx:GridItem>
+        </mx:GridRow>
+
+        <mx:GridRow>
+            <mx:GridItem horizontalAlign="center">
+                <mx:Label text="Posici&#243;n inicial Div." fontWeight="bold"/>
+            </mx:GridItem>
+            <mx:GridItem/>
+            <mx:GridItem horizontalAlign="center">
+                <mx:Label text="Compras" fontWeight="bold"/>
+            </mx:GridItem>
+            <mx:GridItem/>
+            <mx:GridItem horizontalAlign="center">
+                <mx:Label text="Ventas" fontWeight="bold"/>
+            </mx:GridItem>
+            <mx:GridItem/>
+            <mx:GridItem horizontalAlign="center">
+                <mx:Label text="Posici&#243;n final Div." fontWeight="bold"/>
+            </mx:GridItem>
+        </mx:GridRow>
+
+        <mx:GridRow>
+            <mx:GridItem horizontalAlign="right">
+                <mx:Label text="{numberFormatter.format(tipoCambio.getPosicionInicial())}"/>
+            </mx:GridItem>
+            <mx:GridItem horizontalAlign="center">
+                <mx:Label text="+" fontWeight="bold"/>
+            </mx:GridItem>
+            <mx:GridItem horizontalAlign="right">
+                <mx:Label text="{numberFormatter.format(tipoCambio.compra)}"/>
+            </mx:GridItem>
+            <mx:GridItem horizontalAlign="center">
+                <mx:Label text="-" fontWeight="bold"/>
+            </mx:GridItem>
+            <mx:GridItem horizontalAlign="right">
+                <mx:Label text="{numberFormatter.format(tipoCambio.venta)}"/>
+            </mx:GridItem>
+            <mx:GridItem horizontalAlign="center">
+                <mx:Label text="=" fontWeight="bold"/>
+            </mx:GridItem>
+            <mx:GridItem horizontalAlign="right">
+                <mx:Label text="{numberFormatter.format(tipoCambio.posicionFinal)}"/>
+            </mx:GridItem>
+        </mx:GridRow>
+    </mx:Grid>
+
+    <mx:HBox horizontalAlign="center" width="100%">
+        <mx:Grid verticalGap="0" horizontalGap="0">
+            <mx:GridRow>
+                <mx:GridItem horizontalAlign="center">
+                    <mx:Label text="T.C. Valuaci&#243;n" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem/>
+                <mx:GridItem horizontalAlign="center">
+                    <mx:Label text="T.C. Promedio" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem/>
+                <mx:GridItem horizontalAlign="center">
+                    <mx:Label text="Posici&#243;n final{newline}Divisa" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem/>
+                <mx:GridItem horizontalAlign="center">
+                    <mx:Label text="P&#38;L por Valuaci&#243;n" fontWeight="bold"/>
+                </mx:GridItem>
+            </mx:GridRow>
+
+            <mx:GridRow>
+                <mx:GridItem horizontalAlign="right">
+                    <mx:Label text='( {exchangeFormatter.format(tipoCambioMercado)}'/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="center">
+                    <mx:Label text="-" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="right">
+                    <mx:Label text='{exchangeFormatter.format(tipoCambio.tipoCambioPosicionFinal)} )'/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="center">
+                    <mx:Label text="*" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="right">
+                    <mx:Label text="{numberFormatter.format(tipoCambio.posicionFinal)}"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="center">
+                    <mx:Label text="=" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="right">
+                    <mx:Label text="{numberFormatter.format(tipoCambio.getUtilidad(tipoCambioMercado))}"/>
+                </mx:GridItem>
+            </mx:GridRow>
+        </mx:Grid>
+    </mx:HBox>
+
+    <mx:Script>
+        var tipoCambio : com.ixe.ods.sica.posicion.vo.TipoCambioVO;
+        var tipoCambioMercado : Number;
+    </mx:Script>
+
+</mx:VBox>

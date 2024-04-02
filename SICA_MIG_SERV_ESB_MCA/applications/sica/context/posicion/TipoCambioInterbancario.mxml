@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<view:TipoCambio verticalGap="0" horizontalGap="0"
+                 xmlns:mx="http://www.macromedia.com/2003/mxml"
+                 xmlns:view="com.ixe.ods.sica.posicion.views.*"
+                 xmlns:ls="com.legosoft.*"
+                 xmlns:sica="*">
+
+    <view:TipoCambioHeader width="380"/>
+
+    <sica:TipoCambioCompra dataProvider="{dataProvider}"/>
+
+    <sica:TipoCambioVenta dataProvider="{dataProvider}"/>
+
+    <sica:TipoCambioPosicionFinal posicionFinalLabel="Neto" dataProvider="{dataProvider}"/>
+
+</view:TipoCambio>

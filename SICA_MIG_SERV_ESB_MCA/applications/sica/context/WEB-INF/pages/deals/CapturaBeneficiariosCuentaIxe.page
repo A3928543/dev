@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CapturaBeneficiariosCuentaIxe.page,v 1.1.2.1.12.1 2013/12/13 23:27:05 mejiar Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.CapturaBeneficiariosCuentaIxe">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+
+	<property-specification name="paginaAnterior" type="java.lang.String" persistent="yes"/>
+	<property-specification name="contratoSica" type="com.ixe.ods.bup.model.ContratoSica" persistent="yes"/>
+    <property-specification name="modoSubmit" type="int" />
+    <property-specification name="cuentaIxe" type="java.lang.String" persistent="yes" />
+    <property-specification name="beneficiarios" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+    <property-specification name="nombreCliente" type="java.lang.String" persistent="yes" />
+    <property-specification name="idPersonaCliente" type="int" />
+    <property-specification name="resultadoBusqueda" type="boolean" persistent="yes"/>
+    <property-specification name="listaResultadosCuenta" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+    <property-specification name="listaResultadosAltamira" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()"/>
+    <property-specification name="cuentaCliente" type="java.lang.String" persistent="yes" />
+    <property-specification name="mnemonico" type="java.lang.String" persistent="yes" />
+    <context-asset name="addButton" path="/images/add.gif" />
+    <context-asset name="cancelButton" path="/images/cancel.gif" />
+    <context-asset name="searchButton" path="/images/search.gif" />
+
+</page-specification>

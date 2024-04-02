@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	This configuration file was written by the eclipse-cs plugin configuration editor
+-->
+<!--
+Checkstyle-Configuration: IxeGrupoFinancieroTest
+Description:
+IXE standard, no more trasb in our code!
+-->
+<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.2//EN" "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
+<module name="Checker">
+    <property name="severity" value="warning"/>
+    <module name="TreeWalker">
+        <module name="JavadocMethod">
+            <property name="logLoadErrors" value="true"/>
+            <property name="suppressLoadErrors" value="true"/>
+        </module>
+        <module name="AbstractClassName">
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="ConstantName">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.lastEnabledSeverity" value="error"/>
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="LeftCurly"/>
+        <module name="NeedBraces"/>
+        <module name="AvoidNestedBlocks"/>
+        <module name="MethodName">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Los nombres de métodos sólo deben contener letras e iniciar con minúscula"/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.lastEnabledSeverity" value="error"/>
+            <property name="severity" value="ignore"/>
+            <property name="format" value="^[a-z][a-zA-Z]*$"/>
+        </module>
+        <module name="RightCurly">
+            <property name="option" value="alone"/>
+        </module>
+        <module name="PackageName">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="los nombres de paquetes deben ser en minúscula y sin números"/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.lastEnabledSeverity" value="error"/>
+            <property name="severity" value="ignore"/>
+            <property name="format" value="^[a-z]+(\.[a-z][a-z]*)*$"/>
+        </module>
+        <module name="LocalVariableName">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Los nombres de variables locale no pueden inicar con mayúscula!"/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.lastEnabledSeverity" value="error"/>
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="LocalFinalVariableName">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.lastEnabledSeverity" value="error"/>
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="MemberName">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.lastEnabledSeverity" value="error"/>
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="ParameterName">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.lastEnabledSeverity" value="error"/>
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="StaticVariableName">
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="TypeName">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.lastEnabledSeverity" value="error"/>
+            <property name="severity" value="ignore"/>
+            <property name="format" value="^[A-Z][a-zA-Z]*$"/>
+        </module>
+        <module name="JavadocType"/>
+        <module name="JavadocVariable"/>
+        <module name="AvoidStarImport"/>
+        <module name="ImportOrder"/>
+        <module name="RedundantImport"/>
+        <module name="UnusedImports">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="ExecutableStatementCount">
+            <property name="tokens" value="INSTANCE_INIT,STATIC_INIT,METHOD_DEF,CTOR_DEF"/>
+        </module>
+        <module name="LineLength">
+            <property name="max" value="100"/>
+        </module>
+        <module name="MethodLength"/>
+        <module name="OperatorWrap"/>
+        <module name="MethodParamPad"/>
+        <module name="ParenPad"/>
+        <module name="ModifierOrder"/>
+        <module name="EmptyBlock"/>
+        <module name="ExplicitInitialization"/>
+        <module name="FallThrough">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="falta un break en la sentencia anterior"/>
+        </module>
+        <module name="IllegalCatch"/>
+        <module name="IllegalThrows"/>
+        <module name="JUnitTestCase"/>
+        <module name="MissingCtor"/>
+        <module name="MissingSwitchDefault">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="ModifiedControlVariable"/>
+        <module name="MultipleVariableDeclarations"/>
+        <module name="PackageDeclaration"/>
+        <module name="RedundantThrows">
+            <property name="logLoadErrors" value="true"/>
+            <property name="suppressLoadErrors" value="true"/>
+        </module>
+        <module name="ReturnCount"/>
+        <module name="SimplifyBooleanExpression"/>
+        <module name="SimplifyBooleanReturn"/>
+        <module name="StringLiteralEquality"/>
+        <module name="UnnecessaryParentheses"/>
+        <module name="HideUtilityClassConstructor"/>
+        <module name="InterfaceIsType"/>
+        <module name="VisibilityModifier"/>
+        <module name="JavaNCSS"/>
+        <module name="NPathComplexity"/>
+        <module name="WhitespaceAfter"/>
+        <module name="WhitespaceAfter"/>
+        <module name="WhitespaceAround"/>
+        <module name="GenericIllegalRegexp">
+            <property name="severity" value="error"/>
+            <property name="format" value="System\.out\.print"/>
+            <property name="message" value="No esta permitido utilizar System.out.print[ln] deberá utilizar un Log (log4j)"/>
+        </module>
+        <module name="TodoComment"/>
+    </module>
+</module>

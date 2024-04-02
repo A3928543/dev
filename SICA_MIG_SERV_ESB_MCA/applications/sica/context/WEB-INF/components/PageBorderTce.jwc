@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: PageBorderTce.jwc,v 1.1.2.1 2012/10/25 23:03:29 mejiar Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<component-specification allow-informal-parameters="no">
+
+    <parameter name="menuDisabled" type="boolean" direction="in" />
+    <parameter name="wideOpenMode" type="boolean" direction="in" />
+    <parameter name="breaksBeforeLoadingImage" type="int" direction="in" default-value="10" />
+
+    <context-asset name="stylesheet1" path="/css/jquery/jquery-ui-1.9.1.custom.min.css" />
+    <context-asset name="stylesheet2" path="/css/jquery/ui.jqgrid.css"  />
+    <context-asset name="stylesheet3" path="/css/ixe.css"  />
+
+</component-specification>

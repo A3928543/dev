@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CapturaDatosFacturacion.page,v 1.13 2009/08/03 21:50:44 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.deals.CapturaDatosFacturacion">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <bean name="stringValidator" class="org.apache.tapestry.valid.StringValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+    </bean>
+
+    <bean name="rfcValidator" class="org.apache.tapestry.valid.PatternValidator" lifecycle="render">
+        <set-property name="required" expression="true" />
+        <set-property name="patternString" expression="patronRfc" />
+        <set-property name="patternNotMatchedMessage">"El RFC debe tener 3 o cuatro letras, seguidas de la fecha en formato AAMMDD y finalizar con tres caracteres."</set-property>
+    </bean>
+
+    <component id="rfcTextFieldValidado" type="ValidField">
+        <static-binding name="displayName" value="RFC:" />
+        <binding name="validator" expression="beans.rfcValidator" />
+        <binding name="value" expression="deal.rfcFactura" />
+        <static-binding name="class" value="uppercase" />
+        <static-binding name="maxlength" value="13" />
+    </component>
+    
+    <component id="rfcTextField" type="ValidField">
+        <static-binding name="displayName" value="RFC:" />
+        <binding name="validator" expression="beans.stringValidator" />
+        <binding name="value" expression="deal.rfcFactura" />
+        <static-binding name="class" value="uppercase" />
+        <static-binding name="maxlength" value="15" />
+    </component>
+
+    <component id="corporativosComboBox" type="PropertySelection">
+        <binding name="model" expression="new org.apache.tapestry.form.StringPropertySelectionModel(corporativos)" />
+        <binding name="value" expression="nombreCorporativo" />
+    </component>
+
+    <property-specification name="corporativos" type="java.lang.String[]" persistent="yes"/>
+    <property-specification name="deal" type="com.ixe.ods.sica.model.Deal" persistent="yes"/>
+    <property-specification name="nombreCorporativo" type="java.lang.String" persistent="yes" />
+    <property-specification name="modoPrimeraVez" type="boolean" persistent="yes" />
+    <property-specification name="otroNombre" type="java.lang.String" persistent="yes" />
+    <property-specification name="tipoNombre" type="java.lang.String" persistent="yes" />
+    <property-specification name="medioDistribucion" type="java.lang.String" persistent="yes" initial-value="@com.ixe.ods.sica.pages.deals.CapturaDatosFacturacion@MEDIO_DIST_EMAIL"/>
+    <property-specification name="idDireccionMensajeria" type="java.lang.Integer" persistent="yes" />
+    <property-specification name="direccionesMensajeria" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+    <property-specification name="emails" type="java.util.List" persistent="yes" />
+    <property-specification name="otroEmailSeleccionado" type="boolean" persistent="yes" />
+    <property-specification name="nuevaDireccion" type="com.ixe.bean.bup.Direccion" initial-value="new com.ixe.bean.bup.Direccion()" />
+
+    <context-asset name="bAceptar" path="/images/aceptar.gif" />
+    <context-asset name="bRegresar" path="/images/back.gif" />
+
+</page-specification>

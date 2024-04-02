@@ -1,0 +1,93 @@
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/tx  
+    http://www.springframework.org/schema/tx/spring-tx.xsd">
+    
+	<context:property-placeholder location="archivos/config/env.properties"/>
+	
+	<context:component-scan base-package="com.banorte.ods.sica.batch.transfint" />
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="file:archivos/config/persistence.xml" /> 
+		<property name="persistenceUnitName" value="transfintPersistenceUnit" /> 
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+		<property name="jpaDialect" ref="jpaDialect" />
+	</bean>
+
+	<bean id="jpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="database" value="HSQL" />
+		<property name="databasePlatform" value="org.hibernate.dialect.OracleDialect" />
+	</bean>
+
+	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+		<!-- <property name="dataSource" ref="dataSource" />
+		<property name="jpaDialect" ref="jpaDialect" /> -->
+	</bean>
+	
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="ODSSicaDataSource"/>
+		<property name="jndiEnvironment">
+			<props>
+				<prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
+				<prop key="java.naming.provider.url">${db.datasource.url}</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+  		<property name="host" value="${mail.host}"/>
+  		<!-- <property name="port">
+  			<bean class="java.lang.Integer">
+  				<constructor-arg type="java.lang.String" value="${mail.port}"/>
+  			</bean>
+  		</property>  -->
+  		<property name="javaMailProperties">
+			<props>
+		        <prop key="mail.smtp.starttls.enable">true</prop>
+	        </props>
+        </property>
+	</bean>
+	
+	<bean id="mailSender" class="com.banorte.ods.sica.batch.transfint.mail.impl.MailSenderImpl">
+		<property name="velocityEngine" ref="velocityEngine" />
+		<property name="mailSender" ref="javaMailSender" />
+		<property name="env">
+			<map>
+				<entry key="template" value="${mail.template}" />
+				<entry key="from" value="${mail.from}" />
+				<entry key="to" value="${mail.to}" />
+				<entry key="cc" value="${mail.cc}" />
+				<entry key="subject" value="${mail.subject}" />
+				<entry key="encoding" value="${mail.encoding}" />
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="resourceLoaderPath">
+            <value>archivos/config/</value>
+        </property>
+    </bean>
+  	
+	<bean id="messages" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename">
+			<value>file:archivos/config/messages</value>
+		</property>
+		<property name="fallbackToSystemLocale" value="false"/>
+	</bean>
+  	
+</beans>

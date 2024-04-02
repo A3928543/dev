@@ -1,0 +1,90 @@
+<!-- $Id: EncabezadoDealInterbancario.html,v 1.14.64.1 2016/07/13 21:46:04 mejiar Exp $ -->
+<span jwcid="@Conditional" condition="ognl: deal.swap">
+    <span jwcid="@InfoSwap" swap="ognl: deal.swap" />
+    <br />
+</span>
+<table width="100%">
+<tr valign="top">
+<td>
+<fieldset>
+<legend class="legend">Datos generales:</legend>
+<table width="100%">
+<tr valign="top">
+<td class="title" align="right">Contraparte:</td>
+<td class="normal"><span jwcid="@DisabledField" value='ognl: deal.broker ? deal.broker.id.personaMoral.nombreCompleto : "Por Definir"' raw="yes"/></td>
+<td class="title" align="right">Cliente:</td>
+<td jwcid="@Any" element="td" class="normal" colspan="ognl: deal.swap ? 1 : 5"><span jwcid="@DisabledField" value='ognl: deal.contratoSica ? deal.cliente.nombreCompleto : "Por Definir"' raw="yes"/></td>
+<span jwcid="@Conditional" condition="ognl: deal.swap">
+<td class="title" align="right"><span jwcid="@Insert" value="ognl: deal.inicioSwap ? 'Inicio' : 'Complem.'" /> del Swap:</td>
+<td class="normal" colspan="3"><span jwcid="@DisabledField" value="ognl: deal.swap.idFolioSwap" raw="yes"/></td>
+</span>
+</tr>
+<tr valign="top">
+<td class="title" align="right">Promotor:</td>
+<td class="normal" colspan="3"><span jwcid="@DisabledField" value="ognl: deal.promotor ? deal.promotor.nombreCompleto : ''"/></td>
+<td class="title" align="right">Captur&oacute;:</td>
+<td class="normal" colspan="3"><span jwcid="@DisabledField" value="ognl: deal.usuario ? deal.usuario.persona.nombreCompleto: ''"/></td>
+</tr>
+<tr valign="top">
+<td class="title" align="right">Portafolios:</td>
+<td class="normal"><span jwcid="@DisabledField" value="ognl: deal.canalMesa.mesaCambio.nombre"/></td>
+<td class="title" align="right">Status:</td>
+<td class="normal" nowrap><span jwcid="@StatusField" status="ognl: @com.ixe.ods.sica.components.StatusField@getStatusDeal(deal)" descripcion="ognl: deal.descripcionStatus"/></td>
+<td class="title" align="right">Pago anticip.:</td>
+<td class="normal">
+<span jwcid="@contrib:Choose">
+<span jwcid="@contrib:When" condition="ognl: !disabled && disabledPAyTF" >
+<input type="checkbox" jwcid="@Checkbox" selected="ognl: deal.pagoAnticipado" onclick="this.form.hiddenModoSubmit.value = 'SpagoAnticipado'; this.form.submit(); " />
+</span>
+<span jwcid="@contrib:Otherwise">
+<span jwcid="@Insert" value='ognl: deal.pagoAnticipado ? "S&iacute;" : "No"' raw="ognl: true" />
+</span>
+</span>
+</td>
+<td class="title" align="right">Mensajer&iacute;a:</td>
+<td class="normal">
+<span jwcid="@contrib:Choose">
+<span jwcid="@contrib:When" condition="ognl: !disabled">
+<input type="checkbox" jwcid="@Checkbox" selected="ognl: deal.mensajeria" onclick="this.form.hiddenModoSubmit.value = 'Smensajeria'; this.form.submit(); " />
+</span>
+<span jwcid="@contrib:Otherwise">
+<span jwcid="@Insert" value='ognl: deal.mensajeria ? "S&iacute;" : "No"' raw="yes" />
+</span>
+</span>
+</td>
+</tr>
+<tr valign="top" height="55">
+<td class="title" align="right">Observaciones:</td>
+<td class="normal" colspan="7">
+<span jwcid="@DisabledField" value="ognl: deal.observaciones"/>
+</td>
+</tr>
+<tr jwcid="@Conditional" condition="ognl: !ocultarDatosEnvio && deal.mensajeria" element="tr">
+<td colspan="8">
+<fieldset>
+<legend class="legend">Datos de Mensajer&iacute;a:</legend>
+<table width="100%">
+<tr valign="top">
+<td width="5%" align="right" class="title">Direcci&oacute;n:</td>
+<td><span jwcid="@DireccionField" direccion="ognl: deal.direccion" /></td>
+<td width="5%" align="right" class="title" nowrap>Acudir con:</td>
+<td><span jwcid="@DisabledField" value="ognl: deal.acudirCon" /></td>
+</tr>
+</table>
+</fieldset>
+</td>
+</tr>
+</table>
+</fieldset>
+</td>
+<td width="5%">
+<fieldset jwcid="@InfoDeal" deal="ognl: deal"/>
+</td>
+</tr>
+</table>
+<span jwcid="@Conditional" condition="ognl: !ocultarDetalles">
+<br/>
+<table jwcid="@DetallesDealInterbancario" detalles="ognl: deal.recibimos" recibimos="ognl: true"/>
+<br/>
+<table jwcid="@DetallesDealInterbancario" detalles="ognl: deal.entregamos" recibimos="ognl: false"/>
+</span>

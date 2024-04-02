@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.Broker"
+        table="sc_broker"
+        proxy="com.ixe.ods.sica.model.Broker"
+        dynamic-update="false"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <composite-id
+            name="id"
+            class="com.ixe.ods.sica.model.BrokerPK"
+        >
+
+                    <key-many-to-one
+                        name="personaMoral"
+                        class="com.ixe.ods.bup.model.PersonaMoral"
+                        column="id_persona"
+                    />
+
+        </composite-id>
+
+        <property
+            name="claveReuters"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="clave_reuters"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="status"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATUS"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoBroker"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="tipo_broker"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="pagoAnticipado"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="PAGO_ANTICIPADO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="idSaif"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_SAIF"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="visibleKondor"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="VISIBLE_KONDOR"
+            not-null="true"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Broker.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findBrokerByIdPersona"><![CDATA[
+            FROM Broker AS bk WHERE bk.id.personaMoral.idPersona = ?
+        ]]></query>
+        <query name="findBrokersByRazonSocial"><![CDATA[
+            FROM com.ixe.ods.bup.model.PersonaMoral as pm WHERE rownum < 51 AND pm.razonSocial like ? AND pm.idPersona IN(SELECT bk.id.personaMoral.idPersona FROM Broker as bk) order by pm.razonSocial
+        ]]></query>
+
+</hibernate-mapping>

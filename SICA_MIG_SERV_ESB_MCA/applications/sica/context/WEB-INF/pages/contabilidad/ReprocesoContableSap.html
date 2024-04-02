@@ -1,0 +1,40 @@
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <!-- $Id: ReprocesoContableSap.html,v 1.2 2009/12/22 17:16:59 ccovian Exp $ -->    
+    <title>Reproceso Contable Sap</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+	<script jwcid="@Script" script="/WEB-INF/scripts/Log.script" />
+	<form jwcid="@Form" listener="ognl:listeners.formSubmit" delegate="ognl:beans.delegate">
+         <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level = "1" width="100%"/>
+         <br/>
+         <table width="100%">
+		    <tr valign="top">
+		    	<td align="center">
+					<table jwcid="@ActionPortletBorder" title="Reproceso Contable para SAP">
+						<font class=title>
+							<pre>
+								<span jwcid="@Insert" value="ognl: result" raw="yes" />
+							</pre>
+						</font>
+                        <div id="logDiv"></div>
+						<br/>
+					</table>
+               </td>
+               <td width="1%">
+               	&nbsp;
+               </td>
+               <td	width="230px">
+             		<table jwcid="@ActionPortletBorder" title="Reproceso Contable para SAP" width="">
+             			<div align="center"><font class="normal">Fecha a Reprocesar:</font></div><br/>
+						<div align="center"><input jwcid="@ls:DatePicker" value="ognl: fecha" format="dd/MM/yyyy" /></div><br/>
+						<div align="center"><input jwcid="@ImageSubmit" image="ognl: assets.procesarButton" onclick="showLog(); return fnDisableForm(this.form);"/></div>
+					</table>
+               </td>
+	    	</tr>
+         </table>
+	</form>
+	<span jwcid="@ls:DatePickerColophon" />
+</body>
+</html>

@@ -1,0 +1,62 @@
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    
+	<context:property-placeholder location="config/config.properties"/>
+	
+	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+  		<property name="host" value="${mail.host}"/>
+	</bean>
+	
+	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="resourceLoaderPath" value="${mail.template.path}" /> 
+    </bean>
+	
+	<bean id="mailSender" class="com.banorte.contrapartes.services.mail.impl.MailSenderImpl">
+		<property name="velocityEngine">
+			<ref local="velocityEngine"/>
+		</property>
+		<property name="javaMailSender">
+			<ref local="javaMailSender"/>
+		</property>
+		<property name="template" value="${mail.template}" />
+		<property name="from" value="${mail.from}" />
+		<property name="to" value="${mail.to}" />
+		<property name="subject" value="${mail.subject}" />
+	</bean>	
+    
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${db.driver}"/>
+		<property name="username" value="${db.username}"/>
+		<property name="password" value="${db.password}"/>
+		<property name="url" value="${db.url}"/>
+	</bean>
+	
+	<bean id="consultaDao" class="com.banorte.contrapartes.dao.impl.ConsultaDaoImpl">
+		<property name="dataSource">
+			<ref local="dataSource"/>
+		</property>
+	</bean>
+	
+	<bean id="reporteService" class="com.banorte.contrapartes.services.impl.ReporteOperacionesImpl" />
+     
+    <bean id="operacionesDealService" class="com.banorte.contrapartes.services.impl.OperacionesDealImpl">
+		<property name="consultaDao">
+			<ref local="consultaDao"/>
+		</property>
+		
+		<property name="mailSender">
+			<ref local="mailSender"/>
+		</property>
+		
+		<property name="reporteService">
+			<ref local="reporteService"/>
+		</property>
+    </bean>
+</beans>

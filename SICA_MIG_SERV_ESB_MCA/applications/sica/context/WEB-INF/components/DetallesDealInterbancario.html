@@ -1,0 +1,91 @@
+<!-- $Id: DetallesDealInterbancario.html,v 1.17.18.1 2010/12/23 17:22:41 egordoa Exp $ -->
+<span jwcid="@Conditional" condition="ognl: modifMap">
+<script jwcid="@Script" script="/WEB-INF/scripts/ModifDealDetalle.script" symbols="ognl: modifMap" type="text/javascript" />
+</span>
+<table jwcid="@TableBorder" title='ognl: null' columnCount="15" width="100%">
+<tr class="titlecell">
+<td colspan="18" class="title"><span jwcid="@Insert" value='ognl: recibimos ? "Recibimos" : "Entregamos"' /></td>
+</tr>
+<tr class="titlecell">
+<th width="1%" class="title">#</th>
+<th width="3%" class="title">Divisa</th>
+<th class="title"><span jwcid="@Insert" value='ognl: "F. " + (recibimos ? "Cobro" : "Pago")' /></th>
+<th width="1%" class="title">Producto</th>
+<th width="20%" class="title">Monto</th>
+<th width="20%" class="title">T. C.</th>
+<th width="20%" class="title">Status</th>
+<th width="1%" class="title">Co</th>
+<th width="1%" class="title">DC</th>
+<th width="1%" class="title">PS</th>
+<th width="1%" class="title">LO</th>
+<th width="1%" class="title">MD</th>
+<th width="20%" class="title">Importe</th>
+<th colspan="5" width="1%" class="title">&nbsp;</th>
+</tr>
+<tr jwcid="forDets@Foreach" source="ognl: detalles" element="tr" class="ognl: beans.evenOdd.next" align="center">
+<td class="normal"><span jwcid="@Insert" value="ognl: components.forDets.value.folioDetalle" /></td>
+<td class="normal"><img jwcid="@Bandera" divisa="ognl: components.forDets.value.divisa" /></td>
+<td class="normal">
+<span jwcid="@Conditional" condition="ognl: components.forDets.value.mnemonico">
+<a jwcid="@tooltip:ToolTip" value="ognl: components.infoAdicionalBlock" sticky="yes" clickable="ognl: true" commands='WIDTH, "480", CLOSETEXT, "X", FGCOLOR, "#dddddd", BGCOLOR, "#002f2c", CAPCOLOR, "#f79c00", CLOSECOLOR, "#FFFFFF"'><span jwcid="idFormaLiquidacionInsert" /></a>
+</span>
+</td>
+<td align="center" class="normal"><span jwcid="@Insert" value="ognl: components.forDets.value.claveFormaLiquidacion ? components.forDets.value.claveFormaLiquidacion : ''"  /></td>
+<td align="right" class="normal"><span jwcid="@Insert" value="ognl: components.forDets.value.monto" format="ognl: page.moneyFormat" /></td>
+<td align="right" class="normal"><span jwcid="@Insert" value="ognl: components.forDets.value.obtenTipoCambioInvertido()" format="ognl: page.currencyFormat"/></td>
+<td><span jwcid="@StatusField" status="ognl: @com.ixe.ods.sica.components.StatusField@getStatusDealDetalle(components.forDets.value)" descripcion="ognl: components.forDets.value.descripcionStatus" /></td>
+<td align="center" class="normal"><span jwcid="@Evento" valor='ognl: components.forDets.value.deal.isProcesableDetalle(components.forDets.value, page.formasTiposLiq) ? "A" : "S"' descripcion="Completo" /></td>
+<td align="center" class="normal"><span jwcid="@Evento" valor="ognl: components.forDets.value.decodificarEvento(@com.ixe.ods.sica.model.DealDetalle@EV_IND_INT_DOCUMENTACION)" descripcion='ognl: "Documentaci\u00f3n"' /></td>
+<td align="center" class="normal"><span jwcid="@Evento" valor="ognl: components.forDets.value.decodificarEvento(@com.ixe.ods.sica.model.DealDetalle@EV_IND_GRAL_AFECTADA_POSICION)" descripcion='ognl: "Afectaci\u00f3n de Posici\u00f3n"' /></td>
+<td align="center" class="normal"><span jwcid="@Evento" valor="ognl: components.forDets.value.decodificarEvento(@com.ixe.ods.sica.model.DealDetalle@EV_IND_INT_LINEA_OPERACION)" descripcion='ognl: "L\u00ednea de Operaci\u00f3n"' /></td>
+    <td align="center" class="normal"><span jwcid="@Evento" valor="ognl: components.forDets.value.decodificarEvento(@com.ixe.ods.sica.model.DealDetalle@EV_IND_INT_MODIFICACION)" descripcion='ognl: "Modificaci\u00f3n"' /></td>
+<td align="right" class="normal"><span jwcid="@Insert" value="ognl: components.forDets.value.importe" format="ognl: page.moneyFormat" /></td>
+<td class="titlecell" align="center">
+<span jwcid="@contrib:Choose">
+<span jwcid="@contrib:When" condition="ognl: components.forDets.value.capturaFormaLiqPermitida &&
+                                 !components.forDets.value.deal.isProcesableDetalle(components.forDets.value, page.formasTiposLiq) &&
+                                 (components.forDets.value.deal.contratoSica != null)">
+<a href="#" jwcid="@DirectLink" listener="ognl: listeners.capturarFormaLiquidacion" parameters="ognl: components.forDets.value.idDealPosicion" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bFormaLiq" alt='ognl: "Forma de " + (components.forDets.value.recibimos ? "Cobro" : "Pago")' border="0" /></a>
+</span>
+<span jwcid="@contrib:Otherwise">&nbsp;</span>
+</span>
+</td>
+<td class="titlecell" align="center">
+<span jwcid="@contrib:Choose">
+<span jwcid="@contrib:When" condition="ognl: components.forDets.value.modificacionPermitida">
+<a href="#" jwcid="@DirectLink" listener="ognl: listeners.modificarDetalle" parameters="ognl: components.forDets.value.idDealPosicion" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bLimpiarFormaLiq" alt='ognl: "Cambiar forma de " + (components.forDets.value.recibimos ? "Cobro" : "Pago")' border="0" /></a>
+</span>
+<span jwcid="@contrib:Otherwise">&nbsp;</span>
+</span>
+</td>
+<td class="titlecell" align="center">
+<span jwcid="@contrib:Choose">
+<span jwcid="@contrib:When" condition="ognl: components.forDets.value.splitPermitido && !components.forDets.value.tieneSolCancPendiente()">
+<a href="#" jwcid="@DirectLink" listener="ognl: listeners.partirDetalle" parameters="ognl: components.forDets.value.idDealPosicion" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bSplit" alt="Partir en dos" border="0" /></a>
+</span>
+<span jwcid="@contrib:Otherwise">&nbsp;</span>
+</span>
+</td>
+<td class="titlecell" align="center">
+<span jwcid="@contrib:Choose">
+<span jwcid="@contrib:When" condition="ognl: isPosibleCapturarInstrucciones(components.forDets.value)">
+<a href="#" jwcid = "@DirectLink" listener="ognl: listeners.capturarInstrucciones" parameters='ognl: components.forDets.value.idDealPosicion'><img jwcid="@Image" image="ognl: assets.bInstrucciones" alt='ognl: "Instrucciones"' border="0" /></a>
+</span>
+<span jwcid="@contrib:Otherwise">
+&nbsp;
+</span>
+</span>
+</td>
+<td class="titlecell" align="center"><a href="#" jwcid = "@ExternalLink" page="HistorialDetalle" renderer='ognl: page.global.applicationContext.getBean("mediumPopupLinkRenderer")' parameters='ognl: components.forDets.value.idDealPosicion'><img jwcid="@Image" image="ognl: assets.bHistorial" alt='ognl: "Historial de cambios"' border="0" /></a></td>
+</tr>
+</table>
+<span jwcid="infoAdicionalBlock@Block">
+<table jwcid="@ActionPortletBorder" title="Informaci&oacute;n Adicional:">
+<table width="100%">
+<tr jwcid="forInfoAds@Foreach" source="ognl: components.forDets.value.getInfoAdicional(page.getFormaPagoLiq(components.forDets.value.mnemonico), page.getPlantillaPantalla(components.forDets.value.mnemonico))" element="tr">
+<td class="title" align="right"><span jwcid="@Insert" value="ognl: components.forInfoAds.value.nombre" />:</td>
+<td><span jwcid="@DisabledField" value="ognl: components.forInfoAds.value.valor" /></td>
+</tr>
+</table>
+</table>
+</span>

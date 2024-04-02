@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: TablaReversos.mxml,v 1.2 2008/02/22 18:25:27 ccovian Exp $ -->
+<mx:VBox xmlns:mx="http://www.macromedia.com/2003/mxml" xmlns:views="views.*"
+		width="100%" height="100%"
+		marginTop="10" marginBottom="10" marginLeft="10" marginRight="10">
+	<mx:Script>
+	<![CDATA[
+		import com.ixe.ods.sica.vo.DealVO;
+		import com.ixe.ods.sica.vo.ReversoVO;
+        import mx.core.*;
+		import mx.managers.*;
+
+        var nombreActividad : String;
+		var reversos : Array;
+		var reversoSeleccionado : Object;
+
+		private function mostrarInfoReverso() : Void
+		{
+			reversoSeleccionado = tabla.selectedItem;
+			autorizacionesService.prepararDealsReverso(Application.application.ticket,
+                    reversoSeleccionado.idReverso);
+		}
+
+		private function respPrepararDealsReverso(listaDeals : Array) : Void
+		{
+            var deals : Array = new Array();
+
+            for (var i : Number = 0; i < listaDeals.length; i++) {
+                deals[i] = new DealVO();
+                deals[i].tomarValores(listaDeals[i]);
+            }
+            var popup = PopUpManager.createPopUp(_root, InfoReverso, true,
+                {deferred:true, reverso : reversoSeleccionado, deals : listaDeals});
+			popup.centerPopUp(_root);
+		}
+	]]>
+	</mx:Script>
+
+	<mx:RemoteObject id="autorizacionesService" source="spring://autorizacionesDelegate" concurrency="last" showBusyCursor="true">
+		<mx:method name="prepararDealsReverso" result="respPrepararDealsReverso(event.result)" fault="mx.core.Application.application.falla(event.fault)" />
+    </mx:RemoteObject>
+
+	<mx:DataGrid id="tabla" dataProvider="{reversos}" width="100%" height="100%">
+		<mx:columns>
+			<mx:Array>
+				<mx:DataGridColumn columnName="idReverso" headerText="No." width="80"/>
+				<mx:DataGridColumn columnName="idDealOriginal" headerText="No. Deal" width="80"/>
+				<mx:DataGridColumn columnName="fechaOperacion" headerText="Fecha Operaci&#243;n" width="120"/>
+				<mx:DataGridColumn columnName="fecha" headerText="Fecha Solicitud" width="120"/>
+				<mx:DataGridColumn columnName="fechaValorDeal" headerText="Fecha Valor" width="120"/>
+				<mx:DataGridColumn columnName="nombreUsuarioSolicitante" headerText="Usuario solicitante" />
+			</mx:Array>
+		</mx:columns>
+	</mx:DataGrid>
+	<mx:Link label="Ver" click="mostrarInfoReverso()" enabled="{tabla.selectedItem != null}" icon="@Embed('resources/ver.gif')" />
+</mx:VBox>

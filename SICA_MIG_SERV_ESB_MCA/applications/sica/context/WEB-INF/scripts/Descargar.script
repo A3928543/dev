@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: Descargar.script,v 1.1 2008/08/11 20:07:59 ccovian Exp $ -->
+<!DOCTYPE script PUBLIC
+        "-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+        "http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+
+<script>
+    <body>
+        <unique>
+            <![CDATA[
+
+		var httpDescarga = createRequestObjectDescarga();	
+
+        function createRequestObjectDescarga() {
+			var browser = navigator.appName;
+			if (browser == "Microsoft Internet Explorer") {
+			    return new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else {
+			    return new XMLHttpRequest();
+			}
+		}
+
+        function descargar() {
+            descargarTimeout = window.setTimeout('revisarDescarga()', 7000);
+        }
+
+        function revisarDescarga() {
+			httpDescarga.open('get', '/sica/app?service=page/Descargando&sp=S' + new Date().getTime());
+			httpDescarga.onreadystatechange = respuestaDescarga;
+			httpDescarga.send(null);
+        }
+
+        function respuestaDescarga() {
+            if (httpDescarga.readyState == 4) {
+				var response = httpDescarga.responseText;
+				if (response == 'false') {
+				    submitDone = false;
+                   document.getElementById('layerLoading').style.visibility = "hidden";
+                   for (i = 0; i < document.forms.length; i++) {
+                        document.forms[i].disabled = false;
+                   }
+                    window.clearTimeout('descargarTimeout');
+				}
+				else {
+				    descargar();
+				}
+			}
+        }
+
+        ]]>
+        </unique>
+
+    </body>
+
+</script>

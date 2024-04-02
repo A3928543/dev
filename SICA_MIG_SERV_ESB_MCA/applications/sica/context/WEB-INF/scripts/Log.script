@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: Log.script,v 1.1 2008/11/12 05:53:12 ccovian Exp $ -->
+<!DOCTYPE script PUBLIC
+        "-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+        "http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+
+<script>
+    <body>
+        <unique>
+            <![CDATA[
+
+		var httpLog = createRequestObjectLog();
+
+        function createRequestObjectLog() {
+			var browser = navigator.appName;
+			if (browser == "Microsoft Internet Explorer") {
+			    return new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else {
+			    return new XMLHttpRequest();
+			}
+		}
+
+        function showLog() {
+            logTimeout = window.setTimeout('revisarLog()', 5000);
+        }
+
+        function revisarLog() {
+			httpLog.open('get', '/sica/app?service=page/LogContabilidad&sp=S' + new Date().getTime());
+			httpLog.onreadystatechange = respuestaLog;
+			httpLog.send(null);
+        }
+
+        function respuestaLog() {
+            if (httpLog.readyState == 4) {
+				var response = httpLog.responseText;
+               document.getElementById('logDiv').innerHTML = response;
+               for (i = 0; i < document.forms.length; i++) {
+                    document.forms[i].disabled = false;
+               }
+                window.clearTimeout('logTimeout');
+                showLog();
+			}
+        }
+
+        ]]>
+        </unique>
+
+    </body>
+
+</script>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CapturaEfectivo.page,v 1.9 2008/02/22 18:25:47 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.deals.formliq.CapturaEfectivo">
+
+	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <bean name="doubleValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="false" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="clientScriptingEnabled" expression="true" />
+        <set-property name="minimum" expression="0.0" />
+    </bean>
+
+    <component id="denominacionTextField" type="ValidField">
+        <static-binding name="displayName" value="Denominaci&#243;n:" />
+        <static-binding name="size" value="6" />
+        <static-binding name="maxlength" value="6" />
+        <static-binding name="class" value="textoderecha" />
+        <binding name="validator" expression="beans.doubleValidator" />
+        <binding name="value" expression="dealDetalle.denominacion" />
+    </component>
+
+    <property-specification name="modo" type="int" persistent="yes" />
+    <property-specification name="dealDetalle" type="com.ixe.ods.sica.model.DealDetalle" persistent="yes" />
+    <property-specification name="tienePlantilla" type="boolean" persistent="yes" />
+
+    <context-asset name="bActualizar" path="/images/save.gif" />
+
+</page-specification>

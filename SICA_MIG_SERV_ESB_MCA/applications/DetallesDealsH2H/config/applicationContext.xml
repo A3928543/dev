@@ -1,0 +1,132 @@
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    
+	<context:property-placeholder location="config/config.properties"/>
+	
+	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+  		<property name="host" value="${mail.host}"/>
+	</bean>
+	
+	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="resourceLoaderPath" value="${mail.template.path}" /> 
+    </bean>
+	
+	<bean id="mailH2hSender" class="com.banorte.h2h.services.impl.MailH2HSenderImpl">
+		<property name="velocityEngine">
+			<ref local="velocityEngine"/>
+		</property>
+		<property name="javaMailSender">
+			<ref local="javaMailSender"/>
+		</property>
+		
+		<property name="template" value="${mail.template}" />
+		<property name="from" value="${mail.from}" />
+		<!-- property name="to" value="${mail.to}" /-->
+		<property name="subject" value="${mail.subject}" />
+	</bean>	
+	
+	<bean id="sicaDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="ODSSicaDataSource"/>
+		<property name="jndiEnvironment">
+			<props>
+				<prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
+				<prop key="java.naming.provider.url">${db.sica.t3}</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="productosFxDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="com/murex/ds"/>
+		<property name="jndiEnvironment">
+			<props>
+				<prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
+				<prop key="java.naming.provider.url">${db.productos.t3}</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- bean id="productosFxDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${db.driver}"/>
+		<property name="username" value="${db.productos.username}"/>
+		<property name="password" value="${db.productos.password}"/>
+		<property name="url" value="${db.productos.url}"/>
+	</bean-->
+	
+	<bean id="enlaceUsdDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="jdbc/DolaresDS"/>
+		<property name="jndiEnvironment">
+			<props>
+				<prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
+				<prop key="java.naming.provider.url">${db.enlaceusd.t3}</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- bean id="enlaceUsdDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${db.driver}"/>
+		<property name="username" value="${db.enlaceusd.username}"/>
+		<property name="password" value="${db.enlaceusd.password}"/>
+		<property name="url" value="${db.enlaceusd.url}"/>
+	</bean-->
+	
+	<bean id="mensaje" class="com.banorte.h2h.vo.MensajeVO">
+		<!-- 
+		<property name="mensajeErrorPath" value="${msj.error.path}"/>
+		<property name="mensajeErrorEmailsTo" value="${msj.error.emails}"/>
+		<property name="mensajeErrorPathEmail" value="${msj.error.email}"/>
+		<property name="mensajeErrorStoredProcedure" value="${msj.error.stored}"/>
+		<property name="mensajeErrorTransferencias" value="${msj.error.consulta.transferencias}"/>
+		<property name="mensajeInicioproceso" value="${msj.inicio.proceso}"/>
+		<property name="mensajeFinProceso" value="${msj.fin.proceso}"/>
+		 -->
+	</bean>
+	
+	<bean id="sicaDao" class="com.banorte.h2h.dao.impl.SicaDaoImpl">
+		<property name="dataSource">
+			<ref local="sicaDataSource"/>
+		</property>
+		
+	</bean>
+	
+	<bean id="productosFxDao" class="com.banorte.h2h.dao.impl.ProductosFXDaoImpl">
+		<property name="dataSource">
+			<ref local="productosFxDataSource"/>
+		</property>
+	</bean>
+	
+	<bean id="enlaceUsdDao" class="com.banorte.h2h.dao.impl.EnlaceUsdDaoImpl">
+		<property name="dataSource">
+			<ref local="enlaceUsdDataSource"/>
+		</property>
+	</bean>
+	 
+    <bean id="h2hService" class="com.banorte.h2h.services.impl.H2hServiceImpl">
+		<property name="sicaDao">
+			<ref local="sicaDao"/>
+		</property>
+		
+		<property name="productosFxDao">
+			<ref local="productosFxDao"/>
+		</property>
+		
+		<property name="enlaceUsdDao">
+			<ref local="enlaceUsdDao"/>
+		</property>
+		
+		<property name="mailH2hSender">
+			<ref local="mailH2hSender"/>
+		</property>
+		
+		<property name="mensaje">
+			<ref local="mensaje"/>
+		</property>
+    </bean>
+</beans>

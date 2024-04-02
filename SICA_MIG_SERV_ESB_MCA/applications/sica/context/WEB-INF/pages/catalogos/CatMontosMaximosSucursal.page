@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CatMontosMaximosSucursal.page,v 1.1 2008/10/27 23:20:07 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.catalogos.CatMontosMaximosSucursal">
+
+	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd" lifecycle="render" />
+    
+    <component id="montoMaximoTextField" type="MontoTextField">
+        <binding name="value" expression="components.forMontos.value.montoMaximo" />
+    </component>
+    
+    <property-specification name="canal" type="com.ixe.ods.sica.model.Canal" persistent="yes" />
+    <property-specification name="montosMaximos" type="java.util.List" persistent="yes" />
+    <property-specification name="producto" type="java.lang.String" persistent="yes" />
+    <property-specification name="productos" type="java.lang.String[]" persistent="yes" />
+
+    <context-asset name="acceptButton" path="/images/save.gif" />
+    <context-asset name="cancelButton" path="/images/cancel.gif" />
+
+</page-specification>

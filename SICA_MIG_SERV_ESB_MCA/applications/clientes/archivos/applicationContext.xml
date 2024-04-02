@@ -1,0 +1,103 @@
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    
+	<context:property-placeholder location="archivos/config.properties"/>
+	
+	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+  		<property name="host" value="${mail.host}"/>
+	</bean>
+	
+	<bean id="mailSender" class="com.ixe.ods.sica.batch.clientes.mail.impl.MailSenderImpl">
+		<property name="velocityEngine">
+			<ref local="velocityEngine"/>
+		</property>
+		<property name="javaMailSender">
+			<ref local="javaMailSender"/>
+		</property>
+		<property name="template" value="${mail.template}" />
+		<property name="from" value="${mail.from}" />
+		<property name="to" value="${mail.to}" />
+		<property name="subject" value="${mail.subject}" />
+	</bean>
+	
+	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="resourceLoaderPath">
+            <value>archivos/</value>
+        </property>
+    </bean>
+    
+    <bean id="parserConfig" class="com.ixe.ods.sica.batch.clientes.parser.util.ParserConfig">
+    	<constructor-arg type="java.lang.String" value="file:archivos/parser"/>
+    </bean>
+    
+    <bean id="clienteService" class="com.ixe.ods.sica.batch.clientes.service.impl.ClienteServiceImpl">
+    	<property name="dirProcesa" value="${dir.procesa}" />
+    	<property name="dirDepura" value="${dir.depura}" />
+    	<property name="tipoArchivo" value="${tipo.archivo}" />
+    	<property name="nombreArchivoValido" value="${nombre.archivo.valido}" />
+    	<property name="nombreArchivoErrores" value="${nombre.archivo.errores}" />
+    	<property name="parserConfig">
+			<ref local="parserConfig"/>
+		</property>
+		<property name="clienteDao">
+			<ref local="clienteDao"/>
+		</property>
+		<property name="cuentaAltamiraDao">
+			<ref local="cuentaAltamiraDao"/>
+		</property>
+		<property name="bitacoraDao">
+			<ref local="bitacoraDao"/>
+		</property>
+		<property name="idUsuarioMod">
+			<ref local="idUsuarioMod"/>
+		</property>
+		<property name="cveUsuarioMod" value="${cve.usuario.modifica}" />
+		<property name="mailSender">
+			<ref local="mailSender"/>
+		</property>
+		<property name="diasHistorico">
+			<ref local="diasHistorico"/>
+		</property>
+    </bean>
+    
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${db.driver}"/>
+		<property name="username" value="${db.username}"/>
+		<property name="password" value="${db.password}"/>
+		<property name="url" value="${db.url}"/>
+	</bean>
+	
+	<bean id="clienteDao" class="com.ixe.ods.sica.batch.clientes.dao.impl.ClienteDaoImpl">
+		<property name="dataSource">
+			<ref local="dataSource"/>
+		</property>
+	</bean>
+	
+	<bean id="cuentaAltamiraDao" class="com.ixe.ods.sica.batch.clientes.dao.impl.CuentaAltamiraDaoImpl">
+		<property name="dataSource">
+			<ref local="dataSource"/>
+		</property>
+	</bean>
+	
+	<bean id="bitacoraDao" class="com.ixe.ods.sica.batch.clientes.dao.impl.BitacoraDaoImpl">
+		<property name="dataSource">
+			<ref local="dataSource"/>
+		</property>
+	</bean>
+	
+	<bean id="idUsuarioMod" class="java.lang.Long">
+		<constructor-arg type="java.lang.String" value="${id.usuario.modifica}" />
+	</bean>
+	
+	<bean id="diasHistorico" class="java.lang.Integer">
+		<constructor-arg type="java.lang.String" value="${dias.historico}" />
+	</bean>
+  	
+</beans>

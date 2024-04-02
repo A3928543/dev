@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: SeleccionarPrimerCampo.script,v 1.7 2008/02/22 18:25:18 ccovian Exp $ -->
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+
+<script>
+    <initialization>
+        <![CDATA[
+			if (document.forms[0]) {
+				for (var i = 0; i < document.forms[0].elements.length; i++) {
+					if (document.forms[0].elements[i].type != 'hidden') {
+						document.forms[0].elements[i].focus();
+						break;
+					}
+				}
+			}
+        ]]></initialization>
+</script>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: FlujoTipoCambioPosicionFinal.mxml,v 1.9 2008/02/22 18:25:35 ccovian Exp $ -->
+<view:TipoCambioPosicionFinal
+        xmlns:mx="http://www.macromedia.com/2003/mxml"
+        xmlns:view="com.ixe.ods.sica.posicion.views.*"
+        xmlns:ls="com.legosoft.*">
+
+    <mx:NumberFormatter id="numberFormatter" precision="2"/>
+
+    <mx:GridItem>
+        <!--mx:Label text="{posicionFinalLabel}" fontWeight="bold"/-->
+		<mx:Label text="Total" fontWeight="bold"/>
+    </mx:GridItem>
+    <mx:GridItem horizontalAlign="right">
+        <mx:Label text="{numberFormatter.format(dataProvider.compra)}"/>
+    </mx:GridItem>
+    <mx:GridItem horizontalAlign="right">
+        <mx:Label text="{numberFormatter.format(dataProvider.venta)}"/>
+    </mx:GridItem>
+    <mx:GridItem horizontalAlign="right">
+        <mx:Label text="{numberFormatter.format(dataProvider.posicionFinal)}"/>
+    </mx:GridItem>
+    <mx:GridItem horizontalAlign="right">
+        <!--mx:Label text="{numberFormatter.format(dataProvider.posicionFinalMn)}"/-->
+		<mx:Label text="{numberFormatter.format(-1 * (dataProvider.posicionFinal * (dataProvider.posicionFinal > 0 ?  (dataProvider.getPosicionInicial() > 0 ? (dataProvider.compraMn + dataProvider.getPosicionInicialMn()) / (dataProvider.compra + dataProvider.getPosicionInicial()) : dataProvider.tipoCambioCompra) : (dataProvider.getPosicionInicial() > 0 ? dataProvider.tipoCambioVenta : (dataProvider.ventaMn - dataProvider.getPosicionInicialMn()) / (dataProvider.venta - dataProvider.getPosicionInicial())))))}"/>
+    </mx:GridItem>
+    <mx:GridItem horizontalAlign="center">
+        <ls:TickImage tick="{dataProvider.tickPosicionFinal}"/>
+    </mx:GridItem>
+
+</view:TipoCambioPosicionFinal>

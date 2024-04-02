@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.TraspasoMesa"
+        table="SC_TRASPASO_MESA"
+        proxy="com.ixe.ods.sica.model.TraspasoMesa"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idTraspasoMesa"
+            column="ID_TRASPASO_MESA"
+            type="int"
+            unsaved-value="0"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_TRASPASO_MESA_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-TraspasoMesa.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <many-to-one
+            name="deMesaCambio"
+            class="com.ixe.ods.sica.model.MesaCambio"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="DE_MESA_CAMBIO"
+            unique="false"
+        />
+
+        <many-to-one
+            name="AMesaCambio"
+            class="com.ixe.ods.sica.model.MesaCambio"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="A_MESA_CAMBIO"
+            unique="false"
+        />
+
+        <many-to-one
+            name="divisa"
+            class="com.ixe.ods.sica.model.Divisa"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="DIVISA"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambio"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambioDivisaReferencia"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO_DIVISA_REFERENCIA"
+            not-null="true"
+            unique="false"
+        />
+
+        <many-to-one
+            name="deIdDealPosicion"
+            class="com.ixe.ods.sica.model.DealPosicion"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="DE_ID_DEAL_POSICION"
+            unique="false"
+        />
+
+        <many-to-one
+            name="AIdDealPosicion"
+            class="com.ixe.ods.sica.model.DealPosicion"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="A_ID_DEAL_POSICION"
+            unique="false"
+        />
+
+        <property
+            name="fechaOperacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_OPERACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-TraspasoMesa.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findAllTraspasosPortafolios"><![CDATA[
+            FROM TraspasoMesa AS tm
+        ]]></query>
+        <query name="findTraspasosPortafoliosDiaActual"><![CDATA[
+            FROM TraspasoMesa AS tm WHERE tm.fechaOperacion = ? ORDER BY tm.idTraspasoMesa
+        ]]></query>
+        <query name="findTraspasosPortafoliosByFechaOperacion"><![CDATA[
+            FROM TraspasoMesa AS tm WHERE tm.fechaOperacion BETWEEN ? AND ? ORDER BY tm.fechaOperacion
+        ]]></query>
+
+</hibernate-mapping>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Transaction xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/in/Kondor2Sica-Request-AltaOperacionKondor.xsd">
+  <Input>
+    <Header>
+      <NombreAplic>NombreAplic</NombreAplic>
+      <Usuario>Usuario</Usuario>
+      <Ticket>Ticket</Ticket>
+      <Formato>Formato</Formato>
+    </Header>
+    <Requests>
+      <Request>
+        <ValidateFac>ValidateFac</ValidateFac>
+        <AltaOperacionKondor/>
+      </Request>
+    </Requests>
+  </Input>
+</Transaction>

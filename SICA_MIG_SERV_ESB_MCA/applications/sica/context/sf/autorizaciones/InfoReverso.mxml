@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: InfoReverso.mxml,v 1.5 2008/04/22 16:45:38 ccovian Exp $ -->
+<mx:TitleWindow xmlns:mx="http://www.macromedia.com/2003/mxml"
+				xmlns:raiz="*"
+                title="{'Reverso ' + reverso.idReverso}" closeButton="true"
+                click="this.deletePopUp();"  width="970" height="640"
+                marginTop="10" marginBottom="10" marginLeft="10" marginRight="10"
+                creationComplete="inicializar()">
+	<mx:Script>
+	<![CDATA[
+		import com.ixe.ods.sica.vo.DealVO;
+		import com.ixe.ods.sica.vo.ReversoVO;
+        import mx.controls.Alert;
+        import mx.core.Application;
+
+        /**
+         * La instancia del reverso de deals.
+         */
+        var reverso : ReversoVO;
+
+        /**
+         * La lista de deals que componen al reverso.
+         */
+		var deals : Array;
+
+        /**
+         * El arreglo de t&iacute;tulos para las cejas donde se despliegan los deals.
+         */
+    	var titulos : Array;
+
+        /**
+         * Inicializa la lista de t&iacute;tulos para las cejas que presentan la informaci&oacute;n
+         *
+         */
+        private function inicializar() : Void
+		{
+			titulos = ['Deal Original', 'Deal Contrario', 'Deal de Correcci\u00f3n'];
+			for (var i : Number = 0; i < deals.length; i++) {
+				deals[i].calcularUtilidad();
+			}
+		}
+
+        /**
+         * Regresa true si el n&uacute;mero de detalles de reverso es mayor a cero.
+         */
+        private function hayDetallesReverso() : Boolean
+		{
+			return reverso.detalles.length > 0;
+		}
+
+        /**
+         * Llama al servicio <code>autorizarReverso()</code> del objeto
+         * <code>autorizacionesService</code>, para marcar el reverso como autorizado y generar los
+         * deals correspondientes.
+         */
+        private function autorizarReverso() : Void
+		{
+            Application.application.enabled = false;
+			autorizacionesService.autorizarReverso(Application.application.ticket, reverso, deals,
+                    Application.application.idUsuario);
+		}
+
+        /**
+         * Llama al servicio <code>negarReverso()</code> del objeto
+         * <code>autorizacionesService</code>, para marcar el reverso como no autorizado y
+         * desbloquear la liquidaci&oacute;n de los deals en el SITE.
+         */
+        private function negarReverso() : Void
+        {
+            Application.application.enabled = false;
+            autorizacionesService.negarReverso(Application.application.ticket, reverso,
+                    Application.application.idUsuario);
+        }
+
+        /**
+         * Presenta un mensaje de confirmaci&oacute;n al usuario, ya sea por autorizaci&oacute;n o
+         * no autorizaci&oacute;n del reverso.
+         *
+         * @param resultado El mensaje que env&iacute;a el middleware con el resultado de la
+         *      operaci&oacute;n.
+         */
+        private function respAutorizarNegarReverso(resultado : String) : Void
+		{
+            Application.application.enabled = true;
+            Application.application.findActividades('Reversos');
+            Alert.show(resultado, 'Atenci\u00f3n:');
+            deletePopUp();
+        }
+
+        private function configurarDatosAdicionales() : Void
+        {
+            var res : String = '';
+            var prefijos : Array = new Array;
+
+            prefijos[0] = 'O';
+            prefijos[1] = 'B';
+            prefijos[2] = 'C';
+            for (var i : Number = 1; i < deals.length; i++) {
+                var dealDets = deals[i].detallesRecibimos.concat(deals[i].detallesEntregamos);
+                for (var j : Number = 0; j < dealDets.length; j++) {
+                    res += prefijos[i] + '@' + dealDets[j].folioDetalle + '@'
+                            + dealDets[j].tipoCambioMesa + '|';
+
+                }
+            }
+            reverso.datosAdicionales = res;
+            autorizacionesService.configurarDatosAdicionalesReverso(reverso.idReverso, res);
+        }
+	]]>
+    </mx:Script>
+
+	<mx:RemoteObject id="autorizacionesService" source="spring://autorizacionesDelegate" concurrency="last" showBusyCursor="true">
+		<mx:method name="autorizarReverso" result="respAutorizarNegarReverso(event.result)" fault="mx.core.Application.application.falla(event.fault)" />
+        <mx:method name="negarReverso" result="respAutorizarNegarReverso(event.result)" fault="mx.core.Application.application.falla(event.fault)" />
+        <mx:method name="configurarDatosAdicionalesReverso" fault="mx.core.Application.application.falla(event.fault)" />
+    </mx:RemoteObject>
+
+	<mx:Grid width="100%">
+		<mx:GridRow width="100%">
+			<mx:GridItem>
+				<mx:Label text="No. Deal:" fontWeight="bold" />
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:Label text="{reverso.idDealOriginal}" />
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:Label text="Fecha Solicitud:" fontWeight="bold" />
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:Label text="{reverso.fecha}" />
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:Spacer width="100%" />
+				<mx:Label text="Por Cancelaci&#243;n:" fontWeight="bold" />
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:Label text="{reverso.porCancelacion ? 'S&#237;' : 'No'}"  />
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow width="100%">
+			<mx:GridItem>
+				<mx:Label text="Solicitante:" fontWeight="bold" />
+			</mx:GridItem>
+			<mx:GridItem colSpan="3">
+				<mx:Label text="{reverso.nombreUsuarioSolicitante}" />
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:Spacer width="100%" />
+				<mx:Label text="Por Cliente:" fontWeight="bold" />
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:Label text="{reverso.porContratoSica != null ? 'S&#237;' : 'No'}"  />
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow width="100%">
+			<mx:GridItem>
+				<mx:Label text="Observaciones:" fontWeight="bold" />
+			</mx:GridItem>
+			<mx:GridItem colSpan="3" rowSpan="2">
+				<mx:Label text="{reverso.observaciones}" />
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:Spacer width="100%" />
+				<mx:Label text="Por Fecha Valor:" fontWeight="bold" />
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:Label text="{reverso.porFechaValor != null ? 'S&#237;' : 'No'}"  />
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow width="100%">
+			<mx:GridItem>
+				<mx:Label text="" />
+			</mx:GridItem>
+			<mx:GridItem width="100%">
+				<mx:Spacer width="100%" />
+				<mx:Label text="Por alg&#250;n detalle:" fontWeight="bold" />
+			</mx:GridItem>
+			<mx:GridItem>
+				<mx:Label text="{hayDetallesReverso() ? 'S&#237;' : 'No'}"  />
+			</mx:GridItem>
+		</mx:GridRow>
+	</mx:Grid>
+	<mx:TabNavigator width="100%" height="100%">
+		<mx:Repeater id="dealsRepeater" dataProvider="{deals}">
+			<mx:HBox label="{titulos[dealsRepeater.currentIndex]}" width="100%" height="100%">
+				<raiz:DatosDeal deal="{dealsRepeater.currentItem}" tcmEditable="{dealsRepeater.currentIndex != 0}" infoReverso="{this}" />
+			</mx:HBox>
+        </mx:Repeater>
+	</mx:TabNavigator>
+
+	<mx:ControlBar>
+		<mx:Button label="Autorizar Reverso" click="autorizarReverso()" />
+		<mx:Spacer width="100%" />
+		<mx:Button label="Negar Autorizaci&#243;n" click="negarReverso()" />
+	</mx:ControlBar>
+
+</mx:TitleWindow>

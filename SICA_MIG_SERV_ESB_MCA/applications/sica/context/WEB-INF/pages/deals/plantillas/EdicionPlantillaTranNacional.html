@@ -1,0 +1,141 @@
+<!-- $Id: EdicionPlantillaTranNacional.html,v 1.12 2010/03/03 21:15:32 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Edici&oacute;n de Plantillas de Transferencia Nacional</title>
+    <link rel="StyleSheet" href="../../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <form jwcid="@Form" listener="ognl: listeners.submit" delegate="ognl:beans.delegate">
+        <input jwcid="modoSubmitHidden@Hidden" value="ognl: modoSubmit" type="hidden" />
+        <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" width="100%" />
+        <table jwcid="@Cliente" contratoSica="ognl: plantilla.contratoSica" nombreCliente="ognl: nombreCliente" idPersona="ognl: idPersona" width="100%" />
+        <br />
+        <span jwcid="@contrib:FormConditional" condition='ognl: @com.ixe.ods.sica.pages.deals.plantillas.EdicionPlantillaTranNacional@PAGINA_MIGRACION_PLANTILLAS.equals(paginaAnterior)'>
+			<table jwcid="@ActionPortletBorder" title="Datos de la Plantilla" width="100%">
+            	<tr class="normal" valign="top">
+                	<td class="normal" align="left">
+		            	<b>Cuenta Cliente: </b><span jwcid="@Insert" value="ognl: mapaEdicionPlantilla.cuentaCliente" raw="yes" /><br>
+		           	</td>
+		      	 	<td class="normal" align="left">
+		       			<b>Banco: </b><span jwcid="@Insert" value="ognl: mapaEdicionPlantilla.banco" raw="yes" /><br>
+	           	 	</td>
+	           	</tr>
+           		<tr class="normal" valign="top">
+     	           <td class="normal" align="left">
+	    	   			<b>Clave: </b><span jwcid="@Insert" value="ognl: mapaEdicionPlantilla.clave" raw="yes" /><br>
+           		 	</td>
+	           	 	<td class="normal" align="left">
+	           	 		<b>Pa&iacute;s: </b><span jwcid="@Insert" value="ognl: mapaEdicionPlantilla.pais" raw="yes" /><br>
+	               	</td>
+	            </tr>
+              	<tr class="normal" valign="top">
+                    <td class="normal" align="left">
+	           			<b>Plaza: </b><span jwcid="@Insert" value="ognl: mapaEdicionPlantilla.plaza" raw="yes" /><br>
+	           	 	</td>
+	           	 	<td class="normal" align="left">
+	           			<b>Instrucciones Banco: </b><span jwcid="@Insert" value="ognl: mapaEdicionPlantilla.instBanco" raw="yes" /><br>
+	           	 	</td>
+	           	</tr>
+          	</table>
+			&nbsp;
+		</span>
+        <table jwcid="@ActionPortletBorder" title="Plantilla Transferencia Nacional" width="100%">
+            <table jwcid="@TableBorder" title="ognl: null" columnCount="2" width="100%">
+                <tr class="titlecell">
+                    <td width="50%" align="right" class="title">Clave Plantilla:</td>
+                    <td class="normalcell"><input class="uppercase" jwcid="@ixe:UppercaseTextField" maxLength="4" value="ognl: plantilla.clavePlantilla" /></td>
+                </tr>
+                <tr class="titlecell">
+                    <td align="right" class="title">Nombre Beneficiario:</td>
+                    <td class="normalcell">
+                        <input jwcid="beneficiarioComboBox"/>
+                    </td>
+                </tr>
+                <tr class="titlecell">
+	               <td width="50%" align="right" class="title">Tipo de Liquidaci&oacute;n:</td>
+                   <td class="normalcell">
+	                	<select jwcid="@PropertySelection" model="ognl: tiposLiquidacionModel" value="ognl: selectedTipoLiquidacion" onchange="fnShowWaitImage(); this.form.submit();" />
+	                </td>
+                </tr>
+                <tr class="normalcell">
+                    <td colspan="2">
+                        <fieldset>
+                            <legend class="legend">Mnem&oacute;nico:</legend>
+                            <span jwcid="@RadioGroup" selected="ognl: plantilla.mnemonico">
+                            <table>
+                                <tr jwcid="@Foreach" source="ognl: matrizFpls" index="ognl: y" element="tr">
+                                    <span jwcid="@Foreach" source="ognl: matrizFpls[y]"  index="ognl: x">
+                                        <td jwcid="@Conditional" condition="ognl: matrizFpls[y][x]" element="td" class="normal" nowrap>
+                                            <input type="radio" jwcid="@Radio" value="ognl: matrizFpls[y][x].mnemonico" onclick="this.form.modoSubmitHidden.value='Smnemonico'; this.form.submit();"/>
+                                            <span jwcid="@Insert" value="ognl: matrizFpls[y][x].descripcion + '.- ' + matrizFpls[y][x].mnemonico" />
+                                        </td>
+                                    </span>
+                                </tr>
+                            </table>
+                            </span>
+                        </fieldset>
+                    </td>
+                </tr>
+                <tr class="titlecell">
+                    <td align="right" class="title">Divisa:</td>
+                    <td class="normalcell">
+                        <span jwcid="@Insert" value="ognl: plantilla.divisa.idDivisa" />
+                    </td>
+                </tr>
+                <span jwcid="@contrib:FormConditional" condition="ognl: !plantilla.bancoBancoSpei">
+                    <tr class="titlecell">
+                        <td align="right" class="title">
+                            <span jwcid="@contrib:FormConditional" condition="ognl: !plantilla.bancoVostroSpei && !plantilla.bancoTerceroSpei">
+								CLABE/Cuenta:
+                            </span>
+                            <span jwcid="@contrib:FormConditional" condition="ognl: plantilla.bancoVostroSpei">
+                                Cuenta Vostro:
+                            </span>
+                            <span jwcid="@contrib:FormConditional" condition="ognl: plantilla.bancoTerceroSpei">
+								CLABE:
+                            </span>
+                        </td>
+                        <td class="normalcell">
+                            <span jwcid="@contrib:FormConditional" condition="ognl: !plantilla.bancoVostroSpei && !plantilla.bancoTerceroSpei">
+                                <select jwcid="@PropertySelection" model="ognl: comboCLABECuenta" value="ognl: clabeOCuenta" / >
+                            </span>
+							<input class="uppercase" jwcid="@ixe:UppercaseTextField" maxLength="33" value="ognl: plantilla.clabe" />
+                        </td>                        
+                    </tr>
+                </span>
+                    <tr class="titlecell">
+                        <td align="right" class="title">Banco:</td>
+                        <td class="normalcell">
+                            <span jwcid="@contrib:FormConditional" condition="ognl: plantilla.spei">
+                                <select jwcid="bancosComboBox" />
+                            </span>
+                            <span jwcid="@Conditional" condition="ognl: !plantilla.spei">
+                                <span jwcid="@Insert" value="ognl: plantilla.nombreBanco" />
+                            </span>
+                        </td>
+                    </tr>
+            </table>
+            <br />
+            <div align="center">
+                <span jwcid="@contrib:Choose">
+                    <span jwcid="@contrib:When" condition='ognl: modoUpdate'>
+                        <input jwcid="@ImageSubmit" image="ognl: assets.acceptButton" selected="ognl: modoSubmit" tag="agregar" accesskey="A" onClick="fnShowWaitImage();"/>
+                    </span>
+                    <span jwcid="@contrib:Otherwise">
+                        <input jwcid="@ImageSubmit" image="ognl: assets.addButton" selected="ognl: modoSubmit" tag="1" accesskey="A" onClick="fnShowWaitImage();"/>
+                    </span>
+                </span>
+                <!--a jwcid="@PageLink" page="ConsultaPlantillasTranNacionales" onClick="fnShowWaitImage();">
+                    <img jwcid="@Image" image="ognl: assets.cancelButton" src="../../../../images/back.gif" alt="Cancelar"/>
+                </a-->
+                <span jwcid="@contrib:FormConditional" condition='ognl: !@com.ixe.ods.sica.pages.deals.plantillas.EdicionPlantillaTranNacional@PAGINA_MIGRACION_PLANTILLAS.equals(paginaAnterior)'>
+					<a jwcid="@PageLink" page="ConsultaPlantillasTranNacionales" onClick="fnShowWaitImage();"><img jwcid="@Image" src="../../../../images/back.gif" image="ognl: assets.regresarButton" alt="Cancelar" /></a>
+		       	</span>
+				<span jwcid="@contrib:FormConditional" condition='ognl: @com.ixe.ods.sica.pages.deals.plantillas.EdicionPlantillaTranNacional@PAGINA_MIGRACION_PLANTILLAS.equals(paginaAnterior)'>
+					<a jwcid="@DirectLink" listener="ognl: listeners.cancelarEdicion" onClick="fnShowWaitImage();"><img jwcid="@Image" src="../../../../images/back.gif" image="ognl: assets.regresarButton" alt="Cancelar" /></a>
+		    	</span>
+			</div>
+        </table>
+    </form>
+</body>
+</html>

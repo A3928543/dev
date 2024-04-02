@@ -1,0 +1,38 @@
+2015-06-09 12:34:02 - **********************************************************************************************************
+2015-06-09 12:34:02 - ***************************          PROCESO DE CONTRAPARTES REGULATORIO         *************************
+2015-06-09 12:34:02 - **********************************************************************************************************
+2015-06-09 12:34:02 - Inicia consulta de operaciones con monto de 1 MDD....
+2015-06-09 12:34:05 - Termina consulta de operaciones con monto de 1 MDD.
+2015-06-09 12:34:05 - Total de registros encontrados: 1
+2015-06-09 12:34:07 - getTemplate(): operaciones1MDDTemplate.vm
+2015-06-09 12:34:07 - getFrom(): vicente.delasancha_praxis@banorte.com
+2015-06-09 12:34:07 - getTo(): vicente.delasancha_praxis@banorte.com,1.delasancha_praxis@banorte.com
+2015-06-09 12:34:07 - getSubject(): Consulta de deals con monto mayor a 1 millón de dólares americanos.
+2015-06-09 12:34:07 - vicente.delasancha_praxis@banorte.com
+2015-06-09 12:34:07 - 1.delasancha_praxis@banorte.com
+2015-06-09 12:34:09 - **********************************************************************************************************
+2015-06-09 12:34:09 - ******************************     FIN DE PROCESO CONTRAPARTES REGULATORIO     ***************************
+2015-06-09 12:34:09 - **********************************************************************************************************
+2015-06-09 12:34:09 - 
+
+
+
+2015-06-09 12:53:52 - **********************************************************************************************************
+2015-06-09 12:53:52 - ***************************          PROCESO DE CONTRAPARTES REGULATORIO         *************************
+2015-06-09 12:53:52 - **********************************************************************************************************
+2015-06-09 12:53:52 - Inicia consulta de operaciones con monto de 1 MDD....
+2015-06-09 12:53:55 - Termina consulta de operaciones con monto de 1 MDD.
+2015-06-09 12:53:55 - Total de registros encontrados: 1
+2015-06-09 12:53:56 - getTemplate(): operaciones1MDDTemplate.vm
+2015-06-09 12:53:56 - getFrom(): vicente.delasancha_praxis@banorte.com
+2015-06-09 12:53:56 - getTo(): vicente.delasancha_praxis@banorte.com,1.delasancha_praxis@banorte.com
+2015-06-09 12:53:56 - getSubject(): Consulta de deals con monto mayor a 1 millón de dólares americanos.
+2015-06-09 12:53:56 - vicente.delasancha_praxis@banorte.com
+2015-06-09 12:53:56 - 1.delasancha_praxis@banorte.com
+2015-06-09 12:53:56 - **********************************************************************************************************
+2015-06-09 12:53:56 - ******************************     FIN DE PROCESO CONTRAPARTES REGULATORIO     ***************************
+2015-06-09 12:53:56 - **********************************************************************************************************
+2015-06-09 12:53:56 - 
+
+
+

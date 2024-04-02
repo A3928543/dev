@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CapturaTransferenciaIntl.page,v 1.11.54.1.12.1 2017/10/16 17:43:47 mejiar Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.deals.formliq.CapturaTransferenciaIntl">
+
+	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <bean name="stringValidatorInstr" class="org.apache.tapestry.valid.StringValidator" lifecycle="page">
+        <set-property name="required" expression="false" />
+    </bean>
+
+  
+    <component id="instruccionesBeneficiarioTextField" type="TextArea">
+        <static-binding name="cols" value="33" />
+        <static-binding name="rows" value="4" />
+        <static-binding name="maxlength" value="130" />
+        <static-binding name="class" value="uppercase" />
+        <binding name="value" expression="instruccionesBeneficiario" />
+    </component>
+
+    <property-specification name="modo" type="int" persistent="yes" />
+    <property-specification name="modoSubmit" type="java.lang.String" />
+    <property-specification name="dealDetalle" type="com.ixe.ods.sica.model.DealDetalle" persistent="yes" />
+    <property-specification name="instruccionesPagador" type="java.lang.String" persistent="yes" />
+    <property-specification name="instruccionesIntermediario" type="java.lang.String" persistent="yes" />
+    <property-specification name="instruccionesBeneficiario" type="java.lang.String" persistent="yes" />
+    <property-specification name="sinConIntermediario" type="java.lang.String" persistent="yes" />
+    <property-specification name="tienePlantilla" type="boolean" persistent="yes" />
+    <property-specification name="faltaPropositoTransferencia" type="boolean" persistent="yes" />
+
+    <context-asset name="bActualizar" path="/images/save.gif" />
+    <context-asset name="bNuevaInstitucion" path="/images/nueva_institucion.gif" />
+    <context-asset name="bNuevoBeneficiario" path="/images/nvo_beneficiario.gif" />
+
+</page-specification>

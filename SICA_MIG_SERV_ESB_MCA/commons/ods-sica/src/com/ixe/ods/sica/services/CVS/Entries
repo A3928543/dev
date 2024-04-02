@@ -1,0 +1,29 @@
+/BusquedaClientesService.java/1.2.46.1.14.1/Wed Aug 28 23:55:56 2013//TSICA_MIG_SERV_ESB_MCA
+/CancelacionMailSender.java/1.1/Tue Jul  8 04:16:48 2008//TSICA_MIG_SERV_ESB_MCA
+/CapturaRapidaMailSender.java/1.2/Fri Feb 22 18:25:50 2008//TSICA_MIG_SERV_ESB_MCA
+/ConsultaClabesSaldosService.java/1.1.2.1/Thu Nov  5 07:45:25 2020//TSICA_MIG_SERV_ESB_MCA
+/ConsultaDatosBasicosClienteService.java/1.1.2.1/Wed Jul 10 21:29:05 2013//TSICA_MIG_SERV_ESB_MCA
+/ContratoDireccionesService.java/1.11/Fri Feb 22 18:25:50 2008//TSICA_MIG_SERV_ESB_MCA
+/DealService.java/1.14.30.1.8.1.6.1/Tue Apr 26 02:26:55 2011//TSICA_MIG_SERV_ESB_MCA
+/DesviacionInterbancaria.java/1.2/Tue Apr 13 17:55:36 2010//TSICA_MIG_SERV_ESB_MCA
+/EsbService.java/1.1.2.1/Fri Oct  8 01:15:27 2010//TSICA_MIG_SERV_ESB_MCA
+/FormasPagoLiqService.java/1.17/Fri Apr 30 17:21:34 2010//TSICA_MIG_SERV_ESB_MCA
+/GeneralMailSender.java/1.4.84.1/Fri Oct 20 15:57:30 2017//TSICA_MIG_SERV_ESB_MCA
+/H2HService.java/1.1.2.1/Sat Mar 19 02:53:15 2016//TSICA_MIG_SERV_ESB_MCA
+/IdIxeAltamiraService.java/1.1.2.1/Mon Nov  5 15:23:56 2012//TSICA_MIG_SERV_ESB_MCA
+/InformacionCuentaAltamiraService.java/1.1.2.1.12.1.2.1.30.1/Thu Nov  5 07:45:25 2020//TSICA_MIG_SERV_ESB_MCA
+/LineaCreditoConstantes.java/1.1.2.4/Wed Aug 31 21:22:04 2016//TSICA_MIG_SERV_ESB_MCA
+/LineaCreditoMensajes.java/1.1.2.3/Wed Aug 31 21:22:04 2016//TSICA_MIG_SERV_ESB_MCA
+/MailKondorService.java/1.2/Tue Apr 13 17:56:28 2010//TSICA_MIG_SERV_ESB_MCA
+/MailVespertinoService.java/1.3.32.1.2.1/Mon Dec 20 21:13:10 2010//TSICA_MIG_SERV_ESB_MCA
+/MantenerDatosBasicosService.java/1.1.2.1/Thu Nov  5 07:45:25 2020//TSICA_MIG_SERV_ESB_MCA
+/PdfService.java/1.3/Fri Dec 26 23:17:33 2008//TSICA_MIG_SERV_ESB_MCA
+/PersonaService.java/1.1.2.2/Fri Oct 20 15:57:30 2017//TSICA_MIG_SERV_ESB_MCA
+/RegistroClienteContratoService.java/1.1.4.2/Fri Oct  8 01:15:27 2010//TSICA_MIG_SERV_ESB_MCA
+/ReversoMailSender.java/1.12.34.1/Tue Sep 14 23:57:23 2010//TSICA_MIG_SERV_ESB_MCA
+/RiesgosService.java/1.4/Fri Dec 26 23:17:33 2008//TSICA_MIG_SERV_ESB_MCA
+/SicaMail.java/1.1.2.1/Wed Jul 13 21:43:04 2016//TSICA_MIG_SERV_ESB_MCA
+/ValorFuturoService.java/1.15/Tue Nov 17 16:44:11 2009//TSICA_MIG_SERV_ESB_MCA
+D/clientes////
+D/impl////
+D/model////

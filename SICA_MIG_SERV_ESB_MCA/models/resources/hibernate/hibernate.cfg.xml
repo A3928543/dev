@@ -1,0 +1,270 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--$Id: hibernate.cfg.xml,v 1.29.2.1.6.1.2.2.6.1.4.3.10.1.2.4.2.1.10.1.10.2.2.4 2017/08/21 16:38:22 mejiar Exp $ -->
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-2.0.dtd">
+
+<hibernate-configuration>
+
+    <!-- a SessionFactory instance -->
+    <session-factory>
+
+        <!-- properties -->
+        <property name="connection.datasource">ODSSicaDataSource</property>
+        <property name="dialect">net.sf.hibernate.dialect.OracleDialect</property>
+        <property name="show_sql">false</property> <!-- FAVOR DE NO CAMBIAR -->
+        <property name="jdbc.batch_size">0</property>
+        <property name="use_outer_join">true</property>
+
+        <!-- Nomina -->
+	    <mapping resource="com/ixe/ods/ixenet/nomina/model/NominaParametro.hbm.xml" />
+	    <mapping resource="com/ixe/ods/ixenet/nomina/model/Pago.hbm.xml" />
+	    <mapping resource="com/ixe/ods/ixenet/nomina/model/CuentaEmpleado.hbm.xml" />
+	    <mapping resource="com/ixe/ods/ixenet/nomina/model/Nomina.hbm.xml" />
+	    <mapping resource="com/ixe/ods/ixenet/nomina/model/Empresa.hbm.xml" />
+	    <mapping resource="com/ixe/ods/ixenet/nomina/model/EmpresaEmpleado.hbm.xml" />
+	    <mapping resource="com/ixe/ods/ixenet/nomina/model/ArchivoNomina.hbm.xml" />	
+	    <mapping resource="com/ixe/ods/ixenet/nomina/model/ArchivoPago.hbm.xml" />
+	    <mapping resource="com/ixe/ods/ixenet/nomina/model/MonitorNomina.hbm.xml" />
+	    <mapping resource="com/ixe/ods/ixenet/nomina/model/CatalogoError.hbm.xml" />
+
+        <!-- Mapeos de Seguridad -->
+        <mapping resource="com/ixe/ods/seguridad/model/AsociacionFacultad.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/AsociacionFacultadCuenta.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/audit/AuditSeguAdmin.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/AutMancomunada.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/ColeccionFacultades.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/Perfil.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/PerfilCuenta.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/PerfilCuentaAbono.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/PerfilServicio.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/PerfilRecuperacion.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/Rol.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/Facultad.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/FechaInhabil.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/GrupoFirmas.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/Jerarquia.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/IntentoFallido.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/Modulo.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/NodoJerarquia.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/Sistema.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/Ticket.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/Usuario.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/UsuarioExternoAdicional.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/UsuarioHistoria.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/audit/AuditAutorizacionManc.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/audit/AuditFacultad.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/audit/AuditFacultadCuenta.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/ocsp/CertificadoRevocado.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/bitacora/Firma.hbm.xml"/>
+        <mapping resource="com/ixe/ods/seguridad/model/bitacora/Operacion.hbm.xml"/>
+
+        <!-- Mapeos de la BUP -->
+        <mapping resource="com/ixe/ods/bup/model/ActividadEconomica.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/AtributoRelacion.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/Banco.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/ChequeImg.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/ClasificacionSesion.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/ClaveReferenciaPersona.hbm.xml" />
+        <mapping resource="com/ixe/ods/bup/model/ComentarioClasificado.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/ContratoMercadoDinero.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/ContratoPagoServicio.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/CuentaContrato.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/CuentaEjecutivo.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/CuentaAbono.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/CuentaOtroBanco.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/DetalleServicio.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/Direccion.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/DireccionOrigen.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/EstadoCivil.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/EjecutivoOrigen.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/EstadoCuentaTc.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/FechaNoLaboral.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/GrupoRelacion.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/Household.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/InstanciaAtributoRelacion.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/InstanciaRelacion.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/MapaEsquina.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/MedioContacto.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/Pais.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/Persona.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/PersonaCuentaRol.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/PersonaRim.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/PrefijosTc.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/ProveedorServicio.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/RendimientoImg.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/RegServicioAdicional.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/SectorEconomico.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/SerieCofetel.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/Sesion.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/Sucursal.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/Telefono.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/TipoCuentaContrato.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/TipoDireccion.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/TipoEjecutivo.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/TipoEnvioEdocta.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/TipoIva.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/TipoHousehold.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/TipoMedioContacto.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/TipoProveedor.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/TipoRelacion.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/TipoRol.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/TipoServicio.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/TipoTarjeta.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/TipoTelefono.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/UsuarioIxenetEmpresarial.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/InfEjecutivos.hbm.xml"/>
+        <mapping resource="com/ixe/ods/bup/model/InfEjecutivosDetalle.hbm.xml"/>
+
+        <!-- Mapeos Alertas -->
+        <mapping resource="com/ixe/ods/alertas/model/Alerta.hbm.xml"/>
+        <mapping resource="com/ixe/ods/alertas/model/AlertaUsuario.hbm.xml"/>
+        <mapping resource="com/ixe/ods/alertas/model/BmvEmisora.hbm.xml"/>
+        <mapping resource="com/ixe/ods/alertas/model/EnvioMensaje.hbm.xml"/>
+        <mapping resource="com/ixe/ods/alertas/model/Frecuencia.hbm.xml"/>
+        <mapping resource="com/ixe/ods/alertas/model/MedioEnvioAlertas.hbm.xml"/>
+        <mapping resource="com/ixe/ods/alertas/model/OperadorValido.hbm.xml"/>
+
+        <!-- Recurrencias -->
+        <mapping resource="com/ixe/ods/recurrencias/model/BitacoraFechasCanceladas.hbm.xml"/>
+        <mapping resource="com/ixe/ods/recurrencias/model/BitacoraRecurrencia.hbm.xml"/>
+        <mapping resource="com/ixe/ods/recurrencias/model/BitacoraCancelacion.hbm.xml"/>
+        <mapping resource="com/ixe/ods/recurrencias/model/Recurrencia.hbm.xml"/>
+        <mapping resource="com/ixe/ods/recurrencias/model/FechaCancelada.hbm.xml"/>
+
+        <!-- Fondos -->
+	<mapping resource="com/ixe/ods/bup/model/CatalogoFondo.hbm.xml"/>
+	<mapping resource="com/ixe/ods/bup/model/ParametroSistema.hbm.xml"/>
+
+        <!-- Nomina -->
+        <mapping resource="com/ixe/ods/bup/model/BupDatoRequeridoCaptura.hbm.xml" />
+        <mapping resource="com/ixe/ods/bup/model/BupListaNegra.hbm.xml" />
+        <mapping resource="com/ixe/ods/bup/model/BupPersona.hbm.xml" />
+        <mapping resource="com/ixe/ods/bup/model/BupDocumentoTmp.hbm.xml" />
+        <mapping resource="com/ixe/ods/bup/model/BupPersonaDocumento.hbm.xml" />
+        <mapping resource="com/ixe/ods/bup/model/BupPersonaDocumentoTmp.hbm.xml" />
+        <mapping resource="com/ixe/ods/bup/model/BupPersonaFisica.hbm.xml" />
+        <mapping resource="com/ixe/ods/bup/model/BupPersonaMoral.hbm.xml" />
+        <mapping resource="com/ixe/ods/bup/model/BupPoblacionCofetel.hbm.xml" />
+        <mapping resource="com/ixe/ods/bup/model/BupSerieCofetel.hbm.xml" />
+        <mapping resource="com/ixe/ods/bup/model/BupTelefono.hbm.xml" />
+        <mapping resource="com/ixe/ods/bup/model/BupDireccion.hbm.xml" />
+
+        <!-- Mapeos SICA -->
+        <mapping resource="com/ixe/ods/sica/model/Actividad.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/AutMedioContacto.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/BitacoraCorte.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/BitacoraEnviadas.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/Broker.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/BupCodigoPostal.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/BupEstado.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/BupMunicipio.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/Canal.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/Cliente.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/CombinacionDivisa.hbm.xml" />
+        <mapping resource="com/ixe/ods/sica/model/ComplementoDatos.hbm.xml" />
+        <mapping resource="com/ixe/ods/sica/model/ContraparteBanxico.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/Contrato.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/DealReinicioPosicion.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/Corte.hbm.xml" />
+        <mapping resource="com/ixe/ods/sica/model/CorteDetalle.hbm.xml" />
+        <mapping resource="com/ixe/ods/sica/model/CuentaAltamira.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/Deal.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/DealDetalleStatusLog.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/DealLog.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/DealPosicion.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/DealStatusLog.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/Divisa.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/EmpresaCambios.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/Estado.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/EstatusCorte.hbm.xml" />
+        <mapping resource="com/ixe/ods/sica/model/FactorDivisaActual.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/FechaInhabilEua.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/GuiaContableLiq.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/GrupoTrabajo.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/GrupoTrabajoPromotor.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/GuiaContableAsiento.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/HistoricoPosicion.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/HistoricoPosicionDetalle.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/HistoricoTipoCambio.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/HistoricoVaR.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/InfoFactura.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/Limite.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/LimiteEfectivo.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/LogAuditoria.hbm.xml" />
+        <mapping resource="com/ixe/ods/sica/model/LineaOperacion.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/LineaOperacionLog.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/MaximoDeal.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/MesaCambio.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/MontoMaximoSucursal.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/MovimientoContable.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/MovimientoContableDetalle.hbm.xml"/>    
+        <mapping resource="com/ixe/ods/sica/model/MunicipioListaBlanca.hbm.xml" />    
+        <mapping resource="com/ixe/ods/sica/model/ParametroSica.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/PersonaListaBlanca.hbm.xml" />
+        <mapping resource="com/ixe/ods/sica/model/Plantilla.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/PlantillaPantalla.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/Posicion.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/PosicionDetalle.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/PosicionLog.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/PosicionLogCorte.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/PrecioReferenciaActual.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/Propiedad.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/Poliza.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/ReglaNeteo.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/RenglonPizarron.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/Reverso.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/ReversoDetalle.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/RegulatorioActividadEconomica.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/RegulatorioDatosPM.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/RegulatorioEventoRelacion.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/RegulatorioInstitucion.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/RegulatorioPais.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/RegulatorioPerfil.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/RegulatorioSectorIndustrial.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/RegulatorioSociedadMercantil.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/RegulatorioTipoIdentificador.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/RegulatorioTipoRelacion.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/SicaNodoJerarquia.hbm.xml" />
+        <mapping resource="com/ixe/ods/sica/model/SapGenPolXs.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/Spread.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/Swap.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/SpreadActual.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/SumatoriaCorte.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/TcMinMaxTeller.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/TipoBloqueo.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/TipoLimite.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/TipoPizarron.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/TipoTraspasoProducto.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/TesBancoInternacional.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/TesPais.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/TokenTeller.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/TraspasoMesa.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/UtilidadForward.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/Variacion.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/BupActividadEconomica.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/DetalleH2H.hbm.xml"/>
+
+		<mapping resource="com/ixe/ods/sica/model/Division.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/Plaza.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/Zona.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/SucursalZona.hbm.xml"/>
+
+        <mapping resource="com/ixe/ods/sica/model/SistemaTce.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/MensajeTce.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/PersonaExtranjera.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/NitPersona.hbm.xml"/>
+		
+		<!-- Lineas de credito -->
+		<mapping resource="com/ixe/ods/sica/model/LineaCambio.hbm.xml"/>        
+        <mapping resource="com/ixe/ods/sica/model/LineaCambioLog.hbm.xml"/>        
+        <mapping resource="com/ixe/ods/sica/model/LineaCreditoReinicioExceso.hbm.xml"/>       
+        <mapping resource="com/ixe/ods/sica/model/Formalizacion.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/TipoAutorizacion.hbm.xml"/>
+        <mapping resource="com/ixe/ods/sica/model/InstanciaFacultada.hbm.xml"/>
+        <!-- <mapping resource="com/ixe/ods/sica/model/ReinicioExceso.hbm.xml"/>  -->
+        <!-- Temporal: Requerido para el pago de servicio de la LIDE -->
+	<mapping resource="com/ixe/ods/bup/model/CatalogoCasfim.hbm.xml"/>
+
+    </session-factory>
+</hibernate-configuration>

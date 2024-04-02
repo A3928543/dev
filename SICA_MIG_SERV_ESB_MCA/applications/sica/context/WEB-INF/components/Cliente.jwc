@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--$Id: Cliente.jwc,v 1.10 2008/02/22 18:25:05 ccovian Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<component-specification allow-body="yes">
+
+	<parameter name="contratoSica" type="com.ixe.ods.bup.model.ContratoSica" direction="in" required="yes" />
+	<parameter name="nombreCliente" type="java.lang.String" direction="in" required="yes" />
+    <parameter name="idPersona" type="java.lang.Integer" direction="in" required="yes" />
+
+</component-specification>

@@ -1,0 +1,96 @@
+<!-- $Id: ConsultaReversos.html,v 1.7 2009/08/03 21:57:54 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Consulta de Reversos</title>
+    <link rel="StyleSheet" href="../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" width="100%" />
+    <table width="100%">
+        <tr valign="top">
+            <td width="20%">
+                <table jwcid="@ActionPortletBorder" title="Consulta de Reversos">
+                    <form jwcid="@Form" listener="ognl: listeners.refrescar" delegate="ognl: beans.delegate">
+                        <fieldset class="normal">
+                            <legend class="legend">Atributos de Consulta:</legend>
+                            <font class="normal">Fecha Inicio:<br />
+                                <input jwcid="@ls:DatePicker" value="ognl: fechaInicio" format="dd/MM/yyyy" size="10"/><br />
+                                Final Fin:<br/>
+                                <input jwcid="@ls:DatePicker" value="ognl: fechaFin" format="dd/MM/yyyy" size="10"/><br />
+                                </font>
+                        </fieldset>
+                        <br />
+                        <div align="center">
+                            <input jwcid="@ImageSubmit" image="ognl: assets.bBuscar" onclick="return fnDisableForm(this.form);" />
+                        </div>
+                        <span jwcid="@ls:DatePickerColophon" />
+                    </form>
+                </table>
+            </td>
+            <td width="1%">&nbsp;</td>
+            <td>
+                <span jwcid="@Conditional" condition="ognl: !reversos.empty">
+                <table jwcid="@ActionPortletBorder" title="Reversos capturados durante el d&iacute;a de hoy">
+                    <table jwcid="@TableBorder" title="ognl: null" subtitles="ognl: {'No. Reverso', 'Fecha', 'Solicitante', 'Deal Original', 'Deal Balanceo', 'Deal Correcci\u00f3n', 'Status', 'Canc.', 'Cte.', 'FeVal.','&nbsp;', 'Folio', 'Divisa', 'De monto', 'A monto', 'De T.C.C.', 'A T.C.C.'}" columnCount="14" width="100%">
+                        <span jwcid="forRevs@Foreach" source="ognl: reversos">
+                            <tr jwcid="@Any" element="tr" class="ognl: beans.evenOdd.next" valign="top">
+                                <td jwcid="@Any" element="td" class="normal" align="right" rowspan="ognl: components.forRevs.value.detalles.size() gt 0 ? components.forRevs.value.detalles.size() : 1"><span jwcid="@Insert" value="ognl: components.forRevs.value.idReverso" /></td>
+                                <td jwcid="@Any" element="td" class="normal" align="center" rowspan="ognl: components.forRevs.value.detalles.size() gt 0 ? components.forRevs.value.detalles.size() : 1" nowrap><span jwcid="@Insert" value="ognl: components.forRevs.value.fecha" format="ognl: fullDateFormat" /></td>
+                                <td jwcid="@Any" element="td" class="normal" align="center" rowspan="ognl: components.forRevs.value.detalles.size() gt 0 ? components.forRevs.value.detalles.size() : 1"><span jwcid="@Insert" value="ognl: components.forRevs.value.usuario.persona.nombreCompleto"  /></td>
+                                <td jwcid="@Any" element="td" class="normal" align="right" rowspan="ognl: components.forRevs.value.detalles.size() gt 0 ? components.forRevs.value.detalles.size() : 1"><a jwcid="@ExternalLink" page="ognl: components.forRevs.value.dealOriginal.interbancario ? 'DatosDealInterbancario' : 'DatosDeal'" parameters="ognl: components.forRevs.value.dealOriginal.idDeal" renderer='ognl: page.global.applicationContext.getBean("bigPopupLinkRenderer")'><span jwcid="@Insert" value="ognl: components.forRevs.value.dealOriginal.idDeal" /></a></td>
+                                <td jwcid="@Any" element="td" class="normal" align="right" rowspan="ognl: components.forRevs.value.detalles.size() gt 0 ? components.forRevs.value.detalles.size() : 1"><a jwcid="@ExternalLink" page="ognl: components.forRevs.value.dealOriginal.interbancario ? 'DatosDealInterbancario' : 'DatosDeal'" parameters="ognl: getIdDealBalanceo(components.forRevs.value)" renderer='ognl: page.global.applicationContext.getBean("bigPopupLinkRenderer")'><span jwcid="@Insert" value="ognl: components.forRevs.value.dealBalanceo != null && components.forRevs.value.dealBalanceo.idDeal != components.forRevs.value.dealOriginal.idDeal ? components.forRevs.value.dealBalanceo.idDeal : ''" /></a></td>
+                                <td jwcid="@Any" element="td" class="normal" align="right" rowspan="ognl: components.forRevs.value.detalles.size() gt 0 ? components.forRevs.value.detalles.size() : 1"><a jwcid="@ExternalLink" page="ognl: components.forRevs.value.dealOriginal.interbancario ? 'DatosDealInterbancario' : 'DatosDeal'" parameters="ognl: getIdDealCorreccion(components.forRevs.value)" renderer='ognl: page.global.applicationContext.getBean("bigPopupLinkRenderer")'><span jwcid="@Insert" value="ognl: components.forRevs.value.dealCorreccion != null ? components.forRevs.value.dealCorreccion.idDeal : ''" /></a></td>
+                                <td jwcid="@Any" element="td" class="normal" align="center" rowspan="ognl: components.forRevs.value.detalles.size() gt 0 ? components.forRevs.value.detalles.size() : 1"><span jwcid="@Insert" value="ognl: components.forRevs.value.descripcionStatus" /></td>
+                                <td jwcid="@Any" element="td" class="normal" align="center" rowspan="ognl: components.forRevs.value.detalles.size() gt 0 ? components.forRevs.value.detalles.size() : 1"><span jwcid="@Image" image="ognl: components.forRevs.value.porCancelacion ? assets.paloma : assets.pixel" /></td>
+                                <td jwcid="@Any" element="td" class="normal" align="center" rowspan="ognl: components.forRevs.value.detalles.size() gt 0 ? components.forRevs.value.detalles.size() : 1"><span jwcid="@Insert" value="ognl: components.forRevs.value.porContratoSica ? components.forRevs.value.porContratoSica.noCuenta : ''" /></td>
+                                <td jwcid="@Any" element="td" class="normal" align="center" rowspan="ognl: components.forRevs.value.detalles.size() gt 0 ? components.forRevs.value.detalles.size() : 1"><span jwcid="@Insert" value="ognl: components.forRevs.value.porFechaValor" /></td>
+                                <td jwcid="@Any" element="td" class="titlecell" rowspan="ognl: components.forRevs.value.detalles.size() gt 0 ? components.forRevs.value.detalles.size() : 1">&nbsp;</td>
+                                <span jwcid="@Conditional" condition="ognl: components.forRevs.value.detalles.size() == 0">
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </span>
+                                <span jwcid="@Conditional" condition="ognl: components.forRevs.value.detalles.size() gt 0">
+                                    <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forRevs.value.detalles.get(0).dealDetalle.folioDetalle" /></td>
+                                    <td class="normal" align="right"><span jwcid="@Bandera" divisa="ognl: components.forRevs.value.detalles.get(0).dealDetalle.divisa" /></td>
+                                    <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forRevs.value.detalles.get(0).dealDetalle.monto" format="ognl: moneyFormat" /></td>
+                                    <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forRevs.value.detalles.get(0).montoNuevo" format="ognl: components.forRevs.value.detalles.get(0).montoNuevo ? moneyFormat : null" /></td>
+                                    <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forRevs.value.detalles.get(0).dealDetalle.tipoCambio" format="ognl: currencyFormat" /></td>
+                                    <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forRevs.value.detalles.get(0).tipoCambioNuevo" format="ognl: components.forRevs.value.detalles.get(0).tipoCambioNuevo ? currencyFormat : null" /></td>
+                                </span>
+                            </tr>
+                            <span jwcid="@Conditional" condition="ognl: components.forRevs.value.detalles.size() gt 1">
+                                <span jwcid="forDets@Foreach" source="ognl: components.forRevs.value.detalles" index="ognl: indice">
+                                    <span jwcid="@Conditional" condition="ognl: indice gt 0">
+                                        <tr jwcid="@Any" class="ognl: beans.evenOdd.even ? 'even' : 'odd'" element="tr">
+                                            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forDets.value.dealDetalle.folioDetalle" /></td>
+                                            <td class="normal" align="right"><span jwcid="@Bandera" divisa="ognl: components.forDets.value.dealDetalle.divisa" /></td>
+                                            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forDets.value.dealDetalle.monto" format="ognl: moneyFormat" /></td>
+                                            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forDets.value.montoNuevo" format="ognl: components.forDets.value.montoNuevo ? moneyFormat : null"/></td>
+                                            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forDets.value.dealDetalle.tipoCambio" format="ognl: currencyFormat" /></td>
+                                            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forDets.value.tipoCambioNuevo" format="ognl: components.forDets.value.tipoCambioNuevo ? currencyFormat : null" /></td>
+                                        </tr>
+                                    </span>
+                                </span>
+                            </span>
+                        </span>
+                    </table>
+                    <br />
+                    <div align="center">
+                        <img jwcid="@ExcelExport"
+                             nombreArchivo="ReversosCapturados"
+                             titulo="Reversos capturados"
+                             titulos="ognl: {'No.', 'Fecha', 'Solicitante', 'Deal Original', 'Deal Balanceo', 'Deal Correcci\u00f3n', 'Status', 'Canc.', 'Cte.', 'Fecha Valor', 'Folio', 'Divisa', 'De Monto', 'A Monto', 'De TCC', 'A TCC' }"
+                             expresiones="ognl: {'idReverso', 'fecha', 'solicitante', 'idDealOriginal', 'idDealBalanceo', 'idDealCorreccion', 'status', 'porCancelacion', 'motivo', 'fechaValor', 'folio', 'divisa', 'deMonto', 'aMonto', 'deTcc', 'aTcc'}"
+                             coleccion="ognl: dataSourceReporteReversos" />
+                    </div>
+                </table>
+                </span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

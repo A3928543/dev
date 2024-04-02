@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.macromedia.com/2003/mxml"
+                title="Edici&#243;n de Informaci&#243;n del Contacto" closeButton="true"
+                click="this.deletePopUp();" >
+	<mx:Script>
+		<![CDATA[
+		var cliente : Object;
+		var parentApp : Object;
+		
+       	function isFormValid() : Boolean {         
+			return mx.validators.EmailValidator.isValid(this, "contactModel.email");
+        }
+       	
+       	private function saveChanges() : Void {
+       		if(isFormValid()) {
+	       		parentApp.editContactInfo(
+		        	cliente.idCliente, 
+		    		this['tiPhoneNumber'].text, //phoneNumber, 
+		    		this['tiName'].text, //name, 
+		    		this['tiEmail'].text  //email
+	    		);
+	    		this.deletePopUp();
+    		}
+        }
+		]]>
+	</mx:Script>
+	
+	<mx:Model id="contactModel">
+       <email>{tiEmail.text}</email>
+   	</mx:Model>
+	                    
+	<mx:Form fontWeight="bold" width="450">
+		<mx:Text id="lblSubtitle" width="100%" />
+		<mx:FormItem label="Tel&#233;fono:" width="100%" >
+			<mx:TextInput id="tiPhoneNumber" width="100%" maxChars="50" restrict="0-9" />
+		</mx:FormItem>
+		<mx:FormItem label="Contacto:" width="100%" >
+			<mx:TextInput id="tiName" width="100%" maxChars="50" restrict="a-z A-Z" />
+		</mx:FormItem>
+		<mx:FormItem label="Email:" width="100%" >
+			<mx:TextInput id="tiEmail" width="100%" maxChars="50" restrict="a-zA-Z0-9@\-_." />
+		</mx:FormItem>
+		<mx:FormItem direction="horizontal" width="100%" >
+			<mx:Button label="Cancelar" click="this.deletePopUp();"/>
+	        <mx:Button label="Guardar cambios" click="saveChanges();"/>
+		</mx:FormItem>
+	</mx:Form>
+	
+	<mx:EmailValidator field="contactModel.email" listener="tiEmail" 
+		invalidCharError="Email no v&#225;lido" 
+		invalidDomainError="Email no v&#225;lido"
+		invalidIPDomainError="Email no v&#225;lido"
+		invalidPeriodsInDomainError="Email no v&#225;lido"
+		missingAtSignError="Email no v&#225;lido"
+		missingPeriodInDomainError="Email no v&#225;lido"
+		missingUsernameError="Email no v&#225;lido"
+		required="false" />
+	
+</mx:TitleWindow>

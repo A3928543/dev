@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mx:VBox xmlns:mx="http://www.macromedia.com/2003/mxml" horizontalAlign="center" verticalAlign="middle" width="100%" >
+    <mx:Text text="Informaci&#243;n{newline}no disponible" selectable="false" styleName="notAvailable" width="380"/>
+</mx:VBox>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.TokenTeller"
+        table="SC_TOKEN_TELLER"
+        proxy="com.ixe.ods.sica.model.TokenTeller"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idTokenTeller"
+            column="ID_TOKEN_TELLER"
+            type="java.lang.String"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-TokenTeller.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="fechaVigencia"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="VIGENCIA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="minPrecioCompra"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="MIN_PRECIO_COMPRA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="minPrecioVenta"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="MIN_PRECIO_VENTA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="maxPrecioCompra"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="MAX_PRECIO_COMPRA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="maxPrecioVenta"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="MAX_PRECIO_VENTA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="idSpread"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_SPREAD"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="idFactorDivisa"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_FACTOR_DIVISA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="idPrecioReferencia"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_PRECIO_REFERENCIA"
+            not-null="true"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-TokenTeller.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

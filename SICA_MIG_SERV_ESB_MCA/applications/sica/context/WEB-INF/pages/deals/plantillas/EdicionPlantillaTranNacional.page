@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: EdicionPlantillaTranNacional.page,v 1.11 2008/02/22 18:25:39 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.deals.plantillas.EdicionPlantillaTranNacional">
+	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <component id="beneficiarioComboBox" type="PropertySelection">
+        <binding name="model" expression="beneficiariosModel" /> 
+	    <binding name="value" expression="plantilla.beneficiario" />
+    </component>
+    
+     <component id="formasLiquidacionComboBox" type="PropertySelection">
+        <binding name="model" expression="new com.ixe.ods.sica.components.FormasPagoLiqSelectionModel(formasLiquidacionFiltradas)" />
+        <binding name="value" expression="plantilla.mnemonico" />
+    </component>
+
+    <component id="bancosComboBox" type="PropertySelection">
+        <binding name="model" expression="bancosModel" /> 
+        <binding name="value" expression="plantilla.idBanco" />
+    </component>
+
+    <property-specification name="formasPagoLiq" type="java.util.List" persistent="yes" />
+    <property-specification name="bancosList" type="java.util.List" />    
+    <property-specification name="plantilla" type="com.ixe.ods.sica.model.IPlantillaTranNacional" persistent="yes"/>
+    <property-specification name="modoUpdate" type="boolean" persistent="yes"/>
+	<property-specification name="paginaAnterior" type="java.lang.String" persistent="yes" />
+	<property-specification name="modoSubmit" type="java.lang.String" />
+    <property-specification name="clabeOCuenta" type="java.lang.String" persistent="yes"/>
+    <property-specification name="idPersona" type="java.lang.Integer" persistent="yes"/>
+    <property-specification name="nombreCliente" type="java.lang.String" persistent="yes"/>
+    <property-specification name="selectedCuentaEje" type="java.lang.String"/>
+    <property-specification name="x" type="int" />
+    <property-specification name="y" type="int" />
+    <property-specification name="mapaEdicionPlantilla" type="java.util.HashMap" persistent="yes" />
+    <property-specification name="selectedTipoLiquidacion" type="java.lang.String" />
+    <property-specification name="mnemonico" type="java.lang.String" persistent="yes" />
+
+    <context-asset name="acceptButton" path="/images/aceptar.gif" />
+    <context-asset name="addButton" path="/images/add.gif" />
+    <context-asset name="cancelButton" path="/images/cancel.gif" />
+    <context-asset name="regresarButton" path="/images/back.gif" />
+</page-specification>

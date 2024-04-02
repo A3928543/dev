@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: DealDetailTable.jwc,v 1.9.64.1 2013/12/21 03:06:45 mejiar Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<component-specification class="com.ixe.ods.sica.components.DealDetailTable" allow-informal-parameters="no">
+
+    <parameter name="recibimos" type="boolean" direction="in" />
+    <parameter name="deal" type="com.ixe.ods.sica.model.Deal" direction="in" />
+    <parameter name="detalles" type="java.util.Collection" direction="auto" required="yes" />
+    <parameter name="total" type="double" direction="in" />
+    <parameter name="disabled" type="boolean" direction="in" required="no" />
+    <parameter name="deleteListener" type="org.apache.tapestry.IActionListener" direction="in" />
+    <parameter name="modificacionListener" type="org.apache.tapestry.IActionListener" direction="in" />
+    <parameter name="insertarFormaLiqListener" type="org.apache.tapestry.IActionListener" direction="in" />
+    <parameter name="splitListener" type="org.apache.tapestry.IActionListener" direction="in" />
+    <parameter name="area" type="boolean" direction="in" required="no" />
+
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd" lifecycle="render" />
+
+    <component id="idFormaLiquidacionInsert" type="Insert">
+        <binding name="value" expression='components.forDetalles.value.mnemonico != null ? components.forDetalles.value.mnemonico : ""' />
+    </component>
+
+    <component id="printLink" type="ServiceLink">
+    	<static-binding name="service" value="jasper" />
+    	<binding name="parameters" expression='{ "WEB-INF/jasper/ReportDeal.jasper", "ReportDeal", new java.lang.String(components.forDetalles.value.idDealPosicion) }' />
+    </component>
+
+    <property-specification name="ind" type="int" />
+
+    <context-asset name="bComisiones" path="/images/comisiones.gif" />
+    <context-asset name="editButton" path="/images/edit.gif" />
+    <context-asset name="deleteButton" path="/images/delete.gif" />
+    <context-asset name="bFormaLiq" path="/images/add_forma_liq.gif" />
+    <context-asset name="bHistorial" path="/images/historial.gif" />
+    <context-asset name="bLimpiarFormaLiq" path="/images/limpiar_forma_liq.gif" />
+    <context-asset name="bSplit" path="/images/split.gif" />
+    <context-asset name="bComprobante" path="/images/pdf_icon.png" />
+
+</component-specification>

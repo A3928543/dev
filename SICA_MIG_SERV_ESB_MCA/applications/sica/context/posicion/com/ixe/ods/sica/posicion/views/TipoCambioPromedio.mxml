@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mx:GridRow xmlns:mx="http://www.macromedia.com/2003/mxml">
+
+    <mx:NumberFormatter id="exchangeFormatter" precision="6"/>
+
+    <mx:GridItem>
+        <mx:Label text="T.C. Promedio" fontWeight="bold"/>
+    </mx:GridItem>
+    <mx:GridItem horizontalAlign="right">
+        <mx:Label text="{exchangeFormatter.format(tipoCambioCompra)}"/>
+    </mx:GridItem>
+    <mx:GridItem horizontalAlign="right">
+        <mx:Label text="{exchangeFormatter.format(tipoCambioVenta)}"/>
+    </mx:GridItem>
+
+    <mx:Script>
+        var tipoCambioCompra : Number;
+        var tipoCambioVenta : Number;
+    </mx:Script>
+</mx:GridRow>

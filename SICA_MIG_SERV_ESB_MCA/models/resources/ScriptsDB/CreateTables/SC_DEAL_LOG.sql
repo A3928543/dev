@@ -1,0 +1,27 @@
+/*
+ * $Id: SC_DEAL_LOG.sql,v 1.12 2008/02/22 18:25:13 ccovian Exp $
+ * Autor: Ricardo Legorreta H.
+ * Fecha: 03/10/2005
+ *
+ */
+
+/* Cuando se modifique la estructura de esta tabla se debera
+   de considerar la modificacion de su tabla de su historico
+   correspondiente que se llama SC_H_DEAL_LOG
+ */
+
+DROP TABLE SICA_ADMIN.SC_DEAL_LOG;
+
+CREATE TABLE SICA_ADMIN.SC_DEAL_LOG (
+  ID_DEAL_LOG NUMBER NOT NULL PRIMARY KEY
+, ID_DEAL NUMBER NOT NULL
+, NOMBRE_CAMPO VARCHAR2(100) NOT NULL
+, VALOR_PREVIO VARCHAR2(512) NOT NULL
+, VALOR_NUEVO VARCHAR2(512) NOT NULL
+, FECHA_CAMBIO DATE NOT NULL
+, ID_DEAL_POSICION NUMBER NULL
+, FOLIO_DETALLE NUMBER(2) NULL
+);
+
+CREATE PUBLIC SYNONYM SC_DEAL_LOG FOR SICA_ADMIN.SC_DEAL_LOG;
+/

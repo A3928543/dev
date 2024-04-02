@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.Corte"
+        table="SC_CORTE"
+        proxy="com.ixe.ods.sica.model.Corte"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idCorte"
+            column="ID_CORTE"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_CORTE_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Corte.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="estatusCorte"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ESTATUS_CORTE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fechaAlta"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_ALTA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="usuario"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="USUARIO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="usuarioUltMod"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="USUARIO_ULT_MOD"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="fechaUltMod"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_ULT_MOD"
+            not-null="true"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Corte.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+        <query name="findCorteById"><![CDATA[
+            FROM Corte as c where c.idCorte = ?
+        ]]></query>
+        <query name="findCorteByFechaHoy"><![CDATA[
+            FROM Corte as c where to_char(fecha_alta, 'dd/MM/yyyy') = ? and c.idCorte = ?
+        ]]></query>
+        <query name="findCortesByFechaHoy"><![CDATA[
+            FROM Corte as c where to_char(fecha_alta, 'dd/MM/yyyy') = ?
+        ]]></query>
+
+</hibernate-mapping>

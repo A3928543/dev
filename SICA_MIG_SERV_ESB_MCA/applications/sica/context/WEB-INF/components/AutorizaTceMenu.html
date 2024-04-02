@@ -1,0 +1,14 @@
+<style><!--
+.menu-item {text-decoration: none; display: block; background-color: #CCCCCC; color: #7D000D; font: 8pt Verdana; 
+	font-style: normal; border-style: solid; border-color: #7D000D; border-width: 1px; padding: 10px; margin: 0px;} 
+.menu-item:HOVER {background-color: #CCCC99;}
+--></style>
+<table>
+<tr>
+	<td><a href="#" jwcid="@ExternalLink" page="CapturaAutorizaTce" class="menu-item" >Captura Deal TC Especial</a></td>
+	<td><a href="#" jwcid="@ExternalLink" page="ConsultaAutorizaTce" class="menu-item" >Consulta Deal TC Especial</a></td>
+	<span jwcid="@Conditional" condition="ognl: !esPromocion">
+		<td><a href="#" jwcid="@ExternalLink" page="MensajeBannerTce" class="menu-item" >Publicar Mensaje Banner</a></td>
+	</span>
+</tr>
+</table>

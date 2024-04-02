@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Transaction" type="TransactionType"/>
+  <xs:complexType name="InputType">
+    <xs:sequence>
+      <xs:element type="HeaderType" name="Header"/>
+      <xs:element type="RequestsType" name="Requests"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TransactionType">
+    <xs:sequence>
+      <xs:element type="InputType" name="Input"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RegistroType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="idConf"/>
+      <xs:element type="xs:string" name="divisa"/>
+      <xs:element type="xs:string" name="folio" minOccurs="0" maxOccurs="1"/>
+      <xs:element type="xs:string" name="claveContraparte"/>
+      <xs:element type="xs:string" name="nombre"/>
+      <xs:element type="xs:string" name="rfc"/>
+      <xs:element type="xs:string" name="tipoContraparte"/>
+      <xs:element type="xs:string" name="plazo">
+        <xs:annotation>
+          <xs:documentation>CASH, TOM o SPOT CASH, TOM o SPOT</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoOper">
+        <xs:annotation>
+          <xs:documentation>COMPRA  VENTA</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="xs:string" name="monto"/>
+      <xs:element type="xs:string" name="tipo"/>
+      <xs:element type="xs:string" name="fechaConcertacion"/>
+      <xs:element type="xs:string" name="fechaLiquidacion"/>
+      <xs:element type="xs:string" name="swap"/>
+      <xs:element type="xs:string" name="folioBanxico" minOccurs="0" maxOccurs="1"/>
+      <xs:element type="xs:string" name="montoDivisa"/>
+      <xs:element type="xs:string" name="tipoCambio"/>
+      <xs:element type="xs:string" name="tipoCambioInverso"/>
+      <xs:element type="xs:string" name="folderk"/>
+      <xs:element type="xs:string" name="comentarios"/>
+      <xs:element type="xs:string" name="contraDivisa"/>
+      <xs:element type="xs:string" name="clasifOperacion"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RequestType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="ValidateFac"/>
+      <xs:element type="AltaOperacionKondorType" name="AltaOperacionKondor"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HeaderType">
+    <xs:sequence>
+    	<xs:element type="xs:string" name="NombreAplic" />
+    	<xs:element type="xs:string" name="Usuario" />
+    	<xs:element type="xs:string" name="CorrelId" minOccurs="0"
+    		maxOccurs="1" />
+    	<xs:element type="xs:string" name="Ticket" />
+    	<xs:element name="Formato" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RequestsType">
+    <xs:sequence>
+      <xs:element type="RequestType" name="Request"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AltaOperacionKondorType">
+    <xs:sequence>
+      <xs:element type="RegistroType" name="Registro" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

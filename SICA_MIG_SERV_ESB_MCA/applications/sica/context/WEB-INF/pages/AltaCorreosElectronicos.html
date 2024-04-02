@@ -1,0 +1,58 @@
+<!-- $Id: AltaCorreosElectronicos.html,v 1.2 2009/08/03 21:53:24 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Alta de Correos Electr&oacute;nicos para Facturaci&oacute;n Electr&oacute;nica.</title>
+    <link rel="StyleSheet" href="../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr valign="top">
+        <td width="300">
+            <table jwcid="@ActionPortletBorder" title="Correos registrados">
+                <font class="normal">
+                <fieldset class="normal">
+                    <legend class="legend">Aprobados para Facturaci&#243;n Electr&#243;nica</legend>
+                    <b><span jwcid="@Insert" value="ognl: persona.nombreCompleto" /></b>
+                    <br />
+                    <span jwcid="forMcs@Foreach" source="ognl: mediosContacto">
+                        <a jwcid="@Any" element="a" href="ognl: 'mailto:' + components.forMcs.value.valor">
+                            <span jwcid="@Insert" value="ognl: components.forMcs.value.valor" />
+                        </a>
+                        <span jwcid="@Conditional" condition="ognl:isMedioContactoVerificadoFE(components.forMcs.value)"><sup>*</sup></span><br />
+                    </span><br />
+                </fieldset>
+                </font>
+                <font class="title">Nota: Los correos que no tienen un <sup>*</sup> a su derecha, no han sido verificados para facturaci&oacute;n electr&oacute;nica. Favor de consultar a la mesa de control.</font>
+            </table>
+        </td>
+        <td width="1%">&nbsp;</td>
+        <td>
+            <table jwcid="@ActionPortletBorder" title="Solicitudes de Alta de Correos">
+                <table jwcid="@TableBorder" title="ognl: null" subtitles="ognl: {'Correo', 'Fecha Solicitud', 'Fecha Autorizaci\u00f3n', 'Status', 'Usuario que autoriz\u00f3'}" columnCount="ognl: 5" width="100%">
+                    <tr jwcid="forAuts@Foreach" source="ognl: mediosContactoAuts" class="ognl: beans.evenOdd.next" element="tr">
+                        <td class="normal"><span jwcid="@Insert" value="ognl: components.forAuts.value.email" /></td>
+                        <td class="normal"><span jwcid="@Insert" value="ognl: components.forAuts.value.fechaCreacion" format="ognl: fullDateFormat" /></td>
+                        <td class="normal"><span jwcid="@Insert" value="ognl: components.forAuts.value.fechaTerminacion" format="ognl: fullDateFormat" /></td>
+                        <td class="normal"><span jwcid="@Insert" value="ognl: components.forAuts.value.status" /></td>
+                        <td class="normal"><span jwcid="@Insert" value="ognl: components.forAuts.value.usuario ? components.forAuts.value.usuario.clave : ''" /></td>
+                    </tr>
+                    <tr jwcid="@Conditional" condition="ognl: mediosContactoAuts.empty" element="tr" class="normalcell">
+                        <td colspan="5" class="normal">No se encontraron autorizaciones.</td>                        
+                    </tr>
+                </table>
+                <br />
+                <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" width="100%" />
+                <div align="center">
+                    <form jwcid="@Form" listener="ognl: listeners.agregar" delegate="ognl: beans.delegate">
+                        <span class="title">Nuevo correo:</span> <input jwcid="emailTextField" /><br />
+                        <br />
+                        <input jwcid="@ImageSubmit" image="ognl: assets.bAgregar" onClick="fnShowWaitImage();"/>
+                        <a jwcid="@PageLink" page="ConsultaClientes" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bRegresar" /></a>
+                    </form>
+                </div>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

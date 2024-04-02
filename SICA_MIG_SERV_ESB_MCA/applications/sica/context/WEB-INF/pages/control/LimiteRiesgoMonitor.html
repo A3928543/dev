@@ -1,0 +1,99 @@
+<!-- $Id: LimiteRiesgoMonitor.html,v 1.16 2008/10/27 23:20:10 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Precio de Referencia</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <table jwcid="@ActionPortletBorder" title="Monitor del Riesgo de las Operaciones Cambiarias">
+        <form jwcid="@Form" listener="ognl: listeners.cambiarDivisaLimites">
+        <fieldset>
+            <legend class="legend">Posici&oacute;n</legend>
+            <table width="100%">
+                <tr class="title">
+                    <td nowrap>L&iacute;mite regulatorio:  <span jwcid="@Insert" value="ognl: limiteRegulatorio" format = "ognl: moneyFormat" /></td>
+                    <td nowrap>Mid-Spot:  <span jwcid="@Insert" value="ognl: midSpot" format="ognl: currencyFormat" /></td>
+                    <td nowrap>Nivel:  <span jwcid="@Insert" value="ognl: nivel" format = "ognl: moneyFormat" /> USD</td>
+                    <td nowrap>Consumo:  <span jwcid="@Insert" value="ognl: (nivel * 100 / limiteRegulatorio)" format = "ognl: moneyFormat" /> %</td>
+                    <td nowrap>
+                        <span jwcid="@contrib:Choose">
+                             <span jwcid="@contrib:When" condition="ognl: nivel > limiteRegulatorio" >
+                                 <img jwcid="@Image" image="ognl:assets.limRiesgoRegExcedidoButton" alt="Límite Regulatorio Excedido"/>
+                             </span>
+                             <span jwcid="@contrib:When" condition="ognl: (nivel * 100 / limiteRegulatorio) > porcentajeAvisoGlobal && (nivel * 100/ limiteRegulatorio) < porcentajeAlarmaGlobal" >
+                                 <img jwcid="@Image" image="ognl:assets.porcAvisosExcedidoButton" alt="Límite Regulatorio Excedido"/>
+                             </span>
+                             <span jwcid="@contrib:When" condition="ognl: (nivel * 100 / limiteRegulatorio) > porcentajeAlarmaGlobal && nivel < limiteRegulatorio" >
+                                <img jwcid="@Image" image="ognl:assets.porcAlarmExcedidoButton" alt="Límite Regulatorio Excedido"/>
+                             </span>
+                             <span jwcid="@contrib:When" condition="ognl: nivel < limiteRegulatorio && (nivel * 100/limiteRegulatorio) < porcentajeAvisoGlobal && (nivel * 100/limiteRegulatorio) < porcentajeAlarmaGlobal" >
+                                <img jwcid="@Image" image="ognl:assets.dentroLimButton" alt="Dentro de los Límites"/>
+                             </span>
+                             <span jwcid="@contrib:Otherwise">
+                                <img jwcid="@Image" image="ognl:assets.noValidarLimButton" alt="No se Validó"/>
+                             </span>
+                        </span>
+                    </td>
+                </tr>
+                <tr class="title">
+                   <td nowrap>Estado del Sistema:  <span jwcid="@Insert" value="ognl: estadoSica" raw="yes"/></td>
+                </tr>
+            </table>
+        </fieldset>
+        <br />
+        <span jwcid="@Conditional" condition="ognl: posicionesMesas">
+            <span jwcid="forPms@Foreach" source="ognl: posicionesMesas" value="ognl: currentPosicionMesaDto">
+                <fieldset>
+                    <legend class="legend"><span jwcid="@Insert" value="ognl: currentPosicionMesaDto.mesaCambio.nombre">Operaci&oacute;n</span></legend>
+                    <br />
+                    <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: valorFuturo ? { "Divisa", "Factor Divisa", "Posici&oacute;n Inicial", "CASH", "TOM", "SPOT", "72HR", "96HR", "Posici&oacute;n Final", "Utilidad M.N." } : { "Divisa", "Factor Divisa", "Posici&oacute;n Inicial", "CASH", "TOM", "SPOT", "72HR", "Posici&oacute;n Final", "Utilidad M.N." }' columnCount="ognl: valorFuturo ? 10 :9" width="100%">
+                        <tr jwcid="forFDs@Foreach" source="ognl: currentPosicionMesaDto.posiciones" element="tr" class="ognl: beans.evenOdd.next" align="center">
+                            <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forFDs.value.divisa.idDivisa + (components.forFDs.value.divisa.idDivisa.equals('Total:') ? ' (USD)' : '')" raw="yes" /></td>
+                            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forFDs.value.factorDivisa" format = "ognl: currencyFormat"/></td>
+                            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forFDs.value.posicionInicial" format = "ognl: moneyFormat"/></td>
+                            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forFDs.value.cash" format = "ognl: moneyFormat"/></td>
+                            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forFDs.value.tom" format = "ognl: moneyFormat"/></td>
+                            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forFDs.value.spot" format = "ognl: moneyFormat"/></td>
+                            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forFDs.value.hr72" format = "ognl: moneyFormat"/></td>
+                            <td jwcid="@Conditional" condition="ognl: valorFuturo" element="td" class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forFDs.value.vFut" format = "ognl: moneyFormat"/></td>
+                            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forFDs.value.posicionFinal" format = "ognl: moneyFormat"/></td>
+                            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forFDs.value.utilidadMn" format = "ognl: moneyFormat"/></td>
+                        </tr>
+                    </table>
+                    <br />
+                    <fieldset>
+                        <legend class="legend">L&iacute;mites</legend>
+                        <span class="title">Divisa:</span>
+                        <select jwcid="@PropertySelection"
+                                model="ognl: new com.legosoft.tapestry.model.RecordSelectionModel(components.forPms.value.divisasDisponibles, 'idDivisa', 'descripcion')"
+                                value="ognl: components.forPms.value.divisaSeleccionada"
+                                onChange="fnDisableForm(this.form); return false;">
+                            <option>USD</option>
+                        </select>
+                        <br /><br />
+                        <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "Concepto","L&iacute;mite","Nivel","Consumo", "Estado" }' columnCount="8" width="100%">
+                            <tr jwcid="forLimites@Foreach" source="ognl: currentPosicionMesaDto.limites" element="tr" class="ognl: beans.evenOdd.next" align="center">
+                                <td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forLimites.value.tipoLimite.nombre" raw="yes" /></td>
+                                <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forLimites.value.limite" format="ognl: moneyFormat"  raw="yes" /></td>
+                                <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forLimites.value.nivel" format = "ognl: moneyFormat" raw="yes" /></td>
+                                <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forLimites.value.porcentajeConsumo" format = "ognl: moneyFormat" raw="yes" />%</td>
+                                <td class="normal" align="center">
+                                    <img jwcid="@Image" image="ognl: components.forLimites.value.estado == 4 ? assets.limRiesgoRegExcedidoButton : components.forLimites.value.estado == 3 ? assets.porcAvisosExcedidoButton : components.forLimites.value.estado == 2 ? assets.porcAlarmExcedidoButton : components.forLimites.value.estado == 1 ? assets.dentroLimButton : assets.noValidarLimButton"
+                                         alt="ognl: components.forLimites.value.estado == 4 ? 'Límite Excedido' : components.forLimites.value.estado == 3 ? 'Porcentaje de Avisos Excedido' : components.forLimites.value.estado == 2 ? 'Porcentaje de Alarmas Excedido' : components.forLimites.value.estado == 1 ? 'Dentro de los límites' : 'No validado'"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </fieldset>
+                <br />
+            </span>
+       </span>
+        <br />
+        <div align="center">
+            <a jwcid="@DirectLink" listener="ognl:listeners.refrescarMonitor" onclick="fnDisableForm(document.forms[0]); return false;"><img jwcid="@Image" image="ognl: assets.refreshButton" border="0" /></a>
+            <a jwcid="@DirectLink" listener="ognl:listeners.imprimirReporteLimiteRiesgoXls" parameters= 'ognl: {"WEB-INF/jasper/ReporteLimiteRiesgo.jasper", "RepporteLimiteRiesgo", "0" }'><img jwcid="@Image" image="ognl: assets.exportButton" border="0" /></a>
+        </div>
+        </form>
+    </table>
+</body>
+</html>

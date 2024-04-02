@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ReporteLinCredAutMC.page,v 1.12 2008/12/26 23:17:32 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.reportes.ReporteLinCredAutMC">
+
+  	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+  	<bean name="delegates" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+    
+    <bean name="doubleValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+        <set-property name="minimum" expression="0"/>
+    </bean>
+    
+   <component id="fechaComboBox" type="PropertySelection">
+        <binding name="model" expression='fecha' />
+        <binding name="value" expression="fechaSeleccionada" />
+    </component>    
+    
+    <component id="promotorSolicitudComboBox" type="PropertySelection">
+        <binding name="model" expression="promotoresModel" />
+        <binding name="value" expression="promotor" />
+    </component>
+    
+     <component id="printLink" type="ServiceLink">
+    	<static-binding name="service" value="jasper" />
+    	<binding name="parameters" expression='new java.lang.String[] { "WEB-INF/jasper/ReporteLinCredAutCompleto.jasper", "ReporteLinCredAutCompleto", "0" }' />
+    </component>  
+    
+    <property-specification name="estatus" type="java.lang.String" persistent="yes" initial-value="" />
+    <property-specification name="lineasCredito" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" />
+    <property-specification name="modo" type="java.lang.String" persistent="yes" />
+    <property-specification name="promotor" type="java.util.HashMap" persistent="yes" />  
+  	<property-specification name="promotoresList" type="java.util.List" persistent="yes" />
+ 	<property-specification name="jefe" type="boolean" initial-value="false" persistent="yes" />
+    <property-specification name="observaciones" type="java.lang.String" persistent="yes"/>
+    <property-specification name="titleActionPortletBorder" type="java.lang.String" persistent="yes"/>       
+    <property-specification name="razonSocial" type="java.lang.String" persistent="yes"/>
+    <property-specification name="nombre" type="java.lang.String" initial-value="" />
+    <property-specification name="paterno" type="java.lang.String" initial-value="" />
+    <property-specification name="materno" type="java.lang.String" initial-value="" />
+    
+    <property-specification name="fechaSeleccionada" type="java.lang.String" persistent="yes" />
+    <property-specification name="estadoLinea" type="java.lang.Double" persistent="yes" />
+    <property-specification name="diasVencimiento" type="int" persistent="yes" />
+    <property-specification name="movimientosLinea" type="int" persistent="yes" />
+    <property-specification name="porcentajeUso" type="int" persistent="yes" />
+    <property-specification name="desProdFech" type="boolean"/>
+    <property-specification name="desRadio" type="boolean"/>
+    <property-specification name="resultadosLineasCredito" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()" /> 
+	<property-specification name="criterioSeleccionado" type="int" persistent="yes"/>
+	
+    <context-asset name="insertButton" path="/images/add.gif" />
+    <context-asset name="searchButton" path="/images/search.gif" />
+    <context-asset name="verPdfButton" path="/images/ver_pdf.gif" />
+	<context-asset name="verXlsButton" path="/images/ver_excel.gif" />
+</page-specification>

@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<project name="OMMConsumer" default="build-all" basedir=".">
+
+    <property name="root.dir" value="${basedir}/../.."/>
+
+    <property file="${root.dir}/config/common.properties"/>
+	
+    <path id="project.classpath">
+        <pathelement location="${root.lib.dir}/rfa/rfa.jar" />
+    	<pathelement location="${root.lib.dir}/jakarta/log4j-1.2.7.jar" />
+    	<pathelement location="${resources.dir}/project_specific_libs/jakarta/*.jar" />
+    	<fileset dir="${resources.dir}/project_specific_libs/spring">
+    		<include name="**/*.jar"/>
+    	</fileset>
+    	<fileset dir="${root.lib.dir}/javamail">
+    		<include name="**/*.jar"/>
+    	</fileset>
+    </path>
+
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${classes.dir}"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${classes.dir}"/>
+    	<delete dir="${dist.dir}/SicaOMMConsumer"/>
+    </target>
+
+    <target name="compile" depends="init" description="Compile all classes in the framework.">
+        <javac destdir="${classes.dir}" debug="on" compiler="modern" target="1.6">
+            <src path="${src.dir}"/>
+            <classpath refid="project.classpath"/>
+        </javac>
+    </target>
+
+    <target name="build-all" depends="compile">
+
+    	<mkdir dir="${dist.dir}/SicaOMMConsumer/resources/RDM" />
+    	<mkdir dir="${dist.dir}/SicaOMMConsumer/lib" />
+    	<mkdir dir="${dist.dir}/SicaOMMConsumer/logs" />
+    	
+    	<!-- Solo para pruebas -->
+    	<!--<copy todir="${classes.dir}">
+    	    		<fileset dir="${resources.dir}">
+    	    			<include name="log4j.xml" />
+    	    	    </fileset>
+    	    	</copy>-->
+
+        <jar jarfile="${dist.dir}/SicaOMMConsumer/SicaOMMConsumer.jar" basedir="${classes.dir}" manifest="META-INF/MANIFEST.MF">
+            <include name="**/rmds/" />
+        	<!--<include name="log4j.xml" />-->
+        </jar>
+
+        <copy todir="${dist.dir}/SicaOMMConsumer/lib">
+            <fileset dir="${root.lib.dir}/rfa">
+                <include name="rfa.jar" />
+            </fileset>
+            <fileset dir="${root.lib.dir}/jakarta">
+                <include name="log4j-1.2.7.jar" />
+            </fileset>
+        	<fileset dir="${resources.dir}/project_specific_libs/jakarta">
+        		<include name="*.jar" />
+        	</fileset>
+        	<fileset dir="${resources.dir}/project_specific_libs/spring">
+        		<include name="*.jar" />
+        	</fileset>
+        	<fileset dir="${root.lib.dir}/runtime">
+        		<include name="ojdbc14_g.jar" />
+        	</fileset>
+        	<fileset dir="${root.lib.dir}/javamail">
+        		<include name="*.jar" />
+        	</fileset>
+        </copy>
+    	
+    	<copy todir="${dist.dir}/SicaOMMConsumer/resources">
+    		<fileset dir="${resources.dir}">
+    	    	<include name="logging.properties" />
+    	        <include name="SICA_RMDSConnectionProperties.xml" />
+    			<include name="log4j.xml" />
+    			<include name="applicationContext.xml" />
+    			<include name="jdbc.properties" />
+    			<include name="mail.properties" />
+    	    </fileset>
+    	</copy>
+    	
+    	<copy todir="${dist.dir}/SicaOMMConsumer/resources/RDM">
+    		<fileset dir="${resources.dir}/RDM">
+    	   		<include name="enumtype.def" />
+    	    	<include name="RDMFieldDictionary" />
+    	   	</fileset>       
+    	</copy>
+
+        <copy todir="${dist.dir}/SicaOMMConsumer">
+            <fileset dir="${resources.dir}">
+                <include name="SicaOMMConsumer.sh" />
+            </fileset>
+        </copy>
+
+    </target>
+
+</project>

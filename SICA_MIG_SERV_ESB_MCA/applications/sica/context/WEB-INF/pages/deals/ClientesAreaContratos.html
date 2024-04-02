@@ -1,0 +1,1241 @@
+<html jwcid="@Shell" stylesheet="ognl:assets.stylesheet" title="Sistema de Cambios" delegate="ognl: page.visit">
+	<head jwcid="$remove$">
+		<title>B&uacute;squeda de Clientes</title>
+		<link rel="StyleSheet" href="../../../css/ixe.css">
+	</head>
+	<body jwcid="@PageBorder">
+		<table width="95%" align="center">
+			<tr>
+				<td width="100%">
+					<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level="ognl: level" />
+				</td>
+			</tr>
+			<tr>
+				<td  width="100%">
+					<span jwcid="@Conditional" condition="ognl: @com.ixe.ods.sica.pages.ClientesAreaContratos@VER_SECCION_BUSQUEDA.equals(seccion)">
+						<form jwcid="@Form" listener="ognl: listeners.cambiarTipoPersona">
+							<table width="100%" align="center" jwcid="@ActionPortletBorder" title="B&uacute;squeda de Clientes">
+								<tr>
+									<td>
+										<span>
+											<table width="100%" align="center">
+												<tr>
+													<td align="right" width="335" class="title">Tipo de Persona:</td>
+												    <td align="left">
+												    	<select jwcid="@PropertySelection" model="ognl: comboTiposPersona" 
+									        						value="ognl: fisicaMoral"  
+									        						onChange="fnShowWaitImage(); this.form.submit();" />
+									        		</td>
+									        	</tr>
+									        </table>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span>
+											<fieldset class="normal">
+												<legend class="legend">CRITERIO DE B&Uacute;SQUEDA RECOMENDADO</legend>
+												<table width="100%" align="center">
+													<tr>
+														<td align="right" width="320" class="title">RFC:</td>
+														<td align="left">
+															<input jwcid="@ixe:UppercaseTextField" maxLength="13"
+																size="30" class="uppercase" value="ognl: rfc" />
+															<span jwcid="@contrib:FormConditional"
+																condition='ognl: (modoBusqueda == true) && (("FISICA".equals(fisicaMoral) && (rfc.trim().length() != 10 && rfc.trim().length() != 13)) ||
+																                  ("MORAL".equals(fisicaMoral) && (rfc.trim().length() != 9 && rfc.trim().length() != 12)))'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<td align="right" class="title">
+															No. Cuenta/Contrato Casa de Bolsa:
+														</td>
+														<td>
+															<input jwcid="@ixe:UppercaseTextField" maxLength="15"
+																size="80" class="uppercase" value="ognl: noCuenta" />
+															<span jwcid="@contrib:FormConditional"
+																condition='ognl: modoBusqueda == true && noCuenta.trim().length() &lt; 3'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+												</table>
+											</fieldset>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<fieldset class="normal">
+											<legend class="legend">CRITERIOS DE B&Uacute;SQUEDA ADICIONALES</legend>
+											<span jwcid="@contrib:FormConditional" condition='ognl: "FISICA".equals(fisicaMoral)'>
+												<table width="100%" align="center">
+													<tr>
+														<td align="right" width="320" class="title">
+															Apellido Paterno:
+														</td>
+														<td>
+															<input jwcid="@ixe:UppercaseTextField" maxLength="80" size="80" class="uppercase" value="ognl: paterno" />
+															<span jwcid="@contrib:FormConditional"
+																  condition='ognl: (modoBusqueda == true) && (paterno.trim().equals("") || paterno.trim().length() &lt; 2
+		                                    								|| !paterno.trim().matches("[A-Za-z \u00E1\u00E9\u00ED\u00F3\u00FA\u00F1\u00C1\u00C9\u00CD\u00D3\u00DA\u00D1]*"))'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<td align="right" width="320" class="title">
+															Apellido Materno:
+														</td>
+														<td>
+															<input jwcid="@ixe:UppercaseTextField" maxLength="80" size="80" class="uppercase" value="ognl: materno" />
+															<span jwcid="@contrib:FormConditional"
+																  condition='ognl: (modoBusqueda == true) && (materno.trim().length() &gt; 0
+		                                    								&& !materno.trim().matches("[A-Za-z \u00E1\u00E9\u00ED\u00F3\u00FA\u00F1\u00C1\u00C9\u00CD\u00D3\u00DA\u00D1]*"))'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<td align="right" width="320" class="title">
+															Nombre:
+														</td>
+														<td>
+															<input jwcid="@ixe:UppercaseTextField" maxLength="80" size="80" class="uppercase" value="ognl: nombre" />
+															<span jwcid="@contrib:FormConditional"
+																condition='ognl: (modoBusqueda == true) && (nombre.trim().equals("") || nombre.trim().length() &lt; 2
+		                                    							  || !nombre.trim().matches("[A-Za-z \u00E1\u00E9\u00ED\u00F3\u00FA\u00F1\u00C1\u00C9\u00CD\u00D3\u00DA\u00D1]*"))'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+												</table>
+											</span>
+											<span jwcid="@contrib:FormConditional" condition='ognl: "MORAL".equals(fisicaMoral)'>
+												<table width="100%">
+													<tr>
+														<td align="right" width="320" class="title">Raz&oacute;n Social:</td>
+														<td>
+															<input jwcid="@ixe:UppercaseTextField" maxLength="120"
+																   size="80" class="uppercase" value="ognl: razonSocial" />
+															<span jwcid="@contrib:FormConditional"
+																  condition='ognl: (modoBusqueda == true) && (razonSocial.trim().equals("") || razonSocial.trim().length() &lt; 3
+	                                    								  ||	!razonSocial.trim().matches("[A-Za-z0-9.,& \u00E1\u00E9\u00ED\u00F3\u00FA\u00F1\u00C1\u00C9\u00CD\u00D3\u00DA\u00D1]*"))'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+												</table>
+											</span>
+										</fieldset>
+									</td>
+								</tr>
+								<tr>
+									<td align="center">
+										<br>
+										<!-- div align="center">
+											<a jwcid="@DirectLink" listener="ognl: listeners.buscarCliente" onClick="fnShowWaitImage();">
+												<img jwcid="@Image" image="ognl: assets.buscarButton" border="0" /> 
+											</a>
+										</div-->
+										<input jwcid="@ImageSubmit" image="ognl: assets.buscarButton" listener="ognl: listeners.buscarCliente" 
+										       onClick="fnShowWaitImage();"/>
+									<td>
+								</tr>
+							</table>
+						</form>
+					</span>
+					
+					<span jwcid="@Conditional" condition="ognl: @com.ixe.ods.sica.pages.ClientesAreaContratos@VER_SECCION_CLIENTES.equals(seccion)">
+						<table width="100%" align="center" jwcid="@ActionPortletBorder" title="Clientes">
+							<tr>
+								<td>
+									<table jwcid="@TableBorder" title="ognl: null" subtitles="ognl: getNombresColumnasClientes()"
+								           columnCount="ognl: noColumnasClientes" width="100%">
+								           <tr jwcid="forClientes@Foreach" source="ognl: personasBUP" element="tr" 
+								               class="ognl: beans.evenOdd.next">
+								           		<td class="normal" align="left" width="ognl: '30%'">
+													<span jwcid="@Insert" value="ognl: components.forClientes.value.nombreCompleto" raw="yes" />
+												</td>
+												<td class="normal" align="left" width="ognl: '30%'">
+													<span jwcid="@Insert" value="ognl: components.forClientes.value.rfc" raw="yes" />
+												</td>
+												<td class="normal" align="center" width="20%">
+													<a href="#" jwcid="@DirectLink" listener="ognl:listeners.mostrarDatosCliente"
+												       parameters='ognl: { components.forClientes.value.idPersona, components.forClientes.value.nombreCompleto, 
+												                           components.forClientes.value.rfc, components.forClientes.value.tipoPersona}'
+													   onClick="fnShowWaitImage();">Datos generales y regulatorios del cliente</a>
+												</td>
+												<td class="normal" align="center" width="20%">
+													<a href="#" jwcid="@DirectLink" listener="ognl:listeners.consultarDireccionesCliente"
+												       parameters='ognl: { components.forClientes.value.idPersona, components.forClientes.value.nombreCompleto,
+												                           components.forClientes.value.rfc}'
+													   onClick="fnShowWaitImage();">Direcci&oacute;n</a>
+												</td>
+												<td class="normal" align="center" width="20%">
+													<a href="#" jwcid="@DirectLink" listener="ognl:listeners.consultarMediosContacto"
+												       parameters='ognl: { components.forClientes.value.idPersona, components.forClientes.value.nombreCompleto,
+												       					   components.forClientes.value.rfc}'
+													   onClick="fnShowWaitImage();">Medios de contacto</a>
+												</td>
+												<td class="normal" align="center" width="20%">
+													<span jwcid="@contrib:Choose">
+														<span jwcid="@contrib:When" condition='ognl: clavesReferencia == null || !clavesReferencia.containsKey(components.forClientes.value.idPersona)'>
+															<a href="#" jwcid="@DirectLink" listener="ognl:listeners.consultarClaveReferencia"
+														       parameters='ognl: { components.forClientes.value.idPersona}'
+															   onClick="fnShowWaitImage();">Referencia</a>
+														</span>
+														<span jwcid="@contrib:When" condition='ognl: clavesReferencia != null && clavesReferencia.containsKey(components.forClientes.value.idPersona)'>
+															<span jwcid="@Insert" value='ognl: clavesReferencia.get(components.forClientes.value.idPersona).toString()' raw="yes" />
+														</span>
+													</span>
+												</td>
+								           </tr>
+								    </table>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div align="center">
+										<a jwcid="@DirectLink" listener="ognl:listeners.activate" onClick="fnShowWaitImage();">
+											<img jwcid="@Image" image="ognl: assets.backButton" border="0" /> 
+										</a>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</span>
+					 
+					<span jwcid="@Conditional" condition="ognl: @com.ixe.ods.sica.pages.ClientesAreaContratos@VER_SECCION_MODIFICACION_CLIENTES.equals(seccion)">
+						<table width="100%" align="center" jwcid="@ActionPortletBorder" title="Modificaci&oacute;n de datos del cliente">
+							<tr>
+								<td>
+								 	<span jwcid="@contrib:Choose">
+								 		<span jwcid="@contrib:When" condition='ognl: "FISICA".equals(fisicaMoral)'>
+								 			<form jwcid="@Form" listener="ognl: listeners.actualizarComboActividadEconomica">
+												<table>
+													<tr>
+														<td align="right" width="330" class="title">Nombre:</td>
+														<td>
+															<input jwcid="@ixe:UppercaseTextField" maxLength="80" size="80" class="uppercase" value="ognl: nombre" />
+															<span jwcid="@Conditional"
+																  condition='ognl:faltaNombre == true'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<td align="right" width="330" class="title">Apellido Paterno:</td>
+														<td>
+															<input jwcid="@ixe:UppercaseTextField" maxLength="80" size="80" class="uppercase" value="ognl: paterno" />
+															<span jwcid="@Conditional"
+																  condition='ognl:faltaPaterno == true'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<td align="right" width="330" class="title">Apellido Materno:</td>
+														<td>
+															<input jwcid="@ixe:UppercaseTextField" maxLength="80" size="80" class="uppercase" value="ognl: materno" />
+															<span jwcid="@Conditional"
+																  condition='ognl:faltaMaterno == true'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<td align="right" width="330" class="title">Sector Econ&oacute;mico:</td>
+														<td>
+															<select jwcid="@PropertySelection" model="ognl: sectorBanxicoModel" value="ognl: sectorBanxico" />
+															<span jwcid="@Conditional"
+																condition='ognl:faltaSector == true'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<td align="right" width="330" class="title">Giro Econ&oacute;mico:</td>
+														<td>
+															<select jwcid="@PropertySelection" model="ognl: giroEconomicoModel" value="ognl: giroEconomico" 
+															        onChange="fnShowWaitImage(); this.form.submit();" />
+															<span jwcid="@Conditional"
+																condition='ognl:faltaGiro == true'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<td align="right" width="330" class="title">Actividad Econ&oacute;mica:</td>
+														<td>
+															<span jwcid="selectItem" />
+															<span jwcid="@Conditional"
+																condition='ognl:faltaActividad == true'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<td align="right" width="330" class="title">Nacionalidad:</td>
+														<td>
+															<select jwcid="@PropertySelection" model="ognl: catalogoNacionalidad" value="ognl: nacionalidad" 
+																onChange="fnShowWaitImage(); this.form.submit();"/>
+															<span jwcid="@Conditional"
+																condition='ognl:faltaNacionalidad == true'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<td align="right" class="title">Pa&iacute;s de nacimiento:&nbsp;</td>
+														<td>
+															<select jwcid="@PropertySelection" model="ognl: catalogoPais" value="ognl: paisNacimiento" />
+														</td>
+													</tr>
+													<tr>
+														<td align="right" width="330" class="title">Lugar de Nacimiento:</td>
+														<td>
+															<input jwcid="@ixe:UppercaseTextField" maxLength="30" size="72" class="uppercase" value="ognl: lugarNacimiento" />
+														</td>
+													</tr>
+													<tr>
+														<td align="right" width="330" class="title">RFC:</td>
+														<td>
+															<input jwcid="@ixe:UppercaseTextField" maxLength="13" size="30" class="uppercase" value="ognl: rfc" />
+															<span jwcid="@Conditional"
+																  condition='ognl:faltaRfc == true'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<td align="right" width="330" class="title">
+															<span jwcid="@contrib:FormConditional" 	condition='ognl: nacionalidadMexicana'>
+																CURP:
+															</span>
+															<span jwcid="@contrib:FormConditional" 	condition='ognl: !nacionalidadMexicana'>
+																Identificador de Extranjero:
+															</span>
+														</td>
+														<td>
+															<span jwcid="@contrib:FormConditional" 	condition='ognl: nacionalidadMexicana'>
+																<input jwcid="@ixe:UppercaseTextField" maxLength="18" size="30" class="uppercase" value="ognl: curp" />
+															</span>
+															<span jwcid="@contrib:FormConditional" 	condition='ognl: !nacionalidadMexicana'>
+																<input jwcid="@ixe:UppercaseTextField" maxLength="15" size="30" class="uppercase" value="ognl: idExtranjero" />
+															</span>
+															<span jwcid="@Conditional"
+																condition='ognl:faltaCurp == true'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+															<span jwcid="@Conditional"
+																condition='ognl:faltaIdExtranjero == true'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+												<span jwcid="@contrib:FormConditional" 	condition="ognl: direccionPaisExtranjero ">
+													<tr>
+														<td align="right" width="330" class="title">NIT:</td>
+														<td>
+															<input jwcid="@ixe:UppercaseTextField" maxLength="40"  id="nit" size="40" value="ognl: nit"  />
+															<span jwcid="@contrib:FormConditional" 
+																condition='ognl: (requiereNit && (nit.trim().equals("") || nit.trim().length() != 9	|| !nit.trim().matches("[0-9]*") )) '>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+												</span>
+													<tr>
+														<td align="right" width="330" class="title">Fecha de Nacimiento:</td>
+														<td>
+															<span jwcid="@ls:DatePicker" value="ognl: fechaNacimiento" format="dd-MM-yyyy" size="10" /> 
+															<span jwcid="@ls:DatePickerColophon" /> 
+															<span jwcid="@Conditional" condition='ognl:faltaFechaNacimiento == true'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<td align="right" width="330" class="title">Estado Civil:</td>
+														<td>
+															<select jwcid="@PropertySelection" model="ognl: estadoCivilModel" value="ognl: estadoCivil" />
+														</td>
+													</tr>
+													<tr>
+		                                                <td align="right" width="330" class="title">Sexo:</td>
+														<td class="title" align="left">
+															<span jwcid="@RadioGroup" selected="ognl: sexo">
+																<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.pages.ClientesAreaContratos@SEXO_MASCULINO"/>Masculino
+																<input type="radio" jwcid="@Radio" value="ognl: @com.ixe.ods.sica.pages.ClientesAreaContratos@SEXO_FEMENINO"/>Femenino
+															</span>
+														</td>
+		                                            </tr>
+		                                            <tr>
+														<td align="right" width="330" class="title">Tipo de Comprobante:</td>
+														<td>
+															<select jwcid="@PropertySelection" model="ognl: catalogoTipoDocumento" value="ognl: tipoDocumento" />
+															<span jwcid="@Conditional"
+																condition='ognl:faltaTipoDocumento == true'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+		                                            <tr>
+														<td align="right" width="330" class="title">Numero de Comprobante:</td>
+														<td>
+															<input jwcid="@ixe:UppercaseTextField" maxLength="20" size="30" class="uppercase" value="ognl: numDocumento" />
+															<span jwcid="@Conditional"
+																condition='ognl:faltaNumDocumento == true'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+		                                            <tr>
+		                                                <td align="right" class="title">Facturaci&oacute;n Electr&oacute;nica:</td>
+														<td class="title">
+															<input jwcid="@Checkbox" selected="ognl: facturacionElectronica" />
+														</td>
+		                                            </tr>
+												</table>
+												<br/>
+												<table align="center">
+													<tr>
+														<td align="right">
+															<span jwcid="@LinkSubmit" listener="ognl:listeners.modificarDatosGralesRegulatoriosCliente" onClick="fnShowWaitImage();">
+																<img jwcid="@Image" image="ognl: assets.guardarButton" border="0" />
+															</span>
+														</td>
+														<td align="left">
+															<a jwcid="@DirectLink" listener="ognl:listeners.activate" onClick="fnShowWaitImage();">
+																<img jwcid="@Image" image="ognl: assets.backButton" border="0" /> 
+															</a>
+														</td>
+													</tr>
+												</table>
+											</form>
+								 		</span>
+								 		<span jwcid="@contrib:When" condition='ognl: "MORAL".equals(fisicaMoral)'>
+											<form jwcid="@Form" listener="ognl: listeners.ocultarMostrarSeccionRegulatoria">
+												<table align="center" width="100%">
+													<tr>
+														<td>
+															<fieldset class="normal">
+																<legend class="legend">INFORMACI&Oacute;N GENERAL DEL CLIENTE</legend>
+																<table>
+																	<tr>
+																		<td align="right" width="300" class="title">Raz&oacute;n Social:</td>
+																		<td>
+																			<input jwcid="@ixe:UppercaseTextField" maxLength="120" size="80" class="uppercase" value="ognl: razonSocial"/>
+																			<span jwcid="@contrib:Choose">
+																				<span jwcid="@contrib:When" condition='ognl:faltaRazonSocial == true'>
+																					<img src="images/error.gif" width="16" height="16" />
+																				</span>	
+																			</span>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="right" width="300" class="title">Sector Econ&oacute;mico:</td>
+																		<td>
+																			<select jwcid="@PropertySelection" model="ognl: sectorBanxicoModel" value="ognl: sectorBanxico" />
+																			<span jwcid="@contrib:FormConditional"
+																				condition="ognl:faltaSector">
+																				<img src="images/error.gif" width="16" height="16" /> 
+																			</span>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="right" width="300" class="title">Nacionalidad:</td>
+																		<td>
+																			<select jwcid="@PropertySelection" model="ognl: catalogoNacionalidad" value="ognl: nacionalidad" 
+																				onChange="fnShowWaitImage(); this.form.submit();"/>
+																			<span jwcid="@contrib:FormConditional" condition="ognl:faltaNacionalidad">
+																				<img src="images/error.gif" width="16" height="16" /> 
+																			</span>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="right" width="300" class="title">RFC:</td>
+																		<td>
+																			<input jwcid="@ixe:UppercaseTextField" maxLength="13" size="14" class="uppercase" value="ognl: rfc" id="rfc" />
+																			<span jwcid="@contrib:FormConditional" condition="ognl:faltaRfc">
+																				<img src="images/error.gif" width="16" height="16" /> 
+																			</span>
+																		</td>
+																	</tr>
+																	<span jwcid="@contrib:FormConditional" 	condition='ognl: !nacionalidadMexicana'>
+																		<tr>
+																			<td align="right" width="300" class="title">
+																				Identificador de Extranjero:
+																			</td>
+																			<td>
+																				<input jwcid="@ixe:UppercaseTextField" maxLength="14" size="30" class="uppercase" value="ognl: idExtranjero" />
+																				<span jwcid="@Conditional" condition='ognl:faltaIdExtranjero == true'>
+																					<img src="images/error.gif" width="16" height="16" /> 
+																				</span>
+																			</td>
+																		</tr>
+																	</span>
+																	<span jwcid="@contrib:FormConditional" 	condition="ognl: direccionPaisExtranjero ">
+																		<tr>
+																			<td align="right" width="330" class="title">NIT:</td>
+																			<td>
+																				<input jwcid="@ixe:UppercaseTextField" maxLength="40"  id="nit" size="40" value="ognl: nit"  />
+																				<span jwcid="@contrib:FormConditional" 
+																					condition='ognl: (requiereNit && (nit.trim().equals("") || nit.trim().length() != 9	|| !nit.trim().matches("[0-9]*") )) '>
+																					<img src="images/error.gif" width="16" height="16" /> 
+																				</span>
+																			</td>
+																		</tr>
+																	</span>
+																	<tr>
+																		<td align="right" width="300" class="title">Fecha de Constituci&oacute;n:</td>
+																		<td>
+																			<span jwcid="@ls:DatePicker" value="ognl: fechaNacimiento" format="dd-MM-yyyy" size="10" /> 
+																			<span jwcid="@contrib:FormConditional" condition='ognl: verCamposRegulatorios == false'>
+																				<span jwcid="@ls:DatePickerColophon" /> 
+																			</span> 
+																			<span jwcid="@contrib:FormConditional" condition="ognl:faltaFechaNacimiento">
+																					<img src="images/error.gif" width="16" height="16" /> 
+																			</span>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="right" class="title">Facturaci&oacute;n Electr&oacute;nica:</td>
+																		<td class="title">
+																			<input jwcid="@Checkbox" selected="ognl: facturacionElectronica"/>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td align="left" width="200" class="title"><br/>Apoderado Legal</td>
+																	</tr>
+																	<tr>
+																		<td align="right" width="300" class="title">Nombre:&nbsp;</td>
+																		<td>
+																			<input jwcid="@ixe:UppercaseTextField" maxLength="80" size="80" class="uppercase" value="ognl: apoderadoNombre"/>
+																			<span jwcid="@contrib:FormConditional" condition='ognl:faltaNombreApoderado'>
+																				<img src="images/error.gif" width="16" height="16" /> 
+																			</span>    
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="right" width="300" class="title">Apellido Paterno:&nbsp;</td>
+																		<td>
+																			<input jwcid="@ixe:UppercaseTextField" maxLength="80" size="80" class="uppercase" value="ognl: apoderadoPaterno"/>
+																			<span jwcid="@contrib:FormConditional" condition='ognl:faltaPaternoApoderado'>
+																				<img src="images/error.gif" width="16" height="16" /> 
+																			</span>    
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="right" width="300" class="title">Apellido Materno:&nbsp;</td>
+																		<td>
+																			<input jwcid="@ixe:UppercaseTextField" maxLength="80" size="80" class="uppercase" value="ognl: apoderadoMaterno"/>   
+																			<span jwcid="@contrib:FormConditional" condition='ognl:faltaMaternoApoderado'>
+																				<img src="images/error.gif" width="16" height="16" /> 
+																			</span>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td></td>
+																	</tr>
+																	<tr>
+																		<td align="right" class="title">Datos regulatorios:&nbsp;</td>
+																		<td class="title">
+																			<input jwcid="@Checkbox" selected="ognl: verCamposRegulatorios" onclick="fnShowWaitImage(); document.Form0.submit();"/>
+																		</td>
+																	</tr>
+																</table>
+															</fieldset>
+															
+															<span jwcid="@contrib:FormConditional" condition='ognl: verCamposRegulatorios == true'>
+															<fieldset class="normal">
+																<legend class="legend">INFORMACI&Oacute;N REGULATORIA</legend>
+																<table width="100%" align="center">
+																	<tr>
+																		<td align="right" width="300" class="title">
+																			Clave Banxico:&nbsp;
+																		</td>
+																		<td align="left">
+																			<input jwcid="@ixe:UppercaseTextField" maxLength="6" size="12" class="uppercase" value="ognl: claveBanxico" />
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="right" width="300" class="title">
+																			Contraparte:&nbsp;
+																		</td>
+																		<td align="left">
+																			<input jwcid="@ixe:UppercaseTextField" maxLength="150" size="100" class="uppercase" value="ognl: contraparte" />
+																			<span jwcid="@contrib:FormConditional"
+																					condition='ognl:faltaNombreContraparte'>
+																					<img src="images/error.gif" width="16" height="16" /> 
+																			</span>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="right" width="300" class="title">
+																			Tipo de Sociedad Mercantil:&nbsp;
+																		</td>
+																		<td align="left">
+																			<select jwcid="@PropertySelection" 
+																				model="ognl: catalogoSociedadMercantil"
+																				value="ognl: tipoSociedadMercantil" />
+																			<span jwcid="@contrib:FormConditional"
+																					condition='ognl:faltaSociedadMercantil'>
+																					<img src="images/error.gif" width="16" height="16" /> 
+																			</span>    
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="right" width="300" class="title">
+																			Tipo de identificador de la contraparte:&nbsp;
+																		</td>
+																		<td align="left">
+																			<select jwcid="@PropertySelection"
+																				model="ognl: catalogoTipoIdentificador" onchange="revisarSeleccion(this);"
+																				value="ognl: tipoIdentificador" />
+																			<span jwcid="@contrib:FormConditional"
+																					condition='ognl:faltaIdentificadorContraparte'>
+																					<img src="images/error.gif" width="16" height="16" /> 
+																			</span>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="right" width="300" class="title">
+																			Clave de identificador de la contraparte:&nbsp;
+																		</td>
+																		<td align="left">
+																			<input id="claveIdentificador" jwcid="@ixe:UppercaseTextField" maxLength="13" size="14" 
+																				class="uppercase" value="ognl: claveIdentificador" />
+																			<span jwcid="@contrib:FormConditional"
+																					condition='ognl:faltaClaveContraparte'>
+																					<img src="images/error.gif" width="16" height="16" /> 
+																			</span>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="right" width="300" class="title">
+																			Tipo de contraparte:&nbsp;
+																		</td>
+																		<td align="left">
+																			<select jwcid="@PropertySelection"
+																				model="ognl: catalogoTipoContraparte"
+																				value="ognl: tipoContraparte" />
+																			<span jwcid="@contrib:FormConditional"
+																					condition='ognl:faltaTipoContraparte'>
+																					<img src="images/error.gif" width="16" height="16" /> 
+																			</span>    
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="right" width="300" class="title">
+																			Clave LEI(Legal Entity Identifier):&nbsp;
+																		</td>
+																		<td align="left">
+																			<input jwcid="@ixe:UppercaseTextField" maxLength="20" 
+																				size="20" class="uppercase" value="ognl: claveLei" />
+																			<span jwcid="@contrib:FormConditional"
+																					condition='ognl:faltaClaveLei'>
+																					<img src="images/error.gif" width="16" height="16" /> 
+																			</span>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="right" width="300" class="title">
+																			Sector Industrial(SCIAN):&nbsp;
+																		</td>
+																		<td align="left">
+																			<select jwcid="@PropertySelection"
+																				model="ognl: catalogoSectorIndustrial"
+																				value="ognl: sectorIndustrial" />
+																			<span jwcid="@contrib:FormConditional"
+																					condition='ognl:faltaSectorIndustrial'>
+																					<img src="images/error.gif" width="16" height="16" /> 
+																			</span>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="right" width="300" class="title">
+																			Pa&iacute;s de residencia de quien<br/>
+																			tiene el control de la contraparte:&nbsp;
+																		</td>
+																		<td align="left">
+																			<select jwcid="@PropertySelection"
+																				model="ognl: catalogoPaisRegulatorio"
+																				value="ognl: paisControlContraparte" />
+																			<span jwcid="@contrib:FormConditional"
+																					condition='ognl:faltaPaisControl'>
+																					<img src="images/error.gif" width="16" height="16" /> 
+																			</span>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="right" width="300" class="title">
+																			Pa&iacute;s de residencia<br/>
+																			de la contraparte:&nbsp;
+																		</td>
+																		<td align="left">
+																			<select jwcid="@PropertySelection"
+																				model="ognl: catalogoPaisRegulatorio"
+																				value="ognl: paisContraparte" />
+																			<span jwcid="@contrib:FormConditional"
+																					condition='ognl:faltaPaisContraparte'>
+																					<img src="images/error.gif" width="16" height="16" /> 
+																			</span>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="right" width="300" class="title">
+																			Clave LEI de la matriz directa:&nbsp;
+																		</td>
+																		<td align="left">
+																			<input jwcid="@ixe:UppercaseTextField" maxLength="20"
+																				size="22" class="uppercase" value="ognl: claveLeiMatrizDirecta" />
+																			<span jwcid="@contrib:FormConditional"
+																					condition='ognl:faltaClaveLeiDirecta'>
+																					<img src="images/error.gif" width="16" height="16" /> 
+																			</span>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="right" width="300" class="title">
+																			Clave LEI de la matriz en &uacute;ltima<br/>
+																			instancia de la contraparte:&nbsp;
+																		</td>
+																		<td align="left">
+																			<input jwcid="@ixe:UppercaseTextField" maxLength="20" 
+																				size="22" class="uppercase" value="ognl: claveLeiMatrizUltima" />
+																			<span jwcid="@contrib:FormConditional"
+																					condition='ognl:faltaClaveLeiUltima'>
+																					<img src="images/error.gif" width="16" height="16" /> 
+																			</span>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="right" width="300" class="title">
+																			Fecha de alta o modificaci&oacute;n<br/>
+																			de la contraparte:&nbsp;
+																		</td>
+																		<td class="title">
+																			<span jwcid="@ls:DatePicker" value='ognl: fechaContraparte' 
+																				format="dd-MM-yyyy" size="10" /> 
+																			<span jwcid="@contrib:FormConditional"
+																				condition='ognl:faltaFechaContraparte'>
+																					<img src="images/error.gif" width="16" height="16" /> 
+																			</span> 
+																		</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td align="left" class="title">
+																			Relaci&oacute;n con la Instituci&oacute;n
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="right" width="300" class="title">
+																			Tipo de relaci&oacute;n:&nbsp;
+																		</td>
+																		 <td align="left">
+																			<select jwcid="@PropertySelection" model="ognl: catalogoTipoRelacion" 
+																			        onChange="fnShowWaitImage(); document.Form0.submit();"
+																				    value="ognl: tipoRelacion" id="cboTipoRelacion"/>
+																			<span jwcid="@contrib:FormConditional"
+																					condition='ognl:faltaTipoRelacion'>
+																					<img src="images/error.gif" width="16" height="16" /> 
+																			</span>
+																		</td>
+																	</tr>
+																	<span jwcid="@contrib:FormConditional"
+																		  condition='ognl: ((verCamposRegulatorios == true) && tipoRelacion != null && 
+																							!tipoRelacion.get("label").toString().startsWith("SELECCIONE") &&
+																							tipoRelacion.get("value") != null && !tipoRelacion.get("value").toString().equals("10"))'>
+																		<tr>
+																			<td align="right" width="300" class="title">
+																				¿Pertenece al Grupo Financiero?:&nbsp;
+																			</td>
+																			<td class="title" align="left">
+																				<span jwcid="@RadioGroup" selected="ognl: grupoFinanciero">
+																					<input type="radio" jwcid="@Radio" value="ognl: 1" id="grupoRadioFinanciero"/>S&iacute;
+																					<input type="radio" jwcid="@Radio" value="ognl: 2" id="grupoRadioFinanciero"/>No
+																				</span>
+																				<span jwcid="@contrib:FormConditional"
+																						condition='ognl:faltaGrupoFinanciero'>
+																						<img src="images/error.gif" width="16" height="16" /> 
+																				</span>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td align="right" width="300" class="title">
+																				Tipo de evento en la relaci&oacute;n:&nbsp;
+																			</td>
+																			<td align="left">
+																				<select jwcid="@PropertySelection" model="ognl: catalogoEventoRelacion" id="cboEventoRelacion"
+																					value="ognl: tipoEventoRelacion" />
+																				<span jwcid="@contrib:FormConditional"
+																						condition='ognl:faltaEventoRelacion'>
+																						<img src="images/error.gif" width="16" height="16" /> 
+																				</span>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td align="right" width="300" class="title">
+																				Fecha del evento de la relaci&oacute;n:&nbsp;
+																			</td>
+																			<td align="left" class="title" id="trFechaEvento">
+																				<span jwcid="@ls:DatePicker" value="ognl: fechaEventoRelacion" format="dd-MM-yyyy" size="10"/> 
+																				<span jwcid="@contrib:FormConditional" condition='ognl:FaltaFechaRelacion'>
+																						<img src="images/error.gif" width="16" height="16" /> 
+																				</span> 
+																			</td>
+																		</tr>
+																	</span>
+																</table>
+																<span jwcid="@contrib:FormConditional" condition='ognl: verCamposRegulatorios == true'>
+								                                	<span jwcid="@Script" script="/WEB-INF/scripts/SeleccionarRFC.script" />
+																	<span jwcid="@ls:DatePickerColophon" /> 
+																</span>
+															</fieldset>
+															</span>
+															<br/>
+															<table align="center">
+																<tr>
+																	<td align="right">
+																		<a jwcid="@LinkSubmit" listener="ognl:listeners.modificarDatosGralesRegulatoriosCliente" onClick="fnShowWaitImage();">
+																			<img jwcid="@Image" image="ognl: assets.guardarButton" border="0" />
+																		</a>
+																	</td>
+																	<td align="left">
+																		<a jwcid="@DirectLink" listener="ognl:listeners.activate" onClick="fnShowWaitImage();">
+																			<img jwcid="@Image" image="ognl: assets.backButton" border="0" /> 
+																		</a>
+																	</td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table>
+											</form>	
+										</span>
+								 	</span>
+								</td>
+							</tr>
+						</table>
+					</span>
+					
+					<span jwcid="@Conditional" condition="ognl: @com.ixe.ods.sica.pages.ClientesAreaContratos@VER_SECCION_DIRECCION.equals(seccion)">
+						<span jwcid="@Conditional" condition="ognl: @com.ixe.ods.sica.pages.ClientesAreaContratos@VER_SECCION_RESULTADOS_DIRECCION.equals(subSeccion)">
+							<table width="100%" align="center" jwcid="@ActionPortletBorder" title="Direcciones">
+								<tr>
+									<td>
+										<table>
+											<tr>
+												<td class="title">Nombre/Raz&oacute;n social:</td>
+												<td class="normal"><span jwcid="@Insert" value="ognl: razonSocial" raw="yes"/></td>
+												<td class="title">RFC:</td>
+												<td class="normal"><span jwcid="@Insert" value="ognl: rfc" raw="yes"/></td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<table jwcid="@TableBorder" title="ognl: null" subtitles="ognl: getNombresColumnasDirecciones()"
+									           columnCount="ognl: noColumnasClientes" width="100%">
+									           <tr jwcid="forDirecciones@Foreach" source="ognl: direccionesCliente" element="tr" 
+									               class="ognl: beans.evenOdd.next">
+									           		<td class="normal" align="center">
+														<span jwcid="@Insert" value="ognl: components.forDirecciones.value.calle" raw="yes" />
+													</td>
+													<td class="normal" align="center">
+														<span jwcid="@Insert" value="ognl: components.forDirecciones.value.noExt" raw="yes"/>
+													</td>
+													<td class="normal" align="center">
+														<span jwcid="@Insert" value="ognl: components.forDirecciones.value.noInt" raw="yes"/>
+													</td>
+													<td class="normal" align="center">
+														<span jwcid="@Insert" value="ognl: components.forDirecciones.value.colonia" raw="yes"/>
+													</td>
+													<td class="normal" align="center">
+														<span jwcid="@Insert" value="ognl: components.forDirecciones.value.delegacion" raw="yes"/>
+													</td>
+													<td class="normal" align="center">
+														<span jwcid="@Insert" value="ognl: components.forDirecciones.value.estado" raw="yes"/>
+													</td>
+													<td class="normal" align="center">
+														<span jwcid="@Insert" value="ognl: components.forDirecciones.value.codigoPostal" raw="yes"/>
+													</td>
+													<td class="normal" align="center">
+														<a href="#" jwcid="@DirectLink" listener="ognl:listeners.mostrarDireccionCliente"
+													       parameters='ognl: { components.forDirecciones.value.idDireccion, components.forDirecciones.value.idPersona,
+													                           components.forDirecciones.value.nombreCompleto, components.forDirecciones.value.rfc}'
+														   onClick="fnShowWaitImage();">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														<a href="#" jwcid="@DirectLink" listener="ognl:listeners.eliminarDireccionCliente"
+													       parameters='ognl: { components.forDirecciones.value.idDireccion, components.forDirecciones.value.idPersona,
+													                           components.forDirecciones.value.nombreCompleto, components.forDirecciones.value.rfc}'
+														   onClick="if (confirm('¿Realmente desea eliminar esta direcci\u00F3n?')) { fnShowWaitImage(); } else { return false; }">
+														   Eliminar</a>
+													</td>
+									           </tr>
+									    </table>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div align="center">
+												<a jwcid="@DirectLink" listener="ognl:listeners.altaDireccionCliente" onClick="fnShowWaitImage();">
+													<img jwcid="@Image" image="ognl: assets.agregarButton" border="0" /> 
+												</a>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</span>
+						
+						<span jwcid="@Conditional" condition="ognl: @com.ixe.ods.sica.pages.ClientesAreaContratos@VER_SECCION_MODIFICAR_AGREGAR_DIRECCION.equals(subSeccion)">
+							<form jwcid="@Form" listener="ognl: listeners.cambiarPais">
+								<table width="70%" align="center" jwcid="@ActionPortletBorder" title="Direcci&oacute;n">
+									<tr>
+										<td>
+											<table align="center">
+												<tr>
+													<td class="title">Nombre/Raz&oacute;n social:</td>
+													<td class="normal"><span jwcid="@Insert" value="ognl: razonSocial" raw="yes"/></td>
+													<td class="title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RFC:</td>
+													<td class="normal"><span jwcid="@Insert" value="ognl: rfc" raw="yes"/></td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<fieldset class="normal">
+												<legend class="legend">DIRECCI&Oacute;N DEL CLIENTE</legend>
+												<table  align="center">
+													<tr>
+														<td align="right" class="title">Pa&iacute;s:</td>
+														<td class="normal">
+															<select jwcid="@PropertySelection"
+																model="ognl: catalogoPais" value="ognl: pais"
+																onChange="fnShowWaitImage(); document.Form0.submit();" />
+														</td>
+													</tr>
+													<tr>
+														<td align="right" class="title">Calle:</td>
+														<td class="normal">
+															<input jwcid="@ixe:UppercaseTextField" maxLength="100" size="80" class="uppercase" value="ognl: calle" />
+															<span jwcid="@contrib:FormConditional"
+																condition='ognl:faltaCalle'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<td align="right" class="title">No. Exterior:</td>
+														<td class="normal">
+															<input jwcid="@ixe:UppercaseTextField" maxLength="40"
+																size="10" class="uppercase" value="ognl: noExterior" />
+															<span jwcid="@contrib:FormConditional"
+																condition='ognl:faltaNoExterior'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+															&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+															&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No.
+															Interior:
+															<input jwcid="@ixe:UppercaseTextField" maxLength="40"
+																size="10" class="uppercase" value="ognl: noInterior" />
+															<span jwcid="@contrib:FormConditional"
+																condition='ognl:faltaNoInterior'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<td align="right" class="title">Primaria:</td>
+														<td class="normal">
+															<input jwcid="@Checkbox" selected="ognl: primaria" />
+														</td>
+													</tr>
+													<tr>
+														<td align="right" class="title">
+															C&oacute;digo Postal:
+														</td>
+														<td class="normal">
+															<table>
+																<tr>
+																	<td>
+																		<input jwcid="@ixe:UppercaseTextField" maxLength="5" size="10" class="uppercase" value="ognl: codigoPostal" />
+																		<span jwcid="@contrib:FormConditional" condition='ognl:faltaCodigoPostal'>
+																			<img src="images/error.gif" width="16" height="16" /> 
+																		</span>
+																	</td>
+																	<td class="normal">
+																		<span jwcid="@contrib:FormConditional" condition='ognl: verLupaBuscarCodigoPostal'> 
+																			<a jwcid="@LinkSubmit" listener="ognl:listeners.buscarDatosPorCodigoPostal" onClick="fnShowWaitImage();">
+																					<img jwcid="@Image" image="ognl: assets.buscarCodigoPostal" border="0" /> 
+																			</a> 
+																		</span>
+																	</td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+													<tr>
+														<td align="right" class="title">Colonia:</td>
+														<td class="normal">
+															<span jwcid="@contrib:FormConditional"
+																condition='ognl: hashmapColonia == null'> <input
+																	jwcid="@ixe:UppercaseTextField" maxLength="100" size="80"
+																	class="uppercase" value="ognl: colonia"/> 
+																	 
+															</span>
+															<span jwcid="@contrib:FormConditional"
+																condition='ognl: hashmapColonia != null'> 
+																   <select jwcid="@PropertySelection" model="ognl: catalogoColonias" value="ognl: colonia"/>
+																	
+															</span>
+															<span jwcid="@contrib:FormConditional"
+																condition='ognl:faltaColonia'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<td align="right" class="title">Ciudad:</td>
+														<td class="normal">
+															<input jwcid="@ixe:UppercaseTextField" maxLength="20" size="20" class="uppercase" value="ognl: ciudad" />
+															<span jwcid="@contrib:FormConditional"
+																condition='ognl:faltaCiudad'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<td align="right" class="title">Delegaci&oacute;n/Municipio:</td>
+														<td class="normal">
+															<span jwcid="@contrib:FormConditional"
+																condition='ognl: hashmapMunicipio == null'> 
+																<input jwcid="@ixe:UppercaseTextField" maxLength="80" size="80"
+																	class="uppercase" value="ognl: delegacion"/> 
+																
+															</span>
+															<span jwcid="@contrib:FormConditional"
+																condition='ognl: hashmapMunicipio != null'> <select
+																	jwcid="@PropertySelection"
+																	model="ognl: catalogoMunicipios" value="ognl: delegacion"/>
+																	
+															</span>
+															<span jwcid="@contrib:FormConditional"
+																condition='ognl:faltaDelegacion'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<td align="right" class="title">Estado:</td>
+														<td class="normal">
+															<span jwcid="@contrib:FormConditional"
+																  condition='ognl: hashmapEntidad == null'> 
+																  <input
+																	jwcid="@ixe:UppercaseTextField" maxLength="50" size="50"
+																	class="uppercase" value="ognl: estado"/> 
+																
+															</span>
+															<span jwcid="@contrib:FormConditional"
+																condition='ognl: hashmapEntidad != null'> <select
+																	jwcid="@PropertySelection"
+																	model="ognl: catalogoEntidades" value="ognl: estado"/>
+																	
+															</span>
+															<span jwcid="@contrib:FormConditional"
+																condition='ognl:faltaEstado'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<td align="right" class="title">¿Es fiscal?:</td>
+														<td class="normal">
+															<input jwcid="@Checkbox" selected="ognl: facturacionElectronica" />
+														</td>
+													</tr>
+													<tr>
+				                                        <td align="right" class="title">Tipo comprobante de domicilio:&nbsp;</td>
+				                                        <td align="left"  class="normal">
+				                                        	<select jwcid="@PropertySelection" 
+														             model="ognl: catalogoTipoComprobante" 
+														             value="ognl: tipoComprobanteDireccion" />
+															<span jwcid="@contrib:FormConditional"
+																condition='ognl:faltaTipoComprobante'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+				                                        </td>
+				                                    </tr>
+				                                    <tr>
+				                                    	<td align="right" class="title">N&uacute;mero de comprobante:</td>
+				                                    	<td class="normal">
+				                                    		<input jwcid="@ixe:UppercaseTextField" maxLength="20" size="22" class="uppercase" value="ognl: numeroComprobante" />
+				                                    		<span jwcid="@contrib:FormConditional"
+																condition='ognl:faltaNoComprobante'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+				                                    	</td>
+				                                    </tr>
+				                                    <tr>
+														<td align="right" class="title">Fecha de expedici&oacute;n:</td>
+														<td align="left" class="normal">
+															<span jwcid="@ls:DatePicker" value="ognl: fechaComprobante" format="dd-MM-yyyy" size="10"/>
+															<span jwcid="@ls:DatePickerColophon" />  
+															<span jwcid="@contrib:FormConditional"
+																condition='ognl:faltaFechaExpedicion'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+														</td>
+													</tr>
+												</table>
+											</fieldset>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div align="center">
+												<a jwcid="@LinkSubmit" listener="ognl:listeners.agregarModificarDireccion" onClick="fnShowWaitImage();"
+												   parameters='ognl: {"alta"}' onClick="fnShowWaitImage();">
+													<img jwcid="@Image" image="ognl: assets.guardarButton" border="0" />
+												</a>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</form>
+						</span>
+					</span>
+					
+					<span jwcid="@Conditional" condition="ognl: @com.ixe.ods.sica.pages.ClientesAreaContratos@VER_SECCION_MEDIOS_CONTACTO.equals(seccion)">
+						<span jwcid="@Conditional" condition="ognl: @com.ixe.ods.sica.pages.ClientesAreaContratos@VER_SECCION_RESULTADO_MEDIOS.equals(subSeccion)">
+							<table width="100%" align="center" jwcid="@ActionPortletBorder" title="Medios de contacto">
+								<tr>
+									<td>
+										<table align="center">
+											<tr>
+												<td class="title">Nombre/Raz&oacute;n social:</td>
+												<td class="normal"><span jwcid="@Insert" value="ognl: razonSocial" raw="yes"/></td>
+												<td class="title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RFC:</td>
+												<td class="normal"><span jwcid="@Insert" value="ognl: rfc" raw="yes"/></td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<table jwcid="@TableBorder" title="ognl: null" subtitles="ognl: getNombresColumnasMediosContacto()"
+											   columnCount="ognl: noColumnasMediosContacto" width="100%">
+											   <tr jwcid="forMedios@Foreach" source="ognl: mediosContacto" element="tr" 
+												   class="ognl: beans.evenOdd.next">
+													<td class="normal" align="left">
+														<span jwcid="@Insert" value='ognl: "CORREO ELECTRONICO"' raw="yes" />
+													</td>
+													<td class="normal" align="center">
+														<span jwcid="@Insert" value="ognl: components.forMedios.value.email" raw="yes"/>
+													</td>
+													<td class="normal" align="center">
+														<span jwcid="@Insert" value="ognl: components.forMedios.value.factElectronica" raw="yes"/>
+													</td>
+													<td class="normal" align="center">
+														<a href="#" jwcid="@DirectLink" listener="ognl:listeners.mostrarMedioContacto"
+													       parameters='ognl: { components.forMedios.value.idMedioContacto, components.forMedios.value.idPersona,
+													                           components.forMedios.value.nombreCompleto, components.forMedios.value.rfc,
+													                           components.forMedios.value.email, components.forMedios.value.factElectronica}'
+														   onClick="fnShowWaitImage();">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														<a href="#" jwcid="@DirectLink" listener="ognl:listeners.eliminarMedioContacto"
+													       parameters='ognl: { components.forMedios.value.idMedioContacto, components.forMedios.value.idPersona,
+													                           components.forMedios.value.nombreCompleto, components.forMedios.value.rfc}'
+														   onClick="if (confirm('¿Realmente desea eliminar este medio de contacto?')) { fnShowWaitImage(); } else { return false; }">
+														   Eliminar</a>
+													</td>
+											   </tr>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div align="center">
+												<a jwcid="@DirectLink" listener="ognl:listeners.prepararAltaMedioContacto" onClick="fnShowWaitImage();">
+													<img jwcid="@Image" image="ognl: assets.agregarButton" border="0" /> 
+												</a>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</span>
+						
+						<span jwcid="@Conditional" condition="ognl: @com.ixe.ods.sica.pages.ClientesAreaContratos@VER_SECCION_MODIFICAR_AGREGAR_MEDIO.equals(subSeccion)">
+							<form jwcid="@Form" listener="ognl: listeners.guardarMedioContacto">
+								<table width="100%" align="center" jwcid="@ActionPortletBorder" title="Medios de contacto">
+									<tr>
+										<td>
+											<table align="center">
+											<tr>
+												<td class="title">Nombre/Raz&oacute;n social:</td>
+												<td class="normal"><span jwcid="@Insert" value="ognl: razonSocial" raw="yes"/></td>
+												<td class="title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RFC:</td>
+												<td class="normal"><span jwcid="@Insert" value="ognl: rfc" raw="yes"/></td>
+											</tr>
+										</table>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>
+												<fieldset class="normal">
+													<legend class="legend">MEDIOS DE CONTACTO</legend>
+													<table width="100%">
+														<tr>
+															<td align="right" class="title">Tipo de medio de contacto:&nbsp;</td>
+															<td class="normal">Correo electr&oacute;nico</td>
+														</tr>
+														<tr>
+															<td align="right" class="title">Email:&nbsp;</td>
+															<td class="normal">
+										                        <input jwcid="@TextField" value="ognl: email" size="100" maxlength="80" />
+										                        <span jwcid="@contrib:FormConditional" condition='ognl:faltaEmail'>
+																<img src="images/error.gif" width="16" height="16" /> 
+															</span>
+										                    </td>
+														</tr>
+														<tr>
+															<td align="right" class="title">Facturaci&oacute;n electr&oacute;nica:&nbsp;</td>
+															<td class="normal">
+																<input jwcid="@Checkbox" selected="ognl: facturacionElectronica"/>
+															</td>
+														</tr>
+													</table>
+												</fieldset>
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div align="center">
+												<input jwcid="@ImageSubmit" image="ognl: assets.guardarButton" onclick="fnShowWaitImage();"
+													   selected="ognl: modoSubmit" tag="3" accesskey="G" /> 
+											</div>
+										</td>
+									</tr>
+								</table>
+							</form>
+						</span>
+					</span>
+					
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

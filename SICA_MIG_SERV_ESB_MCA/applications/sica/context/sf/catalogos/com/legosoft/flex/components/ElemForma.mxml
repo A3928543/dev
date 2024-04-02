@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: ElemForma.mxml,v 1.8 2008/02/22 18:25:51 ccovian Exp $ -->
+<mx:FormItem xmlns:mx="http://www.macromedia.com/2003/mxml" creationComplete="awake()">
+
+	<mx:Script>
+	<![CDATA[
+		var tag : Number;
+		var ctrl : Object;
+
+		private function awake() : Void
+		{
+			ctrl.addEventListener('enableControls', this);
+		}
+
+		public function enableControls(event : Object)
+		{
+			enabled = ((tag & event.currOp) > 0);
+		}
+	]]>
+	</mx:Script>
+</mx:FormItem>

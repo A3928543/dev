@@ -1,0 +1,46 @@
+<!-- $Id: LiquidacionRemesas.html,v 1.4 2009/02/05 18:56:54 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Liquidaci&oacute;n de Remesas</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" width="100%" level="ognl: nivel"/>
+    <table width="100%">
+        <tr valign="top">
+            <td>
+                <table jwcid="@ActionPortletBorder" title="Liquidaci&#243;n de Remesas">
+                    <form jwcid="@Form" listener="ognl: listeners.buscar" delegate="ognl: beans.delegate">
+                        <fieldset class="normal">
+                            <legend class="legend">Atributos de Consulta:</legend>
+                            <font class="normal">Fecha de Captura:<br />
+                                <input jwcid="@ls:DatePicker" value="ognl: fecha" format="dd/MM/yyyy" size="10"/><br />
+                            </font>
+                        </fieldset>
+                        <br />
+                        <div align="center">
+                            <input jwcid="@ImageSubmit" image="ognl: assets.bBuscar" onclick="return fnDisableForm(this.form);" />
+                        </div>
+                    </form>
+                </table>
+            </td>
+            <td width="1%">&nbsp;</td>
+            <td>
+                <table jwcid="@ActionPortletBorder" title="Remesas encontradas:">
+                    <table jwcid="@TableBorder" title="ognl: null" subtitles="ognl: {'No. Deal', 'Raz\u00f3n Social', 'Fecha Ingreso', 'Mnem\u00f3nico', 'Monto', 'Divisa', '&nbsp;'}" columnCount="ognl: 7" width="100%">
+                        <tr jwcid="forRems@Foreach" source="ognl: remesasPendientes" element="tr" class="ognl: beans.evenOdd.next" align="center">
+                            <td class="normal"><a jwcid="@ExternalLink" page="DatosDeal" parameters="ognl: components.forRems.value.deal.idDeal" renderer='ognl: global.applicationContext.getBean("bigPopupLinkRenderer")' ><span jwcid="@Insert" value="ognl: components.forRems.value.deal.idDeal" /></a></td>
+                            <td class="normal"><span jwcid="@Insert" value="ognl: components.forRems.value.deal.cliente.nombreCompleto" /></td>
+                            <td class="normal"><span jwcid="@Insert" value="ognl: components.forRems.value.fechaCreacion" format="ognl: dateFormat"/></td>
+                            <td class="normal"><span jwcid="@Insert" value="ognl: components.forRems.value.dealDetalle.mnemonico" /></td>
+                            <td class="normal"><span jwcid="@Insert" value="ognl: components.forRems.value.dealDetalle.monto" format="ognl: moneyFormat" /></td>
+                            <td class="normal"><img jwcid="@Bandera" divisa="ognl: components.forRems.value.dealDetalle.divisa" /></td>
+                            <td class="normal"><a jwcid="@DirectLink" listener="ognl: listeners.confirmarValidez" parameters="ognl: components.forRems.value.idActividad" onclick="return confirm('\ub00bfDesea confirmar la validez de la remesa?')">Confirmar validez</a></td>
+                        </tr>
+                    </table>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

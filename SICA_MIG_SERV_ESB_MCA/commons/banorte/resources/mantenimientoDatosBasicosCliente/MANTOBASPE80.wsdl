@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+  xmlns:tns="http://www.banorte.com/WebServices/MANTOBAS" xmlns:s="http://www.w3.org/2001/XMLSchema"
+  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+  targetNamespace="http://www.banorte.com/WebServices/MANTOBAS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="unqualified" targetNamespace="http://www.banorte.com/WebServices/MANTOBAS">
+      <s:element name="Ejecutar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NUMCLIE" type="s:integer" />
+            <s:element minOccurs="0" maxOccurs="1" name="RFC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PERJUR" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NOMBRE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APEL1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APEL2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NOMBCOM" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CODIDEN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CLAIDEN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CURP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IMSS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="INFONAV" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FENACIM" type="s:integer" />
+            <s:element minOccurs="0" maxOccurs="1" name="SEXO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ESTCIVI" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TITULO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TRATAMI" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TIPODOM" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VIA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NOMCALL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NUMCALL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TIPOVIV" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ENTRADA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PISO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DEPARTA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COLONIA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CODPOST" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CODDEMU" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DESDEMU" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ESTADO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DESCEST" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CODPAIS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TIPTEL1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NUMTEL1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TIPTEL2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NUMTEL2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TIPTEL3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NUMTEL3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CODCNO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CNAEG" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NOMBTAR" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CGOPOL" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="OPCION" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="INDLEAL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="INDPROP" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ALTASHC" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EjecutarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="respuesta" type="tns:RespuestaTransaccion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RespuestaTransaccion">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TRANID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ESTATUS" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CODIGO" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MENSAJE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NUMTASK" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PENC4001" type="tns:PENC4001" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PENC4001">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="NUMCLIE" type="s:integer" />
+          <s:element minOccurs="1" maxOccurs="1" name="RFC" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CRGESTO" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AREANEG" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PERJUR" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DESCRGE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NOMBRE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="APEL1" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="APEL2" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NOMBCOM" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CODIDEN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CLAIDEN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CURP" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IMSS" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="INFONAV" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FENACIM" type="s:integer" />
+          <s:element minOccurs="1" maxOccurs="1" name="SEXO" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ESTCIVI" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TITULO" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DESTITU" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TRATAMI" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TIPODOM" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VIA" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CALLE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NOMCALL" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NUMCALL" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TIPVIVI" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DESVIVI" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ENTRADA" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PISO" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DEPARTA" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="COLONIA" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CODPOST" type="s:integer" />
+          <s:element minOccurs="1" maxOccurs="1" name="DELMUNI" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DESDEMU" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ESTADO" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DESCEST" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PAIS" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TIPTEL1" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NUMTEL1" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TIPTEL2" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NUMTEL2" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TIPTEL3" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NUMTEL3" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CODCNO" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DESCCNO" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CNAEG" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="INDGRAN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FUNCION" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ULTNUMA" type="s:integer" />
+          <s:element minOccurs="1" maxOccurs="1" name="NUMDOMI" type="s:integer" />
+          <s:element minOccurs="1" maxOccurs="1" name="NOMBTAR" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SEGMTO" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GDORIE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CGOPOL" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DESCPOL" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LEALBAN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CALIREG" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="INDPROP" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="INDLIDE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="INDICA" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SERVBXI" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ALTASHC" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RespuestaTransaccion" nillable="true" type="tns:RespuestaTransaccion" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="EjecutarSoapIn">
+    <wsdl:part name="parameters" element="tns:Ejecutar" />
+  </wsdl:message>
+  <wsdl:message name="EjecutarSoapOut">
+    <wsdl:part name="parameters" element="tns:EjecutarResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SoapPort">
+    <wsdl:operation name="Ejecutar">
+      <wsdl:input message="tns:EjecutarSoapIn" />
+      <wsdl:output message="tns:EjecutarSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SoapBinding" type="tns:SoapPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ejecutar">
+      <soap:operation soapAction="http://www.banorte.com/WebServices/MANTOBAS/Ejecutar"
+        style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MANTOBAS">
+    <wsdl:port name="SoapPort" binding="tns:SoapBinding">
+      <soap:address location="https://15.150.11.30:3001/WebServices/MANTOBAS" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,110 @@
+<!-- $Id: CatBrokers.html,v 1.13 2008/07/29 04:34:06 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Cat&aacute;logo de Contrapartes</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+	<table jwcid="@ActionPortletBorder" title="Cat&aacute;logo de Contrapartes" width="100%">
+        <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" width="100%" />        
+        <form jwcid="@Form" listener="ognl: listeners.insertar">
+			<table border="0" cellspacing="1" cellpadding="3" width="100%" jwcid="table@bup:Table" source="ognl: sicaServiceData.findAllBrokers()" pageSize="100"
+			      columns='ognl: "razonSocial:Raz\u00f3n Social:id.personaMoral.razonSocial, claveReuters:Clave Reuters:claveReuters, tipoBroker:Tipo Contraparte:tipoBroker, !sectorBanxico:Sector Banxico:sectorBanxico, !descSectorBanxico:Desc. Sector Banxico:descSectorBanxico, pagoAnticipado:Pago Anticipado:pagoAnticipado, !tranales, !ctaIxe, !cheques, !traexts, !beneficiarios, !editar, !eliminar"' class="tableborder"/>
+			<span jwcid="pagoAnticipadoColumnValue@Block">
+                <span jwcid="@contrib:Choose">
+	                 <span jwcid="@contrib:When" condition="ognl: components.table.tableRow.pagoAnticipado" >
+	                 	<span jwcid="@Insert" value="S&iacute;" raw="yes" />
+	                 </span>
+	                 <span jwcid="@contrib:Otherwise" >
+	                 	<span jwcid="@Insert" value="No" raw="yes" />
+	                 </span>						                 						                                                                   
+                 </span>						                                                          			
+			</span>
+            <span jwcid="sectorBanxicoColumnValue@Block">
+                <span jwcid="@Insert" value="ognl: components.table.tableRow.id.personaMoral.sectorEconomico ? components.table.tableRow.id.personaMoral.sectorEconomico.sectorBanxico : ''" />
+            </span>
+            <span jwcid="descSectorBanxicoColumnValue@Block">
+                <span jwcid="@Insert" value="ognl: components.table.tableRow.id.personaMoral.sectorEconomico ? components.table.tableRow.id.personaMoral.sectorEconomico.descSectorBanxico : ''" />
+            </span>
+            <span jwcid="eliminarColumnHeader@Block">&nbsp;</span>
+			<span jwcid="eliminarColumnValue@Block">
+			
+				<span jwcid="@contrib:Choose">
+	                 <span jwcid="@contrib:When" condition="ognl: components.table.tableRow.status == 'AC'" >
+	                 	<a jwcid="@DirectLink" listener="ognl:listeners.eliminar" parameters= "ognl: components.table.tableRow.id.personaMoral.idPersona" onClick="return confirm('\u00bfDesea inactivar el registro?');">Inactivar</a>
+	                 </span>
+	                 <span jwcid="@contrib:Otherwise" >
+	                 	Inactivo
+	                 </span>						                 						                                                                   
+                 </span>	
+				
+			</span>
+			<span jwcid="editarColumnHeader@Block">&nbsp;</span>
+	     	<span jwcid="editarColumnValue@Block">
+	     		<span jwcid="@contrib:Choose">
+	                 <span jwcid="@contrib:When" condition="ognl: components.table.tableRow.status == 'AC'" >
+	                 	<a jwcid="@DirectLink" listener="ognl:listeners.editar" parameters="ognl: components.table.tableRow.id.personaMoral.idPersona" onClick="fnShowWaitImage();">Editar</a>
+	                 </span>
+	                 <span jwcid="@contrib:Otherwise" >
+	                 	Editar
+	                 </span>	                 
+	            </span>
+		 		
+			</span>
+			<span jwcid="tipoBrokerColumnValue@Block">
+                <span jwcid="@contrib:Choose">
+	                 <span jwcid="@contrib:When" condition="ognl: @com.ixe.ods.sica.model.Broker@INSTITUCION_FINANCIERA.equals(components.table.tableRow.tipoBroker)" >
+	                 	<span jwcid="@Insert" value="Instituci&oacute;n Financiera" raw="yes" />
+	                 </span>
+	                 <span jwcid="@contrib:When" condition="ognl: @com.ixe.ods.sica.model.Broker@NO_INSTITUCION_FINANCIERA.equals(components.table.tableRow.tipoBroker)" >
+	                 	<span jwcid="@Insert" value="No Instituci&oacute;n Financiera" raw="yes" />
+	                 </span>						                 						                                                                   
+                 </span>						                                                          			
+			</span>
+            <span jwcid="ctaIxeColumnHeader@Block">&nbsp;</span>
+            <span jwcid="ctaIxeColumnValue@Block">
+                <span jwcid="@Conditional" condition="ognl: @com.ixe.ods.sica.model.Broker@INSTITUCION_FINANCIERA.equals(components.table.tableRow.tipoBroker)">
+                    <!--a jwcid="@DirectLink" listener="ognl:listeners.plantillasCtaIxe" parameters='ognl: { "CuentaIxe", getContratoParaPersona(components.table.tableRow.id.personaMoral.idPersona), components.table.tableRow.id.personaMoral.nombreCompleto, "CatBrokers" }' disabled="ognl: null == getContratoParaPersona(components.table.tableRow.id.personaMoral.idPersona)" onClick="fnShowWaitImage();">Plantillas Cuenta Ixe</a-->
+                    <a jwcid="@DirectLink" listener="ognl:listeners.plantillasCtaIxe" parameters='ognl: { "CuentaIxe", components.table.tableRow.id.personaMoral.idPersona, components.table.tableRow.id.personaMoral.nombreCompleto, "CatBrokers", components.table.tableRow.id.personaMoral.idPersona }' onClick="fnShowWaitImage();">Plantillas Cuenta Ixe</a>
+                </span>
+            </span>
+            <span jwcid="chequesColumnHeader@Block">&nbsp;</span>
+            <span jwcid="chequesColumnValue@Block">
+                <span jwcid="@Conditional" condition="ognl: @com.ixe.ods.sica.model.Broker@INSTITUCION_FINANCIERA.equals(components.table.tableRow.tipoBroker)">
+                    <a jwcid="@DirectLink" listener="ognl:listeners.plantillasCheques" parameters='ognl: { "Nacionales", components.table.tableRow.id.personaMoral.idPersona, components.table.tableRow.id.personaMoral.nombreCompleto, "CatBrokers", components.table.tableRow.id.personaMoral.idPersona }' onClick="fnShowWaitImage();">Plantillas de Cheques</a>
+                </span>
+            </span>
+            <span jwcid="tranalesColumnHeader@Block">&nbsp;</span>
+            <span jwcid="tranalesColumnValue@Block">
+                <span jwcid="@Conditional" condition="ognl: @com.ixe.ods.sica.model.Broker@INSTITUCION_FINANCIERA.equals(components.table.tableRow.tipoBroker)">
+                    <a jwcid="@DirectLink" listener="ognl:listeners.plantillasTranNal" parameters='ognl: { "TranNacionales", components.table.tableRow.id.personaMoral.idPersona, components.table.tableRow.id.personaMoral.nombreCompleto, "CatBrokers", components.table.tableRow.id.personaMoral.idPersona }' onClick="fnShowWaitImage();">Plantillas Tran. Nac.</a>
+                </span>
+            </span>
+            <span jwcid="traextsColumnHeader@Block">&nbsp;</span>
+            <span jwcid="traextsColumnValue@Block">
+                <span jwcid="@Conditional" condition="ognl: @com.ixe.ods.sica.model.Broker@INSTITUCION_FINANCIERA.equals(components.table.tableRow.tipoBroker)">
+                <a jwcid="@DirectLink" listener="ognl:listeners.plantillasIntl" parameters='ognl: { "Intls", components.table.tableRow.id.personaMoral.idPersona, components.table.tableRow.id.personaMoral.nombreCompleto, "CatBrokers", components.table.tableRow.id.personaMoral.idPersona }' onClick="fnShowWaitImage();">Plantillas Intls.</a>
+                </span>
+            </span>            
+            <span jwcid="beneficiariosColumnHeader@Block">&nbsp;</span>
+            <span jwcid="beneficiariosColumnValue@Block">
+            	<span jwcid="@contrib:Choose">
+	                 <span jwcid="@contrib:When" condition="ognl: components.table.tableRow.status == 'AC'" >
+	                 	<span jwcid="@Conditional" condition="ognl: @com.ixe.ods.sica.model.Broker@INSTITUCION_FINANCIERA.equals(components.table.tableRow.tipoBroker)">
+                			<a jwcid="@DirectLink" listener="ognl: listeners.agregaBeneficiario" parameters='ognl: { components.table.tableRow.id.personaMoral.idPersona, components.table.tableRow.id.personaMoral.nombreCompleto, "CatBrokers", components.table.tableRow.id.personaMoral.idPersona }' onClick="fnShowWaitImage();">Nuevo Beneficiario</a>
+                		</span>
+	                 </span>
+	                  <span jwcid="@contrib:Otherwise" >
+	                 	Nuevo Beneficiario
+	                 </span>
+	            </span>                
+            </span>
+            
+            <br />
+			<div align="center">
+   				<input jwcid="@ImageSubmit" image="ognl: assets.addButton" onclick="return fnDisableForm(this.form);" />			    
+			</div>
+	    </form>
+	</table>
+</body>
+</html>

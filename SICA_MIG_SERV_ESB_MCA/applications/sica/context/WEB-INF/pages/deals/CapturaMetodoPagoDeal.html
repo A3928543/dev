@@ -1,0 +1,69 @@
+<!-- $Id: CapturaMetodoPagoDeal.html,v 1.1.2.2.20.2.16.1.2.3 2017/08/21 21:18:59 mejiar Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Captura Forma de pago del deal</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css" />
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" width="100%" />
+    <table jwcid="@ActionPortletBorder" title="Captura Forma de Pago en Deal">
+        <form jwcid="@Form" listener="ognl: listeners.actualizar">
+            <span jwcid="@EncabezadoDeal" deal="ognl: deal" area="ognl: true" disabled="ognl: true" />
+            <fieldset>
+			    <legend class="legend">Secci&oacute;n Forma de pago:</legend>
+			    <table width="100%">
+					<tr valign="top">
+						<td colspan="2">&nbsp;</td>
+					</tr>
+
+					<tr valign="top">
+						<td width="15%" align="right" class="legend" nowrap>Cuenta de
+							Pago:</td>
+						<td><input id="idCuentaPag" class="normal" size="95"
+							type="text" maxlength="10" jwcid="cuentaPag"  />
+
+						</td>
+					</tr>
+
+					<tr valign="top">
+						<td width="15%" align="right" class="legend">Forma de
+							pago:</td>
+						<td class="normal">
+			
+							<span jwcid="@RadioGroup" selected="ognl: formaPago">
+								<table class="normal">
+									<tr>
+										<td>
+											<input type="radio" jwcid="@Radio" 
+												value="ognl: @com.ixe.ods.sica.pages.deals.CapturaMetodoPagoDeal@MP_EFECTIVO" accesskey="E" />  01 <u>E</u>fectivo.
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="radio" jwcid="@Radio" 
+												value="ognl: @com.ixe.ods.sica.pages.deals.CapturaMetodoPagoDeal@MP_CHEQUE" accesskey="C" />  02 <u>C</u>heque Nominativo.
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="radio" jwcid="@Radio" 
+												value="ognl: @com.ixe.ods.sica.pages.deals.CapturaMetodoPagoDeal@MP_TEF" accesskey="r" />  03  T<u>r</u>ansferencia Electr&oacute;nica de fondos.
+										</td>
+									</tr>
+								</table>
+							</span>
+						</td>	 
+					</tr>
+				</table>
+			</fieldset>            
+            
+            <br />
+            <div align="center">
+                <input jwcid="@ImageSubmit" image="ognl: assets.bAceptar" onclick="javascript:IsEmpty(this); fnShowWaitImage(); " />
+                <a jwcid="@DirectLink" listener="ognl: listeners.regresar">
+                  <img jwcid="@Image" image="ognl: assets.bRegresar" border="0" /></a>
+            </div>
+        </form>
+    </table>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <!-- $Id: CapturaLineaCredito.html,v 1.17.68.1 2016/07/13 21:46:43 mejiar Exp $ -->
+    <title>Solicitud / Consulta de L&iacute;neas de Cr&eacute;dito</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <form jwcid="@Form" listener="ognl: listeners.configurarRegistro" delegate="ognl:beans.delegate">
+	   	<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level="ognl: operacionExitosa ? 1 : 0"/>
+        <table jwcid="@ActionPortletBorder" title="Solicitud / Consulta de L&iacute;neas de Cr&eacute;dito" width="80%" >
+            <table border="0" width="100%" >
+                <tr>
+                    <td width="30%" align="right" class="title">Cliente:</td>
+                    <td width="30%" ><span jwcid="@DisabledField" value="ognl: razonSocialCorporativo" /></td>
+                    <td width="20%"> &nbsp; </td>
+                </tr>
+                <tr>
+                	<td align="right" class="title">&Uacute;ltima Modificaci&oacute;n:</td>
+                	<td> 
+    					<input jwcid="@DisabledField" value="ognl: dateFormat.format(lineaCredito.ultimaModificacion)" />
+    				</td>
+    				<td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td align="right" class="title">Status:</td>
+                    <td ><input jwcid="@DisabledField" value="ognl: lineaCredito.descripcionStatus" /></td>
+                    <td> &nbsp; </td>
+                </tr>
+                <tr>
+                    <td align="right" class="title">Excepci&oacute;n para adeudos:</td>
+                    <td class="title">
+                      <span jwcid="@Conditional" condition="ognl: lineaCredito.casoExcepcion">
+                         S&iacute;
+                      </span>
+                      <span jwcid="@Conditional" condition="ognl: !lineaCredito.casoExcepcion">
+                         No
+                      </span>
+                    </td>
+                    <td> &nbsp; </td>
+                </tr>
+                
+               <span jwcid="@Conditional" condition="ognl: !modoEdicion"> 
+                <tr>
+                    <td align="right" class="title">Importe Pago Anticipado/Toma en Firme:</td>
+                    <td class="title" >
+                   		<table border="0" width="100%">
+                   			<tr> 
+                   				<td width="50%">
+                   					<input jwcid="@DisabledField" value="ognl: moneyFormat.format(lineaCredito.importePAyTF)" />  
+                   				</td>
+                   				<td class="title" width="50%">
+                   					&nbsp;  d&oacute;lares.
+                   				</td>
+                   			</tr>
+                   		</table>
+                   	</td>
+                   	<td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td align="right" class="title">Importe Fecha Valor:</td>
+                    <td class="title">
+                    	<table>
+                    		<tr>
+                    			<td width="50%">
+                    				<input jwcid="@DisabledField" value="ognl: moneyFormat.format(lineaCredito.importeFV)" />
+                    			<td>
+                    			<td class="title" width="50%">
+                    			 	&nbsp;  d&oacute;lares.
+                    			</td>
+                    		</tr>
+                    	</table>
+                    </td>
+                    <td> &nbsp; </td>
+                </tr>
+                <tr>
+                    <td align="right" class="title">Importe Total:</td>
+                    <td class="title">
+                    	<table width="100%" border="0">
+                    		<tr>
+                    			<td width="50%">
+                    				<input jwcid="@DisabledField" value="ognl: moneyFormat.format(lineaCredito.totalLineaAutorizada)" /> 
+                    			</td>
+                    			<td class="title" width="50%">
+                    				&nbsp; d&oacute;lares.
+                    			</td>	
+                    		</tr>
+                    	</table> 
+                    </td>
+                    <td> &nbsp; </td>
+                </tr>
+                <tr>
+                    <td align="right" class="title">Vencimiento:</td>
+                    <td> <span jwcid="@ls:DatePicker" value="ognl: lineaCredito.vencimiento" disabled="true" > </span> </td>
+                    <td> &nbsp; </td>
+                </tr>
+                <tr>
+                	<td colspan="2"  align="right"> 
+	                	<table width="80%">
+		                	<tr>
+			                    <td align="center" class="title" ><p>Tipo de Autorizac&iacute;on</p> 
+			                    	<select jwcid="tipoAutorizacionComboBox2" disabled="true" />
+			                    </td>
+			                    <td align="center" class="title"><p>Formalizac&iacute;on</p> 
+			                    	<select jwcid="formalizacionComboBox2" disabled="true" />
+			                    </td>
+			                    <td align="center" class="title"><p>Instancia Facultada que autoriz&oacute;</p> 
+			                    	<select jwcid="instanciaFacultadaComboBox2" disabled="true" />
+			                    </td>
+		                    </tr>
+                    	</table>
+                    </td>
+                     <td> &nbsp; </td>
+                </tr>
+              </span>  
+              
+              <span jwcid="@Conditional" condition="ognl: modoEdicion">
+              	 <tr>
+                    <td align="right" class="title">Importe Pago Anticipado/Toma en Firme:</td>
+                    <td class="title"><input jwcid="montoTextField"  format="ognl: moneyFormat" /> &nbsp; d&oacute;lares.</td>
+                    <td> &nbsp; </td>
+                </tr>
+                <tr>
+                    <td align="right" class="title">Importe Fecha Valor:</td>
+                    <td class="title"><input jwcid="montoFechaValorTextField" format="ognl: moneyFormat" /> &nbsp; d&oacute;lares. </td>
+                    <td> &nbsp; </td>
+                </tr>
+                <tr>
+                    <td align="right" class="title">Importe Total:</td>
+                    <td class="title">
+                    	<table width="100%" border ="0">
+                    		<tr>
+                    			<td width="30%" class="title">
+                    				<input jwcid="@DisabledField" value="ognl: lineaCredito.totalLineaAutorizada" /> 
+                    			</td>
+                    			<td width="70%" class="title">
+                    				&nbsp; d&oacute;lares.
+                    			</td>	
+                    		</tr>
+                    	</table> 
+                    <td> &nbsp; </td>
+                </tr>
+                <tr>
+                    <td align="right" class="title">Vencimiento:</td>
+                    <td ><span jwcid="@ls:DatePicker" value="ognl: lineaCredito.vencimiento" > </span></td>
+                    <td> &nbsp; </td>
+                </tr>
+                <tr>
+                	<td colspan="2" align="right">
+	                	<table width="80%" >
+			                <tr>
+			                    <td align="center" class="title"><p>Tipo de Autorizac&iacute;on</p> 
+			                    	<select jwcid="tipoAutorizacionComboBox" />
+			                    </td>
+			                    <td align="center" class="title"><p>Formalizac&iacute;on</p> 
+			                    	<select jwcid="formalizacionComboBox" />
+			                    </td>
+			                    <td align="center" class="title"><p>Instancia Facultada que autoriz&oacute;</p> 
+			                    	<select jwcid="instanciaFacultadaComboBox" />
+			                    </td>
+			               </tr>     
+			            </table>
+		            </td>
+		            <td> &nbsp; </td>   
+                </tr>
+              </span>  
+            </table>
+            <br />
+            
+            <span jwcid="@Conditional" condition="ognl: modoEdicion">
+	            <div align="center">
+	            	<input type="image" jwcid="@ImageSubmit" image="ognl: assets.aceptarButton" />
+		            <a jwcid="@DirectLink" listener="ognl:listeners.terminarOperacion" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.backButton" accesskey="C"/></a>
+	            </div>
+			</span>
+			
+			<span jwcid="@Conditional" condition="ognl: !modoEdicion">
+	            <div align="center">	            	
+		            <a jwcid="@DirectLink" listener="ognl:listeners.terminarOperacion" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.backButton" accesskey="C"/></a>
+	            </div>
+			</span>
+			
+        </table>
+    </form>
+    <span jwcid="@Conditional" condition="ognl: lineaCredito.idLineaCambio && lineaCredito.idLineaCambio.intValue() > 0">
+        <br />
+        <table jwcid="@ResumenLineasCredito" idCliente="ognl: idCorporativo" />
+    </span>
+    <span jwcid="@ls:DatePickerColophon" />
+</body>
+</html>

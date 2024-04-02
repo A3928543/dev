@@ -1,0 +1,29 @@
+<!-- $Id: Pizarron.html,v 1.9.42.1 2011/06/20 21:43:03 guzmanal Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Pizarr&oacute;n</title>
+    <link rel="StyleSheet" href="../../css/ixe.css">
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0"> 
+    <span jwcid="@contrib:Choose">
+        <span jwcid="@contrib:When" condition="ognl: visit.idCanal">
+            <applet jwcid="@Pizarra" idTipoPizarron="ognl: sicaServiceData.findCanal(visit.idCanal).tipoPizarron.idTipoPizarron.intValue() " sincronizar="yes"
+                    tout="ognl: @java.lang.Integer@valueOf(sicaServiceData.findParametro('TIMEOUT_PIZ').valor)" 
+                    toutDF="ognl: @java.lang.Integer@valueOf(sicaServiceData.findParametro('NETEO_TIMEOUT').valor)"
+                    mapParsLimDesv="ognl: sicaServiceData.getParsLimDesv()" />
+        </span>
+        <span jwcid="@contrib:Otherwise">
+            <script type="text/javascript">
+                <!--
+                    function recargar() {
+                        document.location = '?service=page/Pizarron';
+                    }
+                    setTimeout(recargar, 3000);
+                //-->
+            </script>
+            <br />
+            <div align="center"><font class="title">Por favor, espere un momento...</font></div>
+        </span>
+    </span>
+</body>
+</html>

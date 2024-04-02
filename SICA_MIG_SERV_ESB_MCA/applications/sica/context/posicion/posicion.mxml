@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: posicion.mxml,v 1.9.30.1 2010/06/16 15:31:04 galiciad Exp $ -->
+<ixe:Application xmlns:mx="http://www.macromedia.com/2003/mxml"
+    xmlns:ixe="com.ixe.ods.sica.posicion.application.*"
+    xmlns:sicaBusiness="com.ixe.ods.sica.posicion.business.*"
+    xmlns:view="com.ixe.ods.sica.posicion.views.*"
+    xmlns:ls="com.legosoft.*"
+    xmlns:sica="*"
+    width="100%" height="100%" backgroundColor="0xFFFFFF"
+    preloader="com.legosoft.preloaders.Preloader"
+    marginLeft="0" marginRight="0" marginTop="0" marginBottom="0" horizontalAlign="left"
+    pageTitle="Posici&#243;n">
+
+    <mx:Style source="resources/ixe.css"/>
+
+    <sicaBusiness:Services id="services"/>
+
+    <ls:HAccordion id="accordion" height="100%" width="{mainBox.width + 80}" titleStyleDeclaration="haccordion">
+
+        <mx:VBox label="Principal" marginLeft="10" marginRight="10" marginTop="10" marginBottom="10" verticalGap="5">
+
+            <mx:HBox id="mainBox" horizontalGap="10">
+
+                <sica:PosicionNavigator id="posicionNavigator" height="{informationBox.height}"/>
+
+                <mx:VBox id="informationBox" verticalGap="5">
+
+                    <sica:ParametrosPizarron id="boardParameters" width="{desktopPanel.width}" marginRight="10"
+                                             marginLeft="10" marginBottom="5" borderStyle="solid"/>
+
+                    <mx:ViewStack id="topViewStack" creationPolicy="all">
+                        <mx:VBox id="topEmptyView" height="{desktopPanel.height}"/>
+                        <sica:PosicionMesa id="desktopPanel" width="740" borderStyle="solid" marginBottom="10"
+                                           marginTop="10"/>
+                        <sica:UtilidadGlobal width="{desktopPanel.width}" height="{desktopPanel.height}"
+                                             borderStyle="solid" marginLeft="10" marginRight="10" marginTop="10"/>
+                        <view:NoDisponible width="{desktopPanel.width}" height="{desktopPanel.height}"
+                                           borderStyle="solid"/>
+                    </mx:ViewStack>
+
+                </mx:VBox>
+            </mx:HBox>
+            
+            <mx:ViewStack resizeToContent="true" id="posicionCanalesView" creationPolicy="all" borderStyle="solid" width="{mainBox.width}"
+            	marginLeft="10" marginRight="10" marginTop="10" marginBottom="10">
+            	
+            	<mx:HBox width="100%" backgroundColor="0xE6EEEE">
+            		<mx:Link id="showPosicionCanales" click="showPosicionCanalesFun()" label="Posici&#243;n de canales" toggle="true" color="#83263A" fontWeight="bold"/>
+            		<mx:Spacer width="100%"/>
+            		<mx:Link id="iShowPosicionCanales" click="showPosicionCanalesFun()" icon="@Embed('resources/maximizar.gif')" toolTip="Mostrar posicion de canales."/>
+            	</mx:HBox>
+            	
+            	<mx:VBox width="100%">
+					<mx:HBox width="100%" backgroundColor="0xE6EEEE">
+		            	<mx:Link id="hidePosicionCanales" click="hidePosicionCanalesFun()" label="Posici&#243;n de canales" toggle="true" color="#83263A" fontWeight="bold"/>
+		            	<mx:Spacer width="100%"/>
+		            	<mx:Link id="ihidePosicionCanales" click="hidePosicionCanalesFun()" icon="@Embed('resources/minimizar.gif')" toolTip="Ocultar posicion de canales."/>
+		            </mx:HBox>
+            	
+                	<mx:HBox width="100%">
+                
+						<sica:DragContainer id="dragContainerBox"/>
+									                
+						<mx:ViewStack id="bottomViewStack" width="{desktopPanel.width-50}" creationPolicy="all">
+                        <mx:VBox id="bottomEmptyView" height="{canalView.height}"/>
+		                        <sica:PosicionCanal id="canalView" width="{desktopPanel.width-50}" borderStyle="solid"
+                                            marginLeft="10" marginRight="10" marginTop="10" marginBottom="10"/>
+		                        <sica:PosicionEfectivo height="{canalView.height}" width="{desktopPanel.width-50}"
+                                               borderStyle="solid" marginTop="40" marginLeft="10" marginRight="10"
+                                               marginBottom="10"/>
+		                        <sica:PosicionProducto height="{canalView.height}" width="{desktopPanel.width-50}"
+                                               borderStyle="solid" marginTop="40" marginLeft="10" marginRight="10"
+                                               marginBottom="20"/>
+		                        <sica:PosicionGrupo height="{canalView.height}" width="{desktopPanel.width-50}" borderStyle="solid"
+                                            marginTop="10" marginLeft="10" marginRight="10" marginBottom="10"
+                                            hScrollPolicy="off" vScrollPolicy="off"/>
+		                        <view:NoDisponible height="{canalView.height}" width="{desktopPanel.width-50}"
+                                           borderStyle="solid"/>
+		                        <sica:PosicionInventarioEfectivo height="{canalView.height}" width="{desktopPanel.width-50}"
+                                               borderStyle="solid" marginTop="30" marginLeft="10" marginRight="10"
+                                               marginBottom="10"/>
+                    </mx:ViewStack>
+
+                 	</mx:HBox>
+                </mx:VBox>
+			</mx:ViewStack>
+
+            <sica:Blotter width="{mainBox.width}" marginLeft="10" marginRight="10" marginTop="10" marginBottom="10"
+                          verticalGap="5" borderStyle="solid"/>
+
+            <!--<mx:TextArea id="traceText" width="{mainBox.width}" height="{debugMode ? 80 : 0}"/>-->
+
+        </mx:VBox>
+
+        <sica:PosicionDivisas label="Posici&#243;n en Divisas" verticalGap="10" horizontalAlign="center"
+                              verticalAlign="middle"/>
+
+    </ls:HAccordion>
+
+</ixe:Application>

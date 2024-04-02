@@ -1,0 +1,50 @@
+<!-- $Id: CapturaNacional.html,v 1.9 2008/02/22 18:25:46 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Captura de Plantilla De Cheques</title>
+    <link rel="StyleSheet" href="../../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="tb@Block"><span jwcid="@EventosDeal" deal="ognl: dealDetalle.deal" /></span>
+    <table jwcid="@ActionPortletBorder" title="Deal" titleBlock="ognl: components.tb">
+        <span jwcid="@EncabezadoDeal" deal="ognl: dealDetalle.deal" disabled="yes" />
+        <form jwcid="@Form" listener="ognl: listeners.submit" delegate="ognl: beans.delegate">
+            <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" width="100%"/>
+            <table jwcid="@DetailFieldset" dealDetalle="ognl: dealDetalle">
+                <tr class="normal" valign="top">
+                    <td class="title" align="right">Clave Plantilla:</td>
+                    <td>
+                        <span jwcid="@contrib:Choose">
+                            <span jwcid="@contrib:When" condition="ognl: !modoCaptura">
+                                <input class="uppercase" jwcid="@ixe:UppercaseTextField" value="ognl: dealDetalle.plantilla.clavePlantilla" maxlength="4" size="4" />
+                            </span>
+                            <span jwcid="@contrib:Otherwise">
+                                <span jwcid="@DisabledField" value="ognl: dealDetalle.plantilla.clavePlantilla" />
+                            </span>
+                        </span>
+                    </td>
+                    <td class="title" align="right">Nombre Beneficiario:</td>
+                    <td colspan="7">
+                        <span jwcid="@contrib:Choose">
+                            <span jwcid="@contrib:When" condition="ognl: !modoCaptura">
+                                <select jwcid="beneficiarioComboBox" />
+                            </span>
+                            <span jwcid="@contrib:Otherwise">
+                                <span jwcid="@DisabledField" value="ognl: dealDetalle.plantilla.beneficiario.nombreCompleto" />
+                            </span>
+                        </span>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <div align="center">
+            	<span jwcid="@contrib:FormConditional" condition="ognl: !modoCaptura">
+	            	<a jwcid="@DirectLink" listener="ognl: listeners.agregaBeneficiario" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bNuevoBeneficiario" /></a>
+	                <input jwcid="@ImageSubmit" image="ognl: assets.bActualizar" onclick="return fnDisableForm(this.form);"/>
+                </span>
+                <input jwcid="@RegresarCapturaDeal" idDeal="ognl: dealDetalle.deal.idDeal" />
+            </div>
+        </form>
+    </table>
+</body>
+</html>

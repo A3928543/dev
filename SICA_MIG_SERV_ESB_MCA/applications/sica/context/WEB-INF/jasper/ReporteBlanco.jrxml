@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="Unnamed" language="java" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30">
+	<property name="com.jasperassistant.designer.GridHeight" value="12"/>
+	<property name="com.jasperassistant.designer.GridWidth" value="12"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="false"/>
+	<property name="com.jasperassistant.designer.Grid" value="false"/>
+	<detail>
+		<band height="129">
+			<subreport>
+				<reportElement positionType="Float" x="9" y="7" width="783" height="112"/>
+				<dataSourceExpression><![CDATA[((com.ixe.ods.jasper.NestedListDataSource) $P{REPORT_DATA_SOURCE}).getCurrentElement()]]></dataSourceExpression>
+				<subreportExpression class="java.io.InputStream"><![CDATA[getClass().getResourceAsStream("/ReporteLinCredAut.jasper")]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement positionType="Float" x="363" y="81" width="80" height="20" forecolor="#c0c0c0"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["PRUEBA"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

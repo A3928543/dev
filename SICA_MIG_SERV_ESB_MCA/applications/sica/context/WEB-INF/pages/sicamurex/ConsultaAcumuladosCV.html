@@ -1,0 +1,160 @@
+<!-- $Id: ConsultaAcumuladosCV.html,v 1.1.2.2 2013/10/09 18:18:59 mejiar Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+<title>Consulta de Clientes</title>
+<link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+
+<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate"	insertBreakAtTail="yes" />
+
+	<span jwcid="@Conditional" condition="ognl: acumuladosCV.size() == 0 && dealsInterbancarios.size() == 0">
+		<table border="0" cellpadding="0" cellspacing="0" width="100%" >
+			<tr valign="top">
+				<td width="500">
+					<form jwcid="@Form" listener="ognl: listeners.fetch" delegate="ognl: beans.delegate" onSubmit="return fnDisableForm(this);">
+							
+							<fieldset class="normal">
+								<table jwcid="@ActionPortletBorder" title="ognl: tituloActionPB" border="0">
+									<tr class="normal">
+										<td>
+											<input type="checkbox" jwcid="@Checkbox"
+												selected="ognl: divisasFrecuentes" accesskey="F" /> Divisas <u>F</u>recuentes.
+										</td>
+										<td>
+											<input type="checkbox" jwcid="@Checkbox"
+													selected="ognl: divisasNoFrecuentes" accesskey="N" /> Divisas <u>N</u>o Frecuentes.
+										</td>
+										<td>
+											<input type="checkbox" disabled="disabled"
+													jwcid="@Checkbox" selected="ognl: metalesAmonedados" accesskey="A" /> Metales <u>A</u>monedados.
+										</td>
+									</tr>
+									<tr>
+										<td nowrap class="normal" align="center" colspan="3">
+											<input jwcid="@ImageSubmit" image="ognl: assets.searchButton" title="Vista Previa" onclick="return fnDisableForm(this.form);"  />
+										</td>
+									</tr>
+								</table>
+							</fieldset>
+					</form>
+				</td>
+			</tr>
+		</table>
+	</span>	
+			
+		<span jwcid="@Conditional" condition="ognl: acumuladosCV.size() > 0 && mostrarAcumuladoCV ">
+            <table jwcid="@ActionPortletBorder" title="Acumulados de compra/venta de divisas">
+                <tr>
+                	<td>
+                    <table jwcid="@TableBorder" columnCount="10"  title="Acumulados de compra/venta de divisas" width="100%">
+                        <tr class="titlecell">
+                            <th class="title" nowrap>Divisa</th>
+                            <th class="title">Fecha Valor</th>
+                            <th class="title">Operaci&oacute;n</th>
+                            <th class="title" nowrap>Monto(MXN)</th>
+                           <th class="title" nowrap>Monto Divisa</th>
+                           <th class="title" nowrap>T.C. Mesa</th>
+                        </tr>
+                        <tr jwcid="forAcumuladosCV@Foreach" source="ognl: acumuladosCV" element="tr" class="ognl: beans.evenOdd.next">
+                            <td class="normal" align="center">
+                            	<img jwcid="@Any" src="ognl: components.forAcumuladosCV.value.icono" alt="ognl: components.forAcumuladosCV.value.divisa" />
+                            </td>
+                            <td class="normal" align="left">
+                            	<span jwcid="@Insert" value="ognl: components.forAcumuladosCV.value.fechaValor" raw="yes" />
+                            </td>
+                            <td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forAcumuladosCV.value.operacion" raw="yes" /></td>
+                            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forAcumuladosCV.value.montoMXNCliente" raw="yes" format="ognl: page.moneyFormat" /></td>
+                            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forAcumuladosCV.value.montoDivisa" raw="yes" format="ognl: page.moneyFormat" /></td>
+                            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forAcumuladosCV.value.tcFondeo" raw="yes" format="ognl: page.currencyFormatSix" /></td>
+                        </tr>
+                    </table>
+                    </td>
+                </tr>
+                <span  jwcid="@Conditional" condition="ognl: mostrarPanelBotonesACV">
+	                <span jwcid="@Conditional" condition="ognl: mostrarBotonesACV">
+		                <tr>
+		                	<td align="center">	
+		                    <a href="#" jwcid="@DirectLink" listener="ognl: listeners.regresar " onClick="fnShowWaitImage();">
+								Regresar
+							</a>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href="#" jwcid="@DirectLink" listener="ognl: listeners.transferirArchivo " onClick="fnShowWaitImage();">
+								Enviar corte
+							</a> 
+							</td>
+						</tr>
+					</span>
+					
+					<span jwcid="@Conditional" condition="ognl:! mostrarBotonesACV">
+		                <tr>
+		                	<td align="center">	
+		                    <a href="#" jwcid="@DirectLink" listener="ognl: listeners.vistaPreviaDealsInterbancarios" onClick="fnShowWaitImage();">
+								Vista Previa DEALS Interbancarios
+							</a>
+							</td>
+						</tr>
+					</span>
+				</span>
+        	</table>
+    	</span>
+    	
+    	<span jwcid="@Conditional" condition="ognl: dealsInterbancarios.size() > 0 && mostrarDealsInterbancarios">
+    		<table jwcid="@ActionPortletBorder" title="Deals Interbancarios">
+                <tr>
+                	<td>
+                    <table jwcid="@TableBorder" columnCount="10"  title="Deals Interbancarios" width="100%">
+                        <tr class="titlecell">
+                            <th class="title" nowrap>Divisa</th>
+                            <th class="title">Fecha Valor</th>
+                            <th class="title">Operaci&oacute;n</th>
+                           	<th class="title" nowrap>Monto Divisa</th>
+                            <th class="title" nowrap>Monto(MXN)</th>
+                           	<th class="title" nowrap>T.C. </th>
+                           	<span jwcid="@Conditional" condition="ognl: mostrarIdDealInterbancario" >
+	                           	<th  class="title" nowrap>
+	                           		Deal Int.
+	                           	</th>
+                           	</span>
+                        </tr>
+                        <tr jwcid="forDealsInterbancarios@Foreach" source="ognl: dealsInterbancarios" element="tr" class="ognl: beans.evenOdd.next">
+                            <td class="normal" align="center">
+                            	<img jwcid="@Any" src="ognl: components.forDealsInterbancarios.value.icono" alt="ognl: components.forDealsInterbancarios.value.divisa" />
+                            </td>
+                            <td class="normal" align="left">
+                            	<span jwcid="@Insert" value="ognl: components.forDealsInterbancarios.value.fechaValor" raw="yes" />
+                            </td>
+                            <td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forDealsInterbancarios.value.operacion" raw="yes" /></td>
+                            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forDealsInterbancarios.value.montoDivisaDI" raw="yes" format="ognl: page.moneyFormat" /></td>
+                            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forDealsInterbancarios.value.montoDivisaDI * components.forDealsInterbancarios.value.tcDI" raw="yes" format="ognl: page.moneyFormat" /></td>
+                            <td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forDealsInterbancarios.value.tcDI" raw="yes" format="ognl: page.currencyFormatSix" /></td>
+                            <span jwcid="@Conditional" condition="ognl: mostrarIdDealInterbancario" >
+	                           	<td class="normal" align="right"><span jwcid="@Insert" value="ognl: components.forDealsInterbancarios.value.idDealDI" raw="yes" /></td>
+                           	</span>
+                        </tr>
+                    </table>
+                    </td>
+                </tr>
+                <span jwcid="@Conditional" condition="ognl: mostrarPanelBotonesDI">
+		                <tr>
+			                <td align="center">
+			                	 <a href="#" jwcid="@DirectLink" listener="ognl: listeners.actualizarPosicionDI" onClick="fnShowWaitImage();">
+									Crear DEALS Interbancarios.
+								</a>
+			                </td>
+		                </tr>
+	             </span>
+	             <span jwcid="@Conditional" condition="ognl: mostrarPanelProcesadosDI">
+	             	<tr>
+		                <td align="center">
+		                	 <a href="#" jwcid="@DirectLink" listener="ognl: listeners.mostrarResumenCorte" onClick="fnShowWaitImage();">
+								Resumen de movimientos.
+							</a>
+		                </td>
+		            </tr>
+	             </span>
+	             
+              </table>  	
+    	</span>
+	</body>
+</html>

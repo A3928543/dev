@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.ReglaNeteo"
+        table="SC_REGLA_NETEO"
+        proxy="com.ixe.ods.sica.model.ReglaNeteo"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idReglaNeteo"
+            column="ID_REGLA_NETEO"
+            type="java.lang.String"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-ReglaNeteo.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="idDivisa"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIVISA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="claveFormaLiquidacionCompra"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_FORMA_LIQUIDACION_COMPRA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="claveFormaLiquidacionVenta"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_FORMA_LIQUIDACION_VENTA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="baseRegla"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="BASE_REGLA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="difAntesDelHorario"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="DIF_ANTES_DEL_HORARIO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="difDespuesDelHorario"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="DIF_DESPUES_DEL_HORARIO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="montoAntesDelHorario"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO_ANTES_DEL_HORARIO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="montoDespuesDelHorario"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO_DESPUES_DEL_HORARIO"
+            not-null="false"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-ReglaNeteo.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

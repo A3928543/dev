@@ -1,0 +1,43 @@
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <!-- $Id: FinLiquidaciones.html,v 1.13 2009/11/17 20:17:33 ccovian Exp $ -->
+    <title>Liquidaciones</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <table jwcid="@ActionPortletBorder" title="Fin de d&iacute;a de Liquidaciones">
+        <form jwcid="@Form" listener="ognl: listeners.refrescarDeals" delegate="ognl: beans.delegate">
+            <div align="center">
+                <input jwcid="@ImageSubmit" image="ognl: assets.confirmButton" selected="ognl: modoRefresh" tag= "2" onclick="fnShowWaitImage();" />
+                <input jwcid="@ImageSubmit" image="ognl: assets.refreshButton" selected="ognl: modoRefresh" tag= "1" onclick="fnShowWaitImage();" />
+            </div>
+        </form>
+    </table>
+    <br/>
+    <table width="100%">
+        <tr valign="top">
+            <td width="50%">
+                <span jwcid="@DealsPendientes" dealsPendientes="ognl: dealsPendientesNoBalanceado" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesNoBalanceado.size()" titulo=" por no estar balanceados" />
+                <br/>
+                <span jwcid="@DealsPendientes" dealsPendientes="ognl: dealsPendientesMonto" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesMonto.size()" titulo="por Monto"/>
+                <br/>
+                <span jwcid="@DealsPendientes" dealsPendientes="ognl: dealsPendientesBanxico" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesBanxico.size()" titulo="por Banxico"/>
+                <br/>
+                <span jwcid="@DealsPendientes" dealsPendientes="ognl: dealsSwap" dealsMinimizados="ognl: true" numero="ognl: dealsSwap.size()" titulo="por Swap"/>
+                <br/>
+                <span jwcid="@DealsPendientes" dealsPendientes="ognl: dealsPendientesContratoSica" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesContratoSica.size()" titulo="por Contrato Sica"/>
+            </td>
+            <td width="1%">&nbsp;</td>
+            <td>
+                <span jwcid="@DealsPendientes" dealsPendientes="ognl: dealsPendientesHorario" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesHorario.size()" titulo="por Horario"/>
+                <br/>
+                <span jwcid="@DealsPendientes" dealsPendientes="ognl: dealsPendientesModCan" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesModCan.size()" titulo="por modificaci&oacute;n o cancelaci&oacute;n"/>
+                <br/>
+                <span jwcid="@DealsPendientes" dealsPendientes="ognl: dealsPendientesCompletar" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesCompletar.size()" titulo="por Completar"/>
+                <br/>
+                <span jwcid="@ReversosPendientes" reversosPendientes="ognl: reversosPendientes" reversosMinimizados="ognl: true" numero="ognl: reversosPendientes.size()" titulo="en Reversos"/>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

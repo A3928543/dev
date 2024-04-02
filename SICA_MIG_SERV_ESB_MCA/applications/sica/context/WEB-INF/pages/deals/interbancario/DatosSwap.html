@@ -1,0 +1,24 @@
+<!-- $Id: DatosSwap.html,v 1.11 2010/04/13 16:45:19 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Swap</title>
+    <link rel="StyleSheet" href="../../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="@bup:ShowError" level="0" width="100%" delegate="ognl: beans.delegate" />
+    <form jwcid="@Form" listener="ognl: listeners.submit" delegate="ognl: beans.delegate">
+        <span jwcid="@InfoSwap" swap="ognl: swap" />
+        <br />
+        <table jwcid="@ActionPortletBorder" title="Acciones">
+            <div align="center">
+                <span jwcid="@Conditional" condition="ognl: swapCancelable">
+                    <span jwcid="@Conditional" condition="ognl: !@com.ixe.ods.sica.model.Swap@STATUS_CANCELADO.equals(swap.status)">
+                        <input jwcid="@ImageSubmit" image="ognl: assets.bCancelarTodo" listener="ognl: listeners.cancelarTodo" onclick="fnShowWaitImage();" />
+                    </span>
+                </span>
+                <a href="#" jwcid="@PageLink" page="ConsultaSwaps" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bRegresar" border="0" /></a>
+            </div>
+        </table>
+    </form>
+</body>
+</html>

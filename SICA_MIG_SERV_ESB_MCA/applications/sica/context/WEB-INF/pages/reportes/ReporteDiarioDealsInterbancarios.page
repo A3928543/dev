@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ReporteDiarioDealsInterbancarios.page,v 1.10 2008/02/22 18:25:41 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.reportes.ReporteDiarioDealsInterbancarios">
+
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate"/>
+    
+    <component id="divisasComboBox" type="PropertySelection">
+        <binding name="model" expression="divisasModel" />
+        <binding name="value" expression="divisaSeleccionada" />
+    </component>
+    
+	<component id="brokersComboBox" type="PropertySelection">
+        <binding name="model" expression="brokersModel" />
+        <binding name="value" expression="brokerSeleccionado" />
+    </component>
+    
+    <component id="mesasComboBox" type="PropertySelection">
+        <binding name="model" expression="mesasModel" />
+        <binding name="value" expression="mesaSeleccionada" />
+    </component>
+    
+    <property-specification name="gc" type="java.util.Date" persistent="yes" />
+	<property-specification name="listaDetalles" type="java.util.List" initial-value="new java.util.ArrayList()" persistent="yes" />
+	<property-specification name="registerDateDesde" type="java.util.Date" persistent="yes" />
+	<property-specification name="registerDateHasta" type="java.util.Date" persistent="yes" />
+    <property-specification name="divisaSeleccionada" type="com.ixe.ods.sica.model.Divisa" persistent="yes" />
+    <property-specification name="idPersonaBroker" type="java.lang.Integer" persistent="yes" />
+    <property-specification name="brokerSeleccionado" type="java.util.HashMap" persistent="yes" />
+    <property-specification name="mesaSeleccionada" type="com.ixe.ods.sica.model.MesaCambio" persistent="yes" />    
+
+    <context-asset name="searchButton" path="/images/search.gif" />
+	<context-asset name="verPdfButton" path="/images/ver_pdf.gif" />
+	<context-asset name="verXlsButton" path="/images/ver_excel.gif" />
+
+</page-specification>

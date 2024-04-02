@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!--$Id: common.xml,v 1.11 2010/04/13 20:27:57 ccovian Exp $ -->
+<project name="common" default="compile">
+
+    <!-- Abstract Target -->
+    <target name="ejbgen" if="ejbgen.dest.dir" description="Generic task to launch Ejbgen process. It doesn't work standalone.">
+        <echo>+--------------------------------------------------------------------+</echo>
+        <echo>|                                                                    |</echo>
+        <echo>| E X E C U T I N G   E J B G E N                                    |</echo>
+        <echo>|                                                                    |</echo>
+        <echo>+--------------------------------------------------------------------+</echo>
+        <mkdir dir="${ejbgen.dest.dir}"/>
+
+        <javadoc sourcefiles="${ejbgen.src.beans}" sourcepath="${src.dir}" destdir="${ejbgen.dest.dir}" docletpath="${root.lib.dir}/bea/${ejbgen.jar}">
+            <doclet name="weblogic.tools.ejbgen.EJBGen">
+                <!--                <param name="-noValueClasses" value=""/>-->
+                <!--                <param name="-wls81" value=""/>-->
+            </doclet>
+            <classpath refid="project.classpath"/>
+        </javadoc>
+    </target>
+
+    <!-- Abstract Target -->
+    <target name="ejbc" if="ejb.jar" description="Generic task to launch weblogic.ejbc. It doesn't work standalone.">
+        <echo>+--------------------------------------------------------------------+</echo>
+        <echo>|                                                                    |</echo>
+        <echo>| E X E C U T I N G   E J B C                                        |</echo>
+        <echo>|                                                                    |</echo>
+        <echo>+--------------------------------------------------------------------+</echo>
+        <java fork="yes" classname="weblogic.ejbc">
+            <!-- ejbc needs javac and searches it in the path-->
+            <arg line="-iiop ${dist.dir}/pre-${ejb.jar} ${dist.dir}/${ejb.jar}"/>
+            <classpath>
+                <pathelement path="${java.class.path}"/>
+            </classpath>
+            <classpath refid="${classpath.id}"/>
+        </java>
+        <delete file="${dist.dir}/pre-${ejb.jar}"/>
+    </target>
+
+    <target name="hbgen" if="hbgen.src.dir" description="Generic task to launch xdoclet hibernate process. It doesn't work standalone.">
+        <echo>+--------------------------------------------------------------------+</echo>
+        <echo>|                                                                    |</echo>
+        <echo>| E X E C U T I N G   H B G E N                                      |</echo>
+        <echo>|                                                                    |</echo>
+        <echo>+--------------------------------------------------------------------+</echo>
+        <taskdef name="hibernatedoclet"
+            classname="xdoclet.modules.hibernate.HibernateDocletTask">
+            <classpath refid="xdoclet.classpath"/>
+        </taskdef>
+
+        <!-- Execute the hibernatedoclet task -->
+        <hibernatedoclet
+            destDir="${hbgen.dir}"
+            excludedtags="@version,@author,@todo"
+            force="true"
+            verbose="true">
+
+            <fileset dir="${hbgen.src.dir}">
+                <include name="**/ods/**/*.java"/>
+            </fileset>
+
+            <hibernate version="2.0"/>
+
+        </hibernatedoclet>
+    </target>
+
+</project>

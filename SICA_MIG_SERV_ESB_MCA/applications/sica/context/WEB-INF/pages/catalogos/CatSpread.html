@@ -1,0 +1,74 @@
+<!-- $Id: CatSpread.html,v 1.9 2008/02/22 18:25:16 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Encabezado</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <form jwcid="@Form" listener="ognl: listeners.actualizar" delegate="ognl:beans.delegate">
+    	<span jwcid="@bup:ShowError" level="-1" width="100%" delegate="ognl:beans.delegate"/>
+        <table jwcid="@ActionPortletBorder" title="Spread" width="100%">
+            <table jwcid="@TableBorder" title="ognl: null" columnCount="2" width="100%">
+                <tr class="titlecell">
+                    <td align="right" class="title">Producto:</td>
+                    <td class="normalcell">
+                    	<span jwcid="clavesFormasLiquidacionComboBox"/>
+                    </td>
+                    <td align="right" class="title">Tipo Pizarr&oacute;n:</td>
+                    <td class="normalcell">
+                    	<span jwcid="@Insert" value="ognl: registro.tipoPizarron.descripcion" />
+                    </td>
+                </tr>
+                <tr class="titlecell">
+                    <td align="right" class="title">Divisa:</td>
+                    <td class="normalcell">
+                    	<span jwcid="@Insert" value="ognl: registro.divisa.descripcion" />
+                    </td>
+                    <td align="right" class="title">&nbsp;</td>
+                    <td class="normalcell">&nbsp;</td>
+                    
+                </tr>
+            </table>
+            <br />
+            <table jwcid="@TableBorder" title="ognl: null" columnCount="10" width="100%">
+                <tr class="titlecell">
+                    <td colspan="2" align="center" class="title">Cash</td>
+                    <td colspan="2" align="center" class="title">Tom</td>
+                    <td colspan="2" align="center" class="title">Spot</td>
+                    <td colspan="2" align="center" class="title">72HR</td>
+                    <td colspan="2" align="center" class="title">VFut</td>
+                </tr>
+                <tr class="titlecell">
+                    <td align="center" class="title">Compra</td>
+                    <td align="center" class="title">Venta</td>
+                    <td align="center" class="title">Compra</td>
+                    <td align="center" class="title">Venta</td>
+                    <td align="center" class="title">Compra</td>
+                    <td align="center" class="title">Venta</td>
+                    <td align="center" class="title">Compra</td>
+                    <td align="center" class="title">Venta</td>
+                    <td align="center" class="title">Compra</td>
+                    <td align="center" class="title">Venta</td>
+                </tr>
+                <tr class="titlecell">
+                    <td class="normalcell" align="center"><input jwcid="compraCashTextField"/></td>
+                    <td class="normalcell" align="center"><input jwcid="ventaCashTextField"/></td>
+                    <td class="normalcell" align="center"><input jwcid="compraTomTextField"/></td>
+                    <td class="normalcell" align="center"><input jwcid="ventaTomTextField"/></td>
+                    <td class="normalcell" align="center"><input jwcid="compraSpotTextField"/></td>
+                    <td class="normalcell" align="center"><input jwcid="ventaSpotTextField"/></td>
+                    <td class="normalcell" align="center"><input jwcid="compra72HrTextField"/></td>
+                    <td class="normalcell" align="center"><input jwcid="venta72HrTextField"/></td>
+                    <td class="normalcell" align="center"><input jwcid="compraVFutTextField"/></td>
+                    <td class="normalcell" align="center"><input jwcid="ventaVFutTextField"/></td>
+                </tr>
+            </table>
+            <br />
+            <div align="center">
+                <input jwcid="@ImageSubmit" image="ognl: assets.acceptButton" onclick="return fnDisableForm(this.form);" />
+                <a jwcid="@PageLink" page="CatSpreads" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.cancelButton"/></a>
+            </div>
+        </table>
+    </form>
+</body>
+</html>

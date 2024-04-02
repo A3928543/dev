@@ -1,0 +1,670 @@
+<!-- $Id: CapturaAutorizaTce.html,v 1.1.2.8.2.4 2012/12/01 03:22:34 mejiar Exp $ -->
+<html jwcid="$content$">
+	<head jwcid="$remove$">
+		<title>Captura Deal TC Especial</title>
+		<link rel="StyleSheet" href="../../../css/ixe.css">
+	</head>
+	<body jwcid="@PageBorderTce" menuDisabled="yes">
+		<span jwcid="@AutorizaTceMenu" esPromocion="ognl: isPromocion()" /> <script
+				type="text/javascript" src="scripts/tce/banner-mensajes.js">
+</script> <script type="text/javascript">
+<!--
+
+		// Detecta el tabulador hacia adelante y hacia atras
+		document.onkeydown = keydown;
+        var tabulador = false;
+		var tabuladorback = false;
+		var activaTiempo = false;
+
+		function keydown(event) {
+			var code;
+			var e;
+			if (document.all) {
+				if (!event) {
+					var e = window.event;
+					code = e.keyCode;
+				}
+			}
+			else if (event.which) {
+				code = event.which;
+				e = event;
+			}
+			if (code == 9) {
+				if (e.shiftKey) {
+					tabuladorback = true;
+				}
+				else {
+					tabulador = true;
+				}
+			}
+			else {
+				tabulador = false;
+				tabuladorback = false;
+			}
+		}
+
+		// hace el submit para modificar valores en los campos de la pantalla
+		function submitTceForm(hiddenName, elemento) {
+			log("submitTceForm, hiddenName = " + hiddenName + "...");
+			document.forms[0].hiddenModoSubmit.value = document.forms[0].elements[hiddenName].value;
+			
+			var valorActual = parseInt(elemento);
+			if (isNaN(valorActual)) {
+		    	valorActual = 0;
+			}
+			
+			if (tabuladorback) {
+				valorActual = valorActual - 1;
+			}
+			else {
+				valorActual = valorActual + 1;
+			} 
+			document.forms[0].campoActual.value = valorActual;	
+			
+			var d = new Date();
+			document.forms[0].horaActual.value = " " + d.getTime();
+			
+			if (document.getElementById('tiempoRestante').value == 0 && 
+					document.getElementById("cmbDivisa").value != "") {
+				document.getElementById('tiempoRestante').value = 1;
+			}
+
+			tabulador = false;
+			tabuladorback = false;
+			
+			fnShowWaitImage(); 
+			document.forms[0].submit();
+		}
+		
+		function validaCheckArbitraje(nombreHidden, elemento) {
+			if (document.getElementById("chkArbitraje").checked) {
+				iniciaTimer(nombreHidden, elemento);
+			} 
+			else {
+				if (activaTiempo) {
+					document.forms[0].checkArbitraje.value = 1;
+				}
+				submitTceForm(nombreHidden, elemento);
+			}
+		}
+		
+	
+	 	// muestra una confirmacion antes de cancelar el deal
+	    function confirmSave() {
+	    	if (confirm('\u00bfDesea guardar el deal?')) {  
+	    		var d = new Date();
+				document.forms[0].horaActual.value = " " + d.getTime();
+				fnShowWaitImage(); 
+	    		return true; 
+	    	} else { 
+	    		return false; 
+	    	}
+	    }
+	    
+	    // muestra una confirmacion para aceptar o rachazar una desviacion de tc mayor al porcentaje configurado
+	    function showConfirmDesvTc() {
+	    	var mensajeDesvTc = document.forms[0].hiddenMensajeConfirmDesvTc.value;
+	    	// si se detecta un mensaje de confirmacion se muestra y se pide confirmacion para la desviacion
+	    	log("Mensaje de confirmacion detectado: " + mensajeDesvTc);
+	    	if(mensajeDesvTc) {
+		    	if(mensajeDesvTc.charAt(0) == "S") {
+		    		mensajeDesvTc = mensajeDesvTc.substring(1);
+			    }
+	    		if (confirm(mensajeDesvTc)) {
+		    		// Se detecta para que campo de tc se esta pidiendo confirmacion de desviacion de tc
+		    		// y una vez  detectado se setea la peticion como permitida o confirmada
+		    		if(document.forms[0].hiddenDesvTcmConfirmStatus.value == document.forms[0].hiddenDesvTcDetected.value) {
+		    			document.forms[0].hiddenDesvTcmConfirmStatus.value = document.forms[0].hiddenDesvTcConfirmed.value;
+		    			
+			    	} else if(document.forms[0].hiddenDesvTccConfirmStatus.value == document.forms[0].hiddenDesvTcDetected.value) {
+			    		document.forms[0].hiddenDesvTccConfirmStatus.value = document.forms[0].hiddenDesvTcConfirmed.value;
+			    		
+			    	} else if(document.forms[0].hiddenDesvTcmConfirmStatusArb.value == document.forms[0].hiddenDesvTcDetected.value) {
+			    		document.forms[0].hiddenDesvTcmConfirmStatusArb.value = document.forms[0].hiddenDesvTcConfirmed.value;
+			    		
+			    	} else if(document.forms[0].hiddenDesvTccConfirmStatusArb.value == document.forms[0].hiddenDesvTcDetected.value) {
+			    		document.forms[0].hiddenDesvTccConfirmStatusArb.value = document.forms[0].hiddenDesvTcConfirmed.value;
+			    		
+			    	}
+			    	
+		    		fnShowWaitImage();
+		    		document.forms[0].submit();
+		    	} else { 
+		    		; 
+		    	}
+		    }
+		}
+
+		jQuery().ready(function () { 
+			setUpBannerWithTimer();
+		});
+				
+    //-->
+    </script> <script type="text/javascript">
+
+var progressBar = null;
+var timerId = 0;
+var tiempoLimite = 0;
+var tiempoRestante = 0;
+
+function verificaTimer() {
+	tiempoLimite = document.getElementById('tiempoDisponible').value;
+	tiempoRestante = document.getElementById('tiempoRestante').value;
+	if (tiempoRestante > 0) {
+		correTimer();
+	}
+}
+
+function iniciaTimer(nombreHidden, elemento) {
+	if (document.getElementById("cmbDivisa").value != "") {
+		inicializaValores();
+	} else {
+		if (timerId != 0) {
+			document.getElementById("progressContainer").style.display = "none";
+			window.clearInterval(timerId);
+		}
+	}
+
+	submitTceForm(nombreHidden, elemento);
+}
+
+function inicializaValores() {
+	tiempoLimite = document.getElementById('tiempoDisponible').value;
+	tiempoRestante = tiempoLimite;
+	document.getElementById('tiempoRestante').value = tiempoRestante;
+	correTimer();
+}
+
+function correTimer() {
+	timerId = window.setInterval('pintaBarra()', 1000);
+}
+
+function pintaBarra() {
+
+	if (tiempoRestante > 0) {
+
+		progressBar = document.getElementById("progressBar");
+		document.getElementById("progressContainer").style.display = "block";
+		//decremento el valor de Tiempo restante;
+		document.getElementById('tiempoRestante').value = --tiempoRestante;
+
+		var nuevoWidth = (tiempoRestante * 100) / tiempoLimite;
+		//alert(nuevoWidth);
+		progressBar.style.width = nuevoWidth + "%";
+		document.getElementById("msgTiempoRestante").innerHTML = "Tiempo restante: "
+				+ tiempoRestante;
+
+	} else {
+
+		window.clearInterval(timerId);
+		alert("Tiempo excedido, los datos se actualizarán");
+
+		//Lanzar método que actualiza
+		inicializaValores();
+		document.getElementById("progressContainer").style.display = "none";
+		submitTceForm('hiddenModoSubmitUpdateByProductoChange', 6)
+	}
+}
+</script>
+			<form jwcid="formCapturaTce@Form" listener="ognl: listeners.submit"
+				delegate="ognl: beans.delegate">
+				<input type="hidden" jwcid="hiddenModoSubmit" />
+				<input type="hidden"
+					jwcid="hiddenModoSubmitUpdateByTipoOperChange@Hidden"
+					value="ognl: modoSubmitUpdateByTipoOperChange" />
+				<input type="hidden"
+					jwcid="hiddenModoSubmitUpdateByFechaValorChange@Hidden"
+					value="ognl: modoSubmitUpdateByFechaValorChange" />
+				<input type="hidden"
+					jwcid="hiddenModoSubmitUpdateByDivisaChange@Hidden"
+					value="ognl: modoSubmitUpdateByDivisaChange" />
+				<input type="hidden"
+					jwcid="hiddenModoSubmitUpdateByDivisaLiqChange@Hidden"
+					value="ognl: modoSubmitUpdateByDivisaLiqChange" />
+				<input type="hidden"
+					jwcid="hiddenModoSubmitUpdateByProductoChange@Hidden"
+					value="ognl: modoSubmitUpdateByProductoChange" />
+				<input type="hidden"
+					jwcid="hiddenModoSubmitUpdateByProductoLiqChange@Hidden"
+					value="ognl: modoSubmitUpdateByProductoLiqChange" />
+
+				<input type="hidden"
+					jwcid="hiddenModoSubmitUpdateByAmountChange@Hidden"
+					value="ognl: modoSubmitUpdateByAmountChange" />
+				<input type="hidden"
+					jwcid="hiddenModoSubmitUpdateByAgainstAmountChange@Hidden"
+					value="ognl: modoSubmitUpdateByAgainstAmountChange" />
+				<input type="hidden"
+					jwcid="hiddenModoSubmitUpdateByTccChange@Hidden"
+					value="ognl: modoSubmitUpdateByTccChange" />
+				<input type="hidden"
+					jwcid="hiddenModoSubmitUpdateByTcmChange@Hidden"
+					value="ognl: modoSubmitUpdateByTcmChange" />
+
+				<input type="hidden"
+					jwcid="hiddenModoSubmitUpdateByAmountLiqChange@Hidden"
+					value="ognl: modoSubmitUpdateByAmountLiqChange" />
+				<input type="hidden"
+					jwcid="hiddenModoSubmitUpdateByAgainstAmountLiqChange@Hidden"
+					value="ognl: modoSubmitUpdateByAgainstAmountLiqChange" />
+				<input type="hidden"
+					jwcid="hiddenModoSubmitUpdateByTccLiqChange@Hidden"
+					value="ognl: modoSubmitUpdateByTccLiqChange" />
+				<input type="hidden"
+					jwcid="hiddenModoSubmitUpdateByTcmLiqChange@Hidden"
+					value="ognl: modoSubmitUpdateByTcmLiqChange" />
+
+				<input type="hidden"
+					jwcid="hiddenModoSubmitUpdateByArbitrajeChange@Hidden"
+					value="ognl: modoSubmitUpdateByArbitrajeChange" />
+
+				<input type="hidden"
+					jwcid="hiddenModoSubmitBuscaNombrePromotor@Hidden"
+					value="ognl: modoSubmitBuscaNombrePromotor" />
+				<input type="hidden"
+					jwcid="hiddenModoSubmitBuscaContratoCorto@Hidden"
+					value="ognl: modoSubmitBuscaContratoCorto" />
+				<input type="hidden" jwcid="hiddenModoSubmitCancelar@Hidden"
+					value="ognl: modoSubmitCancelar" />
+
+				<input type="hidden" jwcid="hiddenMensajeConfirmDesvTc@Hidden"
+					value="ognl: mensajeConfirmDesvTc" />
+				<input type="hidden" jwcid="hiddenDesvTcDetected@Hidden"
+					value="ognl: desvTcDetected" />
+				<input type="hidden" jwcid="hiddenDesvTcConfirmed@Hidden"
+					value="ognl: desvTcConfirmed" />
+
+				<input type="hidden" jwcid="hiddenDesvTcmConfirmStatus@Hidden"
+					value="ognl: operacionTce.detalleOperacion.desvTcmConfirmStatus" />
+				<input type="hidden" jwcid="hiddenDesvTccConfirmStatus@Hidden"
+					value="ognl: operacionTce.detalleOperacion.desvTccConfirmStatus" />
+				<input type="hidden" jwcid="hiddenDesvTcmConfirmStatusArb@Hidden"
+					value="ognl: operacionTce.detalleOperacionArbitraje.desvTcmConfirmStatus" />
+				<input type="hidden" jwcid="hiddenDesvTccConfirmStatusArb@Hidden"
+					value="ognl: operacionTce.detalleOperacionArbitraje.desvTccConfirmStatus" />
+
+				<input id="campoActual" type="hidden" jwcid="campoActual@Hidden"
+					value="ognl: currentField" />
+				<input id="horaActual" type="hidden" jwcid="horaActual@Hidden"
+					value="ognl: currentDate" />
+				<input id="checkArbitraje" type="hidden" jwcid="checkArbitraje@Hidden"
+					value="ognl: activoArbitraje" />	
+					
+
+				<table width="100%">
+					<tr>
+						<td>
+							<input id="tiempoDisponible" type="hidden"
+								jwcid="tiempoDisponible@Hidden" value="ognl: dealTimeout" />
+							<input id="tiempoRestante" type="hidden"
+								jwcid="tiempoRestante@Hidden" value="ognl: tiempoRestante" />
+							<!-- ProgressBar -->
+							<div id="progressContainer"
+								style="width: 100%; height: auto; float: left; display: none;">
+								<div id="progressBar"
+									style="width: 100%; height: 20px; background: url(images/progressBar/verde.jpg); -moz-border-radius: 0px 15px 15px 0px; -webkit-border-radius: 0px 15px 15px 0px;"></div>
+								<div style="float: left; width: auto; height: auto;"
+									id="msgTiempoRestante">
+									Tiempo restante
+								</div>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<!-- ProgressBar -->
+				<table jwcid="@bup:ShowError" level="ognl: level" width="100%"
+					delegate="ognl: beans.delegate" insertBreakAtTail="yes" />
+					<table jwcid="@ActionPortletBorder"
+						title="Autorizaci&oacute;n de Tipo de Cambio Especial"
+						width="100%">
+						<fieldset>
+							<legend class="legend">
+								Datos generales:
+							</legend>
+							<table width="100%">
+								<tr class="title">
+									<td align="right" width="10%">
+										No:
+									</td>
+									<td width="10%">
+										<span jwcid="lblNoDeal" />
+									</td>
+									<td width="50%" colspan="4"></td>
+									<td align="right" width="15%">
+										Fecha Operaci&oacute;n:
+									</td>
+									<td width="15%">
+										<span jwcid="lblFechaOperacion" />
+									</td>
+								</tr>
+								<tr class="title">
+									<td width="10" align="right">
+										Sistema:
+									</td>
+									<td width="20">
+										<select id="cmbSistema" jwcid="cmbSistema" />
+									</td>
+									<td width="15%" align="right">
+										Contrato corto:
+									</td>
+									<td width="15%">
+										<input id="txtContratoCorto" jwcid="txtContratoCorto"
+											onblur="submitTceForm('hiddenModoSubmitBuscaContratoCorto', 1)"
+											size="10" />
+									</td>
+									<td width="40%" colspan="4">
+										<table width="100%">
+											<tr>
+												<td width="85%">
+													<span jwcid="lblNombreClienteContratoCorto" />
+												</td>
+												<td width="15%" align="right">
+													<span jwcid="@Conditional"
+														condition="ognl: isModoCaptura()"> <a
+														id="btnBuscarContratoCorto"
+														onclick="submitTceForm('hiddenModoSubmitBuscaContratoCorto', 1)">
+															<img src="../../../images/encontrar.gif" jwcid="@Image"
+																image="ognl: assets.bFind" border="0" alt="Buscar" /> </a>
+													</span>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+								<tr class="title">
+									<td colspan="2"></td>
+									<td align="right">
+										Usuario Promotor:
+									</td>
+									<td>
+										<input id="txtUsuarioPromotor" jwcid="txtUsuarioPromotor"
+											onblur="submitTceForm('hiddenModoSubmitBuscaNombrePromotor', 2)" />
+									</td>
+									<td colspan="4">
+										<table width="100%">
+											<tr>
+												<td width="85%">
+													<span jwcid="lblNombreUsuarioPromotor" />
+												</td>
+												<td width="15%" align="right">
+													<span jwcid="@Conditional"
+														condition="ognl: isModoCaptura() && !isPromocion()">
+														<a id="btnBuscarNombreUsuarioPromotor"
+														onclick="submitTceForm('hiddenModoSubmitBuscaNombrePromotor', 2)">
+															<img src="../../../images/encontrar.gif" jwcid="@Image"
+																image="ognl: assets.bFind" border="0" alt="Buscar" /> </a>
+													</span>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</fieldset>
+
+						<fieldset>
+							<legend class="legend">
+								Operaci&oacute;n:
+							</legend>
+							<table width="100%">
+								<tr class="title">
+									<td>
+										<fieldset>
+											<legend class="legend">
+												Operaci&oacute;n:
+											</legend>
+											<span id="radioGrpOperacion" jwcid="radioGrpOperacion">
+												<!--                                <input type="radio" jwcid="radioCompra" onclick="submitTceForm('hiddenModoSubmitUpdateByTipoOperChange')" />Compra JMPS-->
+												<!--                                <input type="radio" jwcid="radioVenta" onclick="submitTceForm('hiddenModoSubmitUpdateByTipoOperChange')" />Venta JMPS-->
+												<input type="radio" jwcid="radioCompra"
+													onclick="iniciaTimer('hiddenModoSubmitUpdateByTipoOperChange', 3)" />Compra
+												<input type="radio" jwcid="radioVenta"
+													onclick="iniciaTimer('hiddenModoSubmitUpdateByTipoOperChange', 3)" />Venta
+											</span>
+										</fieldset>
+									</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>
+										<div>
+											Fecha Valor:
+										</div>
+										<!--                        	<select jwcid="cmbFechaValor" onchange="submitTceForm('hiddenModoSubmitUpdateByFechaValorChange')" /> JMPS-->
+										<select id="cmbFechaValor" jwcid="cmbFechaValor"
+											onchange="iniciaTimer('hiddenModoSubmitUpdateByFechaValorChange', 4)" />
+									</td>
+									<td>
+										<div>
+											Fecha liquidaci&oacute;n:
+										</div>
+										<span jwcid="lblFechaLiquidacion" />
+									</td>
+								</tr>
+
+								<tr>
+									<td colspan="7" height="15px"></td>
+								</tr>
+
+								<tr class="title">
+									<td>
+										<div>
+											Divisa
+										</div>
+										<!--            				<select jwcid="cmbDivisa" onchange="submitTceForm('hiddenModoSubmitUpdateByDivisaChange')" /> JMPS-->
+										<select id="cmbDivisa" jwcid="cmbDivisa"
+											onchange="iniciaTimer('hiddenModoSubmitUpdateByDivisaChange', 5);" />
+									</td>
+									<td>
+										<div>
+											Producto:
+										</div>
+										<!--                        	<select jwcid="cmbProducto" onchange="submitTceForm('hiddenModoSubmitUpdateByProductoChange')" /> JMPS-->
+										<select id="cmbProducto" jwcid="cmbProducto"
+											onchange="iniciaTimer('hiddenModoSubmitUpdateByProductoChange', 6)" />
+									</td>
+									<td>
+										<div>
+											Monto:
+										</div>
+										<input id="txtMonto" jwcid="txtMonto"
+											onchange="submitTceForm('hiddenModoSubmitUpdateByAmountChange', 7)" />
+									</td>
+									<td>
+										<div>
+											TC Cliente:
+										</div>
+										<input id="txtTcCliente" jwcid="txtTcCliente"
+											onchange="submitTceForm('hiddenModoSubmitUpdateByTccChange', 8)" />
+									</td>
+									<td>
+										<div>
+											TC Mesa:
+										</div>
+										<input id="txtTcMesa" jwcid="txtTcMesa"
+											onchange="submitTceForm('hiddenModoSubmitUpdateByTcmChange', 9)" />
+									</td>
+									<td>
+										<div>
+											Contra importe:
+										</div>
+										<input id="txtContraimporte" jwcid="txtContraimporte"
+											onchange="submitTceForm('hiddenModoSubmitUpdateByAgainstAmountChange', 10)" />
+									</td>
+									<td>
+										<div>
+											Utilidad:
+										</div>
+										<span jwcid="@DisabledField"
+											value="ognl: page.moneyFormat.format(operacionTce.detalleOperacion.utilidad)">$0.00</span>
+									</td>
+								</tr>
+
+								<tr class="title">
+									<td colspan="7">
+										<input type="checkbox" id="chkArbitraje" jwcid="chkArbitraje"
+											onclick="validaCheckArbitraje('hiddenModoSubmitUpdateByArbitrajeChange', 11)" />
+										<span>Arbitraje</span>
+									</td>
+								</tr>
+
+								<span jwcid="@contrib:FormConditional"
+									condition='ognl: operacionTce.arbitraje'>
+
+									<tr class="title">
+										<td>
+											<div>
+												Divisa
+											</div>
+											<select id="cmbDivisaLiq" jwcid="cmbDivisaLiq"
+												onchange="submitTceForm('hiddenModoSubmitUpdateByDivisaLiqChange', 12)" />
+										</td>
+										<td>
+											<div>
+												Producto:
+											</div>
+											<select id="cmbProductoLiq" jwcid="cmbProductoLiq"
+												onchange="submitTceForm('hiddenModoSubmitUpdateByProductoLiqChange', 13)" />
+										</td>
+										<td>
+											<div>
+												Monto:
+											</div>
+											<input id="txtMontoLiq" jwcid="txtMontoLiq"
+												onchange="submitTceForm('hiddenModoSubmitUpdateByAmountLiqChange', 14)" />
+										</td>
+										<td>
+											<div>
+												TC Cliente:
+											</div>
+											<input id="txtTcClienteLiq" jwcid="txtTcClienteLiq"
+												onchange="submitTceForm('hiddenModoSubmitUpdateByTccLiqChange', 15)" />
+										</td>
+										<td>
+											<div>
+												TC Mesa:
+											</div>
+											<input id="txtTcMesaLiq" jwcid="txtTcMesaLiq"
+												onchange="submitTceForm('hiddenModoSubmitUpdateByTcmLiqChange', 16)" />
+										</td>
+										<td>
+											<div>
+												Contra importe:
+											</div>
+											<input id="txtContraimporteLiq" jwcid="txtContraimporteLiq"
+												onchange="submitTceForm('hiddenModoSubmitUpdateByAgainstAmountLiqChange', 17)" />
+										</td>
+										<td>
+											<div>
+												Utilidad:
+											</div>
+											<span jwcid="@DisabledField"
+												value="ognl: page.moneyFormat.format(operacionTce.detalleOperacionArbitraje.utilidad)">$0.00</span>
+										</td>
+									</tr> </span>
+								<tr class="title">
+									<td colspan="7">
+										<div>
+											Observaciones:
+										</div>
+										<textarea id="txtObservaciones" jwcid="txtObservaciones"
+											cols="175" rows="3" />
+												
+									
+									</td>
+								</tr>
+							</table>
+						</fieldset>
+						<br />
+						<div align="center">
+							<input type="submit" value="Aceptar" jwcid="btnSubmit"
+								onClick="return confirmSave();" />
+							<a id="btnCancelar" href="#"
+								onclick="submitTceForm('hiddenModoSubmitCancelar')"> <img
+									src="../../../images/cancel.gif" jwcid="@Image"
+									image="ognl: assets.bCancelar" border="0" alt="Regresar" /> </a>
+						</div>
+					</table>
+					</form>
+					<br />
+					<table id="bannerMensajes"></table>
+
+					<span jwcid="@Conditional"
+						condition='ognl: !("".equals(mensajeConfirmDesvTc) || null == mensajeConfirmDesvTc)'>
+						<script type="text/javascript">
+<!--
+			document.body.onload = function () {
+		    	log("Validando mensaje de confirmacion de desviacion TC ...");
+		    	showConfirmDesvTc();
+			}
+		    //-->
+		</script> </span>
+
+					<span jwcid="@Conditional" condition='ognl: isPromocion()'>
+						<script type="text/javascript">
+<!--
+			    	activaTiempo = true;
+					if (document.forms[0].checkArbitraje.value == 1) {
+						document.getElementById("chkArbitraje").disabled = true;
+					}					
+		    //-->
+		</script> </span>
+
+					<script type="text/javascript">
+<!--
+        		document.body.onload = function () {
+        		
+        		   if (activaTiempo) {
+        				var dateActual = document.forms[0].horaActual.value;
+        				dateActual = dateActual.substring(dateActual.indexOf("S")+1);
+        				var n = Number(dateActual);
+			        	var timeActual = new Date();
+			        	var time = new Date();
+			        	time.setTime(n);
+			        	var segundosCalc = Math.floor(timeActual.getTime()/1000) - Math.floor(time.getTime()/1000); 
+			        	if (!isNaN(segundosCalc)) {
+			        		var tiempoMod = document.getElementById('tiempoRestante').value;
+			        		if (tiempoMod > 0) {
+			        			tiempoMod = tiempoMod - segundosCalc;
+			        			if (tiempoMod <= 0 && document.getElementById("cmbDivisa").value != "") {
+			        				tiempoMod = 1;
+			        			}
+			        			document.getElementById('tiempoRestante').value = tiempoMod;
+			        		}
+				    	}
+        			    verificaTimer();
+        		   }
+        		   
+        	
+		    		var contCampoActual = document.forms[0].campoActual.value;
+		    		var camposTab = ["cmbSistema", "txtContratoCorto", "txtUsuarioPromotor", "radioGrpOperacion", 
+		    			"cmbFechaValor", "cmbDivisa", "cmbProducto", "txtMonto", "txtTcCliente", "txtTcMesa", 
+		    			"txtContraimporte", "chkArbitraje", "cmbDivisaLiq", "cmbProductoLiq", "txtMontoLiq", 
+		    			"txtTcClienteLiq", "txtTcMesaLiq", "txtContraimporteLiq", "txtContraimporteLiq", "txtObservaciones"];
+		    		
+		    		var longitud = camposTab.length;
+		    		var valorActual = parseInt(contCampoActual);
+		    		if (isNaN(valorActual)) {
+		    			valorActual = 0;
+				    }
+		    		if (valorActual >= 0 && valorActual <= longitud) {
+		    			if (valorActual < longitud) {
+		    				var inputField;
+		    				for (;valorActual < camposTab.length; valorActual++) {
+		    					inputField = document.getElementById(camposTab[valorActual]);
+		    					if (inputField != null && inputField.type != "hidden" && inputField.disabled != true) {
+		           					inputField.focus();
+		           					break;
+		       					}
+		    				}
+    					}
+        				else {
+        					document.getElementById(camposTab[0]).focus();
+        				}
+		    		}
+        		}
+        //-->
+    </script>
+	</body>
+</html>

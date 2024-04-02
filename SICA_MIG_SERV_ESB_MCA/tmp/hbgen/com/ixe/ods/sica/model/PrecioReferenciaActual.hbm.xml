@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.PrecioReferenciaActual"
+        table="SC_PRECIO_REFERENCIA_ACTUAL"
+        proxy="com.ixe.ods.sica.model.PrecioReferenciaActual"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idPrecioReferencia"
+            column="ID_PRECIO_REFERENCIA"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_PRECIO_REFERENCIA_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-PrecioReferenciaActual.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <component
+            name="preRef"
+            class="com.ixe.ods.sica.model.PreRef"
+        >
+        <property
+            name="precioSpot"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="PRECIO_SPOT"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="precioCompra"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="PRECIO_COMPRA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="precioVenta"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="PRECIO_VENTA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="midSpot"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="MID_SPOT"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="metodoActualizacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="METODO_ACTUALIZACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="ultimaModificacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="ULTIMA_MODIFICACION"
+            not-null="true"
+            unique="false"
+        />
+
+        </component>
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-PrecioReferenciaActual.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

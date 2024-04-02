@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.BitacoraEnviadas"
+        table="SC_BITACORA_ENVIADAS"
+        proxy="com.ixe.ods.sica.model.BitacoraEnviadas"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <composite-id
+            name="id"
+            class="com.ixe.ods.sica.model.BitacoraEnviadasPK"
+        >
+                     <key-property
+                        name="idConf"
+                        type="java.lang.String"
+                        column="ID_CONF"
+                />
+
+                     <key-property
+                        name="divisa"
+                        type="java.lang.String"
+                        column="DIVISA"
+                />
+
+        </composite-id>
+
+        <property
+            name="nombre"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NOMBRE"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="createDt"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="CREATE_DT"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="status"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ESTATUS"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="fechaEnvio"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_ENVIO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="folioBanxico"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="FOLIO_BANXICO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="error"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ERROR"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="accion"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ACCION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="plazo"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="PLAZO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="tipoOper"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPOOPER"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="monto"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="tipo"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="folio"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="FOLIO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="fechaConcertacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_CONCERTACION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="fechaLiquidacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_LIQUIDACION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="claveContraparte"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_CONTRAPARTE"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="rfc"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="RFC"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="tipoContraparte"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CONTRAPARTE"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="swap"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="SWAP"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="statusEstrategia"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATUS_ESTRATEGIA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="noCuenta"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NO_CUENTA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="progressRecid"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="PROGRESS_RECID"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="montoDivisa"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO_DIVISA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambio"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambioInverso"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO_INVERSO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="folderk"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="FOLDERK"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="contraDivisa"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CONTRA_DIVISA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="clasifOperacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLASIF_OPERACION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="comentarios"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMENTARIOS"
+            not-null="false"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-BitacoraEnviadas.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,1007 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.ixe.ods.sica.model.DealPosicion"
+        table="SC_DEAL_POSICION"
+        proxy="com.ixe.ods.sica.model.DealPosicion"
+        dynamic-update="true"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        mutable="true"
+    >
+
+        <id
+            name="idDealPosicion"
+            column="ID_DEAL_POSICION"
+            type="int"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="sequence">SC_DEAL_POSICION_SEQ</param>
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-DealPosicion.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <version
+            name="version"
+            type="java.lang.Integer"
+            column="VERSION"
+            access="property"
+            unsaved-value="undefined"
+        />
+
+        <property
+            name="idUsuario"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_USUARIO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="monto"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="recibimos"
+            type="com.legosoft.hibernate.type.SiNoType"
+            update="true"
+            insert="true"
+            access="property"
+            column="RECIBIMOS"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="observaciones"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="OBSERVACIONES"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambio"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoDeal"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_DEAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <many-to-one
+            name="divisa"
+            class="com.ixe.ods.sica.model.Divisa"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DIVISA"
+            unique="false"
+        />
+
+        <many-to-one
+            name="mesaCambio"
+            class="com.ixe.ods.sica.model.MesaCambio"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_MESA_CAMBIO"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-DealPosicion.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+        <joined-subclass
+            name="com.ixe.ods.sica.model.DealDetalle"
+            table="SC_DEAL_DETALLE"
+            dynamic-update="false"
+            dynamic-insert="false"
+            proxy="com.ixe.ods.sica.model.DealDetalle"
+        >
+        <key
+            column="ID_DEAL_POSICION"
+        />
+
+        <property
+            name="claveFormaLiquidacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_FORMA_LIQUIDACION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="comisionOficialUsd"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMISION_OFICIAL_USD"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="comisionCobradaUsd"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMISION_COBRADA_USD"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="comisionCobradaMxn"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMISION_COBRADA_MXN"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="costoFormaLiq"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="COSTO_FORMA_LIQ"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="datosConfirmacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="DATOS_CONFIRMACION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="denominacion"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="DENOMINACION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="eventosDetalleDeal"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="EVENTOS_DETALLE_DEAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="folioDetalle"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="FOLIO_DETALLE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="idLiquidacionDetalle"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_LIQUIDACION_DETALLE"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="idPrecioReferencia"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_PRECIO_REFERENCIA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="precioReferenciaMidSpot"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="PRE_REF_MID_SPOT"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="precioReferenciaSpot"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="PRE_REF_SPOT"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="idSpread"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_SPREAD"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="instruccionesBeneficiario"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="INSTRUCCIONES_BENEFICIARIO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="instruccionesIntermediario"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="INSTRUCCIONES_INTERMEDIARIO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="instruccionesPagador"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="INSTRUCCIONES_PAGADOR"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="mnemonico"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="MNEMONICO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="observaciones"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="OBSERVACIONES"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="statusDetalleDeal"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATUS_DETALLE_DEAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambioMesa"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO_MESA"
+            not-null="true"
+            unique="false"
+        />
+
+        <many-to-one
+            name="deal"
+            class="com.ixe.ods.sica.model.Deal"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DEAL"
+            unique="false"
+        />
+
+        <property
+            name="idFactorDivisa"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_FACTOR_DIVISA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="fed"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="FED"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="msgMt"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="MSG_MT"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="factorDivisa"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="FACTOR_DIVISA"
+            not-null="false"
+            unique="false"
+        />
+
+        <many-to-one
+            name="plantilla"
+            class="com.ixe.ods.sica.model.Plantilla"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_PLANTILLA"
+            unique="false"
+        />
+
+        <set
+            name="detallesStatusLog"
+            lazy="true"
+            inverse="true"
+            cascade="none"
+            sort="unsorted"
+        >
+
+              <key
+                  column="ID_DETALLE_DEAL"
+              >
+              </key>
+
+              <one-to-many
+                  class="com.ixe.ods.sica.model.DealDetalleStatusLog"
+              />
+
+        </set>
+
+        <property
+            name="reemplazadoPorA"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="REEMPLAZADO_POR_A"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="reversado"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="REVERSADO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="sustituyeA"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="SUSTITUYE_A"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="reemplazadoPorB"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="REEMPLAZADO_POR_B"
+            not-null="false"
+            unique="false"
+        />
+
+        </joined-subclass>
+        <joined-subclass
+            name="com.ixe.ods.sica.model.RecoUtilidad"
+            table="SC_RECO_UTILIDAD"
+            dynamic-update="false"
+            dynamic-insert="false"
+            proxy="com.ixe.ods.sica.model.RecoUtilidad"
+        >
+        <key
+            column="ID_DEAL_POSICION"
+        />
+        <property
+            name="fechaOperacion"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_OPERACION"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="utilidadGlobal"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="UTILIDAD_GLOBAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="utilidadMesa"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="UTILIDAD_MESA"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoReco"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_RECO"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambioOtraDivRef"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO_OTRA_DIV_REF"
+            not-null="true"
+            unique="false"
+        />
+
+        </joined-subclass>
+        <joined-subclass
+            name="com.ixe.ods.sica.model.TraspasoProducto"
+            table="SC_TRASPASO_PRODUCTO"
+            dynamic-update="false"
+            dynamic-insert="false"
+            proxy="com.ixe.ods.sica.model.TraspasoProducto"
+        >
+        <key
+            column="ID_DEAL_POSICION"
+        />
+
+        <many-to-one
+            name="tipoTraspasoProducto"
+            class="com.ixe.ods.sica.model.TipoTraspasoProducto"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="MNEMONICO_TRASPASO"
+            unique="false"
+        />
+
+        <many-to-one
+            name="canal"
+            class="com.ixe.ods.sica.model.Canal"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_CANAL"
+            unique="false"
+        />
+
+        <property
+            name="fechaOper"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="property"
+            column="FECHA_OPER"
+            not-null="true"
+            unique="false"
+        />
+
+        </joined-subclass>
+        <joined-subclass
+            name="com.ixe.ods.sica.model.DealDetalleSinPlantilla"
+            table="SC_DEAL_DETALLE"
+            dynamic-update="false"
+            dynamic-insert="false"
+            proxy="com.ixe.ods.sica.model.DealDetalleSinPlantilla"
+        >
+        <key
+            column="ID_DEAL_POSICION"
+        />
+        <property
+            name="claveFormaLiquidacion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CLAVE_FORMA_LIQUIDACION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="comisionOficialUsd"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMISION_OFICIAL_USD"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="comisionCobradaUsd"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMISION_COBRADA_USD"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="comisionCobradaMxn"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMISION_COBRADA_MXN"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="costoFormaLiq"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="COSTO_FORMA_LIQ"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="denominacion"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="DENOMINACION"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="eventosDetalleDeal"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="EVENTOS_DETALLE_DEAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="folioDetalle"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="FOLIO_DETALLE"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="idLiquidacionDetalle"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_LIQUIDACION_DETALLE"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="idPrecioReferencia"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_PRECIO_REFERENCIA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="precioReferenciaMidSpot"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="PRE_REF_MID_SPOT"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="precioReferenciaSpot"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="PRE_REF_SPOT"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="idSpread"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_SPREAD"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="instruccionesBeneficiario"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="INSTRUCCIONES_BENEFICIARIO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="instruccionesIntermediario"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="INSTRUCCIONES_INTERMEDIARIO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="instruccionesPagador"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="INSTRUCCIONES_PAGADOR"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="mnemonico"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="MNEMONICO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="observaciones"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="OBSERVACIONES"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="reversado"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="REVERSADO"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="statusDetalleDeal"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATUS_DETALLE_DEAL"
+            not-null="true"
+            unique="false"
+        />
+
+        <property
+            name="tipoCambioMesa"
+            type="double"
+            update="true"
+            insert="true"
+            access="property"
+            column="TIPO_CAMBIO_MESA"
+            not-null="true"
+            unique="false"
+        />
+
+        <many-to-one
+            name="deal"
+            class="com.ixe.ods.sica.model.Deal"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_DEAL"
+            unique="false"
+        />
+
+        <property
+            name="idFactorDivisa"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="ID_FACTOR_DIVISA"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="factorDivisa"
+            type="java.lang.Double"
+            update="true"
+            insert="true"
+            access="property"
+            column="FACTOR_DIVISA"
+            not-null="false"
+            unique="false"
+        />
+
+        <set
+            name="detallesStatusLog"
+            lazy="true"
+            inverse="true"
+            cascade="none"
+            sort="unsorted"
+        >
+
+              <key
+                  column="ID_DETALLE_DEAL"
+              >
+              </key>
+
+              <one-to-many
+                  class="com.ixe.ods.sica.model.DealDetalleStatusLog"
+              />
+
+        </set>
+
+        <property
+            name="reemplazadoPorA"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="REEMPLAZADO_POR_A"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="sustituyeA"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="SUSTITUYE_A"
+            not-null="false"
+            unique="false"
+        />
+
+        <property
+            name="reemplazadoPorB"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="REEMPLAZADO_POR_B"
+            not-null="false"
+            unique="false"
+        />
+
+        </joined-subclass>
+
+    </class>
+
+        <query name="findDealsDetallesByDateAndDivisaAndFormaLiquidacion"><![CDATA[
+            FROM DealDetalle AS dd WHERE dd.deal.fechaCaptura BETWEEN ? AND ? AND dd.divisa.idDivisa = ? AND dd.claveFormaLiquidacion = ? ORDER BY dd.recibimos DESC
+        ]]></query>
+        <query name="findDealsDetallesByDateAndDivisaAndFormaLiquidacionAndOperacion"><![CDATA[
+            FROM DealDetalle AS dd WHERE dd.deal.fechaCaptura BETWEEN ? AND ? AND dd.divisa.idDivisa = ? AND dd.claveFormaLiquidacion = ? AND dd.recibimos = ?
+        ]]></query>
+        <query name="findDealsDetallesByIdPersonaAndFechas"><![CDATA[
+            FROM DealDetalle AS dd WHERE dd.deal.fechaCaptura BETWEEN ? AND ? AND dd.deal.promotor.idPersona = ? AND dd.deal.statusDeal != 'CA' ORDER BY dd.deal.promotor.idPersona, dd.divisa.idDivisa, dd.deal.idDeal
+        ]]></query>
+        <query name="findAllDealDetallesBySectorAndDate"><![CDATA[
+            FROM DealDetalle AS dd WHERE dd.deal.fechaCaptura BETWEEN ? AND ? AND dd.deal.statusDeal != 'CA' AND dd.divisa.idDivisa != 'MXN' AND dd.divisa.tipo != 'M' ORDER BY dd.divisa.idDivisa
+        ]]></query>
+        <query name="findDetPactadosHoyFechaValorCash"><![CDATA[
+            FROM DealDetalle AS dd WHERE dd.deal.fechaCaptura BETWEEN ? AND ? AND dd.deal.tipoValor = 'CASH' AND dd.divisa.idDivisa != 'MXN' ORDER BY dd.deal.idDeal
+        ]]></query>
+        <query name="findDetPactadosHoyFechaValorTomSpot"><![CDATA[
+            FROM DealDetalle AS dd WHERE dd.deal.fechaCaptura BETWEEN ? AND ? AND dd.deal.tipoValor !='CASH' AND dd.divisa.idDivisa!= 'MXN' ORDER BY dd.deal.idDeal
+        ]]></query>
+        <query name="findDetallesUtilidadesMayoreo"><![CDATA[
+            FROM DealDetalle AS dd WHERE dd.deal.fechaCaptura BETWEEN ? AND ? AND dd.deal.statusDeal != 'CA' AND dd.statusDetalleDeal != 'CA'
+        ]]></query>
+        <query name="findAllDealDetallesBySectorAndDateOrderByDivisaAndRecibimos"><![CDATA[
+            FROM DealDetalle AS dd WHERE dd.deal.fechaCaptura BETWEEN ? AND ? AND dd.deal.statusDeal != 'CA' AND dd.divisa.idDivisa != 'MXN' AND dd.divisa.tipo != 'M' ORDER BY dd.divisa.idDivisa,dd.recibimos ASC
+        ]]></query>
+        <query name="findAllDealDetallesBySectorAndDateOrderByDivisaAndRecibimosAndNoCuenta"><![CDATA[
+            FROM DealDetalle AS dd WHERE dd.deal.fechaCaptura BETWEEN ? AND ? AND dd.deal.statusDeal != 'CA' AND dd.divisa.idDivisa != 'MXN' AND dd.divisa.tipo != 'M' ORDER BY dd.divisa.idDivisa, dd.deal.fechaLiquidacion,dd.deal.contratoSica.noCuenta,dd.recibimos DESC
+        ]]></query>
+        <query name="findAllDealDetallesBySectorAndDateOrderByRecibimosAndDivisa"><![CDATA[
+            FROM DealDetalle AS dd WHERE dd.deal.fechaCaptura BETWEEN ? AND ? AND dd.deal.statusDeal != 'CA' AND dd.deal.statusDeal != 'AL' AND dd.divisa.idDivisa != 'MXN' ORDER BY dd.recibimos,dd.divisa.idDivisa,dd.deal.fechaLiquidacion DESC
+        ]]></query>
+        <query name="findReconocimientos"><![CDATA[
+            FROM RecoUtilidad AS ru where ru.fechaOperacion > ? order by ru.idDealPosicion
+        ]]></query>
+        <query name="findReconocimientoByMesaAndDivisa"><![CDATA[
+            FROM RecoUtilidad AS ru where ru.fechaOperacion > ? AND ru.mesaCambio.idMesaCambio = ? AND ru.divisa.idDivisa = ?
+        ]]></query>
+        <query name="findUtilidadCierre"><![CDATA[
+            FROM RecoUtilidad AS ru WHERE ru.fechaOperacion BETWEEN ? AND ?
+        ]]></query>
+        <query name="findUtilidadCierreVespertino"><![CDATA[
+            FROM RecoUtilidad AS ru WHERE ru.mesaCambio.divisaReferencia = 'MXN' AND (ru.fechaOperacion BETWEEN ? AND ?)
+        ]]></query>
+        <query name="findUtilidadGlobales"><![CDATA[
+            FROM RecoUtilidad AS ru WHERE (ru.fechaOperacion BETWEEN ? AND ?) AND ru.divisa.idDivisa = ? AND ru.mesaCambio.idMesaCambio = ?
+        ]]></query>
+        <query name="findTraspasosByFechaOper"><![CDATA[
+            FROM TraspasoProducto AS tp WHERE tp.fechaOper BETWEEN ? AND ? ORDER BY tp.idDealPosicion
+        ]]></query>
+
+</hibernate-mapping>

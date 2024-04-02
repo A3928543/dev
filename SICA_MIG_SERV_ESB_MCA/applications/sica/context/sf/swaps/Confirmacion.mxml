@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: Confirmacion.mxml,v 1.13 2010/04/13 15:31:10 ccovian Exp $ -->
+<mx:TitleWindow xmlns:mx="http://www.macromedia.com/2003/mxml" title="Nuevo Complemento">
+
+    <mx:Script>
+        <![CDATA[
+            var mensaje : String;
+
+            private function capturarOtro() : Void
+            {
+				this.deletePopUp();
+				mx.core.Application.application.capturarOtro();
+            }
+
+			private function cerrar() : Void
+			{
+				this.deletePopUp();
+				getURL('javascript:closeWindow();');
+			}
+        ]]>
+    </mx:Script>
+	<mx:VBox>
+	    <mx:Label text="{mensaje}" textAlign="center" width="100%" />
+        <mx:HBox width="100%">
+            <mx:Button label="Capturar otro..." click="capturarOtro()" />
+            <mx:Spacer width="100%" />
+            <mx:Button label="Salir" click="cerrar()"/>
+        </mx:HBox>
+	</mx:VBox>
+
+</mx:TitleWindow>

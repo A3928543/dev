@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--$Id: DealsDescuadrePosicion.jwc,v 1.2 2008/02/22 18:25:06 ccovian Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<component-specification allow-body="yes">
+
+	<parameter name="dealsNoCancelados" type="java.util.List" direction="in"  />
+   	<parameter name="dealsCancelados" type="java.util.List" direction="in"  />
+    <parameter name="dealsMinimizados"  type="boolean" direction="in" />
+    <parameter name="numero"  type="int" direction="in" />
+    <parameter name="titulo"  type="java.lang.String" direction="in" />
+
+</component-specification>

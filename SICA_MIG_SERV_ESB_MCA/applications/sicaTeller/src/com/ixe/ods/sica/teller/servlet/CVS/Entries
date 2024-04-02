@@ -1,0 +1,14 @@
+/CrearDealPararTellerServlet.java/1.1.2.1.6.1/Tue Apr 26 15:55:15 2011//TSICA_MIG_SERV_ESB_MCA
+/CrearPlantillaCuentaIxeServlet.java/1.1.2.1/Fri Oct  8 01:12:49 2010//TSICA_MIG_SERV_ESB_MCA
+/CrearPlantillaInternacionalServlet.java/1.1.2.1/Fri Oct  8 01:12:49 2010//TSICA_MIG_SERV_ESB_MCA
+/CrearPlantillaNacionalServlet.java/1.1.2.1/Fri Oct  8 01:12:49 2010//TSICA_MIG_SERV_ESB_MCA
+/GetBancoInternacionalByClaveServlet.java/1.1.2.1/Fri Oct  8 01:12:49 2010//TSICA_MIG_SERV_ESB_MCA
+/GetBancosInternacionalesByNombrePaisServlet.java/1.1.2.1/Fri Oct  8 01:12:49 2010//TSICA_MIG_SERV_ESB_MCA
+/GetContratoSicaServlet.java/1.1.2.2/Mon Oct 25 18:10:05 2010//TSICA_MIG_SERV_ESB_MCA
+/GetDivisasServlet.java/1.1.2.1/Fri Oct  8 01:12:49 2010//TSICA_MIG_SERV_ESB_MCA
+/GetFormasPagoLiqServlet.java/1.1.2.1/Fri Oct  8 01:12:49 2010//TSICA_MIG_SERV_ESB_MCA
+/GetPaisesServlet.java/1.1.2.1/Fri Oct  8 01:12:49 2010//TSICA_MIG_SERV_ESB_MCA
+/MarcarDealCanceladoServlet.java/1.1.2.1/Fri Oct  8 01:12:49 2010//TSICA_MIG_SERV_ESB_MCA
+/ObtenerTipoDeCambioPorDivisaServlet.java/1.1.2.1/Fri Oct  8 01:12:49 2010//TSICA_MIG_SERV_ESB_MCA
+/RegistrarBeneficiarioContratoServlet.java/1.1.2.1/Fri Oct  8 01:12:49 2010//TSICA_MIG_SERV_ESB_MCA
+/ServletPrueba.java/1.1.2.1/Fri Oct  8 01:12:50 2010//TSICA_MIG_SERV_ESB_MCA

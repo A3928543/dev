@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--$Id: ActionPortletBorder.jwc,v 1.9 2008/02/22 18:25:06 ccovian Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<component-specification class="com.ixe.ods.sica.components.ActionPortletBorder" allow-body="yes">
+
+    <parameter name="title" type="java.lang.String" direction="in" required="yes" />
+    <parameter name="minimized" type="boolean" direction="auto" default-value="false"  />
+    <parameter name="minimizable" type="boolean" direction="in" />
+    <parameter name="titleBlock" type="org.apache.tapestry.components.Block" direction="in" />
+
+    <component id="table" type="Any" inherit-informal-parameters="yes">
+        <static-binding name="element">table</static-binding>
+    </component>
+
+    <context-asset name="minimizeButton" path="images/minimize.gif" />
+    <context-asset name="restoreButton" path="images/restore.gif" />
+
+</component-specification>

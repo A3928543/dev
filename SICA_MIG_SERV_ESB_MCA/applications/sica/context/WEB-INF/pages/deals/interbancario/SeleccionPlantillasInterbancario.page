@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: SeleccionPlantillasInterbancario.page,v 1.9 2008/02/22 18:25:34 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.deals.interbancario.SeleccionPlantillasInterbancario">
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+    <bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+    
+    <property-specification name="dealDetalle" type="com.ixe.ods.sica.model.DealDetalle" persistent="yes" />
+    <property-specification name="formasPagoLiq" type="java.util.List" persistent="yes" />
+    <property-specification name="modoMnemonico" type="boolean" persistent="yes" />
+    <property-specification name="mnemonico" type="java.lang.String" persistent="yes" />
+    <property-specification name="plantillasCuentaIxe" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()"/>
+    <property-specification name="plantillasIntl" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()"/>
+    <property-specification name="plantillasNal" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()"/>
+    <property-specification name="plantillasTranNal" type="java.util.List" persistent="yes" initial-value="new java.util.ArrayList()"/>
+    <property-specification name="selectedTipoLiquidacion" type="java.lang.String" />
+	<property-specification name="modoSubmit" type="int" />
+
+    <context-asset name="bAsignar" path="/images/assign.gif" />
+    <context-asset name="bRegresar" path="/images/back.gif" />
+</page-specification>

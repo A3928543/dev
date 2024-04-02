@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<view:UtilidadGlobal
+    xmlns:mx="http://www.macromedia.com/2003/mxml"
+    xmlns:view="com.ixe.ods.sica.posicion.views.*"
+    xmlns:ls="com.legosoft.*"
+    xmlns:sica="*">
+
+    <mx:Script>
+        function formatNumber(item : Object, columnName : String) : String
+        {
+        return item != undefined ? numberFormatter.format(item[columnName]) : "";
+        }
+    </mx:Script>
+
+    <mx:NumberFormatter id="numberFormatter" precision="0"/>
+
+    <mx:HBox width="100%">
+        <mx:Label text="P&#38;L por Valuaci&#243;n de todo el Grupo" fontWeight="bold"/>
+        <mx:Label text='{numberFormatter.format(dataProvider.utilidadGlobalMn) + " M.N."}'/>
+        <ls:TickImage tick="{dataProvider.tickUtilidad}"/>
+        <mx:Spacer width="100%"/>
+        <mx:Link id="synchLink" icon="@Embed('resources/sync.gif')" toolTip="Sincronizar informaci&#243;n"/>
+    </mx:HBox>
+
+    <mx:DataGrid id="dataGrid" headerHeight="30" rowCount="12" dataProvider="{dataProvider.divisas}">
+        <mx:columns>
+            <mx:Array>
+                <mx:DataGridColumn headerText="Divisa" columnName="idDivisa" width="50"/>
+                <mx:DataGridColumn headerText="P&#38;L por{newline}Valuaci&#243;n"
+                                   columnName="utilidad" labelFunction="formatNumber"
+                                   textAlign="right" width="70"/>
+            </mx:Array>
+        </mx:columns>
+    </mx:DataGrid>
+
+</view:UtilidadGlobal>

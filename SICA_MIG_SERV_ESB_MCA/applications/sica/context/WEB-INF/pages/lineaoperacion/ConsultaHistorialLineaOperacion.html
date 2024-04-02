@@ -1,0 +1,35 @@
+<!-- $Id: ConsultaHistorialLineaOperacion.html,v 1.9 2008/02/22 18:25:49 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Encabezado</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <table jwcid="@ActionPortletBorder" title='ognl:"Historial de la L&iacute;nea de Cr&eacute;dito del Cliente: " + corporativo' >
+		<table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: {"Operaci&oacute;n", "Fecha", "Usuario", "Importe", "Divisa", "No. Deal Posic.", "Observaciones"}' columnCount="7" width="100%">
+            <tr jwcid="forHistorial@Foreach" source="ognl: lista" element="tr" class="ognl: beans.evenOdd.next">
+                <td class="normal" align="left">
+	                <span jwcid="@contrib:Choose">
+    	                <span jwcid="@contrib:When" condition='ognl: "A".equals(components.forHistorial.value.tipoOper.trim())'>Solicitud</span>
+    	                <span jwcid="@contrib:When" condition='ognl: "C".equals(components.forHistorial.value.tipoOper.trim())'>Autorizaci&oacute;n</span>
+    	                <span jwcid="@contrib:When" condition='ognl: "DA".equals(components.forHistorial.value.tipoOper.trim())'>Uso</span>
+    	                <span jwcid="@contrib:When" condition='ognl: "DL".equals(components.forHistorial.value.tipoOper.trim())'>Liberaci&oacute;n</span>
+    	                <span jwcid="@contrib:When" condition='ognl: "S".equals(components.forHistorial.value.tipoOper.trim())'>Suspensi&oacute;n</span>
+    	                <span jwcid="@contrib:When" condition='ognl: "E".equals(components.forHistorial.value.tipoOper.trim())'>Excedente</span>
+	                </span>
+                </td>
+                <td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forHistorial.value.fechaOperacion" format='ognl: fullDateFormat' raw="yes" /></td>
+				<td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forHistorial.value.usuario.persona.nombreCompleto" raw="yes" /></td>
+				<td class="normal" align="right"><span jwcid="@Insert" value="ognl: moneyFormat.format(components.forHistorial.value.importe)" raw="yes" /></td>
+				<td class="normal" align="center"><span jwcid="@Insert" value='ognl: components.forHistorial.value.divisa == null ? "" : components.forHistorial.value.divisa.idDivisa' raw="yes" /></td>
+				<td class="normal" align="center"><span jwcid="@Insert" value='ognl: components.forHistorial.value.idDealDetalle == null ? "" : components.forHistorial.value.idDealDetalle' raw="yes" /></td>
+				<td class="normal" align="left"><span jwcid="@Insert" value='ognl: components.forHistorial.value.observaciones == null ? "" : components.forHistorial.value.observaciones' raw="yes" /></td>
+            </tr>
+        </table>
+	</table>
+	<br />
+    <div align="center">
+        <a jwcid="@DirectLink" listener="ognl:listeners.cancelarOperacion" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.cancelButton" accesskey="C"/></a>
+    </div>
+</body>
+</html>

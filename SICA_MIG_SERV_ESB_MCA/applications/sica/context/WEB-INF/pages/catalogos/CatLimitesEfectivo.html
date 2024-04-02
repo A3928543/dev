@@ -1,0 +1,208 @@
+<html jwcid="$content$">
+<head jwcid="$remove$">
+	<title>L&iacute;mites de Compra/Venta de Efectivo</title>
+	<link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder" menuDisabled="ognl: false">
+	<span jwcid="@bup:ShowError" width="100%" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level="ognl: level"/>
+	<br />
+	<table width="100%">
+	  <tr valign="top">
+	    <td width="250px">
+	  		<table jwcid="@ActionPortletBorder" title="Alta de L&iacute;mites" width="100%">
+	  			<form jwcid="@Form" listener="ognl: listeners.insert" delegate="ognl: beans.delegate">
+	                <table width="100%">
+	                	<tr>
+	                		<td class="normal" valign="top">Divisa:</td>
+	                		<td class="normal" valign="top">
+	                			<select jwcid="@PropertySelection"
+                        				model="ognl: divisasModel"
+                        				value="ognl: divisaSeleccionada"/>
+	                		</td>
+	                	</tr>
+	                	<tr>
+	                		<td class="normal" valign="top">Operaci&oacute;n:</td>
+	                		<td class="normal" valign="top">
+                				<span jwcid="@RadioGroup" selected="ognl: compraSeleccionada">
+               						<span jwcid="forTipoOperacion@Foreach" source="ognl: listaTipoOperaciones">
+               							<input type="radio" jwcid="@Radio"
+	               									value="ognl: components.forTipoOperacion.value.claveBD"/>
+         								<span jwcid="@Insert" value="ognl: components.forTipoOperacion.value.textoPantalla"/>
+         								<br/>
+               						</span>
+                				</span>
+                				&nbsp;
+	                		</td>
+	                	</tr>
+	                	<tr>
+	                		<td class="normal" valign="top">Tipo de Persona:</td>
+	                		<td class="normal" valign="top">
+                				<span jwcid="@RadioGroup" selected="ognl: tipoPersonaSeleccionada">
+               						<span jwcid="forTipoPersona@Foreach" source="ognl: listaTipoPersonas">
+               							<input type="radio" jwcid="@Radio"
+	               									value="ognl: components.forTipoPersona.value.claveBD"/>
+         								<span jwcid="@Insert" value="ognl: components.forTipoPersona.value.textoPantalla"/>
+         								<br/>
+               						</span>
+                				</span>
+                				&nbsp;
+	                		</td>
+	                	</tr>
+	                	<tr>
+	                		<td class="normal" valign="top">Cliente:</td>
+	                		<td class="normal" valign="top">
+                   				<span jwcid="@RadioGroup" selected="ognl: clienteSeleccionado">
+               						<span jwcid="forTipoCliente@Foreach" source="ognl: listaTipoClientes">
+               							<input type="radio" jwcid="@Radio"
+	               									value="ognl: components.forTipoCliente.value.claveBD" />
+               							<span jwcid="@Insert" value="ognl: components.forTipoCliente.value.textoPantalla"/>
+               							<br/>
+               						</span>
+                				</span>
+                				&nbsp;
+	                		</td>
+	                	</tr>
+	                	<tr>
+	                		<td class="normal" valign="top">Tipo de Zona:</td>
+	                		<td class="normal" valign="top">
+	                			<span jwcid="@RadioGroup" selected="ognl: tipoZonaSeleccionada">
+               						<span jwcid="forTipoZona@Foreach" source="ognl: listaTipoZonas">
+               							<input type="radio" jwcid="@Radio"
+	               									value="ognl: components.forTipoZona.value.claveBD" />
+               							<span jwcid="@Insert" value="ognl: components.forTipoZona.value.textoPantalla"/>
+               							<br/>
+               						</span>
+                				</span>
+                				&nbsp;
+	                		</td>
+	                	</tr>
+	                	<tr>
+	                		<td class="normal" valign="top">Mexicano:</td>
+	                		<td class="normal" valign="top">
+	                			<span jwcid="@RadioGroup" selected="ognl: esMexicano">
+               						<span jwcid="forEsMexicano@Foreach" source="ognl: listaEsMexicano">
+               							<input type="radio" jwcid="@Radio"
+	               									value="ognl: components.forEsMexicano.value.claveBD" />
+               							<span jwcid="@Insert" value="ognl: components.forEsMexicano.value.textoPantalla"/>
+               							<br/>
+               						</span>
+                				</span>
+	                		</td>
+	                	</tr>
+	                	<tr>
+	                		<td class="normal" valign="top">L&iacute;mite diario dolarizado:</td>
+	                		<td class="normal" valign="top">
+	                			<span jwcid="@MontoTextField" value="ognl: limiteDiario" />
+	                		</td>
+	                	</tr>
+	                	<tr>
+	                		<td class="normal" valign="top">L&iacute;mite mensual dolarizado:</td>
+	                		<td class="normal" valign="top">
+	                			<span jwcid="@MontoTextField" value="ognl: limiteMensual" />
+	                		</td>
+	                	</tr>
+	                	<tr>
+	                		<td class="normal" valign="top">Observaciones: <br /> <div align="center">(max 255 caracteres)</div></td>
+	                		<td class="normal" valign="top">
+	                			<span jwcid="@TextArea" value="ognl: observaciones" cols="30" rows="6"/>
+	                		</td>
+	                	</tr>
+	                	<tr>
+	                		<td colspan="2" align="center">
+	                			<br/>
+	                			<input jwcid="@ImageSubmit" image="ognl: assets.insertButton" onclick="return fnDisableForm(this.form);"/> 
+	                		</td>
+	                	</tr>
+	                </table>
+				</form>
+	  		</table>
+	  	</td>
+	    <td width="1%">
+	  		&nbsp;
+	  	</td>
+	  	<td align="center">
+	  		<table jwcid="@ActionPortletBorder" title="L&iacute;mites para restricci&oacute;n de efectivo">
+	  			<tr>
+	  				<td align="center">
+		                <table border="0" cellspacing="1" cellpadding="3" width="100%" jwcid="forLimites@bup:Table" source="ognl: limites" initialSortColumn="divisa" pageSize="25"
+					                columns='ognl: "divisa:Divisa:divisa, !operacion:Operaci\u00f3n:operacion, persona:Tipo Persona:tipoPersona,
+					                !cliente:Cliente:cliente, !tipoZona:Tipo de Zona:tipoZona, !mexicano:Mexicano:mexicano,
+					                limiteDiario:L\u00edmite Diario:limiteDiario, limiteMensual:L\u00edmite Mensual:limiteMensual,
+					                !observaciones:Observaciones:observaciones, !eliminar"'
+					                class="tableborder"/>
+				        <span jwcid="divisaColumnValue@Block">
+				            <span jwcid="@Insert" value="ognl: components.forLimites.tableRow.divisa" />
+				        </span>
+				        <span jwcid="operacionColumnValue@Block">
+                  		   <span jwcid="@Conditional" condition='ognl: components.forLimites.tableRow.compra == null'>
+               			       Cualquiera
+               			   </span>
+               			   <span jwcid="@Conditional" condition='ognl: components.forLimites.tableRow.compra != null && components.forLimites.tableRow.compra.equals(@java.lang.Boolean@TRUE)'>
+               			       Compra
+               			   </span>
+               			   <span jwcid="@Conditional" condition='ognl: components.forLimites.tableRow.compra != null && !components.forLimites.tableRow.compra.equals(@java.lang.Boolean@TRUE)'>
+               			       Venta
+               			   </span>
+				        </span>
+				        <span jwcid="personaColumnValue@Block">
+				        	<span jwcid="@Insert" value="ognl: components.forLimites.tableRow.tipoPersona" />
+				        </span>
+				        <span jwcid="clienteColumnValue@Block">
+                  		   <span jwcid="@Conditional" condition='ognl: components.forLimites.tableRow.cliente == null'>
+               			       Cualquiera
+               			   </span>
+               			   <span jwcid="@Conditional" condition='ognl: components.forLimites.tableRow.cliente != null && components.forLimites.tableRow.cliente.equals(@java.lang.Boolean@TRUE)'>
+               			       S&iacute;
+               			   </span>
+               			   <span jwcid="@Conditional" condition='ognl: components.forLimites.tableRow.cliente != null && !components.forLimites.tableRow.cliente.equals(@java.lang.Boolean@TRUE)'>
+               			       No
+               			   </span>
+				        </span>
+				        <span jwcid="tipoZonaColumnValue@Block">
+				           <span jwcid="@Conditional" condition='ognl: components.forLimites.tableRow.tipoZona == null'>
+               			       Cualquiera
+               			   </span>
+               			   <span jwcid="@Conditional" condition='ognl: components.forLimites.tableRow.tipoZona != null && components.forLimites.tableRow.tipoZona.equals(@com.ixe.ods.sica.Constantes@ZONA_FRONTERIZA)'>
+               			       Zona Fronteriza
+               			   </span>
+               			   <span jwcid="@Conditional" condition='ognl: components.forLimites.tableRow.tipoZona != null && components.forLimites.tableRow.tipoZona.equals(@com.ixe.ods.sica.Constantes@ZONA_TURISTICA)'>
+               			       Zona Tur&iacute;stica
+               			   </span>
+               			   <span jwcid="@Conditional" condition='ognl: components.forLimites.tableRow.tipoZona != null && components.forLimites.tableRow.tipoZona.equals(@com.ixe.ods.sica.Constantes@ZONA_NORMAL)'>
+               			       Zona Normal
+               			   </span>
+				        </span>
+				        <span jwcid="mexicanoColumnValue@Block">
+				           <span jwcid="@Conditional" condition='ognl: components.forLimites.tableRow.mexicano == null'>
+               			       Cualquiera
+               			   </span>
+               			   <span jwcid="@Conditional" condition='ognl: components.forLimites.tableRow.mexicano != null && components.forLimites.tableRow.mexicano.equals(@java.lang.Boolean@TRUE)'>
+               			       S&iacute;
+               			   </span>
+               			   <span jwcid="@Conditional" condition='ognl: components.forLimites.tableRow.mexicano != null && !components.forLimites.tableRow.mexicano.equals(@java.lang.Boolean@TRUE)'>
+               			       No
+               			   </span>
+			            </span>
+			            <span jwcid="limiteDiarioColumnValue@Block">
+				            <span jwcid="@Insert" value="ognl: page.moneyFormat.format(components.forLimites.tableRow.limiteDiario)" />
+				        </span>
+				        <span jwcid="limiteMensualColumnValue@Block">
+				            <span jwcid="@Insert" value="ognl: page.moneyFormat.format(components.forLimites.tableRow.limiteMensual)" />
+				        </span>
+				        <span jwcid="observacionesColumnValue@Block">
+				            <a jwcid="@tooltip:ToolTip" title="Observaciones" value="ognl: components.forLimites.tableRow.observaciones" sticky="ognl: true" clickable="ognl: true" commands='WIDTH, "300", CLOSETEXT, "X", FGCOLOR, "#dddddd", BGCOLOR, "#002f2c", CAPCOLOR, "#f79c00", CLOSECOLOR, "#FFFFFF"' disabled="ognl: components.forLimites.tableRow.observaciones == null || components.forLimites.tableRow.observaciones.length() == 0">
+							   <span jwcid="@Insert" value="Ver"/>
+							</a>
+				        </span>
+			            <span jwcid="eliminarColumnHeader@Block">&nbsp;</span>
+				        <span jwcid="eliminarColumnValue@Block">
+				            <a jwcid="@DirectLink" listener="ognl:listeners.eliminar" parameters="ognl:components.forLimites.tableRow.idLimiteEfectivo" onClick="return confirm('\u00bfDesea eliminar el registro?');"> Eliminar </a>
+				        </span>
+					</td>
+				</tr>
+	  		</table>
+	  	</td>
+	 </tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!-- $Id: ReporteBanxico.html,v 1.13 2008/05/22 22:19:15 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Reportes</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr valign="top">
+            <td width="200">			    
+				<form jwcid="@Form" listener="ognl: listeners.search" delegate="ognl: beans.delegate" >
+				           <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+				            <table jwcid="@ActionPortletBorder" title="Reportes de Banxico">
+			           		    <fieldset class="normal">
+			           		        <legend class="legend">Impresi&oacute;n de Reportes</legend>				                                                                 		           				                  				                                       
+				                        Selecciona la Fecha de Operaci&oacute;n :<br />
+				                        <span jwcid="@ls:DatePicker" value="ognl: registerDate" format="dd/MM/yyyy" /><br />
+			                   </fieldset>
+			                   <br />
+			                <div align="center">
+			                    <input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+			                </div>
+                        </table>
+                </form>
+   			</td> 
+   			<td width="1%">&nbsp;</td>
+           	<td>
+            	<span jwcid="@Conditional" condition="ognl: sector.size() &gt; 0">
+            	<table jwcid="@ActionPortletBorder" title="Cat&aacute;logo de Reportes">
+		         <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: {"Opciones", "", ""}' columnCount="3" width="100%">
+		
+					<tr class="ognl: beans.evenOdd.next">
+			         	<td class="normalcell" align="left">
+							Informe Anal&iacute;tico de Operaciones de Compra Venta sin swaps
+			        	</td>
+			        	<td class="normalcell" align="center">
+                            <a jwcid="@DirectLink" listener="ognl:listeners.imprimirReporteAnaliticoSinSwapsPdf" parameters= 'ognl: { "WEB-INF/jasper/RepBanxicoInformAnaliticoSnSwaps.jasper", "ReporteAnaliticoSinSwaps", "0" }' > Ver PDF</a>
+			        	</td>
+			        	<td class="normalcell" align="center">
+			        		<a jwcid="@DirectLink" listener="ognl:listeners.imprimirReporteAnaliticoSinSwapsXls" parameters= 'ognl: {"WEB-INF/jasper/ReporteAnaliticoSinSwapsXls.jasper", "ReporteAnaliticoSinSwapsXls", "0" }' > Ver Excel</a>
+			        	</td>
+				 	</tr>
+				 	
+				 	<tr class="ognl: beans.evenOdd.next">
+			         	<td class="normalcell" align="left">
+			        		Informe Sumarizado de Operaciones de Compra Venta
+			        	</td>
+			        	<td class="normalcell" align="center">
+			        		<a jwcid="@DirectLink" listener="ognl:listeners.imprimirInforme" parameters= 'ognl: {"WEB-INF/jasper/ReporteBanxicoInformeComprasVentasPdf.jasper", "RepBanxicoInfSumCV", "0" }' >Ver PDF</a>			        				        	
+                            <!--a jwcid="@DirectLink" listener="ognl:listeners.imprimirInforme" parameters= 'ognl: {"WEB-INF/jasper/RepBanxicoInform.jasper", "RepBanxicoInfSumCV", "0" }' >Ver PDF</a-->			        				        	
+			        	</td>
+			        	<td class="normalcell" align="center">
+			        		<a jwcid="@DirectLink" listener="ognl:listeners.imprimirInformeComprasVentasXls" parameters= 'ognl: {"WEB-INF/jasper/ReporteBanxicoInformeComprasVentasXls.jasper", "RepBanxicoInfSumCVXls", "0" }' >Ver Excel</a>
+			        	</td>
+				 	</tr>
+				 
+				 	<tr class="ognl: beans.evenOdd.next">
+			         	<td class="normalcell" align="left">
+			     			Informe Anal&iacute;tico de Operaciones de Compra Venta con swaps
+			    		</td>
+			    		<td class="normalcell" align="center">
+			     			<a jwcid="@DirectLink" listener="ognl:listeners.imprimirInformeAnalitico" parameters= 'ognl: {"WEB-INF/jasper/RepBanxicoInformAnalitico.jasper", "RepBanxicoInformeAnalitico", "0" }' >Ver PDF</a>
+			    		</td>
+			    		<td class="normalcell" align="center">
+			    			 <a jwcid="@DirectLink" listener="ognl:listeners.imprimirXlsDolares" parameters= 'ognl: {"WEB-INF/jasper/RepBanxicoDolarXls.jasper", "RepBanxicoAnaliticoSwapsXls", "0" }' >Ver Excel</a>
+			  			</td>
+			    	</tr>
+				 	
+				 	<tr class="ognl: beans.evenOdd.next">
+			         	<td class="normalcell" align="left">
+			    			Generar Reporte Posici&oacute;n del D&iacute;a
+						</td>
+						<td class="normalcell" align="center">&nbsp;</td>
+						<td class="normalcell" align="center">
+			    			<a jwcid="@DirectLink" listener="ognl:listeners.imprimirXlsSeccion" parameters= 'ognl: {"WEB-INF/jasper/RepBanxicoXlsSeccVIII.jasper", "ReportePosicionDelDia", "0" }' >Ver Excel</a>
+						</td>
+					</tr>
+                    <tr class="ognl: beans.evenOdd.next">
+			         	<td class="normalcell" align="left">
+			    			Generar Secci&oacute;n VIII del ACLME para Banxico
+						</td>
+						<td class="normalcell" align="center">&nbsp;</td>
+						<td class="normalcell" align="center">
+			    			<a jwcid="@DirectLink" listener="ognl:listeners.imprimirXlsDivisas" parameters= 'ognl: {"WEB-INF/jasper/ReporteAclmeBanxico.jasper", "ReporteAclmeBanxico", "0" }' >Ver Excel</a>
+						</td>
+					</tr>
+                    
+                    <tr class="ognl: beans.evenOdd.next">
+			         	<td class="normalcell" align="left">
+			    			Generar Secci&oacute;n X del ACLME para Banxico
+						</td>
+						<td class="normalcell" align="center">&nbsp;</td>
+						<td class="normalcell" align="center">
+			    			<a jwcid="@DirectLink" listener="ognl:listeners.generarAclmeX" >Ver Archivo</a>
+						</td>
+					</tr>
+                    
+				     </table>
+		         </table>
+		     	&nbsp;
+            	&nbsp;
+               </span>
+               &nbsp;
+           </td>   			   						
+        </tr>
+    </table>
+    <span jwcid="@ls:DatePickerColophon" />
+</body>
+</html>

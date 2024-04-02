@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: applicationContext.xml,v 1.1.26.1 2012/03/13 02:28:41 mejiar Exp $ -->
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <!--property name="driverClassName">
+            <value>oracle.jdbc.driver.OracleDriver</value>
+        </property>
+        <property name="url">
+            <value>jdbc:oracle:thin:@192.168.23.45:1521:BUP</value>
+        </property>
+        <property name="username">
+            <value>SIAC_USR</value>
+        </property>
+        <property name="password">
+            <value>SIAC_USR</value>
+        </property-->
+
+        <property name="driverClassName">
+            <value>oracle.jdbc.driver.OracleDriver</value>
+        </property>
+
+        <property name="url">
+            <value>jdbc:oracle:thin:@10.4.160.40:1521:isisdesar</value>
+        </property>
+        <property name="username">
+            <value>SICA_APPS</value>
+        </property>
+        <property name="password">
+            <value>as_u_wish</value>
+        </property>
+
+    </bean>
+
+    <!-- Session Factory para Hibernate (solo una instancia por JVM) -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate.LocalSessionFactoryBean">
+        <description>Session Factory para Hibernate (solo una instancia por JVM)</description>
+        <property name="dataSource">
+            <ref local="dataSource"/>
+        </property>
+        <property name="mappingResources">
+                    <list>
+                        <value>com/ixe/ods/seguridad/model/AsociacionFacultad.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/AsociacionFacultadCuenta.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/AutMancomunada.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/ColeccionFacultades.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/Perfil.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/PerfilCuenta.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/PerfilCuentaAbono.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/PerfilServicio.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/PerfilRecuperacion.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/Rol.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/Facultad.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/FechaInhabil.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/GrupoFirmas.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/Jerarquia.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/IntentoFallido.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/Modulo.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/NodoJerarquia.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/Sistema.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/Ticket.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/Usuario.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/UsuarioExternoAdicional.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/UsuarioHistoria.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/audit/AuditAutorizacionManc.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/audit/AuditFacultad.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/audit/AuditFacultadCuenta.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/ocsp/CertificadoRevocado.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/bitacora/Firma.hbm.xml</value>
+                        <value>com/ixe/ods/seguridad/model/bitacora/Operacion.hbm.xml</value>
+
+                        <!-- Mapeos de la BUP -->
+                        <value>com/ixe/ods/bup/model/ActividadEconomica.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/AtributoRelacion.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/Banco.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/ChequeImg.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/ClasificacionSesion.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/ComentarioClasificado.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/ContratoMercadoDinero.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/ContratoPagoServicio.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/CuentaContrato.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/CuentaEjecutivo.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/CuentaAbono.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/CuentaOtroBanco.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/DetalleServicio.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/Direccion.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/DireccionOrigen.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/EstadoCivil.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/EjecutivoOrigen.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/EstadoCuentaTc.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/FechaNoLaboral.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/GrupoRelacion.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/Household.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/InstanciaAtributoRelacion.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/InstanciaRelacion.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/MapaEsquina.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/MedioContacto.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/Pais.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/Persona.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/PersonaCuentaRol.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/PersonaRim.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/PrefijosTc.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/ProveedorServicio.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/RendimientoImg.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/SectorEconomico.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/SerieCofetel.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/Sesion.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/Sucursal.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/Telefono.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/TipoCuentaContrato.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/TipoDireccion.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/TipoEjecutivo.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/TipoEnvioEdocta.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/TipoHousehold.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/TipoMedioContacto.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/TipoIva.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/TipoProveedor.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/TipoRelacion.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/TipoRol.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/TipoServicio.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/TipoTarjeta.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/TipoTelefono.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/UsuarioIxenetEmpresarial.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/InfEjecutivos.hbm.xml</value>
+                        <value>com/ixe/ods/bup/model/InfEjecutivosDetalle.hbm.xml</value>
+
+                        <!-- Mapeos Alertas -->
+                        <value>com/ixe/ods/alertas/model/Alerta.hbm.xml</value>
+                        <value>com/ixe/ods/alertas/model/AlertaUsuario.hbm.xml</value>
+                        <value>com/ixe/ods/alertas/model/BmvEmisora.hbm.xml</value>
+                        <value>com/ixe/ods/alertas/model/EnvioMensaje.hbm.xml</value>
+                        <value>com/ixe/ods/alertas/model/Frecuencia.hbm.xml</value>
+                        <value>com/ixe/ods/alertas/model/MedioEnvioAlertas.hbm.xml</value>
+                        <value>com/ixe/ods/alertas/model/OperadorValido.hbm.xml</value>
+
+                        <!-- Recurrencias -->
+                        <value>com/ixe/ods/recurrencias/model/BitacoraFechasCanceladas.hbm.xml</value>
+                        <value>com/ixe/ods/recurrencias/model/BitacoraRecurrencia.hbm.xml</value>
+                        <value>com/ixe/ods/recurrencias/model/BitacoraCancelacion.hbm.xml</value>
+                        <value>com/ixe/ods/recurrencias/model/Recurrencia.hbm.xml</value>
+                        <value>com/ixe/ods/recurrencias/model/FechaCancelada.hbm.xml</value>
+
+                        <!-- Fondos -->
+                    <value>com/ixe/ods/bup/model/CatalogoFondo.hbm.xml</value>
+                    <value>com/ixe/ods/bup/model/ParametroSistema.hbm.xml</value>
+
+                        <!-- Mapeos SICA -->
+                        <value>com/ixe/ods/sica/model/Actividad.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/AutMedioContacto.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/BitacoraEnviadas.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/Broker.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/Canal.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/ContraparteBanxico.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/Deal.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/DealDetalleStatusLog.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/DealLog.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/DealPosicion.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/DealStatusLog.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/Divisa.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/Estado.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/FactorDivisa.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/FactorDivisaActual.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/FechaInhabilEua.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/GuiaContableLiq.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/GrupoTrabajo.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/GrupoTrabajoPromotor.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/HistoricoVaR.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/HistoricoPosicion.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/HistoricoPosicionDetalle.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/HistoricoTipoCambio.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/Limite.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/LineaCambio.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/LineaCambioLog.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/LineaOperacion.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/LineaOperacionLog.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/MaximoDeal.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/MontoMaximoSucursal.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/MesaCambio.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/ParametroSica.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/Plantilla.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/PlantillaPantalla.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/Posicion.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/PosicionDetalle.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/PosicionLog.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/PrecioReferencia.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/PrecioReferenciaActual.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/Propiedad.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/Reverso.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/ReversoDetalle.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/RenglonPizarron.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/Spread.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/Swap.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/SpreadActual.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/TipoLimite.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/TipoPizarron.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/TipoTraspasoProducto.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/TraspasoMesa.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/UtilidadForward.hbm.xml</value>
+                        <value>com/ixe/ods/sica/model/Variacion.hbm.xml</value>
+                    </list>
+                </property>
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">net.sf.hibernate.dialect.OracleDialect</prop>
+                <prop key="hibernate.show_sql">true</prop> <!-- FAVOR DE NO CAMBIAR -->
+                <prop key="hibernate.jdbc.batch_size">0</prop>
+                <prop key="hibernate.use_outer_join">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- TransactionManager generico -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate.HibernateTransactionManager">
+        <description>TransactionManager generico</description>
+        <property name="sessionFactory">
+            <ref local="sessionFactory"/>
+        </property>
+    </bean>
+
+    <!-- Definicion general de un proxy que agrega transaccionalidad -->
+    <bean id="baseTransactionProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" abstract="true">
+        <description>Definicion general de un proxy que agrega transaccionalidad</description>
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- CONFIGURACION SICA -->
+    <!-- Proxy para las entidades relacionadas con la Sica -->
+    <bean id="sicaServiceData" parent="baseTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.sdo.impl.HibernateWorkFlowServiceData">
+                <property name="sessionFactory">
+                    <ref local="sessionFactory"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="reversosServiceData" parent="baseTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.sdo.impl.HibernateReversosServiceData">
+                <property name="sessionFactory">
+                    <ref local="sessionFactory"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="limiteDao" parent="baseTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.impl.HibernateLimiteDao">
+                <property name="sessionFactory">
+                    <ref local="sessionFactory"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+
+    <!-- DAO para acceso a Seguridad -->
+    <!--bean id="securityDao" class="com.ixe.ods.seguridad.sdo.impl.HibernateSeguridadServiceData">
+        <description>DAO para acceso a Seguridad</description>
+        <property name="sessionFactory">
+            <ref local="sessionFactory"/>
+        </property>
+        <property name="procedureDao">
+		   	<bean class="com.ixe.ods.seguridad.dao.impl.ProcedureSecurityDaoImpl">
+		       	<property name="dataSource">
+		           	<ref bean="dataSource"/>
+		        </property>
+		    </bean>
+		</property>
+    </bean-->
+
+    <!-- Proxy transaccional para las entidades de Seguridad -->
+    <!--bean id="securityServiceData" parent="baseTransactionProxy">
+        <description>Proxy transaccional para las entidades de Seguridad</description>
+        <property name="target">
+            <ref local="securityDao"/>
+        </property>
+    </bean-->
+
+    <bean id="swapDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref local="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="crear*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.JdbcSwapDaoImpl">
+                <property name="dataSource">
+                    <ref local="dataSource"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="clienteDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.JdbcClienteDaoImpl">
+                <property name="dataSource">
+                    <ref bean="dataSource"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="dealDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.impl.JdbcDealDao">
+                <property name="dataSource">
+                    <ref bean="dataSource"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="condorProcCambiosDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.impl.CondorProcCambiosDaoImpl">
+                <property name="dataSource">
+                    <ref bean="dataSource"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+
+    <!--bean id="siteService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+         <property name="serviceUrl">
+               <value>rmi://localhost:1099/ExternalSiteService</value>
+         </property>
+         <property name="serviceInterface">
+               <value>com.ixe.treasury.middleware.service.ExternalSiteService</value>
+         </property>
+    </bean-->
+
+    <bean id="valorFuturoService" class="com.ixe.ods.sica.services.impl.ValorFuturoServiceImpl">
+        <property name="sicaServiceData">
+            <ref local="sicaServiceData" />
+        </property>
+    </bean>
+
+    <bean id="pizarronServiceData" parent="baseTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.sdo.impl.HibernatePizarronServiceData">
+                <property name="sessionFactory">
+                    <ref local="sessionFactory"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="sicaSiteCache" class="com.ixe.ods.sica.SicaSiteCache" singleton="true" lazy-init="true">
+        <property name="siteService">
+            <ref local="siteService" />
+        </property>
+    </bean>
+
+    <bean id="siteService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" lazy-init="true">
+        <property name="jndiName">
+            <value>ejb.site.ExternalSiteHome</value>
+        </property>
+        <property name="jndiTemplate">
+            <bean class="org.springframework.jndi.JndiTemplate">
+                <property name="environment">
+                    <props>
+                        <prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
+                        <prop key="java.naming.provider.url">t3://127.0.0.1:7001</prop>
+                    </props>
+                </property>
+            </bean>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SiteService</value>
+        </property>
+    </bean>
+
+	<bean id="cierreServiceData" parent="baseTransactionProxy">
+	    <property name="target">
+	        <bean class="com.ixe.ods.sica.sdo.impl.HibernateCierreSicaServiceData">
+	            <property name="sessionFactory">
+	                <ref local="sessionFactory"/>
+	            </property>
+                <property name="limiteDao">
+                    <ref local="limiteDao" />
+                </property>
+	        </bean>
+	    </property>
+	    </bean>
+
+    <bean id="historicosDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.impl.JdbcHistoricosDao">
+                <property name="dataSource">
+                    <ref local="dataSource" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="dealService" class="com.ixe.ods.sica.services.impl.DealServiceImpl">
+        <property name="sicaServiceData">
+            <ref local="sicaServiceData" />
+        </property>
+        <property name="formasPagoLiqService">
+            <ref local="formasPagoLiqService" />
+        </property>
+        <property name="pizarronServiceData">
+            <ref local="pizarronServiceData" />
+        </property>
+        <property name="valorFuturoService">
+            <ref local="valorFuturoService" />
+        </property>
+    </bean>
+
+    <bean id="formasPagoLiqService" class="com.ixe.ods.sica.services.impl.FormasPagoLiqServiceImpl">
+        <property name="sicaSiteCache">
+            <ref local="sicaSiteCache" />
+        </property>
+   </bean>
+
+    <!-- DAO para acceso a la BUP -->
+    <bean id="bupDao" class="com.ixe.ods.bup.sdo.impl.HibernateBupServiceData">
+        <description>DAO para acceso a la BUP</description>
+        <property name="sessionFactory">
+            <ref local="sessionFactory"/>
+        </property>
+        <property name="jdbcDao">
+			<bean class="com.ixe.ods.bup.dao.impl.JdbcBupDaoImpl">
+				<property name="dataSource">
+					<ref bean="dataSource"/>
+				</property>
+			</bean>
+	    </property>
+    </bean>
+
+        <bean id="bupServiceData" parent="baseTransactionProxy">
+        <description>Proxy transaccional para las entidades de la BUP</description>
+        <property name="target">
+            <ref local="bupDao"/>
+        </property>
+    </bean>
+
+	<!-- DAO para deteccion de descuadre de la posicion -->
+	<bean id="descuadreDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.JdbcDescuadreDaoImpl">
+                <property name="dataSource">
+                    <ref local="dataSource" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+        <bean id="contabilidadServiceData" parent="baseTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.sdo.impl.HibernateContabilidadSicaServiceData">
+                <property name="sessionFactory">
+                    <ref local="sessionFactory"/>
+                </property>
+                <!--property name="pizarronServiceData">
+	                <ref local="pizarronServiceData" />
+	            </property-->
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host">
+            <value>mail.legosoft.com.mx</value>
+        </property>
+    </bean>
+
+    <bean id="generalMailSender" class="com.ixe.ods.sica.services.impl.GeneralMailSenderImpl">
+        <property name="mailSender">
+            <ref bean="mailSender"/>
+        </property>
+    </bean>
+
+    <bean id="cancelacionMailSender" class="com.ixe.ods.sica.services.impl.CancelacionMailSenderImpl">
+        <property name="mailSender">
+            <ref bean="mailSender"/>
+        </property>
+        <property name="message">
+		    <bean class="org.springframework.mail.SimpleMailMessage">
+		        <property name="from">
+		            <value>ixecambios@ixe.com.mx</value>
+		        </property>
+		        <property name="subject">
+		            <value>SICA: Deal cancelado al cierre</value>
+		        </property>
+		    </bean>
+        </property>
+    </bean>
+
+    <bean id="reporteUtilidadesDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+        <property name="target">
+            <bean class="com.ixe.ods.sica.dao.JdbcReporteUtilidadesDaoImpl">
+                <property name="dataSource">
+                    <ref bean="dataSource"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <!--bean id="sicaAlertasService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName">
+            <value>ejb.AlrmSICARemoteHome</value>
+        </property>
+        <property name="businessInterface">
+            <value>com.ixe.ods.sica.SicaAlertasService</value>
+        </property>
+        <property name="jndiTemplate">
+            <bean class="org.springframework.jndi.JndiTemplate">
+                <property name="environment">
+                    <props>
+                        <prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
+                        <prop key="java.naming.provider.url">t3://10.211.55.3:7001</prop>
+                    </props>
+                </property>
+            </bean>
+        </property>
+    </bean-->
+
+    <bean id="posicionServiceData" class="com.ixe.ods.sica.sdo.impl.HibernatePosicionServiceData">
+        <property name="sessionFactory">
+            <ref local="sessionFactory"/>
+        </property>
+        <property name="clienteServiceData">
+			<bean id="clienteTellerHTTP" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+				<property name="serviceUrl" value="http://nuevo45.ixecorp.ixe.com.mx:7003/teller/tellercons/TellerServicio"/>
+				<property name="serviceInterface" value="com.ixe.teller.middleware.ITeller"/>
+			</bean>
+        </property>
+    </bean>
+
+    <bean id="sicaWorkFlowServiceData" parent="baseTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.sdo.impl.HibernateWorkFlowServiceData">
+                <property name="sessionFactory">
+                    <ref local="sessionFactory"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="pdfService" class="com.ixe.ods.sica.services.impl.PdfServiceImpl" />
+
+    <bean id="mailVespertinoService" class="com.ixe.ods.sica.services.impl.MailVespertinoServiceImpl">
+        <property name="sicaServiceData">
+            <ref bean="sicaServiceData" />
+        </property>
+        <property name="generalMailSender">
+            <ref bean="generalMailSender" />
+        </property>
+        <property name="pdfService">
+            <ref bean="pdfService" />
+        </property>
+        <property name="condorProcCambiosDao">
+            <ref bean="condorProcCambiosDao" />
+        </property>
+    </bean>
+
+    <bean id="lineasCambioServiceData" parent="baseTransactionProxy">
+        <property name="target">
+            <bean class="com.ixe.ods.sica.sdo.impl.HibernateLineaCambioServiceData">
+                <property name="sessionFactory">
+                    <ref local="sessionFactory"/>
+                </property>
+                <property name="pizarronServiceData">
+                    <ref local="pizarronServiceData" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="bupSessionFactory" class="org.springframework.orm.hibernate.LocalSessionFactoryBean">
+        <description>Session Factory para Hibernate (solo una instancia por JVM)</description>
+        <property name="dataSource">
+            <ref local="dataSource"/>
+        </property>
+        <property name="mappingResources">
+            <list>
+                <value>com/ixe/ods/bup/model/ActividadEconomica.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/Banco.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/ContratoPagoServicio.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/ContratoMercadoDinero.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/CuentaAbono.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/CuentaContrato.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/CuentaEjecutivo.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/DetalleServicio.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/Direccion.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/EstadoCivil.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/InstanciaAtributoRelacion.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/InstanciaRelacion.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/MedioContacto.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/Pais.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/Persona.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/PersonaCuentaRol.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/PersonaRim.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/SectorEconomico.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/Sucursal.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/Telefono.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/TipoCuentaContrato.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/TipoDireccion.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/TipoEjecutivo.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/TipoEnvioEdocta.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/TipoMedioContacto.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/TipoRelacion.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/TipoRol.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/TipoServicio.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/TipoTarjeta.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/TipoTelefono.hbm.xml</value>
+                <value>com/ixe/ods/bup/model/UsuarioIxenetEmpresarial.hbm.xml</value>
+
+                <value>com/ixe/ods/seguridad/model/Jerarquia.hbm.xml</value>
+                <value>com/ixe/ods/seguridad/model/NodoJerarquia.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">net.sf.hibernate.dialect.OracleDialect</prop>
+                <prop key="hibernate.show_sql">false</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="jerarquiaDao" class="com.ixe.ods.sica.dao.impl.HibernateJerarquiaDao">
+            <property name="sessionFactory">
+                <ref local="bupSessionFactory"/>
+            </property>
+	</bean>
+
+    <bean id="bitacoraEnviadasDao" class="com.ixe.ods.sica.dao.impl.BitacoraEnviadasDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="swapDao" ref="swapDao" />
+    </bean>
+<!-- configuracion test para el cierre contable-->
+	<bean id="weblogicJndiTemplateTest"
+			class="org.springframework.jndi.JndiTemplate" lazy-init="true">
+			<property name="environment">
+				<props>
+					<prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
+					<!--  TODO: se suben comentados para la seg local.
+						<prop key="java.naming.provider.url">t3://192.168.14.247:7101</prop>
+					<prop key="java.naming.provider.url">t3://10.4.162.25:7503</prop>
+					-->
+						<prop key="java.naming.provider.url">t3://10.2.40.16:7001</prop>
+					<prop key="java.naming.security.principal">mw</prop>
+					<prop key="java.naming.security.credentials">12345678</prop>
+				</props>
+			</property>
+		</bean>
+	
+	<bean id="sicaSession"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName">
+			<value>ejb/sica/SicaHome</value>
+		</property>
+		<property name="businessInterface">
+			<value>test.com.ixe.ods.sica</value>
+		</property>
+		<property name="jndiTemplate">
+			<ref bean="weblogicJndiTemplateTest" />
+		</property>
+		<property name="lookupHomeOnStartup">
+			<value>false</value>
+		</property>
+	</bean>
+<!-- fin  configuracion test para el cierre contable-->
+</beans>

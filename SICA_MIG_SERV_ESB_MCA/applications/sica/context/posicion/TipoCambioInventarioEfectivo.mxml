@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<view:TipoCambio verticalGap="0" horizontalGap="0"
+    xmlns:mx="http://www.macromedia.com/2003/mxml"
+    xmlns:view="com.ixe.ods.sica.posicion.views.*"
+    xmlns:sica="*">
+
+    <view:TipoCambioHeader width="380"/>
+
+    <sica:TipoCambioPosicionInicial dataProvider="{dataProvider}"/>
+
+    <sica:TipoCambioCompra mainLabel="Entradas" dataProvider="{dataProvider}"/>
+
+    <sica:TipoCambioVenta mainLabel="Salidas" dataProvider="{dataProvider}"/>
+
+    <sica:TipoCambioPosicionFinal dataProvider="{dataProvider}"/>
+
+</view:TipoCambio>

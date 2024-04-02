@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using JasperAssistant (http://www.jasperassistant.com) -->
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="Unnamed" language="java" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="com.jasperassistant.designer.GridWidth" value="12"/>
+	<property name="com.jasperassistant.designer.GridHeight" value="12"/>
+	<property name="com.jasperassistant.designer.DataSource" value="Reporte Banxico"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="true"/>
+	<property name="com.jasperassistant.designer.Grid" value="true"/>
+	<field name="cliente" class="java.lang.String">
+	</field>
+	<field name="comprado" class="java.lang.Double">
+	</field>
+	<field name="divisa" class="java.lang.String">
+	</field>
+	<field name="factorDivisa" class="java.lang.Double">
+	</field>
+	<field name="fechaCaptura" class="java.util.Date">
+	</field>
+	<field name="fechaValor" class="java.util.Date">
+	</field>
+	<field name="mes" class="java.lang.String">
+	</field>
+	<field name="sector" class="java.lang.String">
+	</field>
+	<field name="vendido" class="java.lang.Double">
+	</field>
+	<variable name="Variable_1" class="java.lang.Double" resetType="Group" resetGroup="Group_1" calculation="Sum">
+		<variableExpression><![CDATA[$F{comprado}]]></variableExpression>
+	</variable>
+	<variable name="Variable_2" class="java.lang.Double" resetType="Group" resetGroup="Group_1" calculation="Sum">
+		<variableExpression><![CDATA[$F{vendido}]]></variableExpression>
+	</variable>
+	<group name="Group_1">
+		<groupExpression><![CDATA[$F{cliente}.toString() + $F{divisa}.toString()]]></groupExpression>
+		<groupFooter>
+		<band height="16">
+			<textField>
+				<reportElement positionType="Float" x="0" y="0" width="190" height="16"/>
+				<textElement>
+					<font fontName="Tw Cen MT" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sector}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="190" y="0" width="150" height="16"/>
+				<textElement>
+					<font fontName="Tw Cen MT" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{divisa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="340" y="0" width="72" height="16"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tw Cen MT" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{factorDivisa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="412" y="0" width="204" height="16"/>
+				<textElement>
+					<font fontName="Tw Cen MT" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cliente}]]></textFieldExpression>
+			</textField>
+			<textField pattern="d/MM/yyyy">
+				<reportElement positionType="Float" x="616" y="0" width="75" height="16"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tw Cen MT" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaValor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="691" y="0" width="75" height="16"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tw Cen MT" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{Variable_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="766" y="0" width="75" height="16"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tw Cen MT" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{Variable_2}]]></textFieldExpression>
+			</textField>
+		</band>
+		</groupFooter>
+	</group>
+	<columnHeader>
+		<band height="25">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="190" height="25"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tw Cen MT" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SECTOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="412" y="0" width="204" height="25"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tw Cen MT" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRE DEL CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="616" y="0" width="75" height="25"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tw Cen MT" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA 
+VALOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="766" y="0" width="75" height="25"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tw Cen MT" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VENDIDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="691" y="0" width="75" height="25"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tw Cen MT" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COMPRADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="190" y="0" width="150" height="25"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tw Cen MT" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCRIPCIÓN DIVISA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="340" y="0" width="72" height="25"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tw Cen MT" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FACTOR 
+DIVISA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band>
+		</band>
+	</detail>
+</jasperReport>

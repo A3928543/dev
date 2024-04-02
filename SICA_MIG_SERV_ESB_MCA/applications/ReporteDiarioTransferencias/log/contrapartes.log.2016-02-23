@@ -1,0 +1,473 @@
+2016-02-23 13:00:16 - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@9fef6f: startup date [Tue Feb 23 13:00:16 CST 2016]; root of context hierarchy
+2016-02-23 13:00:16 - Loading XML bean definitions from file [D:\Respaldo\D\compartida\ReporteDiarioTransferencias\config\applicationContext.xml]
+2016-02-23 13:00:16 - Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2016-02-23 13:00:16 - Loading schema mappings from [META-INF/spring.schemas]
+2016-02-23 13:00:16 - Loaded schema mappings: {http://www.springframework.org/schema/lang/spring-lang.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.5.xsd=org/springframework/scripting/config/spring-lang-2.5.xsd, http://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd, http://www.springframework.org/schema/context/spring-context.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/util/spring-util-3.0.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.0.xsd=org/springframework/beans/factory/xml/spring-util-2.0.xsd, http://www.springframework.org/schema/task/spring-task-3.0.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.5.xsd=org/springframework/beans/factory/xml/spring-util-2.5.xsd, http://www.springframework.org/schema/tool/spring-tool-3.0.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.0.xsd=org/springframework/transaction/config/spring-tx-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.0.xsd=org/springframework/beans/factory/xml/spring-tool-2.0.xsd, http://www.springframework.org/schema/task/spring-task.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/context/spring-context-3.0.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.5.xsd=org/springframework/transaction/config/spring-tx-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-2.0.xsd=org/springframework/beans/factory/xml/spring-beans-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.5.xsd=org/springframework/beans/factory/xml/spring-tool-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/beans/spring-beans-2.5.xsd=org/springframework/beans/factory/xml/spring-beans-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/tool/spring-tool.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.0.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop-3.0.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.0.xsd=org/springframework/ejb/config/spring-jee-2.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.0.xsd=org/springframework/aop/config/spring-aop-2.0.xsd, http://www.springframework.org/schema/tx/spring-tx-3.0.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.5.xsd=org/springframework/ejb/config/spring-jee-2.5.xsd, http://www.springframework.org/schema/aop/spring-aop-2.5.xsd=org/springframework/aop/config/spring-aop-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-3.0.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-3.0.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.0.xsd=org/springframework/scripting/config/spring-lang-2.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/util/spring-util.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd}
+2016-02-23 13:00:16 - Found XML schema [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-3.0.xsd
+2016-02-23 13:00:16 - Found XML schema [http://www.springframework.org/schema/context/spring-context-3.0.xsd] in classpath: org/springframework/context/config/spring-context-3.0.xsd
+2016-02-23 13:00:16 - Found XML schema [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-tool-3.0.xsd
+2016-02-23 13:00:16 - Loading bean definitions
+2016-02-23 13:00:16 - Loaded NamespaceHandler mappings: {http://www.springframework.org/schema/p=org.springframework.beans.factory.xml.SimplePropertyNamespaceHandler, http://www.springframework.org/schema/util=org.springframework.beans.factory.xml.UtilNamespaceHandler, http://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandler, http://www.springframework.org/schema/aop=org.springframework.aop.config.AopNamespaceHandler, http://www.springframework.org/schema/jdbc=org.springframework.jdbc.config.JdbcNamespaceHandler, http://www.springframework.org/schema/tx=org.springframework.transaction.config.TxNamespaceHandler, http://www.springframework.org/schema/task=org.springframework.scheduling.config.TaskNamespaceHandler, http://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandler, http://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler}
+2016-02-23 13:00:16 - Loaded 9 bean definitions from location pattern [config/applicationContext.xml]
+2016-02-23 13:00:16 - Bean factory for org.springframework.context.support.FileSystemXmlApplicationContext@9fef6f: org.springframework.beans.factory.support.DefaultListableBeanFactory@1bfc93a: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailSender,dataSource,mensajesVo,consultaDao,reporteService,transferenciasService]; root of factory hierarchy
+2016-02-23 13:00:16 - Creating shared instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-02-23 13:00:16 - Creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-02-23 13:00:16 - Eagerly caching bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0' to allow for resolving potential circular references
+2016-02-23 13:00:17 - Finished creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-02-23 13:00:17 - Loading properties file from file [D:\Respaldo\D\compartida\ReporteDiarioTransferencias\config\config.properties]
+2016-02-23 13:00:17 - Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@1198891]
+2016-02-23 13:00:17 - Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@a761fe]
+2016-02-23 13:00:17 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1bfc93a: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailSender,dataSource,mensajesVo,consultaDao,reporteService,transferenciasService]; root of factory hierarchy
+2016-02-23 13:00:17 - Returning cached instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-02-23 13:00:17 - Creating shared instance of singleton bean 'javaMailSender'
+2016-02-23 13:00:17 - Creating instance of bean 'javaMailSender'
+2016-02-23 13:00:17 - Eagerly caching bean 'javaMailSender' to allow for resolving potential circular references
+2016-02-23 13:00:17 - Finished creating instance of bean 'javaMailSender'
+2016-02-23 13:00:17 - Creating shared instance of singleton bean 'velocityEngine'
+2016-02-23 13:00:17 - Creating instance of bean 'velocityEngine'
+2016-02-23 13:00:17 - Eagerly caching bean 'velocityEngine' to allow for resolving potential circular references
+2016-02-23 13:00:17 - Invoking afterPropertiesSet() on bean with name 'velocityEngine'
+2016-02-23 13:00:17 - Resource loader path [config/] resolved to file [D:\Respaldo\D\compartida\ReporteDiarioTransferencias\config]
+2016-02-23 13:00:17 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2016-02-23 13:00:17 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2016-02-23 13:00:17 - LogSystem has been deprecated. Please use a LogChute implementation.
+2016-02-23 13:00:17 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2016-02-23 13:00:17 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2016-02-23 13:00:17 - Do unicode file recognition:  false
+2016-02-23 13:00:17 - FileResourceLoader : adding path 'D:\Respaldo\D\compartida\ReporteDiarioTransferencias\config'
+2016-02-23 13:00:17 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2016-02-23 13:00:17 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2016-02-23 13:00:17 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2016-02-23 13:00:17 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2016-02-23 13:00:17 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2016-02-23 13:00:17 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2016-02-23 13:00:17 - Created '20' parsers.
+2016-02-23 13:00:17 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2016-02-23 13:00:17 - Velocimacro : Default library not found.
+2016-02-23 13:00:17 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2016-02-23 13:00:17 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2016-02-23 13:00:17 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2016-02-23 13:00:17 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2016-02-23 13:00:17 - Finished creating instance of bean 'velocityEngine'
+2016-02-23 13:00:17 - Creating shared instance of singleton bean 'mailSender'
+2016-02-23 13:00:17 - Creating instance of bean 'mailSender'
+2016-02-23 13:00:17 - Eagerly caching bean 'mailSender' to allow for resolving potential circular references
+2016-02-23 13:00:17 - Returning cached instance of singleton bean 'velocityEngine'
+2016-02-23 13:00:17 - Returning cached instance of singleton bean 'javaMailSender'
+2016-02-23 13:00:17 - Finished creating instance of bean 'mailSender'
+2016-02-23 13:00:17 - Creating shared instance of singleton bean 'dataSource'
+2016-02-23 13:00:17 - Creating instance of bean 'dataSource'
+2016-02-23 13:00:17 - Eagerly caching bean 'dataSource' to allow for resolving potential circular references
+2016-02-23 13:00:17 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2016-02-23 13:00:17 - Finished creating instance of bean 'dataSource'
+2016-02-23 13:00:17 - Creating shared instance of singleton bean 'mensajesVo'
+2016-02-23 13:00:17 - Creating instance of bean 'mensajesVo'
+2016-02-23 13:00:17 - Eagerly caching bean 'mensajesVo' to allow for resolving potential circular references
+2016-02-23 13:00:17 - Finished creating instance of bean 'mensajesVo'
+2016-02-23 13:00:17 - Creating shared instance of singleton bean 'consultaDao'
+2016-02-23 13:00:17 - Creating instance of bean 'consultaDao'
+2016-02-23 13:00:17 - Eagerly caching bean 'consultaDao' to allow for resolving potential circular references
+2016-02-23 13:00:17 - Returning cached instance of singleton bean 'dataSource'
+2016-02-23 13:00:17 - Invoking afterPropertiesSet() on bean with name 'consultaDao'
+2016-02-23 13:00:17 - Finished creating instance of bean 'consultaDao'
+2016-02-23 13:00:17 - Creating shared instance of singleton bean 'reporteService'
+2016-02-23 13:00:17 - Creating instance of bean 'reporteService'
+2016-02-23 13:00:17 - Eagerly caching bean 'reporteService' to allow for resolving potential circular references
+2016-02-23 13:00:17 - Finished creating instance of bean 'reporteService'
+2016-02-23 13:00:17 - Creating shared instance of singleton bean 'transferenciasService'
+2016-02-23 13:00:17 - Creating instance of bean 'transferenciasService'
+2016-02-23 13:00:17 - Eagerly caching bean 'transferenciasService' to allow for resolving potential circular references
+2016-02-23 13:00:17 - Returning cached instance of singleton bean 'consultaDao'
+2016-02-23 13:00:17 - Returning cached instance of singleton bean 'mailSender'
+2016-02-23 13:00:17 - Returning cached instance of singleton bean 'mensajesVo'
+2016-02-23 13:00:17 - Returning cached instance of singleton bean 'reporteService'
+2016-02-23 13:00:17 - Finished creating instance of bean 'transferenciasService'
+2016-02-23 13:00:17 - Unable to locate LifecycleProcessor with name 'lifecycleProcessor': using default [org.springframework.context.support.DefaultLifecycleProcessor@bb0d0d]
+2016-02-23 13:00:17 - Returning cached instance of singleton bean 'lifecycleProcessor'
+2016-02-23 13:00:17 - **********************************************************************************************************
+2016-02-23 13:00:17 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-23 13:00:17 - **********************************************************************************************************
+2016-02-23 13:00:17 - Returning cached instance of singleton bean 'transferenciasService'
+2016-02-23 13:00:17 - Executing prepared SQL query
+2016-02-23 13:00:17 - Executing prepared SQL statement [select VALOR from SC_PARAMETRO where ID_PARAMETRO = ?]
+2016-02-23 13:00:17 - Fetching JDBC Connection from DataSource
+2016-02-23 13:00:17 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-02-23 13:00:17 - Returning JDBC Connection to DataSource
+2016-02-23 13:00:17 - Executing prepared SQL query
+2016-02-23 13:00:17 - Executing prepared SQL statement [select VALOR from SC_PARAMETRO where ID_PARAMETRO = ?]
+2016-02-23 13:00:17 - Fetching JDBC Connection from DataSource
+2016-02-23 13:00:17 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-02-23 13:00:17 - Returning JDBC Connection to DataSource
+2016-02-23 13:00:17 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-23 13:00:17 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-23 13:00:17 - getTo(): jesus.cortes@banorte.com
+2016-02-23 13:00:17 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-23 13:00:17 - jesus.cortes@banorte.com
+2016-02-23 13:00:17 - ResourceManager : found reporteDiarioTransferenciasTemplate.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2016-02-23 13:00:18 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-23 13:00:18 - Compiled stored procedure. Call string is [{call SICA_ADMIN.SC_INSERTA_TRAEXT_ENV(?)}]
+2016-02-23 13:00:18 - RdbmsOperation with SQL [SICA_ADMIN.SC_INSERTA_TRAEXT_ENV] compiled
+2016-02-23 13:00:18 - Calling stored procedure [{call SICA_ADMIN.SC_INSERTA_TRAEXT_ENV(?)}]
+2016-02-23 13:00:18 - Fetching JDBC Connection from DataSource
+2016-02-23 13:00:18 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-02-23 13:00:19 - CallableStatement.execute() returned 'false'
+2016-02-23 13:00:19 - CallableStatement.getUpdateCount() returned -1
+2016-02-23 13:00:19 - Returning JDBC Connection to DataSource
+2016-02-23 13:00:19 - DBMSOUTPUT: null
+2016-02-23 13:00:19 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-23 13:00:19 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-23 13:00:19 - SQL operation not compiled before execution - invoking compile
+2016-02-23 13:00:19 - RdbmsOperation with SQL [SELECT FECHA_OPERACION,TIPO_OPERACION,TIPO_TRANSFERENCIA,ID_OPERACION,MEDIO,FOLIO,ID_INST_REPORTA,ID_BCO_CLI_ORIGINADOR,ID_CLI_ORIGINADOR,TIPO_CLI_ORIGINADOR, RAZON_SOCIAL_CLI, AP_PATERNO_CLI,AP_MATERNO_CLI,AP_NOMBRE_CLI, FECHA_NAC,TIPO_CUENTA_ORD,CUENTA_ORD,TIPO_ID_INST_RECEPT,ID_INST_RECEPT,TIPO_ID_INST_BENEF,ID_INST_BENEF,TIPO_BENEF,NOMBRE_RAZON_SOC_BENEF,CUENTA_BENEF,MONTO_OP,ID_DIVISA,OBSERVACIONES,FOLIO_TRANS_NACIONAL,TIPO_FONDEO_TRANS, FONDEO_TRANS FROM SICA_ADMIN.SC_TRAEXT_ENV  WHERE REPORTADA_BANXICO = '0'] compiled
+2016-02-23 13:00:19 - Executing prepared SQL query
+2016-02-23 13:00:19 - Executing prepared SQL statement [SELECT FECHA_OPERACION,TIPO_OPERACION,TIPO_TRANSFERENCIA,ID_OPERACION,MEDIO,FOLIO,ID_INST_REPORTA,ID_BCO_CLI_ORIGINADOR,ID_CLI_ORIGINADOR,TIPO_CLI_ORIGINADOR, RAZON_SOCIAL_CLI, AP_PATERNO_CLI,AP_MATERNO_CLI,AP_NOMBRE_CLI, FECHA_NAC,TIPO_CUENTA_ORD,CUENTA_ORD,TIPO_ID_INST_RECEPT,ID_INST_RECEPT,TIPO_ID_INST_BENEF,ID_INST_BENEF,TIPO_BENEF,NOMBRE_RAZON_SOC_BENEF,CUENTA_BENEF,MONTO_OP,ID_DIVISA,OBSERVACIONES,FOLIO_TRANS_NACIONAL,TIPO_FONDEO_TRANS, FONDEO_TRANS FROM SICA_ADMIN.SC_TRAEXT_ENV  WHERE REPORTADA_BANXICO = '0']
+2016-02-23 13:00:19 - Fetching JDBC Connection from DataSource
+2016-02-23 13:00:19 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-02-23 13:00:20 - Returning JDBC Connection to DataSource
+2016-02-23 13:00:20 - -->Ha ocurrido un error al consultar las transferencias del reporte diario.  <br><br>Descripción del error: <br>
+java.lang.NullPointerException
+	at com.banorte.reporte.diario.transferencias.dao.impl.ConsultaDaoImpl$ConsultaDatosOperaciones.mapRow(ConsultaDaoImpl.java:143)
+	at com.banorte.reporte.diario.transferencias.dao.impl.ConsultaDaoImpl$ConsultaDatosOperaciones.mapRow(ConsultaDaoImpl.java:1)
+	at org.springframework.jdbc.object.MappingSqlQuery.mapRow(MappingSqlQuery.java:65)
+	at org.springframework.jdbc.object.MappingSqlQueryWithParameters$RowMapperImpl.mapRow(MappingSqlQueryWithParameters.java:115)
+	at org.springframework.jdbc.core.RowMapperResultSetExtractor.extractData(RowMapperResultSetExtractor.java:92)
+	at org.springframework.jdbc.core.RowMapperResultSetExtractor.extractData(RowMapperResultSetExtractor.java:1)
+	at org.springframework.jdbc.core.JdbcTemplate$1.doInPreparedStatement(JdbcTemplate.java:648)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:586)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:636)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:661)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:701)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:112)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:122)
+	at org.springframework.jdbc.object.SqlQuery.execute(SqlQuery.java:137)
+	at com.banorte.reporte.diario.transferencias.dao.impl.ConsultaDaoImpl.consultarTransferenciasReporte(ConsultaDaoImpl.java:80)
+	at com.banorte.reporte.diario.transferencias.services.impl.TransferenciasServiceImpl.consultarTransferenciasReporte(TransferenciasServiceImpl.java:80)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.iniciar(ReporteDiarioTransferencias.java:36)
+	at com.banorte.reporte.diario.transferencias.ReporteDiarioTransferencias.main(ReporteDiarioTransferencias.java:25)
+2016-02-23 13:00:20 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-23 13:00:20 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-23 13:00:20 - getTo(): jesus.cortes@banorte.com
+2016-02-23 13:00:20 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-23 13:00:20 - jesus.cortes@banorte.com
+2016-02-23 13:00:20 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-23 13:00:20 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-23 13:00:20 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-23 13:00:20 - getTo(): jesus.cortes@banorte.com
+2016-02-23 13:00:20 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-23 13:00:20 - jesus.cortes@banorte.com
+2016-02-23 13:00:20 - **********************************************************************************************************
+2016-02-23 13:00:20 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-23 13:00:20 - **********************************************************************************************************
+2016-02-23 13:00:20 - 
+
+
+
+2016-02-23 13:02:43 - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@253498: startup date [Tue Feb 23 13:02:43 CST 2016]; root of context hierarchy
+2016-02-23 13:02:43 - Loading XML bean definitions from file [D:\Respaldo\D\compartida\ReporteDiarioTransferencias\config\applicationContext.xml]
+2016-02-23 13:02:43 - Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2016-02-23 13:02:43 - Loading schema mappings from [META-INF/spring.schemas]
+2016-02-23 13:02:43 - Loaded schema mappings: {http://www.springframework.org/schema/lang/spring-lang.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.5.xsd=org/springframework/scripting/config/spring-lang-2.5.xsd, http://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd, http://www.springframework.org/schema/context/spring-context.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/util/spring-util-3.0.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.0.xsd=org/springframework/beans/factory/xml/spring-util-2.0.xsd, http://www.springframework.org/schema/task/spring-task-3.0.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.5.xsd=org/springframework/beans/factory/xml/spring-util-2.5.xsd, http://www.springframework.org/schema/tool/spring-tool-3.0.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.0.xsd=org/springframework/transaction/config/spring-tx-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.0.xsd=org/springframework/beans/factory/xml/spring-tool-2.0.xsd, http://www.springframework.org/schema/task/spring-task.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/context/spring-context-3.0.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.5.xsd=org/springframework/transaction/config/spring-tx-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-2.0.xsd=org/springframework/beans/factory/xml/spring-beans-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.5.xsd=org/springframework/beans/factory/xml/spring-tool-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/beans/spring-beans-2.5.xsd=org/springframework/beans/factory/xml/spring-beans-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/tool/spring-tool.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.0.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop-3.0.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.0.xsd=org/springframework/ejb/config/spring-jee-2.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.0.xsd=org/springframework/aop/config/spring-aop-2.0.xsd, http://www.springframework.org/schema/tx/spring-tx-3.0.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.5.xsd=org/springframework/ejb/config/spring-jee-2.5.xsd, http://www.springframework.org/schema/aop/spring-aop-2.5.xsd=org/springframework/aop/config/spring-aop-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-3.0.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-3.0.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.0.xsd=org/springframework/scripting/config/spring-lang-2.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/util/spring-util.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd}
+2016-02-23 13:02:43 - Found XML schema [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-3.0.xsd
+2016-02-23 13:02:43 - Found XML schema [http://www.springframework.org/schema/context/spring-context-3.0.xsd] in classpath: org/springframework/context/config/spring-context-3.0.xsd
+2016-02-23 13:02:43 - Found XML schema [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-tool-3.0.xsd
+2016-02-23 13:02:43 - Loading bean definitions
+2016-02-23 13:02:43 - Loaded NamespaceHandler mappings: {http://www.springframework.org/schema/p=org.springframework.beans.factory.xml.SimplePropertyNamespaceHandler, http://www.springframework.org/schema/util=org.springframework.beans.factory.xml.UtilNamespaceHandler, http://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandler, http://www.springframework.org/schema/aop=org.springframework.aop.config.AopNamespaceHandler, http://www.springframework.org/schema/jdbc=org.springframework.jdbc.config.JdbcNamespaceHandler, http://www.springframework.org/schema/tx=org.springframework.transaction.config.TxNamespaceHandler, http://www.springframework.org/schema/task=org.springframework.scheduling.config.TaskNamespaceHandler, http://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandler, http://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler}
+2016-02-23 13:02:43 - Loaded 9 bean definitions from location pattern [config/applicationContext.xml]
+2016-02-23 13:02:43 - Bean factory for org.springframework.context.support.FileSystemXmlApplicationContext@253498: org.springframework.beans.factory.support.DefaultListableBeanFactory@6e293a: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailSender,dataSource,mensajesVo,consultaDao,reporteService,transferenciasService]; root of factory hierarchy
+2016-02-23 13:02:43 - Creating shared instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-02-23 13:02:43 - Creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-02-23 13:02:43 - Eagerly caching bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0' to allow for resolving potential circular references
+2016-02-23 13:02:43 - Finished creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-02-23 13:02:43 - Loading properties file from file [D:\Respaldo\D\compartida\ReporteDiarioTransferencias\config\config.properties]
+2016-02-23 13:02:43 - Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@10382a9]
+2016-02-23 13:02:43 - Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@30d082]
+2016-02-23 13:02:43 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6e293a: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailSender,dataSource,mensajesVo,consultaDao,reporteService,transferenciasService]; root of factory hierarchy
+2016-02-23 13:02:43 - Returning cached instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-02-23 13:02:43 - Creating shared instance of singleton bean 'javaMailSender'
+2016-02-23 13:02:43 - Creating instance of bean 'javaMailSender'
+2016-02-23 13:02:43 - Eagerly caching bean 'javaMailSender' to allow for resolving potential circular references
+2016-02-23 13:02:43 - Finished creating instance of bean 'javaMailSender'
+2016-02-23 13:02:43 - Creating shared instance of singleton bean 'velocityEngine'
+2016-02-23 13:02:43 - Creating instance of bean 'velocityEngine'
+2016-02-23 13:02:43 - Eagerly caching bean 'velocityEngine' to allow for resolving potential circular references
+2016-02-23 13:02:43 - Invoking afterPropertiesSet() on bean with name 'velocityEngine'
+2016-02-23 13:02:43 - Resource loader path [config/] resolved to file [D:\Respaldo\D\compartida\ReporteDiarioTransferencias\config]
+2016-02-23 13:02:43 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2016-02-23 13:02:43 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2016-02-23 13:02:43 - LogSystem has been deprecated. Please use a LogChute implementation.
+2016-02-23 13:02:43 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2016-02-23 13:02:43 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2016-02-23 13:02:43 - Do unicode file recognition:  false
+2016-02-23 13:02:43 - FileResourceLoader : adding path 'D:\Respaldo\D\compartida\ReporteDiarioTransferencias\config'
+2016-02-23 13:02:43 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2016-02-23 13:02:43 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2016-02-23 13:02:43 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2016-02-23 13:02:43 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2016-02-23 13:02:43 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2016-02-23 13:02:43 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2016-02-23 13:02:43 - Created '20' parsers.
+2016-02-23 13:02:43 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2016-02-23 13:02:43 - Velocimacro : Default library not found.
+2016-02-23 13:02:43 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2016-02-23 13:02:43 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2016-02-23 13:02:43 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2016-02-23 13:02:43 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2016-02-23 13:02:43 - Finished creating instance of bean 'velocityEngine'
+2016-02-23 13:02:43 - Creating shared instance of singleton bean 'mailSender'
+2016-02-23 13:02:43 - Creating instance of bean 'mailSender'
+2016-02-23 13:02:43 - Eagerly caching bean 'mailSender' to allow for resolving potential circular references
+2016-02-23 13:02:43 - Returning cached instance of singleton bean 'velocityEngine'
+2016-02-23 13:02:43 - Returning cached instance of singleton bean 'javaMailSender'
+2016-02-23 13:02:43 - Finished creating instance of bean 'mailSender'
+2016-02-23 13:02:43 - Creating shared instance of singleton bean 'dataSource'
+2016-02-23 13:02:43 - Creating instance of bean 'dataSource'
+2016-02-23 13:02:43 - Eagerly caching bean 'dataSource' to allow for resolving potential circular references
+2016-02-23 13:02:43 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2016-02-23 13:02:43 - Finished creating instance of bean 'dataSource'
+2016-02-23 13:02:43 - Creating shared instance of singleton bean 'mensajesVo'
+2016-02-23 13:02:43 - Creating instance of bean 'mensajesVo'
+2016-02-23 13:02:43 - Eagerly caching bean 'mensajesVo' to allow for resolving potential circular references
+2016-02-23 13:02:43 - Finished creating instance of bean 'mensajesVo'
+2016-02-23 13:02:43 - Creating shared instance of singleton bean 'consultaDao'
+2016-02-23 13:02:43 - Creating instance of bean 'consultaDao'
+2016-02-23 13:02:43 - Eagerly caching bean 'consultaDao' to allow for resolving potential circular references
+2016-02-23 13:02:43 - Returning cached instance of singleton bean 'dataSource'
+2016-02-23 13:02:43 - Invoking afterPropertiesSet() on bean with name 'consultaDao'
+2016-02-23 13:02:43 - Finished creating instance of bean 'consultaDao'
+2016-02-23 13:02:43 - Creating shared instance of singleton bean 'reporteService'
+2016-02-23 13:02:43 - Creating instance of bean 'reporteService'
+2016-02-23 13:02:43 - Eagerly caching bean 'reporteService' to allow for resolving potential circular references
+2016-02-23 13:02:43 - Finished creating instance of bean 'reporteService'
+2016-02-23 13:02:43 - Creating shared instance of singleton bean 'transferenciasService'
+2016-02-23 13:02:43 - Creating instance of bean 'transferenciasService'
+2016-02-23 13:02:43 - Eagerly caching bean 'transferenciasService' to allow for resolving potential circular references
+2016-02-23 13:02:43 - Returning cached instance of singleton bean 'consultaDao'
+2016-02-23 13:02:43 - Returning cached instance of singleton bean 'mailSender'
+2016-02-23 13:02:43 - Returning cached instance of singleton bean 'mensajesVo'
+2016-02-23 13:02:43 - Returning cached instance of singleton bean 'reporteService'
+2016-02-23 13:02:43 - Finished creating instance of bean 'transferenciasService'
+2016-02-23 13:02:43 - Unable to locate LifecycleProcessor with name 'lifecycleProcessor': using default [org.springframework.context.support.DefaultLifecycleProcessor@145c859]
+2016-02-23 13:02:43 - Returning cached instance of singleton bean 'lifecycleProcessor'
+2016-02-23 13:02:43 - **********************************************************************************************************
+2016-02-23 13:02:43 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-23 13:02:43 - **********************************************************************************************************
+2016-02-23 13:02:43 - Returning cached instance of singleton bean 'transferenciasService'
+2016-02-23 13:02:43 - Executing prepared SQL query
+2016-02-23 13:02:43 - Executing prepared SQL statement [select VALOR from SC_PARAMETRO where ID_PARAMETRO = ?]
+2016-02-23 13:02:43 - Fetching JDBC Connection from DataSource
+2016-02-23 13:02:43 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-02-23 13:02:44 - Returning JDBC Connection to DataSource
+2016-02-23 13:02:44 - Executing prepared SQL query
+2016-02-23 13:02:44 - Executing prepared SQL statement [select VALOR from SC_PARAMETRO where ID_PARAMETRO = ?]
+2016-02-23 13:02:44 - Fetching JDBC Connection from DataSource
+2016-02-23 13:02:44 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-02-23 13:02:44 - Returning JDBC Connection to DataSource
+2016-02-23 13:02:44 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-23 13:02:44 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-23 13:02:44 - getTo(): jesus.cortes@banorte.com
+2016-02-23 13:02:44 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-23 13:02:44 - jesus.cortes@banorte.com
+2016-02-23 13:02:44 - ResourceManager : found reporteDiarioTransferenciasTemplate.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2016-02-23 13:02:44 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-23 13:02:44 - Compiled stored procedure. Call string is [{call SICA_ADMIN.SC_INSERTA_TRAEXT_ENV(?)}]
+2016-02-23 13:02:44 - RdbmsOperation with SQL [SICA_ADMIN.SC_INSERTA_TRAEXT_ENV] compiled
+2016-02-23 13:02:44 - Calling stored procedure [{call SICA_ADMIN.SC_INSERTA_TRAEXT_ENV(?)}]
+2016-02-23 13:02:44 - Fetching JDBC Connection from DataSource
+2016-02-23 13:02:44 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-02-23 13:02:46 - CallableStatement.execute() returned 'false'
+2016-02-23 13:02:46 - CallableStatement.getUpdateCount() returned -1
+2016-02-23 13:02:46 - Returning JDBC Connection to DataSource
+2016-02-23 13:02:46 - DBMSOUTPUT: null
+2016-02-23 13:02:46 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-23 13:02:46 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-23 13:02:46 - SQL operation not compiled before execution - invoking compile
+2016-02-23 13:02:46 - RdbmsOperation with SQL [SELECT FECHA_OPERACION,TIPO_OPERACION,TIPO_TRANSFERENCIA,ID_OPERACION,MEDIO,FOLIO,ID_INST_REPORTA,ID_BCO_CLI_ORIGINADOR,ID_CLI_ORIGINADOR,TIPO_CLI_ORIGINADOR, RAZON_SOCIAL_CLI, AP_PATERNO_CLI,AP_MATERNO_CLI,AP_NOMBRE_CLI, FECHA_NAC,TIPO_CUENTA_ORD,CUENTA_ORD,TIPO_ID_INST_RECEPT,ID_INST_RECEPT,TIPO_ID_INST_BENEF,ID_INST_BENEF,TIPO_BENEF,NOMBRE_RAZON_SOC_BENEF,CUENTA_BENEF,MONTO_OP,ID_DIVISA,OBSERVACIONES,FOLIO_TRANS_NACIONAL,TIPO_FONDEO_TRANS, FONDEO_TRANS FROM SICA_ADMIN.SC_TRAEXT_ENV  WHERE REPORTADA_BANXICO = '0'] compiled
+2016-02-23 13:02:46 - Executing prepared SQL query
+2016-02-23 13:02:46 - Executing prepared SQL statement [SELECT FECHA_OPERACION,TIPO_OPERACION,TIPO_TRANSFERENCIA,ID_OPERACION,MEDIO,FOLIO,ID_INST_REPORTA,ID_BCO_CLI_ORIGINADOR,ID_CLI_ORIGINADOR,TIPO_CLI_ORIGINADOR, RAZON_SOCIAL_CLI, AP_PATERNO_CLI,AP_MATERNO_CLI,AP_NOMBRE_CLI, FECHA_NAC,TIPO_CUENTA_ORD,CUENTA_ORD,TIPO_ID_INST_RECEPT,ID_INST_RECEPT,TIPO_ID_INST_BENEF,ID_INST_BENEF,TIPO_BENEF,NOMBRE_RAZON_SOC_BENEF,CUENTA_BENEF,MONTO_OP,ID_DIVISA,OBSERVACIONES,FOLIO_TRANS_NACIONAL,TIPO_FONDEO_TRANS, FONDEO_TRANS FROM SICA_ADMIN.SC_TRAEXT_ENV  WHERE REPORTADA_BANXICO = '0']
+2016-02-23 13:02:46 - Fetching JDBC Connection from DataSource
+2016-02-23 13:02:46 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-02-23 13:02:47 - Returning JDBC Connection to DataSource
+2016-02-23 13:02:47 - --> Total de registros encontrados: 2
+
+2016-02-23 13:02:47 - --> Termina consulta de transferencias.
+
+
+2016-02-23 13:02:47 - Registros encontrados: 2
+2016-02-23 13:02:47 - --> Inicia actualizacion de bandera que pone a bandera de enviada a Banxico en 1 ....
+2016-02-23 13:02:47 - RdbmsOperation with SQL [UPDATE SICA_ADMIN.SC_TRAEXT_ENV SET REPORTADA_BANXICO = 1 WHERE REPORTADA_BANXICO = 0] compiled
+2016-02-23 13:02:47 - Executing prepared SQL update
+2016-02-23 13:02:47 - Executing prepared SQL statement [UPDATE SICA_ADMIN.SC_TRAEXT_ENV SET REPORTADA_BANXICO = 1 WHERE REPORTADA_BANXICO = 0]
+2016-02-23 13:02:47 - Fetching JDBC Connection from DataSource
+2016-02-23 13:02:47 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-02-23 13:02:47 - SQL update affected 2 rows
+2016-02-23 13:02:47 - Returning JDBC Connection to DataSource
+2016-02-23 13:02:47 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-23 13:02:47 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-23 13:02:47 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-23 13:02:47 - getTo(): jesus.cortes@banorte.com
+2016-02-23 13:02:47 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-23 13:02:47 - jesus.cortes@banorte.com
+2016-02-23 13:02:47 - **********************************************************************************************************
+2016-02-23 13:02:47 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-23 13:02:47 - **********************************************************************************************************
+2016-02-23 13:02:47 - 
+
+
+
+2016-02-23 13:06:21 - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@253498: startup date [Tue Feb 23 13:06:21 CST 2016]; root of context hierarchy
+2016-02-23 13:06:21 - Loading XML bean definitions from file [D:\Respaldo\D\compartida\ReporteDiarioTransferencias\config\applicationContext.xml]
+2016-02-23 13:06:21 - Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2016-02-23 13:06:21 - Loading schema mappings from [META-INF/spring.schemas]
+2016-02-23 13:06:21 - Loaded schema mappings: {http://www.springframework.org/schema/lang/spring-lang.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.5.xsd=org/springframework/scripting/config/spring-lang-2.5.xsd, http://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd, http://www.springframework.org/schema/context/spring-context.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/util/spring-util-3.0.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.0.xsd=org/springframework/beans/factory/xml/spring-util-2.0.xsd, http://www.springframework.org/schema/task/spring-task-3.0.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.5.xsd=org/springframework/beans/factory/xml/spring-util-2.5.xsd, http://www.springframework.org/schema/tool/spring-tool-3.0.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.0.xsd=org/springframework/transaction/config/spring-tx-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.0.xsd=org/springframework/beans/factory/xml/spring-tool-2.0.xsd, http://www.springframework.org/schema/task/spring-task.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/context/spring-context-3.0.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.5.xsd=org/springframework/transaction/config/spring-tx-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-2.0.xsd=org/springframework/beans/factory/xml/spring-beans-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.5.xsd=org/springframework/beans/factory/xml/spring-tool-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/beans/spring-beans-2.5.xsd=org/springframework/beans/factory/xml/spring-beans-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/tool/spring-tool.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.0.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop-3.0.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.0.xsd=org/springframework/ejb/config/spring-jee-2.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.0.xsd=org/springframework/aop/config/spring-aop-2.0.xsd, http://www.springframework.org/schema/tx/spring-tx-3.0.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.5.xsd=org/springframework/ejb/config/spring-jee-2.5.xsd, http://www.springframework.org/schema/aop/spring-aop-2.5.xsd=org/springframework/aop/config/spring-aop-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-3.0.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-3.0.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.0.xsd=org/springframework/scripting/config/spring-lang-2.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/util/spring-util.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd}
+2016-02-23 13:06:21 - Found XML schema [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-3.0.xsd
+2016-02-23 13:06:21 - Found XML schema [http://www.springframework.org/schema/context/spring-context-3.0.xsd] in classpath: org/springframework/context/config/spring-context-3.0.xsd
+2016-02-23 13:06:21 - Found XML schema [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-tool-3.0.xsd
+2016-02-23 13:06:21 - Loading bean definitions
+2016-02-23 13:06:21 - Loaded NamespaceHandler mappings: {http://www.springframework.org/schema/p=org.springframework.beans.factory.xml.SimplePropertyNamespaceHandler, http://www.springframework.org/schema/util=org.springframework.beans.factory.xml.UtilNamespaceHandler, http://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandler, http://www.springframework.org/schema/aop=org.springframework.aop.config.AopNamespaceHandler, http://www.springframework.org/schema/jdbc=org.springframework.jdbc.config.JdbcNamespaceHandler, http://www.springframework.org/schema/tx=org.springframework.transaction.config.TxNamespaceHandler, http://www.springframework.org/schema/task=org.springframework.scheduling.config.TaskNamespaceHandler, http://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandler, http://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler}
+2016-02-23 13:06:21 - Loaded 9 bean definitions from location pattern [config/applicationContext.xml]
+2016-02-23 13:06:21 - Bean factory for org.springframework.context.support.FileSystemXmlApplicationContext@253498: org.springframework.beans.factory.support.DefaultListableBeanFactory@341960: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailSender,dataSource,mensajesVo,consultaDao,reporteService,transferenciasService]; root of factory hierarchy
+2016-02-23 13:06:21 - Creating shared instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-02-23 13:06:21 - Creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-02-23 13:06:21 - Eagerly caching bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0' to allow for resolving potential circular references
+2016-02-23 13:06:21 - Finished creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-02-23 13:06:21 - Loading properties file from file [D:\Respaldo\D\compartida\ReporteDiarioTransferencias\config\config.properties]
+2016-02-23 13:06:21 - Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@1551d7f]
+2016-02-23 13:06:21 - Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@1126b07]
+2016-02-23 13:06:21 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@341960: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,javaMailSender,velocityEngine,mailSender,dataSource,mensajesVo,consultaDao,reporteService,transferenciasService]; root of factory hierarchy
+2016-02-23 13:06:21 - Returning cached instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+2016-02-23 13:06:21 - Creating shared instance of singleton bean 'javaMailSender'
+2016-02-23 13:06:21 - Creating instance of bean 'javaMailSender'
+2016-02-23 13:06:21 - Eagerly caching bean 'javaMailSender' to allow for resolving potential circular references
+2016-02-23 13:06:21 - Finished creating instance of bean 'javaMailSender'
+2016-02-23 13:06:21 - Creating shared instance of singleton bean 'velocityEngine'
+2016-02-23 13:06:21 - Creating instance of bean 'velocityEngine'
+2016-02-23 13:06:21 - Eagerly caching bean 'velocityEngine' to allow for resolving potential circular references
+2016-02-23 13:06:21 - Invoking afterPropertiesSet() on bean with name 'velocityEngine'
+2016-02-23 13:06:21 - Resource loader path [config/] resolved to file [D:\Respaldo\D\compartida\ReporteDiarioTransferencias\config]
+2016-02-23 13:06:21 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2016-02-23 13:06:21 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2016-02-23 13:06:21 - LogSystem has been deprecated. Please use a LogChute implementation.
+2016-02-23 13:06:21 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2016-02-23 13:06:21 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2016-02-23 13:06:21 - Do unicode file recognition:  false
+2016-02-23 13:06:21 - FileResourceLoader : adding path 'D:\Respaldo\D\compartida\ReporteDiarioTransferencias\config'
+2016-02-23 13:06:21 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2016-02-23 13:06:21 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2016-02-23 13:06:21 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2016-02-23 13:06:21 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2016-02-23 13:06:21 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2016-02-23 13:06:21 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2016-02-23 13:06:21 - Created '20' parsers.
+2016-02-23 13:06:21 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2016-02-23 13:06:21 - Velocimacro : Default library not found.
+2016-02-23 13:06:21 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2016-02-23 13:06:21 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2016-02-23 13:06:21 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2016-02-23 13:06:21 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2016-02-23 13:06:21 - Finished creating instance of bean 'velocityEngine'
+2016-02-23 13:06:21 - Creating shared instance of singleton bean 'mailSender'
+2016-02-23 13:06:21 - Creating instance of bean 'mailSender'
+2016-02-23 13:06:21 - Eagerly caching bean 'mailSender' to allow for resolving potential circular references
+2016-02-23 13:06:21 - Returning cached instance of singleton bean 'velocityEngine'
+2016-02-23 13:06:21 - Returning cached instance of singleton bean 'javaMailSender'
+2016-02-23 13:06:21 - Finished creating instance of bean 'mailSender'
+2016-02-23 13:06:21 - Creating shared instance of singleton bean 'dataSource'
+2016-02-23 13:06:21 - Creating instance of bean 'dataSource'
+2016-02-23 13:06:21 - Eagerly caching bean 'dataSource' to allow for resolving potential circular references
+2016-02-23 13:06:21 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2016-02-23 13:06:21 - Finished creating instance of bean 'dataSource'
+2016-02-23 13:06:21 - Creating shared instance of singleton bean 'mensajesVo'
+2016-02-23 13:06:21 - Creating instance of bean 'mensajesVo'
+2016-02-23 13:06:21 - Eagerly caching bean 'mensajesVo' to allow for resolving potential circular references
+2016-02-23 13:06:21 - Finished creating instance of bean 'mensajesVo'
+2016-02-23 13:06:21 - Creating shared instance of singleton bean 'consultaDao'
+2016-02-23 13:06:21 - Creating instance of bean 'consultaDao'
+2016-02-23 13:06:21 - Eagerly caching bean 'consultaDao' to allow for resolving potential circular references
+2016-02-23 13:06:21 - Returning cached instance of singleton bean 'dataSource'
+2016-02-23 13:06:21 - Invoking afterPropertiesSet() on bean with name 'consultaDao'
+2016-02-23 13:06:21 - Finished creating instance of bean 'consultaDao'
+2016-02-23 13:06:21 - Creating shared instance of singleton bean 'reporteService'
+2016-02-23 13:06:21 - Creating instance of bean 'reporteService'
+2016-02-23 13:06:21 - Eagerly caching bean 'reporteService' to allow for resolving potential circular references
+2016-02-23 13:06:21 - Finished creating instance of bean 'reporteService'
+2016-02-23 13:06:21 - Creating shared instance of singleton bean 'transferenciasService'
+2016-02-23 13:06:21 - Creating instance of bean 'transferenciasService'
+2016-02-23 13:06:21 - Eagerly caching bean 'transferenciasService' to allow for resolving potential circular references
+2016-02-23 13:06:21 - Returning cached instance of singleton bean 'consultaDao'
+2016-02-23 13:06:21 - Returning cached instance of singleton bean 'mailSender'
+2016-02-23 13:06:21 - Returning cached instance of singleton bean 'mensajesVo'
+2016-02-23 13:06:21 - Returning cached instance of singleton bean 'reporteService'
+2016-02-23 13:06:21 - Finished creating instance of bean 'transferenciasService'
+2016-02-23 13:06:21 - Unable to locate LifecycleProcessor with name 'lifecycleProcessor': using default [org.springframework.context.support.DefaultLifecycleProcessor@55e55f]
+2016-02-23 13:06:21 - Returning cached instance of singleton bean 'lifecycleProcessor'
+2016-02-23 13:06:21 - **********************************************************************************************************
+2016-02-23 13:06:21 - *****************************          PROCESO DIARIO DE TRANSFERENCIAS         **************************
+2016-02-23 13:06:21 - **********************************************************************************************************
+2016-02-23 13:06:21 - Returning cached instance of singleton bean 'transferenciasService'
+2016-02-23 13:06:21 - Executing prepared SQL query
+2016-02-23 13:06:21 - Executing prepared SQL statement [select VALOR from SC_PARAMETRO where ID_PARAMETRO = ?]
+2016-02-23 13:06:21 - Fetching JDBC Connection from DataSource
+2016-02-23 13:06:21 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-02-23 13:06:22 - Returning JDBC Connection to DataSource
+2016-02-23 13:06:22 - Executing prepared SQL query
+2016-02-23 13:06:22 - Executing prepared SQL statement [select VALOR from SC_PARAMETRO where ID_PARAMETRO = ?]
+2016-02-23 13:06:22 - Fetching JDBC Connection from DataSource
+2016-02-23 13:06:22 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-02-23 13:06:22 - Returning JDBC Connection to DataSource
+2016-02-23 13:06:22 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-23 13:06:22 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-23 13:06:22 - getTo(): jesus.cortes@banorte.com
+2016-02-23 13:06:22 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-23 13:06:22 - jesus.cortes@banorte.com
+2016-02-23 13:06:22 - ResourceManager : found reporteDiarioTransferenciasTemplate.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2016-02-23 13:06:22 - --> Inicia la ejecución del proceso de transferencias...
+2016-02-23 13:06:22 - Compiled stored procedure. Call string is [{call SICA_ADMIN.SC_INSERTA_TRAEXT_ENV(?)}]
+2016-02-23 13:06:22 - RdbmsOperation with SQL [SICA_ADMIN.SC_INSERTA_TRAEXT_ENV] compiled
+2016-02-23 13:06:22 - Calling stored procedure [{call SICA_ADMIN.SC_INSERTA_TRAEXT_ENV(?)}]
+2016-02-23 13:06:22 - Fetching JDBC Connection from DataSource
+2016-02-23 13:06:22 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-02-23 13:06:24 - CallableStatement.execute() returned 'false'
+2016-02-23 13:06:24 - CallableStatement.getUpdateCount() returned -1
+2016-02-23 13:06:24 - Returning JDBC Connection to DataSource
+2016-02-23 13:06:24 - DBMSOUTPUT: null
+2016-02-23 13:06:24 - --> Finaliza la ejecución del proceso de transferencias.
+
+
+2016-02-23 13:06:24 - --> Inicia consulta de transferencias para el reporte diario....
+2016-02-23 13:06:24 - SQL operation not compiled before execution - invoking compile
+2016-02-23 13:06:24 - RdbmsOperation with SQL [SELECT FECHA_OPERACION,TIPO_OPERACION,TIPO_TRANSFERENCIA,ID_OPERACION,MEDIO,FOLIO,ID_INST_REPORTA,ID_BCO_CLI_ORIGINADOR,ID_CLI_ORIGINADOR,TIPO_CLI_ORIGINADOR, RAZON_SOCIAL_CLI, AP_PATERNO_CLI,AP_MATERNO_CLI,AP_NOMBRE_CLI, FECHA_NAC,TIPO_CUENTA_ORD,CUENTA_ORD,TIPO_ID_INST_RECEPT,ID_INST_RECEPT,TIPO_ID_INST_BENEF,ID_INST_BENEF,TIPO_BENEF,NOMBRE_RAZON_SOC_BENEF,CUENTA_BENEF,MONTO_OP,ID_DIVISA,OBSERVACIONES,FOLIO_TRANS_NACIONAL,TIPO_FONDEO_TRANS, FONDEO_TRANS FROM SICA_ADMIN.SC_TRAEXT_ENV  WHERE REPORTADA_BANXICO = '0'] compiled
+2016-02-23 13:06:24 - Executing prepared SQL query
+2016-02-23 13:06:24 - Executing prepared SQL statement [SELECT FECHA_OPERACION,TIPO_OPERACION,TIPO_TRANSFERENCIA,ID_OPERACION,MEDIO,FOLIO,ID_INST_REPORTA,ID_BCO_CLI_ORIGINADOR,ID_CLI_ORIGINADOR,TIPO_CLI_ORIGINADOR, RAZON_SOCIAL_CLI, AP_PATERNO_CLI,AP_MATERNO_CLI,AP_NOMBRE_CLI, FECHA_NAC,TIPO_CUENTA_ORD,CUENTA_ORD,TIPO_ID_INST_RECEPT,ID_INST_RECEPT,TIPO_ID_INST_BENEF,ID_INST_BENEF,TIPO_BENEF,NOMBRE_RAZON_SOC_BENEF,CUENTA_BENEF,MONTO_OP,ID_DIVISA,OBSERVACIONES,FOLIO_TRANS_NACIONAL,TIPO_FONDEO_TRANS, FONDEO_TRANS FROM SICA_ADMIN.SC_TRAEXT_ENV  WHERE REPORTADA_BANXICO = '0']
+2016-02-23 13:06:24 - Fetching JDBC Connection from DataSource
+2016-02-23 13:06:24 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-02-23 13:06:24 - Returning JDBC Connection to DataSource
+2016-02-23 13:06:24 - --> Total de registros encontrados: 1
+
+2016-02-23 13:06:24 - --> Termina consulta de transferencias.
+
+
+2016-02-23 13:06:24 - Registros encontrados: 1
+2016-02-23 13:06:24 - --> Inicia actualizacion de bandera que pone a bandera de enviada a Banxico en 1 ....
+2016-02-23 13:06:24 - RdbmsOperation with SQL [UPDATE SICA_ADMIN.SC_TRAEXT_ENV SET REPORTADA_BANXICO = 1 WHERE REPORTADA_BANXICO = 0] compiled
+2016-02-23 13:06:24 - Executing prepared SQL update
+2016-02-23 13:06:24 - Executing prepared SQL statement [UPDATE SICA_ADMIN.SC_TRAEXT_ENV SET REPORTADA_BANXICO = 1 WHERE REPORTADA_BANXICO = 0]
+2016-02-23 13:06:24 - Fetching JDBC Connection from DataSource
+2016-02-23 13:06:24 - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@15.128.25.50:1525:isisd]
+2016-02-23 13:06:24 - SQL update affected 1 rows
+2016-02-23 13:06:24 - Returning JDBC Connection to DataSource
+2016-02-23 13:06:24 - -->Ha finalizado el proceso 'Reporte Diario de Transferencias'. 
+2016-02-23 13:06:24 - getTemplate(): reporteDiarioTransferenciasTemplate.vm
+2016-02-23 13:06:24 - getFrom(): IxeCambios@ixe.com.mx
+2016-02-23 13:06:24 - getTo(): jesus.cortes@banorte.com
+2016-02-23 13:06:24 - getSubject(): Notificación del proceso de reporte diario de transferencias que se envía a BANXICO.
+2016-02-23 13:06:24 - jesus.cortes@banorte.com
+2016-02-23 13:06:25 - **********************************************************************************************************
+2016-02-23 13:06:25 - ******************************     FIN DE PROCESO DIARIO DE TRANSFERENCIAS     ***************************
+2016-02-23 13:06:25 - **********************************************************************************************************
+2016-02-23 13:06:25 - 
+
+
+

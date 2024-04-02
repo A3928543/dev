@@ -1,0 +1,10 @@
+    <!-- $Id: LoadingImage.html,v 1.9 2008/02/22 18:25:37 ccovian Exp $ -->
+        <span jwcid="@Script" script="/WEB-INF/scripts/DisableForm.script"/>
+        <div>
+            <div id="layerLoading" style="position:absolute;z-index:1;visibility:hidden">
+                <span jwcid="@Conditional" condition="ognl: visible">
+                    <span jwcid="@Foreach" source="ognl: new java.lang.String[breaksBeforeLoadingImage]"><img jwcid="@Image" image="ognl: assets.transparentImage" border="0" alt="" width="980" height="20" /><br /></span>
+                    <img jwcid="@Image" image="ognl: assets.loadingImage" border="0" alt="" />
+                </span>
+            </div>
+        </div>

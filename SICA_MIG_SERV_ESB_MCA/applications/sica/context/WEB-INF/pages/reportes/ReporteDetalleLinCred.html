@@ -1,0 +1,66 @@
+<!-- $Id: ReporteDetalleLinCred.html,v 1.10 2008/02/22 18:25:41 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Encabezado</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<table jwcid="@ActionPortletBorder" title='ognl: "Historial de la L&iacute;nea de Cr&eacute;dito No. " + idLineaCredito'>
+				<table width="100%">
+				    <tr>				        
+			        	<td class="title" align="left">Status:</td>
+			            <td class="normal"><span jwcid="@Insert" value="ognl: status" /></td>					    
+				    </tr>							
+			        <tr>
+			        	<td class="title" align="left">Corporativo:</td>
+			            <td class="normal"><span jwcid="@Insert" value="ognl: corporativo" /></td>
+			        	<td class="title" align="left">Ultima Modificacion:</td>
+			        	<td class="normal"><span jwcid="@Insert" value="ognl: ultimaModificacion"  format='ognl: dateFormat' raw="yes" /></td>				        				            
+			        </tr>
+			        <tr>
+			        	<td class="title" align="left">Tipo L&iacute;nea de Cr&eacute;dito:</td>
+			            <td class="normal"><span jwcid="@Insert" value="ognl: tipoLineaCredito" /></td>				        		            	
+			        	<td class="title" align="left">Vencimiento:</td>
+			            <td class="normal"><span jwcid="@Insert" value="ognl: vencimiento"  format='ognl: dateFormat' raw="yes" /></td>
+			        </tr>
+			        <tr>	
+			        	<td class="title" align="left">Total Linea:</td>
+			            <td class="normal"><span jwcid="@Insert" value="ognl: importeGral" format="ognl: moneyFormat" /></td>				        				            
+			        	<td class="title" align="left">No. Excepciones:</td>
+			            <td class="normal"><span jwcid="@Insert" value="ognl: numeroExcepciones" /></td>
+			        </tr>
+			        <tr>	
+			        	<td class="title" align="left">Promedio Linea:</td>
+			            <td class="normal"><span jwcid="@Insert" value="ognl: promedioLinea" format="ognl: moneyFormat" /></td>
+			        	<td class="title" align="left">No. Excepciones Mes:</td>
+			            <td class="normal"><span jwcid="@Insert" value="ognl: numeroExcepcionesMes" /></td>				            		
+			        </tr>				            			            	            				            			            			            			            		           
+				 </table> 
+				 <br/>							
+            	<span jwcid="@Conditional" condition="ognl: lineasCreditoLog.size() &gt; 0">									
+		            <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: {"Operaci&oacute;n", "Fecha", "Usuario", "Importe", "Divisa", "Importe USD","No. Deal", "Saldo"}' columnCount="8" width="100%">
+                        <tr jwcid="forHistorial@Foreach" source="ognl: lineasCreditoLog" element="tr" class="ognl: beans.evenOdd.next">
+                           <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forHistorial.value.operacion" raw="yes" /></td>
+				           <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forHistorial.value.fechaOperacion" format='ognl: dateFormat' raw="yes" /></td>
+				           <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forHistorial.value.usuario"  raw="yes" /></td>				           				           				         
+                           <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forHistorial.value.monto" format="ognl: moneyFormat" /></td>				           				           				         				           
+				           <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forHistorial.value.divisa" raw="yes" /></td>				           
+				           <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forHistorial.value.importeUsd" format="ognl: moneyFormat" /></td>				           
+				           <td class="normal" align="center"><span jwcid="@Insert" value='ognl: components.forHistorial.value.idDeal != null ? (new java.lang.Integer(components.forHistorial.value.idDeal)).intValue() : "" ' /> </td>				           				          
+				           <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forHistorial.value.saldo" format="ognl: moneyFormat" /></td>				           
+                        </tr>
+		            </table>
+		            <br/>							     
+			        <div align="center">
+					   	<a jwcid="printLink"><img jwcid="@Image" image="ognl: assets.verPdfButton"/></a> 
+					</div>          		
+               </span>
+               <br/>       
+	            <div align="center">	               
+	                <!--a jwcid="@PageLink" page="ognl: paginaAnterior"><img jwcid="@Image" image="ognl: assets.cancelButton"/></a-->
+	            	<a jwcid="@DirectLink" listener="ognl:listeners.listaPromotores"><img jwcid="@Image" image="ognl: assets.backButton"/></a>
+				</div>                   		
+   	</table>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: EditarTc.mxml,v 1.11 2008/02/22 18:25:27 ccovian Exp $ -->
+<mx:TitleWindow xmlns:mx="http://www.macromedia.com/2003/mxml"
+                title="Edici&#243;n del Tipo de Cambio" closeButton="true"
+                click="this.deletePopUp();">
+	<mx:Script>
+        <![CDATA[
+        import mx.validators.*;
+
+		var mensajeErrorMontoSbPrcVisible : Boolean = false;
+		private var mensajeErrorMontoSbPrc : String = 'El tipo de cambio no es un valor num\u00e9rico.' ;
+        var tablaAut : Object;
+        var detalle : Object;
+
+        private function isValido() : Boolean
+        {
+            return Validator.isValid(this, 'detalleModel.tcm');
+        }
+
+        private function confirmarModificacion() : Void
+        {
+            if (isValido) {
+                try {
+                    tablaAut.modificarTcm(detalleModel.tcm);
+                    tablaAut.autorizacionesService.
+                    modificarTcmParaDealDetalle(detalle.idDealPosicion, detalle.tcm);
+	                mensajeErrorMontoSbPrcVisible = false;
+	                deletePopUp();
+                }
+                catch (err : Error) {
+                	mensajeErrorMontoSbPrcVisible = true;
+                }
+            }
+        }
+
+        ]]>
+    </mx:Script>
+
+    <mx:Model id="detalleModel">
+        <tcm>{Number(tcmTextField.text)}</tcm>
+    </mx:Model>
+
+    <mx:NumberFormatter id="formateadorMonto" thousandsSeparatorFrom="," thousandsSeparatorTo=","
+                        precision="2" />
+
+    <mx:NumberFormatter id="formateadorTc" thousandsSeparatorFrom="" thousandsSeparatorTo=""
+                        precision="6" />
+
+    <mx:NumberValidator field="detalleModel.tcm" requiredFieldError="El campo es requerido."
+                        listener="tcmTextField" minValue="0.000001" maxValue="999999999999.99" domain="real"
+                        precision="6" allowNegative="false"
+                        exceedsMaxError="El n&#250;mero excede el m&#224;ximo valor permitido."
+                        lowerThanMinError="El n&#250;mero es menor que el m&#237;nimo valor permitido."
+                        negativeError="El n&#250;mero no debe ser negativo."
+                        precisionError="Deben ser solo dos decimales."
+                        separationError="El separador de miles debe ser seguido por tres d&#237;gitos."
+                        decimalPointCountError="El separador decimal s&#243;lo puede ocurrir una vez."
+                        invalidCharError="El valor ingresado contiene caracteres inv&#224;lidos."
+                        invalidFormatCharsError="Unos de los par&#224;metros del formato es inv&#224;lido." />
+
+	<mx:Form fontWeight="bold">
+		<mx:FormItem label="Producto:">
+			<mx:HBox>
+				<mx:Label id="productoTextField" text="{detalle.claveFormaLiquidacion}" />
+				<mx:Label text="Tipo:" />
+				<mx:Label text="{detalle.tipoOp}" />
+			</mx:HBox>
+		</mx:FormItem>
+		<mx:FormItem label="Divisa:">
+			<mx:Label text="{detalle.idDivisa}" />
+		</mx:FormItem>
+		<mx:FormItem label="Monto:">
+			<mx:Label text="{formateadorMonto.format(detalle.monto)}" />
+		</mx:FormItem>
+		<mx:FormItem label="T.C.C.:">
+			<mx:Label text="{formateadorTc.format(detalle.tcc)}" />
+		</mx:FormItem>
+		<mx:FormItem label="T.C.M.:">
+			<mx:TextInput id="tcmTextField" text="{formateadorTc.format(detalle.tcm)}"
+                          restrict="0-9\." width="100"/>
+		</mx:FormItem>
+		<mx:Label id="labelErrorTcm" text="{mensajeErrorMontoSbPrc}" visible="{mensajeErrorMontoSbPrcVisible}" 
+						color="#FF0000"/>
+	</mx:Form>
+	<mx:HBox width="100%" horizontalAlign="center">
+		<mx:Button label="Confirmar Modif." click="confirmarModificacion()"/>
+		<mx:Button label="T.C.M. Original"
+                   click="tcmTextField.text = formateadorTc.format(detalle.tcm)"/>
+	</mx:HBox>
+</mx:TitleWindow>

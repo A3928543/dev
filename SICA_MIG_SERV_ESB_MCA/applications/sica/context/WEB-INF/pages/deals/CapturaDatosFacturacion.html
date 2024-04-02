@@ -1,0 +1,92 @@
+<!-- $Id: CapturaDatosFacturacion.html,v 1.12.48.1 2014/02/13 01:27:05 mejiar Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Captura de datos de facturaci&oacute;n</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <span jwcid="tb@Block"><span jwcid="@EventosDeal" deal="ognl: deal" /></span>
+    <table jwcid="@ActionPortletBorder" title="Captura de Deal" titleBlock="ognl: components.tb">
+        <table jwcid="@bup:ShowError" level="0" width="100%" delegate="ognl: beans.delegate" />
+        <form jwcid="@Form" listener="ognl: listeners.submit" delegate="ognl:beans.delegate">
+            <span jwcid="@EncabezadoDeal" deal="ognl: deal" disabled="yes" ocultarDatosFacturacion="yes" />
+            <fieldset>
+                <legend class="legend">Datos de Facturaci&oacute;n:</legend>
+                <table width="100%">
+                    <tr valign="top">
+                        <td width="1%" class="title" align="right">RFC:</td>
+                        <td>
+                        	<span jwcid="@contrib:Choose">
+                        		<span jwcid="@contrib:When" condition="ognl: isValidaRFC()">
+		                        	<input jwcid="rfcTextFieldValidado" />
+	                        	</span>
+	                        	<span jwcid="@contrib:Otherwise">
+	                        		<input jwcid="rfcTextField" />
+	                        	</span>
+                        	</span>
+                    	</td>
+                    </tr>
+                    <tr valign="top">
+                        <td class="title" align="right">Nombre:</td>
+                        <td>
+                            <select jwcid="corporativosComboBox" />
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <td class="title" align="right">Direcci&oacute;n:</td>
+                        <td class="normal">
+                            <span jwcid="@DireccionField" direccion="ognl: deal.dirFactura" />
+                            <span jwcid="@Conditional" condition="ognl: deal.dirFactura && (!deal.dirFactura.verificadoFE || deal.dirFactura.verificadoFE == 0)">
+                                <br />
+                                <span class="legend">(No est&aacute; verificada para Facturaci&oacute;n electr&oacute;nica).</span>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+            <br />
+            <fieldset>
+                <legend class="legend">Medio de Distribuci&oacute;n:</legend>
+                <table width="100%">
+                    <tr valign="top">
+                        <td width="1%" class="title" align="right">Medio:</td>
+                        <td>
+                        	<select jwcid="@PropertySelection" model="ognl: mediosDistribucionModel" value="ognl: medioDistribucion" submitOnChange="ognl: true" />
+                    	</td>
+                    </tr>
+                    <span jwcid="@contrib:FormConditional" condition="ognl: @com.ixe.ods.sica.pages.deals.CapturaDatosFacturacion@MEDIO_DIST_EMAIL.equals(medioDistribucion)">
+                    <tr valign="top">
+                        <td class="title" align="right">Correo electr&oacute;nico:</td>
+                        <td class="normal">
+                            <span jwcid="forEmails@Foreach" source="ognl: emails">
+                                <span jwcid="@contrib:FormConditional" condition="ognl: components.forEmails.value.verificado">
+                                    <input jwcid="@Checkbox" selected="ognl: components.forEmails.value.seleccionado" type="checkbox" />
+                                </span>
+                                <span jwcid="@Conditional" condition="ognl: !components.forEmails.value.verificado">&nbsp;&nbsp;&nbsp;
+                                </span>
+                                <span jwcid="@Insert" value="ognl: components.forEmails.value.email">jfavila@legosoft.com.mx</span>
+                                <span jwcid="@Insert" value="ognl: !components.forEmails.value.verificado ? ' <b>(No verificado)</b>' : ''" raw="ognl: true" />
+                                <br/>
+                            </span>
+                            <input jwcid="@Checkbox" selected="ognl: otroEmailSeleccionado" type="checkbox" />Otro: <input jwcid="@TextField" value="ognl: deal.emailFacturaOtro" size="50" maxlength="100" /> (uno o m&aacute;s separados por ';')<br/>
+                        </td>
+                    </tr>
+                    </span>
+                    <span jwcid="@contrib:FormConditional" condition="ognl: @com.ixe.ods.sica.pages.deals.CapturaDatosFacturacion@MEDIO_DIST_MENSAJERIA.equals(medioDistribucion)">
+                        <tr valign="top">
+                            <td colspan="2" class="title" align="right">
+                                <span jwcid="@EdicionDireccion" direcciones="ognl: direccionesMensajeria" idDireccion="ognl: idDireccionMensajeria" nuevaDireccion="ognl: nuevaDireccion" />
+                            </td>
+                        </tr>
+                    </span>
+                </table>
+            </fieldset>
+            <br />
+            <div class="textocentrado">
+                <input type="image" jwcid="@ImageSubmit" listener="ognl: listeners.aceptar" image="ognl: assets.bAceptar" src="../../../images/aceptar.gif" onclick="fnShowWaitImage();" />
+                <a jwcid="@DirectLink" listener="ognl: listeners.regresar" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.bRegresar" src="../../../images/back.gif" border="0" alt="Deshacer los cambios" /></a>
+            </div>
+        </form>
+    </table>
+</body>
+</html>

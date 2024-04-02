@@ -1,0 +1,9 @@
+<!-- $Id: Bandera.html,v 1.9 2008/02/22 18:25:06 ccovian Exp $ -->
+<span jwcid="@contrib:Choose">
+<span jwcid="@contrib:When" condition='ognl: divisa.frecuente || @com.ixe.ods.sica.model.Divisa@PESO.equals(divisa.idDivisa)'>
+<img jwcid="@Any" src="ognl: divisa.icono" width="32" height="20" alt="ognl: divisa.idDivisa" />
+</span>
+<span jwcid="@contrib:Otherwise">
+<span jwcid="@Insert" value="ognl: divisa.idDivisa" />&nbsp;<img jwcid="@Any" src="images/help.gif" alt="ognl: divisa.descripcion" />
+</span>
+</span>

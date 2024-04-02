@@ -1,0 +1,164 @@
+<!-- $Id: ConsultaPendientesDia.html,v 1.5.14.1 2010/08/10 19:27:02 galiciad Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Deals Pendientes del Dia</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <table jwcid="@ActionPortletBorder" title="Deals Pendientes del D&iacute;a">
+        <form jwcid="@Form" listener="ognl: listeners.submit" delegate="ognl: beans.delegate">
+            <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" width="100%"/>
+            <div align="center">
+                <input  jwcid="@ImageSubmit" image="ognl: assets.refreshButton" selected="ognl: modoSubmit" tag= "1" onClick="fnShowWaitImage();" />
+            </div>
+        
+        <table width="100%">
+            <tr valign="top">
+                <td width="50%">
+                    <table jwcid="@TableBorder" title="Promoci&oacute;n" columnCount="1" width="100%">
+                        <tr>
+                            <td class="normalcell">
+                                <table cellpadding="4" width="100%"><tr><td>
+                                <span jwcid="@DealsPendientesDia" dealsPendientes="ognl: dealsPendientesDiaAlta" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesDiaAlta.size()" titulo="con status alta"/>
+                                <br/>
+                                <span jwcid="@DealsPendientesDia" dealsPendientes="ognl: dealsPendientesCompletar" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesCompletar.size()" titulo="por Completar"/>
+                                <br/>
+                                <span jwcid="@DealsPendientesDia" dealsPendientes="ognl: dealsPendientesNoBalanceado" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesNoBalanceado.size()" titulo=" por no estar balanceados" />
+                                <br/>
+                                <span jwcid="@DealsPendientesDia" dealsPendientes="ognl: dealsPendientesContratoSica" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesContratoSica.size()" titulo="por Contrato Sica"/>
+                                </td></tr></table>
+                            </td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <table jwcid="@TableBorder" title="Mesa de Cambios" columnCount="1" width="100%">
+                        <tr>
+                            <td class="normalcell">
+                                <table cellpadding="4" width="100%"><tr><td>
+                                <span jwcid="@DealsPendientesDia" dealsPendientes="ognl: dealsPendientesMonto" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesMonto.size()" titulo="por Monto"/>
+                                <br/>
+                                <span jwcid="@DealsPendientes" dealsPendientes="ognl: dealsPendientesSolicitudSobrePrecio" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesSolicitudSobrePrecio.size()" titulo="por Solicitud de Sobreprecio"/>
+                                <br/>
+                                <span jwcid="@DealsPendientesDia" dealsPendientes="ognl: dealsPendientesHorario" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesHorario.size()" titulo="por Horario"/>
+                                </td></tr></table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="1%">&nbsp;</td>
+                <td width="50%">
+                    <table jwcid="@TableBorder" title="Mesa de Control(Documentacion)" columnCount="1" width="100%">
+                        <tr>
+                            <td class="normalcell">
+                                <table cellpadding="4" width="100%">
+                                    <tr>
+                                        <td>
+                                            <span jwcid="@DealsPendientesDia"
+                                                  dealsPendientes="ognl: dealsPendientesDocumentacion"
+                                                  dealsMinimizados="ognl: true"
+                                                  numero="ognl: dealsPendientesDocumentacion.size()"
+                                                  titulo="por Documentaci&oacute;n" />
+                                            <br />
+                                            <span jwcid="@DealsPendientesDia"
+                                                  dealsPendientes="ognl: dealsPendientesPlantilla"
+                                                  dealsMinimizados="ognl: true"
+                                                  numero="ognl: dealsPendientesPlantilla.size()"
+                                                  titulo="por Plantilla"/>
+                                            <br />
+                                            <span jwcid="@DealsPendientesDia"
+                                                  dealsPendientes="ognl: dealsPendientesRfc"
+                                                  dealsMinimizados="ognl: true"
+                                                  numero="ognl: dealsPendientesRfc.size()"
+                                                  titulo="por cambio en R.F.C." />
+                                            <br />
+                                            <span jwcid="@DealsPendientesDia"
+                                                  dealsPendientes="ognl: dealsPendientesEmail"
+                                                  dealsMinimizados="ognl: true"
+                                                  numero="ognl: dealsPendientesEmail.size()"
+                                                  titulo="por alta de correo para Fact. Elect." />
+                                <span jwcid="@Conditional" condition='ognl: ocultaSwap'>
+                                    <br/>
+                                                <span jwcid="@DealsPendientesDia"
+                                                    dealsPendientes="ognl: dealsSwap"
+                                                    dealsMinimizados="ognl: true"
+                                                    numero="ognl: dealsSwap.size()" titulo="por Swap"/>
+                                </span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <table jwcid="@TableBorder" title="Cr&eacute;dito" columnCount="1" width="100%">
+                        <tr>
+                            <td class="normalcell">
+                                <table cellpadding="4" width="100%"><tr><td>
+                                <span jwcid="@DealsPendientesDia" dealsPendientes="ognl: dealsPendientesLinTomaEnFirme" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesLinTomaEnFirme.size()" titulo="por Linea de Cr&eacute;dito o Toma en Firme"/>
+                                </td></tr></table>
+                            </td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <table jwcid="@TableBorder" title="Tesorer&iacute;a" columnCount="1" width="100%">
+                        <tr>
+                            <td class="normalcell">
+                                <table cellpadding="4" width="100%"><tr><td>
+                                <span jwcid="@DealsPendientesDia" dealsPendientes="ognl: dealsPendientesModCan" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesModCan.size()" titulo="por modificaci&oacute;n o cancelaci&oacute;n"/>
+                                <br/>
+                                <span jwcid="@DealsPendientesDia" dealsPendientes="ognl: dealsDetallesPendientes" dealsMinimizados="ognl: true" numero="ognl: dealsDetallesPendientes.size()" titulo="por alg&uacute;n detalle"/>
+                                </td></tr></table>
+                            </td>
+                        </tr>
+                    </table>
+                <br />
+        			<table jwcid="@TableBorder" title="Clientes" columnCount="1" width="100%">
+		                        <tr>
+		                            <td class="normalcell">
+			                             <table cellpadding="4" width="100%">
+				                             	<tr><td>				                                
+													<table jwcid="@ActionPortletBorder" title='ognl: "Clientes con Documentacion Pendiente " +  " (" + clientesPendienteDocumentacion.size() +  ")"'
+													 minimizable="yes" minimized="ognl: clientesMinimizados " >
+													 <tr>
+													 	<td>
+													 		<span jwcid="@Conditional" condition="ognl: isUsuarioMesaControl() == true ">
+													 		
+													 		<select jwcid="@PropertySelection" model="ognl: promotoresSicaModel"   value="ognl: promotor" onChange="this.form.elements['promotorCmb'].click();" />
+													 		<br/>
+													 		</span>
+														<table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "No. Cta", "Cliente","Fecha Vencimiento"}' columnCount="3" width="100%">
+															<tr jwcid="forRegs1@Foreach" source="ognl: clientesPendienteDocumentacion" element="tr" class="normalcell" title="ognl: components.forRegs1.value['mensajeError']">
+																		<td    class="normal"  align="center" >
+																				<span jwcid= "@Insert" value="ognl: components.forRegs1.value['noCuenta'] " />
+																		</td>
+																		<td  class="normal"  align="center" >
+																			<span jwcid= "@Insert" value="ognl: components.forRegs1.value['nombreCorto'] " />
+																		</td>
+																		<td  class="normal"   align="center" >	
+																			<span jwcid="@Conditional" condition="ognl: components.forRegs1.value['fechaVencimiento'] != null ">
+																				<span jwcid= "@Insert"   value="ognl: components.forRegs1.value['fechaVencimiento'] "  format="ognl:dateFormat" />
+																				<span jwcid= "@Insert"   value= "(" />  
+																				 <span jwcid= "@Insert"   value="ognl: components.forRegs1.value['numeroProrrogas' ]" /> 
+																				 <span jwcid= "@Insert"   value=")"   />		
+																			 </span>																	
+                </td>
+            </tr>
+         </table>
+                </td>
+            </tr>
+         </table>
+												</td></tr>                              
+			                             </table>		                             
+		                             </td>
+		                        </tr>
+    </table>
+              
+              			<input  jwcid="promotorCmb@Submit"   selected="ognl: modoSubmit" tag= "2" onClick="return fnShowWaitImage();" style="display:none;"  />
+              </td>
+            </tr>
+         </table>
+         </form>
+    </table>
+    
+</body>
+</html>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mx:VBox xmlns:mx="http://www.macromedia.com/2003/mxml">
+
+    <!--mx:NumberFormatter id="numberFormatter" precision="0"/>
+
+    <mx:NumberFormatter id="exchangeFormatter" precision="6"/>
+
+    <mx:HBox>
+        <mx:Grid verticalGap="0" horizontalGap="0">
+            <mx:GridRow>
+                <mx:GridItem>
+                    <mx:Label text="P&#38;L por Operaci&#243;n" fontWeight="bold"/>
+                </mx:GridItem>
+            </mx:GridRow>
+            <mx:GridRow>
+                <mx:GridItem/>
+                <mx:GridItem>
+                    <mx:Label text="Realizada HOY:" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="right">
+                    <mx:Label text="{numberFormatter.format(dataProvider.utilidadRealizadaCash)}"/>
+                </mx:GridItem>
+            </mx:GridRow>
+            <mx:GridRow>
+                <mx:GridItem/>
+                <mx:GridItem>
+                    <mx:Label text="Estimada TOM:" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="right">
+                    <mx:Label text="{numberFormatter.format(dataProvider.utilidadRealizadaTom)}"/>
+                </mx:GridItem>
+            </mx:GridRow>
+            <mx:GridRow>
+                <mx:GridItem/>
+                <mx:GridItem>
+                    <mx:Label text="Estimada SPOT:" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="right">
+                    <mx:Label text="{numberFormatter.format(dataProvider.utilidadRealizadaSpot)}"/>
+                </mx:GridItem>
+            </mx:GridRow>
+            <mx:GridRow>
+                <mx:GridItem/>
+                <mx:GridItem>
+                    <mx:Label text="Total:" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="right">
+                    <mx:Label text="{numberFormatter.format(dataProvider.utilidadRealizada)}"/>
+                </mx:GridItem>
+            </mx:GridRow>
+        </mx:Grid>
+        <mx:Grid verticalGap="0" horizontalGap="0">
+            <mx:GridRow>
+                <mx:GridItem>
+                    <mx:Label text="P&#38;L por Interbancarios" fontWeight="bold"/>
+                </mx:GridItem>
+            </mx:GridRow>
+            <mx:GridRow>
+                <mx:GridItem/>
+                <mx:GridItem>
+                    <mx:Label text="Realizada HOY:" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="right">
+                    <mx:Label text="YYZ"/>
+                </mx:GridItem>
+            </mx:GridRow>
+            <mx:GridRow>
+                <mx:GridItem/>
+                <mx:GridItem>
+                    <mx:Label text="Estimada TOM:" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="right">
+                    <mx:Label text="YYZ"/>
+                </mx:GridItem>
+            </mx:GridRow>
+            <mx:GridRow>
+                <mx:GridItem/>
+                <mx:GridItem>
+                    <mx:Label text="Estimada SPOT:" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="right">
+                    <mx:Label text="YYZ"/>
+                </mx:GridItem>
+            </mx:GridRow>
+            <mx:GridRow>
+                <mx:GridItem/>
+                <mx:GridItem>
+                    <mx:Label text="Total:" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="right">
+                    <mx:Label text="YYZ"/>
+                </mx:GridItem>
+            </mx:GridRow>
+        </mx:Grid>
+    </mx:HBox>
+
+    <mx:HRule width="100%" color="#000000"/>
+
+    <mx:HBox>
+        <mx:Grid verticalGap="0" horizontalGap="0">
+            <mx:GridRow>
+                <mx:GridItem>
+                    <mx:Label text="P&#38;L por Valuaci&#243;n" fontWeight="bold"/>
+                </mx:GridItem>
+            </mx:GridRow>
+            <mx:GridRow>
+                <mx:GridItem/>
+                <mx:GridItem horizontalAlign="center">
+                    <mx:Label text="T.C. Valuaci&#243;n" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem/>
+                <mx:GridItem horizontalAlign="center">
+                    <mx:Label text="T.C. Promedio" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem/>
+                <mx:GridItem horizontalAlign="center">
+                    <mx:Label text="Posici&#243;n Div." fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem/>
+                <mx:GridItem horizontalAlign="center">
+                    <mx:Label text="P&#38;L por Valuaci&#243;n" fontWeight="bold"/>
+                </mx:GridItem>
+            </mx:GridRow>
+
+            <mx:GridRow>
+                <mx:GridItem/>
+                <mx:GridItem horizontalAlign="right">
+                    <mx:Label text='( {exchangeFormatter.format(tipoCambioMercado)}'/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="center">
+                    <mx:Label text="-" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="right">
+                    <mx:Label text='{exchangeFormatter.format(tipoCambio.tipoCambioPosicionFinal)} )'/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="center">
+                    <mx:Label text="*" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="right">
+                    <mx:Label text="{numberFormatter.format(tipoCambio.posicionFinal)}"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="center">
+                    <mx:Label text="=" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem horizontalAlign="right">
+                    <mx:Label text="{numberFormatter.format(tipoCambio.getUtilidad(tipoCambioMercado))}"/>
+                </mx:GridItem>
+            </mx:GridRow>
+        </mx:Grid>
+    </mx:HBox-->
+
+
+    <mx:Script>
+        var dataProvider : com.ixe.ods.sica.posicion.vo.PosicionVO;
+        var tipoCambio : com.ixe.ods.sica.posicion.vo.TipoCambioVO;
+        var tipoCambioMercado : Number;
+    </mx:Script>
+
+</mx:VBox>

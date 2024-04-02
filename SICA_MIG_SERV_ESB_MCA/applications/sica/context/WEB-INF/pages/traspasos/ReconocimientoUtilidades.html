@@ -1,0 +1,127 @@
+<!-- $Id: ReconocimientoUtilidades.html,v 1.10 2008/02/22 18:25:14 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Reconocimiento de Utilidades / P&eacute;rdidas</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <form jwcid="@Form" listener="ognl: listeners.crearReconocimientoUtilidad" delegate="ognl:beans.delegate">
+		<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" level="ognl: operacionExitosa ? 1 : 0"/>
+		<table width="100%" align="center">
+		    <tr>
+		    	<td width="100%">
+		    		<table jwcid="@ActionPortletBorder" title="Reconocimientos de Utilidades al d&iacute;a de Hoy">
+	                    <table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "Divisa", "Portafolio", "Monto", "&nbsp;", "Tipo Cambio", "Util. Global", "Util. Mesa", "Tipo Reco.", "&nbsp;" }' columnCount="9" width="100%">
+	                        <tr jwcid="forReconocimientos@Foreach" source="ognl: reconocimientos" element="tr" class="ognl: beans.evenOdd.next">
+	                            <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forReconocimientos.value.divisa.idDivisa" raw="yes" /></td>
+	                            <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forReconocimientos.value.mesaCambio.nombre" raw="yes" /></td>
+	                            <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forReconocimientos.value.monto" raw="yes" /></td>
+	                            <td class="normal" align="center"><span jwcid="@Insert" value='ognl: components.forReconocimientos.value.recibimos ? "Recibimos" : "Entregamos"' raw="yes" /></td>
+	                            <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forReconocimientos.value.tipoCambio" raw="yes" /></td>
+	                            <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forReconocimientos.value.utilidadGlobal" raw="yes" /></td>
+	                            <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forReconocimientos.value.utilidadMesa" raw="yes" /></td>
+	                            <td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forReconocimientos.value.tipoReco" raw="yes" /></td>
+                                <td nowrap class="normal" align="center">
+	               	                <span jwcid="@contrib:Choose">
+		                                <span jwcid="@contrib:When" condition="ognl: @com.ixe.ods.sica.model.Divisa@PESO.equals(components.forReconocimientos.value.mesaCambio.divisaReferencia.idDivisa)">
+	    	                            	<a href="#" jwcid="@DirectLink" listener="ognl: listeners.borrarReconocimiento" parameters="ognl: components.forReconocimientos.value.idDealPosicion" onClick="fnShowWaitImage();">Borrar</a>
+    	                            	</span>
+		               	                <span jwcid="@contrib:Otherwise">&nbsp;</span>
+	               	                </span>
+                            	</td>
+	                        </tr>
+	                    </table>
+	                </table>
+		    	</td>
+	    	<tr>
+	    	<tr>
+		    	<td width="100%">
+			        <table jwcid="@ActionPortletBorder" title="Reconocimiento de Utilidades / P&eacute;rdidas" width="50%">
+			            <table jwcid="@TableBorder" title="ognl: null" columnCount="2" width="100%">
+			                <tr class="titlecell">
+			                    <td colspan="1" align="right" class="title">Del Portafolio:</td>
+			                    <td colspan="3" class="normalcell">
+			                    	<select jwcid="@PropertySelection" model="ognl: portafolioModel" value="ognl: selectedPortafolio" onChange="fnShowWaitImage();this.form.submit();" />
+			                    </td>
+			                </tr>
+			                <span jwcid="@contrib:FormConditional" condition='ognl: !isDivisaMXN()'>
+								<tr class="titlecell">
+				                    <td colspan="1" align="right" class="title">Al Portafolio:</td>
+				                    <td colspan="3" class="normalcell">
+				                    	<span jwcid= "@Insert" value="ognl: selectedAlPortafolio.nombre" />
+				                    </td>
+				                </tr>
+			                </span>
+			                <tr class="titlecell">
+			                    <td align="right" class="title">Utilidad / P&eacute;rdida en:</td>
+			                    <td class="normalcell">
+				                    <span jwcid="@Insert" value='ognl: selectedPortafolio != null ? (selectedPortafolio.idMesaCambio != 0 ? selectedPortafolio.divisaReferencia.idDivisa : "") : ""'/>
+			                    </td>
+			                    <td align="right" class="title">Divisa:</td>
+			                    <td class="normalcell">
+		                    		<select jwcid="@PropertySelection" model="ognl: divisasModel" value="ognl: selectedDivisa"/>
+			                    </td>
+			                </tr>
+			                <span jwcid="@contrib:FormConditional" condition='ognl: !isDivisaMXN()'>
+				                <tr class="titlecell">
+				                    <td colspan="1" align="right" class="title">Tipo de Cambio al que se vende (utilidad) o compran (p&eacute;rdida) la utilidad / p&eacute;rdida:</td>
+				                    <td colspan="3" class="normalcell">
+			    						<input type="text" jwcid="tipoCambioTextField" />
+				                    </td>
+				                </tr>
+			                </span>
+			                <tr class="titlecell">
+			                    <td colspan="1" align="right" class="title">Tipo de Cambio para iniciar operaciones el d&iacute;a siguiente:</td>
+			                    <td colspan="3" class="normalcell">
+		    						<input type="text" jwcid="tcAmaneceMesaTextField" />
+			                    </td>
+			                </tr>
+			                <tr class="titlecell">
+			                    <td colspan="1" align="right" class="title">Observaciones:</td>
+			                    <td colspan="3" align="left" class="normalcell">
+									<textarea jwcid="@TextArea" value="ognl: observaciones" cols="90" rows="4"></textarea>
+			                    </td>
+			                </tr>
+			            </table>
+			            <br />
+			            <div align="center">
+			            	<input type="image" jwcid="@ImageSubmit" image="ognl: assets.confirmarButton" selected="ognl: modoSubmit" tag="1" onClick="fnShowWaitImage();" />
+			            	<span jwcid="@Conditional" condition="ognl: confirmar">
+	                            <input type="image" jwcid="@ImageSubmit" image="ognl: assets.aceptarButton" selected="ognl: modoSubmit" tag="2" onClick="fnShowWaitImage();" />
+							</span>                                
+			            </div>
+			    	</table>
+		    	</td>
+	        </tr>
+        </table>
+    </form>
+    
+    <span jwcid="@Conditional" condition='ognl: selectedPortafolio.idMesaCambio == 22'>
+	    <br/>
+	    <table width="100%">
+	        <tr valign="top">
+	            <td width="600">
+	                <span jwcid="@DealsPendientes" dealsPendientes="ognl: dealsPendientesNoBalanceado" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesNoBalanceado.size()" titulo=" por no estar balanceados" />
+	                <br/>
+	                <span jwcid="@DealsPendientes" dealsPendientes="ognl: dealsPendientesBanxico" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesBanxico.size()" titulo="por Banxico"/>
+	                <br/>
+	                <span jwcid="@DealsPendientes" dealsPendientes="ognl: dealsPendientesDocumentacion" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesDocumentacion.size()" titulo="por Documentaci&oacute;n"/>
+	                <br/>
+	                <span jwcid="@DealsPendientes" dealsPendientes="ognl: dealsSwap" dealsMinimizados="ognl: true" numero="ognl: dealsSwap.size()" titulo="por Swap"/>
+	                <br/>
+	                <span jwcid="@DealsPendientes" dealsPendientes="ognl: dealsPendientesContratoSica" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesContratoSica.size()" titulo="por Contrato Sica"/>
+	            </td>
+	            <td width="600">
+	                <span jwcid="@DealsPendientes" dealsPendientes="ognl: dealsPendientesLinTomaEnFirme" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesLinTomaEnFirme.size()" titulo="por Linea de Cr&eacute;dito o Toma en Firme"/>
+	                <br/>
+	                <span jwcid="@DealsPendientes" dealsPendientes="ognl: dealsPendientesModCan" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesModCan.size()" titulo="por modificaci&oacute;n o cancelaci&oacute;n"/>
+	                <br/>
+	                <span jwcid="@DealsPendientes" dealsPendientes="ognl: dealsDetallesPendientes" dealsMinimizados="ognl: true" numero="ognl: dealsDetallesPendientes.size()" titulo="por alg&uacute;n detalle"/>
+	                <br/>
+	                <span jwcid="@DealsPendientes" dealsPendientes="ognl: dealsPendientesCompletar" dealsMinimizados="ognl: true" numero="ognl: dealsPendientesCompletar.size()" titulo="por Completar"/>
+	            </td>
+	        </tr>
+	    </table>
+   	</span>    
+</body>
+</html>

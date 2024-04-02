@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: ModificaMontoProductoDetalleDeal.page,v 1.2.2.1.8.1 2010/10/08 01:03:17 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.deals.ModificaMontoProductoDetalleDeal">
+
+    <bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+
+    <bean name="doubleValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"double"</set-property>
+    </bean>
+
+   	<component id="tccTextField" type="ValidField">
+        <static-binding name="displayName" value="T.C.C." />
+        <binding name="validator" expression="beans.doubleValidator" />
+        <binding name="value" expression="tipoCambioCliente" />
+        <static-binding name="id" value="txtTCC" />
+    </component>
+        
+    <property-specification name="dealDetalle" type="com.ixe.ods.sica.model.DealDetalle" persistent="yes"/>
+    <property-specification name="deal" type="com.ixe.ods.sica.model.Deal" persistent="yes" />
+    <property-specification name="limitesRestriccionOperacion" type="com.ixe.ods.sica.model.LimitesRestriccionOperacion" persistent="yes" />
+    <property-specification name="modo" type="int" persistent="yes"/>
+    <property-specification name="level" type="int" />
+    <property-specification name="modoInsercion" type="boolean" persistent="yes" />
+    <property-specification name="modifMap" type="java.util.Map" />
+    <property-specification name="splitMap" type="java.util.Map" />
+    <property-specification name="existeModificacionPendiente" type="boolean" />
+    <property-specification name="nuevoMonto" type="double"/>
+    <property-specification name="montoActual" type="double" persistent="yes"/>
+    <property-specification name="mensaje" type="java.lang.String" initial-value="new java.lang.String()"/>
+    <property-specification name="tipoCambioCliente" type="double" persistent="yes"/>
+    <property-specification name="tipoCambioMesa" type="double" persistent="yes"/>
+    <property-specification name="clavesFormasLiquidacion" type="java.lang.String[]" persistent="yes"/>
+    <property-specification name="formaPagoLiq" type="java.lang.String" persistent="yes"/>
+    <property-specification name="canal" type="java.lang.String" persistent="yes"/>
+    <property-specification name="muestraCampoNuevoMonto" type="boolean"/>
+    <property-specification name="productOrig" type="java.util.Map" persistent="yes"/>
+    <property-specification name="modelList" type="java.util.List" persistent="yes"/>
+    <property-specification name="modoSubmit" type="java.lang.String" />
+    <property-specification name="nuevoProducto" type="java.lang.String" />
+    <property-specification name="muestraCampoNuevoProducto" type="boolean"/>
+    <property-specification name="muestraCampoNuevoTcc" type="boolean"/>
+    
+    <context-asset name="bActualizar" path="/images/save.gif" />
+    <context-asset name="bRegresar" path="/images/back.gif" />
+    <context-asset name="loadingImage" path="/images/loading.gif"/>
+    
+    <context-asset name="stylesheet" path="/css/ixe.css"/>
+
+</page-specification>

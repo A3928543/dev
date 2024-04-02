@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--$Id: EncabezadoDeal.jwc,v 1.9.50.1.40.1 2016/07/13 21:46:04 mejiar Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<component-specification class="com.ixe.ods.sica.components.EncabezadoDeal">
+    <parameter name="deal" type="com.ixe.ods.sica.model.Deal" direction="in" required="yes" />
+    <parameter name="area" type="boolean" direction="in" required="no" />
+    <parameter name="disabled" type="boolean" direction="in" required="no" />
+    <parameter name="disabledPAyTF" type="boolean" direction="in" required="no" />
+    <parameter name="ocultarDatosFacturacion" type="boolean" direction="in" required="no" />
+    <parameter name="ocultarDatosEnvio" type="boolean" direction="in" required="no" />
+
+         
+    <property-specification name="ind" type="int" />
+
+</component-specification>

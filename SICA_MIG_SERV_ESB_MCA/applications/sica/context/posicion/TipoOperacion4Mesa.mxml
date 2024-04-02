@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ls:HAccordion selectedIndex="0"
+               xmlns:mx="http://www.macromedia.com/2003/mxml"
+               xmlns:view="com.ixe.ods.sica.posicion.views.*"
+               xmlns:ls="com.legosoft.*"
+               xmlns:sica="*">
+
+    <sica:TipoCambio4Mesa dataProvider="{tipoCambioCliente}" label="T.C. Cliente" width="100%" marginLeft="10" marginRight="10"
+                          marginTop="5" marginBottom="0"/>
+
+    <sica:TipoCambio4Mesa dataProvider="{tipoCambioPizarron}" label="T.C. Mesa" width="100%" marginLeft="10" marginRight="10"
+                          marginTop="5" marginBottom="0"/>
+
+    <sica:TipoCambioInterbancario4Mesa dataProvider="{tipoCambioMesa}" label="T.C. Interbancario" width="100%" marginLeft="10"
+                                       marginRight="10" marginTop="5" marginBottom="0"/>
+
+    <mx:Script>
+        import com.ixe.ods.sica.posicion.vo.PosicionVO;
+        import com.ixe.ods.sica.posicion.vo.TipoCambioVO;
+
+
+        var tipoCambioCliente : TipoCambioVO;
+        var tipoCambioPizarron : TipoCambioVO;
+        var tipoCambioMesa : TipoCambioVO;
+
+        var isDivide: Boolean;
+
+        function set dataProvider(dataProvider : PosicionVO) : Void
+        {
+        	
+            tipoCambioCliente = dataProvider.tipoCambioCliente;
+            tipoCambioPizarron = dataProvider.tipoCambioPizarron;
+            tipoCambioMesa = dataProvider.tipoCambioMesa;
+			
+			/* Mesa de cambio USD  */              
+            if ( dataProvider.idMesaCambio == 22)
+            {
+     
+            	if( dataProvider.divideDivisa == true	) {
+            		
+            		tipoCambioCliente.tipoCambioCompra = invierteTipoCambio(tipoCambioCliente.tipoCambioCompra);
+            		tipoCambioCliente.tipoCambioVenta = invierteTipoCambio(tipoCambioCliente.tipoCambioVenta);
+            		tipoCambioCliente.tipoCambioPosicionFinal =invierteTipoCambio(tipoCambioCliente.tipoCambioPosicionFinal);
+            		
+            		
+            		tipoCambioPizarron.tipoCambioCompra = invierteTipoCambio(tipoCambioPizarron.tipoCambioCompra);
+					tipoCambioPizarron.tipoCambioVenta = invierteTipoCambio(tipoCambioPizarron.tipoCambioVenta);
+					tipoCambioPizarron.tipoCambioPosicionFinal = invierteTipoCambio(tipoCambioPizarron.tipoCambioPosicionFinal);
+            		
+            		tipoCambioMesa.tipoCambioCompra  = invierteTipoCambio(tipoCambioMesa.tipoCambioCompra);            		
+            		tipoCambioMesa.tipoCambioVenta  = invierteTipoCambio(tipoCambioMesa.tipoCambioVenta);
+            		tipoCambioMesa.tipoCambioPosicionFinal  = invierteTipoCambio(tipoCambioMesa.tipoCambioPosicionFinal);
+            		
+            	}
+            }                                   
+        }
+        function invierteTipoCambio ( tipoCambio : Number )  : Number
+        {
+        	if ( tipoCambio > 0){
+        		tipoCambio =  1 / tipoCambio;
+        	}
+        	
+        	return tipoCambio;
+        }
+    </mx:Script>
+
+</ls:HAccordion>

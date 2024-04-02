@@ -1,0 +1,138 @@
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <!-- $Id: ConsultaDeal.html,v 1.17.12.2.10.1.26.2.10.1 2014/08/20 18:02:07 mejiar Exp $ -->
+    <title>Consulta de deals</title>
+    <link rel="StyleSheet" href="../../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder" breaksBeforeLoadingImage="16">
+    <form jwcid="@Form" listener="ognl: listeners.listar" delegate="ognl:beans.delegate">
+        <table jwcid="@ActionPortletBorder" title="Criterios para Consulta de Deal" minimizable="yes" minimized="ognl: criteriosMinimizados">
+            <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" width="100%" />
+            <fieldset jwcid="@CriteriosConsultaDeal" blockCriterios="ognl: components.cbPromotorBlock"
+            		  tipoFecha="ognl: tipoFecha" fechaInicioBusqueda="ognl: fechaInicioBusqueda" 
+            		  fechaFinalBusqueda="ognl: fechaFinalBusqueda"
+                      idDeal="ognl: ids" materno="ognl: materno" noCuenta="ognl: noCuenta" nombre="ognl: nombre"
+                      paterno="ognl: paterno" razonSocial="ognl: razonSocial" status="ognl: status" divisa="ognl: divisa"                
+                      listaDivisas="ognl: obtenCatalogoDivisas()"  claveFormaLiquidacion="ognl: claveFormaLiquidacion"
+                      listaFormasLiquidacion="ognl: arregloFormasLiquidacion() "                      
+                      mostrarOpcionesMensajeria="ognl: true" opcionMensajeria="ognl: opcionMensajeria" />
+            <fieldset class="normal">
+                <legend class="legend">Sem&aacute;foros</legend>
+                <table width="100%">
+                    <tr class="title">
+                        <td align="right">L&iacute;nea de Cr&eacute;dito:</td>
+                        <td><span jwcid="@PropertySelection" model="ognl: semaforosLCModel" value="ognl: lcCombo"/></td>
+                        <td align="right">Toma en Firme:</td>
+                        <td><span jwcid="@PropertySelection" model="ognl: semaforosTFModel" value="ognl: tfCombo"/></td>
+                        <td align="right">Documentaci&oacute;n:</td>
+                        <td><span jwcid="@PropertySelection" model="ognl: semaforosDCModel" value="ognl: dcCombo"/></td>
+                    </tr>
+                    <tr class="title">
+                        <td align="right">Modificaci&oacute;n:</td>
+                        <td><span jwcid="@PropertySelection" model="ognl: semaforosMDModel" value="ognl: mdCombo"/></td>
+                        <td align="right">Cancelaci&oacute;n:</td>
+                        <td><span jwcid="@PropertySelection" model="ognl: semaforosCNModel" value="ognl: cnCombo"/></td>
+                        <td align="right">Time-Outs:</td>
+                        <td><span jwcid="@PropertySelection" model="ognl: semaforosTOModel" value="ognl: toCombo"/></td>
+                    </tr>
+                </table>
+            </fieldset>
+            <br />
+            <div align="center">
+                <input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+            </div>
+            <span jwcid="@ls:DatePickerColophon" />
+        </table>
+    </form>
+    <span jwcid="cbPromotorBlock@Block">
+        <td>Promotor:</td>
+        <td><select jwcid="promotorSolicitudComboBox" /></td>
+    </span>
+    <span jwcid="@Conditional" condition="ognl: deals.size() &gt; 0">
+    <table jwcid="@ActionPortletBorder" title="Deals:">
+        <table border="0" cellspacing="1" cellpadding="3" width="100%" jwcid="table@bup:Table" source="ognl: deals" initialSortColumn="idDeal" pageSize="25"
+                columns='ognl: "idDeal:No. Deal:idDeal, cliente:Cliente:cliente, usuario:Captur\u00f3:usuario, tipoOperacion:Operaci\u00f3n:tipoOperacion, tipoValor:Tipo Valor:tipoValor, fechaCaptura:Fecha operaci\u00f3n:fechaCaptura, fechaLiquidacion:Fecha liquidaci\u00f3n:fechaLiquidacion, descripcionStatus:Status:descripcionStatus,
+                !clavesFormasLiquidacion:Productos:clavesFormasLiquidacion, !editar , !imprimir"' class="tableborder" />
+        <span jwcid="idDealColumnValue@Block">
+            <a jwcid="@ExternalLink" page="DatosDeal" parameters="ognl: components.table.tableRow.idDeal" renderer='ognl: page.global.applicationContext.getBean("bigPopupLinkRenderer")' ><span jwcid="@Insert" value="ognl: components.table.tableRow.idDeal" /></a>
+        </span>
+        <span jwcid="fechaCapturaColumnValue@Block">
+           <div align="center">
+              <span jwcid= "@Insert" value="ognl: components.table.tableRow.fechaCaptura" format="ognl: fullDateFormat" />
+           </div>
+        </span>
+        <span jwcid="fechaLiquidacionColumnValue@Block">
+           <div align="center">
+              <span jwcid= "@Insert" value="ognl: components.table.tableRow.fechaLiquidacion" format="ognl: dateFormat" />
+           </div>
+        </span>
+        <span jwcid="editarColumnHeader@Block">&nbsp;</span>
+        <span jwcid="editarColumnValue@Block">
+           <div align="center">
+            <a jwcid="@ExternalLink" page="CapturaDeal" parameters='ognl: { @com.ixe.ods.sica.pages.deals.CapturaDeal@OPCION_EDITAR, components.table.tableRow.idDeal, modo }' onClick="fnShowWaitImage();" disabled="ognl: !verHabilitado">Ver</a>
+           </div>
+        </span>
+        <span jwcid="imprimirColumnHeader@Block">&nbsp;</span>
+        <span jwcid="imprimirColumnValue@Block">
+           <div align="center">
+           <span jwcid="@Conditional" condition='ognl: ! @com.ixe.ods.sica.model.Deal@STATUS_DEAL_CANCELADO.equals(components.table.tableRow.statusDeal) && ! @com.ixe.ods.sica.model.Deal@STATUS_DEAL_PROCESO_CAPTURA.equals(components.table.tableRow.statusDeal) && components.table.tableRow.reversado < 1'>
+                <a jwcid="printLink">Comprob.</a>
+           </span>
+           <span jwcid="@Conditional" condition='ognl: @com.ixe.ods.sica.model.Deal@STATUS_DEAL_CANCELADO.equals(components.table.tableRow.statusDeal) ||  @com.ixe.ods.sica.model.Deal@STATUS_DEAL_PROCESO_CAPTURA.equals(components.table.tableRow.statusDeal) || components.table.tableRow.reversado > 0'>
+                <span jwcid= "@Insert" value="Comprob."  />
+           </span>
+           </div>
+         </span>
+        <span jwcid="descripcionStatusColumnValue@Block">
+            <span jwcid="@StatusField" status="ognl: @com.ixe.ods.sica.components.StatusField@getStatusDeal(components.table.tableRow)" descripcion="ognl: components.table.tableRow.descripcionStatus" />
+        </span>
+        <span jwcid="clavesFormasLiquidacionColumnValue@Block">
+            <table border="0" cellspacing="1" cellpadding="2" width="100%" class="portletbackground">
+                <span jwcid="forDets@Foreach" source="ognl: components.table.tableRow.detalles">
+                <tr class="normalcell" jwcid="@Conditional" condition="ognl: mostrarDetalle(components.forDets.value, components.table.tableRow)" element="tr">
+                    <td jwcid="@Conditional" condition="ognl: components.table.tableRow.statusDeal.equals('TL') && components.table.tableRow.reversado < 1" element="td">
+                        <a jwcid="@tooltip:ToolTip" title="Datos de Facturaci&oacute;n" value="ognl: components.infoFacturaBlock" sticky="ognl: true" clickable="ognl: true" commands='WIDTH, "240", CLOSETEXT, "X", FGCOLOR, "#dddddd", BGCOLOR, "#002f2c", CAPCOLOR, "#f79c00", CLOSECOLOR, "#FFFFFF"'
+                           disabled="ognl: false">Factura</a>
+                    </td>
+                    <td with="1%"><span jwcid="@Insert" value="ognl: components.forDets.value.claveFormaLiquidacion" /></td>
+                    <td with="1%"><span jwcid="@Insert" value="ognl: components.forDets.value.recibimos ? 'REC' : 'ENT'" /></td>
+                    <td align="right"><span jwcid="@Insert" value="ognl: components.forDets.value.monto" format="ognl: moneyFormat" /></td>
+                    <td with="1%"><span jwcid="@Insert" value="ognl: components.forDets.value.idDivisa" /></td>
+                    <td with="1%"><span jwcid="@Insert" value="ognl: components.forDets.value.tipoCambio" format="ognl: currencyFormatSix" /></td>
+                    <td with="1%"><span jwcid="@Insert" value="ognl: components.forDets.value.fed ? 'F:' + components.forDets.value.fed : ''"  /></td>
+                </tr>
+                </span>
+            </table>
+        </span>
+    </table>
+    </span>
+<span jwcid="infoFacturaBlock@Block">
+    <table align="center">
+        <tr><td class="title" valign="top">Producto:</td><td class="normal"><span jwcid="@Insert" value="ognl: components.forDets.value.claveFormaLiquidacion" /></td></tr>
+        <tr><td class="title" valign="top">Monto:</td><td class="normal"><span jwcid="@Insert" value="ognl: components.forDets.value.monto" format="ognl: moneyFormat"/></td></tr>
+        <tr><td class="title" valign="top">Divisa:</td><td class="normal"><span jwcid="@Insert" value="ognl: components.forDets.value.tipoCambio" format="ognl: currencyFormatSix"/></td></tr>
+        <span jwcid="@contrib:Choose">
+            <span jwcid="@contrib:When" condition="ognl: getInfoFactura(components.forDets.value.idDealPosicion)">
+                <tr jwcid="@Conditional" condition="ognl: getInfoFactura(components.forDets.value.idDealPosicion).facturaError" element="tr"><td class="title" valign="top">Mensaje:</td><td class="normal"><span jwcid="@Insert" value="ognl: getInfoFactura(components.forDets.value.idDealPosicion).facturaError" /></td></tr>
+                <span jwcid="@Conditional" condition="ognl: !getInfoFactura(components.forDets.value.idDealPosicion).facturaError">
+                    <tr><td class="title" valign="top">Factura:</td><td class="normal"><span jwcid="@Insert" value="ognl: getInfoFactura(components.forDets.value.idDealPosicion).facturaFolio" /></td></tr>
+                    <tr>
+                        <td colspan="2">
+                            <br />
+                            <div align="center">
+                                <a jwcid="@Any" element="a" href="ognl: getInfoFactura(components.forDets.value.idDealPosicion).facturaUrlPdf" target="PdfFactura"><img jwcid="@Image" image="ognl: assets.pdfButton" border="0"/></a>&nbsp;
+                                <a jwcid="@Any" element="a" href="ognl: getInfoFactura(components.forDets.value.idDealPosicion).facturaUrlXml" target="XmlFactura"><img jwcid="@Image" image="ognl: assets.xmlButton" border="0"/></a>
+                            </div>
+                            <br />
+                        </td>
+                    </tr>
+                </span>
+            </span>
+            <span jwcid="@contrib:Otherwise">
+             <tr><td class="title" valign="top">Mensaje:</td><td class="normal">A&uacute;n no se ha generado la factura para este detalle de deal.</td></tr>
+            </span>
+        </span>
+    </table>
+</span>
+</body>
+</html>

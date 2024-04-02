@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: CatMecanicaNeteos.page,v 1.1.2.2.6.1 2010/09/03 17:26:00 ccovian Exp $ -->        
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.catalogos.CatMecanicaNeteos">
+
+	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+	
+	<bean name="evenOdd" class="org.apache.tapestry.bean.EvenOdd"/>
+    
+    <property-specification name="claveFormaLiquidacionCompra" type="java.lang.String"/>
+    <property-specification name="claveFormaLiquidacionVenta" type="java.lang.String"/>
+    <property-specification name="clavesFormaLiquidacion" type="java.lang.String[]" persistent="yes"/>
+    <property-specification name="allProducts" type="java.util.List" persistent="yes"/>
+    <property-specification name="reglaBase" type="java.util.Map" persistent="yes"/>
+    <property-specification name="divisaSeleccionada" type="java.util.Map" persistent="yes"/>
+    <property-specification name="montoAntesDelHorario" type="double" />
+    <property-specification name="montoDespuesDelHorario" type="double" />
+    <property-specification name="difAntesDelHorario" type="java.math.BigDecimal" />
+    <property-specification name="difDespuesDelHorario" type="java.math.BigDecimal" />
+    <property-specification name="reglasNeteo" type="java.util.List" persistent="yes"/>
+    <property-specification name="modoSubmit" type="java.lang.String" />
+    <property-specification name="modelListBase" type="java.util.List" persistent="yes"/>
+    <property-specification name="modelListDivisa" type="java.util.List" persistent="yes"/>
+    <property-specification name="level" type="int" />
+    <property-specification name="canal" type="java.lang.String" persistent="yes"/>
+    
+    <bean name="doubleValidator" class="org.apache.tapestry.valid.NumberValidator" lifecycle="page">
+        <set-property name="required" expression="true" />
+        <set-property name="valueType">"java.math.BigDecimal"</set-property>
+    </bean>
+    
+    <component id="difAntesDeHorario" type="ValidField">
+        <static-binding name="displayName" value="Diferencial antes del horario" />
+        <binding name="validator" expression="beans.doubleValidator" />
+        <binding name="value" expression="difAntesDelHorario" />
+    </component>
+    
+    <component id="difDespuesDeHorario" type="ValidField">
+        <static-binding name="displayName" value="Diferencial despu\u00e9s del horario:" />
+        <binding name="validator" expression="beans.doubleValidator" />
+        <binding name="value" expression="difDespuesDelHorario" />
+    </component>
+    
+    <context-asset name="insertButton" path="/images/add.gif" />
+	
+</page-specification>

@@ -1,0 +1,72 @@
+<!-- $Id: ReporteSiar.html,v 1.1 2008/04/16 18:20:30 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Reporte SIAR</title>
+    <link rel="StyleSheet" href="../../css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+	<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+    <script type="text/javascript">
+        <!--
+        function desaparecer(elemento, texto) {
+            document.getElementById('mensaje').innerHTML = '';
+            document.getElementById(elemento).innerHTML = texto;
+            document.getElementById('mensaje').innerHTML = '<br />' +
+                    '<table border="0" cellspacing="1" width="100%" cellpadding="3" align="center" class="tableborder"> <tr valign="top">' +
+                    '<td bgcolor="#d0f9d1"><img src="/sica/images/ok.gif" border="0" width="41" height="36" align="left"/> <p class="title">El reporte se est&aacute; procesando. Espere por favor, la operaci&oacute;n puede llevar varios minutos.</p>' +
+                    '</td></tr></table>';
+        }
+        //-->
+    </script>
+    <table border="0" cellpadding="0" cellspacing="0" width="980" align="center">
+        <tr>
+            <td>
+            <div id="mensaje"></div>
+            <br />    
+		    <span jwcid="@LoadingImage" visible="ognl: true" breaksBeforeLoadingImage="ognl: 10" valign="center"/>
+	    	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	        <tr valign="top">
+	            <td width="200">			    
+					     <form jwcid="@Form" listener="ognl: listeners.buscar" delegate="ognl: beans.delegate" >
+					            <table jwcid="@ActionPortletBorder" title="Reporte SIAR">
+				           		    <fieldset class="normal">
+				           		        <legend class="legend">Impresi&oacute;n de Reporte</legend>				                
+	                                    	Divisa :<br />
+					                        <select jwcid="divisasComboBox" /><br />
+					                        Fecha :<br />
+					                        <span jwcid="@ls:DatePicker" value="ognl: fecha" format="dd/MM/yyyy"/><br />
+				                   </fieldset>
+                                <br />
+				                <div align="center">
+				                    <input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+				                </div>
+				                </table>
+				    	</form>
+	   			</td>
+	   			<td width="1%">&nbsp;</td>
+	            <td>
+                    <span jwcid="@Conditional" condition="ognl: dataSource.size() &gt; 0">
+                    <table jwcid="@ActionPortletBorder" title="Exportar Reporte en Excel">
+			        	<table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: {"Opciones", ""}' columnCount="2" width="100%">
+							<tr class="ognl: beans.evenOdd.next">
+				         		<td class="normalcell" align="left">
+									Reporte SIAR
+					        	</td>
+					        	<td class="normalcell" align="center">
+                                    <div id="verExcelSiar">
+					        			<a jwcid="@DirectLink" listener="ognl:listeners.generarListadoExcel" onClick="desaparecer('verExcelSiar', 'Ver Excel');">Ver Excel</a>
+                                    </div>    
+					        	</td>
+						 	</tr>
+					 	</table>
+					</table>
+                    </span>
+	           </td>   			
+	        </tr>
+			</table>
+        </td>
+		</tr>
+        </table>
+    <span jwcid="@ls:DatePickerColophon" />
+</body>
+</html>

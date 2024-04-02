@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: EdicionPlantillaIntl.page,v 1.12 2010/02/25 17:32:01 ccovian Exp $ -->
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ixe.ods.sica.pages.deals.plantillas.EdicionPlantillaIntl">
+
+	<bean name="delegate" class="com.ixe.isis.tapestry.IxenetValidationDelegate" />
+	
+	<bean name="stringValidatorInstr" class="org.apache.tapestry.valid.StringValidator" lifecycle="page">
+        <set-property name="required" expression="false" />
+    </bean>
+
+    <component id="instruccionesPagadorTextField" type="TextArea">
+        <static-binding name="cols" value="33" />
+        <static-binding name="rows" value="3" />
+        <static-binding name="class" value="uppercase" />
+        <binding name="value" expression="instruccionesPagador" />
+    </component>
+    
+    <component id="instruccionesIntermediarioTextField" type="TextArea">
+        <static-binding name="cols" value="33" />
+        <static-binding name="size" value="3" />
+        <static-binding name="class" value="uppercase" />
+        <binding name="validator" expression="beans.stringValidatorInstr" />
+        <binding name="value" expression="instruccionesIntermediario" />
+    </component>
+    
+    <property-specification name="modoSubmit" type="java.lang.String" />
+    <property-specification name="idPersona" type="java.lang.Integer" persistent="yes"/>
+    <property-specification name="nombreCliente" type="java.lang.String" persistent="yes"/>
+    <property-specification name="paginaAnterior" type="java.lang.String" persistent="yes" />
+    <property-specification name="plantilla" type="com.ixe.ods.sica.model.IPlantillaIntl" persistent="yes" />
+    <property-specification name="formasPagoLiq" type="java.util.List" persistent="yes" />
+    <property-specification name="mostrarInsertarBanco" type="boolean" />
+    <property-specification name="sinConIntermediario" type="java.lang.String" persistent="yes" initial-value='"Sin Intermediario"' />
+    <property-specification name="x" type="int" />
+    <property-specification name="y" type="int" />
+    <property-specification name="instruccionesPagador" type="java.lang.String" persistent="yes" />
+    <property-specification name="instruccionesIntermediario" type="java.lang.String" persistent="yes" />
+    <property-specification name="mapaEdicionPlantilla" type="java.util.HashMap" persistent="yes" />
+
+    <context-asset name="bNuevaInstitucion" path="/images/nueva_institucion.gif" />
+    <context-asset name="acceptButton" path="/images/aceptar.gif" />
+    <context-asset name="cancelButton" path="/images/cancel.gif" />
+    <context-asset name="regresarButton" path="/images/back.gif" />
+
+</page-specification>

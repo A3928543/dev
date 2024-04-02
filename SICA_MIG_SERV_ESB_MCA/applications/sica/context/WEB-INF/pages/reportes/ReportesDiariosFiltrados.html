@@ -1,0 +1,190 @@
+<!-- $Id: ReportesDiariosFiltrados.html,v 1.1.2.4 2010/11/19 17:27:01 ccovian Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Reportes</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+    <table border="0" cellpadding="0" cellspacing="0" width="842px">
+        <tr valign="top">
+            <td>
+             	<div align="center">
+	            	&nbsp;
+	            </div>     	   
+			    <table jwcid="@ActionPortletBorder" title="Reportes Diarios Compras/Ventas" minimizable="yes" minimized="ognl: filtrosMinimizados" width="840px">
+				     <form jwcid="@Form" listener="ognl: listeners.reportes" delegate="ognl: beans.delegate" >
+				           <span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+				           		<fieldset class="normal">
+		           		        <legend class="legend">Impresi&oacute;n de Reportes</legend>
+		           		        <table cellpadding="3" cellspacing="0" width="840px">
+		           		        	<tr>
+		           		        		<td class="normal">
+		           		        			<div width="280px">
+					           		        	Canales :<br />
+					           		        	<select jwcid="@Select" multiple="ognl: true" size="5" style="width: 280px">
+					           		        		<span jwcid="@Foreach" source="ognl: canalesList" value="ognl: canalSeleccionado" index="ognl: currentIndex">
+					           		        			<option jwcid="@Option" selected="ognl: seleccionaCanal[currentIndex]" label="ognl: canalSeleccionado.nombre" />
+				           		        			</span>
+					           		        	</select>
+				           		        	</div>
+		           		        		</td>
+		           		        		<td class="normal">
+			           		        		<div width="280px">
+						                        Promotores :<br />
+						                        <select jwcid="@Select" multiple="ognl: true" size="5" style="width: 280px">
+					           		        		<span jwcid="@Foreach" source="ognl: promotoresList" value="ognl: promotorSeleccionado" index="ognl: currentIndex">
+					           		        			<option jwcid="@Option" selected="ognl: seleccionaPromotor[currentIndex]" label="ognl: promotorSeleccionado.nombreCompleto" />
+				           		        			</span>
+					           		        	</select>
+					                        </div>
+		           		        		</td>
+		           		        		<td class="normal">
+		           		        			<div width="280px">
+						                        Divisas :<br />
+						                        <select jwcid="@Select" multiple="ognl: true" size="5" style="width: 280px">
+					           		        		<span jwcid="@Foreach" source="ognl: divisasFrecuentesList" value="ognl: divisaSeleccionada" index="ognl: currentIndex">
+					           		        			<option jwcid="@Option" selected="ognl: seleccionaDivisa[currentIndex]" label="ognl: divisaSeleccionada.idDivisa" />
+				           		        			</span>
+					           		        	</select>
+					                        </div>
+		           		        		</td>
+		           		        	</tr>
+		           		        	<tr>
+		           		        		<td class="normal">
+			           		        		<div>
+						                        Tipo Operaci&oacute;n :<br />
+						                        <select jwcid="@Select" multiple="ognl: true" size="5" style="width: 280px">
+					           		        		<span jwcid="@Foreach" source="ognl: tipoOperacionesList" value="ognl: operacionSeleccionada" index="ognl: currentIndex">
+					           		        			<option jwcid="@Option" selected="ognl: seleccionaOperacion[currentIndex]" label="ognl: operacionSeleccionada.textoPantalla" />
+				           		        			</span>
+					           		        	</select>
+					                        </div>
+		           		        		</td>
+		           		        		<td class="normal">
+			           		        		<div>
+					                        	Excepciones :<br />
+						                        <select jwcid="@Select" multiple="ognl: true" size="5" style="width: 280px">
+					           		        		<span jwcid="@Foreach" source="ognl: excepcionesList" value="ognl: excepcionSeleccionada" index="ognl: currentIndex">
+					           		        			<option jwcid="@Option" selected="ognl: seleccionaExcepcion[currentIndex]" label="ognl: excepcionSeleccionada.textoPantalla" />
+				           		        			</span>
+					           		        	</select>
+						                    </div>
+		           		        		</td>
+		           		        		<td class="normal">
+			           		        		<div>
+						                        Zonas :<br />
+						                        <select jwcid="@Select" multiple="ognl: true" size="5" style="width: 280px">
+					           		        		<span jwcid="@Foreach" source="ognl: zonasList" value="ognl: zonaSeleccionada" index="ognl: currentIndex">
+					           		        			<option jwcid="@Option" selected="ognl: seleccionaZona[currentIndex]" label="ognl: zonaSeleccionada.textoPantalla" />
+				           		        			</span>
+					           		        	</select>
+						                    </div>
+		           		        		</td>
+		           		        	</tr>
+		           		        	<tr>
+		           		        		<td colspan="3" class="normal">
+			           		        		<div width="840px">
+						                        Contratos SICA (Separados por ','):<br />
+						                        <input jwcid="@TextField" value="ognl: contratosSica" style="width: 840px"/>
+					                        </div>
+		           		        		</td>
+		           		        	</tr>
+		           		        	<tr>
+		           		        		<td colspan="3" class="normal" align="right">
+		           		        			<br/>
+		           		        			En caso de que no seleccione alg&uacute;n elemento de un criterio, no se tomar&aacute; en cuenta el criterio de filtrado.
+		           		        			<br/>
+		           		        			Presione CTRL + click para seleccionar/deseleccionar de las listas.
+		           		        		</td>
+		           		        	</tr>
+		           		        </table>
+       		        			</fieldset>
+			                   <table cellpadding="3" cellspacing="0" width="840px">
+			                   		<tr>
+			                   			<td width="420px">
+			                   			   <div width="420px">
+							                   <fieldset class="normal" style="width: 420px">
+							           		        <legend class="legend">Per&iacute;odo</legend>
+							                        Del :<br/>
+							                        <span jwcid="@ls:DatePicker" value="ognl: fechaInicial" format="dd/MM/yyyy"/>
+							                        Al :<br/>
+							                        <span jwcid="@ls:DatePicker" value="ognl: fechaFinal" format="dd/MM/yyyy"/>
+							                   </fieldset>
+						                   </div>
+			                   			</td>
+			                   			<td width="420px">
+			                   			   <div width="420px">
+				                               <fieldset class="normal" style="width: 420px">
+							           		        <legend class="legend">Montos</legend>
+							                        Monto M&iacute;nimo :<br/>
+							                        <input jwcid="montoTextFieldMinimo" /><br/>
+							                        Monto M&aacute;ximo :<br/>
+							                        <input jwcid="montoTextFieldMaximo" />
+							                   </fieldset>
+						                   </div>
+			                   			</td>
+		                   			</tr>
+			                   </table>
+			                <div align="center">
+			                	<br />
+			                    <input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+			                	&nbsp;&nbsp;&nbsp;&nbsp;
+			                	<a jwcid="@DirectLink" listener="ognl:listeners.limpiarForma" onclick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.cleanButton"/></a>
+			                </div>
+			    	</form>
+			    	<span jwcid="@ls:DatePickerColophon" />
+			   </table>
+   			</td>
+		</tr>
+		<tr>
+			<td>
+				<br/>
+				<br/>
+			</td>
+		</tr>
+		<tr>
+            <td>
+            	<span jwcid="@Conditional" condition="ognl: detallesTable.size() &gt; 0">
+            	<table jwcid="@ActionPortletBorder" title="Reporte a Imprimir" width="842px">
+            	<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+                   	<table border="0" cellspacing="1" cellpadding="3" width="840px" jwcid="forDt@bup:Table" source="ognl: detallesTable" initialSortColumn="divisa" pageSize="25"
+		                columns='ognl: "!divisa:Divisa:divisa, !operacion:Operaci\u00f3n:operacion,
+		                !contrato:Contrato:contrato, !cliente:Cliente:cliente, !fechaCaptura:Fecha Captura:fechaCaptura,
+		                !producto:Producto:producto, !monto:Monto:monto, !zona:Tipo de Zona: zona"'
+		                class="tableborder"/>
+	                <span jwcid="divisaColumnValue@Block">
+			            <span jwcid="@Insert" value="ognl: components.forDt.tableRow.dealDetalle.divisa.idDivisa" />
+			        </span>
+			        <span jwcid="operacionColumnValue@Block">
+			            <span jwcid="@Insert" value="ognl: components.forDt.tableRow.dealDetalle.recibimos ? 'Compra' : 'Venta'" />
+			        </span>
+			        <span jwcid="contratoColumnValue@Block">
+			            <span jwcid="@Insert" value="ognl: components.forDt.tableRow.dealDetalle.deal.contratoSica.noCuenta" />
+			        </span>
+			        <span jwcid="clienteColumnValue@Block">
+			            <span jwcid="@Insert" value="ognl: components.forDt.tableRow.persona.nombreCorto" />
+			        </span>
+			        <span jwcid="fechaCapturaColumnValue@Block">
+			            <span jwcid="@Insert" value="ognl: components.forDt.tableRow.dealDetalle.deal.fechaLiquidacion" format="ognl: dateFormat" />
+			        </span>
+			        <span jwcid="productoColumnValue@Block">
+			            <span jwcid="@Insert" value="ognl: components.forDt.tableRow.dealDetalle.claveFormaLiquidacion" />
+			        </span>
+			        <span jwcid="montoColumnValue@Block">
+			            <span jwcid="@Insert" value="ognl: page.moneyFormat.format(components.forDt.tableRow.dealDetalle.monto)" />
+			        </span>
+			        <span jwcid="zonaColumnValue@Block">
+			            <span jwcid="@Insert" value="ognl: components.forDt.tableRow.dealDetalle.deal.tipoZona" />
+			        </span>
+                    <br/>
+                    <div align="center">
+	                	<br />
+            			<a jwcid="@DirectLink" listener="ognl:listeners.imprimirReporteDiario" parameters= 'ognl: {"XLS", "WEB-INF/jasper/ReporteDiarioXls.jasper", "0" }'><img jwcid="@Image" image="ognl: assets.verXlsButton"/></a>
+            		</div>
+        		</table>
+        	   </span>
+           </td>   			
+        </tr>
+    </table>
+</body>
+</html>

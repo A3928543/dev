@@ -1,0 +1,112 @@
+<!-- $Id: CapturaBeneficiariosCuentaIxe.html,v 1.1.2.1.30.1 2015/03/30 18:19:27 mejiar Exp $ -->
+<html jwcid="$content$">
+<head jwcid="$remove$">
+    <title>Encabezado</title>
+    <link rel="StyleSheet" href="css/ixe.css">
+</head>
+<body jwcid="@PageBorder">
+
+  <table border="0" cellpadding="0" cellspacing="10" width="100%">
+  <tr>
+  	<th colspan="2">
+  	 <div align="center">
+  		<span jwcid="@bup:ShowError" delegate="ognl:beans.delegate" insertBreakAtTail="yes" />
+ 	 </div>
+ 	</th>
+  </tr>
+  <tr valign="top">
+  	<td width="250">
+  		
+  	   	<table jwcid="@ActionPortletBorder" title='ognl: "Captura de Beneficiarios "' width="100%">
+        	<fieldset class="normal">
+	       		 <span jwcid="@Insert" value="ognl: nombreCliente" raw="yes" />
+			</fieldset>
+     	</table>
+    	&nbsp;
+    	
+       	<span jwcid="@Conditional" condition='ognl: @com.ixe.ods.sica.pages.deals.plantillas.EdicionPlantillaIntl@PAGINA_MIGRACION_PLANTILLAS.equals(paginaAnterior)'>
+			<table jwcid="@ActionPortletBorder" title='ognl: "Nombre del Beneficiario"' width="100%">
+        		<fieldset class="normal">
+	       			 <span jwcid="@Insert" value="ognl: mapaEdicionPlantilla.beneficiario" raw="yes" />
+				</fieldset>
+	     	</table>
+    	</span>	
+    	&nbsp;
+    	
+  		<table jwcid="@ActionPortletBorder" title="B&uacute;squeda de Beneficiarios" width="100%">
+		<form jwcid="@Form" listener="ognl: listeners.busquedaBeneficiarios" delegate="ognl: beans.delegate" >
+            <fieldset class="normal">
+               <legend class="legend">Por cuenta IXE</legend>
+			    	 No. de Cuenta:<br />
+			   		 <input jwcid="@ixe:UppercaseTextField" maxLength="80" size="40" class="uppercase" value="ognl: cuentaIxe"/>
+           </fieldset> 
+  			&nbsp;
+	       <div align="center">
+	       	    <span jwcid="@contrib:FormConditional" condition='ognl: !@com.ixe.ods.sica.pages.deals.plantillas.EdicionPlantillaIntl@PAGINA_MIGRACION_PLANTILLAS.equals(paginaAnterior)'>
+					<input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+	       		</span>
+	           	<span jwcid="@contrib:FormConditional" condition='ognl: @com.ixe.ods.sica.pages.deals.plantillas.EdicionPlantillaIntl@PAGINA_MIGRACION_PLANTILLAS.equals(paginaAnterior)'>
+					<input jwcid="@ImageSubmit" image="ognl: assets.searchButton" onclick="return fnDisableForm(this.form);" />
+	       			<a jwcid="@PageLink" page="ognl: paginaAnterior" onClick="fnShowWaitImage();"><img jwcid="@Image" image="ognl: assets.cancelButton"/></a>
+	        	</span>
+	       </div>
+		</form>		     
+		</table>
+  	</td>
+	<td>
+	  	<span jwcid="@Conditional" condition="ognl: resultadoBusqueda">
+	  		<table jwcid="@ActionPortletBorder" title='ognl: "Resultados de la B&uacute;squeda"'>
+	  		 	<span jwcid="@Conditional" condition="ognl: listaResultadosCuenta">
+       				<table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: {"Nombre", "No. Cuenta", "N\u00fam. Ref.", "&nbsp;"}' columnCount="3" width="100%" >
+               			<tr jwcid="forBusquedaBeneficiariosCuenta@Foreach" source="ognl: listaResultadosCuenta" element="tr" class="ognl: beans.evenOdd.next" >
+                	    	<td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forBusquedaBeneficiariosCuenta.value.id.persona.nombreCorto" raw="yes" /></td>
+                            <td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forBusquedaBeneficiariosCuenta.value.id.cuenta.noCuenta" raw="yes" /></td>
+                            <td class="normal" align="center"><span jwcid="@DatosClaveReferencia" idPersona="ognl: components.forBusquedaBeneficiariosCuenta.value.id.persona.idPersona" prefijo ="ognl: components.forBusquedaBeneficiariosCuenta.value.id.persona.idPersona" /></td>
+                		    <td class="normal" align="left"><a jwcid="@DirectLink" listener="ognl:listeners.asignar" parameters="ognl: components.forBusquedaBeneficiariosCuenta.value.id.persona.idPersona" onClick="fnShowWaitImage();">Asignar</a></td>
+      					</tr>
+					</table>
+			 	</span>
+			 	<span jwcid="@Conditional" condition="ognl: listaResultadosAltamira">
+       				<table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: {"Nombre", "No. Cuenta", "No. CR", "N\u00fam. Ref.", "&nbsp;"}' columnCount="3" width="100%" >
+               			<tr jwcid="forBusquedaCuentaAltamira@Foreach" source="ognl: listaResultadosAltamira" element="tr" class="ognl: beans.evenOdd.next" >
+                	    	<td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forBusquedaCuentaAltamira.value.nombreCliente" raw="yes" /></td>
+                            <td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forBusquedaCuentaAltamira.value.numeroCuenta" raw="yes" /></td>
+                            <td class="normal" align="left"><span jwcid="@Insert" value="ognl: components.forBusquedaCuentaAltamira.value.cr" raw="yes" /></td>
+                            <td class="normal" align="center"><span jwcid="@DatosClaveReferencia" idPersona="ognl: components.forBusquedaCuentaAltamira.value.idPersona" prefijo ="ognl: components.forBusquedaCuentaAltamira.value.idPersona" /></td>
+                		    <td class="normal" align="left"><a jwcid="@DirectLink" listener="ognl:listeners.asignar" parameters="ognl: components.forBusquedaCuentaAltamira.value.idPersona" onClick="fnShowWaitImage();">Asignar</a></td>
+      					</tr>
+					</table>
+			 	</span>
+      			<tr>
+      			<td>
+      				<table align="center">
+      					<tr>
+      						<td>
+				 			</td>
+				 		</tr>
+				 	</table>
+	        	</td>
+      		</tr>
+       	</table>
+       	&nbsp;
+   	    &nbsp;
+   	    </span>
+   	    <span jwcid="@Conditional" condition='ognl: !"MigracionPlantillas".equals(paginaAnterior)'>
+		   	<span jwcid="@Conditional" condition="ognl: beneficiarios.size() &gt; 0">
+        		<table jwcid="@ActionPortletBorder" title='ognl: "Beneficiarios " + nombreCliente'>
+     	    		<table jwcid="@TableBorder" title="ognl: null" subtitles='ognl: { "Nombre" }' columnCount="1" width="100%">
+           	    		<tr jwcid="forBeneficiarios@Foreach" source="ognl: beneficiarios" element="tr" class="ognl: beans.evenOdd.next">
+               	    		<td class="normal" align="center"><span jwcid="@Insert" value="ognl: components.forBeneficiarios.value.nombre" raw="yes" /></td>
+	                	</tr>
+    		        </table>
+   	    		</table>
+    		</span>
+    	</span>
+    		
+    	<br />
+    </td>
+  </tr>
+ 
+</table>
+</body>
+</html>

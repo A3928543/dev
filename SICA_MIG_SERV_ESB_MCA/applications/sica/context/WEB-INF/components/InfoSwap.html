@@ -1,0 +1,62 @@
+<!-- $Id: InfoSwap.html,v 1.12 2010/05/20 20:40:41 ccovian Exp $ -->
+<table jwcid="@ActionPortletBorder" title="Swap">
+<fieldset>
+<legend class="legend">Datos Generales:</legend>
+<table width="100%">
+<tr valign="top">
+<td align="right" class="title">N&#250;mero:</td>
+<td><span jwcid="@DisabledField" value="ognl: swap.idFolioSwap" /></td>
+<td align="right" class="title">Fecha:</td>
+<td><span jwcid="@DisabledField" value="ognl: page.dateFormat.format(swap.fechaOperacion)" /></td>
+<td align="right" class="title">Monto:</td>
+<td><span jwcid="@DisabledField" value="ognl: page.moneyFormat.format(swap.monto)" /></td>
+</tr>
+<tr valign="top">
+<td align="right" class="title">Cuenta:</td>
+<td colspan="3"><span jwcid="@DisabledField" value="ognl: swap.contratoSica.noCuenta + ' ' + swap.cliente.nombreCompleto" /></td>
+<td align="right" class="title">FolderK:</td>
+<td><span jwcid="@DisabledField" value="ognl: swap.folderk" /></td>
+</tr>
+<tr valign="top">
+<td align="right" class="title">Status:</td>
+<td><span jwcid="@DisabledField" value="ognl: swap.descripcionStatus" /></td>
+<td align="right" class="title">Tipo:</td>
+<td><span jwcid="@DisabledField" value="ognl: swap.descripcionTipoSwap" /></td>
+<td align="right" class="title">No. KONDOR:</td>
+<td><span jwcid="@DisabledField" value="ognl: swap.idConf" /></td>
+</tr>
+</table>
+</fieldset>
+<br />
+<table jwcid="@TableBorder" title="ognl: null" columnCount="7" subtitles="ognl: { 'No.', 'Inicio', 'Fecha Valor', 'Fecha Captura', 'Fecha Liquidaci\u00f3n', 'Status', 'Monto Compra', 'Monto Venta', 'Divisa' }" width="100%">
+<tr jwcid="forDeals@Foreach" source="ognl: swap.deals" element="tr" class="ognl: beans.evenOdd.next" align="center">
+<td class="normal">
+    <a jwcid="@DirectLink" listener="ognl: listeners.verDeal" parameters="ognl: components.forDeals.value.idDeal" disabled="ognl: !page.visit.hasPermission(@com.ixe.ods.sica.FacultySystem@SICA_CAPT_DEAL_INTER)"><span jwcid="@Insert" value="ognl: components.forDeals.value.idDeal" /></a>
+</td>
+<td class="normal">
+<span jwcid="@Insert" value="ognl: components.forDeals.value.inicioSwap ? 'S&iacute;' : 'No'" raw="ognl: true" />
+</td>
+<td class="normal">
+<span jwcid="@Insert" value="ognl: components.forDeals.value.tipoValor" />
+</td>
+<td class="normal">
+<span jwcid="@Insert" value="ognl: components.forDeals.value.fechaCaptura" format="ognl: page.dateFormat" />
+</td>
+<td class="normal">
+<span jwcid="@Insert" value="ognl: components.forDeals.value.fechaLiquidacion" format="ognl: page.dateFormat" />
+</td>
+<td class="normal" align="right">
+<span jwcid="@StatusField" status="ognl: @com.ixe.ods.sica.components.StatusField@getStatusDeal(components.forDeals.value)" descripcion="ognl: components.forDeals.value.descripcionStatus" />
+</td>
+<td class="normal" align="right">
+<span jwcid="@Insert" value="ognl: getMonto(true, components.forDeals.value)" format="ognl: page.moneyFormat" />
+</td>
+<td class="normal" align="right">
+<span jwcid="@Insert" value="ognl: getMonto(false, components.forDeals.value)" format="ognl: page.moneyFormat" />
+</td>
+<td class="normal">
+<span jwcid="@Bandera" divisa="ognl: getDivisa(components.forDeals.value)" />
+</td>
+</tr>
+</table>
+</table>
