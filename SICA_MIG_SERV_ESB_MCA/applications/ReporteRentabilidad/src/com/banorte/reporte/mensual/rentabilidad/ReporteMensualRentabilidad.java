@@ -29,7 +29,7 @@ public class ReporteMensualRentabilidad {
 	private void iniciar() 
 	{
 		try 
-		{
+		{ LOG.warn("Es una prueba para comprobar cambios en GIT");
 			LOG.warn("**********************************************************************************************************");
 			LOG.warn("*****************************          PROCESO MENSUAL GENERADOR DEL REPORTE DE RENTABILIDAD   ***********");
 			LOG.warn("**********************************************************************************************************");
